@@ -1,0 +1,271 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige",
+   "Karakter": "Fritaget",
+   "Niveau": "middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "pige",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Andet",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Pige",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng ",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 807370
+}

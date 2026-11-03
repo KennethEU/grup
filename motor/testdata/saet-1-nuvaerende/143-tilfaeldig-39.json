@@ -1,0 +1,102 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r20",
+        "r21",
+        "r26",
+        "r3"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r25",
+        "r8",
+        "r14",
+        "r13"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r11",
+        "r5",
+        "r22",
+        "r17"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r15",
+        "r16",
+        "r4",
+        "r28",
+        "r10"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r12",
+        "r6",
+        "r9"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r23",
+        "r7",
+        "r24",
+        "r18"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r2",
+        "r1",
+        "r27",
+        "r19"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Ensartede\" måler ikke på vedkommende."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.35
+  }
+}

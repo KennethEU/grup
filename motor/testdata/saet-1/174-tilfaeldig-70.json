@@ -1,0 +1,256 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj ",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Lav",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Høj",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav ",
+   "Karakter": "",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel ",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": " HØJ",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r17",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 395526
+}

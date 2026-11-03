@@ -1,0 +1,141 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p844-10",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p844-2",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p844-11",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p844-1",
+   "Sprog": "Spansk",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p844-8",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p844-3",
+   "Sprog": "Spansk",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p844-12",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p844-6",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p844-9",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p844-7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p844-5",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p844-4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Karakter": "02"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p844-6",
+    "p844-4"
+   ]
+  ],
+  "avoid": [
+   [
+    "p844-4",
+    "p844-9",
+    "p844-3"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 31321
+}

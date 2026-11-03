@@ -1,0 +1,188 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r8",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "10",
+   "Niveau": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r12",
+    "r21",
+    "r6"
+   ]
+  ],
+  "avoid": [
+   [
+    "r3",
+    "r16",
+    "r19",
+    "r21"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 874387
+}

@@ -1,0 +1,90 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r19",
+        "r1",
+        "r9",
+        "r14"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r8",
+        "r10",
+        "r2",
+        "r17"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r6",
+        "r4",
+        "r16",
+        "r18",
+        "r11"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r7",
+        "r3",
+        "r12",
+        "r22",
+        "r21"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r15",
+        "r13",
+        "r5",
+        "r20"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op inden for \"2.b\": 4 elever har værdien \"Gruppe 2\", og der er kun plads til 2 (højst 1 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 2\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.15
+  }
+}

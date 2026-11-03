@@ -1,0 +1,284 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r7",
+        "r88",
+        "r16",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r97",
+        "r24",
+        "r120"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r48",
+        "r26",
+        "r123",
+        "r94"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r47",
+        "r111",
+        "r98",
+        "r80",
+        "r112"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r78",
+        "r35",
+        "r114",
+        "r119"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r104",
+        "r131",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r110",
+        "r28",
+        "r95",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r72",
+        "r13",
+        "r10",
+        "r121"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r126",
+        "r73",
+        "r85",
+        "r115"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r51",
+        "r64",
+        "r74",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r101",
+        "r124",
+        "r40",
+        "r86"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r50",
+        "r56",
+        "r113",
+        "r117"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r89",
+        "r129",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r42",
+        "r17",
+        "r76",
+        "r130"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r59",
+        "r70",
+        "r58",
+        "r102"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r93",
+        "r55",
+        "r53",
+        "r2",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r125",
+        "r105",
+        "r82",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r122",
+        "r108",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r5",
+        "r75",
+        "r30",
+        "r99"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r15",
+        "r91",
+        "r61",
+        "r79"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r92",
+        "r33",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r46",
+        "r77",
+        "r21",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r62",
+        "r127",
+        "r43",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r109",
+        "r9",
+        "r96"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r116",
+        "r54",
+        "r6",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r118",
+        "r107",
+        "r14",
+        "r84"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r27",
+        "r18",
+        "r49"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r128",
+        "r60",
+        "r23",
+        "r100"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 9.99
+  }
+}

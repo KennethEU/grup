@@ -1,0 +1,149 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r25",
+    "r13",
+    "r4"
+   ],
+   [
+    "r16",
+    "r21",
+    "r14",
+    "r17"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 591348
+}

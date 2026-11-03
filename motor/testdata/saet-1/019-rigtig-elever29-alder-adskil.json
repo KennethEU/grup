@@ -1,0 +1,182 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "e0",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e1",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e2",
+   "Alder": "18",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e3",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e4",
+   "Alder": "16",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e5",
+   "Alder": "18",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e6",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e7",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e8",
+   "Alder": "18",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e9",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e10",
+   "Alder": "16",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e11",
+   "Alder": "17",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e12",
+   "Alder": "18",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e13",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e14",
+   "Alder": "16",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e15",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e16",
+   "Alder": "18",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e17",
+   "Alder": "17",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e18",
+   "Alder": "16",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e19",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e20",
+   "Alder": "18",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e21",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e22",
+   "Alder": "16",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e23",
+   "Alder": "17",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e24",
+   "Alder": "18",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e25",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e26",
+   "Alder": "16",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e27",
+   "Alder": "17",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e28",
+   "Alder": "18",
+   "Sprog": "Dansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Alder",
+   "values": [
+    "18"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

@@ -1,0 +1,474 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r58",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r46",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r36",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r53",
+   "Sprog": "Fransk",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r72",
+   "Sprog": "Fransk",
+   "Interesse": "Skak "
+  },
+  {
+   "_rowId": "r39",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r71",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r65",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r60",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r70",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r38",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r64",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r42",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r87",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r40",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r79",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r32",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r74",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r80",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r59",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r35",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r50",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r81",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r88",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r63",
+   "Sprog": "Tysk",
+   "Interesse": "Skak "
+  },
+  {
+   "_rowId": "r49",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r34",
+   "Sprog": "Fransk",
+   "Interesse": " SKAK"
+  },
+  {
+   "_rowId": "r61",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r75",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r47",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r62",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r51",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r45",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r83",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r66",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Fransk",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r55",
+   "Sprog": "Tysk",
+   "Interesse": " MUSIK"
+  },
+  {
+   "_rowId": "r82",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r68",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r69",
+   "Sprog": "Fransk",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r54",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r44",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r33",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r41",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r43",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r84",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r85",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r77",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r86",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold "
+  },
+  {
+   "_rowId": "r73",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r57",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r52",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r48",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r76",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r56",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r37",
+    "r78",
+    "r67",
+    "r7"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 36
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 927741
+}

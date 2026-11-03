@@ -1,0 +1,184 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r33",
+        "r1",
+        "r5",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r37",
+        "r30",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r70",
+        "r12",
+        "r66",
+        "r61"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r6",
+        "r22",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r17",
+        "r39",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r48",
+        "r77",
+        "r9",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r51",
+        "r23",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r60",
+        "r65",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r38",
+        "r24",
+        "r10",
+        "r75",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r64",
+        "r46",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r7",
+        "r72",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r13",
+        "r52",
+        "r73"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r27",
+        "r25",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r58",
+        "r2",
+        "r8",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r40",
+        "r34",
+        "r56",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r29",
+        "r45",
+        "r53"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 34 elever skal adskilles, men der er kun 16 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.91
+  }
+}

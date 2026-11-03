@@ -1,0 +1,219 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p701-16",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-4",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-14",
+   "Hold": "Hold 2",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-27",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-3",
+   "Hold": "Hold 1",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-25",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-8",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-23",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-10",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-12",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-11",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-22",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-18",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-1",
+   "Hold": "Hold 1",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-21",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-19",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-20",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-2",
+   "Hold": "Hold 1",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-26",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-5",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-9",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-7",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-17",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p701-24",
+   "Hold": "Hold 2",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-15",
+   "Hold": "Hold 2",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-13",
+   "Hold": "Hold 2",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p701-6",
+   "Hold": "Hold 1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p701-13",
+    "p701-14"
+   ]
+  ],
+  "avoid": [
+   [
+    "p701-27",
+    "p701-13",
+    "p701-6",
+    "p701-19"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 378577
+}

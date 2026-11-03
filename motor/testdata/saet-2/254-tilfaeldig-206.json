@@ -1,0 +1,190 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "00",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "00",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "02",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": " MIDDEL",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Hold": ""
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r5",
+    "r16"
+   ],
+   [
+    "r7",
+    "r17",
+    "r2",
+    "r14"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 155629
+}

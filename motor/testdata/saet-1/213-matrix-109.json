@@ -1,0 +1,1713 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r202",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r189",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r181",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r257",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r224",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r214",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r180",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r200",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r168",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r185",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r162",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r256",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r196",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r222",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r242",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r245",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r142",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r161",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r248",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r246",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r191",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r230",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r204",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r223",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r205",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r197",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r253",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r220",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r178",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r209",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r190",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r231",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r201",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r206",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r258",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r147",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r251",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r236",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r247",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r203",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r179",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r244",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r228",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r176",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r219",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r212",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r174",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r249",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r184",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r165",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r217",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r252",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r215",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r232",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r210",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r226",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r229",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r218",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r188",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r163",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r182",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r207",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r234",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r166",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r243",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r193",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r183",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r238",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r239",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r237",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r172",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r186",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r171",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r240",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r187",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r213",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r194",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r173",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r233",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r167",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r255",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r241",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r169",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r170",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r195",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r208",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r225",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r177",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r211",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r250",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r254",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r149",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r235",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r156",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r199",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r198",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r221",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r175",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r143",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r227",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r146",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r192",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r216",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r164",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Middel "
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r22",
+     "r172",
+     "r205",
+     "r71"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r106",
+     "r52",
+     "r161",
+     "r55"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r80",
+     "r125",
+     "r231",
+     "r216"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r222",
+     "r143",
+     "r29",
+     "r115"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r24",
+     "r140",
+     "r162",
+     "r85"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r113",
+     "r212",
+     "r69",
+     "r185"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r81",
+     "r201",
+     "r21",
+     "r118"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r180",
+     "r123",
+     "r206",
+     "r96"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S9",
+    "members": [
+     "r65",
+     "r149",
+     "r159",
+     "r116"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S10",
+    "members": [
+     "r91",
+     "r141",
+     "r177",
+     "r16"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S11",
+    "members": [
+     "r145",
+     "r254",
+     "r109",
+     "r45"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S12",
+    "members": [
+     "r248",
+     "r75",
+     "r64",
+     "r26"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S13",
+    "members": [
+     "r76",
+     "r194",
+     "r158",
+     "r39"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S14",
+    "members": [
+     "r59",
+     "r144",
+     "r131",
+     "r227"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S15",
+    "members": [
+     "r17",
+     "r130",
+     "r229",
+     "r51"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S16",
+    "members": [
+     "r168",
+     "r101",
+     "r174",
+     "r153"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S17",
+    "members": [
+     "r244",
+     "r107",
+     "r217",
+     "r178"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S18",
+    "members": [
+     "r18",
+     "r146",
+     "r249",
+     "r88"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S19",
+    "members": [
+     "r192",
+     "r182",
+     "r163",
+     "r104"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S20",
+    "members": [
+     "r154",
+     "r6",
+     "r83",
+     "r234"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S21",
+    "members": [
+     "r2",
+     "r62",
+     "r208",
+     "r43"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S22",
+    "members": [
+     "r93",
+     "r23",
+     "r251",
+     "r121"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S23",
+    "members": [
+     "r246",
+     "r119",
+     "r126",
+     "r3"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S24",
+    "members": [
+     "r209",
+     "r233",
+     "r89",
+     "r98"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S25",
+    "members": [
+     "r31",
+     "r44",
+     "r15",
+     "r48"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S26",
+    "members": [
+     "r207",
+     "r166",
+     "r202",
+     "r211"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S27",
+    "members": [
+     "r82",
+     "r238",
+     "r157",
+     "r253"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S28",
+    "members": [
+     "r181",
+     "r33",
+     "r37",
+     "r40"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S29",
+    "members": [
+     "r73",
+     "r108",
+     "r127",
+     "r120"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S30",
+    "members": [
+     "r189",
+     "r53",
+     "r200",
+     "r5"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S31",
+    "members": [
+     "r171",
+     "r72",
+     "r9",
+     "r86"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S32",
+    "members": [
+     "r30",
+     "r240",
+     "r183",
+     "r8"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S33",
+    "members": [
+     "r245",
+     "r41",
+     "r241",
+     "r124"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S34",
+    "members": [
+     "r138",
+     "r132",
+     "r164",
+     "r250"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S35",
+    "members": [
+     "r176",
+     "r105",
+     "r95",
+     "r225"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S36",
+    "members": [
+     "r92",
+     "r218",
+     "r128",
+     "r42"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S37",
+    "members": [
+     "r184",
+     "r4",
+     "r167",
+     "r70"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S38",
+    "members": [
+     "r11",
+     "r190",
+     "r34",
+     "r170"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S39",
+    "members": [
+     "r223",
+     "r242",
+     "r27",
+     "r78"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S40",
+    "members": [
+     "r28",
+     "r232",
+     "r219",
+     "r255"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S41",
+    "members": [
+     "r191",
+     "r142",
+     "r58",
+     "r36"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S42",
+    "members": [
+     "r193",
+     "r94",
+     "r134",
+     "r187"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S43",
+    "members": [
+     "r224",
+     "r151",
+     "r102",
+     "r221"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S44",
+    "members": [
+     "r12",
+     "r169",
+     "r203",
+     "r99"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S45",
+    "members": [
+     "r111",
+     "r247",
+     "r257",
+     "r10"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S46",
+    "members": [
+     "r258",
+     "r77",
+     "r220",
+     "r100"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S47",
+    "members": [
+     "r186",
+     "r57",
+     "r66",
+     "r103"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S48",
+    "members": [
+     "r84",
+     "r56",
+     "r150",
+     "r61"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S49",
+    "members": [
+     "r54",
+     "r114",
+     "r199",
+     "r214"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S50",
+    "members": [
+     "r204",
+     "r156",
+     "r173",
+     "r226"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S51",
+    "members": [
+     "r47",
+     "r188",
+     "r152",
+     "r112"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S52",
+    "members": [
+     "r213",
+     "r87",
+     "r256",
+     "r237"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S53",
+    "members": [
+     "r196",
+     "r7",
+     "r1",
+     "r165"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S54",
+    "members": [
+     "r243",
+     "r49",
+     "r46",
+     "r215"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S55",
+    "members": [
+     "r197",
+     "r235",
+     "r160",
+     "r38"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S56",
+    "members": [
+     "r135",
+     "r175",
+     "r20",
+     "r239"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S57",
+    "members": [
+     "r137",
+     "r117",
+     "r13",
+     "r25"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S58",
+    "members": [
+     "r230",
+     "r110",
+     "r195",
+     "r60"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S59",
+    "members": [
+     "r19",
+     "r179",
+     "r32",
+     "r252"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S60",
+    "members": [
+     "r97",
+     "r210",
+     "r122",
+     "r198"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S61",
+    "members": [
+     "r74",
+     "r50",
+     "r35",
+     "r129"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S62",
+    "members": [
+     "r133",
+     "r155",
+     "r14",
+     "r90"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S63",
+    "members": [
+     "r236",
+     "r228",
+     "r147",
+     "r136"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S64",
+    "members": [
+     "r63",
+     "r67",
+     "r68",
+     "r139"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S65",
+    "members": [
+     "r79",
+     "r148"
+    ],
+    "topic": "Energi"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 376430
+}

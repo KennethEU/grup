@@ -1,0 +1,267 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "-3",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Køn": " DRENG"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "7",
+   "Niveau": "",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "-3",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Niveau": "Middel ",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "",
+   "Niveau": "",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "Fritaget",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "02",
+   "Niveau": "høj",
+   "Tidligere": "Gruppe 6",
+   "Hold": "",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r16",
+    "r20"
+   ]
+  ],
+  "avoid": [
+   [
+    "r2",
+    "r14",
+    "r16"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r8",
+    "r15"
+   ],
+   "topic": "Gammelt emne"
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 9
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 781131
+}

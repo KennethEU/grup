@@ -1,0 +1,49 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b4",
+        "b2",
+        "b1",
+        "b3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b7",
+        "b6",
+        "b8",
+        "b5"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Farve",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Balancér\" på \"Farve\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.04
+  }
+}

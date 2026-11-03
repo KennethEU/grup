@@ -1,0 +1,131 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r11",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r13",
+    "r10",
+    "r15",
+    "r3"
+   ],
+   "topic": "EU"
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r12",
+    "r2",
+    "r16",
+    "r8"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 390380
+}

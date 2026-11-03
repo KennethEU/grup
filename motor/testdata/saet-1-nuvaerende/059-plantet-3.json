@@ -1,0 +1,138 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p368-18",
+        "p368-20",
+        "p368-17",
+        "p368-19",
+        "p368-16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-9",
+        "p368-6",
+        "p368-10",
+        "p368-8",
+        "p368-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-25",
+        "p368-1",
+        "p368-4",
+        "p368-2",
+        "p368-22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-27",
+        "p368-26",
+        "p368-28",
+        "p368-30",
+        "p368-29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-11",
+        "p368-13",
+        "p368-12",
+        "p368-14",
+        "p368-15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-24",
+        "p368-21",
+        "p368-23",
+        "p368-5",
+        "p368-3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-32",
+        "p368-34",
+        "p368-33",
+        "p368-35",
+        "p368-31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p368-40",
+        "p368-37",
+        "p368-39",
+        "p368-36",
+        "p368-38"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\" har 3 forskellige værdier inden for \"Hold 2\", men der er kun 2 grupper. Nogle elever ender uundgåeligt alene."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Niveau\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.12
+  }
+}

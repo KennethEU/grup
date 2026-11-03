@@ -1,0 +1,234 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r16",
+        "r51",
+        "r29",
+        "r44",
+        "r26",
+        "r42"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r50",
+        "r68",
+        "r27",
+        "r35",
+        "r7",
+        "r2",
+        "r11"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r87",
+        "r93",
+        "r107",
+        "r61",
+        "r91",
+        "r106"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r81",
+        "r4",
+        "r13",
+        "r36",
+        "r34",
+        "r10"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r104",
+        "r75",
+        "r96",
+        "r32",
+        "r97",
+        "r19"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r77",
+        "r49",
+        "r55",
+        "r85",
+        "r108",
+        "r86"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r40",
+        "r1",
+        "r20",
+        "r83",
+        "r90",
+        "r53"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r58",
+        "r80",
+        "r82",
+        "r5",
+        "r31",
+        "r101"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r74",
+        "r43",
+        "r33",
+        "r88",
+        "r38",
+        "r8"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r39",
+        "r14",
+        "r9",
+        "r17",
+        "r95",
+        "r99"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r52",
+        "r76",
+        "r59",
+        "r18",
+        "r89",
+        "r65"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r66",
+        "r109",
+        "r70",
+        "r30",
+        "r37",
+        "r64"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r54",
+        "r57",
+        "r73",
+        "r71",
+        "r22",
+        "r24"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r79",
+        "r92",
+        "r46",
+        "r3",
+        "r67",
+        "r105"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r12",
+        "r21",
+        "r62",
+        "r94",
+        "r41",
+        "r23"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r72",
+        "r28",
+        "r45",
+        "r6",
+        "r48",
+        "r84"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r69",
+        "r15",
+        "r103",
+        "r56",
+        "r25",
+        "r47"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r78",
+        "r100",
+        "r60",
+        "r102",
+        "r98",
+        "r63"
+      ],
+      "topic": "Migration"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 48 elever har værdien \"Middel\", og der er kun plads til 37 (højst 2-3 pr. gruppe). 11 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.14
+  }
+}

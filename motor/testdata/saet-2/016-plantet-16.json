@@ -1,0 +1,101 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p611-3",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p611-5",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "p611-2",
+   "Udfordring": "Ja",
+   "Niveau": "Lav",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p611-4",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "p611-8",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "p611-6",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p611-7",
+   "Udfordring": "Ja",
+   "Niveau": "Lav",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p611-1",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Snit": "2,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p611-3",
+    "p611-4"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 558043
+}

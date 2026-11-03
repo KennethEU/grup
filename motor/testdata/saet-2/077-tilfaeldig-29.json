@@ -1,0 +1,127 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r1",
+    "r21",
+    "r10",
+    "r19"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r3",
+    "r4",
+    "r9",
+    "r14"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r6",
+    "r22",
+    "r11",
+    "r18"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 833737
+}

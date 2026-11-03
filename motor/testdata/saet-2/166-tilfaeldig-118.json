@@ -1,0 +1,186 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk",
+   "Niveau": "Høj "
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r26",
+    "r22"
+   ]
+  ],
+  "avoid": [
+   [
+    "r16",
+    "r22"
+   ],
+   [
+    "r16",
+    "r2"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r6",
+    "r23",
+    "r15"
+   ],
+   "topic": "Medier"
+  },
+  {
+   "id": "L2",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r25",
+    "r26"
+   ],
+   "topic": "Medier"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 6,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 247897
+}

@@ -1,0 +1,481 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r112",
+        "r121",
+        "r86"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r153",
+        "r130",
+        "r184"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r132",
+        "r39",
+        "r139"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r46",
+        "r48",
+        "r131"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r13",
+        "r111"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r160",
+        "r123",
+        "r174"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r85",
+        "r15",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r73",
+        "r41",
+        "r125"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r93",
+        "r142",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r157",
+        "r144",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r159",
+        "r6",
+        "r120"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r148",
+        "r19",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r163",
+        "r156",
+        "r100"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r186",
+        "r90"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r2",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r164",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r110",
+        "r72",
+        "r176"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r58",
+        "r138"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r175",
+        "r161"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r102",
+        "r179"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r84",
+        "r61",
+        "r95"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r9",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r38",
+        "r10",
+        "r106"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r64",
+        "r178"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r119",
+        "r89",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r114",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r104",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r154",
+        "r137",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r143",
+        "r29",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r173",
+        "r47",
+        "r168"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r33",
+        "r43",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r103",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r183",
+        "r113",
+        "r134"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r94",
+        "r126",
+        "r140"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r117",
+        "r21",
+        "r141"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r188",
+        "r182",
+        "r80"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r16",
+        "r185"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r146",
+        "r169"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r181",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r165",
+        "r14",
+        "r135"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r122",
+        "r155"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r166",
+        "r172"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r116",
+        "r145",
+        "r101"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r52",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r92",
+        "r79",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r108",
+        "r129"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r105",
+        "r162"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r171",
+        "r1",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r81",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r75",
+        "r55",
+        "r158"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r69",
+        "r54",
+        "r118"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r77",
+        "r88"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r107",
+        "r128",
+        "r189"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r124",
+        "r57",
+        "r151"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r109",
+        "r170",
+        "r187"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r180",
+        "r147",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r99",
+        "r23",
+        "r97"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r167",
+        "r115"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.12
+  }
+}

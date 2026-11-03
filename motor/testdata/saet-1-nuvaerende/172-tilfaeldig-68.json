@@ -1,0 +1,149 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r24",
+        "r3",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r12",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r4",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r22",
+        "r17",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r15",
+        "r19",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r10",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r23",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r14"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Regel 2 (Adskil på \"Sprog\"): \"Spansk\" findes ikke blandt de elever, der er med i dag, og indgår derfor ikke."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Der er flere Opdel-regler. Kun den øverste — \"Hold\" — deler klassen op og bestemmer antallet af grupper. \"Hold\" bliver forsøgt, men er ikke sikret: grupper med blandede værdier kan forekomme. Vil du dele op efter to ting på én gang, så lav en kolonne der kombinerer dem."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Hold",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Opdel og Opdel bruges begge på \"Hold\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 5,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "2 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Ensartede\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": null
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.26
+  }
+}

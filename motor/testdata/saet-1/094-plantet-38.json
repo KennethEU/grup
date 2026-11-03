@@ -1,0 +1,155 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p836-9",
+   "Interesse": "Film",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-11",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-8",
+   "Interesse": "Film",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-3",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-24",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-21",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-4",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-20",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-19",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-17",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-5",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-15",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-23",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-16",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-6",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-22",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-14",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-18",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p836-7",
+   "Interesse": "Film",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-10",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-13",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-1",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-2",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p836-12",
+   "Interesse": "Dans",
+   "Hold": "Hold 1"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 743773
+}

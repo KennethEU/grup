@@ -1,0 +1,188 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Musik",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Skak",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Klatring",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Skak",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Fodbold",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Klatring",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Skak",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Musik",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Skak ",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Kunst",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Klatring",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Film",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Kunst",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Gaming",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "",
+   "Hold": "2.c"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r13",
+    "r18",
+    "r19",
+    "r5",
+    "r3",
+    "r6"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 993748
+}

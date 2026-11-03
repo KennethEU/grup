@@ -1,0 +1,83 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r9",
+        "r12",
+        "r22",
+        "r21"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r29",
+        "r17",
+        "r11",
+        "r18"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r19",
+        "r7",
+        "r3",
+        "r15"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r14",
+        "r23",
+        "r6",
+        "r25",
+        "r2"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r13",
+        "r20",
+        "r24",
+        "r26"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r27",
+        "r1",
+        "r16",
+        "r5"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r28",
+        "r8",
+        "r10",
+        "r4"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

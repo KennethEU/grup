@@ -1,0 +1,94 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r22",
+        "r2",
+        "r26",
+        "r27",
+        "r15",
+        "r16",
+        "r21",
+        "r10",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r14",
+        "r7",
+        "r19",
+        "r8",
+        "r28",
+        "r17",
+        "r25",
+        "r23",
+        "r6",
+        "r9",
+        "r5",
+        "r4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op inden for \"2.b\": 7 elever har værdien \"Pige\", og der er kun plads til 5 (højst 5 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 2 i stedet for 1."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.13
+  }
+}

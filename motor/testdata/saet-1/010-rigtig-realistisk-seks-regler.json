@@ -1,0 +1,291 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "k0",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Snit": "10,8",
+   "Niveau": "Høj",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k1",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Snit": "7,5",
+   "Niveau": "Middel",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k2",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Snit": "5,2",
+   "Niveau": "Lav",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k3",
+   "Køn": "dreng",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Snit": "9,1",
+   "Niveau": "Høj",
+   "Emne": "Migration"
+  },
+  {
+   "_rowId": "k4",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Snit": "3,4",
+   "Niveau": "Lav",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k5",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Snit": "9,6",
+   "Niveau": "høj",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k7",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Snit": "11,4",
+   "Niveau": "Høj",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k8",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Snit": "4,6",
+   "Niveau": "Lav",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k9",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Sprog": "Tysk",
+   "Snit": "2,1",
+   "Niveau": "Lav",
+   "Emne": "Migration"
+  },
+  {
+   "_rowId": "k10",
+   "Køn": "Dreng",
+   "Karakter": "-3",
+   "Sprog": "Fransk",
+   "Snit": "1,8",
+   "Niveau": "",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k11",
+   "Køn": "Pige",
+   "Karakter": "Fritaget",
+   "Sprog": "Spansk",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k12",
+   "Køn": "Andet",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Snit": "7,2",
+   "Niveau": "Middel",
+   "Emne": "Demokrati"
+  },
+  {
+   "_rowId": "k13",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Snit": "8,8",
+   "Niveau": "Høj",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k14",
+   "Køn": "Pige ",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Snit": "5,0",
+   "Niveau": "Lav",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k15",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Snit": "7,7",
+   "Niveau": "Middel",
+   "Emne": "Migration"
+  },
+  {
+   "_rowId": "k16",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Snit": "10,2",
+   "Niveau": "Høj",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k18",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Snit": "3,9",
+   "Niveau": "Lav",
+   "Emne": "Demokrati"
+  },
+  {
+   "_rowId": "k19",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Snit": "8,3",
+   "Niveau": "Middel",
+   "Emne": "Klima"
+  },
+  {
+   "_rowId": "k20",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Snit": "6,6",
+   "Niveau": "Middel",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k21",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Snit": "9,4",
+   "Niveau": "Høj",
+   "Emne": "Migration"
+  },
+  {
+   "_rowId": "k23",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Snit": "7,0",
+   "Niveau": "Middel",
+   "Emne": "Energi"
+  },
+  {
+   "_rowId": "k24",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Snit": "11,0",
+   "Niveau": "Høj",
+   "Emne": "Migration"
+  },
+  {
+   "_rowId": "k25",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Snit": "6,1",
+   "Niveau": "Middel",
+   "Emne": "Demokrati"
+  },
+  {
+   "_rowId": "k26",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Snit": "4,9",
+   "Niveau": "Lav",
+   "Emne": "Klima"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Emne"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "k0",
+    "k1"
+   ]
+  ],
+  "avoid": [
+   [
+    "k2",
+    "k4"
+   ],
+   [
+    "k8",
+    "k9",
+    "k10"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

@@ -1,0 +1,57 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b9",
+        "b10",
+        "b12",
+        "b15"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "b1",
+        "b5",
+        "b6",
+        "b8"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "b2",
+        "b3",
+        "b11",
+        "b14"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "b4",
+        "b7",
+        "b13",
+        "b16"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {
+    "L4": "Medier"
+  },
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

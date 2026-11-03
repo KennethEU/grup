@@ -1,0 +1,46 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p22-9",
+        "p22-12",
+        "p22-2",
+        "p22-11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p22-7",
+        "p22-8",
+        "p22-6",
+        "p22-5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p22-3",
+        "p22-1",
+        "p22-4",
+        "p22-10"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

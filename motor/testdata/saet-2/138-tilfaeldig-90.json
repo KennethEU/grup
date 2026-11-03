@@ -1,0 +1,1044 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj ",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Lav",
+   "Hold": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r142",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r161",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r146",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r162",
+   "Niveau": "høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel ",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r156",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Middel",
+   "Hold": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": " LAV",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r149",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r165",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "Middel ",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Høj ",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r163",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Lav",
+   "Hold": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Høj",
+   "Hold": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r143",
+   "Niveau": "",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": " MIDDEL",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Middel",
+   "Hold": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Middel ",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Middel ",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Middel ",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r147",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "Middel ",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r164",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Lav",
+   "Hold": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r84",
+    "r97"
+   ],
+   [
+    "r66",
+    "r48",
+    "r41"
+   ],
+   [
+    "r145",
+    "r94",
+    "r91",
+    "r20"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r7",
+    "r29"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 33574
+}

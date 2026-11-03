@@ -1,0 +1,229 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Interesse": "film",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Høj",
+   "Interesse": "Dans",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Interesse": "Kor ",
+   "Snit": "2.3"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Interesse": "Skak",
+   "Snit": "6.0"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Lav",
+   "Interesse": "klatring",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Snit": "3,3"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Interesse": "Klatring",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Interesse": "Kor",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Interesse": "Klatring",
+   "Snit": "5,4"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Snit": "2.7"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Interesse": "Kor",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": " MIDDEL",
+   "Interesse": "Skak",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Interesse": "Film",
+   "Snit": "3.8"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Lav",
+   "Interesse": "Kor ",
+   "Snit": "3.7"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav ",
+   "Interesse": "Kor",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "middel",
+   "Interesse": "Gaming",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Interesse": "Skak",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Interesse": "Film",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "lav",
+   "Interesse": "Gaming",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Interesse": "Skak",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Middel",
+   "Interesse": "Dans",
+   "Snit": "2,1"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Snit": "4,6"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "middel",
+   "Interesse": "Gaming",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Lav",
+   "Interesse": "Skak",
+   "Snit": "2,2"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Snit": "7.2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 14
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 697909
+}

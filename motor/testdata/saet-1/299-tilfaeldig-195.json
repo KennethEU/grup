@@ -1,0 +1,198 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Hold": "2.b",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.c",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.c",
+   "Interesse": "Klatring",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Interesse": "dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.a",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.a",
+   "Interesse": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "",
+   "Interesse": "kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Interesse": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.b",
+   "Interesse": "Klatring",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.b",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.c",
+   "Interesse": "Klatring",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.c",
+   "Interesse": "skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.b",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.c",
+   "Interesse": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.b",
+   "Interesse": "Kunst",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 628981
+}

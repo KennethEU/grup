@@ -1,0 +1,95 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p161-7",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p161-5",
+   "Interesse": "Musik",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p161-8",
+   "Interesse": "Musik",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p161-3",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p161-1",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p161-2",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p161-6",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p161-4",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p161-4",
+    "p161-7"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 770452
+}

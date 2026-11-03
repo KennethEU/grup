@@ -1,0 +1,54 @@
+{
+  "contractVersion": 2,
+  "status": "impossible",
+  "groups": [],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [
+        "r13",
+        "r2",
+        "r8",
+        "r10",
+        "r12",
+        "r6",
+        "r16"
+      ],
+      "values": [],
+      "text": "{elever}: Eleverne har både en Skal sammen-aftale og en undgåelse. Ret en af aftalerne under Elevliste → Aftaler."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": null
+    },
+    {
+      "rule": 1,
+      "met": null
+    },
+    {
+      "rule": 2,
+      "met": null
+    },
+    {
+      "rule": 3,
+      "met": null
+    },
+    {
+      "rule": 4,
+      "met": null
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": null,
+    "seconds": 0
+  }
+}

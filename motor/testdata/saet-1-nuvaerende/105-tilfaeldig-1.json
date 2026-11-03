@@ -1,0 +1,351 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r65",
+        "r29",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r40",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r43",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r11",
+        "r56"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r95",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r51",
+        "r80",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r64",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r36",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r58",
+        "r67"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r88",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r66",
+        "r48"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r60",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r92"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r73",
+        "r87"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r84"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r82",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r46",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r59",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r94",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r76"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r96"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r85"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r42",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r79",
+        "r75"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r39",
+        "r89"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r53",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r86",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r72"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Niveau\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 13,
+    "seconds": 9.76
+  }
+}

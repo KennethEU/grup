@@ -1,0 +1,89 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p91-8",
+   "Niveau": "Lav",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-6",
+   "Niveau": "Lav",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-4",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-3",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-1",
+   "Niveau": "Middel",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p91-2",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p91-7",
+   "Niveau": "Lav",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p91-3",
+    "p91-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 406056
+}

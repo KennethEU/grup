@@ -1,0 +1,506 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r16",
+        "r165",
+        "r8",
+        "r27"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r38",
+        "r47",
+        "r162"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r73",
+        "r12",
+        "r30",
+        "r143"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r106",
+        "r149",
+        "r182"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r97",
+        "r96",
+        "r148",
+        "r49"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r198",
+        "r4",
+        "r1",
+        "r192"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r135",
+        "r63",
+        "r125",
+        "r78"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r154",
+        "r130",
+        "r137",
+        "r161"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r9",
+        "r39",
+        "r175",
+        "r113"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r115",
+        "r89",
+        "r164",
+        "r188"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r23",
+        "r52",
+        "r196",
+        "r180"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r102",
+        "r185",
+        "r173",
+        "r114"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r152",
+        "r157",
+        "r119",
+        "r178"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r127",
+        "r11",
+        "r179",
+        "r153"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r116",
+        "r101",
+        "r176",
+        "r79"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r69",
+        "r46",
+        "r50",
+        "r122"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r33",
+        "r134",
+        "r158",
+        "r146"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r76",
+        "r20",
+        "r92",
+        "r70"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r186",
+        "r25",
+        "r151",
+        "r190"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r181",
+        "r117",
+        "r55",
+        "r35"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r136",
+        "r2",
+        "r145"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r26",
+        "r100",
+        "r15",
+        "r88"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r80",
+        "r19",
+        "r99",
+        "r159"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r60",
+        "r14",
+        "r93",
+        "r61"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r187",
+        "r82",
+        "r59",
+        "r110"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r128",
+        "r40",
+        "r90",
+        "r169"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r34",
+        "r111",
+        "r147",
+        "r144"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r98",
+        "r91",
+        "r183"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r85",
+        "r131",
+        "r191",
+        "r74"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r5",
+        "r184",
+        "r83"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r48",
+        "r197",
+        "r7",
+        "r160"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r6",
+        "r68",
+        "r21",
+        "r105"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r167",
+        "r10",
+        "r107",
+        "r139"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r17",
+        "r32",
+        "r18"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r57",
+        "r168",
+        "r177"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r51",
+        "r132",
+        "r141",
+        "r156"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r199",
+        "r58",
+        "r37",
+        "r29"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r71",
+        "r138",
+        "r121"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r65",
+        "r194",
+        "r24",
+        "r87"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r171",
+        "r54",
+        "r31",
+        "r56"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r126",
+        "r75",
+        "r94"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r133",
+        "r64",
+        "r123",
+        "r81"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r200",
+        "r28",
+        "r129",
+        "r77"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r104",
+        "r166",
+        "r172",
+        "r108"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r66",
+        "r84",
+        "r142",
+        "r189"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r118",
+        "r86",
+        "r67"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r112",
+        "r150",
+        "r163",
+        "r36"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r95",
+        "r44",
+        "r72",
+        "r155"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Balancér (gør gennemsnittet ens) og Ensartede (gør medlemmerne ens) på \"Karakter\" arbejder mod hinanden."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "6 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Ensartede\" måler ikke på dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 5,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 106 elever har værdien \"Pige\", og der er kun plads til 86 (højst 1-2 pr. gruppe). 20 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 3,
+    "seconds": 8
+  }
+}

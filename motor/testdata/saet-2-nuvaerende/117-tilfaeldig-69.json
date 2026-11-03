@@ -1,0 +1,104 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r29",
+        "r21",
+        "r3",
+        "r25",
+        "r5",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r1",
+        "r13",
+        "r11",
+        "r20",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r2",
+        "r14",
+        "r7",
+        "r23",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r6",
+        "r17",
+        "r32",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r27",
+        "r15",
+        "r16",
+        "r4",
+        "r12"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 6 elever skal adskilles, men der er kun 5 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 16 elever har værdien \"Tysk\", og der er kun plads til 10 (højst 2 pr. gruppe). 6 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.23
+  }
+}

@@ -1,0 +1,859 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r102",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Lav",
+   "Interesse": "Gaming "
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel ",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Høj",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Middel",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Middel",
+   "Interesse": "fodbold"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Høj",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold "
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Lav",
+   "Interesse": "gaming"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": "Middel",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel ",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Høj",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Høj",
+   "Interesse": "fodbold"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Lav",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r146",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": " LAV",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": " LAV",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Lav",
+   "Interesse": "fodbold"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "Middel ",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Lav",
+   "Interesse": "Kor "
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r147",
+   "Niveau": "Middel",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Lav",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": "",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Høj ",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r142",
+   "Niveau": "Høj",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r149",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Middel",
+   "Interesse": "Kunst "
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Middel",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Lav",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Høj",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "Middel ",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r143",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold "
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Høj",
+   "Interesse": "Klatring "
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Høj",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Lav ",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r156",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Høj",
+   "Interesse": " FODBOLD"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r2",
+    "r134",
+    "r123"
+   ]
+  ],
+  "avoid": [
+   [
+    "r103",
+    "r17"
+   ],
+   [
+    "r5",
+    "r139",
+    "r55",
+    "r150"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 223790
+}

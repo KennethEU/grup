@@ -1,0 +1,141 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 581555
+}

@@ -1,0 +1,326 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p646-27",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-35",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-15",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-23",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-6",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-36",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-12",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-20",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-19",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-8",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-18",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-30",
+   "Snit": "1",
+   "Udfordring": "Ja",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-4",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-34",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-39",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-16",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-40",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-37",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-24",
+   "Snit": "10,5",
+   "Udfordring": "Ja",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-10",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-3",
+   "Snit": "4",
+   "Udfordring": "Ja",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-1",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-11",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-17",
+   "Snit": "2",
+   "Udfordring": "Ja",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-33",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-22",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-9",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-38",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-32",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-5",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-21",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-14",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-26",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-29",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-25",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-2",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-7",
+   "Snit": "2",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-31",
+   "Snit": "2,5",
+   "Udfordring": "Nej",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p646-13",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p646-28",
+   "Snit": "4",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 250277
+}

@@ -1,0 +1,104 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p87-6",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p87-3",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p87-5",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "p87-1",
+   "Karakter": "7",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p87-4",
+   "Karakter": "02",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p87-2",
+   "Karakter": "7",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Snit": "2,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p87-5",
+    "p87-6"
+   ]
+  ],
+  "avoid": [
+   [
+    "p87-3",
+    "p87-6"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 993830
+}

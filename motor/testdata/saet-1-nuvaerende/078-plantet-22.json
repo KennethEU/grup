@@ -1,0 +1,41 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p91-4",
+        "p91-3",
+        "p91-1",
+        "p91-2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p91-5",
+        "p91-6",
+        "p91-8",
+        "p91-7"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

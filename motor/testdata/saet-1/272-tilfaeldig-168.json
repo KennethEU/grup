@@ -1,0 +1,101 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r13",
+    "r5",
+    "r7"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r4",
+    "r8",
+    "r2",
+    "r6"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 609797
+}

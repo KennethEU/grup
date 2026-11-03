@@ -1,0 +1,241 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r18",
+        "r46",
+        "r44"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r6",
+        "r50",
+        "r16",
+        "r9"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r55",
+        "r15",
+        "r8",
+        "r40"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r36",
+        "r29",
+        "r53",
+        "r41"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r24",
+        "r21",
+        "r35",
+        "r52"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r51",
+        "r64",
+        "r74",
+        "r73"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r11",
+        "r20",
+        "r32",
+        "r31"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r22",
+        "r10",
+        "r78",
+        "r48"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r19",
+        "r13",
+        "r27",
+        "r30"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r4",
+        "r69",
+        "r45",
+        "r39"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r5",
+        "r7",
+        "r66",
+        "r77"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r62",
+        "r54",
+        "r26",
+        "r42"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r58",
+        "r59",
+        "r49",
+        "r38"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r28",
+        "r17",
+        "r14",
+        "r72"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r68",
+        "r65",
+        "r76",
+        "r23"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r57",
+        "r56",
+        "r71"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r34",
+        "r25",
+        "r12"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r63",
+        "r67",
+        "r1"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r60",
+        "r75",
+        "r70"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r61",
+        "r43",
+        "r37"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r47",
+        "r33",
+        "r2"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "2 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Balancér\" måler ikke på dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 43 elever har værdien \"Tysk\", og der er kun plads til 36 (højst 1-2 pr. gruppe). 7 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 4,
+    "seconds": 8.25
+  }
+}

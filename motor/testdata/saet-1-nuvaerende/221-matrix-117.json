@@ -1,0 +1,71 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r15",
+        "r19",
+        "r2",
+        "r16",
+        "r5",
+        "r13",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r8",
+        "r11",
+        "r20",
+        "r14",
+        "r21",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r12",
+        "r17",
+        "r7",
+        "r10",
+        "r3",
+        "r6"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Balancér\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

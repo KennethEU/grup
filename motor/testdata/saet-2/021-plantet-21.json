@@ -1,0 +1,260 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p831-5",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "7,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-6",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "9,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-18",
+   "Interesse": "Musik",
+   "Udfordring": "Ja",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "9,5",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p831-7",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "3,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-2",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "7,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-21",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "9,5",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p831-16",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "3,5",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p831-11",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "7,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-10",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "3,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-17",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "7,5",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p831-3",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "9,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-15",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "9,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-13",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "3,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-1",
+   "Interesse": "Musik",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "3,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-14",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "7,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-8",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "7,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-20",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "7,5",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p831-4",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "3,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-12",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "9,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-9",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "9,5",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p831-19",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "3,5",
+   "Hold": "Hold 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p831-14",
+    "p831-13"
+   ]
+  ],
+  "avoid": [
+   [
+    "p831-15",
+    "p831-10",
+    "p831-1"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 73075
+}

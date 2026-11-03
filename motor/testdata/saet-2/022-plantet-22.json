@@ -1,0 +1,105 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p212-5",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-3",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-11",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-13",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-8",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-12",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-15",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p212-4",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-7",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-14",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-10",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-9",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-1",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p212-6",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p212-2",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p212-6",
+    "p212-7"
+   ]
+  ],
+  "avoid": [
+   [
+    "p212-11",
+    "p212-9",
+    "p212-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 420189
+}

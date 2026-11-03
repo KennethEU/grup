@@ -1,0 +1,180 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "e0",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e1",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e2",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e3",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e4",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e5",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e6",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e7",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e8",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e9",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e10",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e11",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e12",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e13",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e14",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e15",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e16",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e17",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e18",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e19",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e20",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e21",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e22",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e23",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e24",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e25",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e26",
+   "Emne": "Konservatisme",
+   "Sprog": "Engelsk"
+  },
+  {
+   "_rowId": "e27",
+   "Emne": "Liberalisme",
+   "Sprog": "Dansk"
+  },
+  {
+   "_rowId": "e28",
+   "Emne": "Socialisme",
+   "Sprog": "Dansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Emne"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

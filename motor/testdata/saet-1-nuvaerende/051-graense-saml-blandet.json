@@ -1,0 +1,58 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b1",
+        "b2",
+        "b3",
+        "b12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b5",
+        "b11",
+        "b9",
+        "b4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b7",
+        "b8",
+        "b10",
+        "b6"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "4 elever har en værdi i \"Snit\", der ikke er et tal (\"Fritaget\", \"Syg\") — de elever regnes som om feltet var tomt, og \"Saml\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.14
+  }
+}

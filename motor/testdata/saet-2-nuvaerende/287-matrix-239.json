@@ -1,0 +1,341 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r61",
+        "r85",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r28",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r56",
+        "r19",
+        "r47",
+        "r115"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r86",
+        "r11",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r84",
+        "r52",
+        "r113"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r105",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r117",
+        "r6",
+        "r66",
+        "r83"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r27",
+        "r21",
+        "r97"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r1",
+        "r89"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r106",
+        "r31",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r100",
+        "r59",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r76",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r110",
+        "r88"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r10",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r38",
+        "r75"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r104",
+        "r95",
+        "r109"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r25",
+        "r74"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r82",
+        "r102"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r69",
+        "r48",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r22",
+        "r55"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r60",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r91",
+        "r8",
+        "r90"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r80",
+        "r49",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r12",
+        "r116"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r46",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r78",
+        "r2",
+        "r114"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r94",
+        "r33",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r111",
+        "r108",
+        "r51",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r103",
+        "r73",
+        "r92"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r99",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r57",
+        "r68",
+        "r107",
+        "r79"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r72",
+        "r67"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r58",
+        "r36"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op inden for \"2.a\": 35 elever har værdien \"Tysk\", og der er kun plads til 20 (højst 1-2 pr. gruppe). 15 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.b\"."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op inden for \"2.b\": 25 elever har værdien \"Middel\", og der er kun plads til 17 (højst 1-2 pr. gruppe). 8 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.a\"."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 5,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op inden for \"2.b\": 33 elever har værdien \"Pige\", og der er kun plads til 17 (højst 1-2 pr. gruppe). 16 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.a\"."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 13,
+    "seconds": 10.15
+  }
+}

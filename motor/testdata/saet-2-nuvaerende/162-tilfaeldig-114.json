@@ -1,0 +1,239 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r14",
+        "r82",
+        "r59",
+        "r80"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r74",
+        "r78",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r37",
+        "r28",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r17",
+        "r56",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r40",
+        "r75",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r19",
+        "r1",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r54",
+        "r45",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r35",
+        "r27",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r47",
+        "r26",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r62",
+        "r23",
+        "r46"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r34",
+        "r53",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r42",
+        "r7",
+        "r50",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r72",
+        "r57",
+        "r77"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r8",
+        "r63",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r58",
+        "r49",
+        "r52"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r64",
+        "r33",
+        "r73"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r70",
+        "r36",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r15",
+        "r84",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r39",
+        "r4",
+        "r48"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r79",
+        "r55",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r66",
+        "r13"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Karakter\". Saml (\"Snit\") og Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 2,
+    "seconds": 7.02
+  }
+}

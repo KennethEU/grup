@@ -1,0 +1,71 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p325-9",
+        "p325-12",
+        "p325-8",
+        "p325-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p325-10",
+        "p325-11",
+        "p325-5",
+        "p325-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p325-14",
+        "p325-13",
+        "p325-4",
+        "p325-15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p325-16",
+        "p325-2",
+        "p325-1",
+        "p325-3"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 12 elever har værdien \"Dreng\", og der er kun plads til 8 (højst 2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.09
+  }
+}

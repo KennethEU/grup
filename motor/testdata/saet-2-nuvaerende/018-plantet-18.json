@@ -1,0 +1,107 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p849-10",
+        "p849-9",
+        "p849-8",
+        "p849-27",
+        "p849-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p849-28",
+        "p849-29",
+        "p849-30",
+        "p849-26",
+        "p849-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p849-18",
+        "p849-20",
+        "p849-19",
+        "p849-17",
+        "p849-16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p849-22",
+        "p849-23",
+        "p849-25",
+        "p849-21",
+        "p849-24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p849-2",
+        "p849-3",
+        "p849-1",
+        "p849-5",
+        "p849-4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p849-13",
+        "p849-15",
+        "p849-14",
+        "p849-11",
+        "p849-12"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Interesse\") og Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.16
+  }
+}

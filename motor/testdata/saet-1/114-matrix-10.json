@@ -1,0 +1,253 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r26",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r18",
+    "r23",
+    "r17"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r29",
+     "r3",
+     "r10"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r26",
+     "r21",
+     "r15"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r31",
+     "r13",
+     "r18"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r25",
+     "r23"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r30",
+     "r19",
+     "r16"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r11",
+     "r2",
+     "r9"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r7",
+     "r20",
+     "r27"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r12",
+     "r14"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S9",
+    "members": [
+     "r8",
+     "r6",
+     "r24"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S10",
+    "members": [
+     "r17",
+     "r5",
+     "r1"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S11",
+    "members": [
+     "r4"
+    ],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 945020
+}

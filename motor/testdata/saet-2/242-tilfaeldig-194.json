@@ -1,0 +1,288 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Snit": "3,6",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "8,2",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "3,3",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "10,7",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "11.9",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "middel",
+   "Sprog": "Tysk",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "7,9",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "4,4",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "6,2",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "9,3",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "11,7",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "5.9",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "5,3",
+   "Køn": "Dreng",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "5,5",
+   "Køn": "",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "10.5",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Niveau": "høj",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "4,9",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "3.5",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "3,0",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": " MUSIK"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "10,8",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "9,0",
+   "Køn": "andet",
+   "Karakter": "02",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "7.2",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "8,1",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "7.7",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "10,3",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r10",
+    "r11",
+    "r26"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r12",
+    "r17",
+    "r22"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 913955
+}

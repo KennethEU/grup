@@ -1,0 +1,132 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk",
+   "Køn": " DRENG",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "kor",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Køn": "dreng",
+   "Interesse": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r5",
+    "r7",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 289943
+}

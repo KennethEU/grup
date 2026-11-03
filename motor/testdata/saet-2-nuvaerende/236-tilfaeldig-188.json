@@ -1,0 +1,134 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r10",
+        "r20",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r27",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r4",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r9",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r25",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r22",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r15",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r6"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Balancér\" måler ikke på vedkommende."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 2.25
+  }
+}

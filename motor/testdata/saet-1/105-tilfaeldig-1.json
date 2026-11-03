@@ -1,0 +1,525 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r22",
+   "Interesse": "Kor",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r89",
+   "Interesse": "",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r80",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Interesse": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r32",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r71",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Kunst",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r75",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Kunst",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r69",
+   "Interesse": "Film",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r86",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r58",
+   "Interesse": "Skak",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r50",
+   "Interesse": "Gaming",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Gaming",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r94",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r87",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r43",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Film",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r51",
+   "Interesse": "kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r64",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r48",
+   "Interesse": "Skak",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r74",
+   "Interesse": "Skak",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r85",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r65",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r76",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r46",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r62",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r93",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r79",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r81",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r57",
+   "Interesse": "Film",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r53",
+   "Interesse": "Gaming",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r36",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r54",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r47",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r60",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Film",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r78",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r90",
+   "Interesse": "Musik",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r92",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r84",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r70",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Film",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r42",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r82",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r77",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r96",
+   "Interesse": "Skak",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r56",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r88",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r68",
+   "Interesse": "Film",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r55",
+   "Interesse": "skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r66",
+   "Interesse": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r61",
+   "Interesse": "Film",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r91",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r83",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r95",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r22",
+    "r40"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 44
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 684834
+}

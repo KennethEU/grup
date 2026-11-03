@@ -1,0 +1,107 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r22",
+        "r20",
+        "r5"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r23",
+        "r27"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r13",
+        "r24",
+        "r11"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r16",
+        "r9",
+        "r19"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r6",
+        "r1",
+        "r25"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r21",
+        "r26"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r2",
+        "r3",
+        "r17"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r18",
+        "r10",
+        "r4"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r15",
+        "r14"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r12",
+        "r7"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 17 elever har værdien \"Tysk\", og der er kun plads til 10 (højst 1 pr. gruppe). 7 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

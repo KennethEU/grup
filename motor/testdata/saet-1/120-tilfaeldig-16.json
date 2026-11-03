@@ -1,0 +1,216 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Køn": "Andet",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "02",
+   "Køn": "dreng",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "00",
+   "Køn": "",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "10",
+   "Køn": "",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 644902
+}

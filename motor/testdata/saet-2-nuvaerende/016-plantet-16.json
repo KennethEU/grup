@@ -1,0 +1,57 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p611-6",
+        "p611-5",
+        "p611-8",
+        "p611-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p611-3",
+        "p611-4",
+        "p611-1",
+        "p611-2"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.07
+  }
+}

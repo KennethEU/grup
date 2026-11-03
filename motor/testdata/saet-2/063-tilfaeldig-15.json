@@ -1,0 +1,198 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige ",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "andet",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r10",
+    "r16",
+    "r12"
+   ],
+   [
+    "r16",
+    "r20",
+    "r4",
+    "r12"
+   ],
+   [
+    "r2",
+    "r25",
+    "r11",
+    "r15"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 229696
+}

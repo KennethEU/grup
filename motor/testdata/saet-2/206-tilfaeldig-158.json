@@ -1,0 +1,142 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj ",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "høj",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "middel",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r15",
+    "r14",
+    "r12",
+    "r2",
+    "r5"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 682933
+}

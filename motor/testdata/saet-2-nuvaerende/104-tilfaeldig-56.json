@@ -1,0 +1,120 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r8",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r5",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 14 elever har værdien \"Tysk\", og der er kun plads til 12 (højst 1 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.13
+  }
+}

@@ -1,0 +1,1507 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r39",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r204",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r109",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r161",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r145",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r181",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r162",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r211",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r191",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r151",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r199",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r190",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r180",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r166",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r101",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r185",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r110",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r95",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r168",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r216",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r128",
+   "Køn": " DRENG"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r146",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r170",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r167",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r142",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r112",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r133",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r123",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r198",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r85",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r197",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r184",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r138",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r213",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Andet "
+  },
+  {
+   "_rowId": "r169",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r141",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r107",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r192",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r187",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r88",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r194",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r158",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r177",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r137",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r202",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r159",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r118",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r153",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r130",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r149",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r106",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r200",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r183",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r195",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r164",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r186",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r143",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r178",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r217",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r129",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r201",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r105",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r220",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r152",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r179",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r157",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r140",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r163",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r114",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r115",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r150",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r144",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r189",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r117",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r108",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r102",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r121",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r147",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r116",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r156",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r139",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r111",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r207",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r209",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r148",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r214",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r132",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r113",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r120",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r92",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r127",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r103",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r136",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r53",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r218",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r205",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r196",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r124",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r215",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r126",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r160",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r206",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r210",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r131",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r208",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r171",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r125",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r212",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r96",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r155",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r134",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r203",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r175",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r219",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r154",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r174",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r173",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r122",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r193",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r32",
+    "r44",
+    "r111"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 24
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r121",
+     "r8",
+     "r78"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r192",
+     "r13",
+     "r97"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r136",
+     "r31",
+     "r131"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r43",
+     "r106"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r167",
+     "r168",
+     "r153"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r16",
+     "r214",
+     "r132"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r133"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r42",
+     "r193",
+     "r103"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S9",
+    "members": [
+     "r195",
+     "r197",
+     "r111"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S10",
+    "members": [
+     "r150",
+     "r57",
+     "r51"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S11",
+    "members": [
+     "r24",
+     "r157",
+     "r32"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S12",
+    "members": [
+     "r41",
+     "r4",
+     "r70"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S13",
+    "members": [
+     "r108",
+     "r186",
+     "r161"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S14",
+    "members": [
+     "r212",
+     "r12",
+     "r201"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S15",
+    "members": [
+     "r50",
+     "r128",
+     "r130"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S16",
+    "members": [
+     "r109",
+     "r25",
+     "r126"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S17",
+    "members": [
+     "r23",
+     "r74",
+     "r3"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S18",
+    "members": [
+     "r114",
+     "r180"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S19",
+    "members": [
+     "r28",
+     "r73",
+     "r158"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S20",
+    "members": [
+     "r178",
+     "r62"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S21",
+    "members": [
+     "r75",
+     "r163",
+     "r140"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S22",
+    "members": [
+     "r53",
+     "r10",
+     "r122"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S23",
+    "members": [
+     "r39",
+     "r147",
+     "r18"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S24",
+    "members": [
+     "r199",
+     "r174"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S25",
+    "members": [
+     "r175",
+     "r123",
+     "r179"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S26",
+    "members": [
+     "r203",
+     "r49",
+     "r93"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S27",
+    "members": [
+     "r58",
+     "r2",
+     "r160"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S28",
+    "members": [
+     "r81",
+     "r85",
+     "r144"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S29",
+    "members": [
+     "r170",
+     "r82"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S30",
+    "members": [
+     "r138",
+     "r71",
+     "r96"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S31",
+    "members": [
+     "r83",
+     "r125",
+     "r26"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S32",
+    "members": [
+     "r151",
+     "r67",
+     "r196"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S33",
+    "members": [
+     "r22",
+     "r173",
+     "r33"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S34",
+    "members": [
+     "r207",
+     "r166"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S35",
+    "members": [
+     "r38",
+     "r146",
+     "r181"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S36",
+    "members": [
+     "r143",
+     "r9",
+     "r37"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S37",
+    "members": [
+     "r206",
+     "r92",
+     "r155"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S38",
+    "members": [
+     "r152",
+     "r87",
+     "r208"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S39",
+    "members": [
+     "r210",
+     "r65",
+     "r56"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S40",
+    "members": [
+     "r44",
+     "r216",
+     "r102"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S41",
+    "members": [
+     "r159",
+     "r84",
+     "r189"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S42",
+    "members": [
+     "r1"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S43",
+    "members": [
+     "r52",
+     "r115",
+     "r64"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S44",
+    "members": [
+     "r127",
+     "r105"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S45",
+    "members": [
+     "r169",
+     "r205",
+     "r191"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S46",
+    "members": [
+     "r54",
+     "r137",
+     "r148"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S47",
+    "members": [
+     "r77",
+     "r154",
+     "r120"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S48",
+    "members": [
+     "r11",
+     "r156"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S49",
+    "members": [
+     "r72",
+     "r36",
+     "r35"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S50",
+    "members": [
+     "r129",
+     "r48"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S51",
+    "members": [
+     "r204",
+     "r145",
+     "r76"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S52",
+    "members": [
+     "r190",
+     "r177",
+     "r183"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S53",
+    "members": [
+     "r209",
+     "r117",
+     "r6"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S54",
+    "members": [
+     "r141",
+     "r164",
+     "r27"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S55",
+    "members": [
+     "r95",
+     "r55",
+     "r200"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S56",
+    "members": [
+     "r184",
+     "r162",
+     "r63"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S57",
+    "members": [
+     "r217",
+     "r29",
+     "r107"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S58",
+    "members": [
+     "r80",
+     "r14",
+     "r40"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S59",
+    "members": [
+     "r91",
+     "r113",
+     "r112"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S60",
+    "members": [
+     "r218",
+     "r110",
+     "r19"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S61",
+    "members": [
+     "r86",
+     "r142",
+     "r213"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S62",
+    "members": [
+     "r194",
+     "r215",
+     "r220"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S63",
+    "members": [
+     "r198",
+     "r68"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S64",
+    "members": [
+     "r187",
+     "r89",
+     "r88"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S65",
+    "members": [
+     "r47",
+     "r134",
+     "r60"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S66",
+    "members": [
+     "r20",
+     "r211"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S67",
+    "members": [
+     "r116",
+     "r99",
+     "r15"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S68",
+    "members": [
+     "r21",
+     "r5",
+     "r46"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S69",
+    "members": [
+     "r34",
+     "r7",
+     "r45"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S70",
+    "members": [
+     "r61",
+     "r171",
+     "r17"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S71",
+    "members": [
+     "r118",
+     "r219",
+     "r185"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S72",
+    "members": [
+     "r139",
+     "r100"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S73",
+    "members": [
+     "r202",
+     "r149",
+     "r101"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S74",
+    "members": [
+     "r124"
+    ],
+    "topic": "EU"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 925703
+}

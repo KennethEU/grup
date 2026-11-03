@@ -1,0 +1,131 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r1",
+        "r26",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r18",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r14",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r27",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r5"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Niveau\". Ensartede (\"Karakter\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 6.42
+  }
+}

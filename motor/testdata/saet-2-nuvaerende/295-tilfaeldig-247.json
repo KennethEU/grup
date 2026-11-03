@@ -1,0 +1,298 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r74",
+        "r46"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r61",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r86",
+        "r79",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r66",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r20",
+        "r64"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r9",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r38",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r48",
+        "r21",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r72"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r84",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r63",
+        "r56"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r77"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r36",
+        "r83"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r49",
+        "r55"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r50",
+        "r29",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r59",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r88",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r52",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r73"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r82",
+        "r3",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r57",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r85"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r60",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r71",
+        "r80",
+        "r43"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r39"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r58",
+        "r81",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r53",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r75"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 42 elever har værdien \"Fransk\", og der er kun plads til 35 (højst 1 pr. gruppe). 7 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Fransk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 1.07
+  }
+}

@@ -1,0 +1,1776 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r89",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r215",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r210",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r179",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r285",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r226",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r278",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r194",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r255",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r192",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r251",
+   "Niveau": " MIDDEL",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r241",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r276",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r143",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r243",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r282",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r202",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r293",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r199",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r267",
+   "Niveau": "Lav ",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r162",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r259",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r175",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r254",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r183",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r225",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r170",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r222",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r214",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r235",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r227",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r191",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r242",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r250",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r295",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": " HØJ",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r195",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r275",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r184",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r270",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Middel ",
+   "Sprog": "Tysk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r182",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r161",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r289",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r171",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r246",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r233",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r212",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r240",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r211",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r269",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r169",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r272",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r230",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r265",
+   "Niveau": "middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r176",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r292",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r263",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r221",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r200",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r291",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r193",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r188",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r256",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r174",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r187",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r274",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r286",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r257",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r206",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r189",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r234",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r294",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r163",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r237",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Lav ",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": " LAV",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r208",
+   "Niveau": "middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r185",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r167",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r260",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r165",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r173",
+   "Niveau": " MIDDEL",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r172",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r281",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r168",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r217",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r273",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r264",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r239",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r268",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r177",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r253",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r147",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r205",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r261",
+   "Niveau": "Lav ",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r204",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r262",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": " HØJ",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": " MIDDEL",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r180",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r290",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r258",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r249",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r238",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r228",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r231",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r283",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r232",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r213",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r220",
+   "Niveau": "lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r186",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r201",
+   "Niveau": "Høj ",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r197",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r219",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r245",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r216",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r288",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r223",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r198",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r178",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r224",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r252",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r146",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r247",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r244",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r166",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r207",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r287",
+   "Niveau": "middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r209",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r284",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r164",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r277",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r271",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r266",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r196",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r218",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r236",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r229",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r181",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r190",
+    "r248"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r149",
+    "r156",
+    "r279"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 31
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 886291
+}

@@ -1,0 +1,183 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r23",
+   "Interesse": "Dans",
+   "Niveau": "middel",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Dans",
+   "Niveau": "",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Dans",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "",
+   "Niveau": "middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Film",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Musik",
+   "Niveau": "Middel",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Film",
+   "Niveau": " MIDDEL",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film",
+   "Niveau": "lav",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Film",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Dans",
+   "Niveau": "Lav",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Film",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "",
+   "Niveau": "Middel",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Film",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Musik",
+   "Niveau": "",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Musik",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "film",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Dans",
+   "Niveau": "middel",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r5",
+    "r15",
+    "r16",
+    "r6"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r17",
+    "r24",
+    "r14",
+    "r22"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 5
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 70794
+}

@@ -1,0 +1,241 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "lav",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": " HØJ",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "fodbold",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "fodbold",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 41154
+}

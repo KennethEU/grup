@@ -1,0 +1,173 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r5",
+    "r17",
+    "r6",
+    "r18"
+   ],
+   [
+    "r3",
+    "r2"
+   ],
+   [
+    "r15",
+    "r1",
+    "r20",
+    "r13"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r19",
+    "r12"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 471451
+}

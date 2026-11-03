@@ -1,0 +1,63 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "b2",
+   "Snit": "7.5"
+  },
+  {
+   "_rowId": "b3",
+   "Snit": "2"
+  },
+  {
+   "_rowId": "b4",
+   "Snit": "2,0"
+  },
+  {
+   "_rowId": "b5",
+   "Snit": "1.000"
+  },
+  {
+   "_rowId": "b6",
+   "Snit": "12"
+  },
+  {
+   "_rowId": "b7",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "b8",
+   "Snit": "-3"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

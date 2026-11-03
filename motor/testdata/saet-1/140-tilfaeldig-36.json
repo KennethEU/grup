@@ -1,0 +1,178 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": " LAV",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 6,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 80754
+}

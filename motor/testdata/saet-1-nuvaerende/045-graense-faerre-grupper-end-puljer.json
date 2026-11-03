@@ -1,0 +1,58 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b8",
+        "b11",
+        "b5",
+        "b2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b12",
+        "b9",
+        "b6",
+        "b3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b1",
+        "b7",
+        "b4",
+        "b10"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 3 i stedet for 2."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.04
+  }
+}

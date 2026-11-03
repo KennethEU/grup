@@ -1,0 +1,294 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r41",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r67",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r65",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r55",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r64",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r62",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r33",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r37",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r49",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r61",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r28",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r48",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r47",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r50",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r31",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r40",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r30",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r46",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r39",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r42",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r53",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r57",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r59",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r29",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r44",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r54",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r36",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r27",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r34",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r66",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r45",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r60",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r35",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r43",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r68",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r52",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r58",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r51",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r32",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r63",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r56",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r38",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 11"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 32
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 485372
+}

@@ -1,0 +1,261 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": " LAV",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel ",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r7",
+    "r10",
+    "r24"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r24",
+     "r2",
+     "r23",
+     "r8"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r13",
+     "r22",
+     "r11"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r14",
+     "r17",
+     "r12",
+     "r19"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r5",
+     "r1",
+     "r15"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r6",
+     "r18",
+     "r10",
+     "r20"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r25",
+     "r4",
+     "r3",
+     "r9"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r7"
+    ],
+    "topic": null
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 671837
+}

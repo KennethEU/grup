@@ -1,0 +1,178 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r91",
+        "r55",
+        "r5",
+        "r61",
+        "r80",
+        "r7",
+        "r70",
+        "r50",
+        "r85",
+        "r96",
+        "r76",
+        "r35",
+        "r40",
+        "r63",
+        "r53",
+        "r8",
+        "r13",
+        "r89",
+        "r26",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r33",
+        "r58",
+        "r19",
+        "r97",
+        "r42",
+        "r100",
+        "r56",
+        "r17",
+        "r30",
+        "r52",
+        "r60",
+        "r9",
+        "r69",
+        "r75",
+        "r46",
+        "r49",
+        "r94",
+        "r101",
+        "r99"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r44",
+        "r54",
+        "r62",
+        "r95",
+        "r78",
+        "r37",
+        "r74",
+        "r23",
+        "r28",
+        "r82",
+        "r88",
+        "r32",
+        "r51",
+        "r1",
+        "r29",
+        "r83",
+        "r43",
+        "r24",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r2",
+        "r31",
+        "r79",
+        "r18",
+        "r98",
+        "r10",
+        "r57",
+        "r73",
+        "r15",
+        "r64",
+        "r41",
+        "r77",
+        "r11",
+        "r39",
+        "r25",
+        "r86",
+        "r93",
+        "r34",
+        "r84"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r68",
+        "r3",
+        "r45",
+        "r12",
+        "r36",
+        "r72",
+        "r48",
+        "r103",
+        "r87",
+        "r65",
+        "r21",
+        "r38",
+        "r59",
+        "r90",
+        "r16",
+        "r66",
+        "r27",
+        "r67",
+        "r22"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Saml (\"Niveau\") og Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "4 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Balancér\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 4,
+    "seconds": 9.88
+  }
+}

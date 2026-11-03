@@ -1,0 +1,271 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r18",
+        "r5",
+        "r69",
+        "r53"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r74",
+        "r35",
+        "r48",
+        "r20"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r68",
+        "r25",
+        "r7",
+        "r41"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r76",
+        "r26",
+        "r57",
+        "r3"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r17",
+        "r42",
+        "r71"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r19",
+        "r12",
+        "r37"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r24",
+        "r67",
+        "r28"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r33",
+        "r10",
+        "r34"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r54",
+        "r66",
+        "r22"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r75",
+        "r44",
+        "r59"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r73",
+        "r46",
+        "r32"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r1",
+        "r27",
+        "r78"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r61",
+        "r49"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r11",
+        "r50",
+        "r38"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r31",
+        "r70",
+        "r39"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r9",
+        "r29",
+        "r23"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r8",
+        "r21",
+        "r16"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r56",
+        "r4",
+        "r62"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r52",
+        "r63",
+        "r40"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r47",
+        "r72",
+        "r51"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r45",
+        "r13",
+        "r43"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r15",
+        "r65",
+        "r14"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r64",
+        "r30",
+        "r77"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r58",
+        "r36",
+        "r6"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {
+    "L1": "Migration"
+  },
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 40 elever skal adskilles, men der er kun 24 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Adskil bruges begge på \"Sprog\". Klyng samler eleverne med samme værdi, mens Adskil vil have højst én af dem i hver gruppe (\"Spansk\"). De kan ikke opfyldes samtidig."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 5,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "3 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Balancér\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 5.31
+  }
+}

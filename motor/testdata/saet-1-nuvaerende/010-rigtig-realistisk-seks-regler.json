@@ -1,0 +1,127 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "k5",
+        "k3",
+        "k8",
+        "k14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k20",
+        "k25",
+        "k18",
+        "k7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k10",
+        "k12",
+        "k16",
+        "k13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k9",
+        "k15",
+        "k0",
+        "k1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k26",
+        "k23",
+        "k2",
+        "k24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k11",
+        "k4",
+        "k19",
+        "k21"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Ensartede (\"Niveau\") og Saml (\"Emne\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 14 elever har værdien \"Pige\", og der er kun plads til 12 (højst 2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.97
+  }
+}

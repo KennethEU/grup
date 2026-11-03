@@ -1,0 +1,399 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r70",
+        "r52",
+        "r55",
+        "r140"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r46",
+        "r78",
+        "r160"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r99",
+        "r89",
+        "r113"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r86",
+        "r8",
+        "r135",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r80",
+        "r117",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r42",
+        "r102",
+        "r97",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r115",
+        "r104",
+        "r31",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r158",
+        "r152",
+        "r49",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r122",
+        "r150",
+        "r138",
+        "r108"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r27",
+        "r30",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r111",
+        "r110",
+        "r151",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r124",
+        "r130",
+        "r14",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r144",
+        "r28",
+        "r119",
+        "r147"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r10",
+        "r109",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r15",
+        "r69",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r84",
+        "r128",
+        "r36",
+        "r116"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r62",
+        "r95",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r9",
+        "r129",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r50",
+        "r148",
+        "r106",
+        "r100"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r143",
+        "r156",
+        "r20",
+        "r120"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r33",
+        "r66",
+        "r85"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r155",
+        "r92",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r7",
+        "r65",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r123",
+        "r134",
+        "r2",
+        "r103"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r79",
+        "r11",
+        "r13",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r118",
+        "r145",
+        "r51",
+        "r88"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r5",
+        "r56",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r153",
+        "r87",
+        "r38",
+        "r48"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r133",
+        "r41",
+        "r67",
+        "r157"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r159",
+        "r101",
+        "r126",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r154",
+        "r131",
+        "r58"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r136",
+        "r112",
+        "r17",
+        "r121"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r73",
+        "r107",
+        "r141"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r149",
+        "r132",
+        "r39",
+        "r137"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r61",
+        "r105",
+        "r142"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r146",
+        "r43",
+        "r127"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r64",
+        "r71",
+        "r125",
+        "r114"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r94",
+        "r82",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r60",
+        "r25",
+        "r72"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r6",
+        "r139",
+        "r75"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 57 elever skal adskilles, men der er kun 40 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 6,
+    "seconds": 9.87
+  }
+}

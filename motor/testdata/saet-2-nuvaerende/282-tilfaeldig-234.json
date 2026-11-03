@@ -1,0 +1,527 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r135",
+        "r93",
+        "r173",
+        "r113"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r196",
+        "r55",
+        "r44",
+        "r174"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r137",
+        "r147",
+        "r145"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r101",
+        "r140",
+        "r94",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r194",
+        "r88",
+        "r206",
+        "r190"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r195",
+        "r138",
+        "r38",
+        "r192"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r139",
+        "r222",
+        "r210",
+        "r181"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r57",
+        "r10",
+        "r218"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r191",
+        "r217",
+        "r98",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r150",
+        "r106",
+        "r209",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r78",
+        "r43",
+        "r87"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r205",
+        "r120",
+        "r7",
+        "r203"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r53",
+        "r23",
+        "r39",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r199",
+        "r4",
+        "r26",
+        "r216"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r89",
+        "r41",
+        "r134",
+        "r149"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r35",
+        "r136",
+        "r154"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r220",
+        "r71",
+        "r64",
+        "r131"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r185",
+        "r214",
+        "r1",
+        "r56"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r82",
+        "r207",
+        "r52",
+        "r166"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r114",
+        "r108",
+        "r29",
+        "r175"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r183",
+        "r92",
+        "r179",
+        "r177"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r28",
+        "r97",
+        "r163"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r50",
+        "r117",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r40",
+        "r3",
+        "r144",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r213",
+        "r49",
+        "r188",
+        "r128"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r155",
+        "r118",
+        "r72",
+        "r172"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r110",
+        "r100",
+        "r141",
+        "r129"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r164",
+        "r60",
+        "r11",
+        "r160"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r124",
+        "r178",
+        "r167",
+        "r161"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r62",
+        "r133",
+        "r103",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r152",
+        "r180",
+        "r36",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r158",
+        "r157",
+        "r153",
+        "r184"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r75",
+        "r151",
+        "r162"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r122",
+        "r85",
+        "r121",
+        "r112"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r212",
+        "r211",
+        "r74",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r221",
+        "r187",
+        "r123"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r102",
+        "r115",
+        "r70",
+        "r58"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r79",
+        "r201",
+        "r146"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r165",
+        "r46",
+        "r90",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r200",
+        "r127",
+        "r31",
+        "r156"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r86",
+        "r76",
+        "r176",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r111",
+        "r204",
+        "r215",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r159",
+        "r51",
+        "r95"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r171",
+        "r25",
+        "r34",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r148",
+        "r99",
+        "r84",
+        "r186"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r142",
+        "r81",
+        "r19",
+        "r125"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r202",
+        "r116",
+        "r130",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r169",
+        "r33",
+        "r104"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r170",
+        "r189",
+        "r80",
+        "r143"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r105",
+        "r119",
+        "r13",
+        "r198"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r109",
+        "r30",
+        "r182"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r107",
+        "r77",
+        "r73"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r59",
+        "r208",
+        "r16",
+        "r219"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "7 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Ensartede\" måler ikke på dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 148 elever har værdien \"Dreng\", og der er kun plads til 106 (højst 2 pr. gruppe). 42 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 2,
+    "seconds": 18.84
+  }
+}

@@ -1,0 +1,93 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r2",
+   "Snit": "1.6"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "1.5"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "5.6"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "1,6"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": ""
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r10",
+    "r8",
+    "r4"
+   ],
+   [
+    "r2",
+    "r5",
+    "r6",
+    "r12"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r9",
+    "r1",
+    "r7",
+    "r3"
+   ],
+   "topic": "EU"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 361784
+}

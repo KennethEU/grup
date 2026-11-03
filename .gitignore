@@ -1,0 +1,20 @@
+# Build & dependencies
+node_modules/
+dist/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# OS
+.DS_Store
+
+# Editor / agent state
+.agent/
+.claude/
+
+# Videoguidernes optagelser og lyd (store filer, ikke i git)
+videoguides/

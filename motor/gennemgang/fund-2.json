@@ -1,0 +1,25 @@
+{
+  "contractVersion": 2,
+  "view": "matrix",
+  "students": [
+    { "_rowId": "r0", "Hold": "x" },
+    { "_rowId": "r1", "Hold": "x" },
+    { "_rowId": "r2", "Hold": "y" },
+    { "_rowId": "r3", "Hold": "y" }
+  ],
+  "rules": [{ "type": "aggregate", "column": "Hold" }],
+  "columnOrders": {},
+  "agreements": { "together": [], "avoid": [] },
+  "lockedGroups": [],
+  "size": { "mode": "full" },
+  "topics": [],
+  "matrix": {
+    "source": "homeGroup",
+    "homeGroups": [
+      { "id": "S1", "members": ["r0", "r1"], "topic": null },
+      { "id": "S2", "members": ["r2", "r3"], "topic": null }
+    ]
+  },
+  "budget": { "maxSeconds": 1, "maxAttempts": 2, "minAttempts": 1 },
+  "seed": 1
+}

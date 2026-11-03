@@ -1,0 +1,313 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Køn": "",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "10.2"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "3,7"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "5,9"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Køn": "",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "Fritaget",
+   "Køn": " DRENG",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "Fritaget",
+   "Køn": "",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Snit": "7,3"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "12,0"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "Fritaget",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "1.1"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "1,9"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "5,9"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "-3",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "5,6"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 509439
+}

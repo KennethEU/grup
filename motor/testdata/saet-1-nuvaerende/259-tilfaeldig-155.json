@@ -1,0 +1,124 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r10",
+        "r6"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r1"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r3"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r5",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r12",
+        "r4"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r15",
+        "r13"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Saml og Fordel bruges begge på \"Niveau\". Saml samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Saml og Fordel bruges begge på \"Niveau\". Saml samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Saml og Saml bruges begge på \"Niveau\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Saml på \"Niveau\". Saml (\"Niveau\") bliver også forsøgt, men er ikke sikret — Saml vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.22
+  }
+}

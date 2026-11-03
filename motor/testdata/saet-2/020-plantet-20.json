@@ -1,0 +1,224 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p39-3",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-23",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-14",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-20",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-6",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-8",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-2",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-24",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-13",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-17",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-19",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-9",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-5",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-16",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-11",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-1",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-18",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p39-15",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-21",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p39-22",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p39-23",
+    "p39-21"
+   ]
+  ],
+  "avoid": [
+   [
+    "p39-3",
+    "p39-22"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 253736
+}

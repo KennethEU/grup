@@ -1,0 +1,205 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Snit": "2,8",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Snit": "4,3",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Snit": "5,9",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Snit": "8.7",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Snit": "11,9",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Snit": "3,1",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "3,8",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Snit": "7,8",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Snit": "8,0",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Snit": "1,6",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Snit": "5,1",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Snit": "5,7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "3.5",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Snit": "9,3",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "9,4",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Snit": "9,6",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Snit": "6,8",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Snit": "8.5",
+   "Interesse": "klatring"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "11.3",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "5,9",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "12",
+   "Hold": "",
+   "Snit": "8,9",
+   "Interesse": "Fodbold"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r18",
+    "r11"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 434043
+}

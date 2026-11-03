@@ -1,0 +1,262 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "7,9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "4,2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Niveau": "Høj ",
+   "Snit": "12,0",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "3.8",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "12,0",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "1,5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Niveau": "Høj",
+   "Snit": "5,6",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": " LAV",
+   "Snit": "",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "3,4",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "8,1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "5,7",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "6,6",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng ",
+   "Sprog": "Fransk",
+   "Niveau": "",
+   "Snit": "11.2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "10,5",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "9.3",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "6,5",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "",
+   "Snit": "6,3",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "2,7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "8,1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "8,5",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "11.0",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": " PIGE",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "6,2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "9,5",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "11,1",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige",
+    " PIGE"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 12
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 420695
+}

@@ -1,0 +1,87 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b9",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b11",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b12",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

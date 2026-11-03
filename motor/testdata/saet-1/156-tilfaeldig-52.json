@@ -1,0 +1,66 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 1
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 868018
+}

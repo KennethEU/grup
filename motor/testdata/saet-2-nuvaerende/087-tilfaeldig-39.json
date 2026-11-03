@@ -1,0 +1,150 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r6",
+        "r25",
+        "r5",
+        "r1",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r20",
+        "r19",
+        "r11",
+        "r9",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r12",
+        "r22",
+        "r10",
+        "r23",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r8",
+        "r14",
+        "r13",
+        "r16",
+        "r26"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Fordel bruges begge på \"Sprog\". Klyng samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 3,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 14 elever har værdien \"Pige\", og der er kun plads til 8 (højst 2 pr. gruppe). 6 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 13 elever har værdien \"Tysk\", og der er kun plads til 8 (højst 2 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 5,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 12 elever har værdien \"Middel\", og der er kun plads til 8 (højst 2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.14
+  }
+}

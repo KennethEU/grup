@@ -1,0 +1,383 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p368-4",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-10",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-40",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-17",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Ja",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-22",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-18",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-27",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-19",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-28",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Ja",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-7",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-36",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-37",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-25",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-29",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-3",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-12",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-24",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-11",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-26",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-31",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-39",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-2",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-5",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Ja",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-30",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-32",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-16",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-6",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Ja",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-15",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-34",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-20",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-38",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-33",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-14",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-1",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-23",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-8",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-35",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p368-13",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Ja",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p368-21",
+   "Sprog": "Fransk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p368-9",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p368-11",
+    "p368-27",
+    "p368-7",
+    "p368-38"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 399383
+}

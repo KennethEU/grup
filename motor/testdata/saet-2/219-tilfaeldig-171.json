@@ -1,0 +1,186 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Interesse": "",
+   "Karakter": "12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Dans",
+   "Karakter": "02",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Dans",
+   "Karakter": "00",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Film",
+   "Karakter": "00",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "",
+   "Karakter": "12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kor",
+   "Karakter": "02",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10",
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 119548
+}

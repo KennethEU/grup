@@ -1,0 +1,234 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r28",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk",
+   "Køn": " PIGE",
+   "Hold": "2.b",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "11,9"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "11.3"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Køn": "",
+   "Hold": "2.a",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Køn": "",
+   "Hold": "2.b",
+   "Snit": "2,4"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "11,9"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "1,6"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Snit": "8.4"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "10.2"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "4,8"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r29",
+    "r1",
+    "r12",
+    "r13"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r18",
+    "r24",
+    "r3"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 622200
+}

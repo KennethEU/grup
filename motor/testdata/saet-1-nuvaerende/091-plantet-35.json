@@ -1,0 +1,83 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p693-2",
+        "p693-3",
+        "p693-1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p693-11",
+        "p693-8",
+        "p693-10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p693-13",
+        "p693-14",
+        "p693-15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p693-4",
+        "p693-5",
+        "p693-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p693-18",
+        "p693-16",
+        "p693-17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p693-12",
+        "p693-9",
+        "p693-7"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Niveau\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.07
+  }
+}

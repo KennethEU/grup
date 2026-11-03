@@ -1,0 +1,154 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r25",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Skak"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r9",
+    "r19",
+    "r25",
+    "r2",
+    "r1"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r22",
+    "r27"
+   ],
+   "topic": "Gammelt emne"
+  },
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r29",
+    "r16",
+    "r10",
+    "r5"
+   ],
+   "topic": "EU"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 886248
+}

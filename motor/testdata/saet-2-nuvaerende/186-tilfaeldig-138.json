@@ -1,0 +1,69 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r6",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r9"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 7 elever har værdien \"Middel\", og der er kun plads til 5 (højst 1 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.2
+  }
+}

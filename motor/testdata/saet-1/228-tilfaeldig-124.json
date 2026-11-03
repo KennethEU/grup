@@ -1,0 +1,126 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Interesse": "Kunst",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Film",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Gaming",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Gaming",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Skak",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r4",
+    "r5",
+    "r6",
+    "r2",
+    "r13"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 417692
+}

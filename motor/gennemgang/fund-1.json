@@ -1,0 +1,24 @@
+{
+  "contractVersion": 2,
+  "view": "home",
+  "students": [
+    { "_rowId": "r1", "Køn": "A" },
+    { "_rowId": "r2", "Køn": "A" },
+    { "_rowId": "r3", "Køn": "A" },
+    { "_rowId": "r4", "Køn": "A" },
+    { "_rowId": "r5", "Køn": "A" },
+    { "_rowId": "r6", "Køn": "B" },
+    { "_rowId": "r7", "Køn": "B" },
+    { "_rowId": "r8", "Køn": "B" },
+    { "_rowId": "r9", "Køn": "B" }
+  ],
+  "rules": [{ "type": "distribute", "column": "Køn" }],
+  "columnOrders": {},
+  "agreements": { "together": [], "avoid": [] },
+  "lockedGroups": [],
+  "size": { "mode": "perGroup", "target": 4, "adjust": "plus" },
+  "topics": [],
+  "matrix": null,
+  "budget": { "maxSeconds": 2, "maxAttempts": 20, "minAttempts": 3 },
+  "seed": 1
+}

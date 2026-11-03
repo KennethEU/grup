@@ -1,0 +1,275 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Snit": "11,8",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "middel",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Snit": "3,9",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Snit": "3,0",
+   "Sprog": "Spansk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": " HØJ",
+   "Snit": "3,2",
+   "Sprog": "Spansk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj",
+   "Snit": "5,0",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Høj",
+   "Snit": "10,6",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Høj",
+   "Snit": "5,0",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Snit": "10,6",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Snit": "10,8",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Snit": "9.9",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Snit": "3,9",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Snit": "1,8",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Middel",
+   "Snit": "1.8",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel ",
+   "Snit": "10,9",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Lav",
+   "Snit": "11,0",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Snit": "8.7",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Snit": "9,3",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Snit": "10,3",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "",
+   "Snit": "",
+   "Sprog": "Fransk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Snit": "4,6",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav",
+   "Snit": "3,7",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Snit": "6,8",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Snit": "5,7",
+   "Sprog": "Fransk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": " HØJ",
+   "Snit": "9,7",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "middel",
+   "Snit": "1.0",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Snit": "9,5",
+   "Sprog": "Fransk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Snit": "6,6",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r24",
+    "r26",
+    "r10"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r5",
+    "r12",
+    "r27",
+    "r20"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 89991
+}

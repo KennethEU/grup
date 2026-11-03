@@ -1,0 +1,412 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Snit": "11,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r63",
+   "Snit": "1,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "4,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r42",
+   "Snit": "3,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "2,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r34",
+   "Snit": "1,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Snit": "7,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r40",
+   "Snit": "10,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r57",
+   "Snit": "3,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r54",
+   "Snit": "6,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "9,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Snit": "9,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "2,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r69",
+   "Snit": "4,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "1,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "7,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r52",
+   "Snit": "10,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r47",
+   "Snit": "9.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r46",
+   "Snit": "2,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "3,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r56",
+   "Snit": "8,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r51",
+   "Snit": "3,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r39",
+   "Snit": "7.7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r35",
+   "Snit": "4,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r37",
+   "Snit": "6,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Snit": "8.4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r33",
+   "Snit": "7,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r50",
+   "Snit": "8,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r73",
+   "Snit": "11.2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r45",
+   "Snit": "1,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "8,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "10,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "4,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Snit": "3,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r68",
+   "Snit": "7,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Snit": "11.3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Snit": "7,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "5,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "9,8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r48",
+   "Snit": "11,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Snit": "10,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Snit": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r62",
+   "Snit": "1,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "1,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r74",
+   "Snit": "10,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r60",
+   "Snit": "3,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "4,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "10,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "3,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "11,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "9,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r41",
+   "Snit": "1,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r43",
+   "Snit": "3,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r66",
+   "Snit": "3,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "1,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r58",
+   "Snit": "4,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "6,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r75",
+   "Snit": "3,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "11,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "4,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "2,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "1.5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r61",
+   "Snit": "7,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "5,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r67",
+   "Snit": "11,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r38",
+   "Snit": "3,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r72",
+   "Snit": "5.1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r31",
+   "Snit": "9,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Snit": "6,6",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r65",
+    "r59"
+   ],
+   "topic": "Energi"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 308758
+}

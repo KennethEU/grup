@@ -1,0 +1,259 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Fransk",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Høj ",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Tysk",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Karakter": "00",
+   "Niveau": "middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk",
+   "Karakter": "-3",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Tysk",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r28",
+    "r11",
+    "r5"
+   ],
+   [
+    "r15",
+    "r17",
+    "r31"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 379904
+}

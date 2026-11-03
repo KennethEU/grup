@@ -1,0 +1,85 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "k4",
+        "k20",
+        "k14",
+        "k13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k11",
+        "k3",
+        "k8",
+        "k7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k0",
+        "k1",
+        "k10",
+        "k25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k12",
+        "k23",
+        "k21",
+        "k16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k2",
+        "k24",
+        "k5",
+        "k9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k15",
+        "k26",
+        "k18",
+        "k19"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

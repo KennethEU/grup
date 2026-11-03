@@ -1,0 +1,397 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r60",
+        "r116",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r49",
+        "r97",
+        "r104"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r95",
+        "r79",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r107",
+        "r46",
+        "r85"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r127",
+        "r21",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r94",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r132",
+        "r32",
+        "r65"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r13",
+        "r73"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r134",
+        "r2",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r121",
+        "r67",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r117",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r137",
+        "r88",
+        "r81"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r100",
+        "r75",
+        "r143",
+        "r138"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r125",
+        "r144",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r12",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r80",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r66",
+        "r39",
+        "r101"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r120",
+        "r130",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r142",
+        "r102",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r112",
+        "r90",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r29",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r103",
+        "r56",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r128",
+        "r45",
+        "r110"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r140",
+        "r139"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r91",
+        "r50",
+        "r40",
+        "r48"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r119",
+        "r1",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r141",
+        "r84",
+        "r83"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r92",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r135",
+        "r58",
+        "r87",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r106",
+        "r64",
+        "r62",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r28",
+        "r99"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r36",
+        "r8",
+        "r108"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r133",
+        "r86",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r69",
+        "r72",
+        "r115"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r82",
+        "r109",
+        "r131"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r122",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r118",
+        "r47",
+        "r54",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r126",
+        "r105",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r16",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r24",
+        "r129"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r114",
+        "r124",
+        "r136"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 83 elever har værdien \"Pige\", og der er kun plads til 52 (højst 1-2 pr. gruppe). 31 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 6,
+    "seconds": 9.11
+  }
+}

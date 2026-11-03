@@ -1,0 +1,309 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p542-18",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-10",
+   "Niveau": "Lav",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-16",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-1",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-32",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p542-21",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-20",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-3",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-15",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-34",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-13",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-6",
+   "Niveau": "Lav",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-22",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-9",
+   "Niveau": "Lav",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-14",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-30",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-27",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-24",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-26",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-29",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-31",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-2",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-23",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-19",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-25",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p542-12",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-7",
+   "Niveau": "Lav",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-11",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p542-8",
+   "Niveau": "Lav",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p542-28",
+   "Niveau": "Lav",
+   "Hold": "Hold 2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-17",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-5",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-35",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p542-4",
+   "Niveau": "Middel",
+   "Hold": "Hold 1",
+   "Interesse": "Dans",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p542-33",
+   "Niveau": "Middel",
+   "Hold": "Hold 2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p542-4",
+    "p542-2"
+   ]
+  ],
+  "avoid": [
+   [
+    "p542-7",
+    "p542-29",
+    "p542-24",
+    "p542-19"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 907327
+}

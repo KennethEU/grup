@@ -1,0 +1,134 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p598-11",
+   "Køn": "Dreng",
+   "Snit": "5,5",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p598-5",
+   "Køn": "Dreng",
+   "Snit": "5,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-13",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-10",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p598-8",
+   "Køn": "Dreng",
+   "Snit": "5,5",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p598-12",
+   "Køn": "Dreng",
+   "Snit": "7",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p598-14",
+   "Køn": "Dreng",
+   "Snit": "5,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-1",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-4",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-15",
+   "Køn": "Dreng",
+   "Snit": "7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-7",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p598-9",
+   "Køn": "Dreng",
+   "Snit": "7",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p598-3",
+   "Køn": "Dreng",
+   "Snit": "7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-6",
+   "Køn": "Dreng",
+   "Snit": "7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p598-2",
+   "Køn": "Dreng",
+   "Snit": "5,5",
+   "Interesse": "Film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p598-1",
+    "p598-2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 889135
+}

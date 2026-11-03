@@ -1,0 +1,82 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "e3",
+        "e6",
+        "e9",
+        "e11",
+        "e22"
+      ],
+      "topic": "Liberalisme"
+    },
+    {
+      "members": [
+        "e5",
+        "e7",
+        "e10",
+        "e24"
+      ],
+      "topic": "Konservatisme"
+    },
+    {
+      "members": [
+        "e4",
+        "e15",
+        "e16",
+        "e23",
+        "e27"
+      ],
+      "topic": "Socialisme"
+    },
+    {
+      "members": [
+        "e2",
+        "e12",
+        "e13",
+        "e14",
+        "e21"
+      ],
+      "topic": "Konservatisme"
+    },
+    {
+      "members": [
+        "e0",
+        "e1",
+        "e8",
+        "e25",
+        "e28"
+      ],
+      "topic": "Liberalisme"
+    },
+    {
+      "members": [
+        "e17",
+        "e18",
+        "e19",
+        "e20",
+        "e26"
+      ],
+      "topic": "Socialisme"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

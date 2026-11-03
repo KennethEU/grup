@@ -1,0 +1,93 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r6",
+        "r17"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r16",
+        "r12"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r11",
+        "r9"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r7",
+        "r18",
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r13",
+        "r15",
+        "r5"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r2",
+        "r4"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r10",
+        "r8"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r14",
+        "r3"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

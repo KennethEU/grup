@@ -1,0 +1,157 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "1,6"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "10,4"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "11,9"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "3.8"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "5.7"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "9,9"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "1,0"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "3,6"
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "9,8"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "2,1"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "4,0"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 569477
+}

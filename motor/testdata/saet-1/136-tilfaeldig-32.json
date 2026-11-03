@@ -1,0 +1,1656 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r107",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "3,2"
+  },
+  {
+   "_rowId": "r229",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r226",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "r99",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r160",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "6.3"
+  },
+  {
+   "_rowId": "r172",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "r258",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r239",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "9.8"
+  },
+  {
+   "_rowId": "r227",
+   "Karakter": "10",
+   "Niveau": "Høj ",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r190",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r194",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "12",
+   "Niveau": "middel",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r192",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "11.9"
+  },
+  {
+   "_rowId": "r207",
+   "Karakter": "10",
+   "Niveau": "middel",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r260",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r254",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r80",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r96",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "6,2"
+  },
+  {
+   "_rowId": "r64",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r158",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "r154",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r275",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r104",
+   "Karakter": "02",
+   "Niveau": "middel",
+   "Snit": "5.1"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "12",
+   "Niveau": " HØJ",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "1,9"
+  },
+  {
+   "_rowId": "r168",
+   "Karakter": "10",
+   "Niveau": "middel",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r114",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r125",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r120",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r276",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r195",
+   "Karakter": "Fritaget",
+   "Niveau": "Høj",
+   "Snit": "9.7"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r86",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "2.4"
+  },
+  {
+   "_rowId": "r210",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "5,6"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r138",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r262",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r123",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "1,2"
+  },
+  {
+   "_rowId": "r166",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r199",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "2,2"
+  },
+  {
+   "_rowId": "r151",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r269",
+   "Karakter": "02",
+   "Niveau": "lav",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r121",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r187",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r117",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r237",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r81",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r100",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r177",
+   "Karakter": "7",
+   "Niveau": "",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r129",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "7,3"
+  },
+  {
+   "_rowId": "r250",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r95",
+   "Karakter": "7",
+   "Niveau": "Middel ",
+   "Snit": "9.3"
+  },
+  {
+   "_rowId": "r216",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r284",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r137",
+   "Karakter": "-3",
+   "Niveau": "Middel",
+   "Snit": "7,3"
+  },
+  {
+   "_rowId": "r230",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "2.1"
+  },
+  {
+   "_rowId": "r126",
+   "Karakter": "Fritaget",
+   "Niveau": "Middel",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r155",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Snit": "9,7"
+  },
+  {
+   "_rowId": "r92",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "3,9"
+  },
+  {
+   "_rowId": "r147",
+   "Karakter": "10",
+   "Niveau": "Høj ",
+   "Snit": "6.5"
+  },
+  {
+   "_rowId": "r105",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r251",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r247",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r215",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "r110",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r185",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4,3"
+  },
+  {
+   "_rowId": "r93",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "2,7"
+  },
+  {
+   "_rowId": "r265",
+   "Karakter": "-3",
+   "Niveau": "Middel ",
+   "Snit": "9.0"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r220",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r119",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "1.7"
+  },
+  {
+   "_rowId": "r143",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "7.1"
+  },
+  {
+   "_rowId": "r253",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "7,7"
+  },
+  {
+   "_rowId": "r161",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r256",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r75",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r182",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "10,2"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r221",
+   "Karakter": "",
+   "Niveau": "Høj",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r205",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "10",
+   "Niveau": "",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r135",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r228",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r217",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r281",
+   "Karakter": "",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r238",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r218",
+   "Karakter": "10",
+   "Niveau": "",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r124",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r103",
+   "Karakter": "Fritaget",
+   "Niveau": "Middel",
+   "Snit": "10,6"
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "4",
+   "Niveau": "middel",
+   "Snit": "4,1"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "3.6"
+  },
+  {
+   "_rowId": "r91",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r246",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r257",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "9,7"
+  },
+  {
+   "_rowId": "r287",
+   "Karakter": "02",
+   "Niveau": "lav",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r283",
+   "Karakter": "-3",
+   "Niveau": "",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r280",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r209",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "7.7"
+  },
+  {
+   "_rowId": "r140",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "7.2"
+  },
+  {
+   "_rowId": "r90",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "2.1"
+  },
+  {
+   "_rowId": "r84",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r79",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r148",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r206",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r82",
+   "Karakter": "-3",
+   "Niveau": "Høj",
+   "Snit": "8.1"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r169",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r116",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "9.9"
+  },
+  {
+   "_rowId": "r264",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r165",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r176",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "7,7"
+  },
+  {
+   "_rowId": "r150",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "8.0"
+  },
+  {
+   "_rowId": "r278",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r109",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r286",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r94",
+   "Karakter": "10",
+   "Niveau": "",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r141",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "5.8"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "10,4"
+  },
+  {
+   "_rowId": "r285",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r167",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r268",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "8.6"
+  },
+  {
+   "_rowId": "r171",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r263",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "3.2"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav",
+   "Snit": "2.1"
+  },
+  {
+   "_rowId": "r249",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r178",
+   "Karakter": "7",
+   "Niveau": "",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r279",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r97",
+   "Karakter": "7",
+   "Niveau": "middel",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r76",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,1"
+  },
+  {
+   "_rowId": "r128",
+   "Karakter": "",
+   "Niveau": "Lav",
+   "Snit": "2.6"
+  },
+  {
+   "_rowId": "r133",
+   "Karakter": "12",
+   "Niveau": "Middel ",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r157",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r186",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r149",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r274",
+   "Karakter": "02",
+   "Niveau": "",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r162",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "8.1"
+  },
+  {
+   "_rowId": "r222",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "3.8"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r213",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "11,2"
+  },
+  {
+   "_rowId": "r235",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r241",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r112",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r255",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "3.6"
+  },
+  {
+   "_rowId": "r244",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r115",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r289",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "7,9"
+  },
+  {
+   "_rowId": "r78",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r181",
+   "Karakter": "-3",
+   "Niveau": "Middel",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r288",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r200",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4.8"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Snit": "10.7"
+  },
+  {
+   "_rowId": "r136",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "2,0"
+  },
+  {
+   "_rowId": "r191",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r153",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r259",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r145",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Snit": "3.7"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Niveau": " MIDDEL",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r234",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "10.4"
+  },
+  {
+   "_rowId": "r156",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "7,6"
+  },
+  {
+   "_rowId": "r111",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4,0"
+  },
+  {
+   "_rowId": "r85",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Snit": "3,3"
+  },
+  {
+   "_rowId": "r132",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r72",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r236",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r211",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "4,0"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r164",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r225",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "3,7"
+  },
+  {
+   "_rowId": "r142",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "9.3"
+  },
+  {
+   "_rowId": "r208",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r113",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r163",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r48",
+   "Karakter": "4",
+   "Niveau": "",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r139",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "11,4"
+  },
+  {
+   "_rowId": "r231",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "3.1"
+  },
+  {
+   "_rowId": "r170",
+   "Karakter": "7",
+   "Niveau": "",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r65",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r242",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "r219",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r282",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r193",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r174",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r270",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r240",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "6.9"
+  },
+  {
+   "_rowId": "r61",
+   "Karakter": "-3",
+   "Niveau": "Middel",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Snit": "4.3"
+  },
+  {
+   "_rowId": "r214",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r224",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": "9,3"
+  },
+  {
+   "_rowId": "r184",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r232",
+   "Karakter": "7",
+   "Niveau": "middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r77",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "4",
+   "Niveau": "",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Niveau": "lav",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r202",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r203",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r98",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "2.9"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Snit": "9,9"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r55",
+   "Karakter": "7",
+   "Niveau": "",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Snit": "4.9"
+  },
+  {
+   "_rowId": "r180",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "4,3"
+  },
+  {
+   "_rowId": "r127",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r74",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "2.0"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r70",
+   "Karakter": "Fritaget",
+   "Niveau": "Middel",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "r212",
+   "Karakter": "Fritaget",
+   "Niveau": "Høj",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r130",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r273",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r175",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r183",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r144",
+   "Karakter": "12",
+   "Niveau": "",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r89",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r252",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r173",
+   "Karakter": "",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r271",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "12,0"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "Fritaget",
+   "Niveau": "Høj",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r118",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r261",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "11,2"
+  },
+  {
+   "_rowId": "r106",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r131",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r243",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Snit": "6,2"
+  },
+  {
+   "_rowId": "r204",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r87",
+   "Karakter": "02",
+   "Niveau": "",
+   "Snit": "11,8"
+  },
+  {
+   "_rowId": "r179",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r277",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "5,8"
+  },
+  {
+   "_rowId": "r83",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "r223",
+   "Karakter": "-3",
+   "Niveau": "Middel",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r101",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r88",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": "7,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r117",
+    "r75"
+   ]
+  ],
+  "avoid": [
+   [
+    "r98",
+    "r26",
+    "r200"
+   ],
+   [
+    "r117",
+    "r228"
+   ],
+   [
+    "r33",
+    "r234",
+    "r190",
+    "r66"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 779554
+}

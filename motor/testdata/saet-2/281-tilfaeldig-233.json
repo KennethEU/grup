@@ -1,0 +1,85 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav ",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": " LAV",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": " HØJ",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 998862
+}

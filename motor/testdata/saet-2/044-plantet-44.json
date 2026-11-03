@@ -1,0 +1,72 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p760-1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p760-7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p760-3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p760-6",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p760-6",
+    "p760-4"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 797954
+}

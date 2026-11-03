@@ -1,0 +1,178 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Karakter": "12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Karakter": "12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Karakter": "12",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Karakter": "10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Fransk",
+   "Karakter": "",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Karakter": "00",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk",
+   "Karakter": "12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Karakter": "02",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk",
+   "Karakter": "7",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk",
+   "Karakter": "-3",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng",
+    "Pige"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r17",
+    "r7",
+    "r20",
+    "r19"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 415623
+}

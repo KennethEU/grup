@@ -1,0 +1,75 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p784-2",
+        "p784-3",
+        "p784-1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p784-11",
+        "p784-10",
+        "p784-12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p784-8",
+        "p784-7",
+        "p784-9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p784-4",
+        "p784-5",
+        "p784-6"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Interesse\") og Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

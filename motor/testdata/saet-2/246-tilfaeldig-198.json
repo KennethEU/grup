@@ -1,0 +1,1140 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r50",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r277",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r190",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r216",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r214",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r286",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r241",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r174",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r184",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r168",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r263",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r265",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r288",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r209",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r235",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r192",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r182",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r234",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r161",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r294",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r239",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r264",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r165",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r261",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r293",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r231",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r258",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r225",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r173",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r291",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r213",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r228",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r203",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r211",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r189",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r276",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r273",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r298",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r149",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r188",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r142",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r284",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r167",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r295",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r201",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r229",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r176",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r170",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r237",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r169",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r224",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r245",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r186",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r212",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r297",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r206",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r292",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r217",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r270",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r205",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r236",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r254",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r166",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r191",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r220",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r275",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r221",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r219",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r285",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r180",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r243",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r283",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r175",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r247",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r280",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r259",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r199",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r256",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r290",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r171",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r250",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r164",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r210",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r172",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r208",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r271",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r244",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r198",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r248",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r252",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r202",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r269",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r162",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r187",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r179",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r242",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r287",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r249",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r260",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r255",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r232",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r178",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r194",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r193",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r227",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r253",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r274",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r268",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r196",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r251",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r272",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r262",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r266",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r181",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r226",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r257",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r238",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r281",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r282",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r278",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r267",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r289",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r183",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r222",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r163",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r240",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r230",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r218",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r72",
+    "r173",
+    "r293"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r107",
+    "r279",
+    "r56"
+   ],
+   "topic": "Klima"
+  },
+  {
+   "id": "L2",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r24",
+    "r223"
+   ],
+   "topic": "Migration"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 238538
+}

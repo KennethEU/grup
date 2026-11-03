@@ -1,0 +1,80 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r10",
+        "r13",
+        "r5"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r7",
+        "r11"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r8",
+        "r2"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r15",
+        "r6"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r4"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {
+    "L1": "EU"
+  },
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Karakter\". Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.19
+  }
+}

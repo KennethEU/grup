@@ -1,0 +1,200 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Snit": "8,1",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "8,9",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "5,0",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "6.2",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "1,8",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "4,1",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "1,9",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "3.8",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "9,3",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "2,3",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "12,0",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "10,7",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "1,5",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "4,9",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "6,6",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "11,4",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "3,7",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "8,1",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "5.4",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "1,8",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "2,2",
+   "Tidligere": "Gruppe 4",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "5,3",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "3,5",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "3,7",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r7",
+    "r24"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 589511
+}

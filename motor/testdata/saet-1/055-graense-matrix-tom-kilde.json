@@ -1,0 +1,110 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b12",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "b1",
+     "b2",
+     "b3",
+     "b4",
+     "b5",
+     "b6"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "b7",
+     "b8",
+     "b9",
+     "b10",
+     "b11",
+     "b12"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

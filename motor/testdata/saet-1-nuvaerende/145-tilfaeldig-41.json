@@ -1,0 +1,318 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r46",
+        "r80",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r14",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r75",
+        "r11",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r23",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r88",
+        "r72"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r77",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r66",
+        "r53",
+        "r58"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r20",
+        "r61"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r86",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r73",
+        "r47",
+        "r55"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r45",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r36",
+        "r2",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r69",
+        "r85",
+        "r83"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r42",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r15",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r33",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r38",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r22",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r50",
+        "r21",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r57",
+        "r49",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r82",
+        "r84",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r48",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r39",
+        "r8",
+        "r65"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r64",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r71",
+        "r79"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r7",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r67",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r89",
+        "r24",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r56",
+        "r74"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Balancér (gør gennemsnittet ens) og Ensartede (gør medlemmerne ens) på \"Niveau\" arbejder mod hinanden."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Balancér\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 3.32
+  }
+}

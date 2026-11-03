@@ -1,0 +1,264 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p884-1",
+   "Interesse": "Fodbold",
+   "Udfordring": "Ja",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-22",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p884-9",
+   "Interesse": "Kunst",
+   "Udfordring": "Ja",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p884-13",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-16",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-2",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p884-12",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-4",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-20",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p884-17",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-6",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-10",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p884-5",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-3",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-7",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-14",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p884-23",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p884-11",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-25",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p884-15",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p884-8",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p884-24",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-19",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p884-18",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p884-21",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "02"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p884-7",
+    "p884-8"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 683703
+}

@@ -1,0 +1,905 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r128",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r167",
+   "Køn": "Andet",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r153",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r168",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r173",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r138",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r103",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r159",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r111",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r177",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r157",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r113",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r132",
+   "Køn": "dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r172",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r182",
+   "Køn": "Pige ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r145",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r180",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r114",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r117",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r129",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r123",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r169",
+   "Køn": "dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r150",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r170",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r152",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r140",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r158",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r163",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r107",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r105",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r127",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r109",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r102",
+   "Køn": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r142",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r144",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Andet",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r174",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r133",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r151",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r181",
+   "Køn": "Andet",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r171",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r161",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r155",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r126",
+   "Køn": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r115",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r95",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r179",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r92",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r116",
+   "Køn": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r90",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r131",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r124",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r106",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r146",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r164",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r85",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r154",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r108",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r135",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r94",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r125",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r165",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r139",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r121",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r101",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r149",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r104",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r162",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r166",
+   "Køn": "pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Andet",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r122",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r143",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r119",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r110",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r120",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r130",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r98",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r88",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r147",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r141",
+   "Køn": "Pige ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r118",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r183",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r156",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r137",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r160",
+   "Køn": "Andet",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r116",
+    "r117"
+   ],
+   [
+    "r102",
+    "r97"
+   ],
+   [
+    "r55",
+    "r174",
+    "r42"
+   ]
+  ],
+  "avoid": [
+   [
+    "r8",
+    "r165"
+   ],
+   [
+    "r163",
+    "r161",
+    "r34",
+    "r124"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 71214
+}

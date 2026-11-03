@@ -1,0 +1,83 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p855-8",
+        "p855-13",
+        "p855-15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p855-4",
+        "p855-5",
+        "p855-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p855-7",
+        "p855-14",
+        "p855-9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p855-11",
+        "p855-10",
+        "p855-12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p855-1",
+        "p855-2",
+        "p855-3"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.11
+  }
+}

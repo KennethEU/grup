@@ -1,0 +1,106 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p408-6",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p408-1",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "3,5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p408-2",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "8,5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p408-4",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "3,5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p408-3",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p408-5",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "8,5",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p408-4",
+    "p408-5"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 145873
+}

@@ -1,0 +1,155 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p520-18",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-2",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-9",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-11",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-3",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-8",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-14",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-15",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-6",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-1",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-17",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-5",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p520-13",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-16",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p520-7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p520-6",
+    "p520-5"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 708470
+}

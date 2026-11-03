@@ -1,0 +1,45 @@
+{
+  "contractVersion": 2,
+  "status": "impossible",
+  "groups": [],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [
+        "r13",
+        "r3"
+      ],
+      "values": [],
+      "text": "{elever} skal sammen, men Adskil på \"Niveau\" holder elever med \"Lav\" i hver sin gruppe. Ret aftalen under Elevliste → Aftaler, eller ret reglen under Regler."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": null
+    },
+    {
+      "rule": 1,
+      "met": null
+    },
+    {
+      "rule": 2,
+      "met": null
+    },
+    {
+      "rule": 3,
+      "met": null
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": null,
+    "seconds": 0
+  }
+}

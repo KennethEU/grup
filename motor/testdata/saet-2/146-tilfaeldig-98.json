@@ -1,0 +1,113 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r17",
+    "r18",
+    "r1"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r14",
+    "r2"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 535477
+}

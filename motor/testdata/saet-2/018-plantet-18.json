@@ -1,0 +1,301 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p849-8",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Ja",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-30",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-2",
+   "Interesse": "Fodbold",
+   "Snit": "5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-19",
+   "Interesse": "Kunst",
+   "Snit": "4",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-7",
+   "Interesse": "Kunst",
+   "Snit": "5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-24",
+   "Interesse": "Fodbold",
+   "Snit": "4",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-27",
+   "Interesse": "Kunst",
+   "Snit": "5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-29",
+   "Interesse": "Kunst",
+   "Snit": "4",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-22",
+   "Interesse": "Fodbold",
+   "Snit": "5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-14",
+   "Interesse": "Gaming",
+   "Snit": "4",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-5",
+   "Interesse": "Fodbold",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Ja",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-11",
+   "Interesse": "Gaming",
+   "Snit": "5,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-26",
+   "Interesse": "Kunst",
+   "Snit": "5,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-25",
+   "Interesse": "Fodbold",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-13",
+   "Interesse": "Gaming",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-3",
+   "Interesse": "Fodbold",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-18",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-6",
+   "Interesse": "Kunst",
+   "Snit": "5,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-12",
+   "Interesse": "Gaming",
+   "Snit": "5",
+   "Niveau": "Lav",
+   "Udfordring": "Ja",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-4",
+   "Interesse": "Fodbold",
+   "Snit": "4",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-21",
+   "Interesse": "Fodbold",
+   "Snit": "5,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-10",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-28",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-17",
+   "Interesse": "Kunst",
+   "Snit": "5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-9",
+   "Interesse": "Kunst",
+   "Snit": "4",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-1",
+   "Interesse": "Fodbold",
+   "Snit": "5,5",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-16",
+   "Interesse": "Kunst",
+   "Snit": "5,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-15",
+   "Interesse": "Gaming",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p849-23",
+   "Interesse": "Fodbold",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p849-20",
+   "Interesse": "Kunst",
+   "Snit": "6,5",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p849-20",
+    "p849-18"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 747958
+}

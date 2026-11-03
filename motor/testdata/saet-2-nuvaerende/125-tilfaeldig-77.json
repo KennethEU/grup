@@ -1,0 +1,149 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r4",
+        "r18",
+        "r13",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r10",
+        "r5",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r7",
+        "r2",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r6",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r24",
+        "r12"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk (2.c), Tysk (2.b), Tysk (2.a), Spansk (2.a)"
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 1,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 4 elever skal adskilles inden for \"2.c\", men der er kun 2 grupper. Mindst to ender i samme gruppe. Samme problem i \"2.b\" og \"2.a\"."
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 5 elever skal adskilles inden for \"2.c\", men der er kun 2 grupper. Mindst to ender i samme gruppe. Samme problem i \"2.b\"."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Saml og Adskil bruges begge på \"Niveau\". Saml samler eleverne med samme værdi, mens Adskil vil have højst én af dem i hver gruppe (\"Høj\", \"Lav\"). De kan ikke opfyldes samtidig."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\" har 3 forskellige værdier inden for \"2.a\", men der er kun 1 gruppe. Nogle elever ender uundgåeligt alene. Samme problem i \"2.c\"."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.35
+  }
+}

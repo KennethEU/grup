@@ -1,0 +1,84 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r5",
+        "r2",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r4",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r10"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op: 6 elever har værdien \"Gruppe 3\", og der er kun plads til 4 (højst 1 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 3\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.06
+  }
+}

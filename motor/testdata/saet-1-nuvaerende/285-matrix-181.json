@@ -1,0 +1,46 @@
+{
+  "contractVersion": 2,
+  "status": "impossible",
+  "groups": [],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Matrix kan ikke dannes lige nu — det beregnede antal grupper er 0."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": null
+    },
+    {
+      "rule": 1,
+      "met": null
+    },
+    {
+      "rule": 2,
+      "met": null
+    },
+    {
+      "rule": 3,
+      "met": null
+    },
+    {
+      "rule": 4,
+      "met": null
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": null,
+    "seconds": 0
+  }
+}

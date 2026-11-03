@@ -1,0 +1,198 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Karakter": "4",
+   "Interesse": "Klatring ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "00",
+   "Interesse": " FODBOLD",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "12",
+   "Interesse": "Film",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "7",
+   "Interesse": "Klatring",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12",
+   "Interesse": "kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "12",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "4",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "12",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "10",
+   "Interesse": "Film",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "12",
+   "Interesse": "Klatring",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "02",
+   "Interesse": "Kor",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Interesse": "Klatring",
+   "Niveau": "lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 342524
+}

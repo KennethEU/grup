@@ -1,0 +1,258 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Snit": "11,3",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "7,4",
+   "Tidligere": "Gruppe 8",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "11,1",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "8,8",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "1.2",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "8,1",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "3,4",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "11.5",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "8,7",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "4,2",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "10,2",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "7.2",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "5,4",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "5,5",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "6,1",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "8,5",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "7,9",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "1.1",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "6,4",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "2,4",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "8,2",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "3,3",
+   "Tidligere": "Gruppe 8",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "6,3",
+   "Tidligere": "Gruppe 8",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "2,5",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "6,2",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "10,1",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "8,9",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "3,8",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 924166
+}

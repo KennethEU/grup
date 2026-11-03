@@ -1,0 +1,98 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Snit": "11,9"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Snit": "3,4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r3",
+    "r13",
+    "r11",
+    "r8"
+   ],
+   "topic": "Gammelt emne"
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r12",
+    "r5",
+    "r9"
+   ],
+   "topic": "Medier"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 626018
+}

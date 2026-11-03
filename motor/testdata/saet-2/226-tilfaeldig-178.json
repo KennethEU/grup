@@ -1,0 +1,117 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Hold": "2.b",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.b",
+   "Niveau": "Høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.c",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.c",
+   "Niveau": "Lav",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.c",
+   "Niveau": "Middel ",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.b",
+   "Niveau": "høj",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.c",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Niveau": "lav",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.b",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Niveau": "Høj",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b",
+   "Niveau": "Høj ",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 5
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 438921
+}

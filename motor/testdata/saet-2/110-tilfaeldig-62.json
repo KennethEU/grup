@@ -1,0 +1,807 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r101",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r85",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r77",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r74",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 12",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r76",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r94",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r81",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 19",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 19",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r95",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 18",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 24",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r48",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 21",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r84",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 19",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 11",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 17",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 12",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Skak",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r65",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 11",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r78",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 8",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r93",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Kunst ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r91",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 21",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 26",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r89",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 21",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r97",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r105",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 18",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 11",
+   "Interesse": "Skak",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Skak",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 22",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 11",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r99",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r82",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r90",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r80",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Skak ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r100",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 15",
+   "Interesse": " FODBOLD",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 26",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 18",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r103",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r61",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 7",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r88",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r79",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 24",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 18",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r104",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 18",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r98",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 17",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r92",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 20",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 26",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r72",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 22",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 14",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 26",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r87",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r102",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 23",
+   "Interesse": "Skak",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r75",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 17",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r83",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 24",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r86",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 17",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 6",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r96",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 24",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 13",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 12",
+   "Interesse": "Skak",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 15",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r76",
+    "r41"
+   ],
+   [
+    "r95",
+    "r13",
+    "r37"
+   ],
+   [
+    "r99",
+    "r84"
+   ]
+  ],
+  "avoid": [
+   [
+    "r73",
+    "r87"
+   ],
+   [
+    "r42",
+    "r62"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 30
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 719686
+}

@@ -1,0 +1,81 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Adskil bruges begge på \"Sprog\". Klyng samler eleverne med samme værdi, mens Adskil vil have højst én af dem i hver gruppe (\"Spansk\"). De kan ikke opfyldes samtidig."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.13
+  }
+}

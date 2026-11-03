@@ -1,0 +1,152 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r8",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r14",
+    "r15",
+    "r3",
+    "r16",
+    "r10",
+    "r19"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 84708
+}

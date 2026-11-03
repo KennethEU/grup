@@ -1,0 +1,156 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "andet",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r11",
+    "r7",
+    "r5",
+    "r10"
+   ],
+   [
+    "r3",
+    "r6",
+    "r13"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 595352
+}

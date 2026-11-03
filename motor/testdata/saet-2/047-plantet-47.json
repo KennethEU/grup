@@ -1,0 +1,158 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p855-14",
+   "Karakter": "4",
+   "Snit": "9,5",
+   "Interesse": "Kunst",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-6",
+   "Karakter": "10",
+   "Snit": "4,5",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-9",
+   "Karakter": "4",
+   "Snit": "4,5",
+   "Interesse": "Kunst",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-4",
+   "Karakter": "02",
+   "Snit": "10,5",
+   "Interesse": "Musik",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p855-11",
+   "Karakter": "02",
+   "Snit": "9,5",
+   "Interesse": "Film",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-15",
+   "Karakter": "4",
+   "Snit": "4,5",
+   "Interesse": "Kunst",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-10",
+   "Karakter": "12",
+   "Snit": "10,5",
+   "Interesse": "Film",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p855-8",
+   "Karakter": "7",
+   "Snit": "9,5",
+   "Interesse": "Kunst",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-7",
+   "Karakter": "12",
+   "Snit": "10,5",
+   "Interesse": "Kunst",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p855-1",
+   "Karakter": "10",
+   "Snit": "10,5",
+   "Interesse": "Musik",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p855-5",
+   "Karakter": "12",
+   "Snit": "9,5",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-13",
+   "Karakter": "12",
+   "Snit": "10,5",
+   "Interesse": "Kunst",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p855-2",
+   "Karakter": "12",
+   "Snit": "9,5",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-3",
+   "Karakter": "4",
+   "Snit": "4,5",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p855-12",
+   "Karakter": "7",
+   "Snit": "4,5",
+   "Interesse": "Film",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p855-6",
+    "p855-15",
+    "p855-11",
+    "p855-9"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 765176
+}

@@ -1,0 +1,10 @@
+{
+ "_om": "Input i sæt 1, hvor den nuværende motors svar IKKE er en målestok for den nye motor. Bruges med --known i judge/cli.mjs compare og judge/tools/grade-set.mjs.",
+ "inputs": {
+  "143-tilfaeldig-39.json": { "kind": "bevidst forbedring", "reason": "Emner + Opdel: i dag regnes antallet for hele klassen og deles mellem puljerne; den nye motor regner pr. pulje (svar7 40)." },
+  "207-tilfaeldig-103.json": { "kind": "bevidst forbedring", "reason": "Emner + Opdel, som 143 (svar7 40)." },
+  "274-tilfaeldig-170.json": { "kind": "bevidst forbedring", "reason": "Emner + Opdel, som 143 (svar7 40)." },
+  "213-matrix-109.json": { "kind": "fejl i den nuværende motor", "reason": "Matrix \"Fuld\": to kilder mangler i en matrixgruppe; \"mindst én fra hver\" er en garanti (svar2 7)." },
+  "194-matrix-90.json": { "kind": "nyt krav", "reason": "Matrix \"Fuld\": jævnhed pr. kilde er et nyt krav (svar5 34); i dag kun et hensyn." }
+ }
+}

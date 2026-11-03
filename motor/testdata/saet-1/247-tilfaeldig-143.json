@@ -1,0 +1,246 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.c",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.c",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.c",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.c",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.c",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 674532
+}

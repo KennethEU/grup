@@ -1,0 +1,308 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r41",
+        "r27",
+        "r75"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r97",
+        "r68",
+        "r57"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r51",
+        "r50",
+        "r96"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r83",
+        "r46",
+        "r73",
+        "r48"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r23",
+        "r36",
+        "r4"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r3",
+        "r20",
+        "r74"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r67",
+        "r6",
+        "r79"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r25",
+        "r39",
+        "r7"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r90",
+        "r88",
+        "r42"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r40",
+        "r17",
+        "r81"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r19",
+        "r82",
+        "r87"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r78",
+        "r1",
+        "r2"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r85",
+        "r84",
+        "r12"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r10",
+        "r89",
+        "r65"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r30",
+        "r35",
+        "r24"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r49",
+        "r58",
+        "r56"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r34",
+        "r64",
+        "r21"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r69",
+        "r80",
+        "r91"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r61",
+        "r53",
+        "r99"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r66",
+        "r9",
+        "r45"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r76",
+        "r33",
+        "r47"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r71",
+        "r94",
+        "r52"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r60",
+        "r32",
+        "r44",
+        "r37"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r70",
+        "r28",
+        "r31"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r86",
+        "r55",
+        "r98"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r38",
+        "r15",
+        "r93"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r22",
+        "r77",
+        "r11"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r72",
+        "r62",
+        "r18"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r95",
+        "r8",
+        "r29",
+        "r54"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r26",
+        "r14",
+        "r13"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Saml og Fordel bruges begge på \"Niveau\". Saml samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Snit\". Saml (\"Niveau\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 38 elever har værdien \"Middel\", og der er kun plads til 33 (højst 1-2 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 2,
+    "seconds": 12.06
+  }
+}

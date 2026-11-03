@@ -1,0 +1,208 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r2",
+   "Snit": "6,6",
+   "Sprog": "Fransk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "7,1",
+   "Sprog": "Fransk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "9,5",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "4,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "6.5",
+   "Sprog": "Tysk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "7,4",
+   "Sprog": "Tysk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "11.7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "4,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "6,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "11,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "9,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "6,3",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "9.1",
+   "Sprog": "Tysk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "10,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "3,0",
+   "Sprog": "Tysk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "7,4",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "10.1",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "7,9",
+   "Sprog": "Tysk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "2,1",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "9.9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "4.9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "11,0",
+   "Sprog": "Fransk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "1,3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "1,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "5,0",
+   "Sprog": "Fransk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "10,6",
+   "Sprog": "Tysk",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "7,5",
+   "Sprog": "Spansk",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 62572
+}

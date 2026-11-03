@@ -1,0 +1,92 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r11",
+        "r25",
+        "r21",
+        "r9",
+        "r13"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r28",
+        "r23",
+        "r24",
+        "r12",
+        "r10"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r1",
+        "r15",
+        "r4",
+        "r14",
+        "r20"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r5",
+        "r26",
+        "r8",
+        "r2"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r7",
+        "r18",
+        "r3",
+        "r6"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r16",
+        "r17",
+        "r27",
+        "r22"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.38
+  }
+}

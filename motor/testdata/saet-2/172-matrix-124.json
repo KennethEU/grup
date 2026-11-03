@@ -1,0 +1,896 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r62",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r44",
+   "Sprog": "Tysk",
+   "Interesse": "",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r45",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r82",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r51",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r65",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r80",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Køn": "dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Interesse": "",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r79",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "pige",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r75",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r34",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r58",
+   "Sprog": "Fransk",
+   "Interesse": "Skak",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r78",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Sprog": "Tysk",
+   "Interesse": "Musik ",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r46",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r42",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Køn": "pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r86",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r41",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Køn": "Pige ",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r74",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r87",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r53",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r89",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Dreng",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r33",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r38",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r77",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r43",
+   "Sprog": "Tysk",
+   "Interesse": "dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r35",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r66",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r85",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r61",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Køn": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r81",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r39",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r83",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "Pige",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r90",
+   "Sprog": "Tysk",
+   "Interesse": "klatring",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r69",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r64",
+   "Sprog": "Tysk",
+   "Interesse": "Film ",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r57",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r40",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Andet",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r67",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r68",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r56",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r55",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk",
+   "Interesse": "Skak",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r47",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r88",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r50",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Køn": "pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r60",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r2",
+    "r60",
+    "r8"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r61",
+     "r69",
+     "r11"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r31",
+     "r77",
+     "r12"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r68",
+     "r90"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r22",
+     "r41",
+     "r1"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r38",
+     "r66",
+     "r44"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r51",
+     "r34"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r18",
+     "r89",
+     "r8"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r49",
+     "r30",
+     "r55"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S9",
+    "members": [
+     "r20",
+     "r56",
+     "r33"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S10",
+    "members": [
+     "r70",
+     "r13",
+     "r67"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S11",
+    "members": [
+     "r86",
+     "r82",
+     "r40"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S12",
+    "members": [
+     "r23",
+     "r58",
+     "r62"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S13",
+    "members": [
+     "r37",
+     "r85"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S14",
+    "members": [
+     "r52",
+     "r15",
+     "r29"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S15",
+    "members": [
+     "r35",
+     "r2"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S16",
+    "members": [
+     "r28",
+     "r60",
+     "r88"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S17",
+    "members": [
+     "r47",
+     "r65"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S18",
+    "members": [
+     "r42",
+     "r63",
+     "r72"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S19",
+    "members": [
+     "r25",
+     "r3",
+     "r5"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S20",
+    "members": [
+     "r45",
+     "r43",
+     "r74"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S21",
+    "members": [
+     "r81",
+     "r19"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S22",
+    "members": [
+     "r46",
+     "r78",
+     "r64"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S23",
+    "members": [
+     "r17",
+     "r7",
+     "r59"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S24",
+    "members": [
+     "r16",
+     "r87",
+     "r48"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S25",
+    "members": [
+     "r57",
+     "r10"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S26",
+    "members": [
+     "r80",
+     "r26",
+     "r24"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S27",
+    "members": [
+     "r75",
+     "r27",
+     "r53"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S28",
+    "members": [
+     "r83",
+     "r32"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S29",
+    "members": [
+     "r39",
+     "r79",
+     "r21"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S30",
+    "members": [
+     "r50",
+     "r54",
+     "r6"
+    ],
+    "topic": "EU"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 630314
+}

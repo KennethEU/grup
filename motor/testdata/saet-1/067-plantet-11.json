@@ -1,0 +1,225 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p27-22",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-6",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-16",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-26",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-31",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-11",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-10",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-20",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-19",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-13",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-12",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-36",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-21",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-27",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-25",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-17",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-5",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-1",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-7",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-9",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-8",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-33",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-14",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-18",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-29",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-2",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-30",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-23",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-28",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-4",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p27-35",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-15",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-24",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-32",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-34",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p27-3",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p27-1",
+    "p27-2"
+   ]
+  ],
+  "avoid": [
+   [
+    "p27-26",
+    "p27-36"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 347743
+}

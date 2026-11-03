@@ -1,0 +1,45 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p161-6",
+    "p161-8",
+    "p161-5",
+    "p161-7"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p161-1",
+    "p161-2",
+    "p161-4",
+    "p161-3"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  },
+  {
+   "rule": 1,
+   "met": true
+  },
+  {
+   "rule": 2,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

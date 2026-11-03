@@ -1,0 +1,157 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p637-9",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-2",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-4",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p637-3",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-12",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-1",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-5",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-6",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-11",
+   "Sprog": "Spansk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-10",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p637-8",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p637-9",
+    "p637-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 507516
+}

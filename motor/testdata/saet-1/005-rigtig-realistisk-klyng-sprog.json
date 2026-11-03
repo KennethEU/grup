@@ -1,0 +1,170 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "k0",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k1",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k2",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k3",
+   "Sprog": "Fransk",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "k4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k5",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k7",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k8",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k9",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k10",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k11",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k12",
+   "Sprog": "Tysk",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "k13",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k14",
+   "Sprog": "Tysk",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "k15",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k16",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k18",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k19",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k20",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k21",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k23",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k24",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k25",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k26",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "k0",
+    "k1"
+   ]
+  ],
+  "avoid": [
+   [
+    "k2",
+    "k4"
+   ],
+   [
+    "k8",
+    "k9",
+    "k10"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

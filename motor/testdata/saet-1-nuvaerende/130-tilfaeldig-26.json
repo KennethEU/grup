@@ -1,0 +1,439 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r88",
+        "r70",
+        "r79",
+        "r44",
+        "r129"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r135",
+        "r22",
+        "r55",
+        "r54",
+        "r111"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r31",
+        "r136",
+        "r51",
+        "r8",
+        "r170"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r147",
+        "r68",
+        "r109",
+        "r67"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r190",
+        "r18",
+        "r41",
+        "r153",
+        "r1"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r193",
+        "r42",
+        "r137",
+        "r92",
+        "r95"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r126",
+        "r173",
+        "r65",
+        "r99",
+        "r26"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r59",
+        "r50",
+        "r15",
+        "r86",
+        "r164"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r102",
+        "r23",
+        "r181",
+        "r138",
+        "r96"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r156",
+        "r57",
+        "r9",
+        "r166",
+        "r80"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r133",
+        "r19",
+        "r160",
+        "r25"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r179",
+        "r83",
+        "r3",
+        "r146"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r37",
+        "r117",
+        "r182",
+        "r58",
+        "r124"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r159",
+        "r32",
+        "r118",
+        "r66",
+        "r192"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r174",
+        "r114",
+        "r29",
+        "r152",
+        "r169"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r143",
+        "r122",
+        "r16",
+        "r72"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r11",
+        "r97",
+        "r158",
+        "r141",
+        "r56"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r10",
+        "r196",
+        "r17",
+        "r172",
+        "r46"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r28",
+        "r119",
+        "r103",
+        "r195"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r139",
+        "r45",
+        "r162",
+        "r48",
+        "r150"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r49",
+        "r76",
+        "r27",
+        "r110",
+        "r163"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r100",
+        "r24",
+        "r84",
+        "r188",
+        "r43"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r107",
+        "r4",
+        "r5",
+        "r140"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r132",
+        "r123",
+        "r104",
+        "r134"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r175",
+        "r120",
+        "r82",
+        "r130",
+        "r115"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r199",
+        "r131",
+        "r7",
+        "r197",
+        "r71"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r105",
+        "r185",
+        "r75",
+        "r183",
+        "r78"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r176",
+        "r165",
+        "r198",
+        "r116"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r21",
+        "r39",
+        "r168",
+        "r74"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r151",
+        "r62",
+        "r20",
+        "r90"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r81",
+        "r60",
+        "r191",
+        "r87"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r194",
+        "r125",
+        "r149",
+        "r40",
+        "r180"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r33",
+        "r171",
+        "r69",
+        "r6"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r121",
+        "r178",
+        "r91",
+        "r98",
+        "r108"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r47",
+        "r187",
+        "r144",
+        "r64",
+        "r52"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r30",
+        "r167",
+        "r113",
+        "r61",
+        "r14"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r101",
+        "r154",
+        "r184",
+        "r189",
+        "r34"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r148",
+        "r12",
+        "r128",
+        "r112",
+        "r161"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r127",
+        "r35",
+        "r94",
+        "r63",
+        "r13"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r186",
+        "r73",
+        "r89",
+        "r53",
+        "r157"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 95 elever har værdien \"Middel\", og der er kun plads til 80 (højst 2 pr. gruppe). 15 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 137 elever har værdien \"Pige\", og der er kun plads til 80 (højst 2 pr. gruppe). 57 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 3,
+    "seconds": 9.29
+  }
+}

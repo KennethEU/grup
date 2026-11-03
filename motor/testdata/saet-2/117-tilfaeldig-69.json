@@ -1,0 +1,187 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r29",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r32",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 943268
+}

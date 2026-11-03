@@ -1,0 +1,138 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p686-12",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-15",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-1",
+   "Interesse": "Gaming",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p686-13",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-11",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-17",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-18",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-6",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-8",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-3",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-14",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-10",
+   "Interesse": "Kunst",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p686-16",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-7",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-20",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-2",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-9",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-19",
+   "Interesse": "Kunst",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-4",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p686-5",
+   "Interesse": "Gaming",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 671945
+}

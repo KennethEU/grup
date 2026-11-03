@@ -1,0 +1,117 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": " MUSIK"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r17",
+    "r9",
+    "r6",
+    "r19",
+    "r14"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r15",
+    "r12"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r5",
+    "r20",
+    "r21",
+    "r18"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 364893
+}

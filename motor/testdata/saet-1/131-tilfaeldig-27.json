@@ -1,0 +1,171 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "middel",
+   "Interesse": "Kunst",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Høj",
+   "Interesse": "Kunst ",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Interesse": "Klatring",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Interesse": "Dans",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Interesse": "Dans",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 186899
+}

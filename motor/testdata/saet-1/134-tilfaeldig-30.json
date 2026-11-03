@@ -1,0 +1,257 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "7.1",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Dans ",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "10.5",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "dans",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Snit": "10,1",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "8,5",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "4.8",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "10,9",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "10,2",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Dans",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Snit": "4,0",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Snit": "3,9",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "11,5",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Snit": "1,5",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "10,7",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Snit": "10.8",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Snit": "",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Køn": "Andet",
+   "Snit": "6,1",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "1,9",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Køn": "pige",
+   "Snit": "9,8",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "2,1",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "9,0",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Køn": "",
+   "Snit": "9.7",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "film",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "6,9",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Snit": "8,3",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "10,5",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Snit": "5.7",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Snit": "6,9",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Snit": "3,9",
+   "Tidligere": "Gruppe 3"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 10
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 693887
+}

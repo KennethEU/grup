@@ -1,0 +1,283 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r7",
+        "r88",
+        "r46",
+        "r80"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r48",
+        "r6",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r78",
+        "r59",
+        "r14",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r58",
+        "r89",
+        "r95"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r75",
+        "r96",
+        "r20",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r4",
+        "r32",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r11",
+        "r69",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r61",
+        "r25",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r1",
+        "r44",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r12",
+        "r40",
+        "r67"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r97",
+        "r73",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r76",
+        "r47",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r50",
+        "r92",
+        "r23",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r79",
+        "r37",
+        "r72",
+        "r87"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r39",
+        "r70",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r65",
+        "r84",
+        "r56",
+        "r86"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r16",
+        "r35",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r26",
+        "r13",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r85",
+        "r94",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r100",
+        "r21",
+        "r36",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r34",
+        "r93",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r99",
+        "r24",
+        "r74",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r49",
+        "r62",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r77",
+        "r29",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r64",
+        "r55",
+        "r98",
+        "r63"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 4,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 30 elever skal adskilles, men der er kun 25 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Snit\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 4,
+    "seconds": 9.36
+  }
+}

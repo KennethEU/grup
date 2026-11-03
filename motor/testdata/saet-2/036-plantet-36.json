@@ -1,0 +1,155 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p117-2",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-8",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-14",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-17",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-18",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-11",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-13",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-4",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-3",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-5",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-6",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-9",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-15",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p117-10",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-7",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-16",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p117-1",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p117-12",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Udfordring": "Ja"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p117-3",
+    "p117-2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 38514
+}

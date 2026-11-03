@@ -1,0 +1,401 @@
+/* grup.dk/beta — Historik og Import & backup i den rolige stil.
+   Kun regler under html.beta, så den almindelige Grupper er urørt.
+   Se docs/grupper-beta-plan.md.
+
+   Komponenterne bruger Vue scoped styles (.foo[data-v-x] = 0,2,0).
+   Alle regler her har en ekstra html.beta foran og slår dem dermed uden
+   !important. */
+
+/* ───────────── Historik ───────────── */
+
+/* Listen står direkte på papiret: ingen ramme, ingen baggrund, ingen skygge,
+   ingen sløring. Hårlinjerne mellem rækkerne er det eneste, der deler den. */
+html.beta .history-wrapper { max-inline-size: 960px; padding-block-start: 16px; }
+html.beta .history-wrapper .table-container {
+    background: transparent;
+    backdrop-filter: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
+/* Tom tilstand: ingen kasse, ikonet næsten usynligt, teksten i ink-skalaen */
+html.beta .history-wrapper .empty-state {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding-block: 96px;
+    color: var(--ink-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+html.beta .history-wrapper .empty-state svg {
+    color: var(--ink-4);
+    margin-block-end: 10px;
+    stroke-width: 1.5;
+}
+html.beta .history-wrapper .empty-state strong { color: var(--ink); font-size: 15px; font-weight: 600; }
+html.beta .history-wrapper .empty-state span { color: var(--ink-3); font-size: 13px; line-height: 1.6; max-inline-size: 38ch; }
+html.beta .history-wrapper .empty-state span strong { font-size: inherit; font-weight: 600; color: var(--ink-2); }
+
+/* Overskrifter: mono-etiketter med en enkelt hårlinje under */
+html.beta .history-wrapper .history-header {
+    background: transparent;
+    padding-inline: 12px;
+    border-block-end: 1px solid var(--rule-2);
+    font: 500 10px var(--mono);
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+}
+
+/* Overskrift og rækker har samme mellemrum mellem kolonnerne, så TID, TYPE og
+   GRUPPER står lige over deres værdier */
+html.beta .history-wrapper .history-header,
+html.beta .history-wrapper .history-item-row { gap: 16px; }
+
+/* Rækkerne: kun vandrette hårlinjer, ingen kort */
+html.beta .history-wrapper .history-item-row {
+    padding-inline: 12px;
+    min-block-size: 52px;
+    /* Rolig-temaet giver rækker (role=row) en ramme hele vejen rundt;
+       nulstil og behold kun hårlinjen forneden */
+    border: 0;
+    border-radius: 0;
+    border-block-end: 1px solid var(--rule);
+    background: transparent;
+}
+html.beta .history-wrapper .history-item-row:hover { background: var(--paper-2); }
+
+html.beta .history-wrapper .cell-date { color: var(--ink-2); font-weight: 500; }
+html.beta .history-wrapper .cell-time { color: var(--ink-3); font-family: var(--mono); font-size: 12px; }
+html.beta .history-wrapper .cell-name { color: var(--ink); font-weight: 600; }
+html.beta .history-wrapper .cell-type { color: var(--ink-3); font: 500 11px var(--mono); letter-spacing: 0.04em; }
+html.beta .history-wrapper .cell-type.is-matrix { color: var(--primary); }
+html.beta .history-wrapper .cell-count { color: var(--ink-2); font-family: var(--mono); font-size: 12px; font-weight: 500; }
+
+/* Handlingerne er stille ikoner i ink-3. Sletning er ikke rød, før man
+   peger på den — planen: rødt kun ved selve sletningen. */
+html.beta .history-wrapper .cell-actions { gap: 2px; }
+html.beta .history-wrapper .cell-actions .btn-icon {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--ink-3);
+}
+html.beta .history-wrapper .cell-actions .btn-icon:hover { background: var(--paper-3); color: var(--ink); }
+html.beta .history-wrapper .cell-actions .btn-icon.danger { color: var(--ink-3); }
+html.beta .history-wrapper .cell-actions .btn-icon.danger:hover {
+    background: color-mix(in oklch, var(--color-error, oklch(0.55 0.2 27)) 10%, transparent);
+    color: var(--color-error, oklch(0.55 0.2 27));
+}
+
+/* ───────────── Import & backup: undervælgeren (Importer / Eksporter) ───────────── */
+
+/* Tre rækker faner stod oven på hinanden, alle blå (Import & backup, Importer/
+   Eksporter, Upload/Indsæt). Nu er kun den øverste (hovednavigationen) blå;
+   undervælgeren er ink-tekst med ink-streg og har ikke længere et bånd i fuld
+   bredde: båndet har sidens papirfarve og hårlinjen ligger kun under selve
+   vælgeren, i samme læsebredde som indholdet (960 px). */
+html.beta .ie-header-sticky {
+    background: var(--paper-2);
+    backdrop-filter: none;
+    box-shadow: none;
+    border-block-end: 0;
+}
+/* border-box: 960 px indhold + 2 × 24 px polstring, så fanerne flugter med
+   indholdet under (tab-content-wrapper har samme 24 px) */
+html.beta .ie-header-sticky .header-inner {
+    box-sizing: border-box;
+    inline-size: 100%;
+    max-inline-size: calc(960px + 48px);
+    justify-content: flex-start;
+}
+/* Båndets indre bokse er midtstillede i den almindelige udgave; her fylder de
+   bredden og står til venstre, så fanerne flugter med indholdet nedenunder */
+html.beta .ie-header-sticky .settings-panel,
+html.beta .ie-header-sticky .ribbon-content,
+html.beta .ie-header-sticky .ribbon-zone,
+html.beta .ie-header-sticky .ribbon-group {
+    inline-size: 100%;
+    justify-content: flex-start;
+}
+html.beta .ie-header-sticky .settings-panel { min-block-size: 0; background: transparent; border: 0; box-shadow: none; }
+
+/* Piller bliver til tekst med en understregning under den valgte. Glideren
+   (.slide-indicator) bliver sat med JS i inline-styles og er en blå pille —
+   den skjules, så den ikke ligger bag teksten; understregningen er den valgte. */
+html.beta .ie-header-sticky .pill-group {
+    background: transparent;
+    border: 0;
+    border-block-end: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 0;
+    block-size: auto;
+    gap: 4px;
+    inline-size: 100%;
+}
+html.beta .ie-header-sticky .slide-indicator { display: none; }
+html.beta .ie-header-sticky .pill-btn {
+    padding: 12px 14px 10px;
+    background: transparent;
+    border-radius: 0;
+    border-block-end: 2px solid transparent;
+    margin-block-end: -1px;
+    color: var(--ink-3);
+    font-size: 13px;
+    font-weight: 500;
+}
+/* Ikonerne i ink-3 — også i den valgte fane */
+html.beta .ie-header-sticky .pill-btn:first-child { padding-inline-start: 0; }
+html.beta .ie-header-sticky .pill-btn svg { color: var(--ink-3); }
+html.beta .ie-header-sticky .pill-btn:hover:not(.active) { color: var(--ink); }
+/* `!important` fordi rolig-tema.css tvinger blå tekst på .pill-btn.active
+   med !important (til de segmenterede vælgere i Grupper) */
+html.beta .ie-header-sticky .pill-btn.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+    border-block-end-color: var(--ink);
+}
+
+html.beta #view-import-export .tab-content-wrapper { padding-block-start: 32px; }
+
+/* Én læsebredde (960 px, midtstillet) for Historik, Import & backup og infosiderne;
+   Importer og Eksporter var 700 px, fanerne 900 */
+html.beta #view-import-export .tab-content,
+html.beta #view-import-export .import-container,
+html.beta #view-import-export .export-container { max-inline-size: 960px; }
+
+/* ───────────── Import & backup: Importer ───────────── */
+
+html.beta .import-container .description,
+html.beta .export-container .description { color: var(--ink-3); font-size: 13px; line-height: 1.6; }
+
+/* "Upload fil" / "Indsæt tekst": tredje niveau, så endnu stillere end
+   Importer/Eksporter: ingen hårlinje under rækken, kun en ink-streg under
+   den valgte, og ikonerne i ink-3 */
+html.beta .import-container .toggle-mode {
+    background: transparent;
+    padding: 0;
+    gap: 20px;
+    border-block-end: 0;
+    display: flex;
+}
+html.beta .import-container .toggle-mode button {
+    padding: 8px 2px 8px;
+    border-radius: 0;
+    border-block-end: 2px solid transparent;
+    color: var(--ink-3);
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: none;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+html.beta .import-container .toggle-mode button svg { color: var(--ink-3); }
+html.beta .import-container .toggle-mode button:hover:not(:disabled) { color: var(--ink); }
+html.beta .import-container .toggle-mode button.active {
+    background: transparent;
+    box-shadow: none;
+    color: var(--ink);
+    font-weight: 600;
+    border-block-end-color: var(--ink);
+}
+html.beta .import-container .actions-header { margin-block-end: 28px; }
+
+/* Upload-feltet: tynd stiplet hårlinje, ingen flade */
+html.beta .import-container .drop-zone {
+    background: transparent;
+    border: 1px dashed var(--rule-2);
+    border-radius: 10px;
+    padding-block: 48px;
+}
+html.beta .import-container .drop-zone:hover,
+html.beta .import-container .drop-zone.drag-over {
+    background: color-mix(in oklch, var(--primary) 4%, transparent);
+    border-color: var(--primary);
+}
+html.beta .import-container .drop-zone.drag-over { border-style: solid; }
+html.beta .import-container .drop-zone h3 { color: var(--ink); font-weight: 600; }
+html.beta .import-container .drop-icon { color: var(--ink-4); }
+html.beta .import-container .drop-icon svg { opacity: 1 !important; /* inline opacity i ImportSection-markup */ stroke-width: 1.5; }
+html.beta .import-container .drop-hint { color: var(--ink-3); }
+
+/* Valgte filer: en liste med hårlinjer i stedet for kort i et kort */
+html.beta .import-container .file-list {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+}
+html.beta .import-container .file-header { color: var(--ink); }
+html.beta .import-container .files-preview { gap: 0; border-block-start: 1px solid var(--rule); }
+html.beta .import-container .file-item {
+    background: transparent;
+    border: 0;
+    border-block-end: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 12px 4px;
+    color: var(--ink-2);
+    font-weight: 500;
+}
+
+/* Formularfelter: bløde flader uden kasse-look; fokus er den blå ring */
+html.beta .import-container .form-group label {
+    font: 500 10px var(--mono);
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+}
+html.beta .import-container .input-full {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-weight: 500;
+}
+html.beta .import-container .input-full:hover { background: var(--paper-2); border-color: var(--rule-2); }
+html.beta .import-container .input-full:focus {
+    background: var(--paper);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+html.beta .import-container .data-hint { background: transparent; padding: 0; color: var(--ink-3); }
+html.beta .import-container .checkbox-label { color: var(--ink-2); font-weight: 500; }
+/* Afkrydsningsfeltets tekst er en almindelig sætning, ikke en mono-etiket */
+html.beta .import-container .form-group label.checkbox-label {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-2);
+    gap: 10px;
+}
+html.beta .import-container .checkbox-label input { accent-color: var(--ink-2); }
+html.beta .import-container .lectio-badge {
+    background: transparent;
+    border: 0;
+    border-inline-start: 2px solid var(--primary);
+    border-radius: 0;
+    color: var(--ink-2);
+    padding-inline: 10px;
+    font-weight: 500;
+}
+html.beta .import-container .error-msg {
+    background: transparent;
+    border-inline-start: 2px solid var(--color-error, oklch(0.55 0.2 27));
+    border-radius: 0;
+    text-align: start;
+    color: var(--ink-2);
+}
+
+/* Bunden: hårlinje over, skabelon som stille tekst til venstre, hovedhandlingen
+   fyldt blå til højre. Når den ikke kan bruges, er den en blød grå flade — ikke
+   en gennemsigtig blå, der ligner en tilstand halvvejs. */
+html.beta .import-container .bottom-actions { border-block-start: 1px solid var(--rule); }
+html.beta .import-container .template-section { color: var(--ink-3); }
+html.beta .import-container .template-section a { color: var(--primary); }
+html.beta .import-container .btn.primary,
+html.beta .export-container .btn.primary {
+    background: var(--primary);
+    color: var(--paper);
+    border: 0;
+    box-shadow: none;
+    border-radius: var(--radius-md);
+}
+html.beta .import-container .btn.primary:hover:not(:disabled),
+html.beta .export-container .btn.primary:hover:not(:disabled) { background: var(--primary-hover); }
+html.beta .import-container .btn.primary:disabled {
+    background: var(--paper-3);
+    color: var(--ink-4);
+    opacity: 1;
+}
+html.beta .import-container .btn.secondary,
+html.beta .export-container .btn.secondary {
+    background: var(--paper-3);
+    border: 0;
+    color: var(--ink-2);
+    box-shadow: none;
+    border-radius: var(--radius-md);
+}
+html.beta .import-container .btn.secondary:hover,
+html.beta .export-container .btn.secondary:hover { background: var(--rule); color: var(--ink); }
+
+/* ───────────── Import & backup: Eksporter ───────────── */
+
+/* Klasselisten: etiket + hårlinjer, ingen ramme */
+html.beta .export-container .list-container {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+}
+html.beta .export-container .list-header {
+    padding-inline: 0;
+    border-block-end: 1px solid var(--rule-2);
+}
+html.beta .export-container .list-header h3 {
+    font: 500 10px var(--mono);
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+}
+html.beta .export-container .toggle-link { color: var(--primary); font-weight: 500; }
+html.beta .export-container .class-list { padding: 0; }
+html.beta .export-container .class-item {
+    padding: 12px 4px;
+    border-radius: 0;
+    border-block-end: 1px solid var(--rule);
+    box-shadow: none;
+}
+html.beta .export-container .class-item:hover { background: var(--paper-2); box-shadow: none; }
+html.beta .export-container .class-item input { accent-color: var(--ink-2); }
+html.beta .export-container .class-name { color: var(--ink); font-weight: 500; }
+html.beta .export-container .empty-list { color: var(--ink-3); }
+
+/* De to handlinger: to rækker adskilt af hårlinjer i stedet for to kort.
+   Teksten til venstre, knappen til højre. Markup'en er h4 → p → knap, så et
+   grid lader knappen spænde over begge tekstlinjer. */
+html.beta .export-container .actions-footer {
+    flex-direction: column;
+    gap: 0;
+    margin-block-start: 32px;
+    border-block-start: 1px solid var(--rule-2);
+}
+html.beta .export-container .action-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    column-gap: 32px;
+    align-items: center;
+    flex: none;
+    background: transparent;
+    border: 0;
+    border-block-end: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 20px 4px;
+    text-align: start;
+}
+html.beta .export-container .action-group:hover { background: transparent; border-color: var(--rule); }
+html.beta .export-container .action-group h4 { grid-column: 1; grid-row: 1; margin: 0 0 2px; color: var(--ink); font-size: 14px; }
+html.beta .export-container .action-group p { grid-column: 1; grid-row: 2; margin: 0; min-block-size: 0; color: var(--ink-3); font-size: 12px; }
+html.beta .export-container .action-group .btn {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    inline-size: 260px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+html.beta .export-container .action-group .btn svg { margin: 0; /* knappen bruger gap */ }
+
+/* Knapperne i Import & backup: 36 px / radius 8 som resten af beta */
+html.beta .import-container .btn,
+html.beta .export-container .btn {
+    min-block-size: 36px;
+    border-radius: 8px;
+}

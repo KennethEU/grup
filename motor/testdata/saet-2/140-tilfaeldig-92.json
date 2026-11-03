@@ -1,0 +1,275 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Snit": "8,4",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "5,8",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "9,8",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "7.0",
+   "Niveau": "",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "5,0",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "5,7",
+   "Niveau": "Lav",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "6.2",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "8,9",
+   "Niveau": "middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "3,9",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "2,4",
+   "Niveau": "Lav",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "3,4",
+   "Niveau": "Høj",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "9,2",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "8,0",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "10,0",
+   "Niveau": "Høj",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "10,1",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "4,1",
+   "Niveau": "Middel",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "9,8",
+   "Niveau": "Middel",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "11.1",
+   "Niveau": "Lav",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "10,3",
+   "Niveau": "Lav",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "7.7",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "4,1",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "5,3",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "11,1",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "4,0",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "5.1",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "7,2",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "2,8",
+   "Niveau": "Høj",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "8,7",
+   "Niveau": "Middel",
+   "Interesse": "kunst",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "1,3",
+   "Niveau": "Høj",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r16",
+    "r11",
+    "r15",
+    "r23"
+   ],
+   [
+    "r15",
+    "r29",
+    "r23"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 772575
+}

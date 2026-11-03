@@ -1,0 +1,647 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r53",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Dreng ",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r92",
+   "Køn": "Pige",
+   "Niveau": "",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "pige",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r95",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Dreng ",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Dreng",
+   "Niveau": "Middel ",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Andet",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Andet",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": "pige",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Pige",
+   "Niveau": "",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r98",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Dreng",
+   "Niveau": "høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r96",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r88",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r94",
+   "Køn": "dreng",
+   "Niveau": "Høj",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "dreng",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r85",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Niveau": "høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r90",
+   "Køn": "Pige",
+   "Niveau": "",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Andet",
+   "Niveau": "Høj",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Pige",
+   "Niveau": "høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r101",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Dreng",
+   "Niveau": "middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r102",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r95",
+    "r3"
+   ],
+   [
+    "r23",
+    "r39",
+    "r94"
+   ],
+   [
+    "r69",
+    "r33"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 1
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 718818
+}

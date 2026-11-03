@@ -1,0 +1,2273 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r41",
+   "Tidligere": "Gruppe 51",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "6,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r256",
+   "Tidligere": "Gruppe 23",
+   "Niveau": " MIDDEL",
+   "Køn": "Dreng",
+   "Snit": "9,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r68",
+   "Tidligere": "Gruppe 28",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r151",
+   "Tidligere": "Gruppe 8",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r87",
+   "Tidligere": "Gruppe 35",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "7,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r187",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Middel",
+   "Køn": " DRENG",
+   "Snit": "8,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r223",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "11.7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r246",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r189",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r194",
+   "Tidligere": "Gruppe 59",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r50",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "middel",
+   "Køn": "dreng",
+   "Snit": "5,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r192",
+   "Tidligere": "Gruppe 31",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r75",
+   "Tidligere": "Gruppe 60",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Snit": "2,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Tidligere": "Gruppe 47",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "9,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r201",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "8,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Snit": "6,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r122",
+   "Tidligere": "Gruppe 26",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "2,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r150",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "5,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r272",
+   "Tidligere": "Gruppe 46",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "4,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r166",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Snit": "1.3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r167",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "8,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r126",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r182",
+   "Tidligere": "Gruppe 28",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "1,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r48",
+   "Tidligere": "Gruppe 28",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r98",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "11,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r117",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r40",
+   "Tidligere": "Gruppe 51",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "7,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r77",
+   "Tidligere": "Gruppe 38",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "10,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r140",
+   "Tidligere": "Gruppe 58",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4.6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 58",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "1,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r105",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r210",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r185",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "10.1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 68",
+   "Niveau": "Lav",
+   "Køn": "andet",
+   "Snit": "5,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r136",
+   "Tidligere": "Gruppe 47",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r243",
+   "Tidligere": "Gruppe 59",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Snit": "9,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r217",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "10,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r160",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "1.1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r224",
+   "Tidligere": "Gruppe 53",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "9,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r146",
+   "Tidligere": "Gruppe 66",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "2,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 38",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r204",
+   "Tidligere": "Gruppe 27",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Snit": "7,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r183",
+   "Tidligere": "Gruppe 53",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r131",
+   "Tidligere": "Gruppe 55",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "3,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r188",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "11,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r238",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r203",
+   "Tidligere": "Gruppe 63",
+   "Niveau": "høj",
+   "Køn": "Pige",
+   "Snit": "11,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r120",
+   "Tidligere": "Gruppe 58",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "3,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r233",
+   "Tidligere": "Gruppe 57",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "11,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 58",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Snit": "1,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r135",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r137",
+   "Tidligere": "Gruppe 58",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r80",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10.6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r262",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r94",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "5,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r124",
+   "Tidligere": "Gruppe 67",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Snit": "4,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r170",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "5,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r242",
+   "Tidligere": "Gruppe 33",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Snit": "8,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r234",
+   "Tidligere": "Gruppe 63",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r159",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "8,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r110",
+   "Tidligere": "Gruppe 63",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "2,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r230",
+   "Tidligere": "Gruppe 64",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "6,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9.3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj",
+   "Køn": " PIGE",
+   "Snit": "10.8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r171",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "10,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r86",
+   "Tidligere": "Gruppe 65",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "7,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r90",
+   "Tidligere": "Gruppe 26",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "9,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r128",
+   "Tidligere": "Gruppe 53",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "2,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r85",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "10,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r253",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "7,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 54",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "8,8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r266",
+   "Tidligere": "Gruppe 64",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "5,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r190",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r143",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Høj",
+   "Køn": "Andet",
+   "Snit": "7,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r116",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "6,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r244",
+   "Tidligere": "Gruppe 55",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Snit": "4,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r228",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "1,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r229",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Snit": "6.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r141",
+   "Tidligere": "Gruppe 53",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 66",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r74",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "6,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r175",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7.1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r129",
+   "Tidligere": "Gruppe 19",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "5,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r164",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "11,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r231",
+   "Tidligere": "Gruppe 40",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r173",
+   "Tidligere": "Gruppe 62",
+   "Niveau": "Lav",
+   "Køn": "Pige ",
+   "Snit": "1,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r59",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r145",
+   "Tidligere": "Gruppe 47",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "6,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r257",
+   "Tidligere": "Gruppe 24",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "8,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r39",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Middel ",
+   "Køn": "Dreng",
+   "Snit": "10,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r200",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Lav",
+   "Køn": "Andet",
+   "Snit": "3.5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r241",
+   "Tidligere": "Gruppe 33",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r132",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "11,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r275",
+   "Tidligere": "Gruppe 36",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "1,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r56",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "middel",
+   "Køn": "Pige",
+   "Snit": "6,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r191",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "2,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r237",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Snit": "7.6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r81",
+   "Tidligere": "Gruppe 47",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r66",
+   "Tidligere": "Gruppe 17",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Snit": "7,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Lav",
+   "Køn": "Andet ",
+   "Snit": "8,2",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r264",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r133",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "8,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r206",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "10,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "11,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r57",
+   "Tidligere": "Gruppe 19",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r249",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "8,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r89",
+   "Tidligere": "Gruppe 41",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r101",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "2,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r268",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Lav",
+   "Køn": "pige",
+   "Snit": "9,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r82",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r60",
+   "Tidligere": "Gruppe 68",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "5,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r108",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 50",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r67",
+   "Tidligere": "Gruppe 63",
+   "Niveau": "Høj",
+   "Køn": " DRENG",
+   "Snit": "9,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r91",
+   "Tidligere": "Gruppe 68",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "10,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r236",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "3,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r219",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r172",
+   "Tidligere": "Gruppe 8",
+   "Niveau": "Lav",
+   "Køn": " PIGE",
+   "Snit": "1,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r114",
+   "Tidligere": "Gruppe 62",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r35",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "2,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r212",
+   "Tidligere": "Gruppe 57",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "2,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r88",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r112",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Lav",
+   "Køn": "dreng",
+   "Snit": "7,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r174",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "6,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r214",
+   "Tidligere": "Gruppe 35",
+   "Niveau": "Lav",
+   "Køn": "dreng",
+   "Snit": "8.6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r225",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r65",
+   "Tidligere": "Gruppe 68",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r211",
+   "Tidligere": "Gruppe 8",
+   "Niveau": "lav",
+   "Køn": "andet",
+   "Snit": "6.1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r161",
+   "Tidligere": "Gruppe 24",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9.9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r261",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r180",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "3,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r254",
+   "Tidligere": "Gruppe 56",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r138",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "10.2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r265",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7.2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r227",
+   "Tidligere": "Gruppe 67",
+   "Niveau": "middel",
+   "Køn": "Pige",
+   "Snit": "11.3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r47",
+   "Tidligere": "Gruppe 57",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r104",
+   "Tidligere": "Gruppe 40",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r218",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r103",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "10,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r51",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "8.0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r154",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Snit": "11,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r83",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "2,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "8,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r111",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "8,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "5,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r220",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Snit": "1,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r54",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "1,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r121",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "9,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r158",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "6,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r213",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Middel",
+   "Køn": "",
+   "Snit": "7.2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r168",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "9,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r251",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "2.2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r76",
+   "Tidligere": "Gruppe 69",
+   "Niveau": "Middel",
+   "Køn": "Andet",
+   "Snit": "7,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r84",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "9.6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r148",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "6,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r197",
+   "Tidligere": "Gruppe 36",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "2,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r43",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Tidligere": "Gruppe 40",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "3,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r235",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "3,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r157",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "5.5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r239",
+   "Tidligere": "Gruppe 29",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "6,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r62",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r96",
+   "Tidligere": "Gruppe 51",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "4.2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r118",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 69",
+   "Niveau": "Middel",
+   "Køn": "Pige ",
+   "Snit": "3,8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r134",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Snit": "3,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r115",
+   "Tidligere": "Gruppe 68",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Snit": "8,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r250",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r61",
+   "Tidligere": "Gruppe 62",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Snit": "4,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r247",
+   "Tidligere": "Gruppe 17",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Snit": "3,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r209",
+   "Tidligere": "Gruppe 40",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "6,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r93",
+   "Tidligere": "Gruppe 56",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "11.9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r46",
+   "Tidligere": "Gruppe 64",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "11,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r152",
+   "Tidligere": "Gruppe 67",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "1,8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r205",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r79",
+   "Tidligere": "Gruppe 65",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "11,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r255",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Middel",
+   "Køn": "",
+   "Snit": "2,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r177",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Middel",
+   "Køn": "Andet ",
+   "Snit": "7,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r109",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "2,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r195",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "9,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r226",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "6,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r123",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "3.9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r147",
+   "Tidligere": "Gruppe 51",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r165",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "3,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "2,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r176",
+   "Tidligere": "Gruppe 59",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 54",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "1.3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r273",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "Middel ",
+   "Køn": "Dreng",
+   "Snit": "8,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r260",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "11,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r127",
+   "Tidligere": "Gruppe 57",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "11,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r119",
+   "Tidligere": "Gruppe 28",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "10,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r269",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "9,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r184",
+   "Tidligere": "Gruppe 43",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "6.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Tidligere": "Gruppe 59",
+   "Niveau": "høj",
+   "Køn": "Dreng",
+   "Snit": "3,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r193",
+   "Tidligere": "Gruppe 24",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "6,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r125",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Snit": "1,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r106",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "7,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r142",
+   "Tidligere": "Gruppe 50",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3.1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r245",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Snit": "8.6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Snit": "11,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r78",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "1,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r215",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "3,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r259",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r248",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r37",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "9,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r267",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "6,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r42",
+   "Tidligere": "Gruppe 46",
+   "Niveau": "Høj",
+   "Køn": "pige",
+   "Snit": "4,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r274",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "2,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "5,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r153",
+   "Tidligere": "Gruppe 43",
+   "Niveau": " HØJ",
+   "Køn": "Pige",
+   "Snit": "10,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r270",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "3,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r221",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "8,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r186",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "8,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r100",
+   "Tidligere": "Gruppe 53",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "1,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r107",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "2,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r102",
+   "Tidligere": "Gruppe 19",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r198",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Middel",
+   "Køn": "Pige ",
+   "Snit": "3,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r33",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "3,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r58",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "7,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r144",
+   "Tidligere": "Gruppe 41",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r232",
+   "Tidligere": "Gruppe 56",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r69",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "5,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Tidligere": "Gruppe 62",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "6,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r97",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Snit": "8.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r252",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "5,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 60",
+   "Niveau": " MIDDEL",
+   "Køn": "Pige ",
+   "Snit": "3,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r72",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "3,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r178",
+   "Tidligere": "Gruppe 8",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "9,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r271",
+   "Tidligere": "Gruppe 45",
+   "Niveau": "Middel",
+   "Køn": "Andet",
+   "Snit": "2,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 62",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r34",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "5,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Snit": "11,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r179",
+   "Tidligere": "Gruppe 59",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "6,8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "5.2",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r99",
+   "Tidligere": "Gruppe 37",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r130",
+   "Tidligere": "Gruppe 36",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Tidligere": "Gruppe 28",
+   "Niveau": "Middel",
+   "Køn": "",
+   "Snit": "11,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r149",
+   "Tidligere": "Gruppe 56",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 30",
+   "Niveau": "Høj",
+   "Køn": "Dreng ",
+   "Snit": "5,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r222",
+   "Tidligere": "Gruppe 39",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "9,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r163",
+   "Tidligere": "Gruppe 52",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "10,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r52",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Snit": "9.8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r240",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r63",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r162",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "8,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r38",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r169",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Lav",
+   "Køn": "Dreng ",
+   "Snit": "10,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r113",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "2,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r196",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r276",
+   "Tidligere": "Gruppe 65",
+   "Niveau": "Høj",
+   "Køn": "Dreng ",
+   "Snit": "7,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r216",
+   "Tidligere": "Gruppe 38",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r181",
+   "Tidligere": "Gruppe 40",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Snit": "10.0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r207",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "Lav ",
+   "Køn": "Pige",
+   "Snit": "11,7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r263",
+   "Tidligere": "Gruppe 57",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "10,6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r156",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7.1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r208",
+   "Tidligere": "Gruppe 36",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "3,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r95",
+   "Tidligere": "Gruppe 69",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "1,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r199",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "10,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 46",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r45",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Snit": "3,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r139",
+   "Tidligere": "Gruppe 61",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Snit": "1,5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r73",
+   "Tidligere": "Gruppe 32",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5.5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r92",
+   "Tidligere": "Gruppe 49",
+   "Niveau": "Høj ",
+   "Køn": "andet",
+   "Snit": "9,1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Tidligere": "Gruppe 48",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "6,8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r258",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "9,0",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r202",
+   "Tidligere": "Gruppe 42",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "5,9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r155",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "10,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 67",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4.1",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r47",
+    "r235",
+    "r226"
+   ],
+   [
+    "r130",
+    "r186",
+    "r45"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 890808
+}

@@ -1,0 +1,63 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Farve": "Rød"
+  },
+  {
+   "_rowId": "b2",
+   "Farve": "Blå"
+  },
+  {
+   "_rowId": "b3",
+   "Farve": "Rød"
+  },
+  {
+   "_rowId": "b4",
+   "Farve": "Blå"
+  },
+  {
+   "_rowId": "b5",
+   "Farve": "Rød"
+  },
+  {
+   "_rowId": "b6",
+   "Farve": "Blå"
+  },
+  {
+   "_rowId": "b7",
+   "Farve": "Rød"
+  },
+  {
+   "_rowId": "b8",
+   "Farve": "Blå"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Farve"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

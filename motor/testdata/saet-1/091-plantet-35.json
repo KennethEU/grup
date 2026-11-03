@@ -1,0 +1,143 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p693-3",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-1",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-5",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-13",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-15",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-10",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-2",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-8",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-17",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-7",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-12",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-16",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-6",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-4",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-11",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p693-18",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-14",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p693-9",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p693-14",
+    "p693-13"
+   ]
+  ],
+  "avoid": [
+   [
+    "p693-18",
+    "p693-14",
+    "p693-11",
+    "p693-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 761012
+}

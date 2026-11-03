@@ -1,0 +1,178 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "middel",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Interesse": "klatring"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 575038
+}

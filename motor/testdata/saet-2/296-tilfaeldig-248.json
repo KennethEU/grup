@@ -1,0 +1,116 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "dans"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r18",
+    "r2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 318617
+}

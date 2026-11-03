@@ -1,0 +1,264 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p82-12",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-8",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-4",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-5",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-24",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-26",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-22",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-13",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-14",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-10",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-18",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-7",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-3",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-19",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-20",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-29",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-6",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-30",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-17",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-9",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-15",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p82-16",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-11",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-27",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-21",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-25",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-1",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-23",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p82-28",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p82-2",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p82-9",
+    "p82-7"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 990215
+}

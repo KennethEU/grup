@@ -1,0 +1,117 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    " DRENG",
+    "pige"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r19",
+    "r7",
+    "r5",
+    "r10"
+   ],
+   "topic": "EU"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 676980
+}

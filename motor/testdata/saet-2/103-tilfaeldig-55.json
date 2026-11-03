@@ -1,0 +1,255 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "4,9",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Niveau": "Høj ",
+   "Snit": "5,6",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "2,6",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "1,7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "12,0",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "5,8",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "7,2",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "7,6",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "5,0",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "6,6",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "6,2",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "8,2",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "3,2",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "7,9",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "9,3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "8,2",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "4.7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Snit": "10,7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "10,6",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "2,7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "1.6",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Snit": "10,0",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "6,0",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "6,0",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "2,5",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Snit": "1,1",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r8",
+    "r2",
+    "r10"
+   ],
+   [
+    "r10",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 13
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 305363
+}

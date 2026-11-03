@@ -1,0 +1,234 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r24",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "02",
+   "Interesse": "musik",
+   "Niveau": "Middel ",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Interesse": "Skak",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Niveau": " HØJ",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "4",
+   "Interesse": "Film",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Interesse": "Kor",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "00",
+   "Interesse": "Dans",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10",
+   "Interesse": "Film",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "02",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10",
+   "Interesse": "Skak ",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Interesse": "Film",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "",
+   "Interesse": "Kor",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Interesse": "Fodbold",
+   "Niveau": " LAV",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "Fritaget",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "10",
+   "Interesse": "Kor",
+   "Niveau": "høj",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "02",
+   "Interesse": "Film",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r3",
+    "r14",
+    "r6",
+    "r27"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r5",
+    "r11"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r15",
+    "r10",
+    "r16"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 372795
+}

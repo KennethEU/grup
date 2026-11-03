@@ -1,0 +1,91 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r10"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r6",
+        "r15"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r5",
+        "r4"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r13",
+        "r2"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r8",
+        "r14"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r11",
+        "r9"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Adskil bruges begge på \"Sprog\". Klyng samler eleverne med samme værdi, mens Adskil vil have højst én af dem i hver gruppe (\"Spansk\"). De kan ikke opfyldes samtidig."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.7
+  }
+}

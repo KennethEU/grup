@@ -1,0 +1,230 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5,0",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Snit": "10,8",
+   "Interesse": " DANS"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,8",
+   "Interesse": "skak"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7,3",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "10,2",
+   "Interesse": "skak"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,1",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "2,7",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,3",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Køn": " PIGE",
+   "Snit": "11,2",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7.4",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Snit": "1,1",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj ",
+   "Køn": "pige",
+   "Snit": "5,3",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,6",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "1,2",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "7,3",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "3.8",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "11,0",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "4.6",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Snit": "11,5",
+   "Interesse": "dans"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "1,2",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5,6",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "5,0",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Snit": "5,4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "3,6",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "4,7",
+   "Interesse": "Film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r5",
+    "r20",
+    "r11"
+   ],
+   [
+    "r2",
+    "r17",
+    "r23",
+    "r15",
+    "r6"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 166467
+}

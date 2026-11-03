@@ -1,0 +1,213 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "-3",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "-3",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "",
+   "Hold": "2.a",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "-3",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "Fritaget",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 523696
+}

@@ -1,0 +1,87 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r17",
+        "r15",
+        "r14",
+        "r26",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r25",
+        "r19",
+        "r6",
+        "r4",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r30",
+        "r18",
+        "r28",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r31",
+        "r3",
+        "r2",
+        "r27",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r23",
+        "r11",
+        "r12",
+        "r10"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 14 elever har værdien \"Tysk\", og der er kun plads til 10 (højst 2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.16
+  }
+}

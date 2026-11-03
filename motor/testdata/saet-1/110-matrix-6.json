@@ -1,0 +1,281 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r40",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Musik "
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r36",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r13",
+    "r28"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r15",
+     "r17",
+     "r8",
+     "r25"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r22",
+     "r10",
+     "r19",
+     "r14",
+     "r31"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r35",
+     "r20",
+     "r23",
+     "r33",
+     "r28"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r30",
+     "r27",
+     "r24",
+     "r39",
+     "r3"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r12",
+     "r26",
+     "r37",
+     "r4",
+     "r34"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r6",
+     "r16",
+     "r21",
+     "r40",
+     "r13"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r18",
+     "r9",
+     "r2",
+     "r36",
+     "r11"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r29",
+     "r1",
+     "r5",
+     "r38",
+     "r7"
+    ],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 595632
+}

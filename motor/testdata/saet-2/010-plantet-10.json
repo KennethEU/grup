@@ -1,0 +1,164 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p828-14",
+   "Niveau": "Høj",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "p828-1",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "p828-9",
+   "Niveau": "Høj",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Snit": "4"
+  },
+  {
+   "_rowId": "p828-11",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "p828-12",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Snit": "4"
+  },
+  {
+   "_rowId": "p828-8",
+   "Niveau": "Høj",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "p828-6",
+   "Niveau": "Lav",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Snit": "4"
+  },
+  {
+   "_rowId": "p828-2",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "p828-13",
+   "Niveau": "Høj",
+   "Interesse": "Dans",
+   "Karakter": "4",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "p828-3",
+   "Niveau": "Middel",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Snit": "4"
+  },
+  {
+   "_rowId": "p828-7",
+   "Niveau": "Høj",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "p828-10",
+   "Niveau": "Lav",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "p828-4",
+   "Niveau": "Lav",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "p828-5",
+   "Niveau": "Lav",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "p828-15",
+   "Niveau": "Høj",
+   "Interesse": "Dans",
+   "Karakter": "02",
+   "Snit": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p828-6",
+    "p828-1",
+    "p828-11",
+    "p828-13"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 937139
+}

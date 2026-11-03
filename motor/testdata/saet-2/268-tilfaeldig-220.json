@@ -1,0 +1,225 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav "
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r32",
+    "r31",
+    "r35"
+   ],
+   [
+    "r20",
+    "r36",
+    "r6",
+    "r4"
+   ],
+   [
+    "r8",
+    "r27",
+    "r18"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r26",
+    "r2",
+    "r17"
+   ],
+   "topic": "EU"
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r15",
+    "r16"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 303353
+}

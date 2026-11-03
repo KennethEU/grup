@@ -1,0 +1,107 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "k1",
+        "k23",
+        "k25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k22",
+        "k7",
+        "k2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k4",
+        "k24",
+        "k17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k9",
+        "k15",
+        "k0"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k19",
+        "k14",
+        "k12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k16",
+        "k20",
+        "k18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k13",
+        "k26",
+        "k11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k10",
+        "k21",
+        "k5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k3",
+        "k8",
+        "k6"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 17 elever har værdien \"Pige\", og der er kun plads til 9 (højst 1 pr. gruppe). 8 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.44
+  }
+}

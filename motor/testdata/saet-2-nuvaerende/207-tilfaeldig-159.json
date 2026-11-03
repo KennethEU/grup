@@ -1,0 +1,74 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r23",
+        "r8",
+        "r12",
+        "r28",
+        "r2",
+        "r27",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r1",
+        "r9",
+        "r7",
+        "r20",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r21",
+        "r3",
+        "r10",
+        "r4",
+        "r25",
+        "r18"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 13 elever har værdien \"Pige\", og der er kun plads til 8 (højst 2-3 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 7,
+    "seconds": 0.29
+  }
+}

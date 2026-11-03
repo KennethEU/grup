@@ -1,0 +1,166 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r32",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "dans"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r23",
+    "r14"
+   ],
+   [
+    "r4",
+    "r18",
+    "r9",
+    "r29"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 653111
+}

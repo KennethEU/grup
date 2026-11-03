@@ -1,0 +1,293 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "02",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "00",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "7",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r3",
+    "r27"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 6,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 769028
+}

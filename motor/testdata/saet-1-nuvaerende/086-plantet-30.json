@@ -1,0 +1,59 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p139-5",
+        "p139-3",
+        "p139-2",
+        "p139-9",
+        "p139-1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p139-10",
+        "p139-7",
+        "p139-8",
+        "p139-6",
+        "p139-4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\" har 3 forskellige værdier, men der er kun 2 grupper. Nogle elever ender uundgåeligt alene."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.04
+  }
+}

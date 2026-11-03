@@ -1,0 +1,176 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p736-10",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p736-13",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-3",
+   "Niveau": "Middel",
+   "Udfordring": "Ja",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-6",
+   "Niveau": "Høj",
+   "Udfordring": "Ja",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p736-9",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p736-4",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-5",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-14",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-8",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p736-12",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-2",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-1",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-15",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p736-7",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p736-11",
+   "Niveau": "Middel",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Interesse": "Dans"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 522144
+}

@@ -1,0 +1,421 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "7",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "10",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r64",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r61",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "00",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r65",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "7",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "02",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "-3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "4",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r48",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r74",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "10",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "02",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r72",
+    "r55",
+    "r4"
+   ],
+   "topic": "Migration"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 514105
+}

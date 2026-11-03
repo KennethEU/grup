@@ -1,0 +1,46 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b2",
+        "b8",
+        "b11",
+        "b5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b3",
+        "b6",
+        "b12",
+        "b9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b7",
+        "b10",
+        "b1",
+        "b4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

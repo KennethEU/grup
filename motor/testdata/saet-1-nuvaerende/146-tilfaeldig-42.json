@@ -1,0 +1,118 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r5",
+        "r2",
+        "r4",
+        "r3",
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r7",
+        "r11",
+        "r10"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r12",
+        "r9"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r8"
+      ],
+      "topic": "Migration"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 1,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Interesse\": Værdier med kun 1 elev kan aldrig samles: Klatring (2.a), Musik (2.c), Skak (2.c), Film (2.b), Musik ((ikke udfyldt))"
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Saml og Klyng bruges begge på \"Interesse\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 1,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Interesse\" har 3 forskellige værdier inden for \"2.a\", men der er kun 1 gruppe. Nogle elever ender uundgåeligt alene. Samme problem i \"2.c\" og \"2.b\"."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Niveau\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 4 i stedet for 3."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.05
+  }
+}

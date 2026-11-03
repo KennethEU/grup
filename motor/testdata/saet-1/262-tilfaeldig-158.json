@@ -1,0 +1,221 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Interesse": "Kunst",
+   "Køn": "",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film ",
+   "Køn": " DRENG",
+   "Sprog": "Spansk",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Dans ",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": " KOR",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Kor",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kunst",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Film",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kunst",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Film",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "2.b",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Dans",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Dans",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Kor ",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Dans",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Kunst",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Gaming ",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "kunst",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 640863
+}

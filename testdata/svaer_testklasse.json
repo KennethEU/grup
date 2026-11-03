@@ -1,0 +1,369 @@
+[
+ {
+  "filename": "svaer_testklasse.csv",
+  "name": "Svær testklasse (opdigtet)",
+  "data": [
+   {
+    "Navn": "Asta Brink",
+    "Køn": "P",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-d1fdc286d625c45c"
+   },
+   {
+    "Navn": "Bertram Hvid",
+    "Køn": "D",
+    "Fagligt niveau": "4",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-dec2be6d2264e758"
+   },
+   {
+    "Navn": "Cecilie Lyng",
+    "Køn": "P",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-1b9eaf058147e570"
+   },
+   {
+    "Navn": "Daniel Kofoed",
+    "Køn": "D",
+    "Fagligt niveau": "7",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-678389acb44790e5"
+   },
+   {
+    "Navn": "Esther Mørk",
+    "Køn": "P",
+    "Fagligt niveau": "10",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-b073b2361bec84c2"
+   },
+   {
+    "Navn": "Felix Aagaard",
+    "Køn": "D",
+    "Fagligt niveau": "3",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-1a9a4759863f52a4"
+   },
+   {
+    "Navn": "Gry Thygesen",
+    "Køn": "P",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-59a456109aa7507b"
+   },
+   {
+    "Navn": "Hjalte Storm",
+    "Køn": "D",
+    "Fagligt niveau": "6",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Spansk",
+    "Rolle": "",
+    "_rowId": "r-a5b69138ef1890eb"
+   },
+   {
+    "Navn": "Isabella Krag",
+    "Køn": "P",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-2d38dcda20248de9"
+   },
+   {
+    "Navn": "Jonas Bech",
+    "Køn": "D",
+    "Fagligt niveau": "2",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-54724692a75005f4"
+   },
+   {
+    "Navn": "Karoline Friis",
+    "Køn": "P",
+    "Fagligt niveau": "7",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-0ebf2bf9e2b2a50d"
+   },
+   {
+    "Navn": "Lauge Holt",
+    "Køn": "D",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-0e90b559d2eea4e0"
+   },
+   {
+    "Navn": "Liva Skov",
+    "Køn": "P",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-2d3d6e433739625e"
+   },
+   {
+    "Navn": "Malthe Riis",
+    "Køn": "D",
+    "Fagligt niveau": "5",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-83513e1feea68eb8"
+   },
+   {
+    "Navn": "Nanna Juul",
+    "Køn": "P",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-0d7a0fbb6d335a22"
+   },
+   {
+    "Navn": "Otto Vinther",
+    "Køn": "D",
+    "Fagligt niveau": "3",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Fransk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-5af066a2f8e2fb32"
+   },
+   {
+    "Navn": "Pernille Dam",
+    "Køn": "P",
+    "Fagligt niveau": "7",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Fransk",
+    "Rolle": "",
+    "_rowId": "r-c845cff8400f2acd"
+   },
+   {
+    "Navn": "Quinn Lindberg",
+    "Køn": "Andet",
+    "Fagligt niveau": "6",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-9725e629e08f412f"
+   },
+   {
+    "Navn": "Rosa Egholm",
+    "Køn": "P",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-3969c707e0c729ef"
+   },
+   {
+    "Navn": "Silas Kjeldsen",
+    "Køn": "D",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-b521868aa1a2ede4"
+   },
+   {
+    "Navn": "Tilde Bang",
+    "Køn": "P",
+    "Fagligt niveau": "7",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Spansk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-527e83d4bc3ae231"
+   },
+   {
+    "Navn": "Valdemar Graves",
+    "Køn": "D",
+    "Fagligt niveau": "2",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-dc3086c99104ae45"
+   },
+   {
+    "Navn": "Vera Højer",
+    "Køn": "P",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-72710353ea7a7824"
+   },
+   {
+    "Navn": "William Sand",
+    "Køn": "D",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Spansk",
+    "Rolle": "",
+    "_rowId": "r-7e83d51eb6c102f6"
+   },
+   {
+    "Navn": "Agnes Lykke",
+    "Køn": "P",
+    "Fagligt niveau": "6",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-5a22960a944f0185"
+   },
+   {
+    "Navn": "Bjørn Nissen",
+    "Køn": "D",
+    "Fagligt niveau": "4",
+    "Aktivitetsniveau": "Middel",
+    "Sprog": "Tysk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-cbc8be136a30c0f7"
+   },
+   {
+    "Navn": "Carla Mathiesen",
+    "Køn": "P",
+    "Fagligt niveau": "8",
+    "Aktivitetsniveau": "Lav",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-7aad0ce73ee53997"
+   },
+   {
+    "Navn": "Dicte Ravn",
+    "Køn": "P",
+    "Fagligt niveau": "7",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-d5d84f2a11f3bcf9"
+   },
+   {
+    "Navn": "Ellen Mose",
+    "Køn": "P",
+    "Fagligt niveau": "9",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Tysk",
+    "Rolle": "Ordstyrer",
+    "_rowId": "r-a614e0b2ac4d2445"
+   },
+   {
+    "Navn": "August Toft",
+    "Køn": "D",
+    "Fagligt niveau": "5",
+    "Aktivitetsniveau": "Høj",
+    "Sprog": "Tysk",
+    "Rolle": "",
+    "_rowId": "r-dae2d38b89666d16"
+   }
+  ],
+  "columns": [
+   "Navn",
+   "Køn",
+   "Fagligt niveau",
+   "Aktivitetsniveau",
+   "Sprog",
+   "Rolle"
+  ],
+  "id_column": "Navn",
+  "rules": [
+   {
+    "type": "separate",
+    "column": "Rolle",
+    "value": "Ordstyrer"
+   },
+   {
+    "type": "cluster",
+    "column": "Sprog",
+    "value": ""
+   },
+   {
+    "type": "distribute",
+    "column": "Køn",
+    "value": ""
+   },
+   {
+    "type": "balance",
+    "column": "Fagligt niveau",
+    "value": ""
+   },
+   {
+    "type": "distribute",
+    "column": "Aktivitetsniveau",
+    "value": ""
+   }
+  ],
+  "settings": {
+   "groupMode": "size",
+   "groupTarget": 4,
+   "groupMod": "+"
+  },
+  "matrixSettings": {
+   "matrixStrategy": "full_strict",
+   "matrixRepresentationType": "group"
+  },
+  "matrixRules": [
+   {
+    "type": "distribute",
+    "column": "Køn",
+    "value": ""
+   },
+   {
+    "type": "balance",
+    "column": "Fagligt niveau",
+    "value": ""
+   }
+  ],
+  "togetherGroups": [
+   {
+    "ids": [
+     "r-d1fdc286d625c45c",
+     "r-2d38dcda20248de9"
+    ]
+   },
+   {
+    "ids": [
+     "r-a5b69138ef1890eb",
+     "r-1b9eaf058147e570"
+    ]
+   }
+  ],
+  "separations": [
+   {
+    "ids": [
+     "r-678389acb44790e5",
+     "r-b073b2361bec84c2",
+     "r-59a456109aa7507b"
+    ],
+    "timestamp": 1793700000000
+   },
+   {
+    "ids": [
+     "r-527e83d4bc3ae231",
+     "r-7e83d51eb6c102f6"
+    ],
+    "timestamp": 1793700000001
+   }
+  ],
+  "topics": [],
+  "columnOrders": {},
+  "hiddenColumns": []
+ }
+]

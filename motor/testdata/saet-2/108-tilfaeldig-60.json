@@ -1,0 +1,127 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r11",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 793518
+}

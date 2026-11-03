@@ -1,0 +1,180 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "e0",
+   "Køn": "K",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e1",
+   "Køn": "M",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e2",
+   "Køn": "K",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e3",
+   "Køn": "M",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "e4",
+   "Køn": "K",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e5",
+   "Køn": "M",
+   "Karakter": "2"
+  },
+  {
+   "_rowId": "e6",
+   "Køn": "K",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e7",
+   "Køn": "M",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e8",
+   "Køn": "K",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e9",
+   "Køn": "M",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "e10",
+   "Køn": "K",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e11",
+   "Køn": "M",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e12",
+   "Køn": "K",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e13",
+   "Køn": "M",
+   "Karakter": "2"
+  },
+  {
+   "_rowId": "e14",
+   "Køn": "K",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e15",
+   "Køn": "M",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e16",
+   "Køn": "K",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "e17",
+   "Køn": "M",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e18",
+   "Køn": "K",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e19",
+   "Køn": "M",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e20",
+   "Køn": "K",
+   "Karakter": "2"
+  },
+  {
+   "_rowId": "e21",
+   "Køn": "M",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e22",
+   "Køn": "K",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e23",
+   "Køn": "M",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "e24",
+   "Køn": "K",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "e25",
+   "Køn": "M",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "e26",
+   "Køn": "K",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "e27",
+   "Køn": "M",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "e28",
+   "Køn": "K",
+   "Karakter": "10"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

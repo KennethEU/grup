@@ -1,0 +1,122 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p260-5",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Snit": "6",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p260-6",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "2",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p260-2",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "2",
+   "Sprog": "Spansk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p260-1",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Snit": "6",
+   "Sprog": "Spansk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p260-3",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "3",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p260-4",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "9,5",
+   "Sprog": "Tysk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p260-8",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "9,5",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p260-7",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "3",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p260-1",
+    "p260-3"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 620595
+}

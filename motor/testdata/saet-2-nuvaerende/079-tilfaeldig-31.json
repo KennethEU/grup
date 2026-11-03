@@ -1,0 +1,84 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r9",
+        "r26",
+        "r4",
+        "r23",
+        "r8",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r10",
+        "r20",
+        "r13",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r21",
+        "r17",
+        "r28",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r15",
+        "r19",
+        "r1",
+        "r22",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r16",
+        "r29",
+        "r11",
+        "r3",
+        "r7"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op: 9 elever har værdien \"Gruppe 4\", og der er kun plads til 5 (højst 1 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 4\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.13
+  }
+}

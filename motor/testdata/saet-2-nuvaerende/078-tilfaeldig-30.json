@@ -1,0 +1,202 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r79",
+        "r48",
+        "r41",
+        "r42",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r56",
+        "r33",
+        "r34",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r76",
+        "r24",
+        "r38",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r64",
+        "r19",
+        "r69",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r67",
+        "r82",
+        "r13",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r68",
+        "r30",
+        "r7",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r73",
+        "r9",
+        "r71",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r8",
+        "r66",
+        "r51",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r20",
+        "r43",
+        "r72",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r6",
+        "r45",
+        "r32",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r52",
+        "r53",
+        "r58",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r31",
+        "r21",
+        "r46",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r16",
+        "r3",
+        "r81",
+        "r75"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r11",
+        "r47",
+        "r61",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r62",
+        "r36",
+        "r12",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r80",
+        "r14",
+        "r5",
+        "r63"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 6,
+    "seconds": 9.09
+  }
+}

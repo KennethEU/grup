@@ -1,0 +1,107 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r17",
+        "r20",
+        "r3",
+        "r6",
+        "r10",
+        "r11",
+        "r5",
+        "r18",
+        "r22",
+        "r12",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r13",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r27",
+        "r8",
+        "r2",
+        "r16",
+        "r29",
+        "r24",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r14",
+        "r1",
+        "r21",
+        "r30",
+        "r9",
+        "r15",
+        "r4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Der er flere Opdel-regler. Kun den øverste — \"Hold\" — deler klassen op og bestemmer antallet af grupper. \"Hold\" bliver forsøgt, men er ikke sikret: grupper med blandede værdier kan forekomme. Vil du dele op efter to ting på én gang, så lav en kolonne der kombinerer dem."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Hold",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Opdel og Opdel bruges begge på \"Hold\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 4 i stedet for 2."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

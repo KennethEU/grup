@@ -1,0 +1,174 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "g0",
+   "7-9 grupper": "Gruppe 5",
+   "1-9": "Gruppe 1",
+   "27-8": "Gruppe 3",
+   "18-8 Grupper": "Gruppe 4",
+   "13-8 Grupper": "1"
+  },
+  {
+   "_rowId": "g1",
+   "7-9 grupper": "Gruppe 4",
+   "1-9": "Gruppe 3",
+   "27-8": "Gruppe 4",
+   "18-8 Grupper": "Gruppe 1",
+   "13-8 Grupper": "1"
+  },
+  {
+   "_rowId": "g2",
+   "7-9 grupper": "Gruppe 2",
+   "1-9": "Gruppe 3",
+   "27-8": "Gruppe 3",
+   "18-8 Grupper": "Gruppe 2",
+   "13-8 Grupper": "2"
+  },
+  {
+   "_rowId": "g3",
+   "7-9 grupper": "Gruppe 4",
+   "1-9": "Gruppe 2",
+   "27-8": "Gruppe 5",
+   "18-8 Grupper": "Gruppe 4",
+   "13-8 Grupper": "3"
+  },
+  {
+   "_rowId": "g4",
+   "7-9 grupper": "Gruppe 4",
+   "1-9": "Gruppe 4",
+   "27-8": "Gruppe 3",
+   "18-8 Grupper": "Gruppe 3",
+   "13-8 Grupper": "4"
+  },
+  {
+   "_rowId": "g5",
+   "7-9 grupper": "Gruppe 1",
+   "1-9": "Gruppe 2",
+   "27-8": "Gruppe 3",
+   "18-8 Grupper": "Gruppe 5",
+   "13-8 Grupper": ""
+  },
+  {
+   "_rowId": "g6",
+   "7-9 grupper": "Gruppe 2",
+   "1-9": "Gruppe 1",
+   "27-8": "Gruppe 1",
+   "18-8 Grupper": "Gruppe 5",
+   "13-8 Grupper": "3"
+  },
+  {
+   "_rowId": "g7",
+   "7-9 grupper": "Gruppe 3",
+   "1-9": "Gruppe 2",
+   "27-8": "Gruppe 1",
+   "18-8 Grupper": "Gruppe 2",
+   "13-8 Grupper": "1"
+  },
+  {
+   "_rowId": "g8",
+   "7-9 grupper": "Gruppe 5",
+   "1-9": "Gruppe 4",
+   "27-8": "Gruppe 5",
+   "18-8 Grupper": "Gruppe 5",
+   "13-8 Grupper": "2"
+  },
+  {
+   "_rowId": "g9",
+   "7-9 grupper": "Gruppe 3",
+   "1-9": "Gruppe 1",
+   "27-8": "Gruppe 4",
+   "18-8 Grupper": "Gruppe 3",
+   "13-8 Grupper": ""
+  },
+  {
+   "_rowId": "g10",
+   "7-9 grupper": "Gruppe 2",
+   "1-9": "Gruppe 4",
+   "27-8": "Gruppe 2",
+   "18-8 Grupper": "Gruppe 3",
+   "13-8 Grupper": "1"
+  },
+  {
+   "_rowId": "g11",
+   "7-9 grupper": "Gruppe 1",
+   "1-9": "Gruppe 4",
+   "27-8": "Gruppe 1",
+   "18-8 Grupper": "Gruppe 4",
+   "13-8 Grupper": "2"
+  },
+  {
+   "_rowId": "g12",
+   "7-9 grupper": "Gruppe 5",
+   "1-9": "Gruppe 2",
+   "27-8": "Gruppe 2",
+   "18-8 Grupper": "Gruppe 1",
+   "13-8 Grupper": "2"
+  },
+  {
+   "_rowId": "g13",
+   "7-9 grupper": "Gruppe 1",
+   "1-9": "Gruppe 1",
+   "27-8": "Gruppe 5",
+   "18-8 Grupper": "Gruppe 1",
+   "13-8 Grupper": "4"
+  },
+  {
+   "_rowId": "g14",
+   "7-9 grupper": "Gruppe 1",
+   "1-9": "",
+   "27-8": "Gruppe 4",
+   "18-8 Grupper": "Gruppe 2",
+   "13-8 Grupper": "3"
+  },
+  {
+   "_rowId": "g15",
+   "7-9 grupper": "Gruppe 3",
+   "1-9": "Gruppe 3",
+   "27-8": "Gruppe 2",
+   "18-8 Grupper": "Gruppe 5",
+   "13-8 Grupper": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "7-9 grupper"
+  },
+  {
+   "type": "distribute",
+   "column": "1-9"
+  },
+  {
+   "type": "distribute",
+   "column": "27-8"
+  },
+  {
+   "type": "distribute",
+   "column": "18-8 Grupper"
+  },
+  {
+   "type": "distribute",
+   "column": "13-8 Grupper"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

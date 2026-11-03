@@ -1,0 +1,166 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p987-13",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p987-15",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p987-11",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p987-4",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p987-12",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p987-8",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p987-14",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p987-2",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Udfordring": "Ja",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p987-7",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p987-9",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p987-10",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Udfordring": "Nej",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p987-1",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p987-6",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Udfordring": "Ja",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p987-5",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p987-3",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Udfordring": "Nej",
+   "Karakter": "10"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p987-12",
+    "p987-10",
+    "p987-4"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 865090
+}

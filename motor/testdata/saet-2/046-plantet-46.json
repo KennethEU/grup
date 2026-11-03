@@ -1,0 +1,106 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p474-3",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Udfordring": "Ja",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p474-2",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p474-4",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p474-5",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p474-6",
+   "Karakter": "12",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p474-1",
+   "Karakter": "12",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p474-1",
+    "p474-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 171933
+}

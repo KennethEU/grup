@@ -1,0 +1,154 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige",
+    "dreng"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r6",
+    "r5"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 404579
+}

@@ -1,0 +1,96 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p641-8",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-14",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p641-2",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-15",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p641-13",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p641-4",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p641-1",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-11",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-7",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-6",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p641-12",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-3",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-9",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-10",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p641-5",
+   "Interesse": "Kunst"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p641-6",
+    "p641-8"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 405883
+}

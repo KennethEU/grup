@@ -1,0 +1,120 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b13",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b14",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b16",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "b17",
+    "b18"
+   ],
+   "topic": "EU"
+  },
+  {
+   "id": "L4",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "b19",
+    "b20"
+   ],
+   "topic": "Gammelt emne"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

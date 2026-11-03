@@ -1,0 +1,148 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p710-13",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-16",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-17",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-20",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-18",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-11",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-5",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-8",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-9",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-4",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-15",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-19",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-1",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-7",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-2",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-12",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p710-10",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-14",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-6",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p710-3",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p710-2",
+    "p710-12",
+    "p710-14",
+    "p710-17"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 884322
+}

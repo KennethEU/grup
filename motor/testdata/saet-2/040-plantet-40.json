@@ -1,0 +1,208 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p689-3",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-18",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-4",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-13",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-11",
+   "Sprog": "Spansk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p689-2",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-8",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-17",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-1",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-10",
+   "Sprog": "Spansk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p689-7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-15",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-6",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-9",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-16",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Snit": "7",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "p689-12",
+   "Sprog": "Spansk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Snit": "9,5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p689-5",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "p689-14",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Snit": "4,5",
+   "Interesse": "Fodbold"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p689-3",
+    "p689-1"
+   ]
+  ],
+  "avoid": [
+   [
+    "p689-10",
+    "p689-3",
+    "p689-16"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 90233
+}

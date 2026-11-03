@@ -1,0 +1,66 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r4",
+        "r14",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r3",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r16",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r8",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r10",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r13"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.55
+  }
+}

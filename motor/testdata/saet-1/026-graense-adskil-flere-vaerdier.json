@@ -1,0 +1,83 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "b2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "b3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "b4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "b5",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "b6",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "b7",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "b8",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "b9",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "b10",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "b11",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "b12",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

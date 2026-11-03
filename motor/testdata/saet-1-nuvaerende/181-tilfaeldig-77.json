@@ -1,0 +1,157 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r27",
+        "r16"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r14",
+        "r32"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r30",
+        "r3"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r12"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r9",
+        "r6"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r25"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r21"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r22",
+        "r20"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r29",
+        "r17"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r24",
+        "r26"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r10",
+        "r31"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r4",
+        "r15"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r18",
+        "r13"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r7",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r19",
+        "r5"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r2",
+        "r23"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r11"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r28",
+        "r1"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.09
+  }
+}

@@ -1,0 +1,166 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r25",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "andet"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r8",
+    "r28"
+   ],
+   [
+    "r23",
+    "r1",
+    "r4",
+    "r3"
+   ],
+   [
+    "r8",
+    "r23",
+    "r7"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 810264
+}

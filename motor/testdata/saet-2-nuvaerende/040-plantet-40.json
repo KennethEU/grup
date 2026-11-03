@@ -1,0 +1,95 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p689-11",
+        "p689-10",
+        "p689-12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p689-9",
+        "p689-7",
+        "p689-8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p689-3",
+        "p689-1",
+        "p689-2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p689-16",
+        "p689-17",
+        "p689-18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p689-4",
+        "p689-5",
+        "p689-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p689-14",
+        "p689-13",
+        "p689-15"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Ensartede (\"Niveau\") og Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

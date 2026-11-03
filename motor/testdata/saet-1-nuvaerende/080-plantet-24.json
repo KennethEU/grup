@@ -1,0 +1,51 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p329-8",
+        "p329-9",
+        "p329-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p329-3",
+        "p329-1",
+        "p329-2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p329-12",
+        "p329-6",
+        "p329-10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p329-11",
+        "p329-5",
+        "p329-4"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

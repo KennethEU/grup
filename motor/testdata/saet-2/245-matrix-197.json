@@ -1,0 +1,115 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Snit": "3,6"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Snit": "3.2"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Snit": "10,2"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Andet",
+   "Karakter": "10",
+   "Snit": "3,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r6",
+    "r7",
+    "r8"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r1",
+     "r7",
+     "r8",
+     "r3"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r4",
+     "r2",
+     "r6",
+     "r5"
+    ],
+    "topic": "EU"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 93670
+}

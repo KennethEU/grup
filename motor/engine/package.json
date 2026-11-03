@@ -1,0 +1,7 @@
+{
+  "name": "grup-motor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "engine.js"
+}

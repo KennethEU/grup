@@ -1,0 +1,829 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r92",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r112",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Pige",
+   "Interesse": " KUNST"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Andet",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r98",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r109",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Interesse": "gaming"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Pige",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r113",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Andet",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r104",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r101",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r106",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "Dreng ",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r115",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Dreng",
+   "Interesse": "gaming"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r110",
+   "Køn": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r102",
+   "Køn": "",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r117",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige ",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Andet",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r90",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Andet",
+   "Interesse": "Gaming "
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r105",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Pige",
+   "Interesse": "kor"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r94",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r107",
+   "Køn": "Dreng",
+   "Interesse": "gaming"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r103",
+   "Køn": "",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r108",
+   "Køn": "Dreng",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r114",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r111",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Pige",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r116",
+   "Køn": "Pige",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r96",
+   "Køn": "Pige",
+   "Interesse": "kunst"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Pige",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r57",
+     "r5",
+     "r62",
+     "r107",
+     "r82"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r104",
+     "r3",
+     "r35",
+     "r26",
+     "r81"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r8",
+     "r29",
+     "r28",
+     "r10",
+     "r54"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r102",
+     "r79",
+     "r63",
+     "r7",
+     "r66"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r80",
+     "r15",
+     "r99"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r60",
+     "r70",
+     "r68",
+     "r113",
+     "r32"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r17",
+     "r13",
+     "r71",
+     "r91",
+     "r39"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r36",
+     "r87",
+     "r47",
+     "r101"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S9",
+    "members": [
+     "r89",
+     "r77",
+     "r74",
+     "r43"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S10",
+    "members": [
+     "r24",
+     "r86",
+     "r34",
+     "r84"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S11",
+    "members": [
+     "r117",
+     "r76",
+     "r42"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S12",
+    "members": [
+     "r58",
+     "r48",
+     "r64",
+     "r109",
+     "r9"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S13",
+    "members": [
+     "r38",
+     "r12",
+     "r100",
+     "r83",
+     "r90"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S14",
+    "members": [
+     "r92",
+     "r108",
+     "r72",
+     "r65"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S15",
+    "members": [
+     "r30",
+     "r114",
+     "r116",
+     "r33",
+     "r112"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S16",
+    "members": [
+     "r16",
+     "r11",
+     "r52",
+     "r93",
+     "r40"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S17",
+    "members": [
+     "r23",
+     "r50",
+     "r1",
+     "r55",
+     "r21"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S18",
+    "members": [
+     "r46",
+     "r2",
+     "r73",
+     "r69",
+     "r96"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S19",
+    "members": [
+     "r51",
+     "r61",
+     "r22",
+     "r98",
+     "r67"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S20",
+    "members": [
+     "r105",
+     "r78",
+     "r25",
+     "r20",
+     "r97"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S21",
+    "members": [
+     "r6",
+     "r110",
+     "r94",
+     "r45",
+     "r59"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S22",
+    "members": [
+     "r106",
+     "r111",
+     "r103",
+     "r4",
+     "r56"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S23",
+    "members": [
+     "r31",
+     "r75",
+     "r115",
+     "r27"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S24",
+    "members": [
+     "r14",
+     "r41"
+    ],
+    "topic": "Migration"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 898901
+}

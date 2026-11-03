@@ -1,0 +1,121 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r12",
+        "r13",
+        "r31",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r3",
+        "r21",
+        "r24",
+        "r17",
+        "r30"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r18",
+        "r9",
+        "r27",
+        "r7"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r22",
+        "r6",
+        "r4",
+        "r19"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r10",
+        "r2",
+        "r16",
+        "r23"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r29",
+        "r5",
+        "r28",
+        "r15",
+        "r25",
+        "r11"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r14"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Balancér\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op inden for \"2.a\": 10 elever har værdien \"Dreng\", og der er kun plads til 6 (højst 2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.51
+  }
+}

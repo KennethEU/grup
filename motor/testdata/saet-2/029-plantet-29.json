@@ -1,0 +1,154 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p879-14",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-8",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-6",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-1",
+   "Karakter": "10",
+   "Udfordring": "Ja",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-15",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-12",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p879-9",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-7",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-3",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-4",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-10",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p879-11",
+   "Karakter": "4",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p879-2",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-5",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p879-13",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 426426
+}

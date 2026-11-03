@@ -1,0 +1,230 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Køn": "Andet",
+   "Niveau": "Høj",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige ",
+   "Niveau": "Middel",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "pige",
+   "Niveau": "Høj",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "2,0"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "3,2"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "1,9"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Andet",
+   "Niveau": "Middel",
+   "Snit": "9.8"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "3,3"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "3,2"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Snit": "2,6"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 9
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r5",
+     "r21",
+     "r16",
+     "r8",
+     "r18"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r19",
+     "r11",
+     "r3",
+     "r22",
+     "r14"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r9",
+     "r7",
+     "r13",
+     "r6"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r23",
+     "r4",
+     "r10",
+     "r20",
+     "r1"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r15",
+     "r12",
+     "r17"
+    ],
+    "topic": "Klima"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 54018
+}

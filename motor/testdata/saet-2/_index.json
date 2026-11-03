@@ -1,0 +1,4054 @@
+{
+ "set": "saet-2",
+ "contractVersion": 2,
+ "count": 300,
+ "entries": [
+  {
+   "file": "001-plantet-1.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "balance",
+    "separate",
+    "strict_separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "002-plantet-2.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "minimizediff",
+    "cluster",
+    "separate",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "003-plantet-3.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "cluster",
+    "distribute",
+    "group_sort",
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "004-plantet-4.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "minimizediff",
+    "cluster",
+    "balance",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "005-plantet-5.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 16,
+   "rules": [
+    "minimizediff",
+    "strict_separate",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "006-plantet-6.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "separate",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "007-plantet-7.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "group_sort",
+    "distribute",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "008-plantet-8.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 35,
+   "rules": [
+    "minimizediff",
+    "aggregate",
+    "group_sort",
+    "strict_separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "009-plantet-9.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "group_sort",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "010-plantet-10.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "minimizediff",
+    "group_sort",
+    "separate",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "011-plantet-11.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "012-plantet-12.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 6,
+   "rules": [
+    "separate",
+    "cluster",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "013-plantet-13.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "minimizediff",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "014-plantet-14.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 16,
+   "rules": [
+    "minimizediff",
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "015-plantet-15.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "strict_separate",
+    "separate",
+    "cluster",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "016-plantet-16.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "strict_separate",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "017-plantet-17.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "balance",
+    "strict_separate",
+    "group_sort",
+    "separate",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "018-plantet-18.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "group_sort",
+    "balance",
+    "minimizediff",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "019-plantet-19.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "strict_separate",
+    "balance",
+    "separate",
+    "distribute",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "020-plantet-20.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "strict_separate",
+    "aggregate",
+    "cluster",
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "021-plantet-21.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "group_sort",
+    "strict_separate",
+    "distribute",
+    "minimizediff",
+    "balance",
+    "aggregate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "022-plantet-22.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "strict_separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "023-plantet-23.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "strict_separate",
+    "aggregate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "024-plantet-24.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "separate",
+    "distribute",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "025-plantet-25.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "026-plantet-26.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "minimizediff",
+    "strict_separate",
+    "cluster",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "027-plantet-27.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "group_sort",
+    "strict_separate",
+    "distribute",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "028-plantet-28.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 16,
+   "rules": [
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "029-plantet-29.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "separate",
+    "strict_separate",
+    "distribute",
+    "cluster"
+   ],
+   "planted": true
+  },
+  {
+   "file": "030-plantet-30.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "balance",
+    "cluster",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "031-plantet-31.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "032-plantet-32.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "033-plantet-33.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "balance",
+    "group_sort",
+    "cluster",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "034-plantet-34.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "minimizediff",
+    "balance",
+    "distribute",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "035-plantet-35.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 6,
+   "rules": [
+    "minimizediff",
+    "cluster",
+    "balance",
+    "separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "036-plantet-36.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "cluster",
+    "strict_separate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "037-plantet-37.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 16,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "038-plantet-38.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "group_sort",
+    "strict_separate",
+    "minimizediff"
+   ],
+   "planted": true
+  },
+  {
+   "file": "039-plantet-39.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "aggregate",
+    "cluster",
+    "balance"
+   ],
+   "planted": true
+  },
+  {
+   "file": "040-plantet-40.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "cluster",
+    "minimizediff",
+    "distribute",
+    "balance",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "041-plantet-41.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "minimizediff",
+    "cluster",
+    "separate",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "042-plantet-42.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "cluster"
+   ],
+   "planted": true
+  },
+  {
+   "file": "043-plantet-43.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 6,
+   "rules": [
+    "separate",
+    "minimizediff",
+    "group_sort",
+    "strict_separate",
+    "cluster"
+   ],
+   "planted": true
+  },
+  {
+   "file": "044-plantet-44.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "045-plantet-45.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "minimizediff",
+    "aggregate"
+   ],
+   "planted": true
+  },
+  {
+   "file": "046-plantet-46.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 6,
+   "rules": [
+    "separate",
+    "group_sort",
+    "cluster",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "047-plantet-47.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "separate",
+    "balance",
+    "group_sort",
+    "distribute"
+   ],
+   "planted": true
+  },
+  {
+   "file": "048-plantet-48.json",
+   "kind": "plantet",
+   "description": "Plantet klasse: der findes en deling med 0 på alle regler (se facit).",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "separate",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": true
+  },
+  {
+   "file": "049-tilfaeldig-1.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 2 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "cluster",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "050-tilfaeldig-2.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 72 elever med 2 regler.",
+   "view": "home",
+   "students": 72,
+   "rules": [
+    "group_sort",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "051-tilfaeldig-3.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 2 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "distribute",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "052-tilfaeldig-4.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 66 elever med 1 regler.",
+   "view": "home",
+   "students": 66,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "053-tilfaeldig-5.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 3 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "balance",
+    "group_sort",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "054-tilfaeldig-6.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 4 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "balance",
+    "balance",
+    "cluster",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "055-tilfaeldig-7.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 5 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "group_sort",
+    "separate",
+    "cluster",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "056-tilfaeldig-8.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 96 elever med 4 regler.",
+   "view": "home",
+   "students": 96,
+   "rules": [
+    "distribute",
+    "balance",
+    "strict_separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "057-tilfaeldig-9.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 13 elever med 5 regler.",
+   "view": "home",
+   "students": 13,
+   "rules": [
+    "separate",
+    "aggregate",
+    "distribute",
+    "minimizediff",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "058-tilfaeldig-10.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 5 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "cluster",
+    "cluster",
+    "balance",
+    "cluster",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "059-tilfaeldig-11.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 90 elever med 3 regler.",
+   "view": "home",
+   "students": 90,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "060-tilfaeldig-12.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 2 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "balance",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "061-tilfaeldig-13.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 4 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "separate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "062-tilfaeldig-14.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 2 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "separate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "063-tilfaeldig-15.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 2 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "distribute",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "064-tilfaeldig-16.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 77 elever med 5 regler.",
+   "view": "home",
+   "students": 77,
+   "rules": [
+    "balance",
+    "minimizediff",
+    "distribute",
+    "balance",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "065-tilfaeldig-17.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 6 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "separate",
+    "balance",
+    "strict_separate",
+    "aggregate",
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "066-tilfaeldig-18.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 1 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "067-tilfaeldig-19.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 2 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "068-matrix-20.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 15 elever med 1 regler.",
+   "view": "matrix",
+   "students": 15,
+   "rules": [
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "069-tilfaeldig-21.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 76 elever med 4 regler.",
+   "view": "home",
+   "students": 76,
+   "rules": [
+    "aggregate",
+    "cluster",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "070-tilfaeldig-22.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 2 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "balance",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "071-matrix-23.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 22 elever med 1 regler.",
+   "view": "matrix",
+   "students": 22,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "072-tilfaeldig-24.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 6 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "balance",
+    "separate",
+    "balance",
+    "aggregate",
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "073-tilfaeldig-25.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 3 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "distribute",
+    "separate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "074-tilfaeldig-26.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 5 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "cluster",
+    "cluster",
+    "distribute",
+    "separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "075-tilfaeldig-27.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 14 elever med 1 regler.",
+   "view": "home",
+   "students": 14,
+   "rules": [
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "076-tilfaeldig-28.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 8 elever med 1 regler.",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "077-tilfaeldig-29.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 16 elever med 1 regler.",
+   "view": "home",
+   "students": 16,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "078-tilfaeldig-30.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 79 elever med 4 regler.",
+   "view": "home",
+   "students": 79,
+   "rules": [
+    "distribute",
+    "group_sort",
+    "separate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "079-tilfaeldig-31.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 1 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "080-tilfaeldig-32.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 9 elever med 1 regler.",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "081-tilfaeldig-33.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 10 elever med 5 regler.",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "balance",
+    "minimizediff",
+    "balance",
+    "group_sort",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "082-tilfaeldig-34.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 6 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "strict_separate",
+    "balance",
+    "group_sort",
+    "minimizediff",
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "083-tilfaeldig-35.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 11 elever med 5 regler.",
+   "view": "home",
+   "students": 11,
+   "rules": [
+    "minimizediff",
+    "aggregate",
+    "separate",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "084-matrix-36.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 28 elever med 1 regler.",
+   "view": "matrix",
+   "students": 28,
+   "rules": [
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "085-tilfaeldig-37.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 5 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "distribute",
+    "balance",
+    "minimizediff",
+    "group_sort",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "086-tilfaeldig-38.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 5 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "separate",
+    "minimizediff",
+    "distribute",
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "087-tilfaeldig-39.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 6 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "cluster",
+    "balance",
+    "group_sort",
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "088-matrix-40.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 17 elever med 1 regler.",
+   "view": "matrix",
+   "students": 17,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "089-matrix-41.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 19 elever med 6 regler.",
+   "view": "matrix",
+   "students": 19,
+   "rules": [
+    "distribute",
+    "separate",
+    "balance",
+    "cluster",
+    "distribute",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "090-tilfaeldig-42.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 3 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "cluster",
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "091-tilfaeldig-43.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 32 elever med 2 regler.",
+   "view": "home",
+   "students": 32,
+   "rules": [
+    "balance",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "092-tilfaeldig-44.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 20 elever med 1 regler.",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "093-tilfaeldig-45.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 3 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "094-tilfaeldig-46.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 17 elever med 1 regler.",
+   "view": "home",
+   "students": 17,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "095-tilfaeldig-47.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 13 elever med 6 regler.",
+   "view": "home",
+   "students": 13,
+   "rules": [
+    "strict_separate",
+    "aggregate",
+    "separate",
+    "separate",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "096-tilfaeldig-48.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 15 elever med 4 regler.",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "balance",
+    "balance",
+    "balance",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "097-tilfaeldig-49.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 1 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "098-matrix-50.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 31 elever med 5 regler.",
+   "view": "matrix",
+   "students": 31,
+   "rules": [
+    "distribute",
+    "distribute",
+    "group_sort",
+    "strict_separate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "099-tilfaeldig-51.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 63 elever med 5 regler.",
+   "view": "home",
+   "students": 63,
+   "rules": [
+    "group_sort",
+    "distribute",
+    "aggregate",
+    "cluster",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "100-tilfaeldig-52.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 11 elever med 3 regler.",
+   "view": "home",
+   "students": 11,
+   "rules": [
+    "separate",
+    "aggregate",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "101-tilfaeldig-53.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 41 elever med 4 regler.",
+   "view": "home",
+   "students": 41,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "separate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "102-tilfaeldig-54.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 270 elever med 1 regler.",
+   "view": "home",
+   "students": 270,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "103-tilfaeldig-55.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 6 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "minimizediff",
+    "strict_separate",
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "104-tilfaeldig-56.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 2 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "105-tilfaeldig-57.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 100 elever med 5 regler.",
+   "view": "home",
+   "students": 100,
+   "rules": [
+    "separate",
+    "separate",
+    "group_sort",
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "106-tilfaeldig-58.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 1 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "107-tilfaeldig-59.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 4 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "separate",
+    "balance",
+    "cluster",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "108-tilfaeldig-60.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 1 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "109-tilfaeldig-61.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 13 elever med 5 regler.",
+   "view": "home",
+   "students": 13,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "cluster",
+    "minimizediff",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "110-tilfaeldig-62.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 105 elever med 5 regler.",
+   "view": "home",
+   "students": 105,
+   "rules": [
+    "separate",
+    "distribute",
+    "cluster",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "111-tilfaeldig-63.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 51 elever med 5 regler.",
+   "view": "home",
+   "students": 51,
+   "rules": [
+    "cluster",
+    "distribute",
+    "distribute",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "112-tilfaeldig-64.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 5 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "balance",
+    "aggregate",
+    "balance",
+    "balance",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "113-tilfaeldig-65.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 78 elever med 5 regler.",
+   "view": "home",
+   "students": 78,
+   "rules": [
+    "separate",
+    "distribute",
+    "balance",
+    "cluster",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "114-tilfaeldig-66.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 14 elever med 3 regler.",
+   "view": "home",
+   "students": 14,
+   "rules": [
+    "distribute",
+    "balance",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "115-tilfaeldig-67.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 6 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "balance",
+    "strict_separate",
+    "aggregate",
+    "group_sort",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "116-tilfaeldig-68.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 5 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "minimizediff",
+    "separate",
+    "cluster",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "117-tilfaeldig-69.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 3 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "distribute",
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "118-tilfaeldig-70.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 1 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "119-tilfaeldig-71.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 5 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "distribute",
+    "distribute",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "120-tilfaeldig-72.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 246 elever med 4 regler.",
+   "view": "home",
+   "students": 246,
+   "rules": [
+    "balance",
+    "distribute",
+    "group_sort",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "121-tilfaeldig-73.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 31 elever med 1 regler.",
+   "view": "home",
+   "students": 31,
+   "rules": [
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "122-tilfaeldig-74.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 145 elever med 6 regler.",
+   "view": "home",
+   "students": 145,
+   "rules": [
+    "cluster",
+    "distribute",
+    "group_sort",
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "123-tilfaeldig-75.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 120 elever med 5 regler.",
+   "view": "home",
+   "students": 120,
+   "rules": [
+    "distribute",
+    "cluster",
+    "separate",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "124-tilfaeldig-76.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 1 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "125-tilfaeldig-77.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 6 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "cluster",
+    "separate",
+    "aggregate",
+    "separate",
+    "group_sort",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "126-tilfaeldig-78.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 6 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "minimizediff",
+    "distribute",
+    "distribute",
+    "aggregate",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "127-tilfaeldig-79.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 8 elever med 1 regler.",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "128-tilfaeldig-80.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 4 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "group_sort",
+    "distribute",
+    "aggregate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "129-tilfaeldig-81.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 13 elever med 4 regler.",
+   "view": "home",
+   "students": 13,
+   "rules": [
+    "distribute",
+    "group_sort",
+    "cluster",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "130-tilfaeldig-82.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 2 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "131-tilfaeldig-83.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 5 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "minimizediff",
+    "aggregate",
+    "aggregate",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "132-tilfaeldig-84.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 11 elever med 2 regler.",
+   "view": "home",
+   "students": 11,
+   "rules": [
+    "separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "133-tilfaeldig-85.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 6 elever med 3 regler.",
+   "view": "home",
+   "students": 6,
+   "rules": [
+    "distribute",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "134-tilfaeldig-86.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 4 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "separate",
+    "separate",
+    "separate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "135-tilfaeldig-87.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 9 elever med 5 regler.",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "distribute",
+    "distribute",
+    "cluster",
+    "aggregate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "136-tilfaeldig-88.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 2 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "137-tilfaeldig-89.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 7 elever med 5 regler.",
+   "view": "home",
+   "students": 7,
+   "rules": [
+    "distribute",
+    "balance",
+    "cluster",
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "138-tilfaeldig-90.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 163 elever med 3 regler.",
+   "view": "home",
+   "students": 163,
+   "rules": [
+    "group_sort",
+    "aggregate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "139-tilfaeldig-91.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 4 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "distribute",
+    "group_sort",
+    "distribute",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "140-tilfaeldig-92.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 30 elever med 5 regler.",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "balance",
+    "minimizediff",
+    "cluster",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "141-tilfaeldig-93.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 6 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "aggregate",
+    "distribute",
+    "separate",
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "142-tilfaeldig-94.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 6 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "minimizediff",
+    "minimizediff",
+    "separate",
+    "aggregate",
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "143-tilfaeldig-95.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 2 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "aggregate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "144-tilfaeldig-96.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 46 elever med 1 regler.",
+   "view": "home",
+   "students": 46,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "145-tilfaeldig-97.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 32 elever med 6 regler.",
+   "view": "home",
+   "students": 32,
+   "rules": [
+    "balance",
+    "distribute",
+    "cluster",
+    "separate",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "146-tilfaeldig-98.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 15 elever med 1 regler.",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "147-tilfaeldig-99.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 57 elever med 6 regler.",
+   "view": "home",
+   "students": 57,
+   "rules": [
+    "cluster",
+    "aggregate",
+    "cluster",
+    "distribute",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "148-tilfaeldig-100.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 6 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "strict_separate",
+    "group_sort",
+    "distribute",
+    "separate",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "149-tilfaeldig-101.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 44 elever med 2 regler.",
+   "view": "home",
+   "students": 44,
+   "rules": [
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "150-tilfaeldig-102.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 41 elever med 3 regler.",
+   "view": "home",
+   "students": 41,
+   "rules": [
+    "separate",
+    "cluster",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "151-tilfaeldig-103.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 225 elever med 1 regler.",
+   "view": "home",
+   "students": 225,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "152-tilfaeldig-104.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 2 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "153-tilfaeldig-105.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 1 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "154-matrix-106.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 31 elever med 3 regler.",
+   "view": "matrix",
+   "students": 31,
+   "rules": [
+    "separate",
+    "distribute",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "155-tilfaeldig-107.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 5 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "distribute",
+    "distribute",
+    "balance",
+    "aggregate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "156-tilfaeldig-108.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 5 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "strict_separate",
+    "balance",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "157-tilfaeldig-109.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 4 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "group_sort",
+    "distribute",
+    "balance",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "158-tilfaeldig-110.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 1 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "159-tilfaeldig-111.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 31 elever med 1 regler.",
+   "view": "home",
+   "students": 31,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "160-tilfaeldig-112.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 13 elever med 6 regler.",
+   "view": "home",
+   "students": 13,
+   "rules": [
+    "minimizediff",
+    "minimizediff",
+    "aggregate",
+    "separate",
+    "balance",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "161-tilfaeldig-113.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 10 elever med 4 regler.",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "aggregate",
+    "minimizediff",
+    "minimizediff",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "162-tilfaeldig-114.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 83 elever med 6 regler.",
+   "view": "home",
+   "students": 83,
+   "rules": [
+    "group_sort",
+    "strict_separate",
+    "distribute",
+    "minimizediff",
+    "minimizediff",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "163-tilfaeldig-115.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 6 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "distribute",
+    "distribute",
+    "minimizediff",
+    "distribute",
+    "strict_separate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "164-tilfaeldig-116.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 174 elever med 2 regler.",
+   "view": "home",
+   "students": 174,
+   "rules": [
+    "aggregate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "165-tilfaeldig-117.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 6 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "aggregate",
+    "distribute",
+    "minimizediff",
+    "aggregate",
+    "group_sort",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "166-tilfaeldig-118.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 20 elever med 4 regler.",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "distribute",
+    "distribute",
+    "separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "167-matrix-119.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 29 elever med 1 regler.",
+   "view": "matrix",
+   "students": 29,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "168-tilfaeldig-120.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 9 elever med 1 regler.",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "169-tilfaeldig-121.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 5 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "balance",
+    "distribute",
+    "distribute",
+    "aggregate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "170-matrix-122.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 8 elever med 3 regler.",
+   "view": "matrix",
+   "students": 8,
+   "rules": [
+    "separate",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "171-tilfaeldig-123.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 78 elever med 3 regler.",
+   "view": "home",
+   "students": 78,
+   "rules": [
+    "distribute",
+    "separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "172-matrix-124.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 82 elever med 5 regler.",
+   "view": "matrix",
+   "students": 82,
+   "rules": [
+    "cluster",
+    "cluster",
+    "distribute",
+    "cluster",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "173-tilfaeldig-125.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 6 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "separate",
+    "balance",
+    "balance",
+    "distribute",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "174-tilfaeldig-126.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 2 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "strict_separate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "175-tilfaeldig-127.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 2 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "176-matrix-128.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 31 elever med 6 regler.",
+   "view": "matrix",
+   "students": 31,
+   "rules": [
+    "distribute",
+    "separate",
+    "distribute",
+    "distribute",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "177-tilfaeldig-129.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "separate",
+    "separate",
+    "cluster",
+    "separate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "178-tilfaeldig-130.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 5 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "cluster",
+    "distribute",
+    "aggregate",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "179-tilfaeldig-131.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 4 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "separate",
+    "strict_separate",
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "180-tilfaeldig-132.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 6 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "group_sort",
+    "minimizediff",
+    "strict_separate",
+    "separate",
+    "cluster",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "181-tilfaeldig-133.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 38 elever med 3 regler.",
+   "view": "home",
+   "students": 38,
+   "rules": [
+    "separate",
+    "aggregate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "182-tilfaeldig-134.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 10 elever med 5 regler.",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "aggregate",
+    "distribute",
+    "distribute",
+    "cluster",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "183-tilfaeldig-135.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 17 elever med 1 regler.",
+   "view": "home",
+   "students": 17,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "184-tilfaeldig-136.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 2 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "aggregate",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "185-tilfaeldig-137.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 15 elever med 2 regler.",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "186-tilfaeldig-138.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 9 elever med 2 regler.",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "187-tilfaeldig-139.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 207 elever med 1 regler.",
+   "view": "home",
+   "students": 207,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "188-matrix-140.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 27 elever med 3 regler.",
+   "view": "matrix",
+   "students": 27,
+   "rules": [
+    "balance",
+    "cluster",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "189-tilfaeldig-141.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 45 elever med 2 regler.",
+   "view": "home",
+   "students": 45,
+   "rules": [
+    "cluster",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "190-tilfaeldig-142.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 6 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "balance",
+    "distribute",
+    "balance",
+    "group_sort",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "191-tilfaeldig-143.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 4 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "balance",
+    "distribute",
+    "cluster",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "192-tilfaeldig-144.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 2 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "193-tilfaeldig-145.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 286 elever med 6 regler.",
+   "view": "home",
+   "students": 286,
+   "rules": [
+    "aggregate",
+    "separate",
+    "separate",
+    "cluster",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "194-tilfaeldig-146.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 93 elever med 4 regler.",
+   "view": "home",
+   "students": 93,
+   "rules": [
+    "group_sort",
+    "separate",
+    "distribute",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "195-tilfaeldig-147.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 7 elever med 1 regler.",
+   "view": "home",
+   "students": 7,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "196-tilfaeldig-148.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 32 elever med 6 regler.",
+   "view": "home",
+   "students": 32,
+   "rules": [
+    "minimizediff",
+    "separate",
+    "balance",
+    "balance",
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "197-tilfaeldig-149.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 35 elever med 4 regler.",
+   "view": "home",
+   "students": 35,
+   "rules": [
+    "separate",
+    "aggregate",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "198-tilfaeldig-150.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 20 elever med 6 regler.",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "balance",
+    "balance",
+    "balance",
+    "cluster",
+    "aggregate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "199-tilfaeldig-151.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 2 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "separate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "200-matrix-152.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 27 elever med 2 regler.",
+   "view": "matrix",
+   "students": 27,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "201-tilfaeldig-153.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 107 elever med 1 regler.",
+   "view": "home",
+   "students": 107,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "202-tilfaeldig-154.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 211 elever med 6 regler.",
+   "view": "home",
+   "students": 211,
+   "rules": [
+    "cluster",
+    "minimizediff",
+    "group_sort",
+    "strict_separate",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "203-tilfaeldig-155.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 2 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "distribute",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "204-tilfaeldig-156.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 3 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "minimizediff",
+    "distribute",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "205-tilfaeldig-157.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 76 elever med 1 regler.",
+   "view": "home",
+   "students": 76,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "206-tilfaeldig-158.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 2 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "207-tilfaeldig-159.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 20 elever med 3 regler.",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "cluster",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "208-tilfaeldig-160.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 6 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "strict_separate",
+    "aggregate",
+    "balance",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "209-tilfaeldig-161.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 5 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "separate",
+    "distribute",
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "210-tilfaeldig-162.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 6 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "strict_separate",
+    "separate",
+    "aggregate",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "211-matrix-163.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 108 elever med 2 regler.",
+   "view": "matrix",
+   "students": 108,
+   "rules": [
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "212-tilfaeldig-164.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 124 elever med 4 regler.",
+   "view": "home",
+   "students": 124,
+   "rules": [
+    "separate",
+    "distribute",
+    "balance",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "213-tilfaeldig-165.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "separate",
+    "distribute",
+    "strict_separate",
+    "separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "214-tilfaeldig-166.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 172 elever med 1 regler.",
+   "view": "home",
+   "students": 172,
+   "rules": [
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "215-tilfaeldig-167.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 5 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "balance",
+    "cluster",
+    "aggregate",
+    "cluster",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "216-matrix-168.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 23 elever med 5 regler.",
+   "view": "matrix",
+   "students": 23,
+   "rules": [
+    "distribute",
+    "distribute",
+    "distribute",
+    "separate",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "217-tilfaeldig-169.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 238 elever med 2 regler.",
+   "view": "home",
+   "students": 238,
+   "rules": [
+    "balance",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "218-tilfaeldig-170.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 243 elever med 5 regler.",
+   "view": "home",
+   "students": 243,
+   "rules": [
+    "cluster",
+    "aggregate",
+    "distribute",
+    "cluster",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "219-tilfaeldig-171.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 3 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "group_sort",
+    "separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "220-tilfaeldig-172.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 6 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "distribute",
+    "group_sort",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "221-tilfaeldig-173.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 55 elever med 1 regler.",
+   "view": "home",
+   "students": 55,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "222-tilfaeldig-174.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 277 elever med 6 regler.",
+   "view": "home",
+   "students": 277,
+   "rules": [
+    "cluster",
+    "distribute",
+    "distribute",
+    "balance",
+    "strict_separate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "223-tilfaeldig-175.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 4 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "cluster",
+    "balance",
+    "minimizediff",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "224-tilfaeldig-176.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 1 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "225-tilfaeldig-177.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 30 elever med 6 regler.",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "separate",
+    "separate",
+    "group_sort",
+    "cluster",
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "226-tilfaeldig-178.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 4 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "aggregate",
+    "separate",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "227-tilfaeldig-179.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 10 elever med 5 regler.",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "minimizediff",
+    "aggregate",
+    "minimizediff",
+    "group_sort",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "228-tilfaeldig-180.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "minimizediff",
+    "aggregate",
+    "distribute",
+    "balance",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "229-tilfaeldig-181.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 4 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "separate",
+    "distribute",
+    "group_sort",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "230-tilfaeldig-182.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 91 elever med 2 regler.",
+   "view": "home",
+   "students": 91,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "231-tilfaeldig-183.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 6 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "balance",
+    "separate",
+    "distribute",
+    "strict_separate",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "232-tilfaeldig-184.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 2 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "233-tilfaeldig-185.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 9 elever med 4 regler.",
+   "view": "home",
+   "students": 9,
+   "rules": [
+    "separate",
+    "cluster",
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "234-tilfaeldig-186.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 65 elever med 2 regler.",
+   "view": "home",
+   "students": 65,
+   "rules": [
+    "minimizediff",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "235-tilfaeldig-187.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 262 elever med 5 regler.",
+   "view": "home",
+   "students": 262,
+   "rules": [
+    "aggregate",
+    "distribute",
+    "group_sort",
+    "balance",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "236-tilfaeldig-188.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 3 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "balance",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "237-tilfaeldig-189.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 1 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "238-tilfaeldig-190.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 90 elever med 2 regler.",
+   "view": "home",
+   "students": 90,
+   "rules": [
+    "balance",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "239-tilfaeldig-191.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 14 elever med 5 regler.",
+   "view": "home",
+   "students": 14,
+   "rules": [
+    "distribute",
+    "distribute",
+    "separate",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "240-tilfaeldig-192.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 6 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "strict_separate",
+    "strict_separate",
+    "distribute",
+    "aggregate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "241-tilfaeldig-193.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "separate",
+    "distribute",
+    "cluster",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "242-tilfaeldig-194.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 6 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "group_sort",
+    "separate",
+    "minimizediff",
+    "separate",
+    "cluster",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "243-tilfaeldig-195.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 15 elever med 6 regler.",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "separate",
+    "separate",
+    "group_sort",
+    "strict_separate",
+    "cluster",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "244-matrix-196.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 22 elever med 6 regler.",
+   "view": "matrix",
+   "students": 22,
+   "rules": [
+    "minimizediff",
+    "balance",
+    "aggregate",
+    "minimizediff",
+    "separate",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "245-matrix-197.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 8 elever med 3 regler.",
+   "view": "matrix",
+   "students": 8,
+   "rules": [
+    "distribute",
+    "balance",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "246-tilfaeldig-198.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 268 elever med 1 regler.",
+   "view": "home",
+   "students": 268,
+   "rules": [
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "247-tilfaeldig-199.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 4 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "balance",
+    "balance",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "248-tilfaeldig-200.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 30 elever med 1 regler.",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "249-tilfaeldig-201.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 4 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "balance",
+    "separate",
+    "strict_separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "250-tilfaeldig-202.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 220 elever med 1 regler.",
+   "view": "home",
+   "students": 220,
+   "rules": [
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "251-tilfaeldig-203.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 31 elever med 6 regler.",
+   "view": "home",
+   "students": 31,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "group_sort",
+    "distribute",
+    "strict_separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "252-tilfaeldig-204.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 6 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "cluster",
+    "group_sort",
+    "aggregate",
+    "balance",
+    "minimizediff",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "253-tilfaeldig-205.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 6 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "balance",
+    "distribute",
+    "balance",
+    "separate",
+    "strict_separate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "254-tilfaeldig-206.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "balance",
+    "distribute",
+    "group_sort",
+    "distribute",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "255-tilfaeldig-207.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 4 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "balance",
+    "distribute",
+    "cluster",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "256-tilfaeldig-208.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 22 elever med 1 regler.",
+   "view": "home",
+   "students": 22,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "257-matrix-209.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 99 elever med 4 regler.",
+   "view": "matrix",
+   "students": 99,
+   "rules": [
+    "group_sort",
+    "balance",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "258-tilfaeldig-210.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 3 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "259-tilfaeldig-211.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 2 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "strict_separate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "260-tilfaeldig-212.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 23 elever med 5 regler.",
+   "view": "home",
+   "students": 23,
+   "rules": [
+    "distribute",
+    "strict_separate",
+    "separate",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "261-tilfaeldig-213.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 4 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "separate",
+    "cluster",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "262-tilfaeldig-214.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 169 elever med 2 regler.",
+   "view": "home",
+   "students": 169,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "263-tilfaeldig-215.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 14 elever med 5 regler.",
+   "view": "home",
+   "students": 14,
+   "rules": [
+    "distribute",
+    "distribute",
+    "minimizediff",
+    "strict_separate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "264-tilfaeldig-216.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 29 elever med 6 regler.",
+   "view": "home",
+   "students": 29,
+   "rules": [
+    "distribute",
+    "distribute",
+    "strict_separate",
+    "distribute",
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "265-tilfaeldig-217.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 46 elever med 6 regler.",
+   "view": "home",
+   "students": 46,
+   "rules": [
+    "distribute",
+    "aggregate",
+    "separate",
+    "distribute",
+    "minimizediff",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "266-tilfaeldig-218.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 242 elever med 5 regler.",
+   "view": "home",
+   "students": 242,
+   "rules": [
+    "separate",
+    "group_sort",
+    "distribute",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "267-tilfaeldig-219.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 2 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "268-tilfaeldig-220.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 36 elever med 1 regler.",
+   "view": "home",
+   "students": 36,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "269-tilfaeldig-221.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 28 elever med 4 regler.",
+   "view": "home",
+   "students": 28,
+   "rules": [
+    "separate",
+    "separate",
+    "strict_separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "270-matrix-222.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 18 elever med 5 regler.",
+   "view": "matrix",
+   "students": 18,
+   "rules": [
+    "distribute",
+    "cluster",
+    "strict_separate",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "271-tilfaeldig-223.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 25 elever med 1 regler.",
+   "view": "home",
+   "students": 25,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "272-tilfaeldig-224.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 27 elever med 4 regler.",
+   "view": "home",
+   "students": 27,
+   "rules": [
+    "aggregate",
+    "distribute",
+    "distribute",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "273-tilfaeldig-225.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 2 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "cluster",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "274-matrix-226.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 10 elever med 1 regler.",
+   "view": "matrix",
+   "students": 10,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "275-tilfaeldig-227.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 104 elever med 1 regler.",
+   "view": "home",
+   "students": 104,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "276-matrix-228.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 22 elever med 3 regler.",
+   "view": "matrix",
+   "students": 22,
+   "rules": [
+    "distribute",
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "277-tilfaeldig-229.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 8 elever med 4 regler.",
+   "view": "home",
+   "students": 8,
+   "rules": [
+    "distribute",
+    "separate",
+    "balance",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "278-tilfaeldig-230.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 31 elever med 6 regler.",
+   "view": "home",
+   "students": 31,
+   "rules": [
+    "balance",
+    "aggregate",
+    "distribute",
+    "distribute",
+    "balance",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "279-tilfaeldig-231.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 18 elever med 3 regler.",
+   "view": "home",
+   "students": 18,
+   "rules": [
+    "balance",
+    "minimizediff",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "280-tilfaeldig-232.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 26 elever med 6 regler.",
+   "view": "home",
+   "students": 26,
+   "rules": [
+    "strict_separate",
+    "separate",
+    "distribute",
+    "distribute",
+    "separate",
+    "separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "281-tilfaeldig-233.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 10 elever med 2 regler.",
+   "view": "home",
+   "students": 10,
+   "rules": [
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "282-tilfaeldig-234.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 212 elever med 3 regler.",
+   "view": "home",
+   "students": 212,
+   "rules": [
+    "distribute",
+    "separate",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "283-tilfaeldig-235.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 30 elever med 2 regler.",
+   "view": "home",
+   "students": 30,
+   "rules": [
+    "aggregate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "284-tilfaeldig-236.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 5 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "balance",
+    "aggregate",
+    "balance",
+    "cluster",
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "285-tilfaeldig-237.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 229 elever med 4 regler.",
+   "view": "home",
+   "students": 229,
+   "rules": [
+    "distribute",
+    "separate",
+    "group_sort",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "286-tilfaeldig-238.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 15 elever med 3 regler.",
+   "view": "home",
+   "students": 15,
+   "rules": [
+    "distribute",
+    "group_sort",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "287-matrix-239.json",
+   "kind": "matrix",
+   "description": "Tilfældig klasse på 103 elever med 6 regler.",
+   "view": "matrix",
+   "students": 103,
+   "rules": [
+    "distribute",
+    "minimizediff",
+    "distribute",
+    "distribute",
+    "aggregate",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "288-tilfaeldig-240.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 1 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "289-tilfaeldig-241.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 71 elever med 3 regler.",
+   "view": "home",
+   "students": 71,
+   "rules": [
+    "separate",
+    "distribute",
+    "minimizediff"
+   ],
+   "planted": false
+  },
+  {
+   "file": "290-tilfaeldig-242.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 283 elever med 5 regler.",
+   "view": "home",
+   "students": 283,
+   "rules": [
+    "distribute",
+    "cluster",
+    "cluster",
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "291-tilfaeldig-243.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 19 elever med 1 regler.",
+   "view": "home",
+   "students": 19,
+   "rules": [
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "292-tilfaeldig-244.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 1 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "balance"
+   ],
+   "planted": false
+  },
+  {
+   "file": "293-tilfaeldig-245.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 21 elever med 3 regler.",
+   "view": "home",
+   "students": 21,
+   "rules": [
+    "distribute",
+    "strict_separate",
+    "aggregate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "294-tilfaeldig-246.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 160 elever med 3 regler.",
+   "view": "home",
+   "students": 160,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "295-tilfaeldig-247.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 84 elever med 3 regler.",
+   "view": "home",
+   "students": 84,
+   "rules": [
+    "strict_separate",
+    "distribute",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "296-tilfaeldig-248.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 20 elever med 1 regler.",
+   "view": "home",
+   "students": 20,
+   "rules": [
+    "cluster"
+   ],
+   "planted": false
+  },
+  {
+   "file": "297-tilfaeldig-249.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 24 elever med 4 regler.",
+   "view": "home",
+   "students": 24,
+   "rules": [
+    "balance",
+    "group_sort",
+    "distribute",
+    "distribute"
+   ],
+   "planted": false
+  },
+  {
+   "file": "298-tilfaeldig-250.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 41 elever med 5 regler.",
+   "view": "home",
+   "students": 41,
+   "rules": [
+    "minimizediff",
+    "distribute",
+    "balance",
+    "distribute",
+    "strict_separate"
+   ],
+   "planted": false
+  },
+  {
+   "file": "299-tilfaeldig-251.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 14 elever med 2 regler.",
+   "view": "home",
+   "students": 14,
+   "rules": [
+    "separate",
+    "group_sort"
+   ],
+   "planted": false
+  },
+  {
+   "file": "300-tilfaeldig-252.json",
+   "kind": "tilfaeldig",
+   "description": "Tilfældig klasse på 12 elever med 5 regler.",
+   "view": "home",
+   "students": 12,
+   "rules": [
+    "separate",
+    "minimizediff",
+    "aggregate",
+    "balance",
+    "group_sort"
+   ],
+   "planted": false
+  }
+ ]
+}

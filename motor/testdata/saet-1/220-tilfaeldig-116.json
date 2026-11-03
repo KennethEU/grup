@@ -1,0 +1,203 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "4.7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "1,9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "10,8",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "11,5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "11,2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "1,5",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": " MIDDEL",
+   "Sprog": "Tysk",
+   "Snit": "1,1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "7,3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Snit": "11.7",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "7,9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "9,5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "5,5",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Snit": "6,2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "4.4",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "6.0",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "8,0",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Snit": "7.7",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "10.2",
+   "Karakter": "10"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r15",
+    "r6"
+   ],
+   [
+    "r17",
+    "r13",
+    "r10",
+    "r2"
+   ]
+  ],
+  "avoid": [
+   [
+    "r16",
+    "r6",
+    "r15",
+    "r3"
+   ],
+   [
+    "r5",
+    "r7",
+    "r6"
+   ],
+   [
+    "r17",
+    "r16",
+    "r14"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 56758
+}

@@ -1,0 +1,122 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p924-1",
+   "Snit": "5,5",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p924-7",
+   "Snit": "10",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p924-5",
+   "Snit": "5,5",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p924-2",
+   "Snit": "8",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p924-3",
+   "Snit": "10",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Sprog": "Fransk",
+   "Udfordring": "Ja"
+  },
+  {
+   "_rowId": "p924-6",
+   "Snit": "8",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p924-4",
+   "Snit": "1,5",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej"
+  },
+  {
+   "_rowId": "p924-8",
+   "Snit": "1,5",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p924-4",
+    "p924-2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 666311
+}

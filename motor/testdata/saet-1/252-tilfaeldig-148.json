@@ -1,0 +1,171 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "12",
+   "Niveau": "",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "02",
+   "Niveau": "Lav ",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "Fritaget",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Niveau": "middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "7",
+   "Niveau": "middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige "
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r14",
+    "r23"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r12",
+    "r19",
+    "r1"
+   ],
+   "topic": "EU"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 764172
+}

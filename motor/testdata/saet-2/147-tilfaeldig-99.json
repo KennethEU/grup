@@ -1,0 +1,398 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r32",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "gaming",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Klatring ",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Gaming",
+   "Hold": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r57",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r42",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r44",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r45",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r53",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r40",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r55",
+   "Interesse": "film",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r56",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Gaming",
+   "Hold": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r50",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r52",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r43",
+   "Interesse": "Klatring ",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r46",
+   "Interesse": "Film",
+   "Hold": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": " FILM",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r51",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Gaming ",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r54",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r43",
+    "r13"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 274145
+}

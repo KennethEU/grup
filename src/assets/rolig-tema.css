@@ -1,0 +1,452 @@
+/* === ROLIG-TEMA ===
+ *
+ * Det samme udseende som resten af dida.dk (se DESIGN.md): ink-on-paper,
+ * varme papirfarver, tynde streger i stedet for glas og skygger.
+ *
+ * Temaet ændrer KUN værdierne på de variabler, resten af appen allerede bruger
+ * — ingen komponenter er bygget om. Det er standard: prepareBetaPage() i
+ * src/js/modules/beta.js sætter data-theme="rolig" på <html>, når den nye
+ * udgave af Grupper vises (og det gør den for alle).
+ *
+ * Skrifterne (Plus Jakarta Sans og JetBrains Mono) hentes fra dida.dk's
+ * egen /fonts/fonts.css, som index.html linker til.
+ *
+ * grup.dk's egen identitet bevares: blå accent (som logoet) og ikonet i
+ * topbaren. Rolig bruger normalt en accentfarve pr. værktøj; her er det blå.
+ */
+[data-theme="rolig"] {
+    color-scheme: light;
+
+    /* Rolig-skalaerne (samme værdier som public/rolig.css) */
+    --ink:     oklch(0.20 0.012 250);
+    --ink-2:   oklch(0.38 0.010 250);
+    --ink-3:   oklch(0.52 0.008 250);
+    --ink-4:   oklch(0.64 0.006 250);
+    --paper:   oklch(0.990 0.004 85);
+    --paper-2: oklch(0.970 0.005 85);
+    --paper-3: oklch(0.940 0.006 85);
+    --rule:    oklch(0.905 0.006 85);
+    --rule-2:  oklch(0.855 0.007 85);
+
+    /* grup.dk's blå, dæmpet til Rolig-registret */
+    --primary: oklch(0.50 0.19 264);
+    --primary-hover: oklch(0.44 0.19 264);
+    --primary-light: color-mix(in oklch, var(--primary) 10%, transparent);
+    --primary-glow: transparent;
+
+    /* Flader */
+    --bg-body: var(--paper-2);
+    --bg-surface: var(--paper);
+    --bg-surface-hover: var(--paper-2);
+    --bg-input: var(--paper);
+    --bg-input-focus: var(--paper);
+    --bg-topbar: var(--paper);
+    --bg-tooltip: oklch(0.20 0.012 250);
+    --bg-modal: var(--paper);
+    --bg-modal-overlay: oklch(0 0 0 / 28%);
+    --bg-card-header: var(--paper-2);
+    --bg-select-option: var(--paper);
+
+    /* Tekst */
+    --text-main: var(--ink);
+    --text-muted: var(--ink-3);
+    --text-subtle: var(--ink-4);
+    --text-bright: var(--ink);
+    --text-on-primary: oklch(1 0 0);
+    --text-link: var(--primary);
+    --text-tag: var(--ink-3);
+    --text-tag-val: var(--ink-2);
+    --text-heading: var(--ink);
+
+    /* Semantiske farver (Rolig: dæmpede, ikke neon) */
+    --color-success: oklch(0.48 0.12 155);
+    --color-success-bg: color-mix(in oklch, var(--color-success) 8%, transparent);
+    --color-error: oklch(0.52 0.18 27);
+    --color-error-bg: color-mix(in oklch, var(--color-error) 8%, transparent);
+    --color-error-border: color-mix(in oklch, var(--color-error) 22%, transparent);
+    --color-warning: oklch(0.50 0.11 70);
+    --color-warning-bg: color-mix(in oklch, var(--color-warning) 9%, transparent);
+    --color-info-bg: color-mix(in oklch, var(--primary) 6%, transparent);
+    --color-info-border: color-mix(in oklch, var(--primary) 18%, transparent);
+
+    /* Streger */
+    --border-light: var(--rule);
+    --border-medium: var(--rule);
+    --border-input: var(--rule-2);
+    --border-input-top: var(--rule-2);
+    --border-subtle: var(--rule);
+    --border-strong: var(--rule-2);
+
+    /* Ingen glas */
+    --glass-bg: var(--paper);
+    --glass-bg-elevated: var(--paper);
+    --glass-border: 1px solid var(--rule);
+    --glass-blur: none;
+    --glass-blur-heavy: none;
+    --glass-inset: none;
+
+    /* Skygger: sparsomt, stregerne dominerer */
+    --shadow-subtle: 0 1px 2px oklch(0 0 0 / 4%);
+    --shadow-card: 0 1px 2px oklch(0 0 0 / 4%);
+    --shadow-float: 0 8px 24px oklch(0 0 0 / 10%);
+
+    /* Tabel */
+    --table-header-bg: var(--paper-2);
+    --table-header-color: var(--ink-3);
+    --table-header-border: var(--rule);
+    --table-cell-border: var(--rule);
+
+    /* Gruppekort */
+    --card-bg: var(--paper);
+    --card-border: var(--rule);
+    --card-hover-bg: var(--paper);
+    --card-hover-border: var(--rule-2);
+    --card-shadow: 0 1px 2px oklch(0 0 0 / 4%);
+    --card-shadow-hover: 0 2px 8px oklch(0 0 0 / 6%);
+    --locked-border: var(--rule-2);
+    --locked-bg: var(--paper-2);
+
+    --bg-surface-glass: var(--paper);
+
+    --scrollbar-thumb: oklch(0 0 0 / 14%);
+    --scrollbar-thumb-hover: oklch(0 0 0 / 24%);
+
+    /* Ingen prikker eller farveglød i baggrunden */
+    --bg-dot: transparent;
+    --bg-gradient-1: transparent;
+    --bg-gradient-2: transparent;
+
+    --focus-ring: color-mix(in oklch, var(--primary) 50%, transparent);
+    --selection-bg: color-mix(in oklch, var(--primary) 20%, transparent);
+
+    --color-warning-border: color-mix(in oklch, var(--color-warning) 25%, transparent);
+    --color-warning-light: color-mix(in oklch, var(--color-warning) 7%, transparent);
+    --color-error-hover: color-mix(in oklch, var(--color-error) 12%, transparent);
+
+    --primary-bg-subtle: color-mix(in oklch, var(--primary) 4%, transparent);
+    --primary-bg-light: color-mix(in oklch, var(--primary) 8%, transparent);
+    --primary-border: color-mix(in oklch, var(--primary) 22%, transparent);
+
+    --surface-tint: oklch(0 0 0 / 3%);
+    --surface-tint-hover: oklch(0 0 0 / 6%);
+
+
+    /* Rolig-radier */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+}
+
+/* Variabler kan ikke fjerne sløring, der står direkte på en regel, og
+   baggrundsmønstret ligger på selve elementerne. Rolig har ingen af delene. */
+html[data-theme="rolig"] body,
+html[data-theme="rolig"] .main-content {
+    background-image: none !important;
+}
+[data-theme="rolig"] * {
+    /* Kun uden præfiks: minifieren sætter selv -webkit- på (se built_css.test.js) */
+    backdrop-filter: none !important;
+}
+
+/* Knapper og faner: flade, uden farveovergang, glød, skygge i teksten eller
+   løft ved hover. (`html` foran gør reglerne stærkere end komponenternes egne,
+   uanset hvilken rækkefølge stilarkene indlæses i.) */
+html[data-theme="rolig"] .btn.primary {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    box-shadow: none;
+    text-shadow: none;
+}
+html[data-theme="rolig"] .btn.primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: none;
+    box-shadow: none;
+    filter: none;
+}
+
+/* Runde former: Rolig bruger piller til små mærker, kontakter og den flydende
+   bund-bjælke — ikke til knapper og værktøjslinjer (det lille radius, som
+   .btn har på resten af dida.dk). Mærkerne (.chip, .value-chip, .news-tag,
+   .avoid-badge, .priority-number m.fl.) og bjælken (.floating-action-bar,
+   .action-pill, .trash-zone-floating) er derfor ikke rørt.
+   Segmenterede vælgere får det samme lille radius ude og et mindre inde, så
+   den valgte knap sidder pænt i rammen. */
+html[data-theme="rolig"] .class-trigger,
+html[data-theme="rolig"] .cancel-generation,
+html[data-theme="rolig"] .filter-btn,
+html[data-theme="rolig"] .id-drawer-btn,
+html[data-theme="rolig"] .ribbon-btn,
+html[data-theme="rolig"] .group-topic-input,
+html[data-theme="rolig"] .pill-group,
+html[data-theme="rolig"] .seg {
+    border-radius: var(--radius-md);
+}
+html[data-theme="rolig"] .slide-indicator,
+html[data-theme="rolig"] .pill-btn,
+html[data-theme="rolig"] .seg-opt {
+    border-radius: var(--radius-sm);
+}
+
+/* === Mere Rolig: typografi, streger og flader ===
+   Rolig er ink-on-paper: etiketter i små versaler i mono, kun vandrette
+   hårlinjer i tabeller, en flad bjælke med en streg under i stedet for flydende
+   knapper, og overskrifter med stram bogstavafstand. Mono-stakken er den samme
+   som resten af dida.dk (ingen skrifttype hentes). */
+html[data-theme="rolig"] {
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --bg-pill: var(--paper-2);
+}
+
+/* Tabeller: etiketter i mono, kun vandrette streger, tal der står lige */
+html[data-theme="rolig"] th {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    background: var(--paper-2);
+    border-right: none;
+}
+html[data-theme="rolig"] td {
+    border-right: none;
+}
+html[data-theme="rolig"] table {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Overskrifter */
+html[data-theme="rolig"] h1,
+html[data-theme="rolig"] h2,
+html[data-theme="rolig"] h3 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+html[data-theme="rolig"] p {
+    text-wrap: pretty;
+}
+
+/* Værktøjsbjælken: flad, med en hårlinje under (ikke flydende) */
+html[data-theme="rolig"] .students-header-sticky,
+html[data-theme="rolig"] .groups-header-sticky {
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: none;
+}
+
+/* Vinduer: Rolig-skyggen og det store radius */
+html[data-theme="rolig"] dialog,
+html[data-theme="rolig"] .modal-content {
+    box-shadow: 0 20px 50px oklch(0 0 0 / 18%);
+    border-radius: var(--radius-lg);
+}
+
+/* Gruppekort: ingen skygge, kun streg; titel i halvfed */
+html[data-theme="rolig"] .group-card {
+    box-shadow: none;
+}
+
+/* Aktiv knap i segmenterede vælgere: tonet baggrund og accenttekst i stedet
+   for solid blå med hvid tekst. Solid accent er forbeholdt hovedhandlingerne
+   (Generér, Gem). Komponenterne tvinger selv hvid tekst med !important, så
+   teksten skal overstyres på samme måde. */
+html[data-theme="rolig"] .slide-indicator {
+    background: color-mix(in oklch, var(--primary) 11%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary) 22%, transparent);
+}
+html[data-theme="rolig"] .pill-btn.active {
+    color: var(--primary) !important;
+}
+html[data-theme="rolig"] .seg-opt.checked {
+    background: color-mix(in oklch, var(--primary) 11%, transparent);
+    color: var(--primary);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary) 22%, transparent);
+}
+
+/* === Én ramme pr. niveau ===
+   Rolig bruger én streg pr. niveau. Segmenterede vælgere havde en ramme med
+   grå bund OG en ramme om den valgte knap; reglerne i Regelopsætning havde
+   ramme om hver regel OG om felterne i den. Nu har kun det yderste (vinduet)
+   og det man skriver i (felterne) en kant, og den valgte knap beholder sin
+   tone og kant. Reglerne adskilles af en hårlinje. */
+html[data-theme="rolig"] .pill-group,
+html[data-theme="rolig"] .seg {
+    background: transparent;
+    border-color: transparent;
+}
+
+/* Lodret streg mellem grupperne i værktøjslinjen: overflødig, når grupperne
+   ikke længere har ramme — afstanden adskiller dem. */
+html[data-theme="rolig"] .inline-sep {
+    display: none;
+}
+
+/* === Sidste rester af glasset ===
+   Felterne havde en indvendig skygge og en mørkere topkant (så de lignede
+   huller i glasset). Rolig har flade felter med én streg og en blød
+   accentring ved fokus. Låste gruppekort var "frosne" med indvendigt skær;
+   her er de bare flade med en anden streg. */
+html[data-theme="rolig"] input[type="text"],
+html[data-theme="rolig"] input[type="number"],
+html[data-theme="rolig"] input[type="search"],
+html[data-theme="rolig"] input:not([type]),
+html[data-theme="rolig"] select,
+html[data-theme="rolig"] textarea {
+    box-shadow: none;
+    border-top: 1px solid var(--rule-2);
+}
+html[data-theme="rolig"] input:focus,
+html[data-theme="rolig"] select:focus,
+html[data-theme="rolig"] textarea:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 15%, transparent);
+}
+html[data-theme="rolig"] .group-card.locked,
+html[data-theme="rolig"] .group-card.locked:hover {
+    box-shadow: none;
+}
+html[data-theme="rolig"] .group-list-enter-from,
+html[data-theme="rolig"] .group-list-leave-to {
+    filter: none;
+}
+
+/* Tom-tilstand inde i et kort: ingen stiplet ramme i rammen */
+html[data-theme="rolig"] .table-container > .empty-state {
+    border: none;
+    background: transparent;
+}
+
+/* Import-vælgeren (Upload fil / Indsæt tekst) lignede en anden slags knap, med
+   hvid aktiv knap og skygge. Nu som de øvrige segmenterede vælgere. */
+html[data-theme="rolig"] .toggle-mode {
+    background: transparent;
+}
+html[data-theme="rolig"] .toggle-mode button.active {
+    background: color-mix(in oklch, var(--primary) 11%, transparent);
+    color: var(--primary);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary) 22%, transparent);
+}
+
+/* Beskeder: Rolig-skyggen (lille og tæt på) i stedet for en 24 px blød skygge.
+   Beholderen har kun 10 px luft og skærer en større skygge over, så der stod et
+   gråt rektangel bag beskeden. */
+html[data-theme="rolig"] .toast {
+    box-shadow: 0 2px 8px oklch(0 0 0 / 6%);
+}
+
+/* === Man skal kunne SE, hvad der er en knap — uden rammer ===
+   Da vælgerne mistede deres ramme, lignede de inaktive knapper ren tekst
+   ("Matrix", "Antal", "Kategoriser", "Flyt"). Hver knap havde derefter sin egen
+   hårlinje, men det blev for mange streger igen. Nu er en knap en blød, lysegrå
+   flade (--paper-3, Rolig-tonen til "trykket") uden kant; ved hover bliver den
+   en tak mørkere. Den valgte har tone og accenttekst. I bjælken i bunden bruges
+   hover alene. */
+html[data-theme="rolig"] .pill-btn,
+html[data-theme="rolig"] .seg-opt,
+html[data-theme="rolig"] .toggle-mode button {
+    border: 1px solid transparent;
+    background: var(--paper-3);
+    color: var(--ink-2);
+    cursor: pointer;
+}
+html[data-theme="rolig"] .pill-btn:not(.active):hover,
+html[data-theme="rolig"] .toggle-mode button:not(.active):hover {
+    background: var(--rule);
+    color: var(--ink);
+}
+html[data-theme="rolig"] .pill-btn.active,
+html[data-theme="rolig"] .toggle-mode button.active {
+    border-color: transparent;
+    background: transparent;
+}
+html[data-theme="rolig"] .pill-group,
+html[data-theme="rolig"] .toggle-mode {
+    gap: 4px;
+}
+
+/* Den lille lodrette skillestreg efter hver zone i værktøjsbjælken er
+   overflødig, når zonerne ikke har ramme — afstanden adskiller dem. */
+html[data-theme="rolig"] .ribbon-zone::after,
+html[data-theme="rolig"] .ribbon-zone:not(:last-child)::after {
+    display: none !important; /* komponentens egen regel er stærkere */
+}
+
+/* === Fund fra gennemgangen (tools/rolig-gennemgang.spec.ts) === */
+
+/* Hints øverst i Grupper: komponenten har hårdkodede cyan og røde farver og en
+   skygge. I Rolig er de dæmpede toner af tokens, uden skygge. */
+html[data-theme="rolig"] .gh-hint {
+    box-shadow: none;
+}
+html[data-theme="rolig"] .gh-hint--info {
+    background: var(--color-info-bg);
+    color: var(--ink);
+    border-color: var(--color-info-border);
+}
+html[data-theme="rolig"] .gh-hint--conflict {
+    background: var(--color-error-bg);
+    color: var(--ink);
+    border-color: var(--color-error-border);
+}
+
+/* GDPR-siden: de to bokse havde hver sin farve og en af dem fyldt blå. Begge
+   som almindelige kort med streg; kun overskriften har farve. */
+html[data-theme="rolig"] .feature-box--green,
+html[data-theme="rolig"] .feature-box--blue {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+}
+
+/* Tom-tilstande: ingen stiplet ramme rundt om en hel side eller i en menu.
+   (Slip-felter, hvor man skal slippe en fil eller en elev, beholder den.) */
+html[data-theme="rolig"] .content-view.empty-state,
+html[data-theme="rolig"] .rule-drawer-popover .empty-state,
+html[data-theme="rolig"] .topic-drawer-popover .empty-state,
+html[data-theme="rolig"] [class*="popover"] .empty-state {
+    border: none;
+    background: transparent;
+}
+
+/* Skygger: små ting får den lille skygge, Nyheder får Rolig-vinduets */
+html[data-theme="rolig"] .custom-tooltip {
+    box-shadow: 0 2px 8px oklch(0 0 0 / 6%);
+}
+html[data-theme="rolig"] .news-content {
+    box-shadow: 0 20px 50px oklch(0 0 0 / 18%);
+}
+
+/* Velkomstsidens ikon har en glød (drop-shadow); glødfarven er gjort gennemsigtig,
+   men selve filteret ligger stadig der */
+html[data-theme="rolig"] .content-view .icon {
+    filter: none;
+}
+
+/* Faner/filtre inde i vinduer (Gendan grupper, Nyheder): samme dæmpede aktive
+   knap som de øvrige vælgere i stedet for solid blå. */
+html[data-theme="rolig"] .tabs button.active,
+html[data-theme="rolig"] .filter-btn.active {
+    background: color-mix(in oklch, var(--primary) 11%, transparent);
+    border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+    color: var(--primary);
+}
+
+/* Emner, Regler (uden regler), Vis: og de øvrige værktøjsknapper: samme bløde
+   flade uden kant som vælgerne, så bjælken ikke blander streger og flader. */
+html[data-theme="rolig"] .id-drawer-btn {
+    border-color: transparent;
+    background: var(--paper-3);
+    color: var(--ink-2);
+}
+html[data-theme="rolig"] .id-drawer-btn:hover {
+    background: var(--rule);
+    color: var(--ink);
+}
+
+/* Slet-knappen: bløde røde flade uden kant, som de andre knapper */
+html[data-theme="rolig"] .ribbon-btn.danger {
+    border-color: transparent;
+    background: var(--color-error-bg);
+    color: var(--color-error);
+}
+html[data-theme="rolig"] .ribbon-btn.danger:hover {
+    background: var(--color-error-hover);
+}

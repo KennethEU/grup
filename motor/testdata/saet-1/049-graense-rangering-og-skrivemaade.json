@@ -1,0 +1,73 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "b2",
+   "Niveau": "lav "
+  },
+  {
+   "_rowId": "b3",
+   "Niveau": "LAV"
+  },
+  {
+   "_rowId": "b4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "b5",
+   "Niveau": " middel"
+  },
+  {
+   "_rowId": "b6",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "b7",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "b8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "b9",
+   "Niveau": "Ukendt"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

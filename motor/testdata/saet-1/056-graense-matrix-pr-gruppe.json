@@ -1,0 +1,104 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "b1"
+  },
+  {
+   "_rowId": "b2"
+  },
+  {
+   "_rowId": "b3"
+  },
+  {
+   "_rowId": "b4"
+  },
+  {
+   "_rowId": "b5"
+  },
+  {
+   "_rowId": "b6"
+  },
+  {
+   "_rowId": "b7"
+  },
+  {
+   "_rowId": "b8"
+  },
+  {
+   "_rowId": "b9"
+  },
+  {
+   "_rowId": "b10"
+  },
+  {
+   "_rowId": "b11"
+  },
+  {
+   "_rowId": "b12"
+  },
+  {
+   "_rowId": "b13"
+  },
+  {
+   "_rowId": "b14"
+  }
+ ],
+ "rules": [],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "b1",
+     "b2",
+     "b3",
+     "b4",
+     "b5"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S2",
+    "members": [
+     "b6",
+     "b7",
+     "b8",
+     "b9",
+     "b10"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S3",
+    "members": [
+     "b11",
+     "b12",
+     "b13",
+     "b14"
+    ],
+    "topic": null
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

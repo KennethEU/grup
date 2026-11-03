@@ -1,0 +1,57 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b2",
+        "b3",
+        "b1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b5",
+        "b4",
+        "b9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b6",
+        "b8",
+        "b7"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [
+        "Ukendt"
+      ],
+      "text": "1 elev har en værdi i \"Niveau\", der ikke står i rangeringen."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

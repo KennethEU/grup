@@ -1,0 +1,251 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Snit": "1,5",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Snit": "5,4",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Snit": "5,0",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Snit": "10,3",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Snit": "1,2",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Snit": "1,8",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Snit": "3.2",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Snit": "5.8",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Snit": "9,6",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng ",
+   "Snit": "7,2",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Snit": "10,9",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Snit": "11.7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng",
+   "Snit": "4.8",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Snit": "1,6",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Snit": "12,0",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Snit": "8,9",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Snit": "8,2",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige ",
+   "Snit": "4,7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Snit": "10.1",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav",
+   "Interesse": "gaming"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "",
+   "Snit": "11,0",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Høj ",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng",
+   "Snit": "6,2",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Snit": "7,0",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Snit": "11,7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Snit": "11,8",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Lav",
+   "Interesse": "Kor"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r22",
+    "r12"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 714734
+}

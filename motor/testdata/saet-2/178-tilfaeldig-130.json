@@ -1,0 +1,284 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 2",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Dans",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 1",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 2",
+   "Hold": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "dans",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 3",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Dans",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "",
+   "Tidligere": "Gruppe 5",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 4",
+   "Hold": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Skak",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.b",
+   "Sprog": "Spansk",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 6",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Kor",
+   "Tidligere": "Gruppe 4",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Fodbold",
+   "Tidligere": "Gruppe 7",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r27",
+    "r5",
+    "r15"
+   ],
+   [
+    "r18",
+    "r13"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r21",
+    "r19"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r24",
+    "r16"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 279831
+}

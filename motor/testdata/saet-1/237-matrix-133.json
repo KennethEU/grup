@@ -1,0 +1,166 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Interesse": "",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Kor",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst",
+   "Karakter": "10"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r11",
+     "r5",
+     "r14",
+     "r6"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r3",
+     "r2",
+     "r12",
+     "r4"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r13",
+     "r7",
+     "r10",
+     "r8"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r9",
+     "r1"
+    ],
+    "topic": "Migration"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 423705
+}

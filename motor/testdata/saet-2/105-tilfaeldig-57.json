@@ -1,0 +1,856 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r55",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Kunst",
+   "Snit": "1,2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Klatring ",
+   "Snit": "10,2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r92",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Interesse": "Kunst",
+   "Snit": "6,4",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Snit": "6,2",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "9,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Snit": "3,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Andet",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Snit": "2.6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Snit": "1,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "dreng",
+   "Karakter": "12",
+   "Interesse": "Kunst",
+   "Snit": "7,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "Klatring",
+   "Snit": "8,3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Andet",
+   "Karakter": "7",
+   "Interesse": "Musik",
+   "Snit": "11,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Snit": "6,3",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "3,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Interesse": "Fodbold",
+   "Snit": "2,0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Interesse": "Fodbold",
+   "Snit": "2,9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Snit": "5,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Snit": "1.4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r53",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "3,9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Pige ",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "4,4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Interesse": "Klatring",
+   "Snit": "3,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "",
+   "Karakter": "7",
+   "Interesse": "Kunst",
+   "Snit": "2.1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r94",
+   "Køn": " DRENG",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Snit": "8,1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Interesse": "Gaming",
+   "Snit": "4,4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r90",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Interesse": "Klatring",
+   "Snit": "5,2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "5,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Snit": "3,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "dreng",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Snit": "1,5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "fodbold",
+   "Snit": "10,7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Interesse": "Gaming",
+   "Snit": "6,1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Snit": "11,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Snit": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "4.8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "12,0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Interesse": "Fodbold",
+   "Snit": "5,3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Snit": "1,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Fodbold",
+   "Snit": "2,0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Snit": "10,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Fodbold",
+   "Snit": "5,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Snit": "5,7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Pige",
+   "Karakter": "00",
+   "Interesse": "Kunst",
+   "Snit": "9,2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Interesse": "Fodbold",
+   "Snit": "6.7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Snit": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Snit": "1,1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Musik",
+   "Snit": "5,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Interesse": "Kunst",
+   "Snit": "9,6",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Kunst",
+   "Snit": "5,1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "8,0",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r96",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "Fodbold",
+   "Snit": "5,4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Snit": "2.4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Snit": "6,9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige",
+   "Karakter": "00",
+   "Interesse": "Kunst",
+   "Snit": "6,2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Snit": "5,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "",
+   "Snit": "11.2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r98",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Kunst",
+   "Snit": "3,1",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "",
+   "Karakter": "00",
+   "Interesse": "Kunst",
+   "Snit": "11,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r88",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Snit": "11,9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Dreng",
+   "Karakter": "-3",
+   "Interesse": "Fodbold",
+   "Snit": "5,0",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Snit": "2,8",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Snit": "10.2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Kunst",
+   "Snit": "5,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng ",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "8,4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Kunst",
+   "Snit": "8,8",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Snit": "11,0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Klatring",
+   "Snit": "4,9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Kunst",
+   "Snit": "5.9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Snit": "5,9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Snit": "1,2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "7.2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Kunst",
+   "Snit": "11,0",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Snit": "5,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Pige",
+   "Karakter": "",
+   "Interesse": "Fodbold",
+   "Snit": "10,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Snit": "11,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Pige",
+   "Karakter": "-3",
+   "Interesse": "Gaming",
+   "Snit": "5,3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Snit": "5.2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Snit": "7,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Klatring",
+   "Snit": "7.3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Musik",
+   "Snit": "11,3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r85",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "Gaming",
+   "Snit": "7,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Karakter": "",
+   "Interesse": "Gaming",
+   "Snit": "11.3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Andet",
+   "Karakter": "12",
+   "Interesse": "Musik",
+   "Snit": "6,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Snit": "4,9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Snit": "4,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "dans",
+   "Snit": "9.2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "Musik",
+   "Snit": "5,6",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "Klatring",
+   "Snit": "6,2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Musik",
+   "Snit": "5,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Kunst",
+   "Snit": "4,1",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Interesse": "klatring",
+   "Snit": "11,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Andet",
+   "Karakter": "10",
+   "Interesse": "dans",
+   "Snit": "5,2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r95",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Snit": "",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Snit": "7,2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Andet ",
+   "Karakter": "02",
+   "Interesse": "Fodbold",
+   "Snit": "6,2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Snit": "11,2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Interesse": "Klatring",
+   "Snit": "10,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Interesse": "Dans",
+   "Snit": "8,6",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Andet",
+   "Karakter": "Fritaget",
+   "Interesse": "Klatring",
+   "Snit": "9.9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Interesse": "Musik",
+   "Snit": "11,7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Interesse": "Klatring",
+   "Snit": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Interesse": "Fodbold",
+   "Snit": "6,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Interesse": "Klatring",
+   "Snit": "6,0",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 211803
+}

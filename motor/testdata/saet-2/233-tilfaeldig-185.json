@@ -1,0 +1,112 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Niveau": "lav",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "00"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 496493
+}

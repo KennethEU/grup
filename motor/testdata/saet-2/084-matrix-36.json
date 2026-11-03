@@ -1,0 +1,233 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "M1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r28",
+    "r18",
+    "r7"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r25",
+     "r7",
+     "r16",
+     "r31",
+     "r15"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r24",
+     "r27",
+     "r2",
+     "r17",
+     "r1"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r22",
+     "r8",
+     "r12",
+     "r10",
+     "r11"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r6",
+     "r13",
+     "r9",
+     "r20",
+     "r4"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r14",
+     "r19",
+     "r21",
+     "r3",
+     "r23"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r5",
+     "r18",
+     "r28",
+     "r29",
+     "r26"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r30"
+    ],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 616582
+}

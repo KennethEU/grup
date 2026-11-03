@@ -1,0 +1,104 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p27-16",
+    "p27-14",
+    "p27-13",
+    "p27-15"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-32",
+    "p27-29",
+    "p27-31",
+    "p27-30"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-36",
+    "p27-35",
+    "p27-33",
+    "p27-34"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-27",
+    "p27-28",
+    "p27-25",
+    "p27-26"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-7",
+    "p27-8",
+    "p27-5",
+    "p27-6"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-11",
+    "p27-9",
+    "p27-10",
+    "p27-12"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-23",
+    "p27-24",
+    "p27-21",
+    "p27-22"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-3",
+    "p27-1",
+    "p27-4",
+    "p27-2"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p27-20",
+    "p27-17",
+    "p27-19",
+    "p27-18"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  },
+  {
+   "rule": 1,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

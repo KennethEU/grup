@@ -1,0 +1,181 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p93-21",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-1",
+   "Niveau": "Høj",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-17",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-22",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-28",
+   "Niveau": "Høj",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-20",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-3",
+   "Niveau": "Høj",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-25",
+   "Niveau": "Høj",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-9",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-6",
+   "Niveau": "Lav",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-26",
+   "Niveau": "Høj",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-12",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-14",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-15",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-16",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-23",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-27",
+   "Niveau": "Høj",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-7",
+   "Niveau": "Lav",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-11",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-4",
+   "Niveau": "Høj",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-8",
+   "Niveau": "Lav",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-13",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-24",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-5",
+   "Niveau": "Lav",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-2",
+   "Niveau": "Høj",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p93-10",
+   "Niveau": "Lav",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-18",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p93-19",
+   "Niveau": "Middel",
+   "Hold": "Hold 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 398251
+}

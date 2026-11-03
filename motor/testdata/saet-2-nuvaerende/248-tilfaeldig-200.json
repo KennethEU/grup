@@ -1,0 +1,91 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r30",
+        "r4",
+        "r18",
+        "r8",
+        "r9"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r15",
+        "r24",
+        "r12",
+        "r14",
+        "r26"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r20",
+        "r25",
+        "r29",
+        "r22",
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r5",
+        "r23",
+        "r16",
+        "r10",
+        "r7"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r27",
+        "r6",
+        "r11",
+        "r19",
+        "r28"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r31",
+        "r21",
+        "r13",
+        "r17",
+        "r3"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 18 elever har værdien \"Fransk\", og der er kun plads til 12 (højst 2 pr. gruppe). 6 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Fransk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.16
+  }
+}

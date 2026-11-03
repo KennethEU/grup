@@ -1,0 +1,205 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r10",
+        "r58",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r6",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r61",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r59",
+        "r15",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r42",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r56",
+        "r39",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r35",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r16",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r53",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r52",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r12",
+        "r13",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r11",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r47",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r38",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r7",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r48",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r33",
+        "r49",
+        "r43"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r51",
+        "r46",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r36",
+        "r18",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r40",
+        "r14"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 35 elever har værdien \"Dreng\", og der er kun plads til 22 (højst 1-2 pr. gruppe). 13 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.19
+  }
+}

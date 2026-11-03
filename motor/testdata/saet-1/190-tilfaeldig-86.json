@@ -1,0 +1,181 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Hold": "2.c",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Hold": "2.c",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Hold": "2.c",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "Fritaget",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r10",
+    "r14"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 333615
+}

@@ -1,0 +1,161 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r15",
+    "r18"
+   ],
+   [
+    "r19",
+    "r3"
+   ],
+   [
+    "r14",
+    "r17"
+   ]
+  ],
+  "avoid": [
+   [
+    "r13",
+    "r19",
+    "r15"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r9",
+    "r6",
+    "r16",
+    "r2"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 312348
+}

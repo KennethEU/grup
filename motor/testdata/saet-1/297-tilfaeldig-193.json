@@ -1,0 +1,137 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r16",
+    "r6"
+   ]
+  ],
+  "avoid": [
+   [
+    "r13",
+    "r1",
+    "r6"
+   ],
+   [
+    "r16",
+    "r4",
+    "r2",
+    "r9"
+   ],
+   [
+    "r5",
+    "r2"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r17",
+    "r19"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 634740
+}

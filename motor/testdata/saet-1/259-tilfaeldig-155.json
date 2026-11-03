@@ -1,0 +1,153 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "-3",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 1",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10",
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r14",
+    "r11",
+    "r16"
+   ],
+   "topic": "Medier"
+  },
+  {
+   "id": "L2",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r9",
+    "r7",
+    "r2"
+   ],
+   "topic": "Medier"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 817004
+}

@@ -1,0 +1,702 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r61",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r142",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r159",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r111",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r144",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r90",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r153",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r101",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r146",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r100",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r158",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r114",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r120",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r148",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r107",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r141",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r94",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r163",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r104",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r108",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r135",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r132",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r83",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r115",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r128",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r80",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r92",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r112",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Andet "
+  },
+  {
+   "_rowId": "r110",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r84",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r89",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r96",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r113",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r97",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r152",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r125",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r139",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r151",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r99",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r93",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r165",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r145",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r126",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r161",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r147",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r85",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r103",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r81",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r119",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r124",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r164",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r123",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r140",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r106",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r53",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r133",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r121",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r127",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r138",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r131",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r102",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r116",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r155",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r117",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r136",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r134",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r86",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r129",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r149",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r82",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r130",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r87",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r150",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r95",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r109",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r137",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r98",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r118",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r122",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r157",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r88",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r156",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r105",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r160",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r162",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r154",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r143",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r91",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r117",
+    "r74",
+    "r37"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 693922
+}

@@ -1,0 +1,244 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Hold": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "00",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Hold": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Niveau": "Høj ",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "00",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Niveau": "Høj ",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "",
+   "Niveau": "",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "Fritaget",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "7",
+   "Niveau": "Middel ",
+   "Hold": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7",
+   "Niveau": "Lav ",
+   "Hold": "2.c",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "4",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "00",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 523835
+}

@@ -1,0 +1,163 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "2,9",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "11,6",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "9,0",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Niveau": "",
+   "Sprog": "Fransk",
+   "Snit": "9,1",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Snit": "1,9",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "4,0",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Snit": "8,0",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Snit": "",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "2,2",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "10,1",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige ",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "4,5",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Snit": "6,3",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "5,1",
+   "Interesse": "klatring"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 131274
+}

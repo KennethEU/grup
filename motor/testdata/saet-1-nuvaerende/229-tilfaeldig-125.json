@@ -1,0 +1,129 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r5",
+        "r66",
+        "r12",
+        "r60",
+        "r18",
+        "r67",
+        "r35",
+        "r62",
+        "r48",
+        "r39",
+        "r54",
+        "r10",
+        "r37",
+        "r14",
+        "r27",
+        "r70"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r57",
+        "r29",
+        "r16",
+        "r33",
+        "r1",
+        "r36",
+        "r41",
+        "r20",
+        "r6",
+        "r58",
+        "r26",
+        "r59",
+        "r51",
+        "r49",
+        "r45",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r31",
+        "r61",
+        "r38",
+        "r63",
+        "r22",
+        "r40",
+        "r47",
+        "r44",
+        "r34",
+        "r28",
+        "r4",
+        "r42",
+        "r3",
+        "r55",
+        "r69",
+        "r46"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r50",
+        "r64",
+        "r72",
+        "r11",
+        "r13",
+        "r19",
+        "r68",
+        "r21",
+        "r65",
+        "r15",
+        "r30",
+        "r23",
+        "r32",
+        "r43",
+        "r2"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 48 elever har værdien \"Pige\", og der er kun plads til 23 (højst 5-6 pr. gruppe). 25 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 28 elever har værdien \"Middel\", og der er kun plads til 23 (højst 5-6 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 2.27
+  }
+}

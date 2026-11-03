@@ -1,0 +1,113 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Snit": "8,6",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "8,3",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "3,2",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Spansk",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "5.0",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "1,6",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Spansk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "8,9",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "6.4",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Tysk",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "6,3",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 471750
+}

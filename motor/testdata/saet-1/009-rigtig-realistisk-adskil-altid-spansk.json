@@ -1,0 +1,229 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "k0",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "k1",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "k2",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "k3",
+   "Sprog": "Fransk",
+   "Køn": "dreng",
+   "Karakter": "10",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "k4",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "k5",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "k7",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Snit": "11,4"
+  },
+  {
+   "_rowId": "k8",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "4",
+   "Snit": "4,6"
+  },
+  {
+   "_rowId": "k9",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Karakter": "00",
+   "Snit": "2,1"
+  },
+  {
+   "_rowId": "k10",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Karakter": "-3",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "k11",
+   "Sprog": "Spansk",
+   "Køn": "Pige",
+   "Karakter": "Fritaget",
+   "Snit": ""
+  },
+  {
+   "_rowId": "k12",
+   "Sprog": "Tysk",
+   "Køn": "Andet",
+   "Karakter": "7",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "k13",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "k14",
+   "Sprog": "Tysk",
+   "Køn": "Pige ",
+   "Karakter": "4",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "k15",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Snit": "7,7"
+  },
+  {
+   "_rowId": "k16",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Snit": "10,2"
+  },
+  {
+   "_rowId": "k18",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Snit": "3,9"
+  },
+  {
+   "_rowId": "k19",
+   "Sprog": "Tysk",
+   "Køn": "Dreng",
+   "Karakter": "10",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "k20",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "k21",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "k23",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "k24",
+   "Sprog": "Fransk",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "k25",
+   "Sprog": "Tysk",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "k26",
+   "Sprog": "Fransk",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Snit": "4,9"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "k0",
+    "k1"
+   ]
+  ],
+  "avoid": [
+   [
+    "k2",
+    "k4"
+   ],
+   [
+    "k8",
+    "k9",
+    "k10"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

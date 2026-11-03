@@ -1,0 +1,210 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r22",
+   "Niveau": " HØJ",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Interesse": "Kor",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Interesse": "Fodbold",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": " LAV",
+   "Karakter": "4",
+   "Interesse": "Fodbold",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Karakter": "",
+   "Interesse": "Kor",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "",
+   "Karakter": "7",
+   "Interesse": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Interesse": "Klatring",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Karakter": "02",
+   "Interesse": "Gaming",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Karakter": "Fritaget",
+   "Interesse": "Film",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "",
+   "Karakter": "",
+   "Interesse": "Klatring",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Karakter": "12",
+   "Interesse": "Kor",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Karakter": "-3",
+   "Interesse": "Kunst",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Interesse": "Film",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Interesse": "Klatring",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Karakter": "12",
+   "Interesse": "Kunst",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r9",
+    "r14"
+   ],
+   [
+    "r16",
+    "r18"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 213360
+}

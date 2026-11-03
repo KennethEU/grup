@@ -1,0 +1,240 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r8",
+        "r73",
+        "r45",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r95",
+        "r26",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r22",
+        "r7",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r31",
+        "r52",
+        "r72",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r70",
+        "r51",
+        "r57",
+        "r78"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r61",
+        "r53",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r56",
+        "r50",
+        "r27",
+        "r77"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r35",
+        "r84",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r69",
+        "r55",
+        "r19",
+        "r48"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r63",
+        "r54",
+        "r88"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r80",
+        "r3",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r62",
+        "r81",
+        "r83",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r44",
+        "r91",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r75",
+        "r58",
+        "r59",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r93",
+        "r23",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r60",
+        "r41",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r9",
+        "r74",
+        "r92"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r79",
+        "r18",
+        "r90",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r76",
+        "r64",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r46",
+        "r65",
+        "r86",
+        "r39"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r16",
+        "r13",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r85",
+        "r40",
+        "r89"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r68",
+        "r10"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "2 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Balancér\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 9,
+    "seconds": 10.71
+  }
+}

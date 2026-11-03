@@ -1,0 +1,262 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r43",
+        "r3",
+        "r85",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r5",
+        "r54",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r11",
+        "r35",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r61",
+        "r62",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r48",
+        "r24",
+        "r86",
+        "r37"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r33",
+        "r53",
+        "r80"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r25",
+        "r74",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r81",
+        "r89",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r38",
+        "r12",
+        "r8",
+        "r55"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r2",
+        "r31",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r59",
+        "r42",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r27",
+        "r26",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r67",
+        "r56",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r39",
+        "r88",
+        "r40",
+        "r77"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r32",
+        "r65",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r6",
+        "r69",
+        "r72",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r57",
+        "r58",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r44",
+        "r68",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r46",
+        "r79",
+        "r64"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r19",
+        "r75",
+        "r52",
+        "r78"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 4,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 25 elever skal adskilles, men der er kun 20 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Klyng og Klyng bruges begge på \"Interesse\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 60 elever har værdien \"Pige\", og der er kun plads til 40 (højst 2 pr. gruppe). 20 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 8,
+    "seconds": 9.23
+  }
+}

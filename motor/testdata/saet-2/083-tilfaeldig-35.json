@@ -1,0 +1,139 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "5,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Snit": "9,9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Snit": "1,7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "",
+   "Hold": "2.c",
+   "Snit": "3,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Snit": "2,5",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Snit": "6,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Snit": "9,4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Snit": "5.2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Snit": "2,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Snit": "8,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Snit": "3,9",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r9",
+    "r7"
+   ],
+   [
+    "r12",
+    "r10",
+    "r2",
+    "r5",
+    "r4"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 372727
+}

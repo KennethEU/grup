@@ -1,0 +1,223 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Hold": "2.b",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "9,3"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Køn": "Andet",
+   "Hold": "2.a",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Hold": "",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Hold": "2.a",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": " LAV",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Snit": "10.6"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Snit": "7,6"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Køn": "Pige ",
+   "Hold": "2.a",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Hold": "",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Snit": "4,4"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "1,6"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Snit": "2,4"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Snit": "11,8"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "M1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r14",
+    "r2",
+    "r1"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 5
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r1",
+     "r10",
+     "r16",
+     "r9"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r14",
+     "r6",
+     "r11",
+     "r20"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r3",
+     "r19",
+     "r8",
+     "r17"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r15",
+     "r13",
+     "r2"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r12",
+     "r18",
+     "r4",
+     "r7"
+    ],
+    "topic": "Energi"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 304739
+}

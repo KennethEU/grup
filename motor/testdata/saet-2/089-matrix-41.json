@@ -1,0 +1,273 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Andet",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Andet",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Andet",
+   "Niveau": "lav",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng ",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r16",
+    "r14",
+    "r21"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r16",
+     "r18",
+     "r2"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r14",
+     "r19",
+     "r1",
+     "r17"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r4",
+     "r11",
+     "r20",
+     "r15"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r5",
+     "r21",
+     "r3"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r7",
+     "r13",
+     "r9",
+     "r12"
+    ],
+    "topic": "Energi"
+   },
+   {
+    "id": "S6",
+    "members": [],
+    "topic": "Klima"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 193208
+}

@@ -1,0 +1,211 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Film ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Kor",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r8",
+    "r10",
+    "r17",
+    "r11"
+   ]
+  ],
+  "avoid": [
+   [
+    "r27",
+    "r30"
+   ],
+   [
+    "r25",
+    "r21",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r15",
+    "r12"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 71645
+}

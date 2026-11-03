@@ -1,0 +1,161 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p593-8",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p593-9",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "p593-6",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "p593-11",
+   "Interesse": "Dans",
+   "Udfordring": "Ja",
+   "Køn": "Dreng",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p593-13",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p593-10",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p593-7",
+   "Interesse": "Musik",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p593-12",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "p593-2",
+   "Interesse": "Dans",
+   "Udfordring": "Ja",
+   "Køn": "Dreng",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p593-15",
+   "Interesse": "Film",
+   "Udfordring": "Ja",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "p593-5",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p593-14",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Køn": "Dreng",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p593-4",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p593-3",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "p593-1",
+   "Interesse": "Dans",
+   "Udfordring": "Nej",
+   "Køn": "Pige",
+   "Snit": "10,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p593-9",
+    "p593-8"
+   ]
+  ],
+  "avoid": [
+   [
+    "p593-5",
+    "p593-13"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 434510
+}

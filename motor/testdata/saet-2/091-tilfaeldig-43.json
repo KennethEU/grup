@@ -1,0 +1,200 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r30",
+   "Snit": "2,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "5,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Snit": "9,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "6.3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "10,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "7.2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "7.0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "11,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "7,0",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "4.8",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "5,1",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "10,0",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "11,1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "9,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "10,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "9,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "5,0",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "4,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "4,2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r31",
+   "Snit": "4,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "2.8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "11,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "4,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "6,7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "7,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "4,6",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "10,8",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "9,8",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "4,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "8,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "3,5",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 11
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 411355
+}

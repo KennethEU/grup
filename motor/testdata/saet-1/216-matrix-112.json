@@ -1,0 +1,199 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r14",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "Fritaget",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "02",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "7",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10",
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r14",
+     "r7",
+     "r8",
+     "r12"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r17",
+     "r15",
+     "r6",
+     "r16"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r13",
+     "r9",
+     "r4",
+     "r2"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r19",
+     "r1",
+     "r11",
+     "r3"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r10",
+     "r18",
+     "r5"
+    ],
+    "topic": "Energi"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 668773
+}

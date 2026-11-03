@@ -1,0 +1,100 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r22",
+        "r4",
+        "r21",
+        "r25"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r12",
+        "r7",
+        "r8",
+        "r9"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r16",
+        "r15",
+        "r23",
+        "r14"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r17",
+        "r5",
+        "r13",
+        "r3"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r10",
+        "r19",
+        "r11"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r18",
+        "r20",
+        "r26"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r24",
+        "r1",
+        "r2",
+        "r6"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Niveau\". Saml (\"Interesse\") og Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.11
+  }
+}

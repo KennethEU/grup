@@ -1,0 +1,166 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r29",
+        "r14",
+        "r6",
+        "r7"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r22",
+        "r18"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r24",
+        "r9",
+        "r13"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r11",
+        "r3",
+        "r10",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r4",
+        "r26",
+        "r21"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r1",
+        "r30",
+        "r23"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r28",
+        "r27",
+        "r31"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r12",
+        "r17",
+        "r19"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r5",
+        "r15",
+        "r25"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r32",
+        "r20",
+        "r16"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 12 elever skal adskilles, men der er kun 10 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "3 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Balancér\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 3.6
+  }
+}

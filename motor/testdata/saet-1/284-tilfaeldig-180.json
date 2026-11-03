@@ -1,0 +1,1544 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r92",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r128",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 57",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r34",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r138",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 48",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r237",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r187",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r127",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 57",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r179",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 61",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r110",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r192",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r159",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r170",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 54",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r243",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r91",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 55",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r81",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 21",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r252",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r51",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r240",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 49",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r117",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 11",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r131",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 56",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r78",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r219",
+   "Hold": "",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r167",
+   "Hold": "",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r225",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r87",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r112",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r118",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 61",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r235",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 28",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 28",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r121",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 56",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r154",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r42",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r196",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 30",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r156",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r175",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 27",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r107",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 49",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 60",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r132",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r140",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r133",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 20",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r168",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r220",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r199",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r163",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r104",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r120",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 30",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 57",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r191",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r136",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r246",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r182",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r209",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r204",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r232",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r190",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 23",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r162",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 59",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r210",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r228",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r236",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r245",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 50",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r122",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r195",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r180",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r114",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r124",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r99",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r56",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 61",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r96",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r152",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 53",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r102",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 61",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r95",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r105",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r98",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r166",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r164",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r173",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 21",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r93",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r148",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 40",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r169",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r193",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r200",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 54",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r116",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r176",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r205",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r222",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r135",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 39",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r244",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r201",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r137",
+   "Hold": "",
+   "Tidligere": "Gruppe 52",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r125",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r172",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 44",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r144",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r171",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r94",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r82",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r202",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r217",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r249",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r111",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r126",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r38",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 49",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 57",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r165",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r226",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r213",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r151",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r181",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r46",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 59",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r247",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 47",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r50",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 47",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r212",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 48",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r189",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r194",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r241",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 47",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r207",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 28",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r178",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r153",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r143",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r68",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r239",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r108",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r214",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r198",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r86",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 48",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r145",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r229",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r106",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r251",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r253",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r149",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 56",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r130",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 21",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r146",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r233",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r119",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r88",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 55",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r161",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r206",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r90",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 51",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r142",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r70",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 16",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r139",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r100",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 48",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r234",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r188",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 50",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r231",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 60",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r183",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r197",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r123",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r160",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 46",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r101",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r186",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r158",
+   "Hold": "",
+   "Tidligere": "Gruppe 49",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 19",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r227",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r223",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 54",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r134",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r85",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r76",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r250",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 63",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r208",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 57",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r242",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 19",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r211",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r80",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r147",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r177",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 55",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r224",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r216",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r113",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 59",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r83",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r157",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r150",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r215",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 49",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 56",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r97",
+   "Hold": "",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r103",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 58",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r185",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 62",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r218",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 52",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r155",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r248",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r115",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r109",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r238",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r221",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 9",
+   "Køn": " DRENG"
+  },
+  {
+   "_rowId": "r141",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 13",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r174",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r89",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 22",
+   "Køn": "pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r230",
+    "r84"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r129",
+    "r203",
+    "r29",
+    "r184"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 973996
+}

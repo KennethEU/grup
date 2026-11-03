@@ -1,0 +1,102 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p879-7",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p879-2",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p879-9",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p879-4",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p879-1",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p879-5",
+   "Interesse": "Fodbold",
+   "Udfordring": "Ja",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p879-3",
+   "Interesse": "Musik",
+   "Udfordring": "Ja",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p879-8",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p879-6",
+   "Interesse": "Fodbold",
+   "Udfordring": "Nej",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 201326
+}

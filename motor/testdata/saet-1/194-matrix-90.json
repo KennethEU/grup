@@ -1,0 +1,249 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk",
+   "Interesse": "kor",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav",
+    "Høj"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r20",
+     "r22",
+     "r3"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r4",
+     "r11",
+     "r13"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r21",
+     "r12",
+     "r5"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r19",
+     "r14",
+     "r1"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r7",
+     "r16",
+     "r17"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r18",
+     "r6",
+     "r2"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r10",
+     "r15",
+     "r9"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [],
+    "topic": "Migration"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 50388
+}

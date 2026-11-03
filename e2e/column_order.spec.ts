@@ -1,0 +1,189 @@
+import { test, expect, Page } from '@playwright/test';
+import { createClass, goToGroups, generateGroups, openRecipe, closeRecipe, addRecipeRule, setGroupSize } from './helpers';
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Rangering af en tekstkolonne — "Lav < Middel < Høj".
+//
+// "Ensartede" og "Balancér" kan kun arbejde med tal. Vælger læreren en
+// tekstkolonne, gør de bogstaveligt talt ingenting. Advarslen om det skal
+// pege på sin egen udvej: en knap der åbner rangeringen. Og når kolonnen ER
+// rangeret, skal advarslen tie — ellers skælder den ud over noget læreren
+// lige har ordnet, og så holder man op med at læse hints.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// 12 elever fordelt på tre niveauer, så 6 grupper à 2 kan blive rene.
+const CSV =
+    'Navn\tNiveau\n' +
+    'Anna\tLav\nBo\tMiddel\nCarl\tHøj\nDorte\tLav\n' +
+    'Emil\tMiddel\nFrida\tHøj\nGustav\tLav\nHanne\tMiddel\n' +
+    'Ida\tHøj\nJens\tLav\nKaren\tMiddel\nLars\tHøj';
+
+/**
+ * En "Ensartede"-regel på Niveau. Opskriften lader ikke læreren vælge en
+ * tekstkolonne til Ensartede uden at rangere den (kolonnen er slået fra med
+ * en "Ranger"-knap ved siden af); men en regel kan stadig stå sådan — fra en
+ * backup, eller når klasselisten skiftes ud. Derfor lægges den ind direkte.
+ */
+async function addUniformRule(page: Page) {
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules =
+            [{ type: 'minimizediff', column: 'Niveau', value: '' }];
+    });
+    await openRecipe(page);
+}
+
+const hint = (page: Page) => page.locator('dialog.recipe-dialog[open] .gh-hint').filter({ hasText: 'gør ingenting' });
+
+test('advarslen om en tekstkolonne peger på sin egen udvej', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    await addUniformRule(page);
+
+    await expect(hint(page)).toBeVisible();
+    await expect(hint(page)).toContainText('kan kun arbejde med tal');
+    await expect(hint(page).locator('.gh-hint-action')).toHaveText('Ranger værdierne…');
+});
+
+test('i kolonnevalget er en tekstkolonne slået fra til Ensartede — med "Ranger" ved siden af', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    const line = await addRecipeRule(page, { type: 'Ensartede' });
+    await line.locator('.rtok__btn[aria-label^="Kolonne:"]').click();
+    const row = line.locator('.rtok__pop .recipe-opt-row').filter({ hasText: 'Niveau' });
+    await expect(row.locator('.recipe-opt')).toBeDisabled();
+    await row.locator('.recipe-opt__rank').click();
+    await expect(page.locator('#order-col')).toHaveValue('Niveau');
+});
+
+test('knappen åbner rangeringen på netop den kolonne, advarslen handler om', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    await addUniformRule(page);
+
+    await hint(page).locator('.gh-hint-action').click();
+
+    // Opskriften lukker, så rangeringen ikke åbner usynligt bag den
+    await expect(page.locator('dialog.recipe-dialog[open]')).toHaveCount(0);
+    await expect(page.locator('.modal-content')).toBeVisible();
+    await expect(page.locator('#order-col')).toHaveValue('Niveau');
+    // Værdierne står der, i dansk alfabetisk orden som udgangspunkt.
+    await expect(page.locator('.order-row')).toHaveCount(3);
+    await expect(page.locator('.order-row .col-name')).toHaveText(['Høj', 'Lav', 'Middel']);
+});
+
+test('rækkefølgen kan sættes uden mus, og advarslen forsvinder når den er gemt', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    await addUniformRule(page);
+    await hint(page).locator('.gh-hint-action').click();
+
+    // Høj, Lav, Middel → Lav, Middel, Høj. Træk-og-slip virker hverken på
+    // touch eller tastatur, så pilene er den primære vej.
+    const rows = page.locator('.order-row');
+    await rows.nth(0).locator('.step').nth(1).click();   // Høj ned
+    await rows.nth(1).locator('.step').nth(1).click();   // Høj ned igen
+    await expect(page.locator('.order-row .col-name')).toHaveText(['Lav', 'Middel', 'Høj']);
+    // Tallet er den rang motoren regner med — 1 er lavest.
+    await expect(page.locator('.order-row .rank')).toHaveText(['1', '2', '3']);
+
+    await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
+
+    await expect(page.locator('.modal-content')).toHaveCount(0);
+    await openRecipe(page);
+    await expect(hint(page)).toHaveCount(0);
+});
+
+test('efter rangeringen samler Ensartede eleverne på niveau', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    await addUniformRule(page);
+    await hint(page).locator('.gh-hint-action').click();
+    const rows = page.locator('.order-row');
+    await rows.nth(0).locator('.step').nth(1).click();
+    await rows.nth(1).locator('.step').nth(1).click();
+    await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
+
+    // Størrelse 2 → 6 grupper, og hver af dem KAN være ren.
+    await setGroupSize(page, 2);
+    await generateGroups(page);
+
+    // Læs hvert gruppekorts niveauer op og tæl de rene. `.member-name-text`
+    // er NAVNET alene — hele li'en rummer også elevens tags ("BonivMiddel").
+    const levels: Record<string, string> = {};
+    for (const line of CSV.split('\n').slice(1)) {
+        const [studentName, level] = line.split('\t');
+        levels[studentName] = level;
+    }
+    const cards = await page.locator('.group-card').all();
+    let uniformCards = 0;
+    for (const k of cards) {
+        const studentNames = await k.locator('.member-name-text').allTextContents();
+        const levelsOnCards = studentNames.map(n => levels[n.trim()]).filter(Boolean);
+        expect(levelsOnCards).toHaveLength(studentNames.length);   // navnene SKAL kunne slås op
+        if (new Set(levelsOnCards).size === 1) uniformCards++;
+    }
+    // Uden rangering gjorde reglen ingenting og resultatet var tilfældigt.
+    // Med den skal langt de fleste grupper være ensartede.
+    expect(uniformCards).toBeGreaterThanOrEqual(4);
+});
+
+test('rangeringen kan fjernes igen — og så er advarslen tilbage', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    await goToGroups(page);
+    await addUniformRule(page);
+    await hint(page).locator('.gh-hint-action').click();
+    await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
+    // Knappen lukkede opskriften (så rangeringen kunne ses) — åbn den igen
+    await openRecipe(page);
+    await expect(hint(page)).toHaveCount(0);
+    await closeRecipe(page);
+
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    await page.locator('#rank-btn').click();
+    await page.getByRole('button', { name: 'Fjern rangering' }).click();
+
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await expect(hint(page)).toBeVisible();
+});
+
+// 4 elever er nok her — testen handler om ordene, ikke om grupperne.
+const CSV_SMALL = 'Navn\tNiveau\nAnna\tLav\nBo\tMiddel\nCarl\tHøj\nDorte\tLav';
+
+/** Skriv en ny værdi i Niveau-kolonnen for hver elev i listen. */
+async function writeLevels(page: Page, cellValues: string[]) {
+    await closeRecipe(page);
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    for (let i = 0; i < cellValues.length; i++) {
+        const firstCell = page.locator('tbody tr').nth(i).locator('td.cell-data').nth(1);
+        await firstCell.click();
+        await page.keyboard.press('ControlOrMeta+a');
+        await page.keyboard.type(cellValues[i]);
+        await firstCell.blur();
+    }
+}
+
+test('en rangering ingen elev længere rammer, får advarslen tilbage', async ({ page }) => {
+    // Fundet ved dobbelttjekket 2026-08-25: hintet tav, så snart der LÅ en
+    // rækkefølge — også når klasselisten var skiftet ud med en, der bruger
+    // helt andre ord. Så gør reglen lige så lidt som før, og læreren får ingen
+    // besked om hvorfor.
+    await createClass(page, 'Rang E2E', CSV_SMALL);
+    await goToGroups(page);
+    await addUniformRule(page);
+    await hint(page).locator('.gh-hint-action').click();
+    await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
+    // Knappen lukkede opskriften (så rangeringen kunne ses) — åbn den igen
+    await openRecipe(page);
+    await expect(hint(page)).toHaveCount(0);
+
+    await writeLevels(page, ['A', 'B', 'C', 'A']);
+
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await expect(hint(page)).toBeVisible();
+    await expect(hint(page)).toContainText('kan kun arbejde med tal');
+
+    // Og rammer bare ÉN elev igen, tier den som før.
+    await writeLevels(page, ['Lav', 'B', 'C', 'A']);
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await expect(hint(page)).toHaveCount(0);
+});

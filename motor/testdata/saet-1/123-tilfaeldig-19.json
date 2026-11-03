@@ -1,0 +1,163 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r23",
+    "r22"
+   ],
+   [
+    "r31",
+    "r3",
+    "r32"
+   ],
+   [
+    "r28",
+    "r7"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 12
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 764306
+}

@@ -1,0 +1,45 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p450-7",
+    "p450-5",
+    "p450-6",
+    "p450-8"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p450-3",
+    "p450-2",
+    "p450-4",
+    "p450-1"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  },
+  {
+   "rule": 1,
+   "met": true
+  },
+  {
+   "rule": 2,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 5",
+   "Snit": "1,4",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 5",
+   "Snit": "8,1",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 3",
+   "Snit": "",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Snit": "10,3",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 5",
+   "Snit": "7,0",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 1",
+   "Snit": "2,4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 1",
+   "Snit": "10,4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 5",
+   "Snit": "1,9",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 5",
+   "Snit": "10,9",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 4",
+   "Snit": "3,5",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 4",
+   "Snit": "4,1",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 1",
+   "Snit": "2,3",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 1",
+   "Snit": "7,4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 1",
+   "Snit": "9,1",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 5",
+   "Snit": "1.4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 2",
+   "Snit": "6.7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 4",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 4
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 632933
+}

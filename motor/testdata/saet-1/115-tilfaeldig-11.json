@@ -1,0 +1,208 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Snit": "7.9"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": "5.2"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Snit": "6.3"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": "4,4"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "6.6"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "lav",
+   "Hold": "2.b",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Snit": "9.5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r7",
+    "r22"
+   ],
+   [
+    "r3",
+    "r2",
+    "r24"
+   ],
+   [
+    "r15",
+    "r12",
+    "r8",
+    "r16"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 856674
+}

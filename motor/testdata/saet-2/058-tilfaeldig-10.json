@@ -1,0 +1,235 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Interesse": "Skak",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk",
+   "Interesse": "Skak",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Interesse": "Musik ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Interesse": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Interesse": "Skak",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Fransk",
+   "Interesse": "Skak",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk",
+   "Interesse": "dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r5",
+    "r1",
+    "r21",
+    "r3"
+   ]
+  ],
+  "avoid": [
+   [
+    "r13",
+    "r14",
+    "r17"
+   ],
+   [
+    "r2",
+    "r18",
+    "r22"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 12
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 986737
+}

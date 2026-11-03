@@ -1,0 +1,297 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "dreng",
+   "Hold": "2.c",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": " DRENG",
+   "Hold": "2.c",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "skak"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Film "
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Hold": "",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng ",
+   "Hold": "2.b",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Hold": "2.c",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "",
+   "Hold": "2.b",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige",
+   "Hold": "2.a",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Hold": "2.a",
+   "Interesse": "film"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": " ANDET",
+   "Hold": "2.a",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Pige",
+   "Hold": "2.c",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng",
+   "Hold": "2.b",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige",
+   "Hold": "2.b",
+   "Interesse": "Film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng "
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r26",
+    "r32"
+   ],
+   [
+    "r12",
+    "r13",
+    "r29"
+   ],
+   [
+    "r17",
+    "r19"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r36",
+    "r8",
+    "r2",
+    "r33"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 826621
+}

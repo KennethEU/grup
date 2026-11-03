@@ -1,0 +1,132 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r28",
+        "r3",
+        "r20",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r25",
+        "r2",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r16",
+        "r27",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r10",
+        "r9",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r7",
+        "r19",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r12",
+        "r17",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r21",
+        "r13",
+        "r11"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 4 elever skal adskilles inden for \"2.c\", men der er kun 3 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Balancér\" måler ikke på vedkommende."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.22
+  }
+}

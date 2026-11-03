@@ -1,0 +1,31 @@
+{
+    "name": "grupdk",
+    "version": "1.0.0",
+    "description": "grup.dk: gruppedannelse i browseren, med gruppemotoren i motor/engine",
+    "license": "EUPL-1.2",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "npx playwright test",
+        "test:unit": "vitest run",
+        "test:unit:watch": "vitest",
+        "check": "node tools/check-code.mjs",
+        "test:motor": "cd motor && node --test tests/*.test.mjs judge/test/*.test.mjs"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.58.2",
+        "@types/node": "^25.2.1",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "happy-dom": "^21.0.4",
+        "vite": "^8.2.2",
+        "vitest": "^4.1.12"
+    },
+    "dependencies": {
+        "file-saver": "^2.0.5",
+        "jszip": "^3.10.1",
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.27"
+    }
+}

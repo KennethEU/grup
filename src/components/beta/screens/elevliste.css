@@ -1,0 +1,181 @@
+/* grup.dk/beta — elevliste i den rolige stil.
+   Kun regler under html.beta, så den almindelige Grupper er urørt.
+   Se docs/grupper-beta-plan.md. */
+
+/* ---------- Værktøjslinjen ----------
+   Ingen piller med baggrund og ramme: knapperne er stille tekst med ikon.
+   Venstre-vælgerne er scoped `.x[data-v-…]` (0,2,0); html.beta + to klasser
+   vinder, uden !important. */
+html.beta .students-header-sticky .settings-panel { min-block-size: 48px; }
+html.beta .students-header-sticky .ribbon-group { gap: 2px; }
+html.beta .students-header-sticky .pill-group {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    gap: 2px;
+    block-size: auto;
+}
+html.beta .students-header-sticky .pill-btn,
+html.beta .students-header-sticky .ribbon-btn,
+html.beta .students-header-sticky .id-drawer-btn {
+    /* 36 px / radius 8: samme højde som knapperne i bjælken og vinduerne */
+    block-size: 36px;
+    padding-inline: 10px;
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-md);
+    color: var(--ink-2);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    /* Ingen glidende overgange: tekstknapper skal bare skifte farve */
+    transition: none;
+}
+html.beta .students-header-sticky .pill-btn:hover,
+html.beta .students-header-sticky .ribbon-btn:hover,
+html.beta .students-header-sticky .id-drawer-btn:hover {
+    background: var(--paper-3);
+    color: var(--ink);
+    border-color: transparent;
+}
+html.beta .students-header-sticky .id-label {
+    font: 500 10px var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+html.beta .students-header-sticky .id-value { color: var(--ink); font-weight: 600; }
+html.beta .students-header-sticky .id-chevron { color: var(--ink-4); opacity: 1; }
+html.beta .students-header-sticky .inline-sep { background: var(--rule-2); opacity: 1; margin-inline: 8px; }
+/* Slet: stille tekst, rød først når musen er over — destruktivt står sidst */
+html.beta .students-header-sticky .ribbon-btn.danger {
+    background: transparent;
+    border: 0;
+    color: var(--ink-3);
+}
+html.beta .students-header-sticky .ribbon-btn.danger:hover {
+    background: color-mix(in oklch, var(--color-error) 8%, transparent);
+    color: var(--color-error);
+}
+/* Aftale-mærket: et tal, ikke en farveflade */
+html.beta .students-header-sticky .avoid-badge {
+    background: transparent;
+    color: var(--ink-3);
+    font: 500 11px var(--mono);
+    min-inline-size: 0;
+    padding-inline: 2px;
+}
+
+/* ---------- Tabellen som et ark ----------
+   Ingen ydre ramme, afrunding eller skygge; kun vandrette hårlinjer.
+   `.table-container` i vælgeren løfter os over rolig-temaets th/td-regler. */
+html.beta .table-container {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    /* Vandret rulning med en synlig kant: har klassen mange kolonner, skal den
+       sidste ikke bare forsvinde. Højden begrænses til det synlige, så
+       rullepanelet nederst kan ses uden at rulle hele siden ned først — og
+       overskriftsrækken (sticky nedenfor) bliver stående. */
+    overflow: auto;
+    /* Hele skærmen: tabellen går til vinduets bund (topbar 65 + værktøjslinje
+       49 = 114 px over den, og 8 px luft under) og ud til begge kanter.
+       Fanens 32 px til siderne lægges i stedet i første og sidste celle, så
+       teksten stadig flugter med værktøjslinjen. */
+    max-block-size: calc(100dvh - 122px);
+    min-block-size: 240px;
+    margin-inline: -32px;
+    /* En fast, synlig rullekant: macOS skjuler ellers den slanke bjælke, indtil
+       man rører ved den, og så ser tabellen bare afskåret ud. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--ink-4) var(--paper-2);
+}
+html.beta .table-container th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    /* Papirfarve, ikke gennemsigtig: overskriften står fast foroven, og
+       rækkerne må ikke skinne igennem, når de ruller forbi under den. */
+    background: var(--paper);
+    font: 500 10.5px var(--mono);
+    letter-spacing: 0.14em;
+    text-align: start;
+    color: var(--ink-3);
+    padding-block: 12px;
+    padding-inline: 12px;
+    border-inline: 0;
+    border-block-end: 1px solid var(--rule-2);
+}
+html.beta .table-container th.col-header:hover { color: var(--ink); }
+html.beta .table-container th.col-active { color: var(--primary); }
+/* Skjult kolonne: StudentTable giver den en egen tone (.col-header.col-hidden),
+   som er stærkere end th-reglen ovenfor */
+html.beta .table-container th.col-hidden { background: var(--paper); }
+html.beta .table-container td {
+    padding-block: 0;
+    padding-inline: 12px;
+    block-size: 44px;
+    border-inline: 0;
+    border-block-end: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 14px;
+}
+html.beta .table-container tbody tr:hover td { background: var(--paper-2); }
+/* Rækker med afkrydset "Aftale" (StudentTable sætter klassen .selected).
+   Valgt skal kunne skelnes tydeligt fra hover: en blå tone og en 2 px blå
+   streg i venstre kant, mens hover kun er en tak mørkere papir. Står efter
+   hover-reglen, så en valgt række bliver blå også under musen. */
+html.beta .table-container tbody tr.selected td,
+html.beta .table-container tbody tr.selected:hover td {
+    background: color-mix(in oklch, var(--primary) 9%, transparent);
+}
+html.beta .table-container tbody tr.selected td:first-child {
+    box-shadow: inset 2px 0 0 var(--primary);
+}
+html.beta .table-container td.cell-data:focus-visible,
+html.beta .table-container td.cell-data:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+    background: var(--paper);
+}
+/* Fraværende: dæmpet i ink-3 i stedet for gennemsigtighed, så hårlinjerne
+   ikke også bliver svage */
+html.beta .table-container tr.row-excluded { opacity: 1; background: transparent; }
+html.beta .table-container tr.row-excluded td { color: var(--ink-3); background: transparent; }
+html.beta .table-container tr.row-excluded:hover td { background: var(--paper-2); }
+html.beta .table-container .cell-data.cell-hidden { background: transparent; color: var(--ink-3); }
+
+/* Afkrydsningsfelter: ink i stedet for skarp blå */
+html.beta .table-container input[type="checkbox"] {
+    accent-color: var(--ink-2);
+    inline-size: 15px;
+    block-size: 15px;
+    margin: 0;
+}
+/* Slet-kryds: næsten usynligt, rødt først ved hover */
+html.beta .table-container .delete-row-btn {
+    color: var(--ink-4);
+    background: transparent;
+    font-size: 18px;
+    line-height: 1;
+    transition: none;
+}
+html.beta .table-container .delete-row-btn:hover {
+    color: var(--color-error);
+    background: color-mix(in oklch, var(--color-error) 8%, transparent);
+}
+/* De to første kolonner (Valg, Til stede) har felter midt i cellen; overskriften
+   skal stå over feltet, ikke i venstre kant */
+html.beta .table-container th:nth-child(-n+2) { text-align: center; }
+
+/* Hele skærmen (se .table-container): ingen bundluft under elevlisten, så
+   tabellen kan gå helt ned uden at siden selv begynder at rulle. */
+html.beta .students-tab-content { padding-block-end: 0; }
+/* Overskriftsrækken lige under værktøjslinjen — ingen stribe imellem */
+html.beta .students-scroll-content { padding-block-start: 0; }
+html.beta .content-view:has(> * .students-tab-content) { padding-block-end: 0; }
+html.beta .table-container :is(th, td):first-child { padding-inline-start: 32px; }
+html.beta .table-container :is(th, td):last-child { padding-inline-end: 32px; }

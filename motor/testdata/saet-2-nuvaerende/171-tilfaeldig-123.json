@@ -1,0 +1,228 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r12",
+        "r1",
+        "r22",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r50",
+        "r77",
+        "r23",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r70",
+        "r2",
+        "r21",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r71",
+        "r20",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r84",
+        "r81",
+        "r83",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r79",
+        "r74",
+        "r73",
+        "r68"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r60",
+        "r48",
+        "r35",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r16",
+        "r76",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r15",
+        "r37",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r64",
+        "r18",
+        "r46"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r52",
+        "r47",
+        "r56"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r75",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r63",
+        "r34",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r10",
+        "r40",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r55",
+        "r42",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r72",
+        "r39",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r65",
+        "r4",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r66",
+        "r58",
+        "r17",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r53",
+        "r45",
+        "r57",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r5",
+        "r59",
+        "r33"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 24 elever skal adskilles, men der er kun 20 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 44 elever har værdien \"Tysk\", og der er kun plads til 38 (højst 1-2 pr. gruppe). 6 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 2.98
+  }
+}

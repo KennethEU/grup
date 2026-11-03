@@ -1,0 +1,135 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b5",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b9",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b11",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b13",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b14",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b16",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b18",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b20",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b22",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b24",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b26",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

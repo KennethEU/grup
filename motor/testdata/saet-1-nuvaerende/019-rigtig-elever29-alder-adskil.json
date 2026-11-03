@@ -1,0 +1,99 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "e20",
+        "e9",
+        "e27",
+        "e17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e19",
+        "e22",
+        "e5",
+        "e14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e1",
+        "e28",
+        "e7",
+        "e13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e15",
+        "e3",
+        "e8",
+        "e2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e6",
+        "e12",
+        "e21",
+        "e0"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e24",
+        "e25",
+        "e18",
+        "e4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "e26",
+        "e16",
+        "e11",
+        "e10",
+        "e23"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Alder",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Alder\": 8 elever skal adskilles, men der er kun 7 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.08
+  }
+}

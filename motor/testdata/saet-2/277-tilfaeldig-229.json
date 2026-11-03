@@ -1,0 +1,102 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "10",
+   "Snit": "10,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "12",
+   "Snit": "8,4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7",
+   "Snit": "4.3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7",
+   "Snit": "7.5",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "4",
+   "Snit": "6.5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7",
+   "Snit": "2,7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "4",
+   "Snit": "10,3",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "12",
+   "Snit": "5,6",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 1
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 172618
+}

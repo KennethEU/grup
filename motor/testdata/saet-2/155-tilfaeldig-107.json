@@ -1,0 +1,241 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Niveau": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Niveau": "høj",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Niveau": "Lav ",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "dreng",
+   "Niveau": "Høj",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Niveau": "middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Niveau": "",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Dreng",
+   "Niveau": "middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Hold": ""
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r6",
+    "r14"
+   ],
+   [
+    "r25",
+    "r18",
+    "r8"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r20",
+    "r1",
+    "r26",
+    "r32"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 175189
+}

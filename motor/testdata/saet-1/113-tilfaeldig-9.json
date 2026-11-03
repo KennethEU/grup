@@ -1,0 +1,514 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r74",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Dreng",
+   "Interesse": "Film ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": " PIGE",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Andet",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Pige ",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Dreng ",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "pige",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Pige",
+   "Interesse": " KOR",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Andet",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r79",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r76",
+   "Køn": "pige",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r77",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r78",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "dreng",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 506075
+}

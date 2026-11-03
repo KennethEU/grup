@@ -1,0 +1,309 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r32",
+        "r40",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r15",
+        "r47"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r51",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r78",
+        "r53",
+        "r86"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r95",
+        "r60",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r36",
+        "r94"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r58",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r49",
+        "r96",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r4",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r79",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r59",
+        "r84",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r73",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r97",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r42",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r50",
+        "r80"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r82",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r72",
+        "r16",
+        "r90"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r33",
+        "r52"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r11",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r62",
+        "r61",
+        "r71"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r68",
+        "r74",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r34",
+        "r37",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r56",
+        "r91",
+        "r92"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r6",
+        "r89"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r43",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r21",
+        "r75"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r48",
+        "r46",
+        "r41"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r39",
+        "r19",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r64",
+        "r87",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r88",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r70",
+        "r83"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 44 elever har værdien \"Pige\", og der er kun plads til 31 (højst 1 pr. gruppe). 13 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 50 elever har værdien \"Tysk\", og der er kun plads til 31 (højst 1 pr. gruppe). 19 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 16,
+    "seconds": 9.58
+  }
+}

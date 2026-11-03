@@ -1,0 +1,645 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r122",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "lav",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Middel ",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "middel",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Lav ",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Middel ",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 14"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 28
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 725624
+}

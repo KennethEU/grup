@@ -1,0 +1,191 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r39",
+        "r3",
+        "r35",
+        "r64",
+        "r49"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r32",
+        "r16",
+        "r25",
+        "r31",
+        "r28"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r67",
+        "r62",
+        "r15",
+        "r48",
+        "r60"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r59",
+        "r56",
+        "r11",
+        "r17",
+        "r68"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r66",
+        "r63",
+        "r73",
+        "r6",
+        "r44"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r29",
+        "r58",
+        "r47",
+        "r7",
+        "r52"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r24",
+        "r50",
+        "r70",
+        "r40",
+        "r34"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r33",
+        "r38",
+        "r65",
+        "r61",
+        "r14"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r45",
+        "r21",
+        "r74",
+        "r1",
+        "r54"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r57",
+        "r53",
+        "r8",
+        "r51",
+        "r5"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r26",
+        "r10",
+        "r42",
+        "r41",
+        "r37"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r19",
+        "r69",
+        "r18",
+        "r71",
+        "r13"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r23",
+        "r12",
+        "r27",
+        "r9",
+        "r43",
+        "r22"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r30",
+        "r20",
+        "r46",
+        "r36"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 17 elever skal adskilles, men der er kun 14 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 33 elever har værdien \"Middel\", og der er kun plads til 28 (højst 2 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 16,
+    "seconds": 9.68
+  }
+}

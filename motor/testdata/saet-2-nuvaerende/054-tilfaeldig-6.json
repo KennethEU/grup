@@ -1,0 +1,118 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r10",
+        "r9",
+        "r17"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r18",
+        "r24",
+        "r3"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r19",
+        "r15",
+        "r16"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r14",
+        "r4",
+        "r8"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r12",
+        "r6",
+        "r21"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r1",
+        "r20"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r23",
+        "r13",
+        "r7"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r11",
+        "r5",
+        "r22"
+      ],
+      "topic": "Migration"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 2,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Interesse\": Værdier med kun 1 elev kan aldrig samles: Dans"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Balancér (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.47
+  }
+}

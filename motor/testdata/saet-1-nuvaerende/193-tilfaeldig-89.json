@@ -1,0 +1,65 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r7",
+        "r26",
+        "r6",
+        "r8",
+        "r21",
+        "r18",
+        "r3",
+        "r13",
+        "r4",
+        "r11",
+        "r5",
+        "r19",
+        "r10",
+        "r24",
+        "r16",
+        "r20",
+        "r14",
+        "r9",
+        "r22",
+        "r23",
+        "r2",
+        "r17",
+        "r12",
+        "r15",
+        "r25"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op: 6 elever har værdien \"Gruppe 2\", og der er kun plads til 4 (højst 4 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 2\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.04
+  }
+}

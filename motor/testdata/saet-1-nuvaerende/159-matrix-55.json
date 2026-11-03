@@ -1,0 +1,139 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r12",
+        "r27",
+        "r23",
+        "r3",
+        "r16",
+        "r19",
+        "r26",
+        "r29",
+        "r6",
+        "r11",
+        "r22",
+        "r13",
+        "r5",
+        "r24",
+        "r18",
+        "r10",
+        "r17",
+        "r1",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r2",
+        "r21",
+        "r8",
+        "r28",
+        "r14",
+        "r7",
+        "r4",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 3,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 4 elever skal adskilles inden for \"2.a\", men der er kun 1 gruppe. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Undgåelser: 2 elever skal adskilles inden for \"2.a\", men der er kun 1 gruppe. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op inden for \"2.a\": 12 elever har værdien \"Pige\", og der er kun plads til 7 (højst 7 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op inden for \"2.b\": 6 elever har værdien \"Tysk\", og der er kun plads til 3 (højst 3 pr. gruppe). 3 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.a\" og \"2.a\"."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 3 i stedet for 1."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.05
+  }
+}

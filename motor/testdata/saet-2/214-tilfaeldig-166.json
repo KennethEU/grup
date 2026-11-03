@@ -1,0 +1,731 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r84",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r83",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r93",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r143",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r170",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r185",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r160",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r183",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r102",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r140",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r159",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r95",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r129",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r171",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r168",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r97",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r162",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r106",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r141",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r101",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r148",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r130",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r161",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r80",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r169",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r89",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r186",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r154",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r139",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r116",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r173",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r107",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r91",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r85",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r181",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r128",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r114",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r111",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r78",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r147",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r156",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r81",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r155",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r126",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r110",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r82",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r134",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r38",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r184",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r137",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r166",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r105",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r119",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r157",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r92",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r113",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r151",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r146",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r182",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r153",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r164",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r144",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r122",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r124",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r172",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r176",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r180",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r109",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r120",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r98",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r174",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r187",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r132",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r175",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r145",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r178",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r115",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r138",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r123",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r125",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r46",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r96",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r179",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r142",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r163",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r94",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r167",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r165",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r117",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r104",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r103",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r135",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r88",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r118",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r131",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r86",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r188",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r90",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r121",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r158",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r99",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r100",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r189",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r112",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r108",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r87",
+    "r127",
+    "r68"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 487016
+}

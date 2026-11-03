@@ -1,0 +1,265 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p265-14",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-36",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-26",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p265-1",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-22",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-32",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-20",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p265-5",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-10",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-27",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-21",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-31",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-16",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-33",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-4",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p265-25",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-12",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-19",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-2",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-35",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-3",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-28",
+   "Interesse": "Gaming",
+   "Hold": "Hold 2",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p265-23",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-30",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p265-13",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-6",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p265-8",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-9",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p265-18",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p265-17",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-7",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p265-24",
+   "Interesse": "Kunst",
+   "Hold": "Hold 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p265-29",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-11",
+   "Interesse": "Kunst",
+   "Hold": "Hold 1",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p265-15",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p265-34",
+   "Interesse": "Fodbold",
+   "Hold": "Hold 2",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p265-11",
+    "p265-1",
+    "p265-33",
+    "p265-32"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 896833
+}

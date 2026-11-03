@@ -1,0 +1,170 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Niveau": "",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.c",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.c",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Snit": "6,7"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.c",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "3.9"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.c",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Niveau": "Middel ",
+   "Snit": "8.9"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Niveau": "Middel",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.c",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Snit": "3,2"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Snit": "11.7"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Snit": "3,6"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r16",
+    "r3",
+    "r11"
+   ],
+   [
+    "r8",
+    "r4"
+   ]
+  ],
+  "avoid": [
+   [
+    "r5",
+    "r2",
+    "r10",
+    "r16"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r6",
+    "r1",
+    "r13"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 974316
+}

@@ -1,0 +1,201 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "12",
+   "Køn": "Pige ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "12",
+   "Køn": "pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige ",
+    "pige"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r4",
+    "r21"
+   ],
+   [
+    "r20",
+    "r5"
+   ],
+   [
+    "r5",
+    "r10",
+    "r7"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 8
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 908975
+}

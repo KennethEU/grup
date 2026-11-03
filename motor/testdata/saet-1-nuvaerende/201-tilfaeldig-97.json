@@ -1,0 +1,280 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r34",
+        "r32",
+        "r97",
+        "r30",
+        "r31"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r105",
+        "r41",
+        "r29",
+        "r77"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r58",
+        "r21",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r35",
+        "r104",
+        "r45"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r91",
+        "r93",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r80",
+        "r69",
+        "r87",
+        "r56"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r9",
+        "r43",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r98",
+        "r88",
+        "r17",
+        "r53"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r59",
+        "r2",
+        "r75"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r71",
+        "r8",
+        "r72",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r52",
+        "r22",
+        "r38",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r64",
+        "r3",
+        "r14",
+        "r66"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r46",
+        "r60",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r47",
+        "r24",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r70",
+        "r85",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r18",
+        "r37",
+        "r103"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r42",
+        "r68",
+        "r28",
+        "r49"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r101",
+        "r100",
+        "r94"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r92",
+        "r65",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r55",
+        "r57",
+        "r90",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r79",
+        "r83",
+        "r51"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r23",
+        "r44",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r73",
+        "r39",
+        "r84",
+        "r99"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r48",
+        "r78",
+        "r86"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r54",
+        "r40",
+        "r27",
+        "r102"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Balancér\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "5 elever har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — de elever regnes som om feltet var tomt, og \"Ensartede\" måler ikke på dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 8,
+    "seconds": 9.65
+  }
+}

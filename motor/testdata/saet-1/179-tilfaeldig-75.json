@@ -1,0 +1,167 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Karakter": "Fritaget",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "10",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "4",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "7",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "10",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "12",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "12",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "10",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "02",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "10",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "-3",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "10",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Interesse": "Film "
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r2",
+    "r8",
+    "r24",
+    "r17"
+   ],
+   [
+    "r11",
+    "r16",
+    "r9",
+    "r2"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 158594
+}

@@ -1,0 +1,54 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r11",
+        "r12",
+        "r8",
+        "r1",
+        "r4",
+        "r5"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Interesse\": Værdier med kun 1 elev kan aldrig samles: Skak"
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 0,
+      "column": "Interesse",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Interesse\" har 4 forskellige værdier, men der er kun 1 gruppe. Nogle elever ender uundgåeligt alene."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.2
+  }
+}

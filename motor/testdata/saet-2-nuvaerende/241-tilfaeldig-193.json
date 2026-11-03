@@ -1,0 +1,127 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r25",
+        "r20",
+        "r9"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r6",
+        "r24"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r23",
+        "r22"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r12",
+        "r17"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r5",
+        "r10",
+        "r7"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r18",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r2",
+        "r19"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r14",
+        "r15"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Fordel bruges begge på \"Sprog\". Klyng samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 13 elever har værdien \"Pige\", og der er kun plads til 10 (højst 1-2 pr. gruppe). 3 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 14 elever har værdien \"Tysk\", og der er kun plads til 10 (højst 1-2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.29
+  }
+}

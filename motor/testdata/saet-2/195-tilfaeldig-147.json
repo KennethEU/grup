@@ -1,0 +1,81 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Klatring "
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Dans"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r7",
+    "r6",
+    "r9"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r13",
+    "r2",
+    "r10"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 865872
+}

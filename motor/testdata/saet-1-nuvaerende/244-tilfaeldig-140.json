@@ -1,0 +1,123 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r1",
+        "r8",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r19",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r7",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r5",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r9",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r20"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Karakter\": 12 elever skal adskilles, men der er kun 8 grupper. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Køn\": 13 elever skal adskilles, men der er kun 8 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.85
+  }
+}

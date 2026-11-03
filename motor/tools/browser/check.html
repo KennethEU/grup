@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Motoren i browseren</title>
+<body style="font-family: system-ui; padding: 16px">
+<h1>Den nye motor i en Web Worker</h1>
+<p>Kører motoren i en worker (som i Grupper) på input fra sæt 1. Del 1: med frø og lille budget.
+Del 2: som appen (frø null, eget budget), med Stop efter 1,5 sekund.</p>
+<pre id="out">Kører …</pre>
+<script type="module">
+  const out = document.getElementById('out');
+  const lines = [];
+  const show = () => (out.textContent = lines.join('\n'));
+
+  async function runOne(file, setup, stopAfterMs) {
+    const input = await (await fetch(`../../testdata/saet-1/${file}`)).json();
+    setup(input);
+    const worker = new Worker(new URL('./check-worker.js', import.meta.url), { type: 'module' });
+    const t0 = performance.now();
+    let firstProgress = null;
+    let lastProgress = null;
+    let biggestGap = 0;
+    let progress = 0;
+    let stopSent = null;
+    const result = await new Promise((resolve) => {
+      worker.onmessage = (e) => {
+        const t = performance.now() - t0;
+        if (e.data.progress) {
+          progress++;
+          if (firstProgress === null) firstProgress = t;
+          if (lastProgress !== null) biggestGap = Math.max(biggestGap, t - lastProgress);
+          lastProgress = t;
+        } else resolve({ ...e.data, answeredAt: t });
+      };
+      worker.onerror = (e) => resolve({ error: e.message || 'workerfejl' });
+      worker.postMessage(input);
+      if (stopAfterMs) setTimeout(() => { stopSent = performance.now() - t0; worker.postMessage({ cancel: true }); }, stopAfterMs);
+    });
+    worker.terminate();
+    if (result.error) return `${file}: FEJL ${result.error}`;
+    const stop = stopSent !== null ? `, Stop besvaret efter ${Math.round(result.answeredAt - stopSent)} ms` : '';
+    return `${file}: status ${result.status}, grupper ${result.groups}, elever ${result.members}, kerner ${result.cores}, forsøg ${result.attempts}, ${result.seconds} s, ` +
+      `første fremgang ${firstProgress === null ? '-' : Math.round(firstProgress) + ' ms'}, største hul ${Math.round(biggestGap)} ms, fremgang ${progress}${stop}${result.detail ? ' ' + result.detail : ''}`;
+  }
+
+  lines.push('Del 1: med frø');
+  for (const file of ['010-rigtig-realistisk-seks-regler.json', '108-matrix-4.json', '225-tilfaeldig-121.json', '029-graense-blok-for-stor.json']) {
+    lines.push(await runOne(file, (input) => { input.seed = 1; input.budget = { maxSeconds: 3, maxAttempts: 8, minAttempts: 2 }; }));
+    show();
+  }
+  lines.push('Del 2: som appen (frø null)');
+  lines.push(await runOne('225-tilfaeldig-121.json', (input) => { input.seed = null; input.budget = { maxSeconds: 30, maxAttempts: 20, minAttempts: 2 }; }, 1500));
+  show();
+  lines.push(await runOne('136-tilfaeldig-32.json', (input) => { input.seed = null; input.budget = { maxSeconds: 30, maxAttempts: 20, minAttempts: 2 }; }, 200));
+  show();
+  lines.push(await runOne('010-rigtig-realistisk-seks-regler.json', (input) => { input.seed = null; input.budget = { maxSeconds: 10, maxAttempts: 20, minAttempts: 3 }; }));
+  lines.push('FÆRDIG');
+  show();
+</script>

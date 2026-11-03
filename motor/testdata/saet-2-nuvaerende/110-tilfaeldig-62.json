@@ -1,0 +1,302 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r67",
+        "r100",
+        "r2",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r79",
+        "r90",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r75",
+        "r34",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r19",
+        "r27",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r86",
+        "r25",
+        "r103",
+        "r82"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r80",
+        "r42",
+        "r55",
+        "r65"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r66",
+        "r56",
+        "r91"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r105",
+        "r97",
+        "r85"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r47",
+        "r94",
+        "r31",
+        "r50"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r78",
+        "r35",
+        "r43",
+        "r30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r41",
+        "r20",
+        "r102"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r95",
+        "r13",
+        "r37",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r71",
+        "r28",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r96",
+        "r92",
+        "r83",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r61",
+        "r84",
+        "r99",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r74",
+        "r3",
+        "r60"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r40",
+        "r64"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r12",
+        "r58"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r33",
+        "r4",
+        "r54"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r89",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r62",
+        "r18",
+        "r39"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r77",
+        "r53",
+        "r87"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r72",
+        "r101",
+        "r98"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r69",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r51",
+        "r49",
+        "r52"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r44",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r88",
+        "r32",
+        "r63"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r46",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r104",
+        "r48",
+        "r70"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r5",
+        "r73",
+        "r68"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 4,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 6,
+    "seconds": 9.79
+  }
+}

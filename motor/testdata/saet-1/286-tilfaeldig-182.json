@@ -1,0 +1,158 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r11",
+   "Interesse": "fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Dans",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kor",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Kor",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Gaming",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Fodbold",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Dans",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kunst",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Fodbold",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Klatring",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Dans",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Dans ",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "gaming",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Musik",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Musik",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Musik",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Musik",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r19",
+    "r16",
+    "r14"
+   ]
+  ],
+  "avoid": [
+   [
+    "r6",
+    "r19",
+    "r18",
+    "r11"
+   ],
+   [
+    "r11",
+    "r10",
+    "r16",
+    "r12"
+   ],
+   [
+    "r6",
+    "r2"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 84215
+}

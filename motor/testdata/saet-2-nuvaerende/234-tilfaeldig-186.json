@@ -1,0 +1,160 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r64",
+        "r54",
+        "r15",
+        "r44",
+        "r4"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r51",
+        "r46",
+        "r43",
+        "r60",
+        "r7"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r38",
+        "r25",
+        "r55",
+        "r58",
+        "r62",
+        "r66"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r17",
+        "r14",
+        "r24",
+        "r50",
+        "r31",
+        "r16"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r6",
+        "r13",
+        "r40",
+        "r11",
+        "r41",
+        "r10"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r68",
+        "r47",
+        "r18",
+        "r26",
+        "r59",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r42",
+        "r22",
+        "r49",
+        "r65",
+        "r30"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r53",
+        "r56",
+        "r28",
+        "r45",
+        "r32"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r57",
+        "r21",
+        "r2",
+        "r9",
+        "r35"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r19",
+        "r61",
+        "r3",
+        "r39",
+        "r1"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r29",
+        "r23",
+        "r27",
+        "r37",
+        "r67"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r33",
+        "r63",
+        "r12",
+        "r48",
+        "r34",
+        "r52"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 2,
+    "seconds": 10.53
+  }
+}

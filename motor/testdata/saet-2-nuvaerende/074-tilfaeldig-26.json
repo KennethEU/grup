@@ -1,0 +1,111 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r9",
+        "r15",
+        "r20"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r19",
+        "r22",
+        "r14"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r12",
+        "r23",
+        "r7"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r17",
+        "r21",
+        "r13",
+        "r5"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r10",
+        "r11",
+        "r8",
+        "r6"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {
+    "L1": "Energi"
+  },
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Redundante regler: Klyng og Klyng bruges begge på \"Sprog\". De har lignende mål — overvej at bruge kun én."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 17 elever har værdien \"Pige\", og der er kun plads til 9 (højst 1-2 pr. gruppe). 8 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

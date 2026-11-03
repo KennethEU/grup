@@ -1,0 +1,298 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r27",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Snit": "7,6",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Snit": "9,2",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Snit": "6,7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r23",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "5,4",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "10,4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 1",
+   "Køn": " DRENG",
+   "Interesse": "Klatring",
+   "Snit": "7,2",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Snit": "6,7",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Snit": "2.7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r28",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "8,4",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "10.1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng ",
+   "Interesse": "",
+   "Snit": "10,0",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Andet",
+   "Interesse": "Kor",
+   "Snit": "7,8",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Snit": "3.2",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 6",
+   "Køn": "dreng",
+   "Interesse": "Kor",
+   "Snit": "",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "1,1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng ",
+   "Interesse": "Klatring",
+   "Snit": "1,9",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "6,4",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Snit": "4,9",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r31",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "2,2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "9,3",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Snit": "4,8",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "6,5",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "10,2",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 6",
+   "Køn": "",
+   "Interesse": "Fodbold",
+   "Snit": "8,1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Interesse": " KLATRING",
+   "Snit": "6.2",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Snit": "",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Snit": "9.7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "11,1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r30",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "2.9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r29",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng ",
+   "Interesse": "Fodbold",
+   "Snit": "4,8",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Snit": "10,9",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 4
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 25539
+}

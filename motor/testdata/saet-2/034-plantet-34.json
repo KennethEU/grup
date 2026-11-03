@@ -1,0 +1,262 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p403-6",
+   "Niveau": "Middel",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-29",
+   "Niveau": "Lav",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-4",
+   "Niveau": "Lav",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-2",
+   "Niveau": "Lav",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p403-11",
+   "Niveau": "Middel",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-1",
+   "Niveau": "Lav",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p403-17",
+   "Niveau": "Lav",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p403-21",
+   "Niveau": "Høj",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p403-16",
+   "Niveau": "Lav",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p403-18",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p403-27",
+   "Niveau": "Lav",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-28",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-20",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-12",
+   "Niveau": "Middel",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-7",
+   "Niveau": "Middel",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-5",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p403-8",
+   "Niveau": "Middel",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p403-19",
+   "Niveau": "Lav",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-24",
+   "Niveau": "Høj",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-23",
+   "Niveau": "Høj",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p403-14",
+   "Niveau": "Middel",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-30",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-10",
+   "Niveau": "Middel",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-13",
+   "Niveau": "Middel",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p403-15",
+   "Niveau": "Middel",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-25",
+   "Niveau": "Høj",
+   "Snit": "7",
+   "Køn": "Dreng",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p403-3",
+   "Niveau": "Lav",
+   "Snit": "7",
+   "Køn": "Pige",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p403-22",
+   "Niveau": "Høj",
+   "Snit": "5,5",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-9",
+   "Niveau": "Middel",
+   "Snit": "2",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p403-26",
+   "Niveau": "Lav",
+   "Snit": "6",
+   "Køn": "Pige",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 266245
+}

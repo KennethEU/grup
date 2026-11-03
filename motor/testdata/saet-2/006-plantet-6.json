@@ -1,0 +1,174 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p304-1",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p304-3",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p304-25",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-22",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-8",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p304-24",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-11",
+   "Karakter": "12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-7",
+   "Karakter": "4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p304-9",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p304-20",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-18",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-16",
+   "Karakter": "4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-10",
+   "Karakter": "02",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p304-4",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p304-6",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p304-15",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-13",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-19",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-2",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p304-23",
+   "Karakter": "02",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-21",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-17",
+   "Karakter": "12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-12",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-14",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p304-5",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p304-9",
+    "p304-22"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 117657
+}

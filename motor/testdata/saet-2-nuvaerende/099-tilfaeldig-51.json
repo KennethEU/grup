@@ -1,0 +1,46 @@
+{
+  "contractVersion": 2,
+  "status": "impossible",
+  "groups": [],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Skal sammen går på tværs af Opdel-reglen. Eleverne skal være i samme pulje, eller aftalen eller Opdel-reglen skal ændres."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": null
+    },
+    {
+      "rule": 1,
+      "met": null
+    },
+    {
+      "rule": 2,
+      "met": null
+    },
+    {
+      "rule": 3,
+      "met": null
+    },
+    {
+      "rule": 4,
+      "met": null
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": null,
+    "seconds": 0.08
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p646-5",
+        "p646-2",
+        "p646-14",
+        "p646-1",
+        "p646-23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-10",
+        "p646-17",
+        "p646-19",
+        "p646-18",
+        "p646-6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-20",
+        "p646-7",
+        "p646-16",
+        "p646-8",
+        "p646-9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-25",
+        "p646-22",
+        "p646-21",
+        "p646-13",
+        "p646-24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-15",
+        "p646-4",
+        "p646-12",
+        "p646-11",
+        "p646-3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-28",
+        "p646-27",
+        "p646-30",
+        "p646-29",
+        "p646-26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-38",
+        "p646-37",
+        "p646-40",
+        "p646-39",
+        "p646-36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p646-33",
+        "p646-32",
+        "p646-35",
+        "p646-34",
+        "p646-31"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.07
+  }
+}

@@ -1,0 +1,167 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r7",
+    "r20"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r22",
+    "r1"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 897255
+}

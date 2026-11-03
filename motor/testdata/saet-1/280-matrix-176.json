@@ -1,0 +1,193 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r8",
+     "r15",
+     "r21"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r3",
+     "r19"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r22",
+     "r2",
+     "r5"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r9",
+     "r1",
+     "r14"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r4",
+     "r13",
+     "r16"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r20",
+     "r17",
+     "r6"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r23",
+     "r7",
+     "r12"
+    ],
+    "topic": null
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r10",
+     "r11"
+    ],
+    "topic": "EU"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 315467
+}

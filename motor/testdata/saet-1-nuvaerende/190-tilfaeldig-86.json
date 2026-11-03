@@ -1,0 +1,139 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r2",
+        "r6",
+        "r15",
+        "r11",
+        "r3"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r9",
+        "r4",
+        "r1",
+        "r10",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r12",
+        "r16",
+        "r14"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r7",
+        "r5",
+        "r17",
+        "r13"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk (2.a)"
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Fordel bruges begge på \"Sprog\". Klyng samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\" har 3 forskellige værdier inden for \"2.a\", men der er kun 2 grupper. Nogle elever ender uundgåeligt alene."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Karakter\". Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Ensartede\" måler ikke på vedkommende."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op inden for \"2.a\": 7 elever har værdien \"Tysk\", og der er kun plads til 4 (højst 2 pr. gruppe). 3 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.14
+  }
+}

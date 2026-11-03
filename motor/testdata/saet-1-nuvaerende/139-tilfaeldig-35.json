@@ -1,0 +1,94 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r6",
+        "r9",
+        "r11",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r23",
+        "r13",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r15",
+        "r17",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r12",
+        "r2",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r20",
+        "r26"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 12 elever har værdien \"Middel\", og der er kun plads til 9 (højst 1-2 pr. gruppe). 3 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 11 elever har værdien \"Tysk\", og der er kun plads til 9 (højst 1-2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

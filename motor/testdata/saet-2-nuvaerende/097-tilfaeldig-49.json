@@ -1,0 +1,73 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r21",
+        "r23",
+        "r22",
+        "r1",
+        "r8",
+        "r5"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r4",
+        "r9",
+        "r6",
+        "r18",
+        "r19",
+        "r10"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r12",
+        "r14",
+        "r11",
+        "r20",
+        "r3"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r7",
+        "r2",
+        "r16",
+        "r17",
+        "r13"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 12 elever har værdien \"Tysk\", og der er kun plads til 8 (højst 2 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Tysk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

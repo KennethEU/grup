@@ -1,0 +1,143 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p992-5",
+   "Udfordring": "Ja",
+   "Karakter": "4",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-1",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p992-6",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-2",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p992-4",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-12",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p992-9",
+   "Udfordring": "Ja",
+   "Karakter": "12",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-7",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-8",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p992-10",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p992-3",
+   "Udfordring": "Ja",
+   "Karakter": "7",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p992-11",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p992-12",
+    "p992-11"
+   ]
+  ],
+  "avoid": [
+   [
+    "p992-12",
+    "p992-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 52512
+}

@@ -1,0 +1,262 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p74-23",
+   "Snit": "10",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-24",
+   "Snit": "3,5",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Udfordring": "Ja",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-14",
+   "Snit": "3,5",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-6",
+   "Snit": "1",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-9",
+   "Snit": "3,5",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-22",
+   "Snit": "9,5",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-7",
+   "Snit": "9,5",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-19",
+   "Snit": "3,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-4",
+   "Snit": "3,5",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-13",
+   "Snit": "10",
+   "Interesse": "Dans",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-21",
+   "Snit": "1",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-15",
+   "Snit": "3,5",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-10",
+   "Snit": "3,5",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-5",
+   "Snit": "3,5",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-18",
+   "Snit": "10",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-8",
+   "Snit": "10",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Udfordring": "Ja",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-16",
+   "Snit": "1",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-17",
+   "Snit": "9,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-25",
+   "Snit": "3,5",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-12",
+   "Snit": "9,5",
+   "Interesse": "Dans",
+   "Sprog": "Spansk",
+   "Udfordring": "Ja",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-1",
+   "Snit": "1",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-2",
+   "Snit": "9,5",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Udfordring": "Ja",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-3",
+   "Snit": "10",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p74-20",
+   "Snit": "3,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Udfordring": "Nej",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p74-11",
+   "Snit": "1",
+   "Interesse": "Dans",
+   "Sprog": "Spansk",
+   "Udfordring": "Nej",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p74-9",
+    "p74-8"
+   ]
+  ],
+  "avoid": [
+   [
+    "p74-5",
+    "p74-16",
+    "p74-13",
+    "p74-9"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 627645
+}

@@ -1,0 +1,163 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj ",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Høj",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Høj",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Lav",
+   "Karakter": "4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r1",
+    "r6",
+    "r17"
+   ],
+   [
+    "r8",
+    "r5"
+   ]
+  ],
+  "avoid": [
+   [
+    "r14",
+    "r15",
+    "r9"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 115442
+}

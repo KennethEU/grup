@@ -1,0 +1,241 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r48",
+        "r22",
+        "r84",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r9",
+        "r75",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r60",
+        "r66",
+        "r61",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r92",
+        "r77",
+        "r64"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r79",
+        "r16",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r67",
+        "r41",
+        "r68",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r80",
+        "r11",
+        "r13",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r76",
+        "r63",
+        "r51",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r81",
+        "r53",
+        "r24",
+        "r57"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r73",
+        "r35",
+        "r56",
+        "r46"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r90",
+        "r2",
+        "r49",
+        "r44"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r72",
+        "r71",
+        "r38",
+        "r69"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r43",
+        "r85",
+        "r7",
+        "r39"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r83",
+        "r74",
+        "r25",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r82",
+        "r91",
+        "r59"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r70",
+        "r45",
+        "r62"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r58",
+        "r42",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r95",
+        "r27",
+        "r29",
+        "r65"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r34",
+        "r33",
+        "r93"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r87",
+        "r86",
+        "r31",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r30",
+        "r12",
+        "r52",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r89",
+        "r55",
+        "r26",
+        "r54"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 53 elever har værdien \"Middel\", og der er kun plads til 44 (højst 2 pr. gruppe). 9 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 11,
+    "seconds": 9.65
+  }
+}

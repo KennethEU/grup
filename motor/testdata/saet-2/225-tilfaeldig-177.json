@@ -1,0 +1,277 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r18",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "12",
+   "Køn": "dreng",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Køn": "Dreng ",
+   "Niveau": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": " HØJ",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "4",
+   "Køn": "",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Niveau": "middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Køn": "Dreng ",
+   "Niveau": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "",
+   "Køn": "pige",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10",
+    "12"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "dreng"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 633464
+}

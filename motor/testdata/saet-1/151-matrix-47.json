@@ -1,0 +1,300 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "7",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "12",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "02",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "02",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "02",
+   "Køn": " PIGE"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "02",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "02",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "homeGroup",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r13",
+     "r8",
+     "r25",
+     "r20"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r11",
+     "r2",
+     "r18",
+     "r6"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r23",
+     "r1",
+     "r16",
+     "r22"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r21",
+     "r15",
+     "r3",
+     "r10"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r14",
+     "r7",
+     "r12",
+     "r24"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r4",
+     "r9",
+     "r5",
+     "r17"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r19"
+    ],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 525685
+}

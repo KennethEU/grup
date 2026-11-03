@@ -1,0 +1,147 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r38",
+        "r17",
+        "r5",
+        "r39"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r31",
+        "r1",
+        "r36"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r24",
+        "r12",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r29",
+        "r2",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r45",
+        "r11",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r37",
+        "r43",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r8",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r15",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r32",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r46",
+        "r30",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r33",
+        "r35"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r34",
+        "r42"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r13",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r9",
+        "r41"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 25 elever har værdien \"Dreng\", og der er kun plads til 18 (højst 1-2 pr. gruppe). 7 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.56
+  }
+}

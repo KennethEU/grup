@@ -1,0 +1,166 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Snit": "3,3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Snit": "6,1",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Snit": "",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Snit": "9,0",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Snit": "2,9",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Høj",
+   "Snit": "1,3",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Snit": "4,5",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Snit": "8,6",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Lav",
+   "Snit": "7,8",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Snit": "2,1",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "høj",
+   "Snit": "10,8",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Snit": "3,3",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r1",
+    "r3"
+   ]
+  ],
+  "avoid": [
+   [
+    "r15",
+    "r19"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r9",
+    "r6",
+    "r11",
+    "r16"
+   ],
+   "topic": "Medier"
+  },
+  {
+   "id": "L2",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r4",
+    "r13",
+    "r7"
+   ],
+   "topic": "Gammelt emne"
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 31342
+}

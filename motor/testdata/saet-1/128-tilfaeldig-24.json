@@ -1,0 +1,170 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.a",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.c",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.a",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.a",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.b",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.b",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r1",
+    "r26",
+    "r15"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r25",
+    "r18",
+    "r19"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 10
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 773233
+}

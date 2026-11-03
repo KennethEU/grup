@@ -1,0 +1,672 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r98",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r84",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 23",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r77",
+   "Karakter": "",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 8",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r105",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r100",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 24",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r88",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r102",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r72",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r91",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r48",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r86",
+   "Karakter": "",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r76",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r85",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r65",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 19",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r75",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r55",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r99",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 22",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r79",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r83",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r61",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r92",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 11",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 17",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 23",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 18",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r104",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r96",
+   "Karakter": "12",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 13",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r87",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 26",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 23",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 16",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "00",
+   "Tidligere": "Gruppe 26",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 17",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 26",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r81",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 14",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r94",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 26",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r97",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 25",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r82",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r64",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "4",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "02",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 20",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 15",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r78",
+   "Karakter": "-3",
+   "Tidligere": "Gruppe 21",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r103",
+   "Karakter": "Fritaget",
+   "Tidligere": "Gruppe 24",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r93",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r90",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r101",
+   "Karakter": "10",
+   "Tidligere": "Gruppe 9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r80",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7",
+   "Tidligere": "Gruppe 17",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r14",
+    "r26",
+    "r80"
+   ],
+   [
+    "r31",
+    "r27",
+    "r75"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r95",
+    "r74",
+    "r89"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 595659
+}

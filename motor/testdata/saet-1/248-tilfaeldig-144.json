@@ -1,0 +1,1101 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r81",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r100",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r113",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r78",
+   "Karakter": "7",
+   "Hold": "",
+   "Interesse": "fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r80",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r94",
+   "Karakter": "",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r99",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kor ",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r118",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r77",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r120",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r136",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Kor ",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r124",
+   "Karakter": "-3",
+   "Hold": "2.b",
+   "Interesse": "Musik ",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r128",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Fodbold ",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "00",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "-3",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r134",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r125",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r48",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r119",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r105",
+   "Karakter": "Fritaget",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r127",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r132",
+   "Karakter": "7",
+   "Hold": "",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r65",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r109",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r70",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r95",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "kor",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r115",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r87",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r111",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r79",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": " FODBOLD",
+   "Sprog": "Tysk",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r61",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": " KOR",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r117",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r74",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r75",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "02",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r116",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r129",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r90",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r92",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r133",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r84",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "00",
+   "Hold": "2.c",
+   "Interesse": "musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r72",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r107",
+   "Karakter": "",
+   "Hold": "2.c",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r135",
+   "Karakter": "10",
+   "Hold": "",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r83",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r89",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r110",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r76",
+   "Karakter": "Fritaget",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r106",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r96",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "-3",
+   "Hold": "2.b",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r126",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r112",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r121",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r85",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r98",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r55",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r88",
+   "Karakter": "00",
+   "Hold": "2.a",
+   "Interesse": "Kor ",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r104",
+   "Karakter": "-3",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "-3",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r123",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Interesse": "Fodbold ",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r97",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r93",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r103",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r130",
+   "Karakter": "12",
+   "Hold": "2.c",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r102",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r91",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r86",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "10",
+   "Hold": "2.a",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "7",
+   "Hold": "",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r114",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r108",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Interesse": "Kor",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Interesse": "Musik",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Interesse": "Musik",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r118",
+    "r52",
+    "r123",
+    "r34"
+   ],
+   [
+    "r91",
+    "r75",
+    "r89",
+    "r106"
+   ],
+   [
+    "r19",
+    "r69",
+    "r31"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 57
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 273674
+}

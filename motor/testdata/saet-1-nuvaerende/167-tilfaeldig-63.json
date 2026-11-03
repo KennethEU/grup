@@ -1,0 +1,131 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r28",
+        "r6",
+        "r26",
+        "r3",
+        "r12",
+        "r10",
+        "r5",
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r15",
+        "r24",
+        "r27",
+        "r19",
+        "r4",
+        "r11",
+        "r25",
+        "r13"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r21",
+        "r9",
+        "r20",
+        "r8",
+        "r22",
+        "r16",
+        "r7",
+        "r18"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r14",
+        "r17",
+        "r2",
+        "r23",
+        "r30",
+        "r29",
+        "r31"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Ensartede (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Balancér\" måler ikke på vedkommende."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op: 6 elever har værdien \"Gruppe 6\", og der er kun plads til 4 (højst 1 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 6\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 17 elever har værdien \"Pige\", og der er kun plads til 12 (højst 3 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.43
+  }
+}

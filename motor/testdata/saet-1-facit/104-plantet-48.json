@@ -1,0 +1,119 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p543-6",
+    "p543-8",
+    "p543-7",
+    "p543-10",
+    "p543-9"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-35",
+    "p543-31",
+    "p543-33",
+    "p543-32",
+    "p543-34"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-12",
+    "p543-13",
+    "p543-15",
+    "p543-14",
+    "p543-11"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-28",
+    "p543-27",
+    "p543-29",
+    "p543-26",
+    "p543-30"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-23",
+    "p543-22",
+    "p543-24",
+    "p543-21",
+    "p543-25"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-38",
+    "p543-37",
+    "p543-36",
+    "p543-40",
+    "p543-39"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-1",
+    "p543-3",
+    "p543-4",
+    "p543-2",
+    "p543-5"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p543-19",
+    "p543-17",
+    "p543-20",
+    "p543-16",
+    "p543-18"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  },
+  {
+   "rule": 1,
+   "met": true
+  },
+  {
+   "rule": 2,
+   "met": true
+  },
+  {
+   "rule": 3,
+   "met": true
+  },
+  {
+   "rule": 4,
+   "met": true
+  },
+  {
+   "rule": 5,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

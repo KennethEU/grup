@@ -1,0 +1,165 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p805-2",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-8",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-10",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p805-16",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p805-3",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p805-11",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p805-1",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-15",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p805-7",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-13",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-9",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p805-6",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-12",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p805-4",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p805-14",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p805-5",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p805-11",
+    "p805-15",
+    "p805-8",
+    "p805-4"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 847820
+}

@@ -1,0 +1,102 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p998-15",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p998-5",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p998-12",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p998-9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-11",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p998-7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-10",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p998-13",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p998-4",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p998-2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-14",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p998-3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p998-6",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p998-10",
+    "p998-12"
+   ]
+  ],
+  "avoid": [
+   [
+    "p998-11",
+    "p998-3",
+    "p998-8"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 57738
+}

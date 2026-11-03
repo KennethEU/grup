@@ -1,0 +1,94 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p498-1",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "7",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p498-2",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "8",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p498-5",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "8",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p498-3",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "5,5",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p498-6",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "5,5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p498-4",
+   "Niveau": "Lav",
+   "Sprog": "Spansk",
+   "Snit": "7",
+   "Karakter": "02"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 177821
+}

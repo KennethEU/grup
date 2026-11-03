@@ -1,0 +1,158 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj ",
+   "Sprog": "Fransk",
+   "Hold": "",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r12",
+    "r1"
+   ],
+   [
+    "r3",
+    "r6",
+    "r11",
+    "r8",
+    "r7"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 4
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 534188
+}

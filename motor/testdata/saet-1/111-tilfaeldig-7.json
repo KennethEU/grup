@@ -1,0 +1,183 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Kor",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Kor",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Skak",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Kor",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Gaming",
+   "Niveau": "",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kunst",
+   "Niveau": "Høj",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Gaming",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Gaming",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Film",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Dans",
+   "Niveau": "høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Skak",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Film",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Gaming",
+   "Niveau": "Høj",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Film",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Skak",
+   "Niveau": "Høj",
+   "Køn": "dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige "
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 362033
+}

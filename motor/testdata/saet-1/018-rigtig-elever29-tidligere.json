@@ -1,0 +1,184 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "e0",
+   "Tidligere_gruppe": "1",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e1",
+   "Tidligere_gruppe": "2",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e2",
+   "Tidligere_gruppe": "3",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e3",
+   "Tidligere_gruppe": "1",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e4",
+   "Tidligere_gruppe": "2",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e5",
+   "Tidligere_gruppe": "4",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e6",
+   "Tidligere_gruppe": "3",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e7",
+   "Tidligere_gruppe": "1",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e8",
+   "Tidligere_gruppe": "5",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e9",
+   "Tidligere_gruppe": "2",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e10",
+   "Tidligere_gruppe": "3",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e11",
+   "Tidligere_gruppe": "4",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e12",
+   "Tidligere_gruppe": "5",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e13",
+   "Tidligere_gruppe": "1",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e14",
+   "Tidligere_gruppe": "2",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e15",
+   "Tidligere_gruppe": "3",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e16",
+   "Tidligere_gruppe": "4",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e17",
+   "Tidligere_gruppe": "5",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e18",
+   "Tidligere_gruppe": "1",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e19",
+   "Tidligere_gruppe": "2",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e20",
+   "Tidligere_gruppe": "3",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e21",
+   "Tidligere_gruppe": "4",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e22",
+   "Tidligere_gruppe": "5",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e23",
+   "Tidligere_gruppe": "1",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e24",
+   "Tidligere_gruppe": "2",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e25",
+   "Tidligere_gruppe": "3",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e26",
+   "Tidligere_gruppe": "4",
+   "Køn": "K"
+  },
+  {
+   "_rowId": "e27",
+   "Tidligere_gruppe": "5",
+   "Køn": "M"
+  },
+  {
+   "_rowId": "e28",
+   "Tidligere_gruppe": "1",
+   "Køn": "K"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere_gruppe"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Liberalisme",
+  "Socialisme",
+  "Konservatisme"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

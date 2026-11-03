@@ -1,0 +1,101 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p781-3",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p781-5",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p781-2",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p781-1",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p781-4",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p781-6",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p781-1",
+    "p781-3"
+   ]
+  ],
+  "avoid": [
+   [
+    "p781-3",
+    "p781-5"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 734442
+}

@@ -1,0 +1,138 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4",
+   "Sprog": "Spansk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "Fritaget",
+   "Sprog": "Fransk",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "Fritaget",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 2
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 491717
+}

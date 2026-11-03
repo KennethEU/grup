@@ -1,0 +1,798 @@
+:root {
+    /* Farverne, fladerne og stregerne (--primary, --bg-*, --text-*, --border-*,
+       --radius-* …) står i Rolig-temaet, rolig-tema.css. Her stod før den
+       gamle skærms mørke glas-tema med hex/rgba; hver eneste af de værdier
+       blev overskrevet af Rolig, så de er slettet (2/11 2026). Tilbage er de
+       få mål, som kun står her. */
+    --header-height: 64px;
+    --font-sm: 13px;
+    --font-xs: 11px;
+    /* Det, knapper, kort og felter skifter ved hover, fokus og valg — og kun
+       det. Reglerne havde før `transition: all`, og "alt" tager også
+       `visibility` med: et felt i noget, der åbner skjult og så vises, er
+       usynligt under overgangen og kan ikke få fokus (det ramte opskriftens
+       Emne-menu 3/11). "Alt" animerede desuden bredde, polstring og
+       font-weight, når de skiftede. Bruges som `transition-property:
+       var(--ctl-transition)` med varigheden for sig: i `transition:`-
+       kortformen ville kun den sidste egenskab få varigheden. */
+    --ctl-transition: background-color, border-color, color, box-shadow, opacity, transform, filter, outline-color;
+}
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-main);
+    background: var(--bg-body);
+    background-image:
+        radial-gradient(circle at 50% 0%, var(--bg-gradient-1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, var(--bg-gradient-2) 0%, transparent 40%);
+    font-size: 14px;
+    line-height: 1.5;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+    height: 100%;
+}
+
+/* === INDHOLDET === */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+    /* Prikmønster i baggrunden */
+    background-image: radial-gradient(circle, var(--bg-dot) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.content-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible;
+    padding-bottom: 40px;
+}
+
+/* Indstillingspanelet */
+.settings-panel {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.settings-panel:hover {
+    box-shadow: none;
+}
+
+.settings-panel input,
+.settings-panel select,
+.settings-panel .btn {
+    font-size: 13px;
+    padding: 6px 8px;
+    height: 32px;
+}
+
+.results-panel {
+    flex: 1;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Gitteret med grupper og historik */
+.group-grid {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+}
+
+.history-item-row {
+    display: flex;
+    align-items: center;
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: var(--radius-sm);
+    backdrop-filter: var(--glass-blur);
+    padding: 6px 16px;
+    transition: background 0.15s;
+    gap: 16px;
+    height: 40px;
+}
+
+.history-item-row:hover {
+    background: var(--glass-bg-elevated);
+}
+
+.history-item-row:last-child {
+    border-bottom: none;
+}
+
+.history-item-row .btn-icon {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.history-item-row:hover .btn-icon {
+    opacity: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* === FANER — med understregning === */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
+    padding-left: 16px;
+}
+
+.tab-content {
+    flex: 1;
+    padding: 16px 32px;
+    /* Ingen overflow-y: auto her: så kan klæbende elementer følge .main-contents rulning */
+}
+
+/* === KNAPPER === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.2s;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Baggrund, kant og hover står i rolig-tema.css (html[data-theme="rolig"]
+   .btn.primary), som altid vinder. Kun tekstfarven kommer herfra. */
+.btn.primary {
+    color: var(--text-on-primary);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-main);
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--border-medium);
+}
+
+.btn.danger {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.btn.danger:hover {
+    background: var(--color-error-bg);
+}
+
+.btn.small {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.btn.large {
+    padding: 12px 24px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.2s;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.btn-icon:hover {
+    color: var(--text-main);
+}
+
+/* Luk-knappen i vinduer */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Slet-knappen i tabellens rækker */
+.delete-row-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.2s;
+}
+
+.delete-row-btn:hover {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+/* === KORT === */
+.card {
+    background: var(--bg-surface);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.card h3 {
+    margin: 0 0 16px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* === FELTER === */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-input);
+    border-top: 1px solid var(--border-input-top);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    background: var(--bg-input);
+    color: var(--text-main);
+    /* Kun det, fokus ændrer. `transition: 0.2s` alene betød ALLE egenskaber —
+       også `visibility`, som feltet arver: i opskriftens ord-menuer (der åbner
+       skjult og så vises) var et felt usynligt i 0,2 sek., og et usynligt felt
+       kan ikke få fokus. Emne-menuen åbnede derfor uden fokus i feltet. */
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* --ink-3 er den lyseste tekstfarve, der giver 4,5:1 (5,05:1 på feltets
+   --paper-2). Den gamle #64748b gav 4,36:1. Vinduerne har deres egen regel
+   (vinduer.css). */
+input::placeholder,
+textarea::placeholder {
+    color: var(--ink-3);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-input-focus);
+}
+
+/* Rullelisternes pil */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 32px;
+}
+
+select option {
+    background: var(--bg-select-option);
+    color: var(--text-main);
+}
+
+/* === TABELLER === */
+.table-container {
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    backdrop-filter: var(--glass-blur);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: var(--table-header-bg);
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--table-header-color);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--table-header-border);
+    border-right: 1px solid var(--table-cell-border);
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--table-cell-border);
+    border-right: 1px solid var(--table-cell-border);
+    color: var(--text-main);
+}
+
+td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Matrixens beholdere */
+#matrix-display {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* === GRUPPEKORTENE === */
+.group-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(16px);
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
+}
+
+.group-card h4 {
+    margin: 0;
+    padding: 10px 14px;
+    background: var(--bg-card-header);
+    border-bottom: 1px solid var(--border-medium);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.group-card ul {
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+    min-height: 50px;
+    padding-bottom: 20px;
+}
+
+.group-card li {
+    padding: 3px 12px;
+    font-size: 13px;
+    color: var(--text-main);
+    display: flex;
+    /* Tags får deres egen linje under navnet, når de ikke kan være ved siden
+       af det. Uden wrap blev navnet klemt sammen til 2-3 linjer inde i en
+       24px-høj række — derfor lå navnene oven i hinanden. */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px 8px;
+    /* Minimum, ikke fast: rækken må vokse, når tags er wrappet ned. */
+    min-block-size: 24px;
+    cursor: grab;
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+/* Navnet. Reglen hed før .group-card li>span:first-child, men navnet ligger i
+   en div — så den ramte ingenting, og navnet havde hverken plads eller
+   afkortning. */
+.group-card li .member-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    /* flex-basis på 55% afgør, hvornår tags springer ned på egen linje: fylder
+       de mere end de resterende ~45%, får de linjen for sig selv. Grow gør, at
+       navnet fylder hele linjen, når det sker. */
+    flex: 1 1 55%;
+    min-inline-size: 0;
+    /* Et enkelt meget langt navn brydes frem for at flyde ud over kortet. */
+    overflow-wrap: anywhere;
+}
+
+.group-card li:active {
+    cursor: grabbing;
+}
+
+.group-card li:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Elevernes mærker */
+.student-tags {
+    display: flex;
+    /* Én tag pr. aktiv regel: de må bryde over flere linjer. */
+    flex-wrap: wrap;
+    gap: 3px;
+    align-items: center;
+    /* Ingen grow: ved siden af navnet skubbes de ud til højre kant, og på egen
+       linje lægger de sig venstrestillet under navnet. */
+    flex: 0 1 auto;
+    max-inline-size: 100%;
+}
+
+.student-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+    font-size: 0.75em;
+    background: var(--bg-surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    border: 1px solid var(--border-light);
+}
+
+/* Nøgle (forkortet kolonnenavn) træder tilbage, værdien er det, læreren læser */
+.student-tag .tag-key {
+    color: var(--text-tag);
+}
+
+.student-tag .tag-val {
+    color: var(--text-tag-val);
+    font-weight: 600;
+}
+
+/* === VINDUER === */
+.modal-content {
+    background: var(--bg-modal);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-float), var(--glass-inset);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    backdrop-filter: var(--glass-blur-heavy);
+    color: var(--text-main);
+}
+
+/* Hjælpeklasser */
+.empty-state {
+    padding: 60px 40px;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--bg-surface-glass);
+    border: 1px dashed var(--border-medium);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.empty-state strong {
+    color: var(--text-heading);
+    font-size: 16px;
+}
+
+.empty-state span {
+    font-size: 13px;
+    max-width: 300px;
+}
+
+/* Emnefeltet i kortets hoved */
+.topic-badge-input {
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: auto;
+    min-width: 60px;
+    max-width: 140px;
+    margin-left: 8px;
+    transition-property: var(--ctl-transition);
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    text-transform: none;
+    letter-spacing: normal;
+    font-family: inherit;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.topic-badge-input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.badge-origin {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    padding: 1px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    border: 1px solid var(--border-light);
+}
+
+/* Skjul mærker og gennemsnit */
+.hide-tags .student-tags {
+    display: none !important;
+}
+
+.hide-tags .group-average {
+    display: none !important;
+}
+
+/* Låst gruppe */
+.group-card.locked {
+    border: 1px solid var(--locked-border);
+    background: var(--locked-bg);
+}
+
+.group-card.locked:hover {
+    transform: none;
+}
+
+.group-card.locked li {
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0.8;
+}
+
+.group-card.locked h4 {
+    color: var(--text-muted);
+}
+
+.lock-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0 4px;
+    margin-right: 8px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.lock-btn:hover,
+.group-card.locked .lock-btn {
+    opacity: 1;
+}
+
+/* Værktøjstip */
+.custom-tooltip {
+    position: fixed;
+    background: var(--bg-tooltip);
+    color: oklch(1 0 0);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    box-shadow: var(--shadow-float);
+    border: 1px solid var(--border-medium);
+    backdrop-filter: var(--glass-blur);
+    white-space: pre-line;
+    /* Uden en max-width bliver et tip lige så bredt som teksten. De længste
+       — "Undgåelse brudt ..." plus "Markeret fraværende ..." på den samme
+       elev — er over 300 tegn, og målt i browseren blev tippet 1280px bredt,
+       altså hele skærmen. Og fordi tippet skubbes til VENSTRE for musen, når
+       der ikke er plads til højre, endte det med en negativ venstrekant: de
+       første ord lå uden for skærmen og kunne slet ikke læses.
+       `pre-line` har hele tiden tilladt ombrydning — der var bare aldrig en
+       bredde at bryde ved. */
+    /* border-box, så de to tal nedenfor er tippets FÆRDIGE bredde. Uden den
+       ville padding og kant lægges oveni, og `100vw - 24px` ville stadig
+       give et tip, der var bredere end et smalt vindue. */
+    box-sizing: border-box;
+    max-width: min(360px, calc(100vw - 32px));
+}
+
+.custom-tooltip.visible {
+    opacity: 1;
+}
+
+/* === VUES OVERGANGE === */
+
+/* Gruppekortene glider på plads */
+.group-list-move,
+.group-list-enter-active,
+.group-list-leave-active {
+    /* Varigheden følger afspilningens hastighed, når en kørsel afspilles —
+       se `gridDuration` i GroupResultsPanel.vue. Ved 60 ms pr. elev ville et
+       halvt sekund betyde, at kortet stadig var sløret og på vej ind, længe
+       efter at otte flere elever var lagt i det. */
+    transition: all var(--group-list-dur, 0.5s) cubic-bezier(0.2, 0, 0.2, 1);
+    transform-origin: center top;
+}
+
+.group-list-enter-from,
+.group-list-leave-to {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+    filter: blur(4px);
+}
+
+.group-list-leave-active {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+}
+
+/* Historikkens liste: overgange */
+.history-list-move,
+.history-list-enter-active,
+.history-list-leave-active {
+    transition: all 0.3s ease;
+}
+
+.history-list-enter-from,
+.history-list-leave-to {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.history-list-leave-active {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+}
+
+/* === RULLEBJÆLKER ===
+ *
+ * KUN webkit — og det er efterprøvet, ikke glemt. `::-webkit-scrollbar` findes
+ * ikke i Firefox, som i stedet har `scrollbar-width`/`scrollbar-color`; i hele
+ * appen står de ét eneste sted (`.drawer-rules-list` i RuleBuilder).
+ *
+ * Et modstykke her blev prøvet og rullet tilbage 9/9, fordi det ikke ville
+ * gøre det, det lovede: `scrollbar-width` ARVES IKKE, så en regel på `:root`
+ * rammer kun selve siden — ikke elevlisten, kørselsmenuen eller nogen af de
+ * andre indlejrede rullelister. Det ville kræve en `*`-regel.
+ *
+ * Og forskellen kan ikke ses på macOS: alle tre browsere tegner rullepaneler
+ * som et overlay, der ikke fylder i layoutet. Målt i Playwrights Firefox var
+ * `scrollbar-width` på `.main-content` `none` både med og uden reglen — altså
+ * ingen målbar virkning her. Skal det laves, hører det hjemme sammen med en
+ * rigtig efterprøvning på Windows, hvor Firefox tegner et klassisk
+ * rullepanel. */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* === MARKERET TEKST === */
+::selection {
+    background: var(--selection-bg);
+    color: var(--text-main);
+}
+
+/* === FOKUSRAMME (tastatur) === */
+*:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Windows' højkontrast-tilstand (fundet ved gennemsynet 9/9).
+   Sytten steder bytter et felt fokusringen ud med en skygge:
+   `outline: none; box-shadow: 0 0 0 2px var(--primary-light)`. Det ser ens ud
+   i en almindelig browser — men i forced-colors tvinger browseren
+   `box-shadow` til `none`, og reglen har allerede slået outline fra. Så står
+   tekstfelterne i "Kategoriser", "Ranger", "Gendan grupper", regelrækkernes
+   rulleliste og indsæt-feltet i importen HELT uden fokusmarkering.
+   Kombinationen `forced-colors` + `:focus-visible` vinder over de enkelte
+   regler, og `Highlight` er systemets egen markeringsfarve. */
+@media (forced-colors: active) {
+    *:focus-visible {
+        outline: 2px solid Highlight !important;
+        outline-offset: 2px;
+    }
+}
+
+/* === AFKRYDSNINGSFELTER === */
+input[type="checkbox"] {
+    accent-color: var(--primary);
+}
+
+/* === MINDRE BEVÆGELSE (styresystemets indstilling) === */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Et felt, som fik fokus fordi et vindue åbnede (musen åbnede det), viser
+   ikke fokusringen, før der tastes — se focusOnOpen() i useModalFocus.js.
+   !important: vinduernes egne :focus-regler (almindelig og beta) har
+   forskellig vægt, og ringen skal væk i dem alle. */
+.open-focus-quiet:focus,
+.open-focus-quiet:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: var(--rule-2, var(--border-medium)) !important;
+}
+
+/* Telefon: topbjælken bliver to rækker (se AppTopbar.vue), og alt, der måler
+   sig efter den — toasts, fejlbanneret — skal vide det. */
+@media (max-width: 700px) {
+    :root { --header-height: 112px; }
+}

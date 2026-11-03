@@ -1,0 +1,213 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p230-13",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "12",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-4",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p230-18",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-10",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-7",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-12",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-3",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-17",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-11",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-2",
+   "Snit": "10,5",
+   "Udfordring": "Ja",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-1",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-9",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "12",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-6",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p230-5",
+   "Snit": "10,5",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p230-8",
+   "Snit": "10,5",
+   "Udfordring": "Ja",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p230-14",
+   "Snit": "10,5",
+   "Udfordring": "Ja",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-15",
+   "Snit": "1",
+   "Udfordring": "Nej",
+   "Interesse": "Dans",
+   "Karakter": "02",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p230-16",
+   "Snit": "7",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p230-18",
+    "p230-16"
+   ]
+  ],
+  "avoid": [
+   [
+    "p230-3",
+    "p230-12"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 175408
+}

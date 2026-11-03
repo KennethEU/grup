@@ -1,0 +1,77 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng "
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r2",
+    "r4",
+    "r7"
+   ],
+   "topic": "Medier"
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r5",
+    "r1"
+   ],
+   "topic": "Gammelt emne"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 687619
+}

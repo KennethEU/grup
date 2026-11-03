@@ -1,0 +1,253 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p225-11",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-6",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-3",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-12",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-4",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-14",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-23",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-2",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-18",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-20",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-5",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-8",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-16",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-9",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-19",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-1",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p225-15",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-22",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-17",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-7",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Sprog": "Tysk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-13",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-10",
+   "Karakter": "12",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Sprog": "Fransk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-21",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p225-24",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Sprog": "Spansk",
+   "Hold": "Hold 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p225-3",
+    "p225-1"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 144306
+}

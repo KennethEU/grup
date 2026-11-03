@@ -1,0 +1,193 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p447-12",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-20",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-17",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-16",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-4",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-11",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-8",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-9",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-6",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-2",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-14",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-22",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-23",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-19",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-15",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-3",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-5",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-13",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-18",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p447-21",
+   "Køn": "Dreng",
+   "Interesse": "Fodbold",
+   "Snit": "10,5"
+  },
+  {
+   "_rowId": "p447-24",
+   "Køn": "Pige",
+   "Interesse": "Fodbold",
+   "Snit": "7"
+  },
+  {
+   "_rowId": "p447-1",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Snit": "10,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p447-17",
+    "p447-18"
+   ]
+  ],
+  "avoid": [
+   [
+    "p447-15",
+    "p447-11"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 973167
+}

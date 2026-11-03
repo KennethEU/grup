@@ -1,0 +1,147 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p260-14",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-4",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-2",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-12",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p260-5",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-16",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-1",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-13",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-10",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p260-15",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-9",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p260-7",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-11",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p260-3",
+   "Køn": "Pige",
+   "Niveau": "Høj",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-6",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "p260-8",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p260-15",
+    "p260-9",
+    "p260-2"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 748031
+}

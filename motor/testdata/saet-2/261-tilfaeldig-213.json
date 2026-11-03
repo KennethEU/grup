@@ -1,0 +1,150 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": " DRENG",
+   "Interesse": "Kor",
+   "Niveau": " LAV",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Middel",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "dreng",
+   "Interesse": "Klatring",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Niveau": "Middel",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Niveau": "Lav",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Niveau": "Høj",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r9",
+    "r5",
+    "r6"
+   ],
+   [
+    "r9",
+    "r12",
+    "r3",
+    "r6"
+   ],
+   [
+    "r4",
+    "r7",
+    "r8"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 4
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 652519
+}

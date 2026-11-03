@@ -1,0 +1,604 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r57",
+        "r130"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r159",
+        "r83"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r104",
+        "r147"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r102",
+        "r28"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r31",
+        "r152"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r69",
+        "r20"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r108",
+        "r99"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r12",
+        "r91"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r139",
+        "r106"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r142",
+        "r107"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r165",
+        "r74"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r145",
+        "r88"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r17",
+        "r95"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r94",
+        "r72"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r36",
+        "r110"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r121",
+        "r129"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r18",
+        "r157"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r148",
+        "r164"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r116",
+        "r155"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r133",
+        "r44"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r82"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r2",
+        "r143"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r135",
+        "r84"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r41",
+        "r49"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r117",
+        "r73"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r79",
+        "r123"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r67",
+        "r137"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r100",
+        "r24"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r151",
+        "r46"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r115",
+        "r150"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r47",
+        "r154"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r4",
+        "r118"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r5",
+        "r103"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r11",
+        "r138"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r112",
+        "r15"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r27",
+        "r160"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r158",
+        "r161"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r131",
+        "r162"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r16",
+        "r22"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r92",
+        "r149"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r77",
+        "r35"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r90",
+        "r113"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r29",
+        "r93"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r153",
+        "r119"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r101",
+        "r70"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r55",
+        "r33"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r23",
+        "r34"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r76",
+        "r125"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r140",
+        "r105"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r111",
+        "r3"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r40",
+        "r6"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r42",
+        "r66"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r75",
+        "r71"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r56",
+        "r19"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r81",
+        "r63"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r38",
+        "r109"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r132",
+        "r136"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r144",
+        "r134"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r61",
+        "r87"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r26",
+        "r86"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r32",
+        "r43"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r114",
+        "r127"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r25",
+        "r50"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r14",
+        "r39"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r7",
+        "r163"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r96"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r146",
+        "r98"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r58",
+        "r124"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r126",
+        "r37"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r62",
+        "r54"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r80",
+        "r85"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r65",
+        "r8"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r10",
+        "r13"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r48",
+        "r64"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r68",
+        "r141"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r45",
+        "r122"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r78",
+        "r97"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r52"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r60",
+        "r1"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r9",
+        "r51"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r128",
+        "r156"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r59",
+        "r30"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r120",
+        "r53"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r89",
+        "r21"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.12
+  }
+}

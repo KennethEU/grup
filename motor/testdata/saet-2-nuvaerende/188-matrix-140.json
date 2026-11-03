@@ -1,0 +1,107 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r16",
+        "r15",
+        "r5",
+        "r4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r10",
+        "r9",
+        "r25",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r26",
+        "r20",
+        "r7",
+        "r24"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r12",
+        "r30",
+        "r18",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r19",
+        "r13",
+        "r27",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r29",
+        "r3",
+        "r8"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 2.92
+  }
+}

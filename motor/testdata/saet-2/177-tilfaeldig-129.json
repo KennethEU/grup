@@ -1,0 +1,163 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Køn": "Andet",
+   "Interesse": "Dans",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Interesse": "Skak",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "dreng",
+   "Interesse": "Musik",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Interesse": "Skak",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng",
+   "Interesse": "Kunst",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Interesse": "Gaming ",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Interesse": "Skak",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "",
+   "Interesse": "Gaming",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Interesse": "Kunst",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Interesse": "Skak",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 2
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 842618
+}

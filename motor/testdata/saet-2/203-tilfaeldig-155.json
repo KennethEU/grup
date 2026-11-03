@@ -1,0 +1,167 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 6",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 6",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 5",
+   "Snit": "1.6"
+  },
+  {
+   "_rowId": "r23",
+   "Tidligere": "Gruppe 1",
+   "Snit": "10.8"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 1",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 2",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 5",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 1",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 5",
+   "Snit": "5.1"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 6",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 7",
+   "Snit": "6,2"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 3",
+   "Snit": "3,6"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 3",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 1",
+   "Snit": "4,5"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 4",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 2",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 1",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 1",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 5",
+   "Snit": "12,0"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 6",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 7",
+   "Snit": "8.6"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 2",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 3",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 3",
+   "Snit": "7,9"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 4",
+   "Snit": "6,0"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 9
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 77778
+}

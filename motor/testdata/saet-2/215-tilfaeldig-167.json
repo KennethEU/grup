@@ -1,0 +1,208 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r19",
+   "Karakter": "02",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "4",
+   "Interesse": "",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "4",
+   "Interesse": "Gaming",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "",
+   "Interesse": "Klatring",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Interesse": "Klatring",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Hold": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "12",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7",
+   "Interesse": "klatring",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "7",
+   "Interesse": "Film",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Hold": "2.a",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4",
+   "Interesse": "Dans",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "7",
+   "Interesse": "Klatring ",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r17",
+    "r21"
+   ],
+   [
+    "r22",
+    "r12",
+    "r9"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 565818
+}

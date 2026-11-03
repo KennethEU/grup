@@ -1,0 +1,930 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r219",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r150",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r179",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r30",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r107",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r70",
+   "Tidligere": "Gruppe 39"
+  },
+  {
+   "_rowId": "r142",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r138",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r47",
+   "Tidligere": "Gruppe 49"
+  },
+  {
+   "_rowId": "r101",
+   "Tidligere": "Gruppe 39"
+  },
+  {
+   "_rowId": "r134",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r158",
+   "Tidligere": "Gruppe 47"
+  },
+  {
+   "_rowId": "r78",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r84",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r146",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r87",
+   "Tidligere": "Gruppe 44"
+  },
+  {
+   "_rowId": "r95",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r148",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r184",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r213",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r186",
+   "Tidligere": "Gruppe 55"
+  },
+  {
+   "_rowId": "r72",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r132",
+   "Tidligere": "Gruppe 38"
+  },
+  {
+   "_rowId": "r200",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r128",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r207",
+   "Tidligere": "Gruppe 40"
+  },
+  {
+   "_rowId": "r32",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r20",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r166",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r162",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r65",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r189",
+   "Tidligere": "Gruppe 37"
+  },
+  {
+   "_rowId": "r102",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r76",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r210",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r79",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r116",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r121",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r81",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r93",
+   "Tidligere": "Gruppe 39"
+  },
+  {
+   "_rowId": "r177",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r125",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r52",
+   "Tidligere": "Gruppe 53"
+  },
+  {
+   "_rowId": "r182",
+   "Tidligere": "Gruppe 37"
+  },
+  {
+   "_rowId": "r190",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r110",
+   "Tidligere": "Gruppe 55"
+  },
+  {
+   "_rowId": "r118",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r218",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r117",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r41",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r192",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r153",
+   "Tidligere": "Gruppe 40"
+  },
+  {
+   "_rowId": "r209",
+   "Tidligere": "Gruppe 38"
+  },
+  {
+   "_rowId": "r43",
+   "Tidligere": "Gruppe 37"
+  },
+  {
+   "_rowId": "r163",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r104",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r42",
+   "Tidligere": "Gruppe 49"
+  },
+  {
+   "_rowId": "r98",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r124",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r169",
+   "Tidligere": "Gruppe 55"
+  },
+  {
+   "_rowId": "r45",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r137",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r105",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r202",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r57",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r167",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r44",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r69",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r174",
+   "Tidligere": "Gruppe 36"
+  },
+  {
+   "_rowId": "r145",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r221",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r193",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r40",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r194",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r215",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r58",
+   "Tidligere": "Gruppe 41"
+  },
+  {
+   "_rowId": "r205",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r197",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r161",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r85",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r133",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r33",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r99",
+   "Tidligere": "Gruppe 47"
+  },
+  {
+   "_rowId": "r164",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r195",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r83",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r154",
+   "Tidligere": "Gruppe 53"
+  },
+  {
+   "_rowId": "r165",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r74",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r86",
+   "Tidligere": "Gruppe 50"
+  },
+  {
+   "_rowId": "r51",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r212",
+   "Tidligere": "Gruppe 45"
+  },
+  {
+   "_rowId": "r66",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r159",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r27",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r71",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r223",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r129",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r90",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r111",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r229",
+   "Tidligere": "Gruppe 53"
+  },
+  {
+   "_rowId": "r100",
+   "Tidligere": "Gruppe 40"
+  },
+  {
+   "_rowId": "r185",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r68",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r170",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r127",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r155",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r130",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r49",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r204",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r96",
+   "Tidligere": "Gruppe 44"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r188",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r82",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r217",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r135",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r94",
+   "Tidligere": "Gruppe 43"
+  },
+  {
+   "_rowId": "r64",
+   "Tidligere": "Gruppe 47"
+  },
+  {
+   "_rowId": "r113",
+   "Tidligere": "Gruppe 39"
+  },
+  {
+   "_rowId": "r120",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r176",
+   "Tidligere": "Gruppe 47"
+  },
+  {
+   "_rowId": "r187",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r108",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r92",
+   "Tidligere": "Gruppe 55"
+  },
+  {
+   "_rowId": "r114",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r216",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r140",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r139",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r198",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r171",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r48",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r109",
+   "Tidligere": "Gruppe 44"
+  },
+  {
+   "_rowId": "r211",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r172",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r173",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r60",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 43"
+  },
+  {
+   "_rowId": "r31",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r225",
+   "Tidligere": "Gruppe 44"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r59",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r123",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r36",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r115",
+   "Tidligere": "Gruppe 46"
+  },
+  {
+   "_rowId": "r119",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r151",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r180",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r29",
+   "Tidligere": "Gruppe 46"
+  },
+  {
+   "_rowId": "r228",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r149",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r183",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r28",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r191",
+   "Tidligere": "Gruppe 41"
+  },
+  {
+   "_rowId": "r103",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r112",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r63",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r214",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r203",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r89",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r88",
+   "Tidligere": "Gruppe 54"
+  },
+  {
+   "_rowId": "r61",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r156",
+   "Tidligere": "Gruppe 51"
+  },
+  {
+   "_rowId": "r175",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r91",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r160",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r75",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r208",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r35",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r152",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r126",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r34",
+   "Tidligere": "Gruppe 40"
+  },
+  {
+   "_rowId": "r141",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r222",
+   "Tidligere": "Gruppe 40"
+  },
+  {
+   "_rowId": "r196",
+   "Tidligere": "Gruppe 38"
+  },
+  {
+   "_rowId": "r62",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r224",
+   "Tidligere": "Gruppe 49"
+  },
+  {
+   "_rowId": "r53",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r38",
+   "Tidligere": "Gruppe 45"
+  },
+  {
+   "_rowId": "r226",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r181",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 57"
+  },
+  {
+   "_rowId": "r55",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r136",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r144",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r220",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r201",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r56",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r178",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r106",
+   "Tidligere": "Gruppe 56"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 52"
+  },
+  {
+   "_rowId": "r147",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r23",
+   "Tidligere": "Gruppe 36"
+  },
+  {
+   "_rowId": "r54",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r46",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 39"
+  },
+  {
+   "_rowId": "r131",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r168",
+   "Tidligere": "Gruppe 48"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r206",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r50",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r97",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r39",
+   "Tidligere": "Gruppe 37"
+  },
+  {
+   "_rowId": "r80",
+   "Tidligere": "Gruppe 42"
+  },
+  {
+   "_rowId": "r37",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r73",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r199",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r122",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r227",
+   "Tidligere": "Gruppe 25"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 108
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 499450
+}

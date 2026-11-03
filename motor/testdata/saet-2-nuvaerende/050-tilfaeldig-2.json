@@ -1,0 +1,185 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r14",
+        "r53",
+        "r55",
+        "r73"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r63",
+        "r45",
+        "r15",
+        "r2"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r72",
+        "r5",
+        "r57",
+        "r64"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r27",
+        "r19",
+        "r18",
+        "r48"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r40",
+        "r23",
+        "r67",
+        "r3"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r12",
+        "r32",
+        "r21",
+        "r13"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r4",
+        "r49",
+        "r31",
+        "r25"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r10",
+        "r6",
+        "r39",
+        "r71"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r68",
+        "r37",
+        "r44",
+        "r7"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r58",
+        "r26",
+        "r43",
+        "r75"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r41",
+        "r34",
+        "r28",
+        "r22"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r38",
+        "r30",
+        "r24",
+        "r66"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r42",
+        "r54",
+        "r9",
+        "r60"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r33",
+        "r61",
+        "r56",
+        "r50"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r69",
+        "r35",
+        "r51",
+        "r20"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r70",
+        "r8",
+        "r29",
+        "r11"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r74",
+        "r52",
+        "r36",
+        "r47"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r16",
+        "r46",
+        "r17",
+        "r62"
+      ],
+      "topic": "Medier"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 13,
+    "seconds": 9.91
+  }
+}

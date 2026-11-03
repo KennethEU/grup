@@ -1,0 +1,1226 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r41",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": " HØJ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r95",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r107",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Køn": "Pige ",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r99",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r84",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 36"
+  },
+  {
+   "_rowId": "r40",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r61",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r51",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r131",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r115",
+   "Interesse": "gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r76",
+   "Interesse": " GAMING",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r113",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r59",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r109",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 36"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r58",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r50",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r57",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r43",
+   "Interesse": "Skak ",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r140",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng ",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r68",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r72",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r134",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r64",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r105",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": " PIGE",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r116",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r103",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r125",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r56",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r93",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige ",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r143",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r98",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r128",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r79",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r135",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r126",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r87",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r129",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r117",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r74",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r60",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r102",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r82",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r52",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r94",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r66",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 30"
+  },
+  {
+   "_rowId": "r100",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r118",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r78",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r71",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r122",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r96",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r47",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r83",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r89",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r69",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r85",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 21"
+  },
+  {
+   "_rowId": "r92",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r90",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Dans ",
+   "Sprog": "Tysk",
+   "Niveau": "lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r45",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": " MIDDEL",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "skak",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r123",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r104",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r48",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 20"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r142",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r65",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r63",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 36"
+  },
+  {
+   "_rowId": "r88",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "middel",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r67",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r70",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": " PIGE",
+   "Tidligere": "Gruppe 32"
+  },
+  {
+   "_rowId": "r114",
+   "Interesse": "Skak ",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r127",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": " DRENG",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r106",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r77",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r91",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 29"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r53",
+   "Interesse": " FODBOLD",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r121",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r54",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r55",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r145",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng ",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r124",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 22"
+  },
+  {
+   "_rowId": "r49",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r62",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r86",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r133",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r120",
+   "Interesse": "Dans",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 26"
+  },
+  {
+   "_rowId": "r44",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r132",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r137",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r81",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Lav ",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r36",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r139",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 33"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 34"
+  },
+  {
+   "_rowId": "r144",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r108",
+   "Interesse": "Skak",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r46",
+   "Interesse": "kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 20"
+  },
+  {
+   "_rowId": "r138",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 23"
+  },
+  {
+   "_rowId": "r130",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24"
+  },
+  {
+   "_rowId": "r111",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r119",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r73",
+   "Interesse": "Film",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r75",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Kunst",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35"
+  },
+  {
+   "_rowId": "r112",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 31"
+  },
+  {
+   "_rowId": "r42",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r110",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r101",
+   "Interesse": "",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r97",
+   "Interesse": "Fodbold",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Skak",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 27"
+  },
+  {
+   "_rowId": "r141",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Dans",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r32",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28"
+  },
+  {
+   "_rowId": "r80",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r136",
+   "Interesse": "Film",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Køn": "",
+   "Tidligere": "Gruppe 24"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r92",
+    "r94"
+   ],
+   [
+    "r109",
+    "r67",
+    "r123"
+   ]
+  ],
+  "avoid": [
+   [
+    "r56",
+    "r29"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 900185
+}

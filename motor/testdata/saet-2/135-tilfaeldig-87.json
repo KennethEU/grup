@@ -1,0 +1,133 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Spansk",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 1",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 3",
+   "Sprog": "Fransk",
+   "Interesse": "Fodbold",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Interesse": "Fodbold",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 2",
+   "Sprog": "Tysk",
+   "Interesse": "Klatring",
+   "Hold": ""
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r1",
+    "r13",
+    "r6"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r15",
+    "r11",
+    "r7"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 961673
+}

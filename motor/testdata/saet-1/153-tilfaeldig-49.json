@@ -1,0 +1,202 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r24",
+   "Interesse": "Film",
+   "Snit": "5,4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Film",
+   "Snit": "4.3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Gaming",
+   "Snit": "5,5",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Film",
+   "Snit": "7,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Skak",
+   "Snit": "3,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Gaming",
+   "Snit": "10,4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor",
+   "Snit": "4,6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Film",
+   "Snit": "9,0",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Kor",
+   "Snit": "3,1",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Skak",
+   "Snit": "7,2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "",
+   "Snit": "1,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Kor",
+   "Snit": "3,5",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Film",
+   "Snit": "5,1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Kor",
+   "Snit": "9,2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Gaming",
+   "Snit": "9.0",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "",
+   "Snit": "8,6",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Kor",
+   "Snit": "4,1",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Film",
+   "Snit": "11,3",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Kor ",
+   "Snit": "3,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": " SKAK",
+   "Snit": "9.7",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Skak",
+   "Snit": "2.4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Film",
+   "Snit": "11,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "",
+   "Snit": "6,3",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Kor",
+   "Snit": "2,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Film",
+   "Snit": "2,3",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Film",
+   "Snit": "5.0",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 4
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 166614
+}

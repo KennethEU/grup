@@ -1,0 +1,213 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Snit": "3,7",
+   "Karakter": "7",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "8,1",
+   "Karakter": "00",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "4,9",
+   "Karakter": "4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "4,6",
+   "Karakter": "-3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "9,2",
+   "Karakter": "02",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "7,7",
+   "Karakter": "02",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "5,7",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "8,0",
+   "Karakter": "4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "9,9",
+   "Karakter": "12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "6,9",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "8,8",
+   "Karakter": "10",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "8,6",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "8,8",
+   "Karakter": "4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "",
+   "Karakter": "00",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "2,5",
+   "Karakter": "4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "7.2",
+   "Karakter": "12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "9,8",
+   "Karakter": "12",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "7,8",
+   "Karakter": "7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "8,3",
+   "Karakter": "7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r31",
+   "Snit": "3,0",
+   "Karakter": "10",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "2,4",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "1,3",
+   "Karakter": "10",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "2,9",
+   "Karakter": "4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "",
+   "Karakter": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "11.6",
+   "Karakter": "7",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10",
+    "12"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r9",
+    "r15",
+    "r10"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 6,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 148628
+}

@@ -1,0 +1,299 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p420-7",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-16",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-19",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-21",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-12",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-17",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-23",
+   "Udfordring": "Nej",
+   "Snit": "10",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-9",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-20",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-29",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p420-30",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p420-1",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-8",
+   "Udfordring": "Ja",
+   "Snit": "10",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-2",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-15",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-28",
+   "Udfordring": "Nej",
+   "Snit": "10",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p420-26",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p420-5",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-18",
+   "Udfordring": "Nej",
+   "Snit": "10",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-25",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-3",
+   "Udfordring": "Ja",
+   "Snit": "10",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-6",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-27",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p420-14",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-24",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-22",
+   "Udfordring": "Nej",
+   "Snit": "4,5",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-13",
+   "Udfordring": "Nej",
+   "Snit": "10",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-10",
+   "Udfordring": "Nej",
+   "Snit": "8,5",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p420-11",
+   "Udfordring": "Nej",
+   "Snit": "7",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p420-4",
+   "Udfordring": "Nej",
+   "Snit": "7,5",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 904513
+}

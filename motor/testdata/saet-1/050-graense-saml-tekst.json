@@ -1,0 +1,79 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "b2",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "b3",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "b4",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "b5",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "b6",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "b7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "b8",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "b9",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "b10",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "b11",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "b12",
+   "Interesse": "Kunst"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

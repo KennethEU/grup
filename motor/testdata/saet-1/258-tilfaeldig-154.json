@@ -1,0 +1,467 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r51",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r82",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r87",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r65",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r105",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r111",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r70",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r96",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r57",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r73",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r114",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r72",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r58",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r76",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "klatring"
+  },
+  {
+   "_rowId": "r41",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Film "
+  },
+  {
+   "_rowId": "r44",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r110",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r95",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r85",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r91",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r102",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r74",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r86",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r92",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r68",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r90",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Skak "
+  },
+  {
+   "_rowId": "r83",
+   "Interesse": "Fodbold "
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r56",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r115",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r109",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r81",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r40",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r103",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r94",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r49",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Fodbold "
+  },
+  {
+   "_rowId": "r59",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": " SKAK"
+  },
+  {
+   "_rowId": "r89",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r47",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r93",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r42",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r71",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r45",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r55",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r67",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r64",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r54",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r66",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r43",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r100",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r112",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r113",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r62",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r69",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r99",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "dans"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r97",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r61",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r50",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r80",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r52",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r77",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r75",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r108",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r107",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r101",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r46",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r32",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r60",
+   "Interesse": " KLATRING"
+  },
+  {
+   "_rowId": "r104",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r106",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r98",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r78",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r79",
+   "Interesse": "Klatring"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r114",
+    "r21"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 16775
+}

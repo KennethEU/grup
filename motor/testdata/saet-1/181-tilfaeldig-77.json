@@ -1,0 +1,252 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r22",
+   "Niveau": "Middel ",
+   "Karakter": "10",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Høj",
+   "Karakter": "10",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel",
+   "Karakter": "-3",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "middel",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Karakter": "12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "middel",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Karakter": "02",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Karakter": "10",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Karakter": "02",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Høj",
+   "Karakter": "7",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Karakter": "",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Karakter": "02",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Karakter": "10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Karakter": "00",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 801024
+}

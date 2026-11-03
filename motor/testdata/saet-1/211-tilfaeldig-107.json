@@ -1,0 +1,213 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r17",
+   "Niveau": "middel",
+   "Sprog": "Tysk",
+   "Snit": "8,6",
+   "Karakter": "7",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Snit": "10,4",
+   "Karakter": "02",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "2,7",
+   "Karakter": "4",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Snit": "11,1",
+   "Karakter": "4",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Snit": "10,2",
+   "Karakter": "7",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Snit": "2,7",
+   "Karakter": "7",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "6,3",
+   "Karakter": "10",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "2,1",
+   "Karakter": "7",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "6,0",
+   "Karakter": "00",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Snit": "2,1",
+   "Karakter": "02",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "5.9",
+   "Karakter": "10",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "6,1",
+   "Karakter": "10",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Snit": "6.7",
+   "Karakter": "4",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Snit": "",
+   "Karakter": "7",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "",
+   "Karakter": "02",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "7,6",
+   "Karakter": "7",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Snit": "11,0",
+   "Karakter": "4",
+   "Interesse": "Fodbold"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "1,9",
+   "Karakter": "00",
+   "Interesse": "Dans"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Snit": "11,0",
+   "Karakter": "12",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Snit": "2,5",
+   "Karakter": "10",
+   "Interesse": "Dans"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r20",
+    "r3",
+    "r9"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 792583
+}

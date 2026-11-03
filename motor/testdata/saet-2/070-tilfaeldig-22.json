@@ -1,0 +1,165 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "11.5"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "12,0"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "8.3"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "1.7"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "3.0"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "5,6"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "4,1"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "10.2"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "11,6"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "6.1"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "9.3"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "9,6"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r12",
+    "r10"
+   ],
+   [
+    "r14",
+    "r1",
+    "r4",
+    "r15"
+   ]
+  ],
+  "avoid": [
+   [
+    "r4",
+    "r18",
+    "r12",
+    "r26"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 952172
+}

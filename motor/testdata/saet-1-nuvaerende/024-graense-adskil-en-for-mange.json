@@ -1,0 +1,67 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b2",
+        "b9",
+        "b11",
+        "b15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b1",
+        "b3",
+        "b6",
+        "b13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b4",
+        "b8",
+        "b10",
+        "b16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b5",
+        "b7",
+        "b12",
+        "b14"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 5 elever skal adskilles, men der er kun 4 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.13
+  }
+}

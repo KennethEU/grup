@@ -1,0 +1,513 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r53",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r28",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r31",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r70",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r32",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "pige",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "pige",
+   "Interesse": "Kor",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r26",
+   "Køn": "Dreng",
+   "Interesse": "Dans ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r38",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r50",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r61",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r24",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r54",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r43",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Køn": "Dreng ",
+   "Interesse": "dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r66",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r55",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r74",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Køn": "dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r67",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r62",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r35",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r69",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r36",
+   "Køn": "",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r72",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r20",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r21",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r64",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r75",
+   "Køn": "Pige",
+   "Interesse": "musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r46",
+   "Køn": "Pige",
+   "Interesse": "Musik ",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r33",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r42",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r51",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r58",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r65",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r63",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r56",
+   "Køn": "Andet",
+   "Interesse": " DANS",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Interesse": " KOR",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r60",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Køn": "Pige ",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r71",
+   "Køn": "Dreng ",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r39",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r29",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r41",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r68",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Interesse": "dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r57",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r44",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Køn": "Dreng",
+   "Interesse": "Dans",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Interesse": "Dans",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Køn": "Pige",
+   "Interesse": "Kor",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r30",
+   "Køn": "Dreng",
+   "Interesse": "Kor",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r7",
+    "r75",
+    "r55",
+    "r50"
+   ],
+   [
+    "r39",
+    "r47"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 172098
+}

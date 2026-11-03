@@ -1,0 +1,233 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Karakter": "",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Karakter": "Fritaget",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b",
+   "Køn": "",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Køn": "",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.a",
+   "Køn": "Andet",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 4"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r21",
+    "r9",
+    "r15"
+   ],
+   [
+    "r7",
+    "r6",
+    "r14"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r2",
+    "r25",
+    "r24",
+    "r11"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r18",
+    "r13",
+    "r17"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 110570
+}

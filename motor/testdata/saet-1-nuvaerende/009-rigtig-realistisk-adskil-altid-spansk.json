@@ -1,0 +1,119 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "k10",
+        "k5",
+        "k3",
+        "k21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k8",
+        "k26",
+        "k24",
+        "k20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k18",
+        "k11",
+        "k12",
+        "k16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k4",
+        "k15",
+        "k7",
+        "k23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k9",
+        "k19",
+        "k25",
+        "k13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "k14",
+        "k2",
+        "k0",
+        "k1"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Ensartede (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Balancér\" måler ikke på vedkommende."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 14 elever har værdien \"Pige\", og der er kun plads til 12 (højst 2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.54
+  }
+}

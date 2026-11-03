@@ -1,0 +1,182 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Snit": "2,6",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "7,7",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Snit": "2,2",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "9,9",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "8,4",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Niveau": "Middel ",
+   "Snit": "6.9",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "9,8",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Snit": "8,3",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "7.9",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Snit": "7,9",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav ",
+   "Snit": "7.7",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Snit": "7,7",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r1",
+    "r2",
+    "r8"
+   ],
+   [
+    "r11",
+    "r10"
+   ],
+   [
+    "r8",
+    "r9",
+    "r5",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 2
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration",
+  "Energi"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 605440
+}

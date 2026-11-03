@@ -1,0 +1,156 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r8",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r29"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r28",
+        "r25"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r18"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 4,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Karakter\". Saml (\"Snit\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 2,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Ensartede\" måler ikke på vedkommende."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.8
+  }
+}

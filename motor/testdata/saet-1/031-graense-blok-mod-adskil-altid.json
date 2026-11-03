@@ -1,0 +1,71 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "b2",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "b3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "b4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "b5",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "b6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "b7",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "b8",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "b1",
+    "b2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

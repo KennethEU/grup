@@ -1,0 +1,178 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r17",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r11",
+   "Køn": "Pige ",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r16",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Pige "
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r18",
+    "r2",
+    "r3"
+   ],
+   [
+    "r6",
+    "r18"
+   ],
+   [
+    "r4",
+    "r12"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 348357
+}

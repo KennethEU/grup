@@ -1,0 +1,178 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p69-12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-6",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-25",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-24",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-27",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-20",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-5",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-15",
+   "Udfordring": "Ja",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-2",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-26",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-11",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-13",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-9",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-19",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-17",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-23",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-3",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-22",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-18",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-14",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-16",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-21",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p69-1",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p69-8",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p69-15",
+    "p69-23"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 842804
+}

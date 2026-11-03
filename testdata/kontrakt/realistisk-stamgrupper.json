@@ -1,0 +1,236 @@
+{
+  "contractVersion": 2,
+  "view": "home",
+  "students": [
+    {
+      "_rowId": "r1",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "10,8",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r2",
+      "Køn": "Dreng",
+      "Niveau": "Middel",
+      "Snit": "7,5",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r3",
+      "Køn": "Dreng",
+      "Niveau": "Lav",
+      "Snit": "5,2",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r4",
+      "Køn": "dreng",
+      "Niveau": "Høj",
+      "Snit": "9,1",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r5",
+      "Køn": "Dreng",
+      "Niveau": "Lav",
+      "Snit": "3,4",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r6",
+      "Køn": "Pige",
+      "Niveau": "høj",
+      "Snit": "9,6",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r8",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "11,4",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r9",
+      "Køn": "Pige",
+      "Niveau": "Lav",
+      "Snit": "4,6",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r10",
+      "Køn": "Dreng",
+      "Niveau": "Lav",
+      "Snit": "2,1",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r11",
+      "Køn": "Dreng",
+      "Niveau": "",
+      "Snit": "1,8",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r12",
+      "Køn": "Pige",
+      "Niveau": "Middel",
+      "Snit": "",
+      "Sprog": "Spansk"
+    },
+    {
+      "_rowId": "r13",
+      "Køn": "Andet",
+      "Niveau": "Middel",
+      "Snit": "7,2",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r14",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "8,8",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r15",
+      "Køn": "Pige ",
+      "Niveau": "Lav",
+      "Snit": "5,0",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r16",
+      "Køn": "Pige",
+      "Niveau": "Middel",
+      "Snit": "7,7",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r17",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "10,2",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r19",
+      "Køn": "Pige",
+      "Niveau": "Lav",
+      "Snit": "3,9",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r20",
+      "Køn": "Dreng",
+      "Niveau": "Middel",
+      "Snit": "8,3",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r21",
+      "Køn": "Dreng",
+      "Niveau": "Middel",
+      "Snit": "6,6",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r22",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "9,4",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r24",
+      "Køn": "Pige",
+      "Niveau": "Middel",
+      "Snit": "7,0",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r25",
+      "Køn": "Pige",
+      "Niveau": "Høj",
+      "Snit": "11,0",
+      "Sprog": "Fransk"
+    },
+    {
+      "_rowId": "r26",
+      "Køn": "Pige",
+      "Niveau": "Middel",
+      "Snit": "6,1",
+      "Sprog": "Tysk"
+    },
+    {
+      "_rowId": "r27",
+      "Køn": "Dreng",
+      "Niveau": "Lav",
+      "Snit": "4,9",
+      "Sprog": "Fransk"
+    }
+  ],
+  "rules": [
+    {
+      "type": "distribute",
+      "column": "Køn"
+    },
+    {
+      "type": "balance",
+      "column": "Niveau"
+    },
+    {
+      "type": "distribute",
+      "column": "Sprog"
+    },
+    {
+      "type": "balance",
+      "column": "Snit"
+    }
+  ],
+  "columnOrders": {
+    "Niveau": [
+      "Lav",
+      "Middel",
+      "Høj"
+    ]
+  },
+  "agreements": {
+    "together": [
+      [
+        "r1",
+        "r2"
+      ]
+    ],
+    "avoid": [
+      [
+        "r3",
+        "r5"
+      ],
+      [
+        "r9",
+        "r10",
+        "r11"
+      ]
+    ]
+  },
+  "lockedGroups": [],
+  "size": {
+    "mode": "perGroup",
+    "target": 4,
+    "adjust": "plus"
+  },
+  "topics": [
+    "Klima",
+    "Migration",
+    "Ulighed"
+  ],
+  "matrix": null,
+  "budget": {
+    "maxSeconds": 10,
+    "maxAttempts": 20,
+    "minAttempts": 3
+  },
+  "seed": null
+}

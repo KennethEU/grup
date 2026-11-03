@@ -1,0 +1,139 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r21",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r23",
+    "r16",
+    "r15",
+    "r11",
+    "r17"
+   ]
+  ],
+  "avoid": [
+   [
+    "r9",
+    "r15",
+    "r22",
+    "r12"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r13",
+    "r20"
+   ],
+   "topic": "Klima"
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r14",
+    "r3"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 115496
+}

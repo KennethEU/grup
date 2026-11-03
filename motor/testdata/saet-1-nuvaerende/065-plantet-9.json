@@ -1,0 +1,66 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p654-10",
+        "p654-11",
+        "p654-1",
+        "p654-4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p654-9",
+        "p654-3",
+        "p654-2",
+        "p654-12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p654-7",
+        "p654-5",
+        "p654-6",
+        "p654-8"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 9 elever har værdien \"Dreng\", og der er kun plads til 6 (højst 2 pr. gruppe). 3 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.05
+  }
+}

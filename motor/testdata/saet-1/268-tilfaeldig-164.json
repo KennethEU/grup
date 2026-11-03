@@ -1,0 +1,189 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Sprog": "Tysk",
+   "Snit": "7.3"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Snit": "3,9"
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Fransk",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Tysk",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r28",
+   "Sprog": "Tysk",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r30",
+   "Sprog": "Fransk",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "r31",
+   "Sprog": "Tysk",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Fransk",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Snit": "4,3"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Tysk",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Fransk",
+   "Snit": "5,4"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Tysk",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Snit": "6,2"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r27",
+   "Sprog": "Fransk",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r29",
+   "Sprog": "Fransk",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Tysk",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Fransk",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Fransk",
+   "Snit": "11,7"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Tysk",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r32",
+   "Sprog": "Fransk",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Snit": "5.4"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Fransk",
+   "Snit": "11,8"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 6
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 892127
+}

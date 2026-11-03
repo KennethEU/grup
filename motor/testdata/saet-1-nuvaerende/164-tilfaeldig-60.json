@@ -1,0 +1,104 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r1",
+        "r11",
+        "r5",
+        "r21"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r13",
+        "r18",
+        "r17",
+        "r8"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r3",
+        "r2",
+        "r15",
+        "r10"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r12",
+        "r20",
+        "r6",
+        "r16",
+        "r14"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r19",
+        "r4",
+        "r7",
+        "r9"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Ensartede (\"Snit\") og Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Balancér (gør gennemsnittet ens) og Ensartede (gør medlemmerne ens) på \"Snit\" arbejder mod hinanden."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.52
+  }
+}

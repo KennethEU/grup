@@ -1,0 +1,172 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Høj",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r19",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel ",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Høj",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 2",
+   "Niveau": "Middel",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Middel",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Høj",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Tidligere": "Gruppe 4",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 1",
+   "Niveau": "Middel",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 5",
+   "Niveau": "Lav",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Lav",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 3",
+   "Niveau": "Middel ",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r14",
+    "r5"
+   ],
+   [
+    "r16",
+    "r14"
+   ],
+   [
+    "r5",
+    "r14",
+    "r6",
+    "r13"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 660628
+}

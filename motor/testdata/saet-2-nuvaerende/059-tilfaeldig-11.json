@@ -1,0 +1,290 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r43",
+        "r26",
+        "r32"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r21",
+        "r1",
+        "r34"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r30",
+        "r87",
+        "r11"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r27",
+        "r51",
+        "r47"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r42",
+        "r25",
+        "r38"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r65",
+        "r46",
+        "r88"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r18",
+        "r73",
+        "r14"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r76",
+        "r6",
+        "r52"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r15",
+        "r69",
+        "r90"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r79",
+        "r16",
+        "r75"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r77",
+        "r23",
+        "r56"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r59",
+        "r17",
+        "r8"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r5",
+        "r33",
+        "r55"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r63",
+        "r24",
+        "r48"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r89",
+        "r2",
+        "r37"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r85",
+        "r44",
+        "r66"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r9",
+        "r60",
+        "r22"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r13",
+        "r10",
+        "r64"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r35",
+        "r61",
+        "r31"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r70",
+        "r41",
+        "r12"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r74",
+        "r78",
+        "r62"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r57",
+        "r39",
+        "r29"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r28",
+        "r83",
+        "r4"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r19",
+        "r58",
+        "r72"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r54",
+        "r53",
+        "r71"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r80",
+        "r40",
+        "r50",
+        "r81"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r49",
+        "r84",
+        "r67"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r3",
+        "r36",
+        "r82"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r45",
+        "r86",
+        "r7"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r20",
+        "r68"
+      ],
+      "topic": "Klima"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 2 elever skal adskilles inden for \"(ikke udfyldt)\", men der er kun 1 gruppe. Mindst to ender i samme gruppe."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op inden for \"2.a\": 23 elever har værdien \"Fransk\", og der er kun plads til 14 (højst 1 pr. gruppe). 9 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Fransk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.a\", \"2.c\" og \"2.c\"."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 5.17
+  }
+}

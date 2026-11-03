@@ -1,0 +1,1760 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r96",
+   "Interesse": "Kor",
+   "Karakter": "",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r238",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r123",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r241",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r205",
+   "Interesse": "Klatring",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r184",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r220",
+   "Interesse": "Skak",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r94",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r172",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r219",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r263",
+   "Interesse": "Film ",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r278",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r122",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r179",
+   "Interesse": "",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r239",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r50",
+   "Interesse": "Fodbold",
+   "Karakter": "-3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r124",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r99",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r271",
+   "Interesse": "Skak",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r275",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r137",
+   "Interesse": "Fodbold",
+   "Karakter": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r208",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r213",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r262",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r112",
+   "Interesse": "Skak",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r49",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r42",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r15",
+   "Interesse": "skak",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r237",
+   "Interesse": "Skak",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r62",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r250",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r25",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r79",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r187",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r119",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r243",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r151",
+   "Interesse": "klatring",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r267",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r135",
+   "Interesse": "Gaming",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r180",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r11",
+   "Interesse": "Skak",
+   "Karakter": "-3",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r248",
+   "Interesse": "Gaming ",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r230",
+   "Interesse": "Film",
+   "Karakter": "-3",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r110",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r198",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r104",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r106",
+   "Interesse": "Gaming",
+   "Karakter": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r182",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r279",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r291",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r249",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r141",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r245",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r199",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r286",
+   "Interesse": "Skak",
+   "Karakter": "00",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r69",
+   "Interesse": "Klatring",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r211",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r194",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r115",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r90",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r221",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r114",
+   "Interesse": "Kor",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r93",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r167",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r83",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r41",
+   "Interesse": "Skak",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r70",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r37",
+   "Interesse": "Fodbold",
+   "Karakter": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r147",
+   "Interesse": "Klatring",
+   "Karakter": "02",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r163",
+   "Interesse": "Skak",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r188",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r229",
+   "Interesse": "gaming",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": "Kor",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Interesse": "gaming",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r281",
+   "Interesse": "Skak",
+   "Karakter": "-3",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r102",
+   "Interesse": "Fodbold",
+   "Karakter": "Fritaget",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r244",
+   "Interesse": "",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r214",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r235",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r46",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r12",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r276",
+   "Interesse": "Skak",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r136",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r234",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r28",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r86",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r270",
+   "Interesse": "gaming",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r125",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r175",
+   "Interesse": "Gaming",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r155",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r284",
+   "Interesse": "Kor ",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r58",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r47",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r197",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r251",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r34",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r174",
+   "Interesse": "",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r266",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r74",
+   "Interesse": "Gaming",
+   "Karakter": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r150",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r181",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r53",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r232",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r203",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r290",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r30",
+   "Interesse": "Kor",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r217",
+   "Interesse": "Skak",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r178",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r186",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r33",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r32",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r254",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r109",
+   "Interesse": "Skak",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r51",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r258",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r31",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r142",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r285",
+   "Interesse": "Kor ",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r156",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r183",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r36",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r117",
+   "Interesse": "film",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r292",
+   "Interesse": " SKAK",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r29",
+   "Interesse": "Skak",
+   "Karakter": "Fritaget",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r200",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r158",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r105",
+   "Interesse": "skak",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r157",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r92",
+   "Interesse": "Skak",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r225",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r72",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r166",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r215",
+   "Interesse": "Kor",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r149",
+   "Interesse": "Klatring ",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r23",
+   "Interesse": " MUSIK",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r52",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r118",
+   "Interesse": "Fodbold ",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r159",
+   "Interesse": "Kor",
+   "Karakter": "Fritaget",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Film",
+   "Karakter": "Fritaget",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r97",
+   "Interesse": " SKAK",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r252",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r209",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r204",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r293",
+   "Interesse": "Fodbold",
+   "Karakter": "-3",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r168",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r224",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r272",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r101",
+   "Interesse": "Kor",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r264",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r134",
+   "Interesse": "Skak",
+   "Karakter": "00",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r66",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r138",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r146",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r256",
+   "Interesse": "Skak",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r169",
+   "Interesse": "Film",
+   "Karakter": "-3",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r231",
+   "Interesse": "Skak",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r75",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r170",
+   "Interesse": "Kor",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r19",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r274",
+   "Interesse": "Film",
+   "Karakter": "-3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r192",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r216",
+   "Interesse": "Kor",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r107",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r76",
+   "Interesse": "fodbold",
+   "Karakter": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r171",
+   "Interesse": "Gaming",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r111",
+   "Interesse": "Musik",
+   "Karakter": "Fritaget",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r152",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r202",
+   "Interesse": "Film",
+   "Karakter": "Fritaget",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r95",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r236",
+   "Interesse": "musik",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r78",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r210",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r268",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r255",
+   "Interesse": "",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r22",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r287",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r56",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r116",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r26",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r148",
+   "Interesse": "Klatring",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r259",
+   "Interesse": "Gaming ",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r1",
+   "Interesse": "Kor",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r81",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r57",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r16",
+   "Interesse": "Klatring",
+   "Karakter": "Fritaget",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r63",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r13",
+   "Interesse": "",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r91",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r247",
+   "Interesse": "Skak",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r282",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r132",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r73",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r89",
+   "Interesse": "Gaming",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r143",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r130",
+   "Interesse": "",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r207",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r21",
+   "Interesse": "Gaming",
+   "Karakter": "",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r269",
+   "Interesse": "Film",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r44",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r64",
+   "Interesse": "Fodbold",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r257",
+   "Interesse": "",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r222",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r84",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r190",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r45",
+   "Interesse": "gaming",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r227",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r206",
+   "Interesse": "klatring",
+   "Karakter": "12",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r212",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r48",
+   "Interesse": "Skak",
+   "Karakter": "",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r277",
+   "Interesse": "Skak",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r60",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r35",
+   "Interesse": "Klatring",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r61",
+   "Interesse": "Kor",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r195",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r191",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r265",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r283",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r196",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Skak",
+   "Karakter": "Fritaget",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r108",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r129",
+   "Interesse": "Musik",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r24",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r289",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r288",
+   "Interesse": "Klatring",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r18",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r223",
+   "Interesse": "Klatring",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r173",
+   "Interesse": "Skak",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r121",
+   "Interesse": "Skak",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Klatring",
+   "Karakter": "Fritaget",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r54",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r201",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r39",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r77",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r126",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r273",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r240",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r253",
+   "Interesse": "Film",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r133",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r71",
+   "Interesse": "",
+   "Karakter": "-3",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r127",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r82",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r55",
+   "Interesse": "Musik",
+   "Karakter": "00",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r103",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r280",
+   "Interesse": "Kor",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r145",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r176",
+   "Interesse": "Gaming",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r100",
+   "Interesse": " GAMING",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r131",
+   "Interesse": "Musik",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r164",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r139",
+   "Interesse": "Klatring",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r233",
+   "Interesse": "Film",
+   "Karakter": "00",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r140",
+   "Interesse": "Musik",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r43",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r228",
+   "Interesse": "Klatring",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r67",
+   "Interesse": " FILM",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r98",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r162",
+   "Interesse": "Film",
+   "Karakter": "12",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r154",
+   "Interesse": "",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r88",
+   "Interesse": "",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r65",
+   "Interesse": "Kor",
+   "Karakter": "Fritaget",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r85",
+   "Interesse": "Klatring",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r246",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r242",
+   "Interesse": "Film",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r113",
+   "Interesse": "Film",
+   "Karakter": "4",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r165",
+   "Interesse": "Fodbold",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r260",
+   "Interesse": "Skak",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r27",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r38",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r177",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r80",
+   "Interesse": "Musik",
+   "Karakter": "-3",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r128",
+   "Interesse": "Fodbold",
+   "Karakter": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r193",
+   "Interesse": "Kor",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r59",
+   "Interesse": "Klatring",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r120",
+   "Interesse": "Musik",
+   "Karakter": "7",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r20",
+   "Interesse": "Film",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r144",
+   "Interesse": "Gaming",
+   "Karakter": "7",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r261",
+   "Interesse": "Kor ",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r40",
+   "Interesse": "",
+   "Karakter": "10",
+   "Hold": "2.c"
+  },
+  {
+   "_rowId": "r218",
+   "Interesse": "Skak",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r160",
+   "Interesse": "Musik",
+   "Karakter": "10",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r144",
+    "r205"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 160210
+}

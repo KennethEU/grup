@@ -1,0 +1,30 @@
+{
+  "contractVersion": 2,
+  "status": "impossible",
+  "groups": [],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Skal sammen samler 4 elever, men den største gruppe har 3 pladser. Vælg større grupper, færre grupper eller ret aftalerne."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": null
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": null,
+    "seconds": 0.08
+  }
+}

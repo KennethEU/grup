@@ -1,0 +1,428 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p543-15",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-6",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-33",
+   "Udfordring": "Nej",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-21",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-10",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-1",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-12",
+   "Udfordring": "Nej",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-17",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-2",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-40",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-29",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-16",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-32",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-30",
+   "Udfordring": "Nej",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-27",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-35",
+   "Udfordring": "Nej",
+   "Karakter": "7",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-9",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-7",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-20",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-14",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-19",
+   "Udfordring": "Ja",
+   "Karakter": "7",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-25",
+   "Udfordring": "Ja",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-3",
+   "Udfordring": "Ja",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-23",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-34",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-8",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-5",
+   "Udfordring": "Nej",
+   "Karakter": "7",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-24",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-38",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-28",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-26",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-11",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-4",
+   "Udfordring": "Nej",
+   "Karakter": "10",
+   "Niveau": "Høj",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 1"
+  },
+  {
+   "_rowId": "p543-31",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Sprog": "Fransk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-13",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Middel",
+   "Sprog": "Spansk",
+   "Interesse": "Musik",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-36",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-18",
+   "Udfordring": "Nej",
+   "Karakter": "12",
+   "Niveau": "Lav",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-37",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-22",
+   "Udfordring": "Nej",
+   "Karakter": "02",
+   "Niveau": "Middel",
+   "Sprog": "Tysk",
+   "Interesse": "Film",
+   "Hold": "Hold 2"
+  },
+  {
+   "_rowId": "p543-39",
+   "Udfordring": "Nej",
+   "Karakter": "4",
+   "Niveau": "Høj",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Hold": "Hold 2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p543-29",
+    "p543-28"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 802729
+}

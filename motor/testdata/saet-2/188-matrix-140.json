@@ -1,0 +1,284 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r29",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "-3",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "-3",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "10",
+   "Sprog": "Spansk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "00",
+   "Sprog": "Fransk",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "full"
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r7",
+     "r9"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r29",
+     "r2",
+     "r21"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r5",
+     "r1",
+     "r28",
+     "r25"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S4",
+    "members": [
+     "r19",
+     "r12",
+     "r10",
+     "r15"
+    ],
+    "topic": "Migration"
+   },
+   {
+    "id": "S5",
+    "members": [
+     "r16",
+     "r8",
+     "r13",
+     "r30"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S6",
+    "members": [
+     "r24",
+     "r14",
+     "r4",
+     "r27"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S7",
+    "members": [
+     "r26",
+     "r3",
+     "r18",
+     "r22"
+    ],
+    "topic": "Medier"
+   },
+   {
+    "id": "S8",
+    "members": [
+     "r23",
+     "r20"
+    ],
+    "topic": "Migration"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 665120
+}

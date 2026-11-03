@@ -1,0 +1,109 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r1",
+        "r28",
+        "r4",
+        "r6",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r2",
+        "r17",
+        "r25",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r7",
+        "r26",
+        "r31",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r27",
+        "r15",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r8",
+        "r23",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r10",
+        "r9",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r5",
+        "r16",
+        "r30"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Reglen \"Ensartede\" på \"Niveau\" gør ingenting: den kan kun arbejde med tal, og der står tekst i kolonnen. Vil du samle ens værdier, så brug \"Saml\" eller \"Klyng\" i stedet."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 2.09
+  }
+}

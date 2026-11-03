@@ -1,0 +1,667 @@
+/* Opskriften i grup.dk/beta — fælles stil for RecipePanel, RecipeRules og
+   MatrixRecipePanel. Global (ikke scoped), fordi tre komponenter deler den;
+   derfor begynder alle klasser med "recipe", så de ikke rammer andre dele af
+   appen (fx Del-menuens egen .seg). Hentes kun sammen med beta. */
+.recipe {
+    --r-mono: var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    background: var(--paper);
+    border-block-end: 1px solid var(--rule);
+    color: var(--ink);
+}
+.recipe__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* Planens mono-etiket — den samme som vinduernes (screens/vinduer.css).
+       --mono og ikke --r-mono: etiketten i bjælken og i vinduets hoved står
+       uden for .recipe, hvor --r-mono ikke findes; en udefineret variabel i en
+       font-genvej gør hele erklæringen ugyldig, så etiketten blev ikke mono. */
+    font: 500 10.5px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.recipe__kicker::before {
+    content: "";
+    inline-size: 20px;
+    block-size: 1px;
+    background: var(--primary);
+}
+
+.recipe__summary {
+    font: 500 12px var(--r-mono);
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
+}
+.recipe__spacer { flex: 1; }
+
+.recipe__lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.recipe__line {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    padding-block: 3px;
+    font-size: 22px;
+    line-height: 1.55;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--ink-2);
+}
+/* Margenen med tal fylder kun, når mindst én linje HAR et tal (rækkefølgen er en
+   prioritering). Ellers er alle spans tomme og skubbede teksten 30 px væk fra
+   etiketten, advarslerne og "Luk". Er der tal, beholder de tomme linjer
+   pladsen, så al tekst står i samme kolonne. */
+.recipe__lines:not(:has(.recipe__no:not(:empty))) .recipe__no { display: none; }
+.recipe__lines:has(.recipe__no:not(:empty)) .recipe__hints { margin-inline-start: 36px; }
+.recipe__no {
+    position: relative;
+    inline-size: 18px;
+    flex-shrink: 0;
+    font: 500 12px var(--r-mono);
+    color: var(--ink-4);
+    text-align: end;
+}
+/* "4 af 4 holdt" ved aftalerne — stille, som en bisætning. */
+.recipe__agreed {
+    margin-inline-start: 6px;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: var(--ink-3);
+    white-space: nowrap;
+}
+/* Den nye motor: hvordan gik det med reglen ved sidste kørsel (RuleMark.vue).
+   Mærket står i margenen til venstre for nummeret, så linjen ikke flytter sig. */
+.recipe__no .rule-mark {
+    position: absolute;
+    inset-inline-end: calc(100% + 3px);
+    inset-block-end: 1px;
+}
+.recipe__text { flex: 1; min-inline-size: 0; text-wrap: pretty; }
+.recipe__line.is-incomplete .recipe__text { color: var(--ink-3); }
+.recipe__line--quiet { font-size: 14px; }
+.recipe__hints {
+    flex-basis: 100%;
+    margin-inline-start: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.5;
+    /* En forklaring, ikke en fejl: stille grå, ikke orange */
+    color: var(--ink-3);
+}
+
+/* Værktøjer på en regellinje: synlige ved hover og fokus. De ligger OVEN PÅ
+   linjens ende i stedet for at have en egen plads — ellers tog de ~90 px, og
+   hver regel brød over på to linjer længe før den var fuld. */
+.recipe__tools {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    display: inline-flex;
+    gap: 2px;
+    padding-inline-start: 8px;
+    border-radius: 8px;
+    background: var(--paper);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s;
+}
+.recipe__line--rule:hover .recipe__tools,
+.recipe__line--rule:focus-within .recipe__tools { opacity: 1; pointer-events: auto; }
+.recipe__tools button {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 28px;
+    block-size: 28px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+}
+.recipe__tools button:hover:not(:disabled) { background: var(--paper-3); color: var(--ink); }
+.recipe__tools button:disabled { opacity: 0.3; cursor: default; }
+.recipe__tools button:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+/* Den nye motor: trækhåndtaget inden for et trin (RecipeRules.vue). */
+.recipe__tools .recipe__grip { cursor: grab; }
+.recipe__tools .recipe__grip:active { cursor: grabbing; }
+.recipe__line--rule.is-dragging { opacity: 0.4; }
+
+/* Ord der virker som knapper uden menu (afrunding, aftaler) */
+.recipe-flip, .recipe-tokenlike {
+    font: inherit;
+    font-weight: 600;
+    color: var(--ink);
+    background: color-mix(in oklch, var(--primary) 8%, transparent);
+    border: none;
+    border-bottom: 2px solid var(--primary);
+    border-radius: 5px 5px 0 0;
+    padding: 0 6px;
+    margin: 0 1px;
+    cursor: pointer;
+}
+.recipe-flip:hover, .recipe-tokenlike:hover { background: color-mix(in oklch, var(--primary) 15%, transparent); }
+.recipe-flip:focus-visible, .recipe-tokenlike:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* "+ Tilføj regel" — står i vinduets bund ved siden af "Luk" */
+.recipe__add {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+}
+.recipe__textbtn {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    /* Annuller/Luk: ink-2, 13px/500 — samme tekstknap i alle vinduer */
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.recipe__textbtn:hover { background: var(--paper-3); color: var(--ink); }
+.recipe__textbtn--accent { color: var(--primary); }
+.recipe__textbtn--inline { padding: 0 2px; font-size: inherit; color: var(--primary); }
+.recipe__textbtn:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.recipe__go {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    /* 36 px / radius 8 overalt: bjælken, vinduets fod og de andre skærme
+       skal have den samme hovedknap. Vinduets fod fik før en større (48 px);
+       den læste som en tilfældig forskel, ikke som en bevidst vægt. */
+    block-size: 36px;
+    padding-inline: 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.recipe__go:hover:not(:disabled) { background: var(--primary-hover); }
+.recipe__go:disabled { opacity: 0.5; cursor: progress; }
+.recipe__go:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.recipe__kbd { font-size: 11px; font-weight: 500; opacity: 0.65; }
+.recipe__count { font-size: 12px; color: var(--ink-3); }
+
+.recipe__soft {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    block-size: 36px;
+    padding-inline: 14px;
+    border: none;
+    border-radius: 8px;
+    /* Blød knap = --paper-3 overalt. Den blå tone var en andenrangs hovedknap
+       ved siden af den fyldte blå, og der skal kun være én pr. skærm. */
+    background: var(--paper-3);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.recipe__soft:hover { background: var(--rule); }
+.recipe__soft:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* Indholdet i de små menuer */
+.recipe-opt {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    inline-size: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    text-align: start;
+    font: inherit;
+    color: var(--ink);
+    cursor: pointer;
+}
+.recipe-opt strong { font-weight: 600; font-size: 13px; }
+.recipe-opt small { font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+.recipe-opt:hover:not(:disabled) { background: var(--paper-2); }
+.recipe-opt.on { background: color-mix(in oklch, var(--primary) 9%, transparent); }
+.recipe-opt:disabled { opacity: 0.45; cursor: not-allowed; }
+.recipe-opt:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.recipe-pop-kicker {
+    padding: 6px 10px 4px;
+    font: 500 10px var(--r-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.recipe-pop-note { padding: 6px 10px; font-size: 12px; color: var(--ink-3); }
+.recipe-seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 8px;
+    background: var(--paper-3);
+    margin: 4px;
+}
+.recipe-seg button {
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-3);
+    cursor: pointer;
+}
+.recipe-seg button.on { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px oklch(0 0 0 / 8%); }
+.recipe-stepper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 4px 2px;
+}
+.recipe-stepper button {
+    inline-size: 34px;
+    block-size: 34px;
+    border: none;
+    border-radius: 8px;
+    /* Kun tegnet: ingen flade, før musen er over (én ramme er nok — feltets) */
+    background: transparent;
+    color: var(--ink-2);
+    font-size: 18px;
+    cursor: pointer;
+}
+.recipe-stepper button:hover { background: var(--paper-3); color: var(--ink); }
+.recipe-stepper button:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.recipe-stepper input {
+    inline-size: 56px;
+    block-size: 34px;
+    text-align: center;
+    font: 600 16px var(--r-mono);
+    padding: 0;
+    /* Browserens egne små pile væk: − og + ved siden af gør det samme */
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+.recipe-stepper input::-webkit-inner-spin-button,
+.recipe-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Emne-menuen (RecipeTopics.vue): et felt til et nyt emne og emnerne som en
+   liste, hvert med et kryds. Samme flade knapper som opskriftens andre menuer. */
+.recipe-topics__add { display: flex; gap: 6px; padding: 2px 4px 6px; }
+.recipe-topics__input {
+    flex: 1;
+    min-inline-size: 0;
+    block-size: 34px;
+    padding-inline: 10px;
+    font: inherit;
+    font-size: 13px;
+}
+.recipe-topics__addbtn {
+    flex-shrink: 0;
+    padding-inline: 12px;
+    border: none;
+    border-radius: 7px;
+    background: var(--paper-3);
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.recipe-topics__addbtn:hover:not(:disabled) { background: color-mix(in oklch, var(--primary) 12%, transparent); color: var(--primary); }
+.recipe-topics__addbtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.recipe-topics__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 4px 4px 10px;
+    border-radius: 7px;
+}
+.recipe-topics__row:hover { background: var(--paper-2); }
+.recipe-topics__name { flex: 1; font-size: 13px; }
+.recipe-topics__x,
+.recipe-topics__clear {
+    border: none;
+    background: transparent;
+    color: var(--ink-3);
+    font: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.recipe-topics__x { display: grid; place-items: center; inline-size: 26px; block-size: 26px; }
+.recipe-topics__x:hover { background: var(--paper-3); color: var(--ink); }
+.recipe-topics__clear { align-self: flex-start; margin: 4px 6px 2px; padding: 4px; font-size: 12px; }
+.recipe-topics__clear:hover { color: var(--color-error); }
+.recipe-topics__x:focus-visible,
+.recipe-topics__clear:focus-visible,
+.recipe-topics__addbtn:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* Matrix-runden */
+.recipe-seg--3 { grid-template-columns: 1fr 1fr 1fr; }
+.recipe-seg button:disabled { opacity: 0.4; cursor: not-allowed; }
+/* Skønnet under matrix-linjen: en stille note på sin egen række (som
+   emne-afrundingen i stamgrupperne), så sætningen får hele bredden. Resten af
+   stilen — 13 px, ink-3, indrykning — kommer fra .recipe__hints. */
+.recipe__note { color: var(--ink-3); }
+/* Valget i en besked ved størrelsen, fx "Brug 5 grupper (5–6 elever)". */
+.recipe__hintbtns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-block: 6px 2px;
+}
+.recipe__hintbtn {
+    min-block-size: 32px;
+    padding-inline: 10px;
+    background: transparent;
+    border: 1px solid var(--ink-4);
+    border-radius: 6px;
+    color: var(--ink-2);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.recipe__hintbtn:hover { background: color-mix(in oklch, currentColor 10%, transparent); }
+.recipe__note.is-warning { color: var(--color-warning); }
+.recipe__empty {
+    margin: 4px 0 0;
+    max-inline-size: 52ch;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-2);
+}
+
+/* En kolonne der ikke passer til reglen: grå, med grunden ved siden af */
+.recipe-opt-row { display: flex; align-items: center; gap: 4px; }
+.recipe-opt-row .recipe-opt { flex: 1; }
+.recipe-opt--plain { flex-direction: row; font-size: 13px; align-items: baseline; gap: 8px; }
+.recipe-opt__why { font-size: 11px; color: var(--ink-3); }
+/* Hvor tungt reglen vejer: en dæmpet linje nummer to i regelmenuen */
+.recipe-opt .recipe-opt__weight { font-size: 11.5px; font-style: italic; color: var(--ink-4); }
+/* Forklaringen under reglerne og emnerne fra stamgrupperne: rolig, ikke en fejl */
+.recipe__line--order, .recipe__line--quiet .recipe__ordernote,
+.recipe__topicsnote { font-size: 13px; font-weight: 400; letter-spacing: normal; color: var(--ink-3); }
+.recipe-opt__rank {
+    flex-shrink: 0;
+    border: none;
+    border-radius: 6px;
+    background: color-mix(in oklch, var(--primary) 9%, transparent);
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 9px;
+    cursor: pointer;
+}
+.recipe-opt__rank:hover { background: color-mix(in oklch, var(--primary) 15%, transparent); }
+
+/* ── Rammen: fast bjælke øverst, opskriften i et panel til venstre ─────────
+   (RecipeLayout.vue). Bjælken spænder over hele fanen ligesom båndet i den
+   almindelige Grupper — derfor de negative marginer, der modsvarer fanens
+   egen polstring (16px 32px). */
+.recipe-bar.groups-header-sticky {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 100;
+    margin: -16px -32px 0;
+    inline-size: calc(100% + 64px);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    padding: 10px 32px;
+    background: var(--paper);
+    border-block-end: 1px solid var(--rule);
+}
+.recipe-bar .recipe__go { padding-inline: 16px; }
+/* Bjælken: opsummeringen er selv knappen, der åbner opskriften */
+.recipe-bar__open {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    padding: 6px 10px;
+    margin-inline-start: -10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: inherit;
+}
+.recipe-bar__open:hover { background: var(--paper-3); }
+.recipe-bar__open:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.recipe-bar__edit { font-size: 12px; font-weight: 600; color: var(--primary); }
+
+/* Vinduet. Ingen overgange og intet @starting-style — Safari viser ellers
+   ikke dialogen (CLAUDE.md, Dialog-regler). */
+.recipe-dialog {
+    border: none;
+    padding: 0;
+    background: transparent;
+    inline-size: min(780px, 92vw);
+    max-inline-size: 92vw;
+    max-block-size: 88dvh;
+    overflow: visible;
+    color: var(--ink);
+}
+/* Vinduet står fast øverst i stedet for midt på skærmen: skifter indholdet
+   højde (en regel flyttes, "Sidste dannelse" forsvinder, en advarsel kommer),
+   vokser eller krymper det nedad, og toppen — med reglen under musen — bliver,
+   hvor den er. Midtstillet sprang hele vinduet op og ned (Kenneth 3/11 2026). */
+.recipe-dialog[open] {
+    display: flex;
+    margin-block: 6dvh auto;
+}
+.recipe-dialog::backdrop { background: oklch(0.20 0.012 250 / 28%); }
+.recipe-dialog__panel {
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+    max-block-size: 88dvh;
+    background: var(--paper);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px oklch(0 0 0 / 18%);
+}
+.recipe-dialog__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px 4px;
+}
+.recipe-dialog__x {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 32px;
+    block-size: 32px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+}
+.recipe-dialog__x:hover { background: var(--paper-3); color: var(--ink); }
+.recipe-dialog__x:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.recipe-dialog__body {
+    padding: 8px 28px 16px;
+    overflow-y: auto;
+    min-block-size: 0;
+}
+.recipe-dialog__foot {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-block-start: 1px solid var(--rule);
+}
+
+/* Linjerne i vinduet: ingen streg mellem hver række — det gjorde alle rækker
+   lige vigtige. En hårlinje står kun FORAN en ny gruppe (trinoverskrifterne
+   som "Mål" og emne-linjen), og afstanden gør resten. */
+.recipe-dialog .recipe__lines { gap: 0; }
+.recipe-dialog .recipe__line {
+    font-size: 18px;
+    line-height: 1.6;
+    gap: 0 14px;
+    padding-block: 9px;
+}
+.recipe-dialog .recipe__line--section,
+.recipe-dialog .recipe__line.recipe__tier {
+    margin-block-start: 12px;
+    border-block-start: 1px solid var(--rule);
+}
+/* Forklaringen under målene hører til dem: tæt på, uden luft eller streg */
+.recipe-dialog .recipe__line--quiet { padding-block: 2px 6px; }
+.recipe-dialog .recipe__no { inline-size: 16px; font-size: 11px; }
+.recipe-dialog .recipe__lines:has(.recipe__no:not(:empty)) .recipe__hints { margin-inline-start: 30px; }
+/* "Luk" står i flugt med etiketten og linjerne (knappens egen polstring er 8 px) */
+.recipe-dialog__foot .recipe__textbtn:first-child { margin-inline-start: -8px; }
+.recipe-dialog .recipe__empty { font-size: 15px; }
+
+/* "1 advarsel" i bjælken: der er noget i opsætningen, man bør se på, før man
+   danner grupper. Stille tekst med en lille prik i advarselsfarve. */
+.recipe-bar__warn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+}
+.recipe-bar__warn::before {
+    content: '';
+    inline-size: 6px;
+    block-size: 6px;
+    border-radius: 50%;
+    background: var(--color-warning);
+}
+.recipe-dialog .hints-stack { margin-block: 0 10px; }
+
+/* Tegnsætning lige efter et ord ("7 grupper.", "9-9 grupper, så"): ordets
+   bagkant har sin egen polstring, så punktummet rykkes helt ind til den. */
+.recipe__punct { margin-inline-start: -3px; }
+
+/* Sidste dannelse: hvad motoren sagde ved sidste kørsel (RecipeLastRun.vue).
+   Stille tekst nederst i vinduet, ikke noget der råber. */
+.recipe__last {
+    margin-block-start: 20px;
+    padding-block-start: 14px;
+    border-block-start: 1px solid var(--rule);
+}
+.recipe__lastkicker {
+    font: 500 10px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.recipe__lastlist {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-3);
+}
+.recipe__lastlist li {
+    padding-inline-start: 10px;
+    border-inline-start: 2px solid var(--rule-2, var(--rule));
+    white-space: pre-line;
+    text-wrap: pretty;
+}
+.recipe__lastlist li.is-error {
+    border-inline-start-color: var(--color-error);
+    color: var(--ink-2);
+}
+
+/* Trinene i regellisten (RecipeRules.vue), når motoren ordner efter type:
+   en lille mono-etiket over hvert trin og ingen streg under den, så den hører
+   til linjerne nedenunder. */
+.recipe__line.recipe__tier {
+    padding-block: 14px 2px;
+    font: 500 10.5px var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+/* "Hvorfor?"-forklaringen under reglerne (RecipeRules.vue) */
+.recipe-why {
+    display: block;
+    max-inline-size: 320px;
+    padding: 2px 10px 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-2);
+}
+.recipe-why p { margin: 0 0 8px; }
+.recipe-why p:last-child { margin-block-end: 0; }
+.recipe-why ul { margin: 0 0 8px; padding-inline-start: 16px; }
+.recipe-why li { margin-block-end: 4px; }
+.recipe-why strong { color: var(--ink); font-weight: 600; }
+
+/* ── Telefon (under 700 px) ────────────────────────────────────────────────
+   Grupper er lavet til computer (se SmallScreenNotice.vue), men skal kunne
+   bruges i en nødsituation uden at stå skævt. */
+@media (max-width: 700px) {
+    /* Bjælken: to rene rækker. Øverst opsummeringen (knappen, der åbner
+       opskriften), nederst handlingerne med "Dan grupper" som den brede.
+       Etiketten, guiden, elevtallet og tastaturgenvejen er gemt væk — de
+       fyldte en hel række hver for sig. */
+    .recipe-bar.groups-header-sticky {
+        gap: 8px;
+        padding-block: 8px;
+    }
+    .recipe-bar__open {
+        flex: 1 1 100%;
+        justify-content: space-between;
+        margin-inline-start: -10px;
+    }
+    .recipe-bar .recipe__kicker,
+    .recipe-bar .recipe__count,
+    .recipe-bar .recipe__spacer,
+    .recipe__kbd { display: none; }
+    .recipe-bar .recipe__go { flex: 1; justify-content: center; }
+    /* Matrix-runde og Vis for klassen: kun ikonet (teksten læses stadig op) */
+    .recipe-bar .recipe__soft:has(svg) {
+        font-size: 0;
+        gap: 0;
+        padding-inline: 11px;
+    }
+
+    /* Vinduets bund: hovedknappen på sin egen række i fuld bredde, så hverken
+       den eller "+ Tilføj regel" brydes over to linjer. */
+    .recipe-dialog__foot {
+        flex-wrap: wrap;
+        padding: 12px 20px;
+        row-gap: 8px;
+    }
+    .recipe-dialog__foot .recipe__spacer { display: none; }
+    .recipe-dialog__foot .recipe__go {
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+    .recipe-dialog__foot .recipe__textbtn { white-space: nowrap; }
+}

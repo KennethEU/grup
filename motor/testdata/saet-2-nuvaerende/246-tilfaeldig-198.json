@@ -1,0 +1,564 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r231",
+        "r292",
+        "r250",
+        "r36",
+        "r72",
+        "r92"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r142",
+        "r172",
+        "r54",
+        "r4",
+        "r155"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r168",
+        "r191",
+        "r285",
+        "r117",
+        "r257"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r47",
+        "r167",
+        "r297",
+        "r181",
+        "r148"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r258",
+        "r21",
+        "r49",
+        "r65",
+        "r196"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r286",
+        "r174",
+        "r77",
+        "r2",
+        "r171",
+        "r17"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r161",
+        "r14",
+        "r18",
+        "r111",
+        "r238"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r74",
+        "r173",
+        "r41",
+        "r248",
+        "r193"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r150",
+        "r9",
+        "r81",
+        "r104",
+        "r271"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r149",
+        "r116",
+        "r180",
+        "r160",
+        "r101"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r264",
+        "r225",
+        "r176",
+        "r170",
+        "r227"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r216",
+        "r134",
+        "r275",
+        "r164",
+        "r103"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r254",
+        "r70",
+        "r187",
+        "r46",
+        "r178",
+        "r5"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r241",
+        "r59",
+        "r256",
+        "r27",
+        "r45"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r239",
+        "r135",
+        "r210",
+        "r97",
+        "r53"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r91",
+        "r280",
+        "r268",
+        "r281",
+        "r218"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r288",
+        "r10",
+        "r188",
+        "r122",
+        "r31"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r11",
+        "r115",
+        "r221",
+        "r290",
+        "r8"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r55",
+        "r224",
+        "r206",
+        "r253",
+        "r144"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r265",
+        "r42",
+        "r298",
+        "r123",
+        "r112"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r64",
+        "r219",
+        "r247",
+        "r22",
+        "r93"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r50",
+        "r152",
+        "r145",
+        "r249",
+        "r78"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r184",
+        "r76",
+        "r220",
+        "r83",
+        "r251"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r20",
+        "r245",
+        "r198",
+        "r3",
+        "r40"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r126",
+        "r201",
+        "r87",
+        "r67",
+        "r163"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r68",
+        "r153",
+        "r175",
+        "r232",
+        "r52"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r209",
+        "r228",
+        "r60",
+        "r96",
+        "r154"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r131",
+        "r57",
+        "r6",
+        "r44",
+        "r35"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r261",
+        "r291",
+        "r295",
+        "r105",
+        "r137"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r25",
+        "r106",
+        "r121",
+        "r73",
+        "r278"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r203",
+        "r217",
+        "r28",
+        "r141",
+        "r183"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r48",
+        "r12",
+        "r82",
+        "r84",
+        "r202"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r276",
+        "r128",
+        "r287",
+        "r282",
+        "r108"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r37",
+        "r244",
+        "r162",
+        "r226",
+        "r102"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r277",
+        "r119",
+        "r186",
+        "r23",
+        "r267"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r99",
+        "r136",
+        "r94",
+        "r110",
+        "r51"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r213",
+        "r284",
+        "r129",
+        "r259",
+        "r274"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r61",
+        "r192",
+        "r212",
+        "r255",
+        "r266"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r235",
+        "r234",
+        "r89",
+        "r159",
+        "r109"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r13",
+        "r62",
+        "r7",
+        "r243",
+        "r69"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r132",
+        "r182",
+        "r169",
+        "r208",
+        "r242"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r114",
+        "r71",
+        "r133",
+        "r252",
+        "r240"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r16",
+        "r294",
+        "r85",
+        "r205",
+        "r98"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r211",
+        "r157",
+        "r100",
+        "r127",
+        "r139"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r263",
+        "r273",
+        "r237",
+        "r140",
+        "r262"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r189",
+        "r166",
+        "r260",
+        "r29",
+        "r289"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r214",
+        "r165",
+        "r88",
+        "r222",
+        "r1"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r30",
+        "r15",
+        "r120",
+        "r199",
+        "r43"
+      ],
+      "topic": "Energi"
+    },
+    {
+      "members": [
+        "r293",
+        "r158",
+        "r283",
+        "r151",
+        "r230"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r190",
+        "r33",
+        "r236",
+        "r138",
+        "r90"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r124",
+        "r179",
+        "r194",
+        "r58",
+        "r63"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r39",
+        "r19",
+        "r95",
+        "r26",
+        "r272"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r118",
+        "r229",
+        "r270",
+        "r269",
+        "r130"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Adskil på \"Niveau\": 72 elever skal adskilles, men der er kun 53 grupper. Mindst to ender i samme gruppe."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 6.29
+  }
+}

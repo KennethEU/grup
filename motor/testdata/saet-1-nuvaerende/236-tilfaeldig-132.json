@@ -1,0 +1,99 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r3",
+        "r11",
+        "r16",
+        "r10",
+        "r5",
+        "r19"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r14",
+        "r20",
+        "r15",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r2",
+        "r4",
+        "r6",
+        "r9",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r7",
+        "r21",
+        "r13",
+        "r17",
+        "r12"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op: 7 elever har værdien \"Gruppe 4\", og der er kun plads til 5 (højst 1-2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 4\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 3,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 10 elever har værdien \"Lav\", og der er kun plads til 8 (højst 2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Lav\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.11
+  }
+}

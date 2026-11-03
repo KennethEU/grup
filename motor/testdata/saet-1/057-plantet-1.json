@@ -1,0 +1,134 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p606-12",
+   "Snit": "7,5",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-10",
+   "Snit": "1",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-4",
+   "Snit": "9,5",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-11",
+   "Snit": "8,5",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-5",
+   "Snit": "1",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-7",
+   "Snit": "7,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-15",
+   "Snit": "1",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p606-9",
+   "Snit": "9,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-8",
+   "Snit": "2",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-13",
+   "Snit": "2",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-14",
+   "Snit": "9,5",
+   "Interesse": "Kunst",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "p606-3",
+   "Snit": "2",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-6",
+   "Snit": "8,5",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-2",
+   "Snit": "7,5",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p606-1",
+   "Snit": "8,5",
+   "Interesse": "Kunst",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p606-11",
+    "p606-12"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 458616
+}

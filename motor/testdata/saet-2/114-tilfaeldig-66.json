@@ -1,0 +1,130 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r11",
+   "Køn": "Pige",
+   "Snit": "7,0",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Køn": "Dreng",
+   "Snit": "11,9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Køn": "pige",
+   "Snit": "7.0",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r8",
+   "Køn": "Dreng",
+   "Snit": "10,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r1",
+   "Køn": "Pige",
+   "Snit": "5,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r13",
+   "Køn": "Pige",
+   "Snit": "11,4",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r9",
+   "Køn": "Dreng",
+   "Snit": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r6",
+   "Køn": "Dreng",
+   "Snit": "1,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r10",
+   "Køn": "Dreng",
+   "Snit": "7,7",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Køn": "Pige",
+   "Snit": "2,9",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r14",
+   "Køn": "Pige",
+   "Snit": "8,4",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r12",
+   "Køn": "Dreng",
+   "Snit": "8,0",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r3",
+   "Køn": "Pige",
+   "Snit": "4,6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Køn": "Dreng",
+   "Snit": "",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 3
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 580434
+}

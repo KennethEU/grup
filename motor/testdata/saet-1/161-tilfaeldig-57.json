@@ -1,0 +1,392 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r43",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 3"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Høj ",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": " LAV",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Høj",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 9"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Middel",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Tidligere": "Gruppe 19"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r62",
+    "r47"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r31",
+    "r54",
+    "r4"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 18
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 751852
+}

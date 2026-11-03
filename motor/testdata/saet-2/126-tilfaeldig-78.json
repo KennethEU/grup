@@ -1,0 +1,203 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel ",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r8",
+    "r2"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r17",
+    "r12"
+   ],
+   "topic": "Klima"
+  },
+  {
+   "id": "L2",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r14",
+    "r5"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 774554
+}

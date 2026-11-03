@@ -1,0 +1,516 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r46",
+   "Hold": "",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 10"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 20"
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r42",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r68",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 20"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 12"
+  },
+  {
+   "_rowId": "r56",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r76",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 19"
+  },
+  {
+   "_rowId": "r34",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 13"
+  },
+  {
+   "_rowId": "r50",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 11"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 7"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 4"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.a",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 17"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 20"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.c",
+   "Sprog": "Spansk",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r51",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 1"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r70",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 16"
+  },
+  {
+   "_rowId": "r78",
+   "Hold": "2.c",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 8"
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 2"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 6"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 15"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.a",
+   "Sprog": "Tysk",
+   "Tidligere": "Gruppe 5"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 18"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.c",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 14"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a",
+   "Sprog": "Fransk",
+   "Tidligere": "Gruppe 19"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r44",
+    "r23",
+    "r78"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 2,
+   "name": "Gruppe 2",
+   "members": [
+    "r13",
+    "r12",
+    "r38"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 12
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 22015
+}

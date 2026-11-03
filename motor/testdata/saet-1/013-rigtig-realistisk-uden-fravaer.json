@@ -1,0 +1,170 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "k0",
+   "Køn": "Pige",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "k1",
+   "Køn": "Dreng",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "k2",
+   "Køn": "Dreng",
+   "Snit": "5,2"
+  },
+  {
+   "_rowId": "k3",
+   "Køn": "dreng",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "k4",
+   "Køn": "Dreng",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "k5",
+   "Køn": "Pige",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "k6",
+   "Køn": "Pige",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "k7",
+   "Køn": "Pige",
+   "Snit": "11,4"
+  },
+  {
+   "_rowId": "k8",
+   "Køn": "Pige",
+   "Snit": "4,6"
+  },
+  {
+   "_rowId": "k9",
+   "Køn": "Dreng",
+   "Snit": "2,1"
+  },
+  {
+   "_rowId": "k10",
+   "Køn": "Dreng",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "k11",
+   "Køn": "Pige",
+   "Snit": ""
+  },
+  {
+   "_rowId": "k12",
+   "Køn": "Andet",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "k13",
+   "Køn": "Pige",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "k14",
+   "Køn": "Pige ",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "k15",
+   "Køn": "Pige",
+   "Snit": "7,7"
+  },
+  {
+   "_rowId": "k16",
+   "Køn": "Pige",
+   "Snit": "10,2"
+  },
+  {
+   "_rowId": "k17",
+   "Køn": "Pige",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "k18",
+   "Køn": "Pige",
+   "Snit": "3,9"
+  },
+  {
+   "_rowId": "k19",
+   "Køn": "Dreng",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "k20",
+   "Køn": "Dreng",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "k21",
+   "Køn": "Pige",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "k22",
+   "Køn": "Pige",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "k23",
+   "Køn": "Pige",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "k24",
+   "Køn": "Pige",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "k25",
+   "Køn": "Pige",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "k26",
+   "Køn": "Dreng",
+   "Snit": "4,9"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

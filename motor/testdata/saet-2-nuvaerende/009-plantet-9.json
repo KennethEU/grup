@@ -1,0 +1,93 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p447-16",
+        "p447-9",
+        "p447-10",
+        "p447-11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p447-2",
+        "p447-1",
+        "p447-20",
+        "p447-3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p447-24",
+        "p447-22",
+        "p447-23",
+        "p447-21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p447-15",
+        "p447-12",
+        "p447-6",
+        "p447-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p447-8",
+        "p447-5",
+        "p447-14",
+        "p447-13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p447-4",
+        "p447-19",
+        "p447-17",
+        "p447-18"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.12
+  }
+}

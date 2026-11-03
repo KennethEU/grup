@@ -1,0 +1,376 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r40",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "4,6"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "Dreng",
+   "Snit": "4,1"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "10.2"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "8.8"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "9,6"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "4,1"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "7,3"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "3,6"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Snit": "10,6"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "2.2"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "8,3"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "1,0"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "lav",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Køn": "Dreng",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "7,4"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": " LAV",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "2,4"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "7,6"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "1,7"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "lav",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Snit": "11,3"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Hold": "2.b",
+   "Køn": "Pige ",
+   "Snit": "9,8"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Lav",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Høj",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "1,0"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Snit": "2,6"
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "Lav",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Snit": "5.8"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Hold": "2.c",
+   "Køn": "Pige",
+   "Snit": "10,6"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Middel",
+   "Hold": "2.c",
+   "Køn": "Dreng",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Høj",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Middel",
+   "Hold": "",
+   "Køn": "Pige",
+   "Snit": "5,0"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 6,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 41038
+}

@@ -1,0 +1,99 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p463-20",
+        "p463-18",
+        "p463-1",
+        "p463-19",
+        "p463-17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p463-14",
+        "p463-13",
+        "p463-6",
+        "p463-15",
+        "p463-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p463-12",
+        "p463-11",
+        "p463-10",
+        "p463-9",
+        "p463-8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p463-29",
+        "p463-27",
+        "p463-30",
+        "p463-26",
+        "p463-28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p463-25",
+        "p463-24",
+        "p463-22",
+        "p463-21",
+        "p463-3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p463-16",
+        "p463-4",
+        "p463-2",
+        "p463-23",
+        "p463-5"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Ensartede (\"Niveau\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest. Vil du samle ens niveauer i \"Niveau\", gør \"Saml\" det tydeligere end Ensartede."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.1
+  }
+}

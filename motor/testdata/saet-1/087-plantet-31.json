@@ -1,0 +1,125 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p217-13",
+   "Interesse": "Musik",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p217-15",
+   "Interesse": "Musik",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p217-10",
+   "Interesse": "Gaming",
+   "Snit": "3"
+  },
+  {
+   "_rowId": "p217-16",
+   "Interesse": "Musik",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p217-6",
+   "Interesse": "Gaming",
+   "Snit": "3"
+  },
+  {
+   "_rowId": "p217-3",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p217-12",
+   "Interesse": "Gaming",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p217-4",
+   "Interesse": "Gaming",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "p217-5",
+   "Interesse": "Gaming",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p217-1",
+   "Interesse": "Gaming",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p217-2",
+   "Interesse": "Gaming",
+   "Snit": "3"
+  },
+  {
+   "_rowId": "p217-14",
+   "Interesse": "Musik",
+   "Snit": "3"
+  },
+  {
+   "_rowId": "p217-11",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p217-7",
+   "Interesse": "Gaming",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "p217-9",
+   "Interesse": "Gaming",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "p217-8",
+   "Interesse": "Gaming",
+   "Snit": "6,5"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p217-15",
+    "p217-13"
+   ]
+  ],
+  "avoid": [
+   [
+    "p217-16",
+    "p217-4"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 429476
+}

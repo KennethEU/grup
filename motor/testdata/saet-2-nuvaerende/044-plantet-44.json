@@ -1,0 +1,43 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p760-5",
+        "p760-9",
+        "p760-8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p760-4",
+        "p760-6",
+        "p760-1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p760-7",
+        "p760-2",
+        "p760-3"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

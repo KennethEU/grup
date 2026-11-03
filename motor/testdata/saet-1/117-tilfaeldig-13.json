@@ -1,0 +1,130 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Sprog": "Fransk",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 3",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 3",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r5",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 3",
+   "Snit": "9.0"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Fransk",
+   "Interesse": "Dans",
+   "Tidligere": "Gruppe 1",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Fransk",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 2",
+   "Snit": "1.7"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Interesse": "",
+   "Tidligere": "Gruppe 3",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r10",
+   "Sprog": "Tysk",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 2",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Interesse": "Gaming",
+   "Tidligere": "Gruppe 3",
+   "Snit": "11.8"
+  },
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Interesse": "Kunst",
+   "Tidligere": "Gruppe 3",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Interesse": "Dans",
+   "Tidligere": "Gruppe 2",
+   "Snit": "2.6"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r2",
+    "r5",
+    "r8"
+   ]
+  ],
+  "avoid": [
+   [
+    "r9",
+    "r10",
+    "r2"
+   ],
+   [
+    "r3",
+    "r2",
+    "r4"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 27487
+}

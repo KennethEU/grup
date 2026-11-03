@@ -1,0 +1,154 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r13",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "12",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "00",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "4",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "7",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "02",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "10",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "-3",
+   "Hold": "2.a"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r11",
+    "r12"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 5
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 656640
+}

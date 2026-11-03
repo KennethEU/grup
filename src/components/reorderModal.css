@@ -1,0 +1,174 @@
+/* reorderModal.css — det fælles udseende for de to vinduer med en liste man
+   flytter rundt i: "Flyt kolonner" (ColumnLayoutModal) og "Ranger værdier"
+   (ColumnOrderModal). Før stod de samme ~150 linjer i begge filer.
+
+   Indlæses scoped fra begge (<style scoped src="./reorderModal.css">), så
+   reglerne kun rammer de to vinduer — præcis som da de stod inde i filerne.
+   Det, der kun findes i det ene vindue, står stadig i dets egen <style>. */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-modal-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+}
+
+.modal-content {
+  background: var(--bg-modal);
+  backdrop-filter: var(--glass-blur-heavy);
+  /* border-box, så de 90% ER den fulde bredde — ellers lægges de 32px
+     polstring oveni, og vinduet bliver bredere end en telefonskærm. */
+  box-sizing: border-box;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 520px;
+  position: relative;
+  box-shadow: var(--shadow-float), var(--glass-inset);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-medium);
+  color: var(--text-main);
+}
+
+h2 {
+  margin: 0 0 2px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.subtitle {
+  margin: 0 0 20px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.note {
+  margin: 0 0 16px 0;
+  padding: 10px 12px;
+  background: var(--primary-light);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.order-section {
+  margin-bottom: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding-inline: 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-select-option);
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.order-row:hover { border-color: var(--primary); }
+.order-row.dragging { opacity: 0.4; }
+
+/* Rækkerne glider på plads, mens man trækker. Kun `transform` animeres —
+   det er den ene egenskab browseren kan flytte uden at tegne siden om. */
+.reorder-move { transition: transform 0.18s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reorder-move { transition: none; }
+}
+
+.drag-handle {
+  background: transparent;
+  border: none;
+  color: var(--text-subtle);
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.drag-handle:active { cursor: grabbing; }
+.drag-handle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.col-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.step {
+  background: transparent;
+  border: none;
+  color: var(--text-subtle);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition-property: var(--ctl-transition);
+  transition-duration: 0.2s;
+}
+.step:disabled { opacity: 0.25; cursor: default; }
+
+.hint-line {
+  margin: 8px 0 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.btn {
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition-property: var(--ctl-transition);
+  transition-duration: 0.2s;
+}
+.btn.primary { background: var(--primary); color: white; }
+.btn.primary:hover:not(:disabled) { background: var(--primary-hover); }
+.btn.primary:disabled { opacity: 0.4; cursor: default; }
+.btn.secondary { background: var(--bg-surface); color: var(--text-muted); border: 1px solid var(--border-subtle); }
+.btn.secondary:hover { background: var(--bg-select-option); color: var(--text-main); border-color: var(--border-strong); }

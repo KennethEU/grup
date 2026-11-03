@@ -1,0 +1,1390 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 28",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Dreng",
+   "Niveau": "Lav "
+  },
+  {
+   "_rowId": "r190",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 9",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r181",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r100",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Dreng",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r106",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Dreng ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r56",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r125",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng ",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r163",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5",
+   "Køn": "pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 39",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r164",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r101",
+   "Hold": "",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r171",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r93",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r130",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 39",
+   "Køn": "dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r103",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r116",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 39",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r126",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r90",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r80",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r111",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r119",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 25",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r184",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r165",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Dreng",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r175",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Dreng",
+   "Niveau": " LAV"
+  },
+  {
+   "_rowId": "r173",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 19",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r95",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r136",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r186",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng",
+   "Niveau": "lav"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r170",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r145",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r113",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Dreng",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 29",
+   "Køn": " PIGE",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 13",
+   "Køn": "dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 31",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r180",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 39",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r129",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Dreng",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r157",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r135",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 15",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r159",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r89",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r104",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r146",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r148",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 23",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r98",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Pige",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r120",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r153",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r88",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r160",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": "dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r155",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 9",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Pige",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 28",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r185",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r128",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r110",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r138",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Køn": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r42",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r169",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r149",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r85",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 19",
+   "Køn": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r150",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Pige",
+   "Niveau": "høj"
+  },
+  {
+   "_rowId": "r118",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r76",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r50",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r105",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r109",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r83",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r131",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 47",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r183",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r142",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r178",
+   "Hold": "",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r46",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 30",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r122",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Dreng ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r176",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 30",
+   "Køn": "",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r34",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 25",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r127",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r99",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r177",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r162",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 30",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r38",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 41",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r70",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r117",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Dreng ",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r134",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng ",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r156",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r107",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r179",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 43",
+   "Køn": "Dreng ",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 42",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r182",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r143",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 20",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r108",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r139",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r115",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 11",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r147",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r158",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r167",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Pige",
+   "Niveau": " HØJ"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r112",
+   "Hold": "",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 17",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r124",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Dreng",
+   "Niveau": "Middel "
+  },
+  {
+   "_rowId": "r96",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 22",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r51",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r154",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r168",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 48",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r151",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 36",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r137",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r188",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 38",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r133",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 24",
+   "Køn": "Andet",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r102",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r87",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 32",
+   "Køn": "Dreng",
+   "Niveau": " MIDDEL"
+  },
+  {
+   "_rowId": "r141",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 13",
+   "Køn": "dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r97",
+   "Hold": "",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r68",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 9",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r123",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 26",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige ",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r174",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 39",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r81",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 37",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 16",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 45",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r91",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 10",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r172",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Pige",
+   "Niveau": "middel"
+  },
+  {
+   "_rowId": "r121",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 47",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r92",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 18",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r140",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 33",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r132",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 12",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r86",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Pige ",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r189",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r78",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 40",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 32",
+   "Køn": "",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r82",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng",
+   "Niveau": ""
+  },
+  {
+   "_rowId": "r94",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 34",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r114",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r161",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 29",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r152",
+   "Hold": "",
+   "Tidligere": "Gruppe 20",
+   "Køn": "dreng",
+   "Niveau": "Høj "
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 14",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r166",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 35",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "r84",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 46",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r187",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 27",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "r144",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 44",
+   "Køn": "Andet",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 8",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r63",
+    "r98",
+    "r17"
+   ],
+   [
+    "r52",
+    "r160",
+    "r2"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 736598
+}

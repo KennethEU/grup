@@ -1,0 +1,1674 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r168",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 21",
+   "Snit": "2,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r107",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "8,9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r158",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 38",
+   "Snit": "9,0",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r145",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 43",
+   "Snit": "5,7",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r154",
+   "Niveau": "Middel ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 32",
+   "Snit": "9.2",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r111",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 6",
+   "Snit": "",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r129",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 45",
+   "Snit": "11,4",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r91",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 1",
+   "Snit": "8,9",
+   "Sprog": "Tysk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r18",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 6",
+   "Snit": "3,3",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r101",
+   "Niveau": "middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 17",
+   "Snit": "8,3",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r36",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 20",
+   "Snit": "2,2",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r90",
+   "Niveau": "Høj ",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "11,5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel ",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4",
+   "Snit": "5,0",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r70",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 1",
+   "Snit": "3,8",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r113",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 6",
+   "Snit": "4,8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r142",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 14",
+   "Snit": "5,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r84",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 16",
+   "Snit": "1,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r40",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 5",
+   "Snit": "9,8",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r178",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11",
+   "Snit": "",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r110",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 20",
+   "Snit": "11,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r128",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 26",
+   "Snit": "4.5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r144",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 9",
+   "Snit": "1,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r52",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4",
+   "Snit": "3,9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r102",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 24",
+   "Snit": "3,9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r136",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 5",
+   "Snit": "11.0",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "11,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r180",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 7",
+   "Snit": "1.2",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r80",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 25",
+   "Snit": "8,6",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r100",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 16",
+   "Snit": "4,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r42",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 45",
+   "Snit": "1,6",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r163",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 7",
+   "Snit": "10,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r27",
+   "Niveau": "",
+   "Køn": "",
+   "Tidligere": "Gruppe 9",
+   "Snit": "7,4",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r140",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 12",
+   "Snit": "5,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r165",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 17",
+   "Snit": "6,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r103",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 5",
+   "Snit": "1,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r47",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 30",
+   "Snit": "3,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r135",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 10",
+   "Snit": "8,8",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r123",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 24",
+   "Snit": "4,9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r7",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 27",
+   "Snit": "11,3",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r137",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 38",
+   "Snit": "1,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r26",
+   "Niveau": "Middel",
+   "Køn": " DRENG",
+   "Tidligere": "Gruppe 10",
+   "Snit": "11,3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r114",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 23",
+   "Snit": "9,9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r176",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 17",
+   "Snit": "2,0",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Snit": "6,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r89",
+   "Niveau": "Høj",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 22",
+   "Snit": "8,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r85",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 16",
+   "Snit": "4,0",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r151",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 23",
+   "Snit": "11,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r155",
+   "Niveau": "middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35",
+   "Snit": "3,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r134",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 28",
+   "Snit": "9,4",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r19",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 27",
+   "Snit": "8,8",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r173",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 23",
+   "Snit": "9,5",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r55",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 35",
+   "Snit": "2,0",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r106",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "10,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r172",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 27",
+   "Snit": "12,0",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r139",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 12",
+   "Snit": "6.6",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r73",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 26",
+   "Snit": "2,0",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r170",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 3",
+   "Snit": "9,8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r99",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 21",
+   "Snit": "9,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r112",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 15",
+   "Snit": "8,7",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r141",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 8",
+   "Snit": "2,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r56",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 41",
+   "Snit": "6.6",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r132",
+   "Niveau": "Høj",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 38",
+   "Snit": "5,9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r175",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 28",
+   "Snit": "4,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r59",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "5,8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r68",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 37",
+   "Snit": "5,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r96",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "5,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r133",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 25",
+   "Snit": "3,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 25",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r153",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 23",
+   "Snit": "11,5",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r150",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "6,3",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r35",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 36",
+   "Snit": "2.1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r92",
+   "Niveau": "Høj",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 32",
+   "Snit": "7,0",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r46",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 45",
+   "Snit": "2,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r24",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 43",
+   "Snit": "7,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r149",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 39",
+   "Snit": "6,9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r81",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 45",
+   "Snit": "7,4",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r23",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 4",
+   "Snit": "4,4",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 44",
+   "Snit": "5,7",
+   "Sprog": "Spansk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r69",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Tidligere": "Gruppe 35",
+   "Snit": "8,5",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r49",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 42",
+   "Snit": "6,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r157",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 22",
+   "Snit": "5,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 32",
+   "Snit": "5,5",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r20",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 44",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r72",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 6",
+   "Snit": "",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r117",
+   "Niveau": "Lav",
+   "Køn": " PIGE",
+   "Tidligere": "Gruppe 2",
+   "Snit": "6,5",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r67",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "10,2",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r37",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 39",
+   "Snit": "9,5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r62",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 18",
+   "Snit": "9,4",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r39",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 14",
+   "Snit": "5.0",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r60",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 43",
+   "Snit": "8,5",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 14",
+   "Snit": "10.6",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r25",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Snit": "2,2",
+   "Sprog": "Tysk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r166",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 17",
+   "Snit": "6,1",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r120",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 15",
+   "Snit": "",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r43",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 33",
+   "Snit": "3.9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r98",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r119",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Tidligere": "Gruppe 19",
+   "Snit": "7,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r31",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 10",
+   "Snit": "4,2",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r22",
+   "Niveau": "Middel ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 45",
+   "Snit": "8.5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r44",
+   "Niveau": "",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 4",
+   "Snit": "9.2",
+   "Sprog": "Fransk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r159",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 34",
+   "Snit": "2,2",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r118",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 7",
+   "Snit": "",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r53",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 37",
+   "Snit": "6,8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11",
+   "Snit": "11,9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r104",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 5",
+   "Snit": "12.0",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r38",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 16",
+   "Snit": "7,3",
+   "Sprog": "Fransk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r146",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11",
+   "Snit": "2,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r33",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 42",
+   "Snit": "1,0",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r124",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35",
+   "Snit": "9,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r169",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 22",
+   "Snit": "6,6",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r167",
+   "Niveau": " MIDDEL",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 43",
+   "Snit": "10,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r156",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 12",
+   "Snit": "2,0",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r152",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 17",
+   "Snit": "3,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r177",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 28",
+   "Snit": "7,3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r29",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 19",
+   "Snit": "1,8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r41",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 39",
+   "Snit": "8,0",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r76",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 39",
+   "Snit": "11,9",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 6",
+   "Snit": "5,3",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r79",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 39",
+   "Snit": "5.5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r66",
+   "Niveau": "Middel ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 20",
+   "Snit": "4,2",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 34",
+   "Snit": "5,5",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r147",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 27",
+   "Snit": "10.8",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r51",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15",
+   "Snit": "3,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r174",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 38",
+   "Snit": "5,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r57",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 15",
+   "Snit": "11,5",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r164",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 1",
+   "Snit": "11,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r109",
+   "Niveau": "lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 16",
+   "Snit": "7.3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r161",
+   "Niveau": " HØJ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 37",
+   "Snit": "9.7",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r179",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 13",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r71",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "7,3",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r63",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 34",
+   "Snit": "10,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r143",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 17",
+   "Snit": "7.8",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r77",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 35",
+   "Snit": "6,8",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r115",
+   "Niveau": "Lav",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 42",
+   "Snit": "3,6",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r75",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 11",
+   "Snit": "4,1",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 34",
+   "Snit": "3,1",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r138",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 24",
+   "Snit": "9.4",
+   "Sprog": "Fransk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r160",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 15",
+   "Snit": "6,4",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r121",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 28",
+   "Snit": "10,4",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r108",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 20",
+   "Snit": "6,5",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r61",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 38",
+   "Snit": "1,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r88",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 16",
+   "Snit": "2,9",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 14",
+   "Snit": "4,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r171",
+   "Niveau": "Lav",
+   "Køn": "",
+   "Tidligere": "Gruppe 7",
+   "Snit": "",
+   "Sprog": "Fransk",
+   "Hold": ""
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 41",
+   "Snit": "5,2",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r28",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 9",
+   "Snit": "11,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r122",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 18",
+   "Snit": "1,3",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r45",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 20",
+   "Snit": "4,0",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r94",
+   "Niveau": "Høj",
+   "Køn": "Dreng ",
+   "Tidligere": "Gruppe 6",
+   "Snit": "4.0",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r95",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 30",
+   "Snit": "4,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r16",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 21",
+   "Snit": "8,8",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r34",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 16",
+   "Snit": "7,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r83",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 37",
+   "Snit": "5,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r32",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 45",
+   "Snit": "1,4",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r74",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Tidligere": "Gruppe 14",
+   "Snit": "1,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 43",
+   "Snit": "7,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r64",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 2",
+   "Snit": "4,1",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r116",
+   "Niveau": "Middel",
+   "Køn": "pige",
+   "Tidligere": "Gruppe 23",
+   "Snit": "8,1",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r97",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 20",
+   "Snit": "3,9",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r87",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 12",
+   "Snit": "11,7",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r50",
+   "Niveau": "Høj ",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 32",
+   "Snit": "4,6",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r105",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 6",
+   "Snit": "1,7",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r162",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 43",
+   "Snit": "11,7",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r130",
+   "Niveau": "Lav",
+   "Køn": "Pige ",
+   "Tidligere": "Gruppe 29",
+   "Snit": "7.6",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r78",
+   "Niveau": "",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 33",
+   "Snit": "6,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r148",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 28",
+   "Snit": "9,4",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r30",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 4",
+   "Snit": "5,1",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r93",
+   "Niveau": "Middel",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 36",
+   "Snit": "1.3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r21",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 40",
+   "Snit": "4,7",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Middel",
+   "Køn": "Andet",
+   "Tidligere": "Gruppe 35",
+   "Snit": "7,4",
+   "Sprog": "Spansk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r131",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 41",
+   "Snit": "4,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r127",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 43",
+   "Snit": "5,1",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r82",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 10",
+   "Snit": "9,7",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r48",
+   "Niveau": "Middel",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 40",
+   "Snit": "8,3",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r65",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 3",
+   "Snit": "2,5",
+   "Sprog": "Fransk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r54",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 16",
+   "Snit": "3,6",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r126",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 44",
+   "Snit": "7,3",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r86",
+   "Niveau": "høj",
+   "Køn": "Dreng",
+   "Tidligere": "Gruppe 18",
+   "Snit": "10,9",
+   "Sprog": "Tysk",
+   "Hold": "2.a"
+  },
+  {
+   "_rowId": "r58",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Tidligere": "Gruppe 15",
+   "Snit": "9,3",
+   "Sprog": "Tysk",
+   "Hold": "2.b"
+  },
+  {
+   "_rowId": "r125",
+   "Niveau": "Lav",
+   "Køn": "dreng",
+   "Tidligere": "Gruppe 26",
+   "Snit": "11,4",
+   "Sprog": "Fransk",
+   "Hold": "2.b"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 527217
+}

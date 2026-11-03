@@ -1,0 +1,37 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p472-2",
+    "p472-3",
+    "p472-1",
+    "p472-4"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p472-6",
+    "p472-7",
+    "p472-5",
+    "p472-8"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

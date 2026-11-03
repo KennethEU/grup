@@ -1,0 +1,137 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r38",
+        "r2",
+        "r39",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r22",
+        "r20",
+        "r8"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r27",
+        "r5",
+        "r25",
+        "r32"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r23",
+        "r37",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r41",
+        "r40",
+        "r3",
+        "r14"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r29",
+        "r33",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r24",
+        "r18",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r28",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r42",
+        "r26"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 4,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Ensartede\" måler ikke på vedkommende."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Sprog\" kan ikke gå helt op: 21 elever har værdien \"Fransk\", og der er kun plads til 16 (højst 1-2 pr. gruppe). 5 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Fransk\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 2.32
+  }
+}

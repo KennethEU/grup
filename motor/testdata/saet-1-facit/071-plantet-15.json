@@ -1,0 +1,43 @@
+{
+ "contractVersion": 2,
+ "status": "ok",
+ "groups": [
+  {
+   "members": [
+    "p503-9",
+    "p503-7",
+    "p503-6",
+    "p503-8",
+    "p503-10"
+   ],
+   "topic": null
+  },
+  {
+   "members": [
+    "p503-1",
+    "p503-3",
+    "p503-4",
+    "p503-2",
+    "p503-5"
+   ],
+   "topic": null
+  }
+ ],
+ "lockedTopics": {},
+ "messages": [],
+ "rules": [
+  {
+   "rule": 0,
+   "met": true
+  },
+  {
+   "rule": 1,
+   "met": true
+  }
+ ],
+ "playback": null,
+ "stats": {
+  "attempts": 0,
+  "seconds": 0
+ }
+}

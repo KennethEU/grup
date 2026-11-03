@@ -1,0 +1,170 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "k0",
+   "Emne": "Klima",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k1",
+   "Emne": "Klima",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k2",
+   "Emne": "Energi",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k3",
+   "Emne": "Migration",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "k4",
+   "Emne": "Klima",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k5",
+   "Emne": "Energi",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k7",
+   "Emne": "Klima",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k8",
+   "Emne": "Energi",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k9",
+   "Emne": "Migration",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k10",
+   "Emne": "Klima",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k11",
+   "Emne": "Energi",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k12",
+   "Emne": "Demokrati",
+   "Køn": "Andet"
+  },
+  {
+   "_rowId": "k13",
+   "Emne": "Klima",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k14",
+   "Emne": "Energi",
+   "Køn": "Pige "
+  },
+  {
+   "_rowId": "k15",
+   "Emne": "Migration",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k16",
+   "Emne": "Klima",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k18",
+   "Emne": "Demokrati",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k19",
+   "Emne": "Klima",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k20",
+   "Emne": "Energi",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "k21",
+   "Emne": "Migration",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k23",
+   "Emne": "Energi",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k24",
+   "Emne": "Migration",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k25",
+   "Emne": "Demokrati",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "k26",
+   "Emne": "Klima",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Emne"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "k0",
+    "k1"
+   ]
+  ],
+  "avoid": [
+   [
+    "k2",
+    "k4"
+   ],
+   [
+    "k8",
+    "k9",
+    "k10"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 7
+}

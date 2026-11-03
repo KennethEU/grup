@@ -1,0 +1,131 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p567-15",
+        "p567-14",
+        "p567-13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-3",
+        "p567-1",
+        "p567-2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-6",
+        "p567-5",
+        "p567-4"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-9",
+        "p567-8",
+        "p567-7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-12",
+        "p567-10",
+        "p567-11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-24",
+        "p567-22",
+        "p567-23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-19",
+        "p567-21",
+        "p567-20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-25",
+        "p567-26",
+        "p567-27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-29",
+        "p567-28",
+        "p567-30"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p567-18",
+        "p567-17",
+        "p567-16"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Ensartede på \"Niveau\". Saml (\"Interesse\") bliver også forsøgt, men er ikke sikret — Ensartede vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.09
+  }
+}

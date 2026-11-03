@@ -1,0 +1,39 @@
+{
+ "_om": "Realistisk testklasse til Grupper. ALLE navne er opdigtede. Se README.md i samme mappe.",
+ "columns": ["Navn", "Køn", "Karakter", "Snit", "Niveau", "Sprog", "Emne", "Bemærkning"],
+ "rows": [
+  {"Navn": "Anna Holm", "Køn": "Pige", "Karakter": "12", "Snit": "10,8", "Niveau": "Høj", "Sprog": "Tysk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Mads Ærø", "Køn": "Dreng", "Karakter": "7", "Snit": "7,5", "Niveau": "Middel", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Emil Hansen", "Køn": "Dreng", "Karakter": "4", "Snit": "5,2", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Emil Hansen", "Køn": "dreng", "Karakter": "10", "Snit": "9,1", "Niveau": "Høj", "Sprog": "Fransk", "Emne": "Migration", "Bemærkning": ""},
+  {"Navn": "Hansen, Bo", "Køn": "Dreng", "Karakter": "02", "Snit": "3,4", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Klima", "Bemærkning": "(syg, fritaget)"},
+  {"Navn": "Anne-Sofie Østergaard", "Køn": "Pige", "Karakter": "10", "Snit": "9,6", "Niveau": "høj", "Sprog": "Fransk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Åse Lind", "Køn": "Pige", "Karakter": "7", "Snit": "6,9", "Niveau": "Middel", "Sprog": "Tysk", "Emne": "Demokrati", "Bemærkning": ""},
+  {"Navn": "Karoline Victoria Bøgh Brandstrup-Lindholm", "Køn": "Pige", "Karakter": "12", "Snit": "11,4", "Niveau": "Høj", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Liva Dam", "Køn": "Pige", "Karakter": "4", "Snit": "4,6", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Energi", "Bemærkning": "Ordblind"},
+  {"Navn": "Oskar Friis", "Køn": "Dreng", "Karakter": "00", "Snit": "2,1", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Migration", "Bemærkning": ""},
+  {"Navn": "Noah Berg", "Køn": "Dreng", "Karakter": "-3", "Snit": "1,8", "Niveau": "", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Sara El-Amin", "Køn": "Pige", "Karakter": "Fritaget", "Snit": "", "Niveau": "Middel", "Sprog": "Spansk", "Emne": "Energi", "Bemærkning": "Ekstra tid\nved prøver"},
+  {"Navn": "Kim Lykke", "Køn": "Andet", "Karakter": "7", "Snit": "7,2", "Niveau": "Middel", "Sprog": "Tysk", "Emne": "Demokrati", "Bemærkning": ""},
+  {"Navn": "Ida Bjerre", "Køn": "Pige", "Karakter": "10", "Snit": "8,8", "Niveau": "Høj", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Freja Munk", "Køn": "Pige ", "Karakter": "4", "Snit": "5,0", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Laura Winther", "Køn": "Pige", "Karakter": "7", "Snit": "7,7", "Niveau": "Middel", "Sprog": "Fransk", "Emne": "Migration", "Bemærkning": ""},
+  {"Navn": "Olivia Krag", "Køn": "Pige", "Karakter": "12", "Snit": "10,2", "Niveau": "Høj", "Sprog": "Tysk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Signe Toft", "Køn": "Pige", "Karakter": "", "Snit": "6,4", "Niveau": "Middel", "Sprog": "Fransk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Marie Juul", "Køn": "Pige", "Karakter": "02", "Snit": "3,9", "Niveau": "Lav", "Sprog": "Tysk", "Emne": "Demokrati", "Bemærkning": ""},
+  {"Navn": "Johan Bech", "Køn": "Dreng", "Karakter": "10", "Snit": "8,3", "Niveau": "Middel", "Sprog": "Tysk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Malthe Rytter", "Køn": "Dreng", "Karakter": "7", "Snit": "6,6", "Niveau": "Middel", "Sprog": "Fransk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Clara Dalgaard", "Køn": "Pige", "Karakter": "10", "Snit": "9,4", "Niveau": "Høj", "Sprog": "Tysk", "Emne": "Migration", "Bemærkning": ""},
+  {"Navn": "Esther Nørgaard", "Køn": "Pige", "Karakter": "4", "Snit": "4,2", "Niveau": "Lav", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""},
+  {"Navn": "Nanna Skov", "Køn": "Pige", "Karakter": "7", "Snit": "7,0", "Niveau": "Middel", "Sprog": "Tysk", "Emne": "Energi", "Bemærkning": ""},
+  {"Navn": "Tilde Brink", "Køn": "Pige", "Karakter": "12", "Snit": "11,0", "Niveau": "Høj", "Sprog": "Fransk", "Emne": "Migration", "Bemærkning": ""},
+  {"Navn": "Wilma Hjort", "Køn": "Pige", "Karakter": "7", "Snit": "6,1", "Niveau": "Middel", "Sprog": "Tysk", "Emne": "Demokrati", "Bemærkning": ""},
+  {"Navn": "Viggo Sønderby", "Køn": "Dreng", "Karakter": "4", "Snit": "4,9", "Niveau": "Lav", "Sprog": "Fransk", "Emne": "Klima", "Bemærkning": ""}
+ ],
+ "scenario": {
+  "_om": "Hverdagstilstand oven på klassen. Eleverne peges på med RÆKKENUMMER (0-baseret), fordi to elever hedder det samme.",
+  "absent": [6, 17, 22],
+  "together": [[0, 1]],
+  "avoid": [[2, 4], [8, 9, 10]]
+ }
+}

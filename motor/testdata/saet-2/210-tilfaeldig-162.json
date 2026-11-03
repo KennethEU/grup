@@ -1,0 +1,258 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Karakter": "4",
+   "Hold": "2.c",
+   "Køn": "dreng"
+  },
+  {
+   "_rowId": "r18",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r7",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Køn": "pige"
+  },
+  {
+   "_rowId": "r13",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r24",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Karakter": "00",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r26",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r9",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r16",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Karakter": "12",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r8",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r6",
+   "Sprog": "Tysk",
+   "Niveau": "middel",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r23",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Karakter": "02",
+   "Hold": "2.b",
+   "Køn": ""
+  },
+  {
+   "_rowId": "r22",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r4",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Karakter": "02",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r2",
+   "Sprog": "Spansk",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r3",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Karakter": "12",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r11",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r17",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r12",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Karakter": "7",
+   "Hold": "2.b",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r14",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Karakter": "Fritaget",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r15",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Karakter": "7",
+   "Hold": "2.a",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r25",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Karakter": "Fritaget",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r20",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Karakter": "4",
+   "Hold": "2.b",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "r21",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Karakter": "10",
+   "Hold": "2.c",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "r19",
+   "Sprog": "Tysk",
+   "Niveau": "høj",
+   "Karakter": "00",
+   "Hold": "",
+   "Køn": "Dreng"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Lav"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r15",
+    "r11"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 637467
+}

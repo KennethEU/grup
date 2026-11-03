@@ -1,0 +1,102 @@
+{
+ "contractVersion": 2,
+ "view": "matrix",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r2",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r9",
+   "Interesse": "Kor"
+  },
+  {
+   "_rowId": "r4",
+   "Interesse": " MUSIK"
+  },
+  {
+   "_rowId": "r10",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r3",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r7",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r5",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r6",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r8",
+   "Interesse": "Gaming"
+  }
+ ],
+ "rules": [
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 5
+ },
+ "topics": [],
+ "matrix": {
+  "source": "topic",
+  "homeGroups": [
+   {
+    "id": "S1",
+    "members": [
+     "r7",
+     "r8",
+     "r5",
+     "r4"
+    ],
+    "topic": "Klima"
+   },
+   {
+    "id": "S2",
+    "members": [
+     "r6",
+     "r2",
+     "r1",
+     "r9"
+    ],
+    "topic": "EU"
+   },
+   {
+    "id": "S3",
+    "members": [
+     "r10",
+     "r3"
+    ],
+    "topic": "Medier"
+   }
+  ]
+ },
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 413029
+}

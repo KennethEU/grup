@@ -1,0 +1,107 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p139-10",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-1",
+   "Udfordring": "Nej",
+   "Sprog": "Spansk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-6",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-8",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-9",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-7",
+   "Udfordring": "Nej",
+   "Sprog": "Tysk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-2",
+   "Udfordring": "Ja",
+   "Sprog": "Spansk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-4",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-5",
+   "Udfordring": "Nej",
+   "Sprog": "Fransk",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "p139-3",
+   "Udfordring": "Nej",
+   "Sprog": "Spansk",
+   "Interesse": "Musik"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "p139-7",
+    "p139-10"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 372352
+}

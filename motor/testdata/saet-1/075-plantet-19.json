@@ -1,0 +1,196 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p979-13",
+   "Snit": "5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-19",
+   "Snit": "4,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-10",
+   "Snit": "9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-20",
+   "Snit": "9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-28",
+   "Snit": "5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-7",
+   "Snit": "3,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-18",
+   "Snit": "5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-1",
+   "Snit": "6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-2",
+   "Snit": "3,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-12",
+   "Snit": "3,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-22",
+   "Snit": "3,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-29",
+   "Snit": "4,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-26",
+   "Snit": "6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-11",
+   "Snit": "6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-15",
+   "Snit": "9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-27",
+   "Snit": "3,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-4",
+   "Snit": "4,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-8",
+   "Snit": "5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-25",
+   "Snit": "9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-5",
+   "Snit": "9",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-30",
+   "Snit": "9",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-3",
+   "Snit": "5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-23",
+   "Snit": "5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-9",
+   "Snit": "4,5",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-6",
+   "Snit": "6",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p979-21",
+   "Snit": "6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-17",
+   "Snit": "3,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-16",
+   "Snit": "6",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-14",
+   "Snit": "4,5",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p979-24",
+   "Snit": "4,5",
+   "Niveau": "Lav"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p979-25",
+    "p979-24"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 75414
+}

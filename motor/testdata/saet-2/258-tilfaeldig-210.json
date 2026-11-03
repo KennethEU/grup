@@ -1,0 +1,213 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Andet",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Tidligere": "Gruppe 6",
+   "Køn": "pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r27",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Tidligere": "Gruppe 7",
+   "Køn": " DRENG",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Pige ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 3",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Pige",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r23",
+   "Tidligere": "Gruppe 4",
+   "Køn": "Pige",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r22",
+   "Tidligere": "Gruppe 6",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Tidligere": "Gruppe 7",
+   "Køn": " PIGE",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Pige ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 2",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 1",
+   "Køn": "Dreng",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Tidligere": "Gruppe 5",
+   "Køn": "Dreng",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 7",
+   "Køn": "Dreng",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r12",
+    "r10",
+    "r8",
+    "r26"
+   ],
+   [
+    "r5",
+    "r8",
+    "r6",
+    "r26"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 4,
+   "name": "Gruppe 4",
+   "members": [
+    "r19",
+    "r20",
+    "r17"
+   ],
+   "topic": "Migration"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 643960
+}

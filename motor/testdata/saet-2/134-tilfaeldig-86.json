@@ -1,0 +1,172 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r6",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Lav",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Høj",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r17",
+   "Niveau": "Middel",
+   "Køn": "dreng",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Høj",
+   "Køn": "",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Køn": "Pige",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Køn": "Pige",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": "Lav",
+   "Køn": "Dreng",
+   "Karakter": "7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Dreng"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r16",
+    "r15"
+   ],
+   [
+    "r14",
+    "r6",
+    "r1",
+    "r9",
+    "r12"
+   ]
+  ],
+  "avoid": [
+   [
+    "r13",
+    "r17",
+    "r3",
+    "r4"
+   ],
+   [
+    "r14",
+    "r13",
+    "r4",
+    "r6"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r16",
+    "r18",
+    "r2",
+    "r7"
+   ],
+   "topic": null
+  },
+  {
+   "id": "L2",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r10",
+    "r19"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 3755
+}

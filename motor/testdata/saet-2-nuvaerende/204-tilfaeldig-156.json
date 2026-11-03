@@ -1,0 +1,89 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r17",
+        "r18",
+        "r3",
+        "r10"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r23",
+        "r15",
+        "r14",
+        "r11",
+        "r12",
+        "r13"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r5",
+        "r7",
+        "r24",
+        "r22",
+        "r6",
+        "r9"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r25",
+        "r21",
+        "r16",
+        "r8",
+        "r4",
+        "r20",
+        "r19",
+        "r1"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2"
+      ],
+      "topic": "Energi"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 1,
+      "column": "Tidligere",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Tidligere\" kan ikke gå helt op inden for \"2.c\": 4 elever har værdien \"Gruppe 4\", og der er kun plads til 2 (højst 2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Gruppe 4\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive. Samme problem i \"2.a\"."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.42
+  }
+}

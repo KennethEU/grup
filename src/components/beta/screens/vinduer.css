@@ -1,0 +1,496 @@
+/* grup.dk/beta — vinduer i den rolige stil.
+   Kun regler under html.beta, så den almindelige Grupper er urørt.
+   Se docs/grupper-beta-plan.md. Målestokken er opskriftens vindue
+   (.recipe-dialog i ../recipe.css): papir, radius 14 px, én lille skygge,
+   mono-etiket i hovedet, hårlinje over knapperne, fyldt blå hovedhandling til
+   højre og "Annuller" som ren tekst til venstre, ingen kasser inde i vinduet.
+
+   Alle vinduerne har hver sin scoped stil i sin .vue-fil. `html.beta .x` har
+   en prik højere specificitet end `.x[data-v-…]`, så reglerne her vinder uden
+   !important. Vinduerne selv deler klassen .modal-content (Aftaler hedder
+   .avoid-modal), så skallen styles ÉN gang her. Ingen transitions på noget,
+   der ligner en <dialog>. */
+
+/* ---------- Skallen ---------- */
+
+/* Mørklægningen er den samme som opskriftens, og uden sløring af baggrunden */
+html.beta .modal-overlay,
+html.beta .avoid-modal-backdrop {
+    background: oklch(0.20 0.012 250 / 28%);
+    backdrop-filter: none;
+}
+
+html.beta .modal-content,
+html.beta .avoid-modal {
+    background: var(--paper);
+    color: var(--ink);
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px oklch(0 0 0 / 18%);
+    backdrop-filter: none;
+    /* Bunden er knapperækken, der skal gå helt ud til kanten (se .actions) */
+    padding: 20px 28px 24px;
+}
+
+/* To størrelser, ikke ti: ca. 480 px til de enkle vinduer (Gem session,
+   Kopiér, Bekræft, Prompt, Ny kolonne, Gem som kolonne, Efternøler, Ranger) og
+   640 px til de brede (Kategoriser, Gendan, Aftaler). Hvert vindue havde sin
+   egen bredde (420-600 px), så de sprang rundt fra vindue til vindue.
+   `!important` kun fordi Kopiér og Gem som kolonne har max-width i et
+   style-attribut i markup'en. Forhåndsvisningen af en session er en tabel og
+   beholder sin egen bredde. */
+html.beta .modal-content:not(.preview-modal) {
+    /* border-box: Kopiér og Gem som kolonne er content-box i markup'en og blev
+       56 px bredere end de andre */
+    box-sizing: border-box;
+    inline-size: 90%;
+    max-inline-size: 480px !important;
+}
+html.beta .modal-overlay[aria-labelledby="dlg-kategoriser"] .modal-content,
+html.beta .modal-overlay[aria-labelledby="dlg-restore"] .modal-content {
+    max-inline-size: 640px !important;
+}
+/* Har vinduet en knaprække, ejer den selv bundmargenen */
+html.beta .modal-content:has(> .actions) { padding-block-end: 0; }
+
+/* Titlen er hovedets mono-etiket med en lille blå streg foran — ligesom
+   "— OPSKRIFT". Selve forklaringen under står i almindelig tekst. */
+html.beta .modal-content > h2,
+html.beta .modal-content > h3,
+html.beta .avoid-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-block-size: 32px;
+    margin: 0 40px 8px 0;
+    /* Samme mono-etiket som opskriftens (.recipe__kicker i recipe.css) */
+    font: 500 10.5px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+html.beta .modal-content > h2::before,
+html.beta .modal-content > h3::before,
+html.beta .avoid-modal-title::before {
+    content: "";
+    inline-size: 20px;
+    block-size: 1px;
+    background: var(--primary);
+}
+
+html.beta .modal-content .subtitle,
+html.beta .modal-content .message {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    text-wrap: pretty;
+}
+
+/* Luk-knappen: 32 px ghost-firkant som opskriftens .recipe-dialog__x */
+html.beta .modal-content .close-btn,
+html.beta .news-content .close-btn,
+html.beta .avoid-modal-close {
+    display: inline-grid;
+    place-items: center;
+    inset-block-start: 20px;
+    inset-inline-end: 24px;
+    inline-size: 32px;
+    block-size: 32px;
+    min-inline-size: 0;
+    min-block-size: 0;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-3);
+    /* Et tyndt kryds, der ligner Lucide-X'et i opskriftens vindue: tegnet
+       "×" er tungere end et 2 px stregkryds, så det gøres lettere og
+       lidt større */
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+}
+html.beta .modal-content .close-btn:hover,
+html.beta .news-content .close-btn:hover,
+html.beta .avoid-modal-close:hover {
+    background: var(--paper-3);
+    color: var(--ink);
+}
+html.beta .modal-content .close-btn:focus-visible,
+html.beta .news-content .close-btn:focus-visible,
+html.beta .avoid-modal-close:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+/* ---------- Bunden: hårlinje, stille tekst til venstre, blå til højre ---------- */
+
+html.beta .modal-content .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-block: 20px 0;
+    margin-inline: -28px;
+    padding: 14px 28px;
+    border-block-start: 1px solid var(--rule);
+}
+
+/* Annuller/Fjern: ren tekst, skubbet ud til venstre. Ingen ramme, ingen flade. */
+html.beta .modal-content .actions .btn.secondary,
+html.beta .modal-content .actions .btn.ghost,
+html.beta .modal-content .actions .btn-cancel,
+html.beta .modal-content .modal-single-action .btn.secondary {
+    background: transparent;
+    border: none;
+    /* Annuller/Luk: ink-2, 13px/500 — præcis som .recipe__textbtn */
+    color: var(--ink-2);
+    font-size: 13px;
+    font-weight: 500;
+    padding-inline: 8px;
+}
+html.beta .modal-content .actions .btn.secondary,
+html.beta .modal-content .actions .btn-cancel,
+html.beta .modal-content .modal-single-action .btn.secondary { margin-inline-end: auto; }
+html.beta .modal-content .actions .btn.secondary:hover,
+html.beta .modal-content .actions .btn-cancel:hover,
+html.beta .modal-content .modal-single-action .btn.secondary:hover { background: transparent; color: var(--ink); }
+/* "Fjern rangering" er en sletning, men står stille: rød først ved hover */
+html.beta .modal-content .actions .btn.ghost:hover:not(:disabled) {
+    background: transparent;
+    color: var(--color-error);
+}
+
+/* Alle knapper i vinduerne: 36 px / radius 8 som resten af beta */
+html.beta .modal-content .btn,
+html.beta .modal-content .btn-confirm,
+html.beta .modal-content .btn-cancel {
+    block-size: 36px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* Hovedhandlingen: fyldt blå, en tak mørkere ved hover */
+html.beta .modal-content .btn.primary,
+html.beta .modal-content .btn-confirm {
+    block-size: 36px;
+    padding-inline: 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 1;
+}
+html.beta .modal-content .btn.primary:hover:not(:disabled),
+html.beta .modal-content .btn-confirm:hover:not(:disabled) { background: var(--primary-hover); }
+html.beta .modal-content .btn.primary:disabled,
+html.beta .modal-content .btn-confirm:disabled { opacity: 0.4; }
+/* Bekræft-vinduets rene "btn" uden variant er også en hovedhandling; den røde
+   (.danger) er sletningen selv og bliver rød */
+html.beta .modal-content .btn.danger {
+    block-size: 36px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+html.beta .modal-content .actions .btn:focus-visible,
+html.beta .modal-content .actions .btn-cancel:focus-visible,
+html.beta .modal-content .actions .btn-confirm:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* To vinduer har ikke en knaprække, men én bred knap (Gem som kolonne, Gendan
+   grupper). Markup'en pakker den i .modal-single-action, som her bliver
+   bunden på samme måde som .actions: hårlinje over, luft, knappen til højre. */
+html.beta .modal-content:has(> .modal-single-action) { padding-block-end: 0; }
+html.beta .modal-content .modal-single-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-block: 20px 0;
+    margin-inline: -28px;
+    padding: 14px 28px;
+    border-block-start: 1px solid var(--rule);
+}
+html.beta .modal-content .modal-single-action .btn { inline-size: auto; flex: none; }
+html.beta .modal-content .modal-single-action { gap: 12px; align-items: center; }
+
+/* ---------- Indholdet: etiketter i mono, felter med én hårlinje ---------- */
+
+html.beta .modal-content .form-group > label,
+html.beta .modal-content .field-heading,
+html.beta .modal-content .format-label,
+html.beta .modal-content .mappings-section > .field-heading,
+html.beta .modal-content .section > label,
+html.beta .modal-content .section > .field-heading,
+html.beta .modal-content .form-group > .field-heading {
+    font: 500 10px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+/* Felter man skriver i har en kant (det yderste lag og det man taster i);
+   fokus er den blå kant */
+html.beta .modal-content .full-width:not(.btn),
+html.beta .modal-content .map-input,
+html.beta .modal-content .paste-area,
+html.beta .modal-content .input-field {
+    border: 1px solid var(--rule-2);
+    border-radius: 8px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+}
+html.beta .modal-content .full-width:not(.btn),
+html.beta .modal-content .map-input { block-size: 36px; }
+html.beta .modal-content .full-width:not(.btn):hover,
+html.beta .modal-content .map-input:hover,
+html.beta .modal-content .paste-area:hover { border-color: var(--ink-4); background: var(--paper); }
+html.beta .modal-content .full-width:not(.btn):focus,
+html.beta .modal-content .map-input:focus,
+html.beta .modal-content .paste-area:focus,
+html.beta .modal-content .input-field:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 14%, transparent);
+    outline: none;
+}
+
+/* Eksempelteksten i et tomt felt skal kunne skelnes fra det, man selv har
+   skrevet: lysere end indtastet tekst (ink), ikke næsten lige så mørk */
+html.beta .modal-content ::placeholder { color: var(--ink-4); opacity: 1; }
+
+/* Kasser inde i vinduet bliver til linjer uden flade: valg, rækker, lister */
+html.beta .modal-content .radio-option,
+html.beta .modal-content .option-box,
+html.beta .modal-content .order-row,
+html.beta .modal-content .preview-head {
+    background: transparent;
+    border: none;
+    border-block-end: 1px solid var(--rule);
+    border-radius: 0;
+    box-shadow: none;
+    padding-inline: 2px;
+}
+html.beta .modal-content .radio-option:last-child,
+html.beta .modal-content .order-row:last-child { border-block-end: none; }
+html.beta .modal-content .radio-option:hover,
+html.beta .modal-content .option-box:hover,
+html.beta .modal-content .order-row:hover {
+    background: var(--paper-2);
+    border-color: var(--rule);
+    box-shadow: none;
+}
+html.beta .modal-content .radio-option.disabled:hover { background: transparent; }
+html.beta .modal-content .radio-label,
+html.beta .modal-content .checkbox-text,
+html.beta .modal-content .row-name { color: var(--ink); font-size: 13px; }
+html.beta .modal-content .radio-note,
+html.beta .modal-content .option-hint,
+html.beta .modal-content .section-note,
+html.beta .modal-content .field-hint,
+html.beta .modal-content .hint-line { color: var(--ink-3); }
+/* Radioknap og afkrydsning i ink, ikke blå: blåt er forbeholdt hovedhandlingen */
+html.beta .modal-content input[type="radio"],
+html.beta .modal-content input[type="checkbox"] { accent-color: var(--ink); }
+
+/* Gendan grupper: blokkene pr. elev er rækker med hårlinje, ikke kasser */
+html.beta .modal-content .row {
+    background: transparent;
+    border: none;
+    border-block-end: 1px solid var(--rule);
+    border-radius: 0;
+    padding-inline: 0;
+}
+/* ...men Kategoriser bruger .row som en flex-række af to felter */
+html.beta .modal-content .row:has(> .form-group.half) { border-block-end: none; }
+
+/* Fanerne (Gendan): tekst med understregning, som Aftalers faner */
+html.beta .modal-content .tabs {
+    padding-inline-start: 0; /* den globale .tabs har 16 px indrykning */
+    gap: 4px;
+    border-block-end: 1px solid var(--rule);
+}
+html.beta .modal-content .tabs button {
+    flex: 0 0 auto;
+    block-size: 36px;
+    padding-inline: 12px;
+    border: none;
+    border-block-end: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink-3);
+    margin-block-end: -1px;
+}
+/* Første fane i flugt med resten af teksten */
+html.beta .modal-content .tabs button:first-child { padding-inline-start: 0; }
+html.beta .modal-content .tabs button:hover { background: transparent; color: var(--ink); }
+html.beta .modal-content .tabs button.active {
+    background: transparent;
+    color: var(--ink);
+    /* Ink, ikke blå: blåt er forbeholdt hovedhandlingen og den øverste fane */
+    border-block-end-color: var(--ink);
+}
+
+/* Noter og advarsler: en linje med en 2 px stribe til venstre, ingen flade */
+html.beta .modal-content .note,
+html.beta .modal-content .overwrite-warning,
+html.beta .modal-content .error-box {
+    background: transparent;
+    border: none;
+    border-inline-start: 2px solid var(--rule-2);
+    border-radius: 0;
+    padding: 2px 0 2px 12px;
+    color: var(--ink-2);
+}
+html.beta .modal-content .overwrite-warning,
+html.beta .modal-content .note:has(strong) { border-inline-start-color: var(--color-warning); }
+html.beta .modal-content .error-box { border-inline-start-color: var(--color-error); }
+
+/* Kategoriser: værdiboksen mister sin ramme, og værdierne er tynde mærker.
+   Valgt = blå tekst på en svag blå tone (ikke fyldt blå) */
+html.beta .modal-content .value-picker {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+html.beta .modal-content .value-chip {
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    color: var(--ink-2);
+}
+html.beta .modal-content .value-chip:hover:not(:disabled) {
+    border-color: var(--ink-4);
+    color: var(--ink);
+}
+html.beta .modal-content .value-chip.picked {
+    background: color-mix(in oklch, var(--primary) 10%, transparent);
+    border-color: transparent;
+    color: var(--primary);
+}
+/* "+ Tilføj regel" ligner opskriftens (.recipe__textbtn--accent): en blå
+   tekstknap til venstre, ingen stiplet kasse i fuld bredde */
+html.beta .modal-content .btn.dashed {
+    display: inline-flex;
+    align-items: center;
+    inline-size: auto;
+    block-size: auto;
+    margin-inline-start: -8px;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 500;
+}
+html.beta .modal-content .btn.dashed:hover:not(:disabled) { background: var(--paper-3); color: var(--primary); }
+html.beta .modal-content .btn-icon.delete { color: var(--ink-4); }
+html.beta .modal-content .btn-icon.delete:hover { background: transparent; color: var(--color-error); }
+
+/* Gendan: "Læs listen" er en sekundær handling: bløde flade, ingen ramme */
+html.beta .modal-content .read-list-btn {
+    background: var(--paper-3);
+    border: none;
+    color: var(--ink);
+}
+
+/* Efternøler: listen er en række hårlinjer, og mærkerne er ren tekst */
+html.beta .modal-content .student-list {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    gap: 0;
+}
+html.beta .modal-content .student-item {
+    border-radius: 0;
+    border-block-end: 1px solid var(--rule);
+    padding-inline: 2px;
+}
+html.beta .modal-content .student-item:hover { background: var(--paper-2); }
+html.beta .modal-content .badge-returning,
+html.beta .modal-content .badge-new {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    font: 500 10px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    letter-spacing: 0.1em;
+}
+html.beta .modal-content .badge-returning { color: var(--color-warning); }
+html.beta .modal-content .badge-new { color: var(--primary); }
+
+/* ---------- Aftaler (eget skelet) ---------- */
+
+/* Lodret midt på skærmen som de andre vinduer (før lå det foroven med en
+   margen på 10 % af højden) */
+html.beta .avoid-modal-backdrop {
+    align-items: center;
+    padding-block: 24px;
+}
+html.beta .avoid-modal {
+    padding: 0;
+    inline-size: 90%;
+    max-inline-size: 640px;
+}
+html.beta .avoid-modal-header {
+    padding: 20px 24px 4px 28px;
+    border-block-end: none;
+}
+html.beta .avoid-modal-title { margin: 0; }
+html.beta .avoid-modal-close { inset-block-start: auto; inset-inline-end: auto; position: static; }
+html.beta .agreement-tabs {
+    padding-inline: 28px;
+    border-block-end: 1px solid var(--rule);
+}
+html.beta .agreement-tab {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-3);
+}
+html.beta .agreement-tab:first-child { padding-inline-start: 0; }
+html.beta .agreement-tab:hover { color: var(--ink); }
+/* Én aktiv stil for begge faner: ink-tekst og ink-streg, som Gendans faner.
+   Før var "Undgå hinanden" orange og "Skal sammen" blå. */
+html.beta .agreement-tab--active,
+html.beta .agreement-tab--conflict.agreement-tab--active {
+    color: var(--ink);
+    border-block-end-color: var(--ink);
+}
+html.beta .agreement-count {
+    background: transparent;
+    padding-inline: 0;
+    font: 500 11px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
+    color: var(--ink-3);
+}
+html.beta .avoid-modal-body { padding: 16px 28px 24px; color: var(--ink-2); }
+/* Aftale-fanens egen tekst og oprydningslinje har 12 px indrykning i den
+   almindelige udgave; her ligger brødteksten i flugt med hovedet. */
+html.beta .avoid-modal-body .avoid-hint,
+html.beta .avoid-modal-body .avoid-cleanup { padding-inline: 0; }
+
+/* Valgmulighederne (fx "Stamgrupper (Runde 1)" i Gem session) er tekst, ikke
+   etiketter: de arvede versaler og mono fra feltets etiket-regel. */
+html.beta .modal-content .radio-option,
+html.beta .modal-content .radio-option .radio-label {
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: normal;
+    text-transform: none;
+}
+html.beta .modal-content .radio-option .radio-label strong { font-weight: 600; }
+
+/* Gendan "Fra kolonne": "Marker de elever …" er en sætning ved et afkrydsningsfelt,
+   ikke en etiket — den arvede mono og versaler fra `.section > label` ovenfor. */
+html.beta .modal-content .section > label.checkline,
+html.beta .modal-content label.checkline {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--ink-2);
+}

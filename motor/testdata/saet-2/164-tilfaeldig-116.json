@@ -1,0 +1,905 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r78",
+   "Hold": "2.a",
+   "Snit": "11,4"
+  },
+  {
+   "_rowId": "r168",
+   "Hold": "2.c",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r156",
+   "Hold": "2.c",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r166",
+   "Hold": "2.c",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.c",
+   "Snit": "2,0"
+  },
+  {
+   "_rowId": "r98",
+   "Hold": "2.b",
+   "Snit": "10.8"
+  },
+  {
+   "_rowId": "r161",
+   "Hold": "2.c",
+   "Snit": "10,4"
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r165",
+   "Hold": "2.a",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.a",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.b",
+   "Snit": "2,6"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.a",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.c",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.a",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r109",
+   "Hold": "2.c",
+   "Snit": "5,8"
+  },
+  {
+   "_rowId": "r113",
+   "Hold": "2.a",
+   "Snit": "8.3"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.a",
+   "Snit": "5.4"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r100",
+   "Hold": "2.c",
+   "Snit": "5.3"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.a",
+   "Snit": "7,8"
+  },
+  {
+   "_rowId": "r93",
+   "Hold": "2.b",
+   "Snit": "2,7"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c",
+   "Snit": "4,4"
+  },
+  {
+   "_rowId": "r88",
+   "Hold": "2.a",
+   "Snit": "11.3"
+  },
+  {
+   "_rowId": "r117",
+   "Hold": "2.c",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r123",
+   "Hold": "2.c",
+   "Snit": "1.8"
+  },
+  {
+   "_rowId": "r145",
+   "Hold": "2.a",
+   "Snit": "3,6"
+  },
+  {
+   "_rowId": "r87",
+   "Hold": "2.c",
+   "Snit": "3,7"
+  },
+  {
+   "_rowId": "r50",
+   "Hold": "2.c",
+   "Snit": "1.7"
+  },
+  {
+   "_rowId": "r172",
+   "Hold": "2.a",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r134",
+   "Hold": "2.b",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.b",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r86",
+   "Hold": "",
+   "Snit": "9,8"
+  },
+  {
+   "_rowId": "r83",
+   "Hold": "2.a",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.b",
+   "Snit": "8,9"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r108",
+   "Hold": "2.a",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r102",
+   "Hold": "2.c",
+   "Snit": "3,3"
+  },
+  {
+   "_rowId": "r124",
+   "Hold": "2.a",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r122",
+   "Hold": "2.b",
+   "Snit": "7.2"
+  },
+  {
+   "_rowId": "r68",
+   "Hold": "2.c",
+   "Snit": "5,5"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.b",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r160",
+   "Hold": "2.b",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r139",
+   "Hold": "2.a",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r120",
+   "Hold": "2.a",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r116",
+   "Hold": "2.b",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r97",
+   "Hold": "2.a",
+   "Snit": "7,7"
+  },
+  {
+   "_rowId": "r170",
+   "Hold": "2.c",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r82",
+   "Hold": "2.b",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.a",
+   "Snit": "3,0"
+  },
+  {
+   "_rowId": "r169",
+   "Hold": "2.a",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.b",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.a",
+   "Snit": "4,0"
+  },
+  {
+   "_rowId": "r105",
+   "Hold": "2.c",
+   "Snit": "1,2"
+  },
+  {
+   "_rowId": "r130",
+   "Hold": "2.a",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r91",
+   "Hold": "2.a",
+   "Snit": "4,0"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.b",
+   "Snit": "7.1"
+  },
+  {
+   "_rowId": "r149",
+   "Hold": "2.b",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r121",
+   "Hold": "2.b",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r137",
+   "Hold": "",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.c",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r76",
+   "Hold": "2.b",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r104",
+   "Hold": "2.c",
+   "Snit": "10,2"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.a",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r111",
+   "Hold": "2.b",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "r128",
+   "Hold": "2.c",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.a",
+   "Snit": "5,9"
+  },
+  {
+   "_rowId": "r150",
+   "Hold": "2.c",
+   "Snit": "8.9"
+  },
+  {
+   "_rowId": "r89",
+   "Hold": "2.a",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.b",
+   "Snit": "8.8"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.a",
+   "Snit": "7,0"
+  },
+  {
+   "_rowId": "r118",
+   "Hold": "2.c",
+   "Snit": "9,9"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.c",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "",
+   "Snit": "2,7"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.b",
+   "Snit": "7,2"
+  },
+  {
+   "_rowId": "r155",
+   "Hold": "2.c",
+   "Snit": "3,8"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.b",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r51",
+   "Hold": "2.a",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r34",
+   "Hold": "2.c",
+   "Snit": "3,4"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.b",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.c",
+   "Snit": "10,4"
+  },
+  {
+   "_rowId": "r110",
+   "Hold": "2.a",
+   "Snit": "8.0"
+  },
+  {
+   "_rowId": "r92",
+   "Hold": "2.c",
+   "Snit": "2,1"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r159",
+   "Hold": "2.a",
+   "Snit": "5,1"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.a",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.c",
+   "Snit": "6,5"
+  },
+  {
+   "_rowId": "r115",
+   "Hold": "2.b",
+   "Snit": "10.5"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "2.a",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.c",
+   "Snit": "1,5"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r42",
+   "Hold": "2.c",
+   "Snit": "6,9"
+  },
+  {
+   "_rowId": "r56",
+   "Hold": "2.b",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r81",
+   "Hold": "2.a",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.c",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r148",
+   "Hold": "2.c",
+   "Snit": "6.7"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "",
+   "Snit": "1.9"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.c",
+   "Snit": "4,7"
+  },
+  {
+   "_rowId": "r140",
+   "Hold": "2.a",
+   "Snit": "8,1"
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.c",
+   "Snit": "2,5"
+  },
+  {
+   "_rowId": "r131",
+   "Hold": "2.c",
+   "Snit": "4.9"
+  },
+  {
+   "_rowId": "r171",
+   "Hold": "2.c",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "r46",
+   "Hold": "2.b",
+   "Snit": "5.2"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.a",
+   "Snit": "3.8"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Snit": "5,3"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.b",
+   "Snit": "9,1"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.c",
+   "Snit": "4,6"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Snit": "9.6"
+  },
+  {
+   "_rowId": "r173",
+   "Hold": "2.b",
+   "Snit": "2.5"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "2.c",
+   "Snit": "4,2"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.a",
+   "Snit": "7,6"
+  },
+  {
+   "_rowId": "r143",
+   "Hold": "2.a",
+   "Snit": "9,7"
+  },
+  {
+   "_rowId": "r127",
+   "Hold": "2.b",
+   "Snit": "7,9"
+  },
+  {
+   "_rowId": "r142",
+   "Hold": "2.c",
+   "Snit": "2,6"
+  },
+  {
+   "_rowId": "r103",
+   "Hold": "2.c",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r99",
+   "Hold": "2.c",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r152",
+   "Hold": "2.a",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "2.b",
+   "Snit": "1,3"
+  },
+  {
+   "_rowId": "r154",
+   "Hold": "2.a",
+   "Snit": "6,3"
+  },
+  {
+   "_rowId": "r84",
+   "Hold": "2.c",
+   "Snit": "2,8"
+  },
+  {
+   "_rowId": "r135",
+   "Hold": "2.b",
+   "Snit": "10,6"
+  },
+  {
+   "_rowId": "r147",
+   "Hold": "2.c",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r151",
+   "Hold": "2.b",
+   "Snit": "6.8"
+  },
+  {
+   "_rowId": "r38",
+   "Hold": "2.a",
+   "Snit": "11,2"
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "2.c",
+   "Snit": "7,5"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.c",
+   "Snit": "9,4"
+  },
+  {
+   "_rowId": "r138",
+   "Hold": "2.c",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.b",
+   "Snit": "10,7"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.b",
+   "Snit": "1.9"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.c",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.c",
+   "Snit": "7.6"
+  },
+  {
+   "_rowId": "r167",
+   "Hold": "2.c",
+   "Snit": "8,0"
+  },
+  {
+   "_rowId": "r112",
+   "Hold": "2.a",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r95",
+   "Hold": "2.a",
+   "Snit": "8,7"
+  },
+  {
+   "_rowId": "r158",
+   "Hold": "2.b",
+   "Snit": "5.6"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b",
+   "Snit": "3.0"
+  },
+  {
+   "_rowId": "r80",
+   "Hold": "2.b",
+   "Snit": "6,6"
+  },
+  {
+   "_rowId": "r106",
+   "Hold": "2.b",
+   "Snit": "1.6"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.b",
+   "Snit": "2,6"
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.c",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r85",
+   "Hold": "2.c",
+   "Snit": "8.9"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.c",
+   "Snit": "5.8"
+  },
+  {
+   "_rowId": "r136",
+   "Hold": "2.a",
+   "Snit": "6,0"
+  },
+  {
+   "_rowId": "r70",
+   "Hold": "2.a",
+   "Snit": "2,0"
+  },
+  {
+   "_rowId": "r141",
+   "Hold": "2.b",
+   "Snit": "9.9"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Snit": "1,8"
+  },
+  {
+   "_rowId": "r157",
+   "Hold": "2.a",
+   "Snit": "10,3"
+  },
+  {
+   "_rowId": "r144",
+   "Hold": "2.a",
+   "Snit": "11.1"
+  },
+  {
+   "_rowId": "r125",
+   "Hold": "2.b",
+   "Snit": "7,1"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.c",
+   "Snit": "8,4"
+  },
+  {
+   "_rowId": "r114",
+   "Hold": "2.c",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r90",
+   "Hold": "2.b",
+   "Snit": "7,9"
+  },
+  {
+   "_rowId": "r133",
+   "Hold": "2.a",
+   "Snit": "9.9"
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "2.b",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r126",
+   "Hold": "2.b",
+   "Snit": "11,1"
+  },
+  {
+   "_rowId": "r174",
+   "Hold": "2.a",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r107",
+   "Hold": "2.b",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r153",
+   "Hold": "2.b",
+   "Snit": "2,3"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.a",
+   "Snit": "4.3"
+  },
+  {
+   "_rowId": "r119",
+   "Hold": "2.c",
+   "Snit": "5,9"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.b",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r132",
+   "Hold": "2.b",
+   "Snit": "6.1"
+  },
+  {
+   "_rowId": "r163",
+   "Hold": "2.c",
+   "Snit": "5,0"
+  },
+  {
+   "_rowId": "r162",
+   "Hold": "2.c",
+   "Snit": "9,0"
+  },
+  {
+   "_rowId": "r129",
+   "Hold": "2.c",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "",
+   "Snit": "5,7"
+  },
+  {
+   "_rowId": "r96",
+   "Hold": "2.b",
+   "Snit": "5,9"
+  },
+  {
+   "_rowId": "r146",
+   "Hold": "2.b",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r164",
+   "Hold": "2.b",
+   "Snit": "1.3"
+  },
+  {
+   "_rowId": "r94",
+   "Hold": "2.a",
+   "Snit": "9,5"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.a",
+   "Snit": "11.8"
+  },
+  {
+   "_rowId": "r101",
+   "Hold": "2.b",
+   "Snit": "10,1"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.b",
+   "Snit": "2,3"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 55222
+}

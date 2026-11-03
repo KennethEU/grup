@@ -1,0 +1,155 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r24",
+   "Snit": "6,4"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "3,1"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "4,0"
+  },
+  {
+   "_rowId": "r27",
+   "Snit": "3.8"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "2,9"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "7.6"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "7,6"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "1,0"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "8,5"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "1,1"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "8.0"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "6,1"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "7,9"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "4,9"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "3,5"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "9.0"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "11.1"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "9.4"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r26",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "8,6"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "2,7"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "4,8"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "10,9"
+  },
+  {
+   "_rowId": "r31",
+   "Snit": "6,8"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "10,7"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 480843
+}

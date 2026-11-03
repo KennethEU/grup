@@ -1,0 +1,100 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r13",
+        "r4",
+        "r6",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r7",
+        "r11",
+        "r10",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r3",
+        "r8",
+        "r18"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r9",
+        "r15",
+        "r22",
+        "r2"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Klyng og Fordel bruges begge på \"Sprog\". Klyng samler ens værdier, Fordel spreder dem."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Niveau\". Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": false
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.23
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r30",
+        "r37",
+        "r33"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r5",
+        "r16"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r17",
+        "r3",
+        "r28"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r25",
+        "r31",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r15",
+        "r1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r21",
+        "r41",
+        "r43"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r2"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r29",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r10",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r39",
+        "r40"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r24",
+        "r12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r44",
+        "r34"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r32",
+        "r26"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r36",
+        "r27"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r35",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r23",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r14",
+        "r38"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r42"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 26 elever har værdien \"Dreng\", og der er kun plads til 19 (højst 1 pr. gruppe). 7 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Dreng\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.34
+  }
+}

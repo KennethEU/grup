@@ -1,0 +1,303 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "4,7",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "",
+   "Snit": "4,7",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "4,9",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "7,9",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "3,6",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "3.3",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.b",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "3,4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "6.9",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b",
+   "Køn": "Pige ",
+   "Niveau": "Høj",
+   "Snit": "5,9",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "6,4",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.a",
+   "Køn": "Andet",
+   "Niveau": "Høj",
+   "Snit": "",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "11,8",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.b",
+   "Køn": "Andet",
+   "Niveau": "Middel",
+   "Snit": "6,2",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": " HØJ",
+   "Snit": "4.4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "1,9",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "9,9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Middel ",
+   "Snit": "",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "",
+   "Snit": "1,4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.b",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "1,1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "8,7",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Niveau": "Lav",
+   "Snit": "2,9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.b",
+   "Køn": "",
+   "Niveau": "Middel",
+   "Snit": "1.5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.a",
+   "Køn": "Pige",
+   "Niveau": "Middel",
+   "Snit": "2,5",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Køn": "dreng",
+   "Niveau": "Middel",
+   "Snit": "1,3",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Høj",
+   "Snit": "",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Middel",
+   "Snit": "2,5",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.a",
+   "Køn": "Dreng",
+   "Niveau": "Lav",
+   "Snit": "7,4",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "r11",
+    "r16"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 5,
+   "name": "Gruppe 5",
+   "members": [
+    "r13",
+    "r6"
+   ],
+   "topic": "Klima"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 475366
+}

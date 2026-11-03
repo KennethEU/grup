@@ -1,0 +1,95 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r14",
+        "r13",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r11",
+        "r24",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r7",
+        "r3"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r2",
+        "r20"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r8",
+        "r23"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r15",
+        "r1",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r22",
+        "r18",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r19",
+        "r17",
+        "r5"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 12 elever har værdien \"Middel\", og der er kun plads til 8 (højst 1 pr. gruppe). 4 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.13
+  }
+}

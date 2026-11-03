@@ -1,0 +1,142 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r4",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r9",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Fodbold",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r11",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "fodbold",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Tidligere": "Gruppe 4",
+   "Interesse": "Kor",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Tidligere": "Gruppe 3",
+   "Interesse": "Kor",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Tidligere": "Gruppe 2",
+   "Interesse": "Kor",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r8",
+   "Tidligere": "Gruppe 1",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r7",
+    "r12",
+    "r17",
+    "r16"
+   ],
+   "topic": "Migration"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 65543
+}

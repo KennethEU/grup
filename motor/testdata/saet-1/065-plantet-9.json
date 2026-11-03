@@ -1,0 +1,114 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p654-12",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-4",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-10",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-5",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p654-8",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p654-9",
+   "Køn": "Dreng",
+   "Udfordring": "Ja",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-1",
+   "Køn": "Dreng",
+   "Udfordring": "Ja",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-11",
+   "Køn": "Pige",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-3",
+   "Køn": "Pige",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "p654-6",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p654-7",
+   "Køn": "Pige",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "p654-2",
+   "Køn": "Dreng",
+   "Udfordring": "Nej",
+   "Interesse": "Film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 772987
+}

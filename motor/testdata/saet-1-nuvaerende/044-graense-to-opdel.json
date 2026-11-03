@@ -1,0 +1,71 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "b4",
+        "b8",
+        "b2",
+        "b6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b3",
+        "b1",
+        "b7",
+        "b5"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b16",
+        "b14",
+        "b10",
+        "b12"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "b11",
+        "b15",
+        "b9",
+        "b13"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Der er flere Opdel-regler. Kun den øverste — \"Hold\" — deler klassen op og bestemmer antallet af grupper. \"Valg\" bliver forsøgt, men er ikke sikret: grupper med blandede værdier kan forekomme. Vil du dele op efter to ting på én gang, så lav en kolonne der kombinerer dem."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.04
+  }
+}

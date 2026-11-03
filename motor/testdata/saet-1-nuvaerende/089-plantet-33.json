@@ -1,0 +1,35 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "p979-2",
+        "p979-6",
+        "p979-1"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "p979-5",
+        "p979-4",
+        "p979-3"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.08
+  }
+}

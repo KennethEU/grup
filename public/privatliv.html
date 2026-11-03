@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privatlivspolitik — grup.dk</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Skrift og Rolig-tokens kommer fra sitet selv (ingen tredjeparter).
+       Siden ligger i grup.dk/public/, så Vite kopierer den til
+       public/grupper/privatliv.html. app.js serverer den på grup.dk/privatliv. -->
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/rolig.css">
+  <style>
+    :root {
+      /* grup.dk's blå — samme værdi som --primary i Grupper's Rolig-tema */
+      --accent: oklch(0.50 0.19 264);
+    }
+
+    body {
+      min-block-size: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper-2);
+      color: var(--ink);
+    }
+
+    header {
+      padding-block: var(--s-4);
+      padding-inline: var(--s-5);
+      border-block-end: 1px solid var(--rule);
+      background: var(--paper);
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: baseline;
+      gap: var(--s-2);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand-link:hover { opacity: 0.75; }
+    .brand-name { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    .brand-name span { color: var(--accent); }
+    .brand-sub { font: 500 12px var(--mono); color: var(--ink-3); }
+
+    main {
+      flex: 1;
+      max-inline-size: 760px;
+      inline-size: 100%;
+      margin-inline: auto;
+      padding-block: var(--s-7);
+      padding-inline: var(--s-5);
+    }
+
+    h1 {
+      font-size: clamp(28px, 22px + 2vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-block: 0 var(--s-2);
+      text-wrap: balance;
+    }
+
+    .updated {
+      font: 500 12px var(--mono);
+      color: var(--ink-3);
+      margin-block: 0 var(--s-6);
+    }
+
+    /* Det korte svar øverst */
+    .summary {
+      background: var(--paper);
+      border: 1px solid color-mix(in oklch, var(--accent) 35%, transparent);
+      border-radius: var(--r-xl);
+      padding: var(--s-5);
+      margin-block-end: var(--s-6);
+    }
+    .summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+    }
+    .summary li {
+      display: flex;
+      gap: var(--s-3);
+      align-items: baseline;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-2);
+      text-wrap: pretty;
+    }
+    .summary li strong { color: var(--ink); }
+    .summary .hi { color: var(--accent); flex-shrink: 0; }
+
+    .hi { inline-size: 1em; block-size: 1em; vertical-align: -0.125em; }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-l);
+      padding: var(--s-5);
+      margin-block-end: var(--s-5);
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-block: 0 var(--s-3);
+      text-wrap: balance;
+    }
+
+    p, li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-2);
+      text-wrap: pretty;
+    }
+    p { margin-block: 0 var(--s-3); }
+    p:last-child { margin-block-end: 0; }
+
+    ul.content-list {
+      margin-block: var(--s-2) var(--s-3);
+      padding-inline-start: var(--s-5);
+    }
+    ul.content-list li { margin-block-end: var(--s-1); }
+
+    code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--paper-3);
+      padding-inline: 5px;
+      padding-block: 1px;
+      border-radius: var(--r-s);
+      overflow-wrap: anywhere;
+    }
+
+    /* Tabellen over browserens lager */
+    .table-wrap { overflow-x: auto; margin-block-start: var(--s-3); }
+    table {
+      inline-size: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: start;
+      font: 500 11px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      padding-block-end: var(--s-2);
+      border-block-end: 1px solid var(--rule-2);
+    }
+    td {
+      padding-block: var(--s-3);
+      padding-inline-end: var(--s-3);
+      border-block-end: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+      color: var(--ink-2);
+    }
+    tr:last-child td { border-block-end: none; }
+    td:first-child { inline-size: 34%; }
+    td:last-child { inline-size: 20%; }
+    tr.group td {
+      font: 500 11px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      padding-block: var(--s-4) var(--s-1);
+    }
+    .life {
+      display: inline-block;
+      font: 500 11px var(--mono);
+      padding-inline: var(--s-2);
+      padding-block: 2px;
+      border-radius: var(--r-full);
+      background: var(--paper-3);
+      white-space: nowrap;
+    }
+
+    a { color: var(--ink); text-underline-offset: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    footer {
+      padding: var(--s-5);
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-3);
+      border-block-start: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    footer p { margin: 0; font-size: 13px; color: var(--ink-3); }
+
+    @media (max-width: 600px) {
+      main { padding-block: var(--s-6); padding-inline: var(--s-4); }
+      section, .summary { padding: var(--s-4); }
+
+      /* Smal skærm: tre kolonner klemmer nøglerne, så hver række stables */
+      thead { display: none; }
+      tr { display: block; border-block-end: 1px solid var(--rule); padding-block: var(--s-3); }
+      tr:last-child { border-block-end: none; }
+      tr.group { border-block-end: none; padding-block-end: 0; }
+      td, td:first-child, td:last-child {
+        display: block;
+        inline-size: auto;
+        border: none;
+        padding-block: var(--s-1);
+        padding-inline-end: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- "./" og ikke "/": på grup.dk/privatliv er det roden, og på
+         dida.dk/grupper/privatliv.html er det /grupper/ -->
+    <a href="./" class="brand-link">
+      <span class="brand-name">grup<span>.</span>dk</span>
+      <span class="brand-sub">/ privatliv</span>
+    </a>
+  </header>
+
+  <main>
+    <h1>Privatlivspolitik for grup.dk</h1>
+    <p class="updated">Sidst opdateret: 3. november 2026</p>
+
+    <div class="summary">
+      <ul>
+        <li>
+          <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Klasserne bliver i din browser.</strong> Elevnavne, kolonner, regler og grupper gemmes kun i browseren på din egen computer. De sendes ikke til grup.dk's server eller til andre (én undtagelse: flytningen fra dida.dk, se afsnit 2).</span>
+        </li>
+        <li>
+          <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Grupperne dannes på din computer.</strong> Beregningen kører i browseren med en indbygget gruppemotor i JavaScript. Ingen server regner med på dine data.</span>
+        </li>
+        <li>
+          <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Ingen login, ingen cookies, ingen sporing.</strong> Du opretter ingen konto, og der er ingen statistik- eller reklameværktøjer.</span>
+        </li>
+        <li>
+          <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Ingen tredjeparter.</strong> Din browser henter alt fra grup.dk selv, også skrifttyper og gruppemotoren.</span>
+        </li>
+        <li>
+          <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Kun læreren taster.</strong> Eleverne bruger ikke grup.dk. Det er læreren, der indtaster eller indsætter klasselisten.</span>
+        </li>
+      </ul>
+    </div>
+
+    <section>
+      <h2>1. Hvem står bag?</h2>
+      <p>
+        grup.dk er et gratis, ukommercielt værktøj til gruppedannelse i undervisningen. Det drives af
+        Kenneth Bozkurt Madsen (gymnasielærer) sammen med de øvrige værktøjer på dida.dk.
+        Spørgsmål kan sendes til <a class="contact-link" href="#">km&#8203;[snabel-a]&#8203;dida.dk</a>.
+      </p>
+      <p>
+        Fordi oplysningerne om dine elever kun ligger på din egen computer, fungerer grup.dk som et
+        Excel-ark eller et Word-dokument: <strong>du (eller din skole) er dataansvarlig</strong> for det,
+        du indtaster. grup.dk har ingen kopi af det og kan ikke se det.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Hvad sker der med elevernes oplysninger?</h2>
+      <p>
+        Når du indsætter en klasseliste fra Excel eller Lectio, åbner en fil eller skriver selv, læses
+        oplysningerne af browseren og gemmes i dens lokale lager (<code>localStorage</code>) for adressen
+        grup.dk. Det er et lager, der kun findes i den browser på den computer. Andre browsere, andre
+        computere og andre adresser (fx dida.dk) kan ikke læse det.
+      </p>
+      <p>
+        Når du danner grupper, kører beregningen i browseren. Også import af Excel-filer, eksport til Excel,
+        udskrift og backup-filer laves i browseren. Serveren bag grup.dk sender kun selve programmet ud:
+        siden, koden (også gruppemotoren) og skrifttyperne. Som enhver webserver ser den din IP-adresse, når den
+        sender filerne, men den modtager aldrig klasser eller elevnavne.
+      </p>
+      <p>
+        <strong>Én undtagelse: flytningen fra dida.dk.</strong> Programmet lå tidligere på dida.dk/grupper (og hed dengang Grupper).
+        Åbner du den gamle adresse, flytter siden dine gemte klasser med over til grup.dk. For at kunne
+        det sender den dem gennem serveren (i Tyskland, se afsnit 3): de ligger i serverens hukommelse,
+        aldrig i en database, og slettes, så snart grup.dk har hentet dem, eller senest
+        efter 5 minutter. Det sker kun, når du selv åbner dida.dk/grupper.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Hvor ligger serveren?</h2>
+      <p>
+        grup.dk kører på samme server som dida.dk: en virtuel server hos <strong>Hetzner Online GmbH</strong>
+        i deres datacenter i Falkenstein, Tyskland. Intet sendes ud af EU/EØS. Serveren gemmer ingen
+        oplysninger om dine klasser.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Tredjeparter</h2>
+      <p>
+        grup.dk indlæser <strong>intet</strong> fra andre værter: ingen Google Fonts, ingen CDN'er,
+        ingen analyse- eller reklameværktøjer. Skrifttyper, ikoner, biblioteker og gruppemotoren
+        serveres fra grup.dk selv. Derfor virker grup.dk også på en skole, der blokerer
+        eksterne CDN'er.
+      </p>
+      <p>
+        grup.dk har ingen AI-funktioner og sender intet til sprogmodeller.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Hvad gemmer browseren?</h2>
+      <p>
+        grup.dk sætter ingen cookies. Browserens eget lager bruges, fordi værktøjet ellers ikke kan huske
+        dine klasser (teknisk nødvendigt, jf. cookiebekendtgørelsens § 3, stk. 2). Her er alle nøglerne:
+      </p>
+      <p>
+        Indtil november 2026 hed nøglerne noget andet. grup.dk giver dem selv de nye navne, første gang
+        siden åbnes; indholdet er det samme, og intet sendes nogen steder hen.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Nøgle</th><th>Indhold</th><th>Levetid</th></tr>
+          </thead>
+          <tbody>
+            <tr class="group"><td colspan="3">Dine klasser (localStorage)</td></tr>
+            <tr>
+              <td><code>grupdk_classes</code></td>
+              <td>Klasserne: elevnavne, de kolonner du har importeret, regler, aftaler og undgåelser.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+            <tr>
+              <td><code>grupdk_groups_*</code><br><code>grupdk_topics_*</code></td>
+              <td>De seneste grupper og emner for hver klasse.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+            <tr>
+              <td><code>grupdk_history_*</code><br><code>grupdk_session_*</code></td>
+              <td>Gemte gruppedannelser (Historik). Højst 50 pr. klasse, og ingen ældre end 90 dage.</td>
+              <td><span class="life">Højst 90 dage</span></td>
+            </tr>
+
+            <tr class="group"><td colspan="3">Indstillinger (localStorage)</td></tr>
+            <tr>
+              <td><code>grupdk_last_class</code><br><code>grupdk_last_class_index</code></td>
+              <td>Hvilken klasse du sidst havde åben.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+            <tr>
+              <td><code>grupper-opskrift-guide-set</code><br><code>grupper-elevliste-guide-set</code><br><code>grupper-smal-skaerm-set</code></td>
+              <td>Om du har set introduktionerne og beskeden om små skærme.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+            <tr>
+              <td><code>grupdk_news_filter</code></td>
+              <td>Filteret i Nyheder.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+            <tr>
+              <td><code>dida_grupper_from_www</code><br><code>dida_grupper_www_settled</code></td>
+              <td>Klasser på vej fra dida.dk/grupper (slettes, når de er hentet ind), og om flytningen er afklaret.</td>
+              <td><span class="life">Til du sletter</span></td>
+            </tr>
+
+            <tr class="group"><td colspan="3">Kun mens fanen er åben (sessionStorage)</td></tr>
+            <tr>
+              <td><code>grupdk_nav_view</code><br><code>grupdk_class_tab</code><br><code>grupdk_storage_warned</code></td>
+              <td>Hvilken side og fane du står på, og om du allerede er advaret om, at lageret er ved at være fuldt.</td>
+              <td><span class="life">Til fanen lukkes</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. Sletning, backup og dine rettigheder</h2>
+      <ul class="content-list">
+        <li><strong>En enkelt klasse:</strong> slet den i klassevælgeren. Dens grupper, emner og historik slettes med.</li>
+        <li><strong>Alt på én gang:</strong> ryd browserdata (webstedsdata) for <code>grup.dk</code> i browserens indstillinger.</li>
+        <li><strong>Privat vindue:</strong> alt slettes, når vinduet lukkes. Nogle browsere gemmer slet ikke i et privat vindue, så brug det ikke til noget, du vil beholde.</li>
+        <li><strong>Gamle kopier på dida.dk:</strong> har du brugt programmet på dida.dk/grupper, kan klasserne stadig ligge i browserens lager for dida.dk. De forsvinder, når du rydder browserdata for <code>dida.dk</code>.</li>
+      </ul>
+      <p>
+        <strong>Backup:</strong> da grup.dk ikke har nogen kopi, kan du selv eksportere en backup-fil
+        (<code>grupdk_backup_&lt;dato&gt;.json</code>) under "Import &amp; backup". Filen er almindelig,
+        ulåst tekst med elevernes navne og alle kolonner. Behandl den som en klasseliste: gem den på skolens
+        drev, ikke på en fælles USB-nøgle.
+      </p>
+      <p>
+        Du har efter databeskyttelsesforordningen ret til indsigt, berigtigelse og sletning. Da grup.dk
+        ikke har oplysninger om dig eller dine elever, sker det i praksis i din egen browser som beskrevet
+        ovenfor. Har du spørgsmål, så skriv til <a class="contact-link" href="#">km&#8203;[snabel-a]&#8203;dida.dk</a>.
+        Du kan klage til <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">Datatilsynet</a>
+        (Carl Jacobsens Vej 35, 2500 Valby).
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>grup.dk — gratis gruppedannelse til undervisningen. Søsterværktøjerne bor på <a href="https://dida.dk/">dida.dk</a>, med <a href="https://dida.dk/privatliv.html">deres egen privatlivspolitik</a>.</p>
+  </footer>
+
+  <script>
+    // Byg mailto-links i JS, så spambots ikke finder adressen i HTML'en
+    const u = 'km', d = 'dida.dk';
+    document.querySelectorAll('.contact-link').forEach(el => {
+      el.href = 'mailto:' + u + '@' + d;
+      el.textContent = u + '@' + d;
+    });
+  </script>
+</body>
+</html>

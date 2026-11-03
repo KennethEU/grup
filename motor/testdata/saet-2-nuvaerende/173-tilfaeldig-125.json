@@ -1,0 +1,109 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r12",
+        "r19",
+        "r1",
+        "r5",
+        "r13"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r6",
+        "r11",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r20",
+        "r2",
+        "r4",
+        "r18",
+        "r21"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r9",
+        "r23",
+        "r10",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r16",
+        "r15",
+        "r24"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Niveau\". Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 3,
+      "column": "Niveau",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Niveau\" kan ikke gå helt op: 12 elever har værdien \"Middel\", og der er kun plads til 10 (højst 2 pr. gruppe). 2 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Middel\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 1.42
+  }
+}

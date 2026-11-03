@@ -1,0 +1,750 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r61",
+        "r257",
+        "r142"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r113",
+        "r107",
+        "r77"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r141",
+        "r159",
+        "r181"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r55",
+        "r88",
+        "r90"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r8",
+        "r31",
+        "r228"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r186",
+        "r30",
+        "r133"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r220",
+        "r49",
+        "r238"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r247",
+        "r34",
+        "r216"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r218",
+        "r138",
+        "r252"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r37",
+        "r78",
+        "r99"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r39",
+        "r236",
+        "r25"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r17",
+        "r92",
+        "r196"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r97",
+        "r143",
+        "r154"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r127",
+        "r205",
+        "r182"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r118",
+        "r28",
+        "r253"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r70",
+        "r254",
+        "r259"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r87",
+        "r16",
+        "r123"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r147",
+        "r264",
+        "r201"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r164",
+        "r170",
+        "r72"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r35",
+        "r229",
+        "r255",
+        "r183"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r94",
+        "r199",
+        "r103"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r172",
+        "r124",
+        "r148"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r241",
+        "r54",
+        "r6"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r68",
+        "r211",
+        "r261"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r13",
+        "r58",
+        "r237",
+        "r191"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r158",
+        "r18",
+        "r12"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r50",
+        "r173",
+        "r193"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r169",
+        "r251",
+        "r207"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r82",
+        "r209",
+        "r98"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r62",
+        "r239",
+        "r73"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r136",
+        "r117",
+        "r258"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r67",
+        "r26",
+        "r20"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r140",
+        "r60",
+        "r263"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r96",
+        "r225",
+        "r235"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r121",
+        "r115",
+        "r206"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r15",
+        "r79",
+        "r137"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r23",
+        "r64",
+        "r29"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r232",
+        "r7",
+        "r171"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r176",
+        "r155",
+        "r135"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r197",
+        "r146",
+        "r162"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r101",
+        "r231",
+        "r144"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r189",
+        "r174",
+        "r100"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r42",
+        "r1",
+        "r188",
+        "r75"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r184",
+        "r180",
+        "r202"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r243",
+        "r9",
+        "r190"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r71",
+        "r246",
+        "r45"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r114",
+        "r27",
+        "r166"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r168",
+        "r222",
+        "r134"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r5",
+        "r194",
+        "r250"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r245",
+        "r112",
+        "r10"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r126",
+        "r76",
+        "r52"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r47",
+        "r85",
+        "r150"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r69",
+        "r167",
+        "r128"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r93",
+        "r109",
+        "r53"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r3",
+        "r204",
+        "r40",
+        "r116"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r210",
+        "r57"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r51",
+        "r132",
+        "r120"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r156",
+        "r208",
+        "r221"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r33",
+        "r32",
+        "r240"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r80",
+        "r149",
+        "r46"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r38",
+        "r157",
+        "r21"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r249",
+        "r227",
+        "r110"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r129",
+        "r104",
+        "r177"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r86",
+        "r44",
+        "r19"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r179",
+        "r106",
+        "r24"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r217",
+        "r59",
+        "r165"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r212",
+        "r145",
+        "r153"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r56",
+        "r219",
+        "r11"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r130",
+        "r223",
+        "r160"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r256",
+        "r215",
+        "r192"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r84",
+        "r36",
+        "r14"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r234",
+        "r214",
+        "r41"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r178",
+        "r63",
+        "r242"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r65",
+        "r66",
+        "r195"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r43",
+        "r74",
+        "r198"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r91",
+        "r139",
+        "r102"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r105",
+        "r200",
+        "r187"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r262",
+        "r111",
+        "r260"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r161",
+        "r163",
+        "r185"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r233",
+        "r81",
+        "r152",
+        "r22"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r244",
+        "r4",
+        "r89"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r175",
+        "r151",
+        "r125"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r108",
+        "r213",
+        "r131"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r122",
+        "r95",
+        "r119"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "impossible",
+      "code": null,
+      "rule": 5,
+      "column": "Sprog",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Klyng på \"Sprog\": Værdier med kun 1 elev kan aldrig samles: Spansk"
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Snit",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Snit\". Ensartede (\"Karakter\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "1 elev har en værdi i \"Karakter\", der ikke er et tal (\"Fritaget\") — den elev regnes som om feltet var tomt, og \"Ensartede\" måler ikke på vedkommende."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": false
+    },
+    {
+      "rule": 3,
+      "met": false
+    },
+    {
+      "rule": 4,
+      "met": false
+    },
+    {
+      "rule": 5,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 2,
+    "seconds": 16.65
+  }
+}

@@ -1,0 +1,136 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r1",
+   "Snit": "10.1"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "8,8"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "10,6"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "10,8"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "8.7"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "2,4"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": ""
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "1,4"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "11,0"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "11,5"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "9,3"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "2.5"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "4,4"
+  },
+  {
+   "_rowId": "r20",
+   "Snit": "8,2"
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "10,0"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "2,4"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "9,2"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "7,2"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r5",
+    "r3"
+   ]
+  ],
+  "avoid": [
+   [
+    "r17",
+    "r5",
+    "r11",
+    "r16"
+   ],
+   [
+    "r16",
+    "r13",
+    "r1"
+   ],
+   [
+    "r9",
+    "r20"
+   ]
+  ]
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 1,
+   "name": "Gruppe 1",
+   "members": [
+    "r2",
+    "r19",
+    "r15",
+    "r14"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "count",
+  "count": 2
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 112389
+}

@@ -1,0 +1,94 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r2",
+        "r19",
+        "r10"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r4",
+        "r11"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r3",
+        "r21",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r16",
+        "r23",
+        "r17"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r6",
+        "r14",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r13",
+        "r20",
+        "r9"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r5",
+        "r7"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r1",
+        "r8",
+        "r12"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": 0,
+      "column": "Køn",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Fordel på \"Køn\" kan ikke gå helt op: 16 elever har værdien \"Pige\", og der er kun plads til 8 (højst 1 pr. gruppe). 8 elever kan derfor ikke undgå at sidde i en gruppe, hvor \"Pige\" er i overtal. Det er klassens sammensætning, ikke din opsætning — grupperne er så jævne, som de kan blive."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.09
+  }
+}

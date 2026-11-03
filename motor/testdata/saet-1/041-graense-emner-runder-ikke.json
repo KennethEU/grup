@@ -1,0 +1,140 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "b1",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b2",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b3",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b4",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b5",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b6",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b7",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b8",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b9",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b10",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b11",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b12",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b13",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b14",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b15",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b16",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b17",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b18",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b19",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b20",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b21",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b22",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b23",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b24",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "b25",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "b26",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [
+  "Klima",
+  "EU",
+  "Medier",
+  "Migration"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 1
+}

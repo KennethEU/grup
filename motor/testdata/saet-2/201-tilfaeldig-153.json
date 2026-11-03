@@ -1,0 +1,473 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r33",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r99",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r25",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r73",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r96",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r52",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r86",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r28",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "-3"
+  },
+  {
+   "_rowId": "r81",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r58",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r107",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r63",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r108",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r84",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r51",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r46",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r39",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r102",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r91",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r92",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r64",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r74",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r22",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r56",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r38",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r42",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r29",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r113",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r80",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r116",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r94",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r75",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r112",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r100",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r27",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r114",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r115",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r101",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r54",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r55",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r45",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r44",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r78",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r59",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r97",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r98",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r30",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r104",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r60",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r40",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r43",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r105",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r50",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r35",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r57",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r106",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r31",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r79",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r76",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r47",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r67",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r111",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r77",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r62",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r72",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r36",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r49",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r90",
+   "Karakter": "Fritaget"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r41",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r53",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r103",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r32",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "00"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r37",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r88",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r68",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r87",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r95",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r109",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r82",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r69",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r66",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r110",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r89",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r26",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r71",
+   "Karakter": "00"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r83",
+    "r34"
+   ],
+   "topic": "EU"
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "minus"
+ },
+ "topics": [
+  "Klima",
+  "EU"
+ ],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 935656
+}

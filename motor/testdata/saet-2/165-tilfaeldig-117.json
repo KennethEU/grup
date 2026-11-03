@@ -1,0 +1,277 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r10",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "00",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "-3",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "10",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "7",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "Fritaget",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "00",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 1",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "10",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "10",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 2",
+   "Karakter": "4",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "4",
+   "Interesse": "Musik",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 4",
+   "Karakter": "10",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.c",
+   "Tidligere": "Gruppe 6",
+   "Karakter": "7",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "02",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 7",
+   "Karakter": "7",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.b",
+   "Tidligere": "Gruppe 3",
+   "Karakter": "12",
+   "Interesse": "Dans",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "2.a",
+   "Tidligere": "Gruppe 5",
+   "Karakter": "12",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Tidligere"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [
+   [
+    "r14",
+    "r19",
+    "r16"
+   ]
+  ],
+  "avoid": [
+   [
+    "r26",
+    "r21"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 7
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 655336
+}

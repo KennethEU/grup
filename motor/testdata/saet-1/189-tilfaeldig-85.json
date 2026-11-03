@@ -1,0 +1,135 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r22",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r14",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r12",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r1",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r11",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r2",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r3",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r24",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r6",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "r4",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r7",
+   "Karakter": ""
+  },
+  {
+   "_rowId": "r10",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r23",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r19",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r16",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r5",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r8",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r9",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "r17",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "r20",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r15",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "r21",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r18",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "r13",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "balance",
+   "column": "Karakter"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12",
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 627415
+}

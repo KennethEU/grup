@@ -1,0 +1,212 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r3",
+   "Snit": "9.0",
+   "Karakter": "",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "1,7",
+   "Karakter": "12",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r14",
+   "Snit": "5,9",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "10,5",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "11,8",
+   "Karakter": "10",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "6,5",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Interesse": "Gaming"
+  },
+  {
+   "_rowId": "r4",
+   "Snit": "6.5",
+   "Karakter": "4",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "4,6",
+   "Karakter": "10",
+   "Sprog": "Spansk",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "10,7",
+   "Karakter": "02",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "6,1",
+   "Karakter": "",
+   "Sprog": "Tysk",
+   "Niveau": "",
+   "Interesse": "skak"
+  },
+  {
+   "_rowId": "r10",
+   "Snit": "6,3",
+   "Karakter": "4",
+   "Sprog": "Fransk",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "4.3",
+   "Karakter": "02",
+   "Sprog": "Tysk",
+   "Niveau": "Lav ",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "6,1",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "11,6",
+   "Karakter": "10",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Interesse": "Skak "
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "9,2",
+   "Karakter": "12",
+   "Sprog": "Tysk",
+   "Niveau": "",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "11,3",
+   "Karakter": "10",
+   "Sprog": "Spansk",
+   "Niveau": "Middel ",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "4,6",
+   "Karakter": "7",
+   "Sprog": "Fransk",
+   "Niveau": "Høj",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "9,4",
+   "Karakter": "",
+   "Sprog": "Tysk",
+   "Niveau": "Middel",
+   "Interesse": "Kunst"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "6,4",
+   "Karakter": "7",
+   "Sprog": "Tysk",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Karakter"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Sprog",
+   "values": [
+    "Spansk"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 9813
+}

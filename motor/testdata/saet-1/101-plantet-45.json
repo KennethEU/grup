@@ -1,0 +1,128 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p162-7",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-9",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-6",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-8",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Lav",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-4",
+   "Køn": "Pige",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-5",
+   "Køn": "Dreng",
+   "Interesse": "Film",
+   "Udfordring": "Nej",
+   "Niveau": "Høj",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "p162-2",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Udfordring": "Ja",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p162-3",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "p162-1",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Udfordring": "Nej",
+   "Niveau": "Middel",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 915965
+}

@@ -1,0 +1,100 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r23",
+        "r20",
+        "r21",
+        "r11",
+        "r19",
+        "r7",
+        "r5",
+        "r13",
+        "r2",
+        "r16",
+        "r4",
+        "r15"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r18",
+        "r10",
+        "r9",
+        "r3",
+        "r1",
+        "r22"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r8",
+        "r6"
+      ],
+      "topic": null
+    },
+    {
+      "members": [
+        "r12",
+        "r17"
+      ],
+      "topic": null
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Grupperne bygges efter Balancér på \"Karakter\". Balancér (\"Niveau\") og Balancér (\"Snit\") og Balancér (\"Snit\") bliver også forsøgt, men er ikke sikret — Balancér vejer tungest."
+    },
+    {
+      "type": "note",
+      "code": null,
+      "rule": null,
+      "column": null,
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Flere grupper end ønsket: 4 i stedet for 3."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": true
+    },
+    {
+      "rule": 1,
+      "met": true
+    },
+    {
+      "rule": 2,
+      "met": true
+    },
+    {
+      "rule": 3,
+      "met": true
+    },
+    {
+      "rule": 4,
+      "met": true
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 1,
+    "seconds": 0.16
+  }
+}

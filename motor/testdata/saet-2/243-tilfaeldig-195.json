@@ -1,0 +1,168 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r7",
+   "Niveau": "Høj",
+   "Snit": "11,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Niveau": "Høj",
+   "Snit": "7,2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r10",
+   "Niveau": "Middel",
+   "Snit": "7.8",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r8",
+   "Niveau": "Middel",
+   "Snit": "9,1",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Niveau": "Høj",
+   "Snit": "11.2",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r13",
+   "Niveau": "Middel",
+   "Snit": "3,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Niveau": "Lav",
+   "Snit": "4,9",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Niveau": "Middel",
+   "Snit": "9,2",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Niveau": "Lav",
+   "Snit": "8,3",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Niveau": " MIDDEL",
+   "Snit": "8,3",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r14",
+   "Niveau": "Middel",
+   "Snit": "7,6",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Niveau": "Lav",
+   "Snit": "4,5",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r11",
+   "Niveau": "Middel",
+   "Snit": "8,0",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r6",
+   "Niveau": "",
+   "Snit": "10.4",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Niveau": "Høj",
+   "Snit": "8.3",
+   "Sprog": "Spansk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Niveau",
+   "values": [
+    "Høj"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Snit"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Niveau",
+   "values": [
+    "Høj",
+    "Lav"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Sprog"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r9",
+    "r7"
+   ],
+   [
+    "r12",
+    "r13",
+    "r8",
+    "r3"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 5,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 844694
+}

@@ -1,0 +1,2359 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r254",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r145",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r91",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r273",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r29",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r101",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r182",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r130",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r242",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r266",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r181",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng ",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r60",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r251",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r61",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r128",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r44",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r139",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r259",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r229",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r53",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r133",
+   "Hold": "",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r14",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r172",
+   "Hold": "2.a",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r243",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r148",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r51",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r212",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r257",
+   "Hold": "2.a",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r195",
+   "Hold": "2.b",
+   "Karakter": "Fritaget",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r160",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Køn": " DRENG",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r27",
+   "Hold": "",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r62",
+   "Hold": "2.b",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r105",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r121",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r144",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r86",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r68",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r166",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r4",
+   "Hold": "2.a",
+   "Karakter": "Fritaget",
+   "Køn": "Andet",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r122",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r30",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r225",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r77",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r228",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r262",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r197",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r87",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r8",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r213",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r26",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige ",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r3",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r206",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r272",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r10",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r138",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r196",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r280",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r112",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r33",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r22",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r110",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r146",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r191",
+   "Hold": "2.b",
+   "Karakter": "Fritaget",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r187",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r6",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r34",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r165",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r49",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r48",
+   "Hold": "2.b",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r56",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r63",
+   "Hold": "2.b",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r64",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r283",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r155",
+   "Hold": "2.a",
+   "Karakter": "-3",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r235",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r216",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r265",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r164",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r150",
+   "Hold": "2.b",
+   "Karakter": "Fritaget",
+   "Køn": "pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r5",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r115",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r102",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r176",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r135",
+   "Hold": "2.a",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Klatring ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r131",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r93",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r183",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r47",
+   "Hold": "",
+   "Karakter": "Fritaget",
+   "Køn": "Dreng",
+   "Interesse": "Musik ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r248",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Andet",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r42",
+   "Hold": "2.a",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r167",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r284",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r16",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r252",
+   "Hold": "2.a",
+   "Karakter": "Fritaget",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r157",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r230",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r100",
+   "Hold": "2.b",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Gaming ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r69",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r210",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r52",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r141",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r98",
+   "Hold": "2.a",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Interesse": " GAMING",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r275",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r36",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r55",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r142",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r24",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r19",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r54",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r199",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r178",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r258",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r140",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r203",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r104",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r249",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r201",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r143",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r236",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r277",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r247",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring ",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r162",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r92",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r186",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r90",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r192",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r188",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Andet",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r223",
+   "Hold": "2.b",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r241",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r271",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": " DRENG",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r255",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r156",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r218",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r194",
+   "Hold": "2.a",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r256",
+   "Hold": "2.b",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r111",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r208",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r173",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r240",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r174",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r171",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r161",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r89",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r276",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r264",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r114",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Andet",
+   "Interesse": "musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r18",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r120",
+   "Hold": "2.b",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r137",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r106",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r41",
+   "Hold": "2.b",
+   "Karakter": "00",
+   "Køn": "dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r109",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r129",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r134",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r83",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r244",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r35",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r23",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r231",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r108",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r285",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r75",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r215",
+   "Hold": "",
+   "Karakter": "-3",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r159",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r246",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r190",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r261",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r9",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r99",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r124",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r214",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r71",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r234",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r17",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r88",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng ",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r50",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r184",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r37",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r132",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r2",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r222",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r263",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r84",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r211",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r198",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r118",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r78",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r136",
+   "Hold": "2.b",
+   "Karakter": "",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r81",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r66",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Dreng ",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r116",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r238",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r193",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r169",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r11",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r207",
+   "Hold": "2.a",
+   "Karakter": "00",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r28",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r67",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r103",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r38",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r97",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r260",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r80",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r45",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r158",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r32",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring ",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r278",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r185",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r219",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r149",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r39",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r152",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r15",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r147",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r94",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r76",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r269",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r239",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r200",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r154",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r180",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r125",
+   "Hold": "2.a",
+   "Karakter": "Fritaget",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r46",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r281",
+   "Hold": "2.b",
+   "Karakter": "-3",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r43",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r170",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r31",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r250",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Andet",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r151",
+   "Hold": "2.b",
+   "Karakter": "00",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r179",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r72",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r123",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r227",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r59",
+   "Hold": "2.b",
+   "Karakter": "-3",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r286",
+   "Hold": "2.a",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r226",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r73",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r119",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r270",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r282",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r25",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r70",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r7",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "andet",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r126",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r245",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r202",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r204",
+   "Hold": "",
+   "Karakter": "7",
+   "Køn": "Pige ",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r253",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r113",
+   "Hold": "2.b",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r20",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r153",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r163",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r79",
+   "Hold": "2.b",
+   "Karakter": "02",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r224",
+   "Hold": "",
+   "Karakter": "",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r237",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r1",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Spansk"
+  },
+  {
+   "_rowId": "r85",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Dreng",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r168",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r107",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r221",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r40",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r205",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r209",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r58",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r268",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r177",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r96",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r274",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": " MUSIK",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r13",
+   "Hold": "2.a",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r232",
+   "Hold": "2.b",
+   "Karakter": "7",
+   "Køn": "pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r217",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r65",
+   "Hold": "",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r95",
+   "Hold": "",
+   "Karakter": "10",
+   "Køn": "Dreng",
+   "Interesse": "klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r12",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r175",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r233",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r189",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r220",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Andet",
+   "Interesse": "gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r74",
+   "Hold": "2.b",
+   "Karakter": "10",
+   "Køn": "Pige",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r21",
+   "Hold": "2.a",
+   "Karakter": "12",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r279",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Dreng",
+   "Interesse": "Musik",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r82",
+   "Hold": "2.a",
+   "Karakter": "02",
+   "Køn": "Dreng",
+   "Interesse": "Gaming",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r127",
+   "Hold": "2.a",
+   "Karakter": "4",
+   "Køn": "Pige",
+   "Interesse": "Klatring",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r57",
+   "Hold": "2.a",
+   "Karakter": "7",
+   "Køn": "Pige",
+   "Interesse": "Gaming",
+   "Sprog": "Fransk"
+  },
+  {
+   "_rowId": "r117",
+   "Hold": "2.b",
+   "Karakter": "4",
+   "Køn": "Dreng",
+   "Interesse": "Klatring",
+   "Sprog": "Tysk"
+  },
+  {
+   "_rowId": "r267",
+   "Hold": "2.a",
+   "Karakter": "Fritaget",
+   "Køn": "Andet",
+   "Interesse": "Musik",
+   "Sprog": "Tysk"
+  }
+ ],
+ "rules": [
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "separate",
+   "column": "Køn",
+   "values": [
+    "Andet"
+   ]
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  },
+  {
+   "type": "strict_separate",
+   "column": "Karakter",
+   "values": [
+    "10"
+   ]
+  },
+  {
+   "type": "distribute",
+   "column": "Sprog"
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "r253",
+    "r236",
+    "r192"
+   ],
+   [
+    "r123",
+    "r133",
+    "r188",
+    "r212"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "count",
+  "count": 23
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 30,
+  "maxAttempts": 20,
+  "minAttempts": 2
+ },
+ "seed": 857411
+}

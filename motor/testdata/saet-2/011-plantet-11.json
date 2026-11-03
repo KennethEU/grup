@@ -1,0 +1,106 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p468-3",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p468-12",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p468-7",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p468-18",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p468-8",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p468-2",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p468-14",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p468-10",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p468-9",
+   "Karakter": "10"
+  },
+  {
+   "_rowId": "p468-1",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p468-17",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p468-5",
+   "Karakter": "02"
+  },
+  {
+   "_rowId": "p468-6",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p468-4",
+   "Karakter": "12"
+  },
+  {
+   "_rowId": "p468-16",
+   "Karakter": "4"
+  },
+  {
+   "_rowId": "p468-13",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p468-11",
+   "Karakter": "7"
+  },
+  {
+   "_rowId": "p468-15",
+   "Karakter": "12"
+  }
+ ],
+ "rules": [
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  }
+ ],
+ "columnOrders": {},
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 684474
+}

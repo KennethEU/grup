@@ -1,0 +1,127 @@
+{
+  "contractVersion": 2,
+  "status": "ok",
+  "groups": [
+    {
+      "members": [
+        "r20",
+        "r16"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r26",
+        "r7"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r18",
+        "r4",
+        "r14"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r22",
+        "r21"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r6",
+        "r27"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r15",
+        "r10"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r25",
+        "r23"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r5",
+        "r13"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r9",
+        "r11"
+      ],
+      "topic": "EU"
+    },
+    {
+      "members": [
+        "r17",
+        "r8"
+      ],
+      "topic": "Medier"
+    },
+    {
+      "members": [
+        "r1",
+        "r3"
+      ],
+      "topic": "Migration"
+    },
+    {
+      "members": [
+        "r24",
+        "r19"
+      ],
+      "topic": "Klima"
+    },
+    {
+      "members": [
+        "r2",
+        "r12"
+      ],
+      "topic": "EU"
+    }
+  ],
+  "lockedTopics": {},
+  "messages": [
+    {
+      "type": "conflict",
+      "code": null,
+      "rule": null,
+      "column": "Karakter",
+      "pool": null,
+      "poolValues": null,
+      "students": [],
+      "values": [],
+      "text": "Modstridende regler: Balancér (gør gennemsnittet ens) og Ensartede (gør medlemmerne ens) på \"Karakter\" arbejder mod hinanden."
+    }
+  ],
+  "rules": [
+    {
+      "rule": 0,
+      "met": false
+    },
+    {
+      "rule": 1,
+      "met": false
+    }
+  ],
+  "playback": null,
+  "stats": {
+    "attempts": 20,
+    "seconds": 0.38
+  }
+}

@@ -1,0 +1,380 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "r40",
+   "Snit": "7,7",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r45",
+   "Snit": "5,8",
+   "Niveau": "Høj",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r53",
+   "Snit": "4,9",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r33",
+   "Snit": "10,8",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r26",
+   "Snit": "8,0",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r58",
+   "Snit": "7,0",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r29",
+   "Snit": "11,0",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r24",
+   "Snit": "4,3",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r49",
+   "Snit": "2,1",
+   "Niveau": "høj",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r8",
+   "Snit": "5,9",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r12",
+   "Snit": "5.9",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r36",
+   "Snit": "8,9",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r11",
+   "Snit": "9,2",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r21",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r25",
+   "Snit": "7.2",
+   "Niveau": "Høj",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r39",
+   "Snit": "10,6",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r37",
+   "Snit": "9,4",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r55",
+   "Snit": "1,5",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r47",
+   "Snit": "11,4",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r2",
+   "Snit": "9,7",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r44",
+   "Snit": "5,3",
+   "Niveau": "Middel",
+   "Interesse": "Klatring "
+  },
+  {
+   "_rowId": "r56",
+   "Snit": "5,6",
+   "Niveau": "Høj",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r13",
+   "Snit": "3,1",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r23",
+   "Snit": "2,2",
+   "Niveau": "Lav",
+   "Interesse": "Klatring "
+  },
+  {
+   "_rowId": "r17",
+   "Snit": "1,1",
+   "Niveau": "Lav",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r30",
+   "Snit": "11.4",
+   "Niveau": "Lav",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r48",
+   "Snit": "1,0",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r51",
+   "Snit": "5,3",
+   "Niveau": "Middel",
+   "Interesse": "skak"
+  },
+  {
+   "_rowId": "r18",
+   "Snit": "9.8",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r19",
+   "Snit": "5.3",
+   "Niveau": "Høj",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r28",
+   "Snit": "3,3",
+   "Niveau": "Middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r16",
+   "Snit": "11,8",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r6",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r57",
+   "Snit": "5,3",
+   "Niveau": "Middel",
+   "Interesse": ""
+  },
+  {
+   "_rowId": "r50",
+   "Snit": "6,1",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r15",
+   "Snit": "8,3",
+   "Niveau": "Lav",
+   "Interesse": "Film "
+  },
+  {
+   "_rowId": "r34",
+   "Snit": "10,8",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r42",
+   "Snit": "11,0",
+   "Niveau": "Lav",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r1",
+   "Snit": "7,4",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r9",
+   "Snit": "4.0",
+   "Niveau": "Høj",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r60",
+   "Snit": "7,9",
+   "Niveau": "Lav",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r5",
+   "Snit": "1,8",
+   "Niveau": "Lav",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r35",
+   "Snit": "10,3",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r52",
+   "Snit": "8,1",
+   "Niveau": "Lav",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r32",
+   "Snit": "1,8",
+   "Niveau": "Middel",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r7",
+   "Snit": "11,1",
+   "Niveau": "Lav",
+   "Interesse": "Film"
+  },
+  {
+   "_rowId": "r46",
+   "Snit": "5,3",
+   "Niveau": "middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r41",
+   "Snit": "",
+   "Niveau": "lav",
+   "Interesse": "musik"
+  },
+  {
+   "_rowId": "r3",
+   "Snit": "7,8",
+   "Niveau": "Lav",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r22",
+   "Snit": "5,2",
+   "Niveau": "middel",
+   "Interesse": "Klatring"
+  },
+  {
+   "_rowId": "r38",
+   "Snit": "",
+   "Niveau": "Middel",
+   "Interesse": "Musik"
+  },
+  {
+   "_rowId": "r54",
+   "Snit": "7,8",
+   "Niveau": "Middel",
+   "Interesse": "Skak"
+  },
+  {
+   "_rowId": "r59",
+   "Snit": "8,8",
+   "Niveau": "Middel",
+   "Interesse": "film"
+  }
+ ],
+ "rules": [
+  {
+   "type": "minimizediff",
+   "column": "Snit"
+  },
+  {
+   "type": "balance",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Niveau"
+  },
+  {
+   "type": "cluster",
+   "column": "Interesse"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": []
+ },
+ "lockedGroups": [
+  {
+   "id": "L1",
+   "number": 3,
+   "name": "Gruppe 3",
+   "members": [
+    "r20",
+    "r14",
+    "r10",
+    "r31"
+   ],
+   "topic": null
+  }
+ ],
+ "size": {
+  "mode": "perGroup",
+  "target": 2,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 115584
+}

@@ -1,0 +1,227 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p448-12",
+   "Udfordring": "Ja",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-6",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-10",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-18",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-5",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-19",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-11",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-1",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-15",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-7",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-24",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-14",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-16",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-2",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-4",
+   "Udfordring": "Ja",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-20",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-13",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-23",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-17",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Høj",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-21",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-9",
+   "Udfordring": "Nej",
+   "Interesse": "Kunst",
+   "Niveau": "Middel",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-22",
+   "Udfordring": "Ja",
+   "Interesse": "Kunst",
+   "Niveau": "Lav",
+   "Køn": "Dreng"
+  },
+  {
+   "_rowId": "p448-8",
+   "Udfordring": "Nej",
+   "Interesse": "Fodbold",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  },
+  {
+   "_rowId": "p448-3",
+   "Udfordring": "Nej",
+   "Interesse": "Musik",
+   "Niveau": "Lav",
+   "Køn": "Pige"
+  }
+ ],
+ "rules": [
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [],
+  "avoid": [
+   [
+    "p448-12",
+    "p448-21",
+    "p448-16",
+    "p448-17"
+   ]
+  ]
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 4,
+  "adjust": "plus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 574763
+}

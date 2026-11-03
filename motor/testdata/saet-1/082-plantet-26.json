@@ -1,0 +1,338 @@
+{
+ "contractVersion": 2,
+ "view": "home",
+ "students": [
+  {
+   "_rowId": "p567-12",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-11",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-29",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-7",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-10",
+   "Interesse": "Fodbold",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-20",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-27",
+   "Interesse": "Kunst",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-19",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-26",
+   "Interesse": "Kunst",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-22",
+   "Interesse": "Dans",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-23",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-9",
+   "Interesse": "Dans",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-15",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-28",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-4",
+   "Interesse": "Kunst",
+   "Karakter": "4",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-18",
+   "Interesse": "Dans",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-17",
+   "Interesse": "Dans",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-14",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-16",
+   "Interesse": "Dans",
+   "Karakter": "02",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-13",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-2",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-6",
+   "Interesse": "Kunst",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-8",
+   "Interesse": "Dans",
+   "Karakter": "10",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Høj"
+  },
+  {
+   "_rowId": "p567-1",
+   "Interesse": "Fodbold",
+   "Karakter": "12",
+   "Udfordring": "Ja",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-24",
+   "Interesse": "Dans",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-25",
+   "Interesse": "Kunst",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Pige",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-3",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-5",
+   "Interesse": "Kunst",
+   "Karakter": "12",
+   "Udfordring": "Nej",
+   "Hold": "Hold 1",
+   "Køn": "Pige",
+   "Niveau": "Middel"
+  },
+  {
+   "_rowId": "p567-30",
+   "Interesse": "Fodbold",
+   "Karakter": "7",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng",
+   "Niveau": "Lav"
+  },
+  {
+   "_rowId": "p567-21",
+   "Interesse": "Fodbold",
+   "Karakter": "4",
+   "Udfordring": "Nej",
+   "Hold": "Hold 2",
+   "Køn": "Dreng",
+   "Niveau": "Høj"
+  }
+ ],
+ "rules": [
+  {
+   "type": "group_sort",
+   "column": "Interesse"
+  },
+  {
+   "type": "separate",
+   "column": "Karakter",
+   "values": [
+    "12"
+   ]
+  },
+  {
+   "type": "strict_separate",
+   "column": "Udfordring",
+   "values": [
+    "Ja"
+   ]
+  },
+  {
+   "type": "aggregate",
+   "column": "Hold"
+  },
+  {
+   "type": "distribute",
+   "column": "Køn"
+  },
+  {
+   "type": "minimizediff",
+   "column": "Niveau"
+  }
+ ],
+ "columnOrders": {
+  "Niveau": [
+   "Lav",
+   "Middel",
+   "Høj"
+  ]
+ },
+ "agreements": {
+  "together": [
+   [
+    "p567-28",
+    "p567-29"
+   ]
+  ],
+  "avoid": []
+ },
+ "lockedGroups": [],
+ "size": {
+  "mode": "perGroup",
+  "target": 3,
+  "adjust": "minus"
+ },
+ "topics": [],
+ "matrix": null,
+ "budget": {
+  "maxSeconds": 10,
+  "maxAttempts": 20,
+  "minAttempts": 3
+ },
+ "seed": 759266
+}
