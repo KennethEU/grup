@@ -373,7 +373,7 @@ import RuleMark from './beta/RuleMark.vue';
 
             <div class="info-box info-box--blue" style="margin-top: 24px; margin-bottom: 16px;">
                 <strong class="info-box__title">Robust mod fravær</strong>
-                <p class="muted-text" style="margin: 8px 0 0;">Hvis 3 elever pludselig mangler: klik på den runde knap foran deres navne i Elevliste, så der står <strong>"VÆK"</strong>, og klik <strong>"{{ UI_NAMES.generate }}"</strong> igen. Systemet justerer gruppestørrelser og emne-tildelinger, så matrix-fordelingen forbliver optimal.</p>
+                <p class="muted-text" style="margin: 8px 0 0;">Hvis 3 elever pludselig mangler: klik på den runde knap foran deres navne i Elevliste, så ringen er tom, og klik <strong>"{{ UI_NAMES.generate }}"</strong> igen. Systemet justerer gruppestørrelser og emne-tildelinger, så matrix-fordelingen forbliver optimal.</p>
             </div>
 
             <strong class="step-label step-label--teal">Styr retningen: én elev ekstra eller én elev mindre</strong>

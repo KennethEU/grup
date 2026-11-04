@@ -80,8 +80,8 @@ test('beskeder ryddes ved fanebskifte (undtagen fejl) og står nederst til højr
 test('Elevlisten: fremmødet står foran navnet, og overskriften tæller de mødte', async ({ page }) => {
     test.setTimeout(120000);
     await createClass(page);
-    // Alle er mødt i en ny klasse: "· N AF N MØDT" over første datakolonne
-    await expect(page.locator('th .th-present-count')).toHaveText(/^· (\d+) AF \1 MØDT$/);
+    // Alle er mødt i en ny klasse; antallet står i knappens hjælpetekst
+    await expect(page.locator('th.th-attendance input')).toHaveAttribute('title', /^Alle \d+ er mødt\./);
     await expect(page.getByRole('checkbox', { name: 'Alle til stede' })).toBeVisible();
 });
 

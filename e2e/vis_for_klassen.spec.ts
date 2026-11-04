@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 // Klasse → Grupper → dan grupper (vinduet lukker af sig selv) → åbn arket
-async function groupsAndShow(page: Page, name: string) {
+async function groupsAndShow(page: Page, name: string, { keyboard = false } = {}) {
     test.setTimeout(120000);
     await createClass(page, name);
     await page.waitForFunction(() => (window as any).appDebug?.pyBridge?.isReady === true, null, { timeout: 120000 });
@@ -24,7 +24,14 @@ async function groupsAndShow(page: Page, name: string) {
     await page.getByRole('button', { name: /Dan grupper/ }).last().click();
     await expect(page.locator('.group-card').first()).toBeVisible({ timeout: 60000 });
     await expect(page.locator('dialog[open]')).toHaveCount(0);
-    await page.getByRole('button', { name: /Vis for klassen/ }).click();
+    // Med tastaturet: Safari giver ikke en knap fokus ved et klik, så der er
+    // intet at give fokus tilbage til, når arket lukkes
+    if (keyboard) {
+        await page.getByRole('button', { name: /Vis for klassen/ }).focus();
+        await page.keyboard.press('Enter');
+    } else {
+        await page.getByRole('button', { name: /Vis for klassen/ }).click();
+    }
     await expect(page.locator('.show')).toBeVisible();
 }
 
@@ -114,4 +121,25 @@ test('Siden bagved kan ikke nås med tastaturet, og Escape giver fokus tilbage',
     await page.keyboard.press('Escape');
     await expect(page.locator('.show')).toHaveCount(0);
     await expect(showBtn).toBeFocused();
+});
+
+// Med skærmlæser: siden bagved er inert (læsemarkøren går uden om
+// fokusfælden), navnelisterne er lister i Safari (role="list"), nummeret
+// læses ikke foran "Gruppe 1", og knappen hedder "Luk" med Escape som genvej.
+// Fokus skal stadig tilbage på "Vis for klassen" — inert skal væk først.
+test('Arket med skærmlæser: siden bagved er inert, og fokus kommer tilbage', async ({ page }) => {
+    await groupsAndShow(page, 'Skaermlaeser Vis', { keyboard: true });
+    const sheet = page.getByRole('dialog', { name: 'Grupperne vist for klassen' });
+    const close = sheet.getByRole('button', { name: 'Luk', exact: true });
+    await expect(close).toBeFocused();
+    await expect(close).toHaveAttribute('aria-keyshortcuts', 'Escape');
+    await expect(page.locator('#app')).toHaveAttribute('inert', '');
+    await expect(sheet.locator('ul.show__names').first()).toHaveAttribute('role', 'list');
+    await expect(sheet.getByRole('heading', { level: 2 }).first()).toHaveAccessibleName(/^Gruppe 1/);
+    await expect(sheet.locator('header, footer')).toHaveCount(0);
+
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.show')).toHaveCount(0);
+    await expect(page.locator('#app')).not.toHaveAttribute('inert', /.*/);
+    await expect(page.getByRole('button', { name: /Vis for klassen/ })).toBeFocused();
 });

@@ -96,6 +96,14 @@ function onPopState() {
 // Mens arket vises, skjules appens beskeder (NotificationManager). De er til
 // læreren — fx "Fordel på Køn kan ikke gå helt op …" — og må ikke stå oven på
 // det, klassen ser på smartboardet. Se `html.class-showing` i BetaStyles.vue.
+//
+// Siden bagved gøres `inert`, mens arket står. Fokusfælden i useModalFocus
+// holder kun Tab inde; en skærmlæsers læsemarkør (VoiceOver: VO+pil, et
+// swipe på en iPad) går uden om Tab og kunne vandre ned i lærerens knapper
+// bagved — de er skjulte, men ikke væk. aria-modal skulle sige det samme,
+// men browserne følger den ikke ens. Arket er teleporteret til <body>, så det
+// ligger ved siden af #app, ikke inde i den.
+const appRoot = () => document.getElementById('app');
 onMounted(async () => {
     // Fokus på "Luk" med det samme — FØR useModalFocus' egen onMounted (den
     // er registreret nedenfor og kører derfor efter denne) flytter fokus ind
@@ -103,6 +111,8 @@ onMounted(async () => {
     // rullede browseren før arket ned til knappen, og overskriften var skåret
     // af foroven, før nogen havde rørt noget.
     closeBtn.value?.focus({ preventScroll: true });
+    // Først når fokus er flyttet ud: et inert element kan ikke have fokus
+    appRoot()?.setAttribute('inert', '');
     window.addEventListener('resize', fitToScreen);
     history.pushState({ ...(history.state || {}), classShow: true }, '');
     ownHistoryEntry = true;
@@ -114,6 +124,10 @@ onMounted(async () => {
     await fitToScreen();
 });
 onUnmounted(() => {
+    // FØR useModalFocus' egen onUnmounted (registreret nedenfor, kører derfor
+    // efter denne) sætter fokus tilbage på "Vis for klassen" — en knap i en
+    // inert side kan ikke få fokus, og markøren endte så på <body>.
+    appRoot()?.removeAttribute('inert');
     window.removeEventListener('resize', fitToScreen);
     window.removeEventListener('popstate', onPopState);
     // Lukket med "Luk" eller Escape: skridtet ligger der stadig — fjern det
@@ -134,7 +148,9 @@ useModalFocus(sheet, { onEscape: () => emit('close') });
 <template>
     <Teleport to="body">
         <div ref="sheet" class="show" role="dialog" aria-modal="true" aria-label="Grupperne vist for klassen">
-            <header class="show__head">
+            <!-- div, ikke header/footer: inde i et vindue blev de til et ekstra
+                 "banner"- og "sidefod"-landemærke for skærmlæseren -->
+            <div class="show__head">
                 <div>
                     <div class="show__kicker">{{ className }}{{ isMatrix ? ' · matrixgrupper' : '' }}</div>
                     <h1 class="show__title">Find din gruppe</h1>
@@ -142,24 +158,30 @@ useModalFocus(sheet, { onEscape: () => emit('close') });
                 <div class="show__meta">
                     {{ groups.length }} {{ groups.length === 1 ? 'gruppe' : 'grupper' }}<template v-if="perGroup"> · {{ perGroup }}</template>
                 </div>
-            </header>
+            </div>
 
             <div class="show__grid" :style="{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }">
                 <section v-for="g in groups" :key="g.key" class="show__group">
                     <h2 class="show__group-title">
-                        <span class="show__no">{{ g.no }}</span>
+                        <!-- Titlen siger allerede "Gruppe 1"; skærmlæseren skal
+                             ikke læse "nul et" foran -->
+                        <span class="show__no" aria-hidden="true">{{ g.no }}</span>
                         <span>{{ g.title }}</span>
                     </h2>
-                    <ul class="show__names">
+                    <!-- role="list": Safari (VoiceOver) regner en liste med
+                         list-style: none for ikke at være en liste (som udskriften) -->
+                    <ul class="show__names" role="list">
                         <li v-for="(n, i) in g.names" :key="i">{{ n }}</li>
                     </ul>
                 </section>
             </div>
 
-            <footer class="show__foot">
+            <div class="show__foot">
                 <span class="show__brand">grup<span>.</span>dk</span>
-                <button ref="closeBtn" type="button" class="show__close" @click="emit('close')">Luk · Esc</button>
-            </footer>
+                <!-- Knappen hedder "Luk" for skærmlæseren; genvejen siges af
+                     aria-keyshortcuts i stedet for at blive læst som tekst -->
+                <button ref="closeBtn" type="button" class="show__close" aria-keyshortcuts="Escape" @click="emit('close')">Luk<span aria-hidden="true"> · Esc</span></button>
+            </div>
         </div>
     </Teleport>
 </template>

@@ -176,7 +176,9 @@ export function useReorderKeys(list, containerRef) {
         // enden, er den pil slået fra, og den modsatte tager over.
         if (!used) return;
         nextTick(() => {
-            const row = containerRef.value?.querySelectorAll('.order-row')[target];
+            // :not(.pinned-row): en låst række (VIS-kolonnen øverst i Flyt) er
+            // ikke en del af listen, der flyttes i, og ville skubbe tællingen.
+            const row = containerRef.value?.querySelectorAll('.order-row:not(.pinned-row)')[target];
             if (!row) return;
             if (used === 'handle') { row.querySelector('.drag-handle')?.focus(); return; }
             const arrows = row.querySelectorAll('.step');

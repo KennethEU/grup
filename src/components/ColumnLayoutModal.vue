@@ -11,7 +11,7 @@
 // `columns`: den rækkefølge der overlever en genindlæsning, er nøglerne i
 // elevrækkerne. Se funktionens egen forklaring.
 import { ref, computed, onMounted } from 'vue';
-import { GripVertical, ChevronUp, ChevronDown, EyeOff } from 'lucide-vue-next';
+import { GripVertical, ChevronUp, ChevronDown, EyeOff, Lock } from 'lucide-vue-next';
 import { useModalFocus } from '../composables/useModalFocus.js';
 import { useReorderDrag, useReorderKeys } from '../composables/useReorderDrag.js';
 import { reactiveState as state } from '../js/modules/reactiveState.js';
@@ -24,6 +24,11 @@ const emit = defineEmits(['close']);
 // Arbejdskopien. Tabellen ændrer sig først, når læreren trykker Gem —
 // samme valg som "Ranger værdier", så et fortrudt træk ikke efterlader
 // elevlisten i en halv tilstand.
+//
+// VIS-kolonnen (det, der står på gruppekortene) er IKKE med i `order`: den
+// står altid først i elevlisten og bliver stående, når listen ruller
+// (StudentTable, Kenneths valg 4/11 2026). Her står den låst øverst, så
+// vinduet viser det samme som tabellen — og intet kan flyttes op over den.
 const order = ref([]);
 const overlayRef = ref(null);
 
@@ -31,11 +36,20 @@ const hasStudents = computed(() => (state.currentClass?.data || []).length > 0);
 const hiddenSet = computed(() => new Set(state.currentClass?.hiddenColumns || []));
 const displayColumn = computed(() =>
     state.displayColumn || state.currentClass?.columns?.[0] || '');
+// Den låste kolonne — kun hvis den faktisk er en af elevlistens kolonner
+const pinned = computed(() =>
+    movableColumns(state.currentClass?.columns || []).includes(displayColumn.value)
+        ? displayColumn.value : '');
+// Hele rækkefølgen, som den bliver gemt: den låste først, så resten
+const fullOrder = computed(() => pinned.value ? [pinned.value, ...order.value] : order.value);
 
+// Står VIS-kolonnen ikke først i klassens egen rækkefølge (fx valgt under VIS
+// efter en flytning), er der noget at gemme med det samme: så kommer den også
+// først i Excel-eksporten, ligesom i tabellen.
 const unchanged = computed(() => {
     const current = movableColumns(state.currentClass?.columns || []);
-    return order.value.length === current.length
-        && order.value.every((c, i) => c === current[i]);
+    return fullOrder.value.length === current.length
+        && fullOrder.value.every((c, i) => c === current[i]);
 });
 
 // Træk-og-slip virker hverken på touch eller tastatur, så pilene er den
@@ -56,18 +70,18 @@ function save() {
     // skal bygge noget selv.
     pushUndo();
 
-    const res = reorderColumns(state.currentClass, order.value);
+    const res = reorderColumns(state.currentClass, fullOrder.value);
     if (!res.ok) {
         window.notifyError?.(res.error);
         return;
     }
     autoSave();
-    window.notifySuccess?.(`Kolonnerne står nu i rækkefølgen: ${order.value.join(', ')}.`);
+    window.notifySuccess?.(`Kolonnerne står nu i rækkefølgen: ${fullOrder.value.join(', ')}.`);
     emit('close');
 }
 
 onMounted(() => {
-    order.value = movableColumns(state.currentClass?.columns || []);
+    order.value = movableColumns(state.currentClass?.columns || []).filter(col => col !== pinned.value);
 });
 
 const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('close') });
@@ -81,9 +95,9 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 
       <h2 id="dlg-flyt-kolonner">Flyt kolonner</h2>
       <p class="subtitle">
-        Bestem kolonnernes rækkefølge i elevlisten — fx så
-        <strong>Navn</strong> står først, uanset hvordan regnearket var sat op.
-        Rækkefølgen følger med, når du eksporterer til Excel.
+        Bestem kolonnernes rækkefølge i elevlisten. Kolonnen, der er valgt under
+        <strong>Vis</strong>, står altid først og bliver stående, når listen
+        ruller. Rækkefølgen følger med, når du eksporterer til Excel.
       </p>
 
       <p v-if="!hasStudents" class="note">
@@ -91,7 +105,7 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
         elevrækkerne, så der skal være mindst én elev, før den kan flyttes.
       </p>
 
-      <p v-else-if="order.length < 2" class="note">
+      <p v-else-if="fullOrder.length < 2" class="note">
         Der er kun én kolonne i elevlisten. Der er ikke noget at flytte rundt på.
       </p>
 
@@ -101,6 +115,19 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
              på plads, når useReorderDrag flytter elementet undervejs. Uden
              den hopper de bare. -->
         <TransitionGroup tag="ul" name="reorder" class="order-list">
+          <!-- VIS-kolonnen: låst øverst, uden håndtag og pile. Byttes den
+               under Vis, står den nye her næste gang vinduet åbnes. -->
+          <li v-if="pinned" key="__pinned" class="order-row pinned-row">
+            <span class="pin-icon" role="img" aria-label="Låst øverst"
+                  title="Står altid først, fordi den er valgt under Vis">
+              <Lock :size="13" />
+            </span>
+            <span class="col-name">{{ pinned }}</span>
+            <span class="badge badge-display" title="Denne kolonne er den, elevernes navne læses fra på gruppekortene. Den står altid først i elevlisten">Vises på kortene</span>
+            <span v-if="hiddenSet.has(pinned)" class="badge" title="Indholdet er skjult">
+              <EyeOff :size="10" aria-hidden="true" /> Skjult
+            </span>
+          </li>
           <li v-for="(col, i) in order" :key="col"
               class="order-row"
               :class="{ dragging: draggedIndex === i }"
@@ -120,7 +147,6 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
             <!-- Mærkaterne er OPLYSNING, ikke en regel: skjulte kolonner kan
                  flyttes som alle andre. En automatisk "skjulte nederst"-regel
                  ville rykke tingene tilbage, lige når man havde flyttet dem. -->
-            <span v-if="col === displayColumn" class="badge badge-display" title="Denne kolonne er den, elevernes navne læses fra på gruppekortene">Vises på kortene</span>
             <span v-if="hiddenSet.has(col)" class="badge" title="Indholdet er skjult">
               <EyeOff :size="10" aria-hidden="true" /> Skjult
             </span>
@@ -144,7 +170,7 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 
       <div class="actions">
         <button class="btn secondary" @click="$emit('close')">Annuller</button>
-        <button class="btn primary" :disabled="order.length < 2 || unchanged" @click="save">
+        <button class="btn primary" :disabled="fullOrder.length < 2 || unchanged" @click="save">
           Gem rækkefølge
         </button>
       </div>
@@ -189,4 +215,14 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 }
 
 .step:hover:not(:disabled) { background: var(--bg-surface-hover); color: var(--text-main); }
+
+/* Den låste VIS-kolonne: samme række som de andre, men den kan ikke flyttes */
+.pinned-row:hover { border-color: var(--border-subtle); }
+.pin-icon {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
 </style>

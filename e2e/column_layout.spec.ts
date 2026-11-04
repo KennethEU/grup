@@ -19,8 +19,8 @@ import { createClass, gotoAppReady } from './helpers';
  * skærer sorteringspilen af, hvis der er sorteret på kolonnen.
  */
 async function columnHeaders(page) {
-    // Første kolonne har også "· N AF M MØDT" (fremmødet); det er ikke en del
-    // af kolonnens navn, så kun overskriftens egen tekst læses.
+    // Kun overskriftens egen tekst (ikke tekst i elementer inden i den), så
+    // et mærke i overskriften aldrig bliver læst som en del af navnet.
     return (await page.locator('th.col-header').evaluateAll(ths => ths.map(th =>
         [...th.childNodes].filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(''))))
         .map(t => t.trim().replace(/[^A-ZÆØÅ0-9 ]+$/i, '').trim());
@@ -36,24 +36,25 @@ test('en kolonne kan flyttes — og rækkefølgen overlever en genindlæsning', 
     expect(await columnHeaders(page)).toEqual(['NAVN', 'KØN', 'KARAKTER']);
 
     await openMoveMenu(page);
-    // Flyt "Karakter" fra plads 3 til plads 1.
+    // Flyt "Karakter" fra plads 3 til plads 2. Plads 1 er VIS-kolonnen
+    // (Navn): den står låst øverst, så Karakter kan ikke komme op over den.
     await page.getByRole('button', { name: 'Flyt Karakter op' }).click();
-    await page.getByRole('button', { name: 'Flyt Karakter op' }).click();
+    await expect(page.getByRole('button', { name: 'Flyt Karakter op' })).toBeDisabled();
     await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
 
     await expect(page.locator('.modal-overlay')).toHaveCount(0);
-    expect(await columnHeaders(page)).toEqual(['KARAKTER', 'NAVN', 'KØN']);
+    expect(await columnHeaders(page)).toEqual(['NAVN', 'KARAKTER', 'KØN']);
 
     // Dét her er hele prøven. `cls.columns` alene ville se rigtig ud indtil nu.
     await page.reload();
     await gotoAppReady(page);
     await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
-    expect(await columnHeaders(page)).toEqual(['KARAKTER', 'NAVN', 'KØN']);
+    expect(await columnHeaders(page)).toEqual(['NAVN', 'KARAKTER', 'KØN']);
 
     // Og værdierne fulgte med — nøgler blev flyttet, ikke data.
     const firstRow = page.locator('tbody tr').first();
-    await expect(firstRow.locator('td.cell-data').nth(0)).toHaveText('10');
-    await expect(firstRow.locator('td.cell-data').nth(1)).toHaveText('Anna');
+    await expect(firstRow.locator('td.cell-data').nth(0)).toHaveText('Anna');
+    await expect(firstRow.locator('td.cell-data').nth(1)).toHaveText('10');
 });
 
 // Et højreklik folder kolonnen sammen. Valget lå i `hiddenColumns` på klassen
@@ -108,14 +109,16 @@ test('vinduet kan betjenes uden mus, og "Gem" er slået fra indtil noget er flyt
     await expect(saveButton).toBeDisabled();
 
     // Pil ned på selve grebet — træk-og-slip findes ikke på touch.
-    // exact: "Flyt Navn" er også begyndelsen på "Flyt Navn op"/"… ned".
-    const dragHandle = page.getByRole('button', { name: 'Flyt Navn', exact: true });
+    // exact: "Flyt Køn" er også begyndelsen på "Flyt Køn op"/"… ned".
+    // (Navn har intet greb: VIS-kolonnen står låst øverst.)
+    await expect(page.getByRole('button', { name: 'Flyt Navn', exact: true })).toHaveCount(0);
+    const dragHandle = page.getByRole('button', { name: 'Flyt Køn', exact: true });
     await dragHandle.focus();
     await page.keyboard.press('ArrowDown');
 
     await expect(saveButton).toBeEnabled();
     await saveButton.click();
-    expect(await columnHeaders(page)).toEqual(['KØN', 'NAVN', 'KARAKTER']);
+    expect(await columnHeaders(page)).toEqual(['NAVN', 'KARAKTER', 'KØN']);
 });
 
 test('klasserne står alfabetisk i menuen — ikke i den orden de blev oprettet', async ({ page }) => {
@@ -143,9 +146,8 @@ test('rækkefølgen følger med ud i Excel-filen', async ({ page }) => {
 
     await openMoveMenu(page);
     await page.getByRole('button', { name: 'Flyt Karakter op' }).click();
-    await page.getByRole('button', { name: 'Flyt Karakter op' }).click();
     await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
-    expect(await columnHeaders(page)).toEqual(['KARAKTER', 'NAVN', 'KØN']);
+    expect(await columnHeaders(page)).toEqual(['NAVN', 'KARAKTER', 'KØN']);
 
     // Fang zip-blobben i stedet for at downloade den — samme greb som i
     // output_surfaces.spec.ts.
@@ -188,7 +190,35 @@ test('rækkefølgen følger med ud i Excel-filen', async ({ page }) => {
 
     // Arket bygges af Object.keys(row) pr. række, så nøglerækkefølgen ER
     // kolonnerækkefølgen i Excel. "Til stede" lægges til bagest.
-    expect(headerTexts.slice(0, 3)).toEqual(['Karakter', 'Navn', 'Køn']);
+    expect(headerTexts.slice(0, 3)).toEqual(['Navn', 'Karakter', 'Køn']);
+});
+
+// VIS-kolonnen står altid først i elevlisten (og bliver stående, når listen
+// ruller — se elevliste_bredde.spec.ts). Vælger læreren en anden under Vis,
+// står DEN først med det samme, og i Flyt står den låst øverst. Gemmer man,
+// kommer den også først i klassens egen rækkefølge, så Excel passer.
+test('VIS-kolonnen står låst øverst i Flyt og først i elevlisten', async ({ page }) => {
+    await createClass(page, 'Vis Låst E2E');
+    await page.locator('#id-column-select').selectOption('Karakter');
+    expect(await columnHeaders(page)).toEqual(['KARAKTER', 'NAVN', 'KØN']);
+
+    await openMoveMenu(page);
+    const dialog = page.locator('.modal-overlay');
+    await expect(dialog.locator('.pinned-row')).toContainText('Karakter');
+    await expect(dialog.getByRole('img', { name: 'Låst øverst' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Flyt Karakter', exact: true })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Flyt Navn op' })).toBeDisabled();
+    // Klassens rækkefølge er stadig Navn, Køn, Karakter — der er noget at gemme
+    const saveButton = page.getByRole('button', { name: 'Gem rækkefølge' });
+    await expect(saveButton).toBeEnabled();
+    await saveButton.click();
+
+    await page.reload();
+    await gotoAppReady(page);
+    await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+    // Efter genindlæsning står Karakter først, også i klassens egen rækkefølge
+    await page.locator('#id-column-select').selectOption('Navn');
+    expect(await columnHeaders(page)).toEqual(['NAVN', 'KARAKTER', 'KØN']);
 });
 
 test('Ctrl+Z fortryder ikke noget bag et åbent vindue', async ({ page }) => {
@@ -222,7 +252,10 @@ test('Ctrl+Z fortryder ikke noget bag et åbent vindue', async ({ page }) => {
 });
 
 test('en kolonne kan flyttes MERE end én gang med tastaturet', async ({ page }) => {
-    await createClass(page, 'Haandtag fokus E2E');
+    // Fire kolonner: Navn står låst øverst (VIS-kolonnen), så der skal være
+    // tre flytbare, for at Karakter kan flyttes to pladser.
+    await createClass(page, 'Haandtag fokus E2E',
+        'Navn\tKøn\tHold\tKarakter\nAnna\tK\t1\t10\nBob\tM\t2\t7\nClara\tK\t1\t12\nDavid\tM\t2\t4\n');
     await openMoveMenu(page);
 
     // Rækken bliver FLYTTET i DOM'en, og et element der sættes ind på ny,
@@ -235,7 +268,8 @@ test('en kolonne kan flyttes MERE end én gang med tastaturet', async ({ page })
     await page.keyboard.press('ArrowUp');
     await page.keyboard.press('ArrowUp');
 
-    await expect(page.locator('.order-row').first()).toContainText('Karakter');
+    // Øverst under den låste Navn-række
+    await expect(page.locator('.order-row:not(.pinned-row)').first()).toContainText('Karakter');
     await expect(handle).toBeFocused();
 
     // Og pilene skal STADIG flytte fokus, når det er DEM der bliver slået fra.

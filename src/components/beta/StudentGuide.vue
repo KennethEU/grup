@@ -11,8 +11,6 @@ const $ = (sel) => document.querySelector(sel);
 const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || '');
 const undoKey = isMac ? '⌘ Z' : 'Ctrl Z';
 
-const headerNamed = (text) => Array.from(document.querySelectorAll('#tab-students thead th'))
-    .find(th => (th.textContent || '').toLowerCase().includes(text));
 
 // Trin, hvis knap ikke findes, springes over af guiden selv.
 const STEPS = [
@@ -28,8 +26,9 @@ const STEPS = [
     },
     {
         title: 'Mødt',
-        text: 'Klik på den runde knap foran navnet, hvis en elev er væk i dag. Eleven bliver på listen, men kommer ikke med i grupperne. Overskriften viser, hvor mange der er mødt.',
-        find: () => ({ el: headerNamed('mødt') }),
+        text: 'Klik på den runde knap foran navnet, hvis en elev er væk i dag. Eleven bliver på listen, men kommer ikke med i grupperne. Knappen øverst melder alle mødt eller væk.',
+        // Knappen i overskriften — den har ingen tekst at finde den på
+        find: () => ({ el: $('#tab-students thead th.th-attendance') }),
     },
     {
         title: 'Elever og kolonner',

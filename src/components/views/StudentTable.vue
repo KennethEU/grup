@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
 import { pushUndo, undo, redo, undoShortcut, clearUndoHistory, pruneSelection } from '../../js/modules/state.js';
 import { renameColumn } from '../../js/modules/columnActions.js';
@@ -25,6 +25,74 @@ const props = defineProps({
 // Selection changes are handled via reactiveState.selectedForAction (reactive Set)
 
 const debouncedAutoSave = debounce(autoSave, 1000);
+
+// Mange kolonner: tabellen ruller vandret, men tre kolonner står fast til
+// venstre — Aftale, Mødt og Vis-kolonnen (navnet) — og slet-krydset står fast
+// til højre (elevliste.css), så man altid kan se, hvis række man er i.
+// Kolonne 2 og 3 skal vide, hvor brede kolonnerne før dem er; det måles her
+// og gives videre som --sticky-2 og --sticky-3. Stregerne ved de faste
+// kolonner kommer kun, når noget faktisk er rullet ind under dem:
+// .cut-left (rullet til højre) og .cut-right (mere at rulle til).
+const tableContainer = ref(null);
+const cutLeft = ref(false);
+const cutRight = ref(false);
+const stickyOffsets = ref({ '--sticky-2': '0px', '--sticky-3': '0px' });
+function updateScrollEdges() {
+    const el = tableContainer.value;
+    if (!el) return;
+    cutLeft.value = el.scrollLeft > 0;
+    cutRight.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
+}
+function updateStickyOffsets() {
+    const heads = tableContainer.value?.querySelector('thead tr')?.children;
+    if (!heads || heads.length < 3) return;
+    // Rundet NED: bredderne er brøkdele af en pixel, og en sprække på under
+    // 1 px mellem to faste kolonner lod det rullende indhold skinne igennem
+    // (prikker i Safari). Et overlap på under 1 px ses ikke.
+    const first = Math.floor(heads[0].getBoundingClientRect().width);
+    const second = Math.floor(heads[0].getBoundingClientRect().width + heads[1].getBoundingClientRect().width) - first;
+    const next = { '--sticky-2': `${first}px`, '--sticky-3': `${first + second}px` };
+    // Kun ved en rigtig ændring: ellers udløser hver gentegning en ny
+    // gentegning (onUpdated → ny værdi → onUpdated …).
+    if (next['--sticky-2'] !== stickyOffsets.value['--sticky-2']
+        || next['--sticky-3'] !== stickyOffsets.value['--sticky-3']) {
+        stickyOffsets.value = next;
+    }
+}
+function onLayoutChange() {
+    updateStickyOffsets();
+    updateScrollEdges();
+}
+let resizeObserver = null;
+let observedTable = null;
+// Tabellen findes ikke, mens klassen er tom, og kommer først senere — så den
+// skal (gen)observeres, hver gang komponenten er tegnet om.
+function observeTable() {
+    const table = tableContainer.value?.querySelector('table') || null;
+    if (!resizeObserver || table === observedTable) return;
+    if (observedTable) resizeObserver.unobserve(observedTable);
+    if (table) resizeObserver.observe(table);
+    observedTable = table;
+}
+onMounted(() => {
+    const el = tableContainer.value;
+    if (!el) return;
+    el.addEventListener('scroll', updateScrollEdges, { passive: true });
+    // Både beholderen (vinduets bredde) og tabellen (kolonner tilføjet,
+    // omdøbt, skjult) kan ændre bredderne, og om der er noget at rulle til.
+    resizeObserver = new ResizeObserver(onLayoutChange);
+    resizeObserver.observe(el);
+    observeTable();
+    onLayoutChange();
+});
+onUpdated(() => {
+    observeTable();
+    updateStickyOffsets();
+});
+onBeforeUnmount(() => {
+    tableContainer.value?.removeEventListener('scroll', updateScrollEdges);
+    resizeObserver?.disconnect();
+});
 
 // BEMÆRK: her lå elevtabellens EGEN beforeunload → autoSave. Den dækkede kun
 // denne ene fane, og kun de ændringer der allerede var skrevet ind i klassen
@@ -189,6 +257,18 @@ function rowKey(row) {
 const labelColumn = computed(() =>
     reactiveState.displayColumn || reactiveState.currentClass?.columns?.[0] || '');
 
+// Kolonnerne, som tabellen viser dem: Vis-kolonnen (det, der står på
+// gruppekortene) først, så den står lige efter Mødt-knappen og bliver
+// stående til venstre, når tabellen ruller (Kenneths valg 4/11 2026). Resten
+// står i den rækkefølge, læreren har valgt med Flyt. Kun visningen: klassens
+// egen rækkefølge (og Excel-eksporten) er urørt.
+const orderedColumns = computed(() => {
+    const cols = visibleColumns.value;
+    const pinned = labelColumn.value;
+    if (!pinned || !cols.includes(pinned) || cols[0] === pinned) return cols;
+    return [pinned, ...cols.filter(col => col !== pinned)];
+});
+
 function studentLabel(row) {
     const label = labelColumn.value ? row?.[labelColumn.value] : '';
     return (label === undefined || label === null || String(label).trim() === '')
@@ -225,7 +305,9 @@ const absentCount = computed(() =>
     (reactiveState.currentClass?.data || []).filter(row => row._excluded).length);
 const allPresent = computed(() => absentCount.value === 0);
 
-// Til overskriften: "· 7 AF 8 MØDT".
+// Til hjælpeteksten på knappen i overskriften: "15 af 17 er mødt …". Ikke
+// som tekst i overskriften: den gjorde Vis-kolonnen så bred, at næste kolonne
+// stod langt væk (Kenneth 4/11 2026), og Grupper viser antallet over opskriften.
 const studentCount = computed(() => reactiveState.currentClass?.data?.length || 0);
 const presentCount = computed(() => studentCount.value - absentCount.value);
 
@@ -382,7 +464,8 @@ function confirmDeleteRow() {
 </script>
 
 <template>
-    <div id="table-container" class="table-container">
+    <div id="table-container" ref="tableContainer" class="table-container"
+         :class="{ 'cut-left': cutLeft, 'cut-right': cutRight }" :style="stickyOffsets">
         <div v-if="!reactiveState.currentClass || !reactiveState.currentClass.data || reactiveState.currentClass.data.length === 0"
              class="empty-state-box">
             <div class="empty-icon"><ClipboardList :size="40" style="opacity: 0.5;" /></div>
@@ -410,18 +493,18 @@ function confirmDeleteRow() {
                          afkrydsningsfelt, bare tegnet rundt (elevliste.css), så
                          tastatur, skærmlæser og den halve markering virker som før.
                          Feltet reagerer selv (@change), så det også virker med
-                         Tab + Mellemrum. Hvor mange der er mødt, står i
-                         overskriften ved siden af (første datakolonne). -->
+                         Tab + Mellemrum. Hvor mange der er mødt, står i knappens
+                         hjælpetekst (title). -->
                     <!-- 18px = knappens bredde. Aldrig en %-bredde her: den tager
                          den overskydende plads fra slet-kolonnen (elevliste.css). -->
                     <th class="th-attendance" style="width:18px;">
                         <input type="checkbox" class="presence-toggle"
                                :checked="allPresent" :indeterminate.prop="someAbsent"
                                aria-label="Alle til stede"
-                               :title="allPresent ? 'Alle er mødt. Klik for at melde alle væk' : 'Klik for at melde alle mødt'"
+                               :title="allPresent ? `Alle ${studentCount} er mødt. Klik for at melde alle væk` : `${presentCount} af ${studentCount} er mødt. Klik for at melde alle mødt`"
                                @change="toggleAllAttendance">
                     </th>
-                    <th v-for="(col, colIndex) in visibleColumns"
+                    <th v-for="(col, colIndex) in orderedColumns"
                         :key="col"
                         class="col-header"
                         :class="{
@@ -436,9 +519,6 @@ function confirmDeleteRow() {
                         @contextmenu="onHeaderContextMenu($event, col)"
                         @dblclick="onHeaderDblClick($event, col)">
                         {{ col.toUpperCase() }}{{ sortIndicator(col) }}
-                        <!-- Antallet hører til knapperne lige til venstre, så det står
-                             over første datakolonne (normalt NAVN). -->
-                        <span v-if="colIndex === 0" class="th-present-count">· {{ presentCount }} AF {{ studentCount }} MØDT</span>
                     </th>
                     <!-- Slet-kolonnen tager den overskydende bredde (elevliste.css) -->
                     <th class="th-delete"></th>
@@ -459,8 +539,9 @@ function confirmDeleteRow() {
                                :checked="isSelected(row)"
                                @change="toggleSelection(row)">
                     </td>
-                    <!-- Fremmøde: den runde knap foran navnet. Er eleven væk, står
-                         "VÆK" efter navnet (elevliste.css, ::after på cellen). -->
+                    <!-- Fremmøde: den runde knap foran navnet. Er eleven væk, er
+                         ringen tom og rækken grå (intet "VÆK"-mærke: Kenneth 4/11 2026,
+                         ringen og den grå tekst siger det). -->
                     <td class="cell-checkbox cell-attendance">
                         <input type="checkbox" class="presence-toggle"
                                :aria-label="`${studentLabel(row)} er til stede`"
@@ -469,7 +550,7 @@ function confirmDeleteRow() {
                                @change="toggleAttendance(row)">
                     </td>
                     <!-- Cellerne -->
-                    <td v-for="(col, colIndex) in visibleColumns"
+                    <td v-for="(col, colIndex) in orderedColumns"
                         :key="col"
                         :contenteditable="!isMasked(col)"
                         class="cell-data"

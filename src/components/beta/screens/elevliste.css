@@ -135,6 +135,46 @@ html.beta .table-container th.col-hidden { background: var(--paper); }
    %-bredde andre steder (fx "width:1%" på fremmødet) tager pladsen fra den. */
 html.beta .table-container th.th-delete { inline-size: 100%; }
 html.beta .table-container td.cell-delete { text-align: end; }
+/* Mange kolonner: slet-krydset står fast i højre kant, mens resten ruller
+   under det, så man ikke skal rulle for at finde det. Cellen skal derfor
+   være uigennemsigtig i rækkens egen farve. Stregen til venstre kommer kun,
+   når der er mere at rulle til (.cut-right, sat af StudentTable). */
+html.beta .table-container th.th-delete,
+html.beta .table-container td.cell-delete {
+    position: sticky;
+    inset-inline-end: 0;
+}
+/* "tbody tr" for at vinde over fraværs-rækkens gennemsigtige baggrund */
+html.beta .table-container tbody tr td.cell-delete { background: var(--paper-2); }
+/* Valgt række: SAMME gennemsigtige blå som de andre celler, lagt oven på
+   papirfarven. Ikke color-mix(…, var(--paper-2)): i oklch går blandingen af
+   blå og det varme papir over gulgrøn, og de faste celler blev olivenfarvede. */
+html.beta .table-container tbody tr.selected td.cell-delete,
+html.beta .table-container tbody tr.selected:hover td.cell-delete {
+    background: linear-gradient(var(--selected-row), var(--selected-row)) var(--paper-2);
+}
+html.beta .table-container.cut-right :is(th.th-delete, td.cell-delete) {
+    box-shadow: inset 1px 0 0 var(--rule-2);
+}
+/* Og til venstre står Aftale, Mødt og Vis-kolonnen fast (4/11 2026), så man
+   kan se, hvis række man er i, når tabellen er rullet. Kolonne 2 og 3 står
+   lige efter dem før sig: bredderne måler StudentTable (--sticky-2/-3).
+   Overskrifterne til venstre ligger over de andre overskrifter (z-index 2),
+   cellerne er uigennemsigtige i rækkens farve, og stregen efter Vis-kolonnen
+   kommer kun, når noget er rullet ind under den (.cut-left). */
+html.beta .table-container :is(th, td):nth-child(-n+3) { position: sticky; }
+html.beta .table-container :is(th, td):nth-child(1) { inset-inline-start: 0; }
+html.beta .table-container :is(th, td):nth-child(2) { inset-inline-start: var(--sticky-2, 0px); }
+html.beta .table-container :is(th, td):nth-child(3) { inset-inline-start: var(--sticky-3, 0px); }
+html.beta .table-container th:nth-child(-n+3) { z-index: 2; }
+html.beta .table-container tbody tr td:nth-child(-n+3) { background: var(--paper-2); }
+html.beta .table-container tbody tr.selected td:nth-child(-n+3),
+html.beta .table-container tbody tr.selected:hover td:nth-child(-n+3) {
+    background: linear-gradient(var(--selected-row), var(--selected-row)) var(--paper-2);
+}
+html.beta .table-container.cut-left :is(th, td):nth-child(3) {
+    box-shadow: inset -1px 0 0 var(--rule-2);
+}
 html.beta .table-container td {
     padding-block: 0;
     padding-inline: 12px;
@@ -149,9 +189,10 @@ html.beta .table-container tbody tr:hover td { background: var(--paper-2); }
    Valgt skal kunne skelnes tydeligt fra hover: en blå tone og en 2 px blå
    streg i venstre kant, mens hover kun er en tak mørkere papir. Står efter
    hover-reglen, så en valgt række bliver blå også under musen. */
+html.beta .table-container { --selected-row: color-mix(in oklch, var(--primary) 9%, transparent); }
 html.beta .table-container tbody tr.selected td,
 html.beta .table-container tbody tr.selected:hover td {
-    background: color-mix(in oklch, var(--primary) 9%, transparent);
+    background: var(--selected-row);
 }
 html.beta .table-container tbody tr.selected td:first-child {
     box-shadow: inset 2px 0 0 var(--primary);
@@ -231,25 +272,6 @@ html.beta .table-container input.presence-toggle:focus-visible {
 /* Windows' høj kontrast tegner ikke baggrundsbilleder: brug browserens eget felt */
 @media (forced-colors: active) {
     html.beta .table-container input.presence-toggle { appearance: auto; }
-}
-/* Væk: et lille mærke efter navnet. Som ::after på cellen, ikke som tekst i
-   den: cellen kan man skrive i, og textContent (det, der gemmes ved blur)
-   tager ikke ::after med. */
-html.beta .table-container tr.row-excluded td.cell-attendance + td.cell-data::after {
-    content: "VÆK";
-    margin-inline-start: 8px;
-    padding: 1px 5px;
-    border: 1px solid var(--rule-2);
-    border-radius: 4px;
-    font: 500 10px var(--mono);
-    letter-spacing: 0.12em;
-    color: var(--ink-3);
-}
-/* "· 7 AF 8 MØDT" i overskriften over navnene */
-html.beta .table-container .th-present-count {
-    margin-inline-start: 6px;
-    letter-spacing: 0.08em;
-    color: var(--ink-3);
 }
 
 /* Hele skærmen (se .table-container): ingen bundluft under elevlisten, så
