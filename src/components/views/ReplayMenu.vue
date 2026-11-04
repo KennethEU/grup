@@ -15,10 +15,10 @@
 // ikke et modalvindue: man skal kunne SE gruppekortene, mens den kører.
 //
 // Selve logikken ligger i replay.js. Herinde er der kun knapper.
-import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
 import { useBarPopover } from '../../composables/useBarPopover.js';
-import { isModalOpen } from '../../composables/useModalFocus.js';
+import { useBarMenuDismiss } from '../../composables/useBarMenuDismiss.js';
 import { UI_NAMES } from '../../js/modules/beta.js';
 import * as replay from '../../js/modules/replay.js';
 import { Play, Pause, SkipForward, RotateCcw, Clapperboard } from 'lucide-vue-next';
@@ -109,124 +109,31 @@ const speed = computed({
     set: (v) => replay.setSpeed(v),
 });
 
-function onKeydown(e) {
-    if (e.key !== 'Escape') return;
-    // Ligger der et modalvindue ovenpå, ejer DET tasten. Lytteren her sidder i
-    // capture-fasen og stopper udbredelsen, så uden spørgsmålet lukkede Escape
-    // afspilningsmenuen BAG vinduet, mens vinduet blev stående — målt: åbn
-    // menuen, tab videre til "Tilføj efternøler", tryk Enter, tryk Escape.
-    // Vinduet lukkede først ved andet tryk. Samme spørgsmål som de tre andre
-    // ikke-modale flader stiller (skufferne, klassemenuen, elevmarkeringen).
-    if (isModalOpen()) return;
-    e.stopPropagation();
-    emit('close');
-}
-
-// Klik udenfor lukker — samme opførsel som kørselshistorikken ved siden af.
-// Et lille ophold, så det tryk der ÅBNEDE menuen ikke selv lukker den igen;
-// timeren gemmes, så lytteren ikke kan blive tilføjet efter oprydningen.
-let outsideTimer = null;
-let focusOutTimer = null;
-
-function onClickOutside(e) {
-    if (!rootRef.value) return;
-    if (rootRef.value.contains(e.target)) return;
-    // Knappen har sin egen @click.stop og skal ikke lukke to gange.
-    if (e.target.closest && e.target.closest('.replay-anchor')) return;
-    emit('close');
-}
-
-/**
- * Luk når TASTATURET forlader menuen — nøjagtig samme værn som
- * kørselshistorikken fik 2/9, og af nøjagtig samme grund.
- *
- * Musen havde en vej ud (klik udenfor lukker, og lukningen stopper
- * afspilningen). Tastaturet havde ingen: Tab bar fokus videre ud i
- * bundbjælken, mens menuen blev stående OG afspilningen kørte videre.
- *
- * Målt (4/9): start afspilningen, flyt fokus til "Kopiér", tryk Enter. På
- * skærmen står der NUL gruppekort — motoren er midt i at dele ud — og
- * udklipsholderen får alle tre grupper med tolv elever. Gruppekortene viser
- * afspilningens billede, mens alle fem udgange i bjælken (Oversigt, Kopiér,
- * Kolonne, Gem, Excel) læser `stored*`. Læreren kopierer altså en liste, hun
- * ikke kan se.
- *
- * Rettelsen sidder her og ikke i de fem udgange: afspilningen er et kig, ikke
- * en tilstand. Slipper den, når man går væk fra menuen, kan ingen udgang
- * længere komme til at være uenig med skærmen.
- *
- * TO LYTTERE som i historikken: `focusin` på document er den præcise (den
- * fyrer kun, når noget ANDET tager imod fokus), og `onRootFocusOut` er
- * bagstopperen for de tilfælde, hvor browseren flytter markøren uden at en
- * focusin når frem.
- */
-function onFocusOutside(e) {
-    if (rootRef.value && !rootRef.value.contains(e.target)) emit('close');
-}
-
-/**
- * Bagstopper for `onFocusOutside`.
- *
- * Samme to regler som i kørselshistorikken: svaret udskydes ét tik, og
- * `<body>` tæller IKKE som "udenfor". Menuen skifter selv indhold, når
- * afspilningen starter — "Se kørslen" forsvinder under fingeren, og fokus
- * falder et øjeblik på <body>, før vi flytter det til Pause. Lukkede vi på
- * det, ville afspilningen stoppe i samme sekund den blev startet.
- */
-function onRootFocusOut() {
-    clearTimeout(focusOutTimer);
-    focusOutTimer = setTimeout(() => {
-        const root = rootRef.value;
-        if (!root) return;                                  // menuen er væk
-        const active = document.activeElement;
-        if (!active || active === document.body) return;    // faldt på gulvet
-        if (root.contains(active)) return;                  // stadig indeni
-        emit('close');
-    }, 0);
-}
-
-// Knappen der åbnede menuen. Se giveFocusBack() nedenfor for hvornår den får
-// fokus tilbage — og hvornår den ikke skal have det.
-let previouslyFocused = null;
-
-/**
- * Fokus tilbage til knappen — men KUN hvis det ellers ville gå tabt.
- *
- * Lukkes menuen, mens fokus står inde i den (Escape, eller en knap der
- * forsvinder), falder markøren til <body>, og næste Tab starter forfra øverst
- * på siden. Dér skal knappen have den tilbage.
- *
- * Men menuen lukker OGSÅ, når tastaturet forlader den — og så har læreren
- * netop valgt et andet sted at stå. Målt på kørselshistorikken, som har haft
- * den ubetingede udgave siden 2/9: åbn menuen, tab videre til "Kopiér", tryk
- * Enter. Fokus var revet tilbage til historik-knappen, så Enter åbnede menuen
- * igen i stedet for at kopiere. Knappen kunne i praksis ikke tabbes forbi.
- */
-function giveFocusBack() {
-    // Er markøren landet på et rigtigt element, står den, hvor læreren satte
-    // den. Kun <body> (eller ingenting) betyder "faldt på gulvet".
-    const active = document.activeElement;
-    if (active && active !== document.body) return;
-    // isConnected: knappen kan være væk sammen med bundbjælken, hvis den
-    // sidste gruppe blev fjernet, mens menuen stod åben.
-    if (previouslyFocused && previouslyFocused.isConnected) previouslyFocused.focus();
-}
-
-/**
- * Første BRUGBARE knap i menuen — "Se kørslen" før start, "Forfra" under
- * afspilning.
- *
- * Er der ingen optagelse, er "Se kørslen" slået fra, og en deaktiveret knap
- * kan ikke få fokus: menuen ville åbne sig lige så tavst som før. Så tager
- * roden selv imod fokus (den har `tabindex="-1"` og et navn), og forklaringen
- * inde i menuen bliver læst op i stedet.
- */
-function focusFirstControl() {
-    const root = rootRef.value;
-    if (!root) return;
-    const control = root.querySelector('button:not([disabled]), input:not([disabled])');
-    (control || root).focus();
-}
+// Escape, klik udenfor, fokus der forlader menuen, fokus ind ved åbning og
+// tilbage til knappen ved lukning — reglerne bor i useBarMenuDismiss.js, som
+// alle fire menuer på bundbjælken deler.
+//
+// HVORFOR TASTATURET SKAL KUNNE LUKKE DEN (4/9): musen havde en vej ud (klik
+// udenfor lukker, og lukningen stopper afspilningen). Tastaturet havde ingen:
+// Tab bar fokus videre ud i bundbjælken, mens menuen blev stående OG
+// afspilningen kørte videre. Målt: start afspilningen, flyt fokus til
+// "Kopiér", tryk Enter — på skærmen står NUL gruppekort (motoren er midt i at
+// dele ud), og udklipsholderen får alle tre grupper med tolv elever.
+// Afspilningen er et kig, ikke en tilstand: slipper den, når man går væk fra
+// menuen, kan ingen udgang længere være uenig med skærmen.
+//
+// Menuen skifter selv indhold, når afspilningen starter — "Se kørslen"
+// forsvinder under fingeren, og fokus falder et øjeblik på <body>. Derfor
+// tæller <body> ikke som "udenfor" (ellers stoppede afspilningen i samme
+// sekund, den blev startet), og fokus flyttes til Pause nedenfor.
+//
+// Er der ingen optagelse, er "Se kørslen" slået fra og kan ikke få fokus; så
+// tager roden selv imod fokus (den har `tabindex="-1"` og et navn), og
+// forklaringen inde i menuen bliver læst op.
+const { onRootFocusOut } = useBarMenuDismiss(rootRef, {
+    anchorClass: 'replay-anchor',
+    onClose: () => emit('close'),
+});
 
 // Når afspilningen starter, byttes "Se kørslen" ud med afspillerens fem
 // knapper. Den knap, læreren lige trykkede på, forsvinder altså under hende,
@@ -242,30 +149,6 @@ watch(() => !!rp.value, (running) => {
         if (document.activeElement !== document.body && !inside) return;
         rootRef.value?.querySelector('.play-toggle')?.focus();
     });
-});
-
-onMounted(() => {
-    previouslyFocused = document.activeElement;
-    document.addEventListener('keydown', onKeydown, true);
-    // Fokus ind i menuen. Uden det åbnede menuen sig usynligt for en
-    // skærmlæser: markøren blev på knappen i bjælken, og der var intet, der
-    // sagde, at der nu stod en afspiller klar.
-    nextTick(focusFirstControl);
-    outsideTimer = setTimeout(() => {
-        document.addEventListener('pointerdown', onClickOutside);
-        // Samme ophold som pointerdown: menuen giver selv fokus til første
-        // knap i nextTick, og den focusin må ikke lukke menuen igen.
-        document.addEventListener('focusin', onFocusOutside);
-    }, 0);
-});
-
-onUnmounted(() => {
-    clearTimeout(outsideTimer);
-    clearTimeout(focusOutTimer);
-    document.removeEventListener('keydown', onKeydown, true);
-    document.removeEventListener('pointerdown', onClickOutside);
-    document.removeEventListener('focusin', onFocusOutside);
-    giveFocusBack();
 });
 </script>
 

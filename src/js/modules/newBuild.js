@@ -20,8 +20,18 @@
 // navnet altid /src/js/modules/main.js, så spørgsmålet svarer nej.
 
 export const NEW_BUILD_MESSAGE =
-    'grup.dk er blevet opdateret, mens siden stod åben. Genindlæs siden (tryk F5) '
+    'grup.dk er blevet opdateret, mens siden stod åben. Genindlæs siden (F5, på Mac Cmd+R) '
     + 'for at hente den nye udgave — dine klasser er gemt.';
+
+// En del, der ikke kunne hentes, UDEN at der er kommet en ny udgave (typisk
+// forbindelsen). Beskeden siger "genindlæs", ikke "prøv igen": WebKit (Safari)
+// husker en fejlet hentning af en programdel og spørger aldrig serveren igen
+// i den samme fane — målt 4/11 2026 i Playwrights WebKit med en sonde, der
+// lod første hentning fejle.
+// Chrome og Firefox prøver igen, men kun en genindlæsning virker overalt.
+const RELOAD_HINT = 'Tjek forbindelsen, og genindlæs siden (F5, på Mac Cmd+R) — dine klasser er gemt.';
+export const PART_UNAVAILABLE_MESSAGE = `En del af programmet kunne ikke hentes. ${RELOAD_HINT}`;
+export const EXCEL_UNAVAILABLE_MESSAGE = `Excel-delen af programmet kunne ikke hentes. ${RELOAD_HINT}`;
 
 /** Hovedfilen, som en side peger på — `./assets/index-XXXX.js` i drift. */
 function entryScript(doc) {
@@ -75,6 +85,22 @@ const chunkErrors = new WeakSet();
 /** Kom fejlen af, at en del af programmet ikke kunne hentes? */
 export function isChunkLoadError(err) {
     return !!err && typeof err === 'object' && chunkErrors.has(err);
+}
+
+/**
+ * Kaldstedets egen besked om en del, der ikke kunne hentes (Excel, zip).
+ *
+ * Er årsagen en ny udgave, har lytteren nedenfor allerede bedt læreren om at
+ * genindlæse — så siges intet her. Før kom begge beskeder oven i hinanden.
+ *
+ * @returns {Promise<string|null>} beskeden, der blev vist — eller null, når
+ *   det var en ny udgave (så står NEW_BUILD_MESSAGE allerede på skærmen)
+ */
+export async function reportPartUnavailable(err, message) {
+    const check = isChunkLoadError(err) ? checkForNewBuild() : null;
+    if (check && await check) return null;
+    window.notifyError?.(message);
+    return message;
 }
 
 /**

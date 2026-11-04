@@ -27,9 +27,9 @@ const STEPS = [
         find: () => ({ el: $('#tab-students thead tr') }),
     },
     {
-        title: 'Til stede',
-        text: 'Fjern hakket, hvis en elev er væk i dag. Eleven bliver på listen, men kommer ikke med i grupperne.',
-        find: () => ({ el: headerNamed('til stede') }),
+        title: 'Mødt',
+        text: 'Klik på den runde knap foran navnet, hvis en elev er væk i dag. Eleven bliver på listen, men kommer ikke med i grupperne. Overskriften viser, hvor mange der er mødt.',
+        find: () => ({ el: headerNamed('mødt') }),
     },
     {
         title: 'Elever og kolonner',

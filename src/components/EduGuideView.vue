@@ -356,16 +356,16 @@ import RuleMark from './beta/RuleMark.vue';
             <div class="info-box info-box--yellow" style="margin-top: 24px; margin-bottom: 16px;">
                 <strong class="info-box__label info-box__label--yellow">Fravær har to indgange — og de gør ikke det samme</strong>
                 <p class="muted-text muted-text--tight" style="margin-top: 8px;">
-                    <strong>Fluebenet "til stede"</strong> i elevlisten markerer eleven som
-                    fraværende. Eleven bliver <em>stående</em> på gruppekortet, men mærket — og
+                    <strong>Den runde knap foran navnet</strong> i elevlisten melder eleven
+                    væk. Eleven bliver <em>stående</em> på gruppekortet, men mærket — og
                     tælles ikke med, næste gang du genererer. Det er den skånsomme vej:
-                    du kan sætte fluebenet tilbage, uden at noget er gået tabt.<br><br>
+                    du kan klikke på knappen igen, uden at noget er gået tabt.<br><br>
                     <strong>Papirkurven</strong> i værktøjslinjen er vejen <em>ud af gruppen</em>.
                     Træk eleven derhen, så forsvinder navnet fra kortet. Det er den du skal bruge,
                     når gruppen skal arbejde videre uden eleven i dag.
                 </p>
                 <p class="muted-text muted-text--tight" style="margin-top: 8px;">
-                    <em>Tidligere gjorde fluebenet ingen af delene synligt på grupperne, så man
+                    <em>Tidligere gjorde fremmødet i elevlisten ingen af delene synligt på grupperne, så man
                     kunne stå og lede efter en elev, der var meldt fraværende. Nu kan det ses
                     både på kortene, på udskriften og i det du kopierer.</em>
                 </p>
@@ -373,7 +373,7 @@ import RuleMark from './beta/RuleMark.vue';
 
             <div class="info-box info-box--blue" style="margin-top: 24px; margin-bottom: 16px;">
                 <strong class="info-box__title">Robust mod fravær</strong>
-                <p class="muted-text" style="margin: 8px 0 0;">Hvis 3 elever pludselig mangler: fjern fluebenet i <strong>"til stede"</strong>-kolonnen i Elevliste og klik <strong>"{{ UI_NAMES.generate }}"</strong> igen. Systemet justerer gruppestørrelser og emne-tildelinger, så matrix-fordelingen forbliver optimal.</p>
+                <p class="muted-text" style="margin: 8px 0 0;">Hvis 3 elever pludselig mangler: klik på den runde knap foran deres navne i Elevliste, så der står <strong>"VÆK"</strong>, og klik <strong>"{{ UI_NAMES.generate }}"</strong> igen. Systemet justerer gruppestørrelser og emne-tildelinger, så matrix-fordelingen forbliver optimal.</p>
             </div>
 
             <strong class="step-label step-label--teal">Styr retningen: én elev ekstra eller én elev mindre</strong>

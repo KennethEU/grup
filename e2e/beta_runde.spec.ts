@@ -77,10 +77,11 @@ test('beskeder ryddes ved fanebskifte (undtagen fejl) og står nederst til højr
     await expect(page.locator('.toast.error')).toHaveCount(1);
 });
 
-test('Elevlisten: kolonnen med afkrydsningsfelter har overskriften "Til stede"', async ({ page }) => {
+test('Elevlisten: fremmødet står foran navnet, og overskriften tæller de mødte', async ({ page }) => {
     test.setTimeout(120000);
     await createClass(page);
-    await expect(page.locator('th').filter({ hasText: 'Til stede' })).toBeVisible();
+    // Alle er mødt i en ny klasse: "· N AF N MØDT" over første datakolonne
+    await expect(page.locator('th .th-present-count')).toHaveText(/^· (\d+) AF \1 MØDT$/);
     await expect(page.getByRole('checkbox', { name: 'Alle til stede' })).toBeVisible();
 });
 

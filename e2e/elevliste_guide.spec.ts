@@ -37,7 +37,7 @@ test('"Vis guide" viser alle trin, og hvert trin peger på noget', async ({ page
 
     const before = await page.locator('#tab-students').innerText();
     await page.locator('#topbar-guide-btn').click();
-    const titles = ['Elevlisten', 'Overskrifterne', 'Til stede', 'Elever og kolonner', 'Kategoriser og Ranger', 'Lav aftale', 'Vis'];
+    const titles = ['Elevlisten', 'Overskrifterne', 'Mødt', 'Elever og kolonner', 'Kategoriser og Ranger', 'Lav aftale', 'Vis'];
     await expect(card(page)).toContainText(`1 af ${titles.length}`);
     for (const title of titles) {
         await expect(page.locator('#rguide-title')).toHaveText(title);

@@ -6,6 +6,7 @@ import { compactImportSheet, sheetDataCells } from '../../js/modules/importData.
 import { plural } from '../../js/modules/plural.js';
 import { MAX_ROWS_PER_CLASS } from '../../js/modules/py_bridge.js';
 import { isLectioFormat, extractLectioNames } from '../../js/modules/lectio.js';
+import { EXCEL_UNAVAILABLE_MESSAGE, NEW_BUILD_MESSAGE, reportPartUnavailable } from '../../js/modules/newBuild.js';
 import { FolderUp, ClipboardPaste, FileText, FileUp } from 'lucide-vue-next';
 
 // Når en klasse er skrevet, sendes `classCreated` på document med den
@@ -367,8 +368,7 @@ async function importExcelOrCsv(excelFiles, options) {
     try {
         XLSX = await import('../../vendor/xlsx.mjs');
     } catch (e) {
-        errorMessage.value = 'Kunne ikke indlæse Excel-biblioteket.';
-        window.notifyError?.(errorMessage.value);
+        errorMessage.value = (await reportPartUnavailable(e, EXCEL_UNAVAILABLE_MESSAGE)) || NEW_BUILD_MESSAGE;
         return created;
     }
 
@@ -512,7 +512,16 @@ const handlePasteSubmit = async () => {
 
 async function downloadTemplate() {
     // Se src/vendor/README.md for hvorfor biblioteket ligger i repo'et.
-    const XLSX = await import('../../vendor/xlsx.mjs');
+    // Kan delen ikke hentes (ingen forbindelse, eller en gammel fane efter en
+    // ny udgave), gjorde linket før ingenting — fejlen gik tabt i konsollen.
+    let XLSX;
+    try {
+        XLSX = await import('../../vendor/xlsx.mjs');
+    } catch (e) {
+        console.error(e);
+        await reportPartUnavailable(e, EXCEL_UNAVAILABLE_MESSAGE);
+        return;
+    }
     const wb = XLSX.utils.book_new();
 
     const templateData = [

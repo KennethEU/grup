@@ -352,6 +352,38 @@ test('Tabber man ud af kørselsmenuen, slipper forhåndsvisningen', async ({ pag
         .toBe(expectedNames.join(','));
 });
 
+// 4/11: menuens focusin-lytter blev før sat på i en setTimeout(…, 0), og
+// browseren kan lade sådan en timer vente, mens tastetryk kommer hurtigt.
+// Så nåede Tab ud af menuen at ske, før nogen lyttede, og menuen blev stående
+// (set i Del-menuen, som havde samme mønster). Timerne holdes her kunstigt
+// tilbage, så det sker hver gang.
+test('Kørselsmenuen lukker, når fokus tabber ud, selvom timerne venter', async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'Tab fokuserer ikke knapper i Safari');
+
+    await createClass(page, 'Kørsler ventende timere');
+    await goToGroups(page);
+    await twoRuns(page);
+
+    await page.evaluate(() => {
+        const original = window.setTimeout;
+        (window as any).setTimeout = (fn: TimerHandler, ms?: number, ...args: unknown[]) =>
+            original(fn, ms ? ms : 1000, ...args);
+    });
+
+    await openRunMenu(page);
+    await expect.poll(async () => await page.evaluate(() =>
+        document.querySelector('.run-menu')?.contains(document.activeElement) ?? false)).toBe(true);
+    for (let i = 0; i < 12; i++) {
+        await page.keyboard.press('Tab');
+        const inside = await page.evaluate(() =>
+            document.querySelector('.run-menu')?.contains(document.activeElement) ?? false);
+        if (!inside) break;
+    }
+    await expect(page.locator('.run-menu')).toHaveCount(0, { timeout: 500 });
+    expect(await page.evaluate(() =>
+        (window as any).appDebug.state.previewRunIndex)).toBeNull();
+});
+
 test('Et klik på en kørsel må stadig nå at stille spørgsmålet', async ({ page }) => {
     // Værn mod rettelsen ovenfor: chip-rækken byttes ud med spørgsmålet, så
     // den knap der havde fokus forsvinder — og browseren sender et focusout
@@ -367,5 +399,50 @@ test('Et klik på en kørsel må stadig nå at stille spørgsmålet', async ({ p
     await page.locator('.run-menu .chip').nth(1).click();
 
     await expect(page.locator('.confirm-box')).toBeVisible();
+    await expect(page.locator('.run-menu')).toBeVisible();
+});
+
+// 4/11: et klik på knappen, mens menuen står åben, skal LUKKE den. Før lukkede
+// menuen sig selv, når knappen fik fokus (mousedown i Chromium og Firefox) eller
+// blev trykket ned (pointerdown), og knappens eget klik åbnede den straks igen —
+// menuen kunne ikke lukkes med den knap, der åbnede den. Del-menuen har aldrig
+// haft fejlen (useBarMenuDismiss regner knappens indpakning som "inde").
+test('Et klik på knappen lukker kørsels- og afspilningsmenuen igen', async ({ page }) => {
+    await createClass(page, 'Kørsler knap lukker');
+    await goToGroups(page);
+    await twoRuns(page);
+
+    const historyButton = page.locator('.run-history-anchor .action-pill');
+    await historyButton.click();
+    await expect(page.locator('.run-menu')).toBeVisible();
+    await historyButton.click();
+    await expect(page.locator('.run-menu')).toHaveCount(0);
+    expect(await page.evaluate(() =>
+        (window as any).appDebug.state.previewRunIndex)).toBeNull();
+
+    const replayButton = page.locator('.replay-anchor .action-pill');
+    await replayButton.click();
+    await expect(page.locator('.replay-menu')).toBeVisible();
+    await replayButton.click();
+    await expect(page.locator('.replay-menu')).toHaveCount(0);
+});
+
+// 4/11: knappen, der åbnede menuen, tæller som "inde" — fokus dér lukker ikke
+// menuen. Men forhåndsvisningen skal slippe: læreren er gået ud af kørslerne,
+// og alle udgange læser stored*. Reglen lå før i menuens egen kopi af
+// lukke-reglerne; nu i useBarMenuDismiss (onOpenerFocus), og testen holder den.
+test('Fokus på historik-knappen slipper forhåndsvisningen, men menuen bliver', async ({ page }) => {
+    await createClass(page, 'Kørsler knappen får fokus');
+    await goToGroups(page);
+    await twoRuns(page);
+
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).focus();
+    await expect.poll(async () => await page.evaluate(() =>
+        (window as any).appDebug.state.previewRunIndex)).toBe(0);
+
+    await page.locator('.run-history-anchor .action-pill').focus();
+    await expect.poll(async () => await page.evaluate(() =>
+        (window as any).appDebug.state.previewRunIndex)).toBeNull();
     await expect(page.locator('.run-menu')).toBeVisible();
 });

@@ -78,13 +78,18 @@ export function openOverview() {
             if (withOrigin) {
                 const id = memberId(m);
                 const text = studentTopicMap[id] || standardGroupMap[id] || '';
-                if (text) origin = `<span class="origin">${esc(text)}</span>`;
+                // "fra" står kun for skærmlæseren: uden det læses linjen
+                // "Anna Klimapolitik", som om emnet var en del af navnet.
+                if (text) origin = `<span class="origin"><span class="sr-only">fra </span>${esc(text)}</span>`;
             }
             return `<li>${memberLine(m)}${origin}</li>`;
         }).join('');
         return `<div class="group"><h3>${esc(groupDisplayName(g.name))}</h3>`
             + (topic ? `<p class="topic">${esc(topic)}</p>` : '')
-            + `<ul>${members || '<li class="empty">Ingen elever</li>'}</ul></div>`;
+            // role="list": Safari (VoiceOver) regner en liste med
+            // "list-style: none" for almindelig tekst og siger hverken
+            // "liste" eller hvor mange elever, der er i gruppen.
+            + `<ul role="list">${members || '<li class="empty">Ingen elever</li>'}</ul></div>`;
     };
 
     // Omfanget i hovedet: "28 elever · 7 stamgrupper · 3 matrixgrupper".
@@ -97,6 +102,8 @@ export function openOverview() {
     const absentCount = [...counted].filter(id => isMemberAbsent(id, data)).length;
     // Hver del i sit eget span, der ikke må brydes: med et langt klassenavn
     // blev linjen ellers delt midt i "4 / matrixgrupper" (målt 12/9).
+    // Datoen og omfanget står i hver sin div (ikke adskilt af et <br>), så
+    // en skærmlæser ikke læser dem i ét: "4. november 2026 12 elever".
     const meta = [
         plural(counted.size, 'elev', 'elever'),
         standardGroups ? plural(standardGroups.length, 'stamgruppe', 'stamgrupper') : null,
@@ -193,6 +200,11 @@ export function openOverview() {
 
             .no-print { margin-block-start: 28px; text-align: center; }
             .print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; font: inherit; font-size: 13px; cursor: pointer; background: oklch(0.2 0 0); color: oklch(1 0 0); border: none; border-radius: 6px; }
+            /* En mørk ring med luft om den mørke knap. Browserens egen ring
+               var blå i Chrome og hvid (usynlig på det hvide papir) i Firefox. */
+            .print-btn:focus-visible { outline: 2px solid oklch(0.2 0 0); outline-offset: 3px; }
+            /* Kun for skærmlæseren (fx "fra" foran oprindelsen). */
+            .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
             @media print {
                 body { padding: 0; }
                 /* Sideskiftet giver kun mening, når der står stamgrupper FØR
@@ -206,16 +218,18 @@ export function openOverview() {
      <body>
         <header class="doc-head">
             <div class="doc-title"><span class="kicker">Gruppeoversigt</span><h1>${title}</h1></div>
-            <div class="meta">${esc(printDate)}<br>${meta}</div>
+            <div class="meta"><div>${esc(printDate)}</div><div>${meta}</div></div>
         </header>
+        <main>
         ${standardGroups ? `<section class="std"><h2>${both ? 'Runde 1 · ' : ''}Stamgrupper</h2>
         <div class="grid">${standardGroups.map(g => groupBlock(g, 'S_', false)).join('')}</div>
         </section>` : ''}
         ${matrixGroups ? `<section class="mtx${standardGroups ? ' after-std' : ''}"><h2>${both ? 'Runde 2 · ' : ''}Matrixgrupper</h2>
         <div class="grid">${matrixGroups.map(g => groupBlock(g, 'M_', true)).join('')}</div>
         </section>` : ''}
+        </main>
         <div class="no-print">
-            <button class="print-btn" onclick="window.print()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg> Udskriv</button>
+            <button type="button" class="print-btn" onclick="window.print()"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg> Udskriv</button>
         </div>
      </body>
      </html>

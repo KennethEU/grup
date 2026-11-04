@@ -35,7 +35,7 @@ const nextProgressText = computed(() => {
     if (Number.isFinite(p.seconds)) parts.push(`${Math.round(p.seconds)} sek.`);
     return parts.join(' · ');
 });
-import { checkForNewBuild, isChunkLoadError } from '../js/modules/newBuild.js';
+import { checkForNewBuild, isChunkLoadError, PART_UNAVAILABLE_MESSAGE } from '../js/modules/newBuild.js';
 
 // Error boundary — catch uncaught errors in child components
 const appError = ref(null);
@@ -47,7 +47,7 @@ onErrorCaptured((err, instance, info) => {
     // er det forbindelsen.
     if (isChunkLoadError(err)) {
         (checkForNewBuild() || Promise.resolve(false)).then((isNew) => {
-            if (!isNew) appError.value = 'En del af programmet kunne ikke hentes. Tjek forbindelsen, og prøv igen.';
+            if (!isNew) appError.value = PART_UNAVAILABLE_MESSAGE;
         });
         return false;
     }

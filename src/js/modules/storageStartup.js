@@ -27,8 +27,9 @@ function browserStore(name) {
 
 /** Hent pakken fra dida.dk/grupper, hvis adressen har ?migrate=<token>. */
 function receiveTransfer(storage) {
+    let params;
     try {
-        const params = new URLSearchParams(window.location.search);
+        params = new URLSearchParams(window.location.search);
         const token = params.get('migrate');
         if (!token || !/^[0-9a-f]{32}$/.test(token)) return;
         // Synkront med vilje: pakken skal ligge i lageret, før appen læser det.
@@ -39,11 +40,20 @@ function receiveTransfer(storage) {
             const res = JSON.parse(xhr.responseText);
             if (res && res.entries && typeof res.entries === 'object') adoptTransferEntries(storage, res.entries);
         }
-        params.delete('migrate');
-        const search = params.toString();
-        window.history.replaceState(null, '', window.location.pathname + (search ? '?' + search : '') + window.location.hash);
     } catch (e) {
         console.warn('[migration] Fejl under modtagelse:', e);
+    } finally {
+        // Adressen ryddes, uanset hvordan det gik: tokenet kan kun bruges én
+        // gang, og stod det i adressen, blev det hentet igen ved hver
+        // genindlæsning og lå i lærerens bogmærker. Før stod det tilbage,
+        // når svaret ikke var JSON (fx en fejlside).
+        try {
+            if (params && params.has('migrate')) {
+                params.delete('migrate');
+                const search = params.toString();
+                window.history.replaceState(null, '', window.location.pathname + (search ? '?' + search : '') + window.location.hash);
+            }
+        } catch { /* uden historik-API bliver adressen bare stående */ }
     }
 }
 

@@ -14,6 +14,7 @@
 
 import { state } from './state.js';
 import * as storage from './storage.js';
+import { EXCEL_UNAVAILABLE_MESSAGE, reportPartUnavailable } from './newBuild.js';
 import {
     memberDisplayName, memberIdStr, isMemberAbsent, groupDisplayName, groupShortName,
     todayStamp, safeFileName,
@@ -172,7 +173,7 @@ export async function downloadGroupsWorkbook({ sets, layout }) {
         ({ saveAs } = await import('file-saver'));
     } catch (e) {
         console.error(e);
-        window.notifyError?.('Excel-delen af programmet kunne ikke hentes. Tjek forbindelsen, og prøv igen.');
+        await reportPartUnavailable(e, EXCEL_UNAVAILABLE_MESSAGE);
         return false;
     }
 

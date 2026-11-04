@@ -175,6 +175,9 @@ const closeOpenClass = () => {
     state.storedMatrixGroups = null;
     state.lastGeneratedGroups = null;
     state.currentClass = null;
+    // Uden en åben klasse er der ingen emner at foreslå — den slettede
+    // klasses emner må ikke blive stående i siden.
+    storage.populateDatalistFromStorage();
     state.navView = 'dashboard';
 };
 
@@ -278,12 +281,15 @@ const selectClass = async (filename, index, goToStudents = false) => {
             // Gamle gemte grupper uden feltet giver false, som før.
             state.matrixGroupsStale = !!(saved.matrixStale
                 && Array.isArray(saved.matrix) && saved.matrix.length > 0);
-            storage.populateDatalistFromStorage();
         } else {
             state.storedStandardGroups = null;
             state.storedMatrixGroups = null;
             state.lastGeneratedGroups = null;
         }
+        // Emneforslagene bygges forfra for DENNE klasse — også uden gemte
+        // grupper. Før 4/11 skete det kun med grupper, så en klasse uden fik
+        // den forrige klasses emner foreslået i emnefeltet.
+        storage.populateDatalistFromStorage();
 
         // Migration: giv hver elev et _rowId, og oversæt alt der peger på en
         // elev (undgåelser, gemte og låste grupper) fra det gamle navne-baserede
@@ -558,6 +564,9 @@ onMounted(() => {
     // slettet klasse (inkl. dens sessioner), så payload-oprydningen bagefter
     // kun har de ægte forældreløse tilbage at se på.
     try { storage.cleanupOrphanedClassData(); } catch (e) {}
+    // Sessioner over 90 dage (eller ud over de 50 nyeste) i klasser, læreren
+    // ikke har gemt i siden — løftet på GDPR-siden gælder alle klasser.
+    try { storage.pruneStaleHistories(); } catch (e) {}
     try { storage.cleanupOrphanedPayloads(); } catch (e) {}
     // Advar MENS der stadig er plads at rydde op på. Rækkefølgen betyder
     // noget: oprydningen ovenfor frigør plads, så vi ikke advarer om noget
@@ -750,7 +759,11 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    /* 32 px til venstre: logoet flugter med fanernes indhold (elevlisten,
+       Grupper og Import starter alle 32 px inde). 24 px til højre: ikon-
+       knapperne har 9 px luft om ikonet, så selve ikonet slutter 32 px inde. */
+    padding-block: 0;
+    padding-inline: 32px 24px;
     background: var(--bg-topbar);
     border-bottom: 1px solid var(--surface-tint); /* En streg, der lige kan ses */
     position: sticky;

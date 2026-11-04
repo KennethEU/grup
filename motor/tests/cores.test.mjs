@@ -81,3 +81,57 @@ test('afspilning med loft: de sidste trin lægges sammen og ender i grupperne', 
   }
   pb.groups.forEach((members, g) => members.forEach((s) => assert.equal(groupOf.get(s), g)));
 });
+
+// En gammel fane efter en deploy: trådfilen (worker-XXXX.js) er væk fra
+// serveren. Browseren kaster ikke ved `new Worker`, men melder fejlen lidt
+// efter med en error-hændelse. Så skal motoren straks regne videre på én
+// kerne — ikke stå stille, til appens vagt (20 sek.) giver op.
+class MissingWorker {
+  constructor() {
+    this.onmessage = null;
+    this.onerror = null;
+    setTimeout(() => this.onerror && this.onerror(new Event('error')), 5);
+  }
+  postMessage() {}
+  terminate() {}
+}
+
+// Browsere, der slet ikke kan starte en modul-worker, kaster med det samme.
+class ThrowingWorker {
+  constructor() {
+    throw new Error('Module scripts are not supported');
+  }
+}
+
+// Én af trådene dør midt i kørslen (fx fuld hukommelse): de forsøg, der ikke
+// blev færdige, skal køres om på én kerne, så svaret er det samme.
+class DyingWorker extends FakeWorker {
+  static made = 0;
+  constructor(url) {
+    super(url);
+    if (++DyingWorker.made === 2) {
+      this.postMessage = (m) => {
+        if (m.type === 'attempt') setTimeout(() => this.onerror && this.onerror(new Event('error')), 5);
+        else FakeWorker.prototype.postMessage.call(this, m);
+      };
+    }
+  }
+}
+
+test('en tråd, der ikke kan hentes eller dør: samme grupper på én kerne, uden at stå stille', async () => {
+  const input = { ...load('010-rigtig-realistisk-seks-regler.json'), seed: 3, budget: { maxSeconds: 1, maxAttempts: 6, minAttempts: 1 } };
+  const one = await solveWith(input, 1);
+  for (const Broken of [MissingWorker, ThrowingWorker, DyingWorker]) {
+    globalThis.Worker = Broken;
+    try {
+      const t0 = Date.now();
+      const many = await solveWith(input, 3);
+      assert.equal(many.result.cores, 1, `${Broken.name}: skulle falde tilbage til én kerne`);
+      assert.deepEqual(many.result.best.groups, one.result.best.groups, Broken.name);
+      assert.equal(many.result.winner, one.result.winner, Broken.name);
+      assert.ok(Date.now() - t0 < 10000, `${Broken.name}: tog ${Date.now() - t0} ms`);
+    } finally {
+      delete globalThis.Worker;
+    }
+  }
+});

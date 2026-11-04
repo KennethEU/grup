@@ -257,3 +257,42 @@ describe('openOverview — udskriften viser navne, ikke interne id\'er', () => {
         expect(written).not.toContain('Gr. 1');
     });
 });
+
+// Udskriften læses også med skærmlæser og bruges med tastatur (gennemgået
+// 4/11 2026 i Chromium, Firefox og WebKit med Playwrights tilgængelighedstræ).
+describe('openOverview — skærmlæser og tastatur', () => {
+    it('har et hovedområde, lister, der forbliver lister, og et tavst ikon', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+
+        openOverview();
+
+        expect(written).toMatch(/<main>[\s\S]*Stamgrupper[\s\S]*<\/main>/);
+        // VoiceOver i Safari regner en liste uden prikker for almindelig tekst.
+        expect(written).toContain('<ul role="list">');
+        expect(written).not.toMatch(/<ul>/);
+        // Ikonet på knappen er pynt; uden aria-hidden læses det som "billede".
+        expect(written).toMatch(/<svg aria-hidden="true"/);
+        // Browserens egen fokusring var hvid i Firefox — usynlig på papiret.
+        expect(written).toMatch(/\.print-btn:focus-visible \{[^}]*outline: 2px solid/);
+    });
+
+    it('læser oprindelsen som "fra …" uden at skrive det på papiret', () => {
+        topics['S_Group 1'] = 'Klimapolitik';
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+
+        openOverview();
+
+        expect(written).toContain('<span class="origin"><span class="sr-only">fra </span>Klimapolitik</span>');
+        expect(written).toMatch(/\.sr-only \{[^}]*clip-path: inset\(50%\)/);
+    });
+
+    it('skriver datoen og omfanget i hver sin blok, ikke adskilt af <br>', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
+
+        openOverview();
+
+        expect(written).not.toContain('<br>');
+        expect(written).toMatch(/<div class="meta"><div>[^<]+<\/div><div>/);
+    });
+});

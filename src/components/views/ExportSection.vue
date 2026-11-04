@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import * as api from '../../js/modules/api.js';
 import { isInternalField, groupDisplayName, migrateRefsToRowIds, todayStamp, safeFileName, columnsOfRows } from '../../js/modules/utils.js';
+import { isChunkLoadError, reportPartUnavailable, EXCEL_UNAVAILABLE_MESSAGE } from '../../js/modules/newBuild.js';
 import { Package, FileSpreadsheet } from 'lucide-vue-next';
 
 // --- Tilstand ---
@@ -263,12 +264,18 @@ async function exportSelected(format = 'json') {
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // Adressen slippes først om lidt: kaldt lige efter klikket kan
+            // nogle browsere nå at miste filen, før hentningen er begyndt —
+            // og backuppen er lærerens eneste kopi. (file-saver venter også.)
+            setTimeout(() => URL.revokeObjectURL(url), 40000);
             reportExport("Backup downloadet!");
         }
     } catch (e) {
         console.error(e);
-        if (window.notifyError) window.notifyError("Eksport fejl: " + e.message);
+        // Excel- eller zip-delen kunne ikke hentes: browserens engelske tekst
+        // ("Failed to fetch dynamically imported module …") siger læreren intet.
+        if (isChunkLoadError(e)) await reportPartUnavailable(e, EXCEL_UNAVAILABLE_MESSAGE);
+        else if (window.notifyError) window.notifyError("Eksport fejl: " + e.message);
     } finally {
         isLoading.value = false;
     }

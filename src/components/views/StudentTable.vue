@@ -225,6 +225,10 @@ const absentCount = computed(() =>
     (reactiveState.currentClass?.data || []).filter(row => row._excluded).length);
 const allPresent = computed(() => absentCount.value === 0);
 
+// Til overskriften: "· 7 AF 8 MØDT".
+const studentCount = computed(() => reactiveState.currentClass?.data?.length || 0);
+const presentCount = computed(() => studentCount.value - absentCount.value);
+
 // Mindst én til stede og mindst én fraværende: fluebenet står "halvt".
 const someAbsent = computed(() =>
     absentCount.value > 0 && absentCount.value < reactiveState.currentClass.data.length);
@@ -389,30 +393,35 @@ function confirmDeleteRow() {
                 Indsæt fra Excel / Google Sheets
             </button>
         </div>
-        <table v-else>
+        <!-- few-columns: højst 4 kolonner får lidt mere luft (se stilen nederst).
+             Ikke 6: seks kolonner à 120 px gjorde tabellen 1.110 px bred, så den
+             rullede vandret i et vindue på 1.024 px (målt live 4/11). -->
+        <table v-else :class="{ 'few-columns': visibleColumns.length <= 4 }">
             <thead>
                 <tr>
                     <!-- Hakket bruges kun til "Lav aftale" (Skal sammen / Undgå) — derfor
                          hedder kolonnen det, og ikke det tomme "Valg". -->
                     <th style="width:40px;" title="Sæt hak ved de elever, aftalen gælder, og tryk Lav aftale">AFTALE</th>
-                    <th class="th-attendance" style="width:124px; cursor:pointer;" title="Klik for at markere alle til stede / fraværende" @click="toggleAllAttendance">
-                        <!-- Feltet reagerer selv (@change), så det også virker fra
-                             tastaturet: med Tab + Mellemrum skiftede det før kun
-                             udseende, mens eleverne blev, som de var. @click.stop,
-                             så et klik på selve feltet ikke også rammer cellens
-                             klik og skifter tilbage igen. -->
-                        <!-- Feltet og teksten står ved siden af hinanden på én linje
-                             (to linjer med feltet over teksten flugtede hverken med
-                             AFTALE eller NAVN). Delvist markeret = nogle er fraværende. -->
-                        <span class="th-attendance-inner">
-                            <input type="checkbox" :checked="allPresent" :indeterminate.prop="someAbsent" aria-label="Alle til stede"
-                                   @click.stop @change="toggleAllAttendance">
-                            <!-- Kolonnen havde ingen overskrift, kun et afkrydsningsfelt.
-                                 Teksten er nøgleordet; feltet beholder sit eget aria-label. -->
-                            <span class="th-attendance-label">TIL STEDE</span>
-                        </span>
+                    <!-- Fremmødet står foran navnet (Kenneths valg 4/11 2026): en
+                         rund knap i sin EGEN smalle celle lige før første
+                         datakolonne, ikke inde i navnecellen — den kan man skrive
+                         i (contenteditable), og en knap derinde ville komme med i
+                         teksten og forstyrre Enter/pil-tasterne. Det er et rigtigt
+                         afkrydsningsfelt, bare tegnet rundt (elevliste.css), så
+                         tastatur, skærmlæser og den halve markering virker som før.
+                         Feltet reagerer selv (@change), så det også virker med
+                         Tab + Mellemrum. Hvor mange der er mødt, står i
+                         overskriften ved siden af (første datakolonne). -->
+                    <!-- 18px = knappens bredde. Aldrig en %-bredde her: den tager
+                         den overskydende plads fra slet-kolonnen (elevliste.css). -->
+                    <th class="th-attendance" style="width:18px;">
+                        <input type="checkbox" class="presence-toggle"
+                               :checked="allPresent" :indeterminate.prop="someAbsent"
+                               aria-label="Alle til stede"
+                               :title="allPresent ? 'Alle er mødt. Klik for at melde alle væk' : 'Klik for at melde alle mødt'"
+                               @change="toggleAllAttendance">
                     </th>
-                    <th v-for="col in visibleColumns"
+                    <th v-for="(col, colIndex) in visibleColumns"
                         :key="col"
                         class="col-header"
                         :class="{
@@ -427,8 +436,12 @@ function confirmDeleteRow() {
                         @contextmenu="onHeaderContextMenu($event, col)"
                         @dblclick="onHeaderDblClick($event, col)">
                         {{ col.toUpperCase() }}{{ sortIndicator(col) }}
+                        <!-- Antallet hører til knapperne lige til venstre, så det står
+                             over første datakolonne (normalt NAVN). -->
+                        <span v-if="colIndex === 0" class="th-present-count">· {{ presentCount }} AF {{ studentCount }} MØDT</span>
                     </th>
-                    <th style="width:40px;"></th>
+                    <!-- Slet-kolonnen tager den overskydende bredde (elevliste.css) -->
+                    <th class="th-delete"></th>
                 </tr>
             </thead>
             <tbody>
@@ -446,10 +459,12 @@ function confirmDeleteRow() {
                                :checked="isSelected(row)"
                                @change="toggleSelection(row)">
                     </td>
-                    <!-- Afkrydsning for fremmøde -->
-                    <td class="cell-checkbox">
-                        <input type="checkbox"
+                    <!-- Fremmøde: den runde knap foran navnet. Er eleven væk, står
+                         "VÆK" efter navnet (elevliste.css, ::after på cellen). -->
+                    <td class="cell-checkbox cell-attendance">
+                        <input type="checkbox" class="presence-toggle"
                                :aria-label="`${studentLabel(row)} er til stede`"
+                               :title="row._excluded ? 'Væk. Klik, når eleven er mødt' : 'Mødt. Klik, hvis eleven er væk i dag'"
                                :checked="!row._excluded"
                                @change="toggleAttendance(row)">
                     </td>
@@ -564,25 +579,20 @@ function confirmDeleteRow() {
 .cell-data {
     min-inline-size: 84px;
 }
+/* Få kolonner: datakolonnerne er kun så brede som indholdet (elevliste.css),
+   så en kort kolonne som KØN får lidt mere luft. Ikke ved mange kolonner, hvor det
+   bare ville give mere vandret rulning (målt: 415 px mere med 12 kolonner). */
+.few-columns .cell-data {
+    min-inline-size: 120px;
+}
 .cell-data:nth-child(3) {
     min-inline-size: 170px;
     white-space: nowrap;
 }
-.th-attendance-inner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-}
-.th-attendance-label {
-    white-space: nowrap;
-}
-
 .cell-checkbox,
 .cell-delete {
     text-align: center;
 }
-
 .cell-data.cell-hidden {
     background: oklch(1 0 0 / 2%);
     color: var(--text-muted);

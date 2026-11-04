@@ -473,6 +473,35 @@ describe('oprydning efter en slettet klasse', () => {
         expect(localStorage.getItem('grupdk_groups_3a.csv')).toBeTruthy();
     });
 
+    it('en session, en anden klasses historik også nævner, bliver liggende', () => {
+        // Flytningen fra de gamle nøglenavne kan give en kopi ("3a (kopi)")
+        // de samme session-id'er som originalen.
+        const now = new Date().toISOString();
+        localStorage.setItem('grupdk_history_3a.csv', JSON.stringify([{ id: 'delt', date: now }]));
+        localStorage.setItem('grupdk_history_3a_kopi.csv',
+            JSON.stringify([{ id: 'delt', date: now }, { id: 'egen', date: now }]));
+        localStorage.setItem('grupdk_session_delt', JSON.stringify({ id: 'delt', groups: [] }));
+        localStorage.setItem('grupdk_session_egen', JSON.stringify({ id: 'egen', groups: [] }));
+
+        storage.cleanupClassStorage('3a_kopi.csv');
+
+        expect(localStorage.getItem('grupdk_session_delt')).toBeTruthy();
+        expect(localStorage.getItem('grupdk_session_egen')).toBeNull();
+        expect(localStorage.getItem('grupdk_history_3a_kopi.csv')).toBeNull();
+    });
+
+    it('kan en anden klasses historik ikke læses, slettes ingen sessioner', () => {
+        const now = new Date().toISOString();
+        localStorage.setItem('grupdk_history_3a.csv', '{ødelagt');
+        localStorage.setItem('grupdk_history_slettet.csv', JSON.stringify([{ id: 'x', date: now }]));
+        localStorage.setItem('grupdk_session_x', JSON.stringify({ id: 'x', groups: [] }));
+
+        storage.cleanupClassStorage('slettet.csv');
+
+        expect(localStorage.getItem('grupdk_session_x')).toBeTruthy();
+        expect(localStorage.getItem('grupdk_history_slettet.csv')).toBeNull();
+    });
+
     it('en klasseliste der slet ikke findes, rydder ingenting', () => {
         // Listen er væk, klassernes data er der endnu. Det er dét tilfælde,
         // hvor appen beder læreren om IKKE at lukke fanen — grupperne og
@@ -612,5 +641,189 @@ describe('kolonnelisten læses af alle rækker', () => {
             [], 'Navn', [], {}, {}, [], [], {});
 
         expect(pyBridge.getClass(file).content.columns).toEqual(['Navn', 'Karakter']);
+    });
+});
+
+describe('en ulæselig klasseliste skrives ikke væk', () => {
+    const BROKEN = '[{"filename":"3a.csv","name":"3a" ØDELAGT';
+
+    beforeEach(() => {
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+        pyBridge._unreadableRaw = null;
+        window.notifyError = () => {};
+        localStorage.setItem('grupdk_classes', BROKEN);
+        // Det eneste læsbare, der er tilbage af 3a.
+        localStorage.setItem('grupdk_groups_3a.csv', JSON.stringify([{ name: 'Gruppe 1', members: ['r1'] }]));
+        localStorage.setItem('grupdk_history_3a.csv', JSON.stringify([{ id: 's1', name: 'Mandag' }]));
+        localStorage.setItem('grupdk_session_s1', JSON.stringify({ id: 's1', groups: [] }));
+    });
+    afterEach(() => vi.restoreAllMocks());
+
+    it('en ny klasse lægger de gamle bytes til side, før listen skrives', () => {
+        expect(pyBridge.createClass('2b', 'Navn\nAnna\n', true).error).toBeUndefined();
+        expect(localStorage.getItem('grupdk_unreadable_classes')).toBe(BROKEN);
+        expect(pyBridge.getClasses().map(c => c.name)).toEqual(['2b']);
+    });
+
+    it('en gendannelse fra backup gør det samme (allowCreate)', () => {
+        const res = pyBridge.updateClass('4c.csv', [{ Navn: 'Bo', _rowId: 'r1' }], [], 'Navn',
+            [], {}, {}, [], [], {}, { allowCreate: true, name: '4c' });
+        expect(res.success).toBe(true);
+        expect(localStorage.getItem('grupdk_unreadable_classes')).toBe(BROKEN);
+    });
+
+    it('også en liste, der kan læses, men ikke er en liste', () => {
+        localStorage.setItem('grupdk_classes', '{"3a.csv":{}}');
+        pyBridge._invalidateClassesCache();
+        pyBridge.createClass('2b', 'Navn\nAnna\n', true);
+        expect(localStorage.getItem('grupdk_unreadable_classes')).toBe('{"3a.csv":{}}');
+    });
+
+    it('den første kopi bliver stående — en senere skrives ikke ovenpå', () => {
+        localStorage.setItem('grupdk_unreadable_classes', 'den første');
+        pyBridge.createClass('2b', 'Navn\nAnna\n', true);
+        expect(localStorage.getItem('grupdk_unreadable_classes')).toBe('den første');
+    });
+
+    it('opstartens oprydning rører ikke de gamle klassers grupper og sessioner', () => {
+        pyBridge.createClass('2b', 'Navn\nAnna\n', true);
+        // Næste opstart: listen kan læses igen og kender kun 2b.
+        expect(storage.cleanupOrphanedClassData()).toBe(0);
+        // Payload-oprydningen går efter historik-listerne, ikke klasselisten:
+        // s1 står i 3a's historik og er derfor ikke forældreløs.
+        expect(storage.cleanupOrphanedPayloads()).toBe(0);
+        expect(localStorage.getItem('grupdk_groups_3a.csv')).not.toBeNull();
+        expect(localStorage.getItem('grupdk_history_3a.csv')).not.toBeNull();
+        expect(localStorage.getItem('grupdk_session_s1')).not.toBeNull();
+    });
+
+    it('kan kopien ikke gemmes (fuldt lager), skrives listen heller ikke', () => {
+        const real = localStorage.setItem.bind(localStorage);
+        vi.spyOn(localStorage, 'setItem').mockImplementation((key, value) => {
+            if (key === 'grupdk_unreadable_classes') {
+                const e = new Error('QuotaExceededError');
+                e.name = 'QuotaExceededError';
+                throw e;
+            }
+            return real(key, value);
+        });
+        expect(pyBridge.createClass('2b', 'Navn\nAnna\n', true).error).toBeTruthy();
+        expect(localStorage.getItem('grupdk_classes')).toBe(BROKEN);
+    });
+
+    it('en læsbar liste lægges ikke til side', () => {
+        localStorage.setItem('grupdk_classes', '[]');
+        pyBridge._invalidateClassesCache();
+        pyBridge.createClass('2b', 'Navn\nAnna\n', true);
+        expect(localStorage.getItem('grupdk_unreadable_classes')).toBeNull();
+    });
+});
+
+describe('gamle sessioner i klasser, der ikke bliver åbnet', () => {
+    // GDPR-siden og privatlivspolitikken lover "højst 50 pr. klasse, og ingen
+    // ældre end 90 dage". Før blev det kun holdt, når læreren gemte en ny
+    // session i netop den klasse.
+    const daysAgo = (n) => { const d = new Date(); d.setDate(d.getDate() - n); return d.toISOString(); };
+    const put = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+    const session = (id) => put(`grupdk_session_${id}`, { id, groups: [{ name: 'Gruppe 1', members: [{ name: 'Anna' }] }] });
+
+    beforeEach(() => {
+        localStorage.clear();
+        state.currentClass = null;
+        put('grupdk_classes', [{ filename: 'aug.csv', name: 'aug', content: {} }]);
+    });
+
+    it('en session over 90 dage forsvinder ved opstart — med sin payload', () => {
+        put('grupdk_history_aug.csv', [
+            { id: 'gl', date: daysAgo(120) },
+            { id: 'ny', date: daysAgo(3) },
+            { id: 'uden-dato' },
+        ]);
+        ['gl', 'ny', 'uden-dato'].forEach(session);
+
+        expect(storage.pruneStaleHistories()).toBe(1);
+
+        const ids = JSON.parse(localStorage.getItem('grupdk_history_aug.csv')).map(e => e.id);
+        expect(ids).toEqual(['ny', 'uden-dato']);
+        expect(localStorage.getItem('grupdk_session_gl')).toBeNull();
+        expect(localStorage.getItem('grupdk_session_ny')).toBeTruthy();
+    });
+
+    it('højst 50 pr. klasse', () => {
+        const list = Array.from({ length: 53 }, (_, i) => ({ id: `s${i}`, date: daysAgo(i) }));
+        put('grupdk_history_aug.csv', list);
+        list.forEach(e => session(e.id));
+
+        expect(storage.pruneStaleHistories()).toBe(3);
+        expect(JSON.parse(localStorage.getItem('grupdk_history_aug.csv'))).toHaveLength(50);
+        expect(localStorage.getItem('grupdk_session_s52')).toBeNull();
+        expect(localStorage.getItem('grupdk_session_s0')).toBeTruthy();
+    });
+
+    it('en payload, en anden klasse stadig bruger, bliver liggende', () => {
+        put('grupdk_history_aug.csv', [{ id: 'delt', date: daysAgo(120) }]);
+        put('grupdk_history_ny.csv', [{ id: 'delt', date: daysAgo(1) }]);
+        session('delt');
+
+        storage.pruneStaleHistories();
+
+        expect(JSON.parse(localStorage.getItem('grupdk_history_aug.csv'))).toEqual([]);
+        expect(localStorage.getItem('grupdk_session_delt')).toBeTruthy();
+    });
+
+    it('en ulæselig historik røres ikke, og så slettes ingen payloads', () => {
+        localStorage.setItem('grupdk_history_ny.csv', '{ødelagt');
+        put('grupdk_history_aug.csv', [{ id: 'gl', date: daysAgo(120) }]);
+        session('gl');
+
+        storage.pruneStaleHistories();
+
+        expect(localStorage.getItem('grupdk_history_ny.csv')).toBe('{ødelagt');
+        expect(localStorage.getItem('grupdk_session_gl')).toBeTruthy();
+    });
+
+    it('ligger der en ulæselig klasseliste til side, ryddes intet', () => {
+        localStorage.setItem('grupdk_unreadable_classes', '{gammel liste');
+        put('grupdk_history_aug.csv', [{ id: 'gl', date: daysAgo(120) }]);
+        session('gl');
+
+        expect(storage.pruneStaleHistories()).toBe(0);
+        expect(JSON.parse(localStorage.getItem('grupdk_history_aug.csv'))).toHaveLength(1);
+        expect(localStorage.getItem('grupdk_session_gl')).toBeTruthy();
+    });
+
+    it('en session, en anden fane gemmer midt i oprydningen, skrives ikke væk', () => {
+        put('grupdk_history_aug.csv', [{ id: 'gl', date: daysAgo(120) }]);
+        session('gl');
+        // Anden fane gemmer en ny session, efter listen er læst, men før den
+        // skrives: ved andet getItem på listen ligger den nye udgave der.
+        const newer = JSON.stringify([{ id: 'gl', date: daysAgo(120) }, { id: 'ny', date: daysAgo(0) }]);
+        const real = localStorage.getItem.bind(localStorage);
+        let reads = 0;
+        const spy = vi.spyOn(localStorage, 'getItem').mockImplementation((k) => {
+            if (k === 'grupdk_history_aug.csv' && ++reads === 2) localStorage.setItem(k, newer);
+            return real(k);
+        });
+        try {
+            expect(storage.pruneStaleHistories()).toBe(0);
+        } finally {
+            spy.mockRestore();
+        }
+        expect(localStorage.getItem('grupdk_history_aug.csv')).toBe(newer);
+        expect(localStorage.getItem('grupdk_session_gl')).toBeTruthy();
+    });
+
+    it('afvises skrivningen, står listen og sessionerne, som de stod', () => {
+        put('grupdk_history_aug.csv', [{ id: 'gl', date: daysAgo(120) }]);
+        session('gl');
+        const spy = blockWrites();
+        try {
+            expect(storage.pruneStaleHistories()).toBe(0);
+        } finally {
+            spy.mockRestore();
+        }
+        expect(JSON.parse(localStorage.getItem('grupdk_history_aug.csv'))).toHaveLength(1);
+        expect(localStorage.getItem('grupdk_session_gl')).toBeTruthy();
     });
 });

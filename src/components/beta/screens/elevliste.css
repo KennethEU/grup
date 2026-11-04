@@ -7,6 +7,18 @@
    Venstre-vælgerne er scoped `.x[data-v-…]` (0,2,0); html.beta + to klasser
    vinder, uden !important. */
 html.beta .students-header-sticky .settings-panel { min-block-size: 48px; }
+/* Værktøjslinjen flugter med tabellen under den (4/11 2026): ingen største
+   bredde (ved 1.920 px stod "VIS:" ellers 270 px inde, mens tabellen gik fra
+   kant til kant), og 22 px + knappernes 10 px = teksten starter og slutter
+   32 px fra kanten, som tabellens første og sidste celle. */
+html.beta .students-header-sticky .header-inner {
+    max-inline-size: none;
+    padding-inline: 22px;
+}
+html.beta .students-header-sticky .ribbon-content {
+    max-inline-size: none;
+    margin-inline: 0;
+}
 html.beta .students-header-sticky .ribbon-group { gap: 2px; }
 html.beta .students-header-sticky .pill-group {
     background: transparent;
@@ -114,6 +126,15 @@ html.beta .table-container th.col-active { color: var(--primary); }
 /* Skjult kolonne: StudentTable giver den en egen tone (.col-header.col-hidden),
    som er stærkere end th-reglen ovenfor */
 html.beta .table-container th.col-hidden { background: var(--paper); }
+/* Bredden (4/11 2026): tabellen går helt ud til kanten, men datakolonnerne
+   er kun så brede som indholdet — al den overskydende plads går til den
+   sidste kolonne (slet-krydset), som står yderst til højre. Før delte alle
+   kolonner pladsen, så med tre kolonner stod KØN midt på skærmen. Med mange
+   kolonner er der intet tilovers: slet-kolonnen er smal, og beholderen ruller
+   vandret som før. NB: kun slet-kolonnen må have en bredde i % — en
+   %-bredde andre steder (fx "width:1%" på fremmødet) tager pladsen fra den. */
+html.beta .table-container th.th-delete { inline-size: 100%; }
+html.beta .table-container td.cell-delete { text-align: end; }
 html.beta .table-container td {
     padding-block: 0;
     padding-inline: 12px;
@@ -167,9 +188,69 @@ html.beta .table-container .delete-row-btn:hover {
     color: var(--color-error);
     background: color-mix(in oklch, var(--color-error) 8%, transparent);
 }
-/* De to første kolonner (Valg, Til stede) har felter midt i cellen; overskriften
-   skal stå over feltet, ikke i venstre kant */
-html.beta .table-container th:nth-child(-n+2) { text-align: center; }
+/* Aftale-kolonnen har feltet midt i cellen; overskriften skal stå over feltet,
+   ikke i venstre kant. */
+html.beta .table-container th:first-child { text-align: center; }
+/* Fremmødet foran navnet (4/11 2026): en smal celle uden luft til højre, så
+   den runde knap står 12 px fra navnet, og knappen i overskriften står lige
+   over rækkernes. */
+html.beta .table-container th.th-attendance,
+html.beta .table-container td.cell-attendance {
+    padding-inline: 12px 0;
+    text-align: start;
+}
+/* Et rigtigt afkrydsningsfelt, tegnet som en rund knap: fyldt med et hak =
+   mødt, tom ring = væk, fyldt med en streg = nogle er væk (kun overskriften).
+   Står efter input[type="checkbox"]-reglen ovenfor og har samme styrke, så
+   den vinder. Ringen er --ink-4 (3,3:1 mod papiret, over kravet på 3:1 for
+   en kontrolkant). */
+html.beta .table-container input.presence-toggle {
+    appearance: none;
+    inline-size: 18px;
+    block-size: 18px;
+    border: 1.5px solid var(--ink-4);
+    border-radius: 50%;
+    background: transparent center / 11px no-repeat;
+    vertical-align: middle;
+    cursor: pointer;
+}
+html.beta .table-container input.presence-toggle:checked {
+    border-color: var(--ink-2);
+    background-color: var(--ink-2);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+html.beta .table-container input.presence-toggle:indeterminate {
+    border-color: var(--ink-2);
+    background-color: var(--ink-2);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round'%3E%3Cline x1='6' y1='12' x2='18' y2='12'/%3E%3C/svg%3E");
+}
+html.beta .table-container input.presence-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+/* Windows' høj kontrast tegner ikke baggrundsbilleder: brug browserens eget felt */
+@media (forced-colors: active) {
+    html.beta .table-container input.presence-toggle { appearance: auto; }
+}
+/* Væk: et lille mærke efter navnet. Som ::after på cellen, ikke som tekst i
+   den: cellen kan man skrive i, og textContent (det, der gemmes ved blur)
+   tager ikke ::after med. */
+html.beta .table-container tr.row-excluded td.cell-attendance + td.cell-data::after {
+    content: "VÆK";
+    margin-inline-start: 8px;
+    padding: 1px 5px;
+    border: 1px solid var(--rule-2);
+    border-radius: 4px;
+    font: 500 10px var(--mono);
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+}
+/* "· 7 AF 8 MØDT" i overskriften over navnene */
+html.beta .table-container .th-present-count {
+    margin-inline-start: 6px;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+}
 
 /* Hele skærmen (se .table-container): ingen bundluft under elevlisten, så
    tabellen kan gå helt ned uden at siden selv begynder at rulle. */
@@ -178,4 +259,6 @@ html.beta .students-tab-content { padding-block-end: 0; }
 html.beta .students-scroll-content { padding-block-start: 0; }
 html.beta .content-view:has(> * .students-tab-content) { padding-block-end: 0; }
 html.beta .table-container :is(th, td):first-child { padding-inline-start: 32px; }
-html.beta .table-container :is(th, td):last-child { padding-inline-end: 32px; }
+/* Sidste kolonne er slet-krydset: 24 px + krydsets 8 px luft i knappen =
+   selve krydset slutter 32 px fra kanten, under "Slet kolonne". */
+html.beta .table-container :is(th, td):last-child { padding-inline-end: 24px; }

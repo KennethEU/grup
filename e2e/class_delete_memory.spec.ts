@@ -166,3 +166,33 @@ test('Tilbage efter sletning af den sidste klasse lander på Oversigt', async ({
     await expect(page.getByRole('button', { name: 'Prøv med testdata' })).toBeVisible();
     await expect(page.getByText('opret en ny med')).toHaveCount(0);
 });
+
+/** Emneforslagene i `#topics-datalist` (felterne på gruppekortene). */
+function topicSuggestions(page: Page) {
+    return page.evaluate(() => [...document.querySelectorAll('#topics-datalist option')]
+        .map(o => (o as HTMLOptionElement).value));
+}
+
+// 4/11: emneforslagene blev kun bygget forfra, når den valgte klasse HAVDE
+// gemte grupper. Skiftede læreren til en klasse uden, foreslog emnefeltet
+// den forrige klasses emner — og efter sletning af den sidste klasse stod
+// den slettede klasses emner stadig i siden.
+test('Emneforslagene følger klassen — også til en klasse uden grupper og efter en sletning', async ({ page }) => {
+    await createClassAndGoToGroups(page, 'Emner A');
+    await generateGroups(page);
+    const topic = page.locator('.group-topic-input').first();
+    await topic.click();
+    await topic.pressSequentially('Klimaforandringer', { delay: 10 });
+    await expect.poll(() => topicSuggestions(page)).toContain('Klimaforandringer');
+
+    await createSecondClass(page, 'Emner B');
+    await expect.poll(() => topicSuggestions(page)).toEqual([]);
+
+    await switchToClass(page, 'Emner A');
+    await expect.poll(() => topicSuggestions(page)).toContain('Klimaforandringer');
+
+    await deleteClassByName(page, 'Emner B');
+    await deleteClassByName(page, 'Emner A');
+    await expect(page.locator('.class-trigger')).not.toContainText('Emner A', { timeout: 30000 });
+    await expect.poll(() => topicSuggestions(page)).toEqual([]);
+});

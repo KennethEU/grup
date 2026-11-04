@@ -9,7 +9,7 @@ import { normalizeImportHeaders } from './importData.js';
 // `isReady` er beholdt, fordi resten af appen og testene bruger dem.
 
 import { parseCSV, stripEmptyColumns, ensureRowIds, isInternalField, columnsOfRows, nfc } from './utils.js';
-import { CLASSES_KEY } from './storageKeys.js';
+import { CLASSES_KEY, UNREADABLE_CLASSES_KEY } from './storageKeys.js';
 import { removeLegacyClassData, isQuotaError } from './migrateStorage.js';
 
 /** Så mange rækker tages højst med fra én import. Et helt årgangshold er
@@ -105,6 +105,8 @@ class ClassStore {
         // BEMÆRK: cachen er KUN til læsning. Alt der skriver skal gå gennem
         // `_readClassesForWrite()` — se forklaringen dér.
         this._classesCache = null;
+        // Den rå tekst, hvis klasselisten ikke kunne læses (ellers null).
+        this._unreadableRaw = null;
 
         // filename -> det `last_modified` DENNE fane sidst så eller skrev.
         // Bruges til at opdage, at en anden fane har ændret samme klasse —
@@ -151,34 +153,75 @@ class ClassStore {
      * læsning koster ét JSON.parse pr. gem og fjerner hele klassen af fejl.
      */
     _readClassesForWrite() {
+        let data = null;
         try {
-            const data = localStorage.getItem(CLASSES_KEY);
+            data = localStorage.getItem(CLASSES_KEY);
             const parsed = data ? JSON.parse(data) : [];
             // En læsbar, men forkert form (fx et objekt) må ikke ende som
             // klasselisten — `.findIndex` ville kaste midt i et gem.
             this._classesCache = Array.isArray(parsed) ? parsed : [];
+            this._unreadableRaw = Array.isArray(parsed) ? null : data;
             if (!Array.isArray(parsed)) this._warnClassesUnreadable();
             return this._classesCache;
         } catch (e) {
             console.error('[PyBridge] Error reading classes:', e);
             // Klasselisten kunne ikke læses. Vi fortsætter med en tom liste —
-            // ellers kan appen slet ikke bruges — men næste gem skriver den
-            // tomme liste ovenpå. Læreren SKAL vide det: der findes ingen
-            // server med en kopi, og indtil hun har lukket fanen, ligger de
-            // gamle bytes der stadig og kan reddes af en der ved hvordan.
+            // ellers kan appen slet ikke bruges. Næste gem skriver en ny liste
+            // ovenpå, men FØRST lægges de gamle bytes til side (se
+            // _keepUnreadableCopy). Læreren skal stadig vide det: der findes
+            // ingen server med en kopi.
+            this._unreadableRaw = typeof data === 'string' ? data : null;
             this._warnClassesUnreadable();
             this._classesCache = [];
             return this._classesCache;
         }
     }
 
+    /**
+     * Læg en ulæselig klasseliste til side, før en ny skrives ovenpå.
+     *
+     * Uden det her var ALT væk efter første gem: oprettede læreren en ny
+     * klasse eller gendannede en backup (det, beskeden om den ulæselige liste
+     * selv peger på), skrev gemmet en liste med kun den ene klasse oven i de
+     * gamle bytes. Og ved næste opstart kunne listen læses igen, så
+     * oprydningen (cleanupOrphanedClassData) slettede grupper, emner,
+     * historik og sessioner for alle de klasser, der kun stod i den gamle.
+     *
+     * Kopien skrives KUN, hvis der ikke allerede ligger en: den første er
+     * den oprindelige, og en anden fane må ikke erstatte den med noget nyere.
+     * Mens kopien findes, rydder oprydningen ved opstart ikke op (storage.js).
+     * Kan kopien ikke skrives (fuldt lager), skrives klasselisten heller
+     * ikke — så står de gamle bytes, hvor de stod.
+     *
+     * @returns {boolean} true, hvis klasselisten må skrives
+     */
+    _keepUnreadableCopy() {
+        if (this._unreadableRaw == null) return true;
+        try {
+            if (localStorage.getItem(UNREADABLE_CLASSES_KEY) !== null) return true;
+        } catch (e) {
+            return false;
+        }
+        return safeStorageSet(UNREADABLE_CLASSES_KEY, this._unreadableRaw);
+    }
+
+    /** Skriv hele klasselisten — efter at en ulæselig udgave er lagt til side. */
+    _saveClasses(classes) {
+        if (!this._keepUnreadableCopy()) return false;
+        return safeStorageSet(CLASSES_KEY, JSON.stringify(classes));
+    }
+
     /** Kun én gang pr. fane — beskeden gentaget ved hvert gem er ubrugelig. */
     _warnClassesUnreadable() {
         if (this._classesWarned) return;
         this._classesWarned = true;
+        // Den gamle tekst sagde "opret ikke en ny klasse — så overskrives de
+        // gamle data". Siden 4/11 2026 lægges listen til side før første gem
+        // (_keepUnreadableCopy), så læreren må gerne gendanne en backup.
         const msg = 'Klasselisten i browseren kunne ikke læses, og dine klasser '
-            + 'vises derfor ikke.\n\nLuk IKKE fanen og opret ikke en ny klasse — '
-            + 'så overskrives de gamle data. Prøv først at genindlæse siden.';
+            + 'vises derfor ikke.\n\nPrøv først at genindlæse siden. Hjælper det '
+            + 'ikke, kan du gendanne dine klasser fra en backup under "Import & backup". '
+            + 'Den ulæselige liste bliver lagt til side i browseren, før noget nyt gemmes.';
         if (typeof window !== 'undefined' && window.notifyError) window.notifyError(msg);
         else console.error(msg);
     }
@@ -371,7 +414,7 @@ class ClassStore {
             delete classes[idx].legacyFilename;
         }
 
-        if (!safeStorageSet(CLASSES_KEY, JSON.stringify(classes))) {
+        if (!this._saveClasses(classes)) {
             // Skrivningen fejlede — smid den ændrede liste væk igen.
             // Uden dette bliver cachen ved med at vise ændringen som om
             // den var gemt, og læreren opdager først tabet ved næste reload.
@@ -394,7 +437,7 @@ class ClassStore {
         // klassens grupper, historik og emner bagefter, og de kan ikke hentes
         // tilbage. Lykkes skrivningen ikke (Safari i privat browsing afviser
         // ALLE skrivninger), skal oprydningen ikke køre.
-        if (!safeStorageSet(CLASSES_KEY, JSON.stringify(classes))) {
+        if (!this._saveClasses(classes)) {
             this._invalidateClassesCache();
             return { error: 'Klassen kunne ikke slettes — browseren afviste at gemme ændringen.' };
         }
@@ -424,7 +467,7 @@ class ClassStore {
         // ikke længere skrive i den (se migrateStorage.js, legacyFilename).
         delete classes[idx].legacyFilename;
 
-        if (!safeStorageSet(CLASSES_KEY, JSON.stringify(classes))) {
+        if (!this._saveClasses(classes)) {
             // Skrivningen fejlede — smid den ændrede liste væk igen.
             // Uden dette bliver cachen ved med at vise ændringen som om
             // den var gemt, og læreren opdager først tabet ved næste reload.
@@ -532,7 +575,7 @@ class ClassStore {
             };
 
             classes.push(newClass);
-            if (!safeStorageSet(CLASSES_KEY, JSON.stringify(classes))) {
+            if (!this._saveClasses(classes)) {
                 // Se saveClass(): cachen må ikke beholde den ugemte klasse.
                 this._invalidateClassesCache();
                 return { error: 'Lagerplads fuld! Slet nogle klasser.' };

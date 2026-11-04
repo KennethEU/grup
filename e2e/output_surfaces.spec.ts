@@ -342,3 +342,37 @@ test('Del-menuen kan bruges med tastaturet og giver fokus tilbage', async ({ pag
     await expect(menu).toHaveCount(0);
     await expect(share).not.toBeFocused();
 });
+
+// Fokus, der forlader menuen, skal lukke den — også når browseren lader
+// sidens timere vente. Chromium afvikler hurtige tastetryk FØR en
+// setTimeout(…, 0): før 4/11 sattes menuens focusin-lytter først på i sådan
+// en timer, så et Tab ud af menuen nåede at ske, før nogen lyttede, og menuen
+// blev stående åben (testen ovenfor fejlede ca. hver tredje gang). Her holdes
+// timerne kunstigt tilbage, så det sker hver gang.
+test('Del-menuen lukker, når fokus tabber ud, selvom timerne venter', async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'Tab fokuserer ikke knapper i Safari');
+    await createClass(page, 'Del Ventende Timere');
+    await goToGroups(page);
+    await generateGroups(page);
+
+    const share = page.getByRole('button', { name: 'Del', exact: true });
+    const menu = page.getByRole('group', { name: 'Del grupperne' });
+    const tags = page.getByRole('button', { name: 'Tags', exact: true });
+
+    // Alle timere på 0 ms venter et sekund — som når tastetrykkene kommer
+    // hurtigere, end browseren når sine timere.
+    await page.evaluate(() => {
+        const original = window.setTimeout;
+        (window as any).setTimeout = (fn: TimerHandler, ms?: number, ...args: unknown[]) =>
+            original(fn, ms ? ms : 1000, ...args);
+    });
+
+    await share.focus();
+    await page.keyboard.press('Enter');
+    await expect(menu).toBeVisible();
+    await expect(menu.getByRole('button', { name: /Udskriv/ })).toBeFocused();
+    // Udskriv → kolonner → rækker → Tags (første knap efter menuen).
+    for (let i = 0; i < 3; i++) await page.keyboard.press('Tab');
+    await expect(tags).toBeFocused();
+    await expect(menu).toHaveCount(0, { timeout: 500 });
+});

@@ -14,8 +14,9 @@
 // den og tegner snapshottets grupper i stedet for de rigtige. Den rigtige
 // tilstand røres aldrig, før læreren har klikket og svaret.
 
-import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, nextTick, onUnmounted } from 'vue';
 import { useBarPopover } from '../../composables/useBarPopover.js';
+import { useBarMenuDismiss } from '../../composables/useBarMenuDismiss.js';
 import { reactiveState } from '../../js/modules/reactiveState.js';
 import { listRuns, restoreRun, hasManualChanges, hasSettingsChanges } from '../../js/modules/runHistory.js';
 import { autoSave } from '../../js/modules/classActions.js';
@@ -168,83 +169,20 @@ function restore(index, alsoSettings) {
 }
 
 // ─── Luk ────────────────────────────────────────────────────────────────────
-// Escape og klik udenfor. Menuen er ikke modal, så den skal selv rydde op
-// efter sig — både lukningen OG forhåndsvisningen.
-function onKeydown(e) {
-    if (e.key !== 'Escape') return;
-    e.stopPropagation();
-    close();
-}
-
-/**
- * Luk når der klikkes uden for menuen.
- *
- * Lytter på pointerdown, IKKE på click — og det er ikke en detalje.
- * Browseren afvikler et microtask-checkpoint MELLEM to klik-lyttere, så når
- * chippens egen handler har skiftet menuen til spørgsmåls-trinnet, har Vue
- * allerede gentegnet og taget chippen ud af DOM'en, inden den her lytter
- * kører. `contains()` sagde så nej til et element der lige HAVDE været inde
- * i menuen, og menuen lukkede sig selv i stedet for at stille spørgsmålet.
- * pointerdown falder før alt det.
- */
-function onClickOutside(e) {
-    if (rootRef.value && !rootRef.value.contains(e.target)) close();
-}
-
-/**
- * Luk når TASTATURET forlader menuen.
- *
- * Musen havde altid en vej ud: `@mouseleave` på roden rydder
- * forhåndsvisningen, og et klik udenfor lukker menuen. Tastaturet havde ingen
- * af delene. Chipsene sætter forhåndsvisningen på `@focus`, men intet ryddede
- * den igen, når fokus tabbede videre — og menuen blev stående i DOM'en.
- *
- * Målt (2/9): åbn menuen, tryk Tab otte gange. Fokus står på `.brand-link`
- * øverst i topbaren, menuen er stadig åben, og `previewRunIndex` er 0.
- * Gruppekortene viser kørsel 1, mens `storedStandardGroups` stadig indeholder
- * den fordeling der gælder — og ALLE fire udgange (udskrift, kopiér, gem som
- * kolonne, Excel-eksport) læser `stored*`. Læreren printer altså en anden
- * liste end den, hun kigger på. På den ene klasse jeg målte var det Gruppe 1
- * med "Elev 10, 13, 18, 3" på skærmen og "Elev 1, 15, 17, 9" på papiret.
- *
- * Rettelsen sidder HER frem for i de fire udgange: forhåndsvisningen er et
- * spørgsmål, ikke en tilstand. Slipper den, når man går væk fra menuen, kan
- * ingen udgang længere komme til at være uenig med skærmen.
- *
- * TO LYTTERE, og begge er nødvendige. Denne er `focusin` på document — samme
- * mønster som `onClickOutside` ovenfor — og den er den præcise: den fyrer kun,
- * når noget ANDET tager imod fokus. Bagstopperen er `onRootFocusOut` nedenfor.
- */
-function onFocusOutside(e) {
-    if (rootRef.value && !rootRef.value.contains(e.target)) close();
-}
-
-/**
- * Bagstopper for `onFocusOutside`.
- *
- * `focusin` kræver at et andet element tager imod fokus, og der findes flader
- * hvor browseren flytter markøren uden at en focusin når frem til document.
- * Roden hører altid sin egen `focusout`, så den spørger om det samme.
- *
- * To regler holder den ude af Safari-fælden: svaret udskydes ét tik, og
- * `<body>` tæller IKKE som "udenfor". Klikker læreren på en chip, byttes
- * chip-rækken ud med spørgsmåls-trinnet, og den knap der havde fokus
- * forsvinder under os; fokus falder ned på <body>, og et `focusout` uden
- * efterfølger ser nøjagtig ud som "fokus forlod menuen". Lukkede vi på det,
- * nåede bekræftelsen aldrig at blive vist — målt: 7 af 9 webkit-tests faldt.
- */
-function onRootFocusOut() {
-    clearTimeout(focusOutTimer);
-    focusOutTimer = setTimeout(() => {
-        const root = rootRef.value;
-        if (!root) return;                                  // menuen er væk
-        const active = document.activeElement;
-        if (!active || active === document.body) return;    // faldt på gulvet
-        if (root.contains(active)) return;                  // stadig indeni
-        close();
-    }, 0);
-}
-
+// Escape, klik udenfor og fokus der forlader menuen — reglerne bor i
+// useBarMenuDismiss.js, som alle fire menuer på bundbjælken deler. Menuen er
+// ikke modal, så den skal selv rydde op efter sig — både lukningen OG
+// forhåndsvisningen; derfor går alle lukninger gennem close().
+//
+// HVORFOR TASTATURET SKAL KUNNE LUKKE DEN (2/9): musen havde altid en vej ud
+// (`@mouseleave` på roden rydder forhåndsvisningen, og et klik udenfor lukker
+// menuen). Tastaturet havde ingen: chippene sætter forhåndsvisningen på
+// `@focus`, men intet ryddede den igen, når fokus tabbede videre. Målt: åbn
+// menuen, tryk Tab otte gange — fokus står øverst i topbaren, menuen er stadig
+// åben, og gruppekortene viser kørsel 1, mens alle udgange (udskrift, kopiér,
+// gem som kolonne, Excel) læser `stored*`. Læreren printede altså en anden
+// liste end den, hun kiggede på. Rettelsen sidder i menuen frem for i
+// udgangene: forhåndsvisningen er et spørgsmål, ikke en tilstand.
 function close() {
     reactiveState.previewRunIndex = null;
     emit('close');
@@ -257,60 +195,26 @@ function close() {
 // skal den så selv finde hen over knappen — det er det, de to mål her gør.
 // Placeringen deles med afspilningsmenuen — se useBarPopover.js. Begge menuer
 // hænger på den samme bundbjælke og skal stå ens i forhold til hver sin knap.
+//
+// useBarPopover kaldes FØR useBarMenuDismiss: begge gør deres arbejde i
+// nextTick efter onMounted, i den rækkefølge de er kaldt. Så står menuen på
+// plads, før fokus flyttes ind i den (første chip, "Nu").
 const { menuStyle, arrowStyle, position } = useBarPopover(rootRef, 'run-history-anchor', 296);
-
-// Knappen der åbnede menuen — fokus skal tilbage dertil, når menuen lukker.
-// Ellers falder markøren tilbage til <body>, og næste Tab starter forfra
-// øverst på siden. Samme opførsel som modalvinduerne (useModalFocus).
-let previouslyFocused = null;
-let outsideTimer = null;
-let focusOutTimer = null;
-
-onMounted(() => {
-    previouslyFocused = document.activeElement;
-    nextTick(() => {
-        position();
-        // Fokus ind i menuen. Uden det åbnede menuen sig usynligt for en
-        // skærmlæser: markøren blev på knappen, og der var intet der sagde,
-        // at der nu stod fem kørsler at vælge imellem.
-        rootRef.value?.querySelector('.chip')?.focus();
-    });
-    document.addEventListener('keydown', onKeydown, true);
-    // Et lille ophold, så det tryk der ÅBNEDE menuen ikke selv lukker den igen.
-    // Timeren gemmes: lukker menuen inden opholdet er ovre, ville lytteren
-    // blive tilføjet EFTER oprydningen og aldrig blive fjernet igen.
-    outsideTimer = setTimeout(() => {
-        document.addEventListener('pointerdown', onClickOutside);
-        // Samme ophold som pointerdown: menuen giver selv fokus til første
-        // chip i nextTick, og den focusin må ikke lukke menuen igen.
-        document.addEventListener('focusin', onFocusOutside);
-    }, 0);
+const { onRootFocusOut } = useBarMenuDismiss(rootRef, {
+    anchorClass: 'run-history-anchor',
+    onClose: close,
+    // Fokus på knappen lukker ikke menuen, men forhåndsvisningen slipper:
+    // læreren er gået ud af kørslerne.
+    onOpenerFocus: () => { reactiveState.previewRunIndex = null; },
 });
 
 // Skiftet mellem chip-rækken og spørgsmålet ændrer menuens højde og bredde.
 watch(selectedIndex, () => nextTick(position));
 
+// Lukker menuen af en anden vej (fx forælderen), må forhåndsvisningen ikke
+// blive hængende i gruppekortene.
 onUnmounted(() => {
-    clearTimeout(outsideTimer);
-    clearTimeout(focusOutTimer);
-    document.removeEventListener('keydown', onKeydown, true);
-    document.removeEventListener('pointerdown', onClickOutside);
-    document.removeEventListener('focusin', onFocusOutside);
     reactiveState.previewRunIndex = null;
-    // Fokus tilbage til knappen — men KUN hvis det ellers ville gå tabt.
-    //
-    // Menuen lukker to slags gange: fordi fokus FORSVANDT (Escape, eller en
-    // chip der blev byttet ud under fingeren), og fordi tastaturet gik VIDERE
-    // et andet sted hen (onFocusOutside). I det andet tilfælde havde læreren
-    // netop valgt, hvor markøren skulle stå — og den ubetingede udgave rev den
-    // tilbage. Målt 4/9: åbn menuen, tab videre til "Kopiér", tryk Enter.
-    // Fokus stod på historik-knappen, så Enter åbnede menuen igen i stedet for
-    // at kopiere; knappen kunne i praksis ikke tabbes forbi.
-    const active = document.activeElement;
-    if (active && active !== document.body) return;
-    // isConnected: knappen kan være væk sammen med bundbjælken, hvis
-    // kørslen der blev hentet ikke havde nogen grupper i denne visning.
-    if (previouslyFocused && previouslyFocused.isConnected) previouslyFocused.focus();
 });
 </script>
 

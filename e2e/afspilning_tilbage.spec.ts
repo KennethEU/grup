@@ -58,3 +58,36 @@ test('Skift til matrix (tvunget i state) stopper afspilningen', async ({ page })
     });
     await expect.poll(() => replayState(page)).toBe(false);
 });
+
+// 4/11: menuens focusin-lytter blev før sat på i en setTimeout(…, 0), og
+// browseren kan lade sådan en timer vente, mens tastetryk kommer hurtigt.
+// Så nåede Tab ud af menuen at ske, før nogen lyttede, og menuen blev
+// stående (set i Del-menuen, som havde samme mønster). Timerne holdes her
+// kunstigt tilbage, så det sker hver gang.
+test('Afspilningsmenuen lukker, når fokus tabber ud, selvom timerne venter', async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'Tab fokuserer ikke knapper i Safari');
+
+    await createClassAndGoToGroups(page, 'Afspilning ventende timere');
+    await generateGroups(page);
+
+    await page.evaluate(() => {
+        const original = window.setTimeout;
+        (window as any).setTimeout = (fn: TimerHandler, ms?: number, ...args: unknown[]) =>
+            original(fn, ms ? ms : 1000, ...args);
+    });
+
+    const button = page.locator('.replay-anchor .action-pill');
+    await button.focus();
+    await page.keyboard.press('Enter');
+    const menu = page.locator('.replay-menu');
+    await expect(menu).toBeVisible();
+    await expect.poll(async () => await page.evaluate(() =>
+        document.querySelector('.replay-menu')?.contains(document.activeElement) ?? false)).toBe(true);
+    for (let i = 0; i < 12; i++) {
+        await page.keyboard.press('Tab');
+        const inside = await page.evaluate(() =>
+            document.querySelector('.replay-menu')?.contains(document.activeElement) ?? false);
+        if (!inside) break;
+    }
+    await expect(menu).toHaveCount(0, { timeout: 500 });
+});

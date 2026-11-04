@@ -1,5 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { checkForNewBuild, isChunkLoadError, watchForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
+import {
+    checkForNewBuild, isChunkLoadError, watchForNewBuild,
+    NEW_BUILD_MESSAGE, PART_UNAVAILABLE_MESSAGE, EXCEL_UNAVAILABLE_MESSAGE, reportPartUnavailable,
+} from './newBuild.js';
 
 // happy-dom prøver at hente et indsat <script> og skriver en lang fejl i
 // loggen, når det ikke må. Her skal tagget bare stå der.
@@ -118,5 +121,69 @@ describe('watchForNewBuild', () => {
     it('mærker ikke almindelige fejl som chunk-fejl', () => {
         expect(isChunkLoadError(new Error('boom'))).toBe(false);
         expect(isChunkLoadError(null)).toBe(false);
+    });
+});
+
+describe('beskederne, når en del ikke kan hentes', () => {
+    // Safari husker en fejlet hentning og spørger aldrig serveren igen i den
+    // samme fane (målt 4/11 2026). "Prøv igen" virker derfor ikke dér — kun
+    // en genindlæsning gør.
+    it('beder om en genindlæsning, ikke om at prøve igen', () => {
+        for (const msg of [NEW_BUILD_MESSAGE, PART_UNAVAILABLE_MESSAGE, EXCEL_UNAVAILABLE_MESSAGE]) {
+            expect(msg).toMatch(/Genindlæs siden|genindlæs siden/);
+            expect(msg).toContain('Cmd+R');
+            expect(msg).not.toMatch(/prøv igen/i);
+        }
+    });
+});
+
+describe('reportPartUnavailable', () => {
+    let listeners;
+    beforeEach(() => {
+        setOwnEntry('./assets/index-OLD.js');
+        window.notifyError = vi.fn();
+        listeners = [];
+        const realAdd = window.addEventListener.bind(window);
+        vi.spyOn(window, 'addEventListener').mockImplementation((type, fn, opts) => {
+            if (type === 'vite:preloadError') listeners.push(fn);
+            return realAdd(type, fn, opts);
+        });
+        watchForNewBuild();
+    });
+    afterEach(() => {
+        for (const fn of listeners) window.removeEventListener('vite:preloadError', fn);
+        vi.restoreAllMocks();
+        setOwnEntry(null);
+    });
+
+    /** Som Vites hjælper: hændelsen først, så kastes den samme fejl videre. */
+    function chunkError() {
+        const err = new Error('Failed to fetch dynamically imported module');
+        const event = new Event('vite:preloadError', { cancelable: true });
+        event.payload = err;
+        window.dispatchEvent(event);
+        return err;
+    }
+
+    it('er tavs ved en ny udgave — lytteren har allerede bedt om en genindlæsning', async () => {
+        vi.spyOn(globalThis, 'fetch').mockResolvedValue(htmlResponse('./assets/index-NEW.js'));
+        const shown = await reportPartUnavailable(chunkError(), EXCEL_UNAVAILABLE_MESSAGE);
+        expect(shown).toBeNull();
+        await vi.waitFor(() => expect(window.notifyError).toHaveBeenCalledWith(NEW_BUILD_MESSAGE));
+        expect(window.notifyError).toHaveBeenCalledTimes(1);
+    });
+
+    it('siger sin egen besked, når udgaven er den samme', async () => {
+        vi.spyOn(globalThis, 'fetch').mockResolvedValue(htmlResponse('./assets/index-OLD.js'));
+        const shown = await reportPartUnavailable(chunkError(), EXCEL_UNAVAILABLE_MESSAGE);
+        expect(shown).toBe(EXCEL_UNAVAILABLE_MESSAGE);
+        expect(window.notifyError).toHaveBeenCalledWith(EXCEL_UNAVAILABLE_MESSAGE);
+        expect(window.notifyError).toHaveBeenCalledTimes(1);
+    });
+
+    it('spørger ikke serveren om en almindelig fejl', async () => {
+        const spy = vi.spyOn(globalThis, 'fetch');
+        expect(await reportPartUnavailable(new Error('boom'), EXCEL_UNAVAILABLE_MESSAGE)).toBe(EXCEL_UNAVAILABLE_MESSAGE);
+        expect(spy).not.toHaveBeenCalled();
     });
 });

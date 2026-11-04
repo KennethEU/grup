@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { brotliCompressSync, constants as zlibConstants } from 'node:zlib'
-import { join } from 'node:path'
+import { join, resolve } from 'node:path'
 
 // Brotli-udgaver af de store JS/CSS-filer, lagt ved siden af de rå
 // (index-XXXX.js → index-XXXX.js.br). routes/grupper-assets.js sender dem,
@@ -17,10 +17,18 @@ import { join } from 'node:path'
 // fil er en fil mere i git og i FTP-uploaden. Målt 24/9 giver det 7 filer.
 const MIN_BYTES = 10_000
 
-function precompressAssets(outDir) {
+//
+// Mappen tages fra Vites egen opsætning (build.outDir), ikke skrevet ind her:
+// `vite build --outDir X` lagde før de rå filer i X, men pakkede (og
+// overskrev .br-filerne i) public/grupper — og X fik ingen .br-filer.
+function precompressAssets() {
+    let outDir
     return {
         name: 'precompress-assets',
         apply: 'build',
+        configResolved(config) {
+            outDir = resolve(config.root, config.build.outDir)
+        },
         closeBundle() {
             const dir = join(outDir, 'assets')
             let names
@@ -72,7 +80,7 @@ export default defineConfig({
     plugins: [
         vue(),
         servePrivacyLinkInDev('../public/privacy-link.js'),
-        precompressAssets('../public/grupper'),
+        precompressAssets(),
     ],
     base: './', // Use relative paths for assets so it can sit in any subdirectory
     // Root of the project is where Vite expects to find index.html

@@ -13,10 +13,17 @@
 //   grupdk_session_<id>          den enkelte sessions indhold
 //   grupdk_last_class(_index)    hvilken klasse der sidst var åben
 //   grupdk_news_filter           filteret i Nyheder
+//   grupdk_unreadable_classes    en klasseliste, der ikke kunne læses, lagt
+//                                til side før en ny blev skrevet ovenpå
+//                                (py_bridge._keepUnreadableCopy). Mens den
+//                                findes, rydder opstarten ikke op.
 // sessionStorage (kun mens fanen er åben):
 //   grupdk_nav_view, grupdk_class_tab, grupdk_storage_warned
 
 export const CLASSES_KEY = 'grupdk_classes';
+// Begynder bevidst IKKE med et af præfikserne nedenfor eller med
+// 'grupdk_classes', så ingen gennemløb af nøglerne tager den for en klasses data.
+export const UNREADABLE_CLASSES_KEY = 'grupdk_unreadable_classes';
 
 export const GROUPS_PREFIX = 'grupdk_groups_';
 export const TOPICS_PREFIX = 'grupdk_topics_';

@@ -8,7 +8,7 @@ import { safeStorageSet as safeSave } from './py_bridge.js';
 import { debounce, newUuid, mergeClassTopics } from './utils.js';
 import {
     CLASSES_KEY, GROUPS_PREFIX, TOPICS_PREFIX, HISTORY_PREFIX, SESSION_PREFIX,
-    LAST_CLASS_KEY, LAST_CLASS_INDEX_KEY,
+    LAST_CLASS_KEY, LAST_CLASS_INDEX_KEY, UNREADABLE_CLASSES_KEY,
 } from './storageKeys.js';
 import { legacyProtection, removeLegacyClassData } from './migrateStorage.js';
 // runHistory.js importerer også storage.js. Ringen er ufarlig: ingen af de to
@@ -498,13 +498,18 @@ export function cleanupClassStorage(filename) {
     // 2. Grupper
     localStorage.removeItem(`${GROUPS_PREFIX}${filename}`);
 
-    // 3. Historik og alle sessioners payloads
+    // 3. Historik og alle sessioners payloads — men kun dem, ingen anden
+    //    klasses historik nævner. Nøglen `grupdk_session_<id>` er fælles for
+    //    alle klasser, og flytningen fra de gamle nøglenavne kan give en kopi
+    //    ("3.b (kopi)") en historik med de samme id'er som originalen. Uden
+    //    tjekket tog sletningen af kopien originalens gemte sessioner med.
+    const historyKey = `${HISTORY_PREFIX}${filename}`;
     try {
-        const histStr = localStorage.getItem(`${HISTORY_PREFIX}${filename}`);
-        if (histStr) {
-            const history = JSON.parse(histStr);
+        const history = JSON.parse(localStorage.getItem(historyKey));
+        if (Array.isArray(history)) {
+            const elsewhere = sessionIdsInHistories(historyKey);
             history.forEach(entry => {
-                if (entry.id) {
+                if (entry && entry.id && elsewhere.ids && !elsewhere.ids.has(entry.id)) {
                     localStorage.removeItem(`${SESSION_PREFIX}${entry.id}`);
                 }
             });
@@ -512,11 +517,113 @@ export function cleanupClassStorage(filename) {
     } catch (e) {
         console.error("Cleanup history parse error:", e);
     }
-    localStorage.removeItem(`${HISTORY_PREFIX}${filename}`);
+    localStorage.removeItem(historyKey);
 
     // 4. Det samme under de gamle nøglenavne (fra før navneskiftet 3/11 2026)
     //    — ellers kunne det komme igen på en ny klasse med samme filnavn.
     removeLegacyClassData(localStorage, filename);
+}
+
+/**
+ * Alle session-id'er, som historik-listerne nævner — undtagen listen under
+ * `skipKey`. `ids` er null, hvis bare én liste ikke kunne læses: så ved vi
+ * ikke, hvad den kendte, og intet må slettes ud fra svaret.
+ */
+function sessionIdsInHistories(skipKey) {
+    const ids = new Set();
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key || key === skipKey || !key.startsWith(HISTORY_PREFIX)) continue;
+        try {
+            const list = JSON.parse(localStorage.getItem(key));
+            if (Array.isArray(list)) list.forEach(e => e && e.id && ids.add(e.id));
+            else if (list != null) return { ids: null };
+        } catch (e) {
+            return { ids: null };
+        }
+    }
+    return { ids };
+}
+
+// --- GAMLE SESSIONER I KLASSER, DER IKKE BRUGES ---
+
+/**
+ * Hold løftet om "højst 50 pr. klasse, ingen ældre end 90 dage" for ALLE
+ * klasser — også dem, læreren ikke har åbnet i et halvt år.
+ *
+ * Udrensningen sker ellers kun i saveHistory(), altså når læreren gemmer en
+ * ny session i netop den klasse. En klasse fra august, der aldrig blev rørt
+ * igen, beholdt derfor sine sessioner — med elevernes navne — for evigt,
+ * selvom GDPR-siden og privatlivspolitikken siger "højst 90 dage".
+ *
+ * Kører ved opstart. Det er de samme to lofter (pruneHistoryMeta), så intet
+ * forsvinder, som ikke var forsvundet ved klassens næste gem.
+ *
+ * FORSIGTIGHEDEN er den samme som i oprydningen af slettede klasser:
+ *  - ligger der en ulæselig klasseliste til side, ryddes intet (læreren er
+ *    måske midt i at redde sine klasser);
+ *  - en klasse med data under de gamle nøglenavne røres ikke;
+ *  - en ulæselig historik-liste røres ikke;
+ *  - en payload slettes kun, hvis ingen anden liste stadig nævner den.
+ *
+ * @returns {number} antal sessioner der blev luget ud
+ */
+export function pruneStaleHistories() {
+    if (unreadableListKept()) return 0;
+    const legacy = legacyProtection(localStorage);
+    if (legacy.all) return 0;
+
+    // Først alle lister, så de id'er, der bliver STÅENDE, er kendt, før
+    // noget slettes.
+    const plans = [];
+    const keptIds = new Set();
+    let unreadable = false;
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key || !key.startsWith(HISTORY_PREFIX)) continue;
+        const raw = localStorage.getItem(key);
+        let list;
+        try {
+            list = JSON.parse(raw);
+        } catch (e) {
+            unreadable = true;
+            continue;
+        }
+        if (!Array.isArray(list)) {
+            if (list != null) unreadable = true;
+            continue;
+        }
+        const filename = key.slice(HISTORY_PREFIX.length);
+        if (legacy.files.has(filename)) {
+            list.forEach(e => e && e.id && keptIds.add(e.id));
+            continue;
+        }
+        const { kept, dropped } = pruneHistoryMeta(list);
+        kept.forEach(e => e.id && keptIds.add(e.id));
+        if (dropped.length > 0) plans.push({ key, raw, kept, dropped });
+    }
+
+    let removed = 0;
+    plans.forEach(({ key, raw, kept, dropped }) => {
+        // Har en anden fane gemt en session i klassen, siden listen blev
+        // læst, ville vores udgave skrive den væk — og dens payload blev så
+        // ryddet som forældreløs ved næste opstart. Så venter vi til næste gang.
+        if (localStorage.getItem(key) !== raw) return;
+        // Listen FØRST. Afvises skrivningen (fuldt lager), står både listen
+        // og sessionerne, som de stod — og der prøves igen ved næste opstart.
+        if (safeSave(key, JSON.stringify(kept)) === false) return;
+        removed += dropped.length;
+        // Kunne en anden liste ikke læses, ved vi ikke, om den nævner
+        // sessionen. Så bliver payloaden liggende (som i cleanupOrphanedPayloads).
+        if (unreadable) return;
+        dropped.forEach(e => {
+            if (e.id && !keptIds.has(e.id) && !legacy.sessions.has(e.id)) deleteSessionPayload(e.id);
+        });
+    });
+    if (removed > 0) {
+        console.log(`[Storage] Lugede ${removed} gemt(e) session(er) ud (over 90 dage eller ud over de 50 nyeste).`);
+    }
+    return removed;
 }
 
 // --- TOPIC PRUNING ---
@@ -601,6 +708,20 @@ export function clearTopics(prefix) {
 // --- FORÆLDRELØSE KLASSE-NØGLER ---
 
 /**
+ * Ligger der en ulæselig klasseliste til side (py_bridge._keepUnreadableCopy)?
+ * Så ved vi ikke, hvilke klasser den kendte, og oprydningen ved opstart må
+ * ikke kalde nogen af dem forældreløse — den nye liste kan være en enkelt
+ * gendannet klasse, mens grupperne og historikken for resten stadig ligger her.
+ */
+function unreadableListKept() {
+    try {
+        return localStorage.getItem(UNREADABLE_CLASSES_KEY) !== null;
+    } catch (e) {
+        return true;
+    }
+}
+
+/**
  * Ryd data der hører til en klasse, som ikke findes længere.
  *
  * En klasse fylder fire slags nøgler: `grupdk_groups_<fil>`,
@@ -627,6 +748,7 @@ export function cleanupOrphanedClassData() {
     // (flytningen kunne ikke afgøre det, eller lageret var fuldt), kan den stå
     // i den gamle liste og dens grupper under det nye navn. Den klasse røres
     // ikke — de andre ryddes som altid.
+    if (unreadableListKept()) return 0;
     const legacy = legacyProtection(localStorage);
     if (legacy.all) return 0;
     let known;

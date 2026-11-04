@@ -19,7 +19,10 @@ import { createClass, gotoAppReady } from './helpers';
  * skærer sorteringspilen af, hvis der er sorteret på kolonnen.
  */
 async function columnHeaders(page) {
-    return (await page.locator('th.col-header').allTextContents())
+    // Første kolonne har også "· N AF M MØDT" (fremmødet); det er ikke en del
+    // af kolonnens navn, så kun overskriftens egen tekst læses.
+    return (await page.locator('th.col-header').evaluateAll(ths => ths.map(th =>
+        [...th.childNodes].filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(''))))
         .map(t => t.trim().replace(/[^A-ZÆØÅ0-9 ]+$/i, '').trim());
 }
 

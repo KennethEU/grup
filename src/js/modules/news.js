@@ -19,6 +19,12 @@
 // kort og konkret: "Hvad er nyt?" + "Hvornår er det nyttigt?"
 export const NEWS = [
     {
+        date: '2026-11-04',
+        title: '9 rettelser: en backup over en klasseliste, der ikke kunne læses, Excel-skabelonen, en del, der ikke kunne hentes, gamle sessioner, emneforslagene, to menuer, udskriften med skærmlæser, fremmødet i elevlisten og elevlistens bredde',
+        type: 'fix',
+        body: 'Kunne browseren ikke læse din klasseliste, kunne det at gendanne en backup eller oprette en ny klasse skrive den gamle liste væk, og ved næste opstart forsvandt grupperne og historikken for de andre klasser. Nu gemmes den gamle liste til side først, og intet ryddes væk, mens den ligger der.\nKunne Excel-delen af programmet ikke hentes, skete der intet, når du trykkede "Download Excel-skabelon". Nu får du en besked.\nKunne en del af programmet ikke hentes (fx uden forbindelse), stod der "prøv igen" — men i Safari virker et nyt forsøg ikke, før siden er genindlæst. Nu står der, at du skal genindlæse siden — og efter en opdatering af grup.dk får du én besked i stedet for to.\nGemte sessioner i Historik over 90 dage blev kun ryddet væk, når du gemte en ny session i samme klasse. En klasse, du ikke har åbnet længe, beholdt dem. Nu ryddes de, når grup.dk åbnes, sådan som GDPR-siden siger.\nSkiftede du til en klasse uden grupper, foreslog emnefeltet den forrige klasses emner. Nu foreslår det kun klassens egne.\nTrykkede du igen på knappen til tidligere kørsler eller afspilningen, mens menuen stod åben, lukkede den ikke. Nu gør den.\nUdskriften (Del → Udskriv) læses bedre med skærmlæser: i matrixen siges "fra" foran stamgruppen, så den ikke lyder som en del af elevens navn, og ikonet på knappen Udskriv læses ikke længere op. Knappen har fået en tydelig ring, når du står på den med tastaturet. Papiret ser ud som før.\nI elevlisten melder du nu en elev væk med den runde knap lige foran navnet, og der står "VÆK" efter navnet. Overskriften viser, hvor mange der er mødt (fx "11 af 12 mødt"), og knappen øverst melder alle mødt eller væk på én gang. Kolonnen "Til stede" er væk, så Aftale-fluebenene står tættere på navnene. Excel-eksporten har stadig en kolonne "Til stede".\nHar klassen få kolonner, er kolonnerne i elevlisten ikke længere strakt ud over hele skærmen, så fx Køn står tæt på navnet i stedet for midt på skærmen.',
+    },
+    {
         date: '2026-11-03',
         title: 'Ny gruppemotor: klar med det samme, og du kan se, hvad der lykkedes',
         type: 'feature',
