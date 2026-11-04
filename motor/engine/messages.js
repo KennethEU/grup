@@ -19,6 +19,17 @@ function quote(text) {
   return `"${text}"`;
 }
 
+// Hvad læreren kalder matrixens kilder (spec. 9.2): stamgrupper — eller emner,
+// når der blandes på emne. "Kilde" er motorens eget ord; læreren ser det
+// aldrig i appen, så det står ikke i beskederne (Kenneth 4/11 2026). En
+// stamgruppe uden emne er sit eget emne og hedder sit eget navn.
+function sourceWords(task) {
+  const topics = task.matrix?.source === 'topic' && task.matrix.sources.some((s) => s.key.startsWith('topic:'));
+  return topics
+    ? { each: 'hvert emne', one: 'emne', the: 'Emnet', theMany: 'emnerne', many: 'emner' }
+    : { each: 'hver stamgruppe', one: 'stamgruppe', the: 'Stamgruppen', theMany: 'stamgrupperne', many: 'stamgrupper' };
+}
+
 function number(x) {
   return Number.isInteger(x) ? String(x) : String(Math.round(x * 100) / 100).replace('.', ',');
 }
@@ -104,7 +115,7 @@ export function stopMessages(task, reasons) {
         finding.values = r.source !== null ? [r.source] : [];
         text =
           r.source !== null
-            ? `Kilden ${quote(r.source)} har ingen elever, så der kan ikke dannes matrixgrupper med én fra hver.`
+            ? `${sourceWords(task).the} ${quote(r.source)} har ingen elever, så der kan ikke dannes matrixgrupper med én fra ${sourceWords(task).each}.`
             : 'Der er ingen stamgrupper at danne matrixgrupper ud fra.';
         break;
       default:
@@ -197,11 +208,17 @@ export function preRunMessages(task, layout, blocks, withRuleLimits = true, sepa
       const min = Math.min(...sizes);
       if (min > 0 && sizes.some((x) => x > min)) {
         const limiting = sources.filter((s) => s.members.length === min).map((s) => s.label);
+        const w = sourceWords(task);
+        // Hvor mange fra samme stamgruppe en matrixgruppe højst kan få
+        const most = Math.ceil(Math.max(...sizes) / min);
         out.push(
           message(
             task,
             { type: 'note', code: 'matrix-limited-by', values: limiting },
-            `${limiting.length === 1 ? `Kilden ${quote(limiting[0])} har` : `Kilderne ${limiting.map(quote).join(', ')} har`} kun ${min} elever, så der bliver ${min} matrixgrupper. De andre kilder har elever til overs, som spredes jævnt.`,
+            `Hver matrixgruppe får én elev fra ${w.each}. ` +
+              `${limiting.length === 1 ? `${w.the} ${quote(limiting[0])}` : joinAnd(limiting.map(quote))} har kun ${min} ${min === 1 ? 'elev' : 'elever'}, så der bliver ${min} ${min === 1 ? 'matrixgruppe' : 'matrixgrupper'}. ` +
+              `Eleverne til overs fra de større ${w.many} fordeles, så nogle matrixgrupper får ${most === 2 ? 'to' : `op til ${most}`} fra samme ${w.one}. ` +
+              `Vil du have præcis én fra hver, skal ${w.theMany} være lige store${w.one === 'stamgruppe' ? ': dan dem fx igen med et andet antal grupper' : ''}.`,
           ),
         );
       }
@@ -429,11 +446,16 @@ function sourceSpreadMessage(task, groupCount) {
     const high = Math.ceil(source.members.length / groupCount);
     return `${low === high ? low : `${low}–${high}`} fra ${quote(source.label)}`;
   });
-  const others = task.matrix.sources.length > big.length ? ' De andre kilder har højst én i hver gruppe.' : '';
+  const w = sourceWords(task);
+  const others = task.matrix.sources.length > big.length ? ` De andre ${w.many} har højst én i hver gruppe.` : '';
+  // Så mange matrixgrupper skal der til, før hver kan nøjes med én fra hver
+  const needed = Math.max(...big.map((source) => source.members.length));
   return message(
     task,
     { type: 'note', code: 'matrix-sources-spread', values: big.map((source) => source.label) },
-    `Højst én fra hver kilde kan ikke lade sig gøre med ${groupCount} matrixgrupper. Hver gruppe får ${joinAnd(parts)}, så jævnt som det kan blive.${others}`,
+    `Højst én fra ${w.each} kan ikke lade sig gøre med ${groupCount} matrixgrupper: nogle ${w.many} har flere elever, end der er grupper. ` +
+      `Hver gruppe får ${joinAnd(parts)}, så jævnt som det kan blive.${others} ` +
+      `Vil du have højst én fra hver, skal der være mindst ${needed} matrixgrupper.`,
   );
 }
 
@@ -611,7 +633,7 @@ export function postRunMessages(task, groups, evaluation, info = {}) {
     out.push(
       note(
         { unavoidable: false, values: [...labels] },
-        `Højst én fra hver kilde: ${names.length ? `${joinAnd(names)} er ikke spredt så jævnt, som det kan lade sig gøre` : 'kilderne er ikke spredt så jævnt, som det kan lade sig gøre'}${bad.length ? ` (${groupList(bad)})` : ''}.${ending(false, true)}`,
+        `Højst én fra ${sourceWords(task).each}: ${names.length ? `${joinAnd(names)} er ikke spredt så jævnt, som det kan lade sig gøre` : `${sourceWords(task).theMany} er ikke spredt så jævnt, som det kan lade sig gøre`}${bad.length ? ` (${groupList(bad)})` : ''}.${ending(false, true)}`,
       ),
     );
   }

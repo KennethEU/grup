@@ -354,7 +354,7 @@ export function coveredByRecipeHint(msg, input, hintIds) {
 /**
  * Nøglen for "samme sag": en besked før kørslen (check) og en efter (run)
  * med samme nøgle handler om det samme, og appen viser den én gang. Eksempel
- * (Kenneths matrix-runde 2): "Højst én fra hver kilde kan ikke lade sig gøre
+ * (Kenneths matrix-runde 2): "Højst én fra hvert emne kan ikke lade sig gøre
  * med 6 matrixgrupper …" kommer både fra check() og fra svaret — samme nøgle.
  */
 export function issueKey(msg) {

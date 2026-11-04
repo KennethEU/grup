@@ -81,8 +81,8 @@ test('matrixgrupper', async ({ page }) => {
 
 test('matrix med to emner: samme sag står kun én gang, og den er ikke rød', async ({ page }) => {
     test.setTimeout(180000);
-    // Kenneths matrix-runde 2 (3/11): kilderne er to emner, matrixgrupperne på
-    // fire, så "højst én fra hver kilde" kan ikke holde. Før stod samme sag tre
+    // Kenneths matrix-runde 2 (3/11): der blandes på to emner, matrixgrupperne
+    // på fire, så "højst én fra hvert emne" kan ikke holde. Før stod samme sag tre
     // gange i opskriften: to varsler og resultatet.
     const header = 'Navn\tKøn\n';
     const lines = Array.from({ length: 26 }, (_, i) => `Elev ${i + 1}\t${i % 2 ? 'K' : 'M'}`);
@@ -99,12 +99,12 @@ test('matrix med to emner: samme sag står kun én gang, og den er ikke rød', a
     await page.getByRole('button', { name: /Matrix-runde/ }).click();
     const dialog = page.locator('dialog.recipe-dialog[open]');
     await expect(dialog).toBeVisible();
-    const sources = dialog.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hver kilde' });
-    // Før kørslen: motorens check() — ÉN besked om kilderne, blå (ikke rød).
+    const sources = dialog.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hvert emne' });
+    // Før kørslen: motorens check() — ÉN besked om emnerne, blå (ikke rød).
     await expect(sources).toHaveCount(1);
     await expect(sources).toContainText('6 matrixgrupper');
     const beforeText = (await sources.innerText()).trim();
-    await expect(dialog.locator('.gh-hint--conflict').filter({ hasText: 'Højst én fra hver kilde' })).toHaveCount(0);
+    await expect(dialog.locator('.gh-hint--conflict').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
 
     await dialog.getByRole('button', { name: /^Dan matrixgrupper/ }).click();
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.storedMatrixGroups?.length || 0), { timeout: 30000 }).toBeGreaterThan(0);
@@ -112,13 +112,13 @@ test('matrix med to emner: samme sag står kun én gang, og den er ikke rød', a
 
     // Efter kørslen: kun resultatet, én gang, og ikke rødt.
     const after = await openRecipe(page);
-    const again = after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hver kilde' });
+    const again = after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hvert emne' });
     await expect(again).toHaveCount(1);
     expect((await again.innerText()).trim()).toBe(beforeText);
-    await expect(after.locator('.recipe__lastlist li.is-error').filter({ hasText: 'Højst én fra hver kilde' })).toHaveCount(0);
-    await expect(after.locator('.gh-hint--conflict').filter({ hasText: 'Højst én fra hver kilde' })).toHaveCount(0);
+    await expect(after.locator('.recipe__lastlist li.is-error').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
+    await expect(after.locator('.gh-hint--conflict').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
     // Kilderne er spredt så jævnt, som det kan lade sig gøre: ingen "par"-besked.
-    await expect(after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: /par fra samme kilde/ })).toHaveCount(0);
+    await expect(after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: /par fra samme|ikke spredt så jævnt/ })).toHaveCount(0);
 });
 
 // Opdel (kontrakt v3, spørgsmål 50): Adskil kan ikke gå op i nogen af de to

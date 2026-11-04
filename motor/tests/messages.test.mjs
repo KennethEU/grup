@@ -144,3 +144,54 @@ test('stats: vinderens nummer, antal forsøg og andre lige så gode; fremgang t�
   assert.equal(last.rulesTotal, measured);
   assert.equal(last.rulesMet, answer.rules.filter((r) => r.met === true).length);
 });
+
+// Matrixens beskeder siger "stamgruppe" (eller "emne", når der blandes på emne)
+// — aldrig motorens eget ord "kilde", som læreren ikke ser andre steder — og de
+// forklarer, hvad læreren kan gøre (Kenneth 4/11 2026).
+function unevenMatrix(source, topics, size) {
+  const ids = Array.from({ length: 29 }, (_, i) => `r${i}`);
+  let at = 0;
+  const homeGroups = [5, 5, 5, 7, 7].map((n, i) => {
+    const members = ids.slice(at, at + n);
+    at += n;
+    return { id: `Gruppe ${i + 1}`, members, topic: topics ? topics[i] : null };
+  });
+  return {
+    contractVersion: 3, view: 'matrix', students: ids.map((id) => ({ _rowId: id })), rules: [], columnOrders: {},
+    agreements: { together: [], avoid: [] }, lockedGroups: [], size, topics: [],
+    matrix: { source, homeGroups }, budget: { maxSeconds: 2, maxAttempts: 3 }, seed: 1,
+  };
+}
+
+test('matrix "Fuld" med ulige stamgrupper: forklarer reglen og hvad man kan gøre, uden ordet "kilde"', () => {
+  const [m] = check(unevenMatrix('homeGroup', null, { mode: 'full' })).messages.filter((x) => x.code === 'matrix-limited-by');
+  assert.equal(m.text,
+    'Hver matrixgruppe får én elev fra hver stamgruppe. "Gruppe 1", "Gruppe 2" og "Gruppe 3" har kun 5 elever, så der bliver 5 matrixgrupper. ' +
+    'Eleverne til overs fra de større stamgrupper fordeles, så nogle matrixgrupper får to fra samme stamgruppe. ' +
+    'Vil du have præcis én fra hver, skal stamgrupperne være lige store: dan dem fx igen med et andet antal grupper.');
+});
+
+test('matrix blandet på emne: beskederne siger "emne"', () => {
+  const [m] = check(unevenMatrix('topic', ['Klima', 'EU', 'Klima', 'Migration', 'EU'], { mode: 'full' }))
+    .messages.filter((x) => x.code === 'matrix-limited-by');
+  assert.match(m.text, /^Hver matrixgruppe får én elev fra hvert emne\. Emnet "Migration" har kun 7 elever/);
+  assert.match(m.text, /skal emnerne være lige store\.$/);
+});
+
+test('ingen matrix-besked siger "kilde"', async () => {
+  const inputs = [
+    unevenMatrix('homeGroup', null, { mode: 'full' }),
+    unevenMatrix('homeGroup', null, { mode: 'count', count: 4 }),
+    unevenMatrix('topic', ['Klima', 'EU', 'Klima', 'Migration', 'EU'], { mode: 'full' }),
+  ];
+  const empty = unevenMatrix('homeGroup', null, { mode: 'full' });
+  empty.matrix.homeGroups.push({ id: 'Gruppe 6', members: [], topic: null });
+  inputs.push(empty);
+  for (const input of inputs) {
+    const texts = [...check(input).messages, ...((await run(input, {})).messages || [])].map((x) => x.text);
+    assert.ok(texts.length > 0);
+    for (const t of texts) assert.ok(!/kilde/i.test(t), t);
+  }
+  const spread = check(inputs[1]).messages.find((x) => x.code === 'matrix-sources-spread');
+  assert.match(spread.text, /skal der være mindst 7 matrixgrupper\.$/);
+});

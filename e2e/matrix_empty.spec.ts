@@ -20,8 +20,8 @@ test('matrixens tomme felt nævner ikke stamgrupper, der allerede findes', async
     // Matrix-runden danner intet af sig selv: læreren trykker "Dan matrixgrupper"
     await clickGenerate(page);
 
-    // Motoren siger, hvilken kilde der er tom (med lærerens navn for gruppen).
-    await expect(page.getByText('Kilden "Gruppe 1" har ingen elever').first()).toBeVisible();
+    // Motoren siger, hvilken stamgruppe der er tom (med lærerens navn for gruppen).
+    await expect(page.getByText('Stamgruppen "Gruppe 1" har ingen elever').first()).toBeVisible();
     await expect(empty).toContainText('Tryk Dan matrixgrupper');
     await expect(empty).not.toContainText('stamgrupper først');
 });
