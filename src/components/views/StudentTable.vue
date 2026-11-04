@@ -666,8 +666,14 @@ function confirmDeleteRow() {
 .few-columns .cell-data {
     min-inline-size: 120px;
 }
-.cell-data:nth-child(3) {
-    min-inline-size: 170px;
+/* Vis-kolonnen (navnet, altid første datakolonne): på én linje og kun så
+   bred som det længste navn. Før havde den 170 px som mindstebredde, så korte
+   fornavne som "Amalie" stod med 130 px luft til næste kolonne (Kenneth 4/11
+   2026). nowrap holder i forvejen navnet på én linje, og den ekstra luft for
+   få kolonner (ovenfor) gælder ikke her: navnene er sjældent så korte som KØN. */
+.cell-data:nth-child(3),
+.few-columns .cell-data:nth-child(3) {
+    min-inline-size: 84px;
     white-space: nowrap;
 }
 .cell-checkbox,
