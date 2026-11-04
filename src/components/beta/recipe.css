@@ -665,3 +665,19 @@
     }
     .recipe-dialog__foot .recipe__textbtn { white-space: nowrap; }
 }
+
+/* Motorens note ved en regel før kørslen (RecipeRules.vue): et stille i lige
+   efter sætningen — en forklaring, ikke en fejl, så samme grå som noterne. */
+.recipe__rulenote {
+    display: inline-grid;
+    place-items: center;
+    margin-inline-start: 6px;
+    inline-size: 22px;
+    block-size: 22px;
+    vertical-align: -3px;
+    border-radius: 50%;
+    color: var(--ink-3);
+    cursor: help;
+}
+.recipe__rulenote:hover { color: var(--ink); background: var(--paper-3); }
+.recipe__rulenote:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }

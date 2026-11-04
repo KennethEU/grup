@@ -200,12 +200,18 @@ test('fremgangen vises, og Stop beholder den bedste deling', async ({ page }) =>
     const overlay = page.locator('.processing-overlay');
     await expect(overlay.locator('.processing-progress')).toBeVisible({ timeout: 20000 });
     await expect(overlay.locator('.processing-progress')).toContainText('regler opfyldt');
+    // Siden bagved er inert, mens laget står (skærmlæserens læsemarkør) —
+    // laget selv og dets Stop-knap er ikke.
+    expect(await page.locator('.topbar').evaluate(el => !!el.closest('[inert]'))).toBe(true);
+    expect(await overlay.evaluate(el => !!el.closest('[inert]'))).toBe(false);
     const stopAt = Date.now();
     await overlay.getByRole('button', { name: 'Stop og behold de bedste' }).click();
     await expect(overlay).toBeHidden({ timeout: 10000 });
     const stopMs = Date.now() - stopAt;
     await expect(page.locator('.toast').filter({ hasText: 'de bedste, motoren nåede at finde' })).toBeVisible();
     await expect(page.locator('.group-card').first()).toBeVisible();
+    // ... og levende igen, når laget er væk
+    expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
     await expect(page.locator('.toast').filter({ hasText: OLD_FALLBACK })).toHaveCount(0);
     const stats = await page.evaluate(() => (window as any).appDebug.nextStats);
     expect(stats.status).toBe('stopped');
@@ -540,6 +546,51 @@ test('hvad blev opfyldt: et mærke pr. regel og aftalerne — væk, når opskrif
     await goals.first().getByRole('button', { name: 'Flyt ned' }).click();
     await expect(dialog.locator('.rule-mark')).toHaveCount(0);
     await expect(dialog.locator('.recipe__agreed')).toHaveCount(0);
+});
+
+// Kenneth 4/11: "Fordel på … kan ikke gå helt lige op" stod øverst i
+// opskriften (syv af dem) og skubbede reglerne ned. Nu står de som et lille i
+// ved reglens egen linje, og teksten kommer frem ved musen eller tastaturet.
+test('"kan ikke gå helt lige op" står som et i ved reglen — ikke over opskriften', async ({ page }) => {
+    test.setTimeout(120000);
+    await restoreHardClass(page);
+    await goToGroups(page);
+    const dialog = await openRecipe(page);
+
+    const kon = dialog.locator('.recipe__line--rule').filter({ hasText: 'Køn' });
+    const note = kon.locator('.recipe__rulenote');
+    await expect(note).toHaveAttribute('aria-label', /^Fordel på "Køn" kan ikke gå helt lige op: /);
+    // Hver note ved sin egen regel (Køn og Aktivitetsniveau går ikke op i 7
+    // grupper) — og ikke også i stakken øverst.
+    await expect(dialog.locator('.recipe__rulenote')).toHaveCount(2);
+    await expect(dialog.locator('.recipe__line--rule').filter({ hasText: 'Aktivitetsniveau' }).locator('.recipe__rulenote'))
+        .toHaveAttribute('aria-label', /^Fordel på "Aktivitetsniveau" kan ikke gå helt lige op: /);
+    await expect(dialog.locator('.hints-stack')).not.toContainText('kan ikke gå helt lige op');
+
+    // Musen: tippet viser hele teksten, og navnet til skærmlæseren bliver stående.
+    const full = await note.getAttribute('aria-label');
+    await note.hover();
+    const tip = page.locator('#global-tooltip');
+    await expect(tip).toHaveClass(/visible/);
+    await expect(tip).toHaveText(full!);
+    await expect(note).toHaveAttribute('aria-label', full!);
+    await dialog.screenshot({ path: test.info().outputPath('note-ved-reglen.png') });
+
+    // Tastaturet når det også: Tab fra kolonnen lander på i'et, og tippet
+    // kommer frem (tooltip.js viser det kun ved fokus fra tastaturet).
+    await page.mouse.move(0, 0);
+    await kon.getByRole('button', { name: 'Kolonne: Køn' }).focus();
+    await page.keyboard.press('Tab');
+    await expect(note).toBeFocused();
+    await expect(tip).toHaveClass(/visible/);
+
+    // Efter en kørsel siger mærket i margenen det samme ("det bedst mulige"),
+    // så i'et er væk.
+    await clickGo(page);
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 30000 }).toBe(false);
+    const after = await openRecipe(page);
+    await expect(after.locator('.recipe__rulenote')).toHaveCount(0);
+    await expect(after.locator('.recipe__line--rule').filter({ hasText: 'Køn' }).locator('.rule-mark')).toHaveAttribute('aria-label', 'Ikke helt — det bedst mulige');
 });
 
 // Kenneth 3/11: "når man trækker en regel i opskriften, så kan modal'en

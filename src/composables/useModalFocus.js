@@ -10,7 +10,15 @@
 //   3. fokus vender ikke tilbage til knappen, når vinduet lukkes
 //   4. Escape lukker ikke vinduet
 //
-// Composable'en ordner alle fire. Den kaldes fra det enkelte modal-component
+// Composable'en ordner alle fire — og en femte, som kun en skærmlæser mærker:
+//
+//   5. siden bagved er ikke væk. Fokusfælden holder kun Tab inde; en
+//      skærmlæsers læsemarkør (VoiceOver VO+pil, et swipe på en iPad) går
+//      uden om Tab og vandrer lige ned i knapperne bag vinduet. aria-modal
+//      skulle sige det samme, men browserne følger den ikke ens. Derfor
+//      gøres alt UDEN FOR det øverste vindue `inert` (se syncInert nedenfor).
+//
+// Den kaldes fra det enkelte modal-component
 // med en ref til overlay-elementet og den funktion, der lukker vinduet.
 //
 // ─── HVORFOR ESCAPE BOR HER (og ikke i hvert vindue) ────────────────────────
@@ -102,6 +110,55 @@ export function focusOnOpen(el) {
     el.addEventListener('blur', loud);
 }
 
+// ---- Siden bagved er inert --------------------------------------------
+// Vinduerne bor to forskellige steder: de fleste i ModalsRoot INDE i #app,
+// men bekræft-, navngiv- og Vis for klassen-vinduerne er teleporteret til
+// <body>. Så `inert` på #app duer ikke for alle. I stedet går vi fra det
+// øverste vindue op til <body> og gør hvert trins SØSKENDE inerte. Vinduet
+// selv og dets forfædre står tilbage; alt andet er låst.
+//
+// Undtagelser (`data-modal-keep`): beskederne øverst (de ligger ved siden af
+// vinduerne i ModalsRoot, skal kunne klikkes væk og læses op) og det fælles
+// værktøjstip (det viser tips til knapperne I vinduet). Usynlige elementer
+// som <script> og emneforslagenes <datalist> røres ikke.
+const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'TEMPLATE', 'LINK', 'META', 'DATALIST']);
+
+// De elementer, VI har gjort inerte — kun dem tager vi det af igen. Et
+// element, der allerede var inert (fx gitteret under en afspilning, som Vue
+// styrer), lader vi være.
+let madeInert = [];
+
+// Laget "Danner grupper …" (App.vue) er også modalt, men det er ikke et
+// vindue i stakken: kom det med dér, ville isModalOpen() svare ja under hver
+// dannelse og ændre Escape for menuerne. Det melder sig i stedet her og
+// tæller kun, når intet vindue står øverst. Samme regnestykke, ét sæt inert.
+let blockingOverlay = null;
+
+/** Gør siden uden for `el` inert (null: slip igen). Til lag uden for vindues-stakken. */
+export function setBlockingOverlay(el) {
+    blockingOverlay = el || null;
+    syncInert();
+}
+
+// Regner det hele om fra bunden: tag alt vores af, og læg det på igen ud
+// fra det vindue, der står øverst NU. Kaldes ved hver åbning og lukning, så
+// et vindue, der lukker oven på et andet, giver plads til det nederste — og
+// det sidste, der lukker, efterlader en side helt uden inert.
+function syncInert() {
+    for (const el of madeInert) el.removeAttribute('inert');
+    madeInert = [];
+    const top = openModals[openModals.length - 1]?.value || blockingOverlay;
+    if (!top || !top.isConnected) return;
+    for (let node = top; node.parentElement && node !== document.body; node = node.parentElement) {
+        for (const sibling of node.parentElement.children) {
+            if (sibling === node || SKIP_TAGS.has(sibling.tagName)) continue;
+            if (sibling.hasAttribute('inert') || sibling.hasAttribute('data-modal-keep')) continue;
+            sibling.setAttribute('inert', '');
+            madeInert.push(sibling);
+        }
+    }
+}
+
 function focusableIn(root) {
     if (!root) return [];
     return [...root.querySelectorAll(FOCUSABLE)]
@@ -188,14 +245,21 @@ export function useModalFocus(containerRef, options = {}) {
         containerRef.value?.addEventListener('mousedown', onMousedown);
         // nextTick: indholdet er først i DOM'en efter den første render.
         await nextTick();
+        // Er vinduet lukket igen i mellemtiden (to hurtige Escape), har
+        // onUnmounted allerede ryddet op — så skal intet låses.
+        if (!openModals.includes(containerRef)) return;
         // Har vinduet selv sat fokus (fx PromptModal, der også markerer
         // teksten i feltet), skal vi ikke flytte det igen — så ville
         // markeringen forsvinde.
-        if (containerRef.value?.contains(document.activeElement)) return;
-        const items = focusableIn(containerRef.value);
-        // Et felt med autofocus vinder — ellers det første fokuserbare element.
-        const preferred = containerRef.value?.querySelector('[autofocus]');
-        focusOnOpen(preferred || items[0]);
+        if (!containerRef.value?.contains(document.activeElement)) {
+            const items = focusableIn(containerRef.value);
+            // Et felt med autofocus vinder — ellers det første fokuserbare element.
+            const preferred = containerRef.value?.querySelector('[autofocus]');
+            focusOnOpen(preferred || items[0]);
+        }
+        // Først når fokus er inde i vinduet: knappen, der åbnede det, ligger
+        // bagved, og et inert element kan ikke have fokus.
+        syncInert();
     });
 
     onUnmounted(() => {
@@ -204,6 +268,9 @@ export function useModalFocus(containerRef, options = {}) {
         const i = openModals.lastIndexOf(containerRef);
         if (i > -1) openModals.splice(i, 1);
         syncModalBodyClass();
+        // FØR fokus gives tilbage: knappen ligger i den side, der var inert,
+        // og fokus på et inert element ender på <body>.
+        syncInert();
         // Fokus tilbage til knappen der åbnede vinduet. isConnected: knappen
         // kan være forsvundet med det den lukkede (fx en slettet klasse).
         if (previouslyFocused && previouslyFocused.isConnected) {

@@ -3,6 +3,9 @@ export function initGlobalTooltip() {
     const tooltipEl = document.createElement('div');
     tooltipEl.className = 'custom-tooltip';
     tooltipEl.id = 'global-tooltip';
+    // Tippet viser også tips til knapperne I et vindue, så det må ikke blive
+    // inert sammen med siden bagved (se syncInert i useModalFocus.js).
+    tooltipEl.setAttribute('data-modal-keep', '');
     document.body.appendChild(tooltipEl);
 
     let activeTooltipTarget = null;

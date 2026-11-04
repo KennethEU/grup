@@ -16,7 +16,7 @@ import { brokenTogether, togetherComponents } from './together.js';
 // ad gangen, og alle computeds læser den samme reactiveState. En funktion
 // ville lave et nyt sæt pr. kaldsted — altså flere kilder igen.
 
-import { computed, ref, watch } from 'vue';
+import { computed, ref, toRaw, watch } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
 import { computeTopicAdjustedTarget, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
@@ -26,7 +26,7 @@ import { setupNotices } from './setupNotices.js';
 import { studentById } from './lookups.js';
 import { generateMatrixGroups, generateWithoutTogether } from './generation.js';
 import { autoSave } from './classActions.js';
-import { engineTogetherStop, provideRecipeHintIds, engineCheck, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop } from './nextEngine.js';
+import { engineTogetherStop, provideRecipeHintIds, engineCheck, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources } from './nextEngine.js';
 
 
 // Hvilke beskeder læreren selv har klikket væk i denne session.
@@ -676,6 +676,9 @@ const engineCheckHints = computed(() => {
         });
     }
 
+    // Svaret ligger i en ref, så input er Vues proxy — WeakMap'en kender kun
+    // det rå objekt (toRaw), ellers fandt ingen note sin linje.
+    const sources = ruleSources.get(toRaw(chk.input)) || [];
     for (const m of chk.messages) {
         if (isTogetherStop(m)) continue;
         const key = issueKey(m);
@@ -686,10 +689,25 @@ const engineCheckHints = computed(() => {
             id: `engine:${key}|${text}`,
             kind: red ? 'conflict' : 'info',
             text,
+            anchor: red ? undefined : ruleAnchorFor(m, sources),
         });
     }
     return out;
 });
+
+// "Fordel på X kan ikke gå helt lige op" står ved reglens linje som et lille
+// i i stedet for i stakken over opskriften. Kenneth 4/11: syv af dem stod
+// over opskriften og skubbede den ned — og de beder ikke læreren om noget,
+// det er bare regnestykket (3 elever på 4 grupper). Kun den slags: en blå
+// note, motoren selv kalder uundgåelig, om én bestemt regel. Kan reglens
+// linje ikke findes (sources mangler), bliver beskeden i stakken, så den
+// aldrig forsvinder helt.
+const ANCHOR_RULE = 'rule:';
+function ruleAnchorFor(m, sources) {
+    if (m.code !== 'rule-not-met' || m.unavoidable !== true || !Number.isInteger(m.rule)) return undefined;
+    const at = sources[m.rule];
+    return Number.isInteger(at) ? ANCHOR_RULE + at : undefined;
+}
 
 // Aftaler begrænser hvilke elever motoren må flytte, men et par værdier
 // beviser ikke, at en regel er umulig. To ens værdier kan netop være den
@@ -788,7 +806,18 @@ function hintsFor(anchor) {
     return hints.value.filter(h => h.anchor === anchor);
 }
 
+/** Noterne ved hver regellinje: { [plads i klassens regelliste]: [hint, …] }. */
+const ruleHints = computed(() => {
+    const out = {};
+    for (const h of hints.value) {
+        if (!h.anchor?.startsWith(ANCHOR_RULE)) continue;
+        const at = Number(h.anchor.slice(ANCHOR_RULE.length));
+        (out[at] ||= []).push(h);
+    }
+    return out;
+});
+
 export {
     allHints, hints, dismissedIds, dismiss, reshowTogetherHint,
-    bannerHints, hintsFor, ANCHOR_TARGET,
+    bannerHints, hintsFor, ruleHints, ANCHOR_TARGET,
 };

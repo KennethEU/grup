@@ -88,8 +88,13 @@ function runAction(note) {
 <template>
     <!-- Ingen aria-live på beholderen: hver besked har sin egen live-rolle,
          så fejl læses højt med det samme (role=alert) og succes/info
-         høfligt (role=status) uden at blive læst op to gange. -->
-    <div ref="containerEl" class="notification-container" :style="containerTop ? { '--toast-top': containerTop } : null">
+         høfligt (role=status) uden at blive læst op to gange.
+         Teleporteret til <body> og data-modal-keep: når et vindue gør siden
+         bagved inert (useModalFocus), skal beskederne stadig kunne læses op
+         og klikkes væk. Inde i #app blev de inerte sammen med resten, så snart
+         et bekræft- eller navngiv-vindue (som ligger i <body>) var åbent. -->
+    <Teleport to="body">
+    <div ref="containerEl" class="notification-container" data-modal-keep :style="containerTop ? { '--toast-top': containerTop } : null">
         <transition-group name="toast">
             <div
                 v-for="note in notifications"
@@ -114,6 +119,7 @@ function runAction(note) {
             </div>
         </transition-group>
     </div>
+    </Teleport>
 </template>
 
 <style scoped>

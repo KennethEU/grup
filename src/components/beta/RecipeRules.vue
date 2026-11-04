@@ -5,7 +5,7 @@
 // samme regler som den almindelige regelliste (kun én Opdel, øverst; ingen
 // Opdel i matrix). Forælderen gemmer, når der kommer `changed`.
 import { computed, nextTick, ref } from 'vue';
-import { ChevronUp, ChevronDown, GripVertical, X } from 'lucide-vue-next';
+import { ChevronUp, ChevronDown, GripVertical, Info, X } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import {
     RULE_OPTIONS, RULE_TYPES, RULE_DESCRIPTIONS, RULE_WEIGHT_NOTES, MATRIX_EXCLUDED_RULES,
@@ -14,6 +14,7 @@ import {
 import { ruleSentence, ruleIsIncomplete, updateRuleField, deleteRule, columnFitness, findTwinRule, ruleDisplayOrder,
     tierIsOrdered, tierPositions, moveRuleInTier, setTierOrder } from '../../js/modules/recipe.js';
 import { runStatusFor } from '../../js/modules/nextEngine.js';
+import { ruleHints } from '../../js/modules/hints.js';
 import RuleMark from './RuleMark.vue';
 import { useReorderDrag } from '../../composables/useReorderDrag.js';
 import { modalActions } from '../../js/modules/modalState.js';
@@ -85,6 +86,8 @@ const anyMovable = computed(() => Object.keys(tierCounts.value).some(tierMovable
 // Under et træk vises ingen mærker: de hører til regler, der lige nu er på
 // vej et andet sted hen.
 const marks = computed(() => (dragPositions.value.length ? null : runStatusFor(props.isMatrix)?.rules || null));
+// Noten ved en regel før kørslen (flere puljer: én sætning pr. pulje).
+const noteFor = (index) => (ruleHints.value[index] || []).map(h => h.text).join(' ');
 
 // Står den samme regel allerede i en ANDEN linje? To ens linjer gør intet
 // ekstra (hints.js advarer om netop det), så valget er gråt med linjen i
@@ -279,6 +282,11 @@ const isDragged = (index) => dragPositions.value.length > 0 && dragPositions.val
                 <span v-else-if="p.punct" class="recipe__punct">{{ p.text }}</span>
                             <template v-else>{{ p.text }}</template>
             </template>
+            <!-- Motorens note om reglen før kørslen (fx "kan ikke gå helt lige op"):
+                 et lille i lige efter sætningen; teksten kommer frem, når musen
+                 holder over eller tastaturet står på det (hints.js, ruleHints). -->
+            <span v-if="noteFor(index)" class="recipe__rulenote" tabindex="0" role="img"
+                  :aria-label="noteFor(index)" :title="noteFor(index)"><Info :size="15" aria-hidden="true" /></span>
         </span>
         <span class="recipe__tools">
             <!-- Pile og trækhåndtag i et trin med mindst to regler (pil op/ned

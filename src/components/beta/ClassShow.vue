@@ -97,13 +97,8 @@ function onPopState() {
 // læreren — fx "Fordel på Køn kan ikke gå helt op …" — og må ikke stå oven på
 // det, klassen ser på smartboardet. Se `html.class-showing` i BetaStyles.vue.
 //
-// Siden bagved gøres `inert`, mens arket står. Fokusfælden i useModalFocus
-// holder kun Tab inde; en skærmlæsers læsemarkør (VoiceOver: VO+pil, et
-// swipe på en iPad) går uden om Tab og kunne vandre ned i lærerens knapper
-// bagved — de er skjulte, men ikke væk. aria-modal skulle sige det samme,
-// men browserne følger den ikke ens. Arket er teleporteret til <body>, så det
-// ligger ved siden af #app, ikke inde i den.
-const appRoot = () => document.getElementById('app');
+// Siden bagved gøres `inert` af useModalFocus, mens arket står — som i alle
+// de andre vinduer (se syncInert dér).
 onMounted(async () => {
     // Fokus på "Luk" med det samme — FØR useModalFocus' egen onMounted (den
     // er registreret nedenfor og kører derfor efter denne) flytter fokus ind
@@ -111,8 +106,6 @@ onMounted(async () => {
     // rullede browseren før arket ned til knappen, og overskriften var skåret
     // af foroven, før nogen havde rørt noget.
     closeBtn.value?.focus({ preventScroll: true });
-    // Først når fokus er flyttet ud: et inert element kan ikke have fokus
-    appRoot()?.setAttribute('inert', '');
     window.addEventListener('resize', fitToScreen);
     history.pushState({ ...(history.state || {}), classShow: true }, '');
     ownHistoryEntry = true;
@@ -124,10 +117,6 @@ onMounted(async () => {
     await fitToScreen();
 });
 onUnmounted(() => {
-    // FØR useModalFocus' egen onUnmounted (registreret nedenfor, kører derfor
-    // efter denne) sætter fokus tilbage på "Vis for klassen" — en knap i en
-    // inert side kan ikke få fokus, og markøren endte så på <body>.
-    appRoot()?.removeAttribute('inert');
     window.removeEventListener('resize', fitToScreen);
     window.removeEventListener('popstate', onPopState);
     // Lukket med "Luk" eller Escape: skridtet ligger der stadig — fjern det
@@ -140,8 +129,8 @@ onUnmounted(() => {
 // Uden den troede resten af appen, at intet lå ovenpå: Ctrl+Enter dannede nye
 // grupper BAG arket (og klassen så dem skifte plads), og Tab gik videre ned i
 // de skjulte knapper, hvor Enter kunne trykke på dem. Stakken giver også
-// Escape (kun til det øverste vindue), en fokusfælde og fokus tilbage på
-// "Vis for klassen", når arket lukkes.
+// Escape (kun til det øverste vindue), en fokusfælde, en inert side bagved og
+// fokus tilbage på "Vis for klassen", når arket lukkes.
 useModalFocus(sheet, { onEscape: () => emit('close') });
 </script>
 

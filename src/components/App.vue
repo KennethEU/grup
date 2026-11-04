@@ -23,6 +23,7 @@ const showSmallScreenNotice = (() => {
 import { TriangleAlert, X } from 'lucide-vue-next';
 import { cancelGeneration } from '../js/modules/generation.js';
 import { nextRun } from '../js/modules/nextEngine.js';
+import { setBlockingOverlay } from '../composables/useModalFocus.js';
 
 // Motoren fortæller undervejs, hvor langt den er. Linjen står kun, mens den kører.
 const nextProgressText = computed(() => {
@@ -100,8 +101,16 @@ watch(() => state.isGenerating, async (running) => {
         classBeforeGeneration = state.currentClass?.filename || null;
         await nextTick();
         stopBtn.value?.focus();
+        // Siden bagved er inert, mens laget står (skærmlæserens læsemarkør
+        // går uden om Tab-fastholdelsen). Kun hvis kørslen ikke allerede er
+        // slut — ellers ville siden blive hængende inert.
+        if (state.isGenerating && stopBtn.value?.isConnected) {
+            setBlockingOverlay(stopBtn.value.closest('.processing-overlay'));
+        }
         return;
     }
+    // FØR fokus gives tilbage nedenfor: knappen ligger i den inerte side
+    setBlockingOverlay(null);
 
     // Fokus tilbage til knappen der startede kørslen — men KUN hvis det stadig
     // står på "Stop". Er markøren endt et andet sted undervejs — en
