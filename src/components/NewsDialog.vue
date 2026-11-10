@@ -57,6 +57,14 @@ const fixCount = NEWS.filter(n => n.type === 'fix').length;
 const visibleNews = computed(() =>
     filter.value === ONLY_NEW ? NEWS.filter(n => n.type === 'feature') : NEWS);
 
+// Teksten delt i ændringer: én pr. linje, uden tomme linjer og uden et
+// gammelt "– " foran (nogle ældre nyheder skrev selv deres tankestreger).
+function bodyLines(entry) {
+    return String(entry.body || '').split('\n')
+        .map(line => line.replace(/^\s*[–-]\s+/, '').trim())
+        .filter(Boolean);
+}
+
 function close() {
     emit('close');
 }
@@ -138,7 +146,13 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown));
                         </span>
                     </div>
                     <h3>{{ entry.title }}</h3>
-                    <p>{{ entry.body }}</p>
+                    <!-- En samlet rettelse har én linje pr. ændring (\n i teksten):
+                         som punkter med luft imellem, så man kan se, hvor den ene
+                         ændring slutter og den næste begynder. -->
+                    <ul v-if="bodyLines(entry).length > 1" class="news-items">
+                        <li v-for="(line, i) in bodyLines(entry)" :key="i">{{ line }}</li>
+                    </ul>
+                    <p v-else>{{ entry.body }}</p>
                 </li>
             </ol>
         </div>
@@ -233,8 +247,16 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown));
 }
 .news-entry p {
     margin: 0;
-    /* Samlede rettelser står som en linje pr. ændring (\n i teksten). */
-    white-space: pre-line;
     line-height: 1.55;
 }
+/* Samlede rettelser: én ændring pr. punkt (bodyLines). */
+.news-items {
+    margin: 0;
+    padding-inline-start: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.55;
+}
+.news-items li { padding-inline-start: 2px; }
 </style>

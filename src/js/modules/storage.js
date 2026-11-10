@@ -1044,8 +1044,16 @@ export function readClassExtras(filename, getItem = (key) => localStorage.getIte
  * fortæller returværdien hvad der ikke nåede med — en halv gendannelse må
  * ikke kvitteres som en hel.
  *
- * @returns {{written: string[], failed: string[], prunedSessions: number}}
- *   hvilke dele der kom med, og hvor mange sessioner de to lofter lugede væk
+ * Sessionerne skrives NYESTE FØRST. Listen i lageret står ældst først (en
+ * ny session lægges bagerst), og blev den skrevet i den rækkefølge, var det
+ * de ældste, der kom med, når pladsen slap op: målt 3/11 i Chromium med
+ * næsten fuldt lager — 3 af 12 sessioner kom ind, og det var de tre ældste.
+ * Listen selv skrives stadig i sin egen rækkefølge.
+ *
+ * @returns {{written: string[], failed: string[], prunedSessions: number,
+ *   sessionsRestored: number, sessionsMissing: number}}
+ *   hvilke dele der kom med, hvor mange sessioner de to lofter lugede væk,
+ *   og hvor mange af de resterende der kom ind hhv. ikke kom ind
  */
 export function writeClassExtras(filename, extras) {
     const written = [];
@@ -1055,8 +1063,12 @@ export function writeClassExtras(filename, extras) {
     // ville have beholdt, og læreren fik en grøn kvittering på "gendannet"
     // uden at vide, at halvdelen aldrig kom med.
     let prunedSessions = 0;
+    // Tallene til kvitteringen: "3 af 12 gemte sessioner" kan læreren handle
+    // på; "historik kunne ikke gendannes" var heller ikke sandt, når tre kom ind.
+    let sessionsRestored = 0;
+    let sessionsMissing = 0;
     if (!filename || !extras || typeof extras !== 'object') {
-        return { written, failed, prunedSessions };
+        return { written, failed, prunedSessions, sessionsRestored, sessionsMissing };
     }
 
     const put = (key, value, label) => {
@@ -1077,7 +1089,8 @@ export function writeClassExtras(filename, extras) {
     if (extras.history != null && !Array.isArray(extras.history)) failed.push('historik');
     if (Array.isArray(extras.history) && extras.history.length > 0) {
         const sessions = isRecord(extras.sessions) ? extras.sessions : {};
-        const restoredMeta = [];
+        // Den nye id pr. indgang i listen — kun for de sessioner, der kom ind.
+        const newIds = new Map();
         let payloadFailures = 0;
 
         // De to lofter (50 sessioner, 90 dage) håndhæves af saveHistory() på
@@ -1096,7 +1109,17 @@ export function writeClassExtras(filename, extras) {
         prunedSessions = dropped.length;
         if (historyToWrite.length + dropped.length !== extras.history.length) failed.push('historik');
 
-        historyToWrite.forEach(entry => {
+        // Nyeste først (se ovenfor). En ulæselig dato tæller som nyest, som i
+        // pruneHistoryMeta(); ved samme tid vinder den, der står bagerst.
+        const when = (e) => {
+            const t = new Date(e && e.date).getTime();
+            return Number.isNaN(t) ? Infinity : t;
+        };
+        const newestFirst = historyToWrite
+            .map((entry, index) => ({ entry, index }))
+            .sort((a, b) => (when(b.entry) - when(a.entry)) || (b.index - a.index) || 0);
+
+        newestFirst.forEach(({ entry }) => {
             if (!entry || typeof entry !== 'object') return;
             const payload = entry.id && Object.hasOwn(sessions, entry.id) ? sessions[entry.id] : null;
             // Uden payload er sessionen en blindgyde i listen ("Kunne ikke
@@ -1113,20 +1136,35 @@ export function writeClassExtras(filename, extras) {
                 payloadFailures++;
                 return;
             }
-            restoredMeta.push({ ...entry, id: newId });
+            newIds.set(entry, newId);
         });
-
-        if (restoredMeta.length > 0) {
-            if (safeSave(`${HISTORY_PREFIX}${filename}`, JSON.stringify(restoredMeta)) === false) {
-                failed.push('historik');
-                // De nye payloads kan ikke åbnes uden listen. Ryd dem nu,
-                // så et genforsøg ikke først kræver en genindlæsning for at
-                // få den knappe lagerplads tilbage. Andre sessioner røres ikke.
-                restoredMeta.forEach(entry => deleteSessionPayload(entry.id));
-            } else {
-                written.push('historik');
+        // Til sidst listen. Den er lille, men payloadene kan have brugt
+        // pladsen helt op, og uden listen kan ingen af dem åbnes. Kan den
+        // ikke gemmes, gives den ÆLDSTE gendannede session tilbage, og der
+        // prøves igen — hellere 2 af 12 sessioner end 0 af 12, fordi listen
+        // manglede plads. Kommer listen slet ikke ind, er alle de nye
+        // payloads ryddet igen, så et genforsøg ikke først kræver en
+        // genindlæsning for at få den knappe plads tilbage. Andre sessioner
+        // røres ikke.
+        const keep = newestFirst.map(({ entry }) => entry).filter(entry => newIds.has(entry));
+        let listSaved = false;
+        while (keep.length > 0) {
+            const kept = new Set(keep);
+            // Listen gemmes i sin egen rækkefølge, ikke nyeste først.
+            const restoredMeta = historyToWrite
+                .filter(entry => kept.has(entry))
+                .map(entry => ({ ...entry, id: newIds.get(entry) }));
+            if (safeSave(`${HISTORY_PREFIX}${filename}`, JSON.stringify(restoredMeta)) !== false) {
+                listSaved = true;
+                break;
             }
+            deleteSessionPayload(newIds.get(keep.pop()));
+            payloadFailures++;
         }
+        sessionsRestored = keep.length;
+        sessionsMissing = payloadFailures;
+
+        if (listSaved) written.push('historik');
         if (payloadFailures > 0) failed.push('historik');
     }
 
@@ -1136,6 +1174,8 @@ export function writeClassExtras(filename, extras) {
     return {
         written: [...new Set(written)].filter(l => !failedParts.includes(l)),
         failed: failedParts,
-        prunedSessions
+        prunedSessions,
+        sessionsRestored,
+        sessionsMissing
     };
 }

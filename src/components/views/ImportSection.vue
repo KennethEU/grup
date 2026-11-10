@@ -4,6 +4,7 @@ import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import * as api from '../../js/modules/api.js';
 import { compactImportSheet, sheetDataCells } from '../../js/modules/importData.js';
 import { plural } from '../../js/modules/plural.js';
+import { describePartialRestore } from '../../js/modules/restoreReceipt.js';
 import { MAX_ROWS_PER_CLASS } from '../../js/modules/py_bridge.js';
 import { isLectioFormat, extractLectioNames } from '../../js/modules/lectio.js';
 import { EXCEL_UNAVAILABLE_MESSAGE, NEW_BUILD_MESSAGE, reportPartUnavailable } from '../../js/modules/newBuild.js';
@@ -266,10 +267,11 @@ async function writeBackupEntries(entries, collisionMode, sourceName, invalid = 
     // Nævnes eksplicit — ellers står læreren med en klasse der ser rigtig ud,
     // men hvor de gemte sessioner mangler uden varsel.
     const partial = Array.isArray(res.partial) ? res.partial : [];
+    // Pr. klasse, med tal når de kendes: "for 3.a kom kun 3 af de 12 gemte
+    // sessioner med" (se restoreReceipt.js).
     if (partial.length > 0) {
-        const parts = [...new Set(partial.flatMap(p => p.parts))].join(', ');
-        msg += ` Bemærk: ${parts} kunne ikke gendannes for ` +
-            `${partial.map(p => nameOf(p.filename)).join(', ')}. Behold backup-filen; der kan mangle indhold i filen eller plads i browseren.`;
+        msg += ` Bemærk: ${describePartialRestore(partial, nameOf).join('; ')}.` +
+            ' Behold backup-filen; der kan mangle indhold i filen eller plads i browseren.';
     }
 
     // Nogle klasser kunne ikke skrives (typisk fyldt lagerplads). Det MÅ ikke

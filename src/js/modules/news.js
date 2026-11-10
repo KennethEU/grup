@@ -20,6 +20,18 @@
 export const NEWS = [
     {
         date: '2026-11-10',
+        title: 'Grupperne dannes hurtigere',
+        type: 'feature',
+        body: 'Motoren, der danner grupperne, er blevet hurtigere og giver præcis de samme grupper som før. En almindelig klasse med flere regler er nu klar på under et sekund (før op til 3 sekunder), og et stort hold på et par sekunder i stedet for omkring 10.\nBeskeden ved Fordel, at noget "kunne ikke undgås", står nu kun, når det er sikkert. Før kunne den sige, at to grupper ikke kunne gå helt op, selvom det kunne lade sig gøre med kun én.',
+    },
+    {
+        date: '2026-11-10',
+        title: 'Rettelse: en backup i en næsten fuld browser beholder de nyeste gemte sessioner',
+        type: 'fix',
+        body: 'Gendannede du en backup i en browser, hvor der næsten ikke var plads tilbage, kom kun nogle af de gemte sessioner med, og det var de ældste. Beskeden sagde samtidig, at historikken ikke kunne gendannes, selvom nogle af sessionerne kom med. Nu kommer de nyeste sessioner med først, og beskeden siger, hvor mange der kom med, fx "kom kun 3 af de 12 gemte sessioner med". Behold backup-filen, og frigør plads (slet en gammel klasse eller ryd historikken), hvis du vil have resten med.',
+    },
+    {
+        date: '2026-11-10',
         title: 'Privatlivspolitikken ligger nu bag skjoldet øverst til højre',
         type: 'feature',
         body: 'Linket "Privatlivspolitik" nederst til højre er væk, fordi det kunne ligge i vejen for krydset til at slette en elev i elevlistens nederste række. Nu finder du privatlivspolitikken øverst på siden bag skjoldet øverst til højre, der hedder "Privatliv & GDPR". Elevlisten går igen helt ned til bunden af skærmen.',
@@ -32,9 +44,9 @@ export const NEWS = [
     },
     {
         date: '2026-11-10',
-        title: '8 rettelser: elevlistens bund, knapperne øverst i Grupper, klassens navn på en mindre skærm og beskederne',
+        title: '9 rettelser: elevlistens bund, knapperne øverst i Grupper, klassens navn på en mindre skærm, beskederne og nyhederne',
         type: 'fix',
-        body: 'Stod knapperne over elevlisten på to linjer (fx på en lille bærbar med et langt navn i "Vis:"), gik listen lidt ned under skærmens kant, så du skulle rulle hele siden for at se bunden og rullebjælken. Nu passer listen til skærmen igen.\nPå en mindre skærm røg "Dan grupper igen" alene ned i venstre side under gruppeopskriften, mens "Matrix-runde" blev stående ovenover. Nu flytter knapperne ned sammen og står til højre, som de plejer.\nI et smalt vindue (fx Grupper på halvdelen af skærmen) kunne du ikke se, hvilken klasse der var åben, og klassevælgeren lå oven i ikonerne øverst til højre. Nu står fanerne på en linje for sig, så klassens navn kan læses. På en telefon står menuen med klasserne nu helt inde på skærmen.\nKom der mange fejlbeskeder på én gang, kunne de nederst til højre nå op over "Dan grupper igen", så du ikke kunne trykke på den, før du havde lukket nogle af dem. Nu stopper beskederne under knapperne, og du kan rulle i dem.\nÅbner du Gem-menuen eller "Lav aftale", mens der står mange beskeder, ligger menuen nu over dem, så du kan trykke på den.\nKom der en besked, mens gruppeopskriften var åben, lå den bag vinduet og kunne ikke lukkes. Nu står den i vinduet.\nLinket "Privatlivspolitik" nederst til højre lå oven på krydset til at slette en elev i elevlistens nederste række. Et tryk på krydset åbnede privatlivspolitikken i stedet. Nu slutter elevlisten over linket.\nEt tryk lige ved siden af en besked (fx "Klasse oprettet!") ramte beskedens kant i stedet for knappen bagved. Nu går trykket igennem; kun selve beskeden tager imod det.',
+        body: 'Stod knapperne over elevlisten på to linjer (fx på en lille bærbar med et langt navn i "Vis:"), gik listen lidt ned under skærmens kant, så du skulle rulle hele siden for at se bunden og rullebjælken. Nu passer listen til skærmen igen.\nPå en mindre skærm røg "Dan grupper igen" alene ned i venstre side under gruppeopskriften, mens "Matrix-runde" blev stående ovenover. Nu flytter knapperne ned sammen og står til højre, som de plejer.\nI et smalt vindue (fx Grupper på halvdelen af skærmen) kunne du ikke se, hvilken klasse der var åben, og klassevælgeren lå oven i ikonerne øverst til højre. Nu står fanerne på en linje for sig, så klassens navn kan læses. På en telefon står menuen med klasserne nu helt inde på skærmen.\nKom der mange fejlbeskeder på én gang, kunne de nederst til højre nå op over "Dan grupper igen", så du ikke kunne trykke på den, før du havde lukket nogle af dem. Nu stopper beskederne under knapperne, og du kan rulle i dem.\nÅbner du Gem-menuen eller "Lav aftale", mens der står mange beskeder, ligger menuen nu over dem, så du kan trykke på den.\nKom der en besked, mens gruppeopskriften var åben, lå den bag vinduet og kunne ikke lukkes. Nu står den i vinduet.\nLinket "Privatlivspolitik" nederst til højre lå oven på krydset til at slette en elev i elevlistens nederste række. Et tryk på krydset åbnede privatlivspolitikken i stedet. Nu slutter elevlisten over linket.\nEt tryk lige ved siden af en besked (fx "Klasse oprettet!") ramte beskedens kant i stedet for knappen bagved. Nu går trykket igennem; kun selve beskeden tager imod det.\nNyhederne er lettere at læse: står flere rettelser samlet, står de nu som punkter med luft imellem i stedet for én lang tekst.',
     },
     {
         date: '2026-11-09',

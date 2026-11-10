@@ -379,7 +379,14 @@ export async function restoreBackup(entries, opts = {}) {
                     sessions: cls.sessions
                 });
                 if (extrasRes.failed.length > 0) {
-                    partial.push({ filename: target, parts: extrasRes.failed });
+                    // Tallene følger med pr. klasse, så kvitteringen kan
+                    // sige "3 af 12 gemte sessioner" om netop den klasse.
+                    partial.push({
+                        filename: target,
+                        parts: extrasRes.failed,
+                        sessionsRestored: extrasRes.sessionsRestored || 0,
+                        sessionsMissing: extrasRes.sessionsMissing || 0,
+                    });
                 }
                 // De to lofter (50 sessioner, 90 dage) kan have luget i det
                 // filen indeholdt. Det skal med i kvitteringen — ellers

@@ -63,7 +63,10 @@ describe('backup-integritet', () => {
     it('gendannelse af manglende sessionsindhold kvitteres som delvis', async () => {
         const res = await api.restoreBackup([{ ...entry('3a.csv'), history: [{ id: 'missing' }], sessions: {} }]);
         expect(res.written).toBe(1);
-        expect(res.partial).toEqual([{ filename: '3a.csv', parts: ['historik'] }]);
+        // Tallene følger med pr. klasse: 0 kom ind, 1 manglede (ikke i filen).
+        expect(res.partial).toEqual([{
+            filename: '3a.csv', parts: ['historik'], sessionsRestored: 0, sessionsMissing: 1,
+        }]);
     });
 
     it('sessionsopslag arver ikke constructor fra Object', () => {
@@ -117,7 +120,135 @@ describe('backup-integritet', () => {
         });
         expect(safeStorageSet).toHaveBeenCalledWith('grupdk_history_3a.csv', expect.any(String));
         expect(res.failed).toEqual(['historik']);
+        expect(res.sessionsRestored).toBe(0);
+        expect(res.sessionsMissing).toBe(2);
         expect(localStorage.length).toBe(1);
         expect(localStorage.getItem('grupdk_session_foreign')).toBe('{"id":"foreign"}');
+    });
+});
+
+// Målt 3/11 i Chromium: en gendannelse i en browser med næsten fuldt lager
+// fik 3 af 12 sessioner ind — og det var de tre ÆLDSTE, fordi listen blev
+// skrevet i sin egen rækkefølge (ældst først). Kvitteringen sagde samtidig
+// "historik kunne ikke gendannes", hvad der heller ikke var sandt.
+describe('gendannelse i et næsten fuldt lager', () => {
+    /** Lagerets størrelse i tegn (nøgle + værdi), som browserne tæller. */
+    function used() {
+        let total = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            total += k.length + localStorage.getItem(k).length;
+        }
+        return total;
+    }
+
+    /** En kvote: skrivningen lykkes kun, hvis lageret bagefter er under `limit`. */
+    function quota(limit) {
+        safeStorageSet.mockImplementation((key, value) => {
+            const before = localStorage.getItem(key);
+            const after = used() - (before == null ? 0 : key.length + before.length)
+                + key.length + value.length;
+            if (after > limit) return false;
+            localStorage.setItem(key, value);
+            return true;
+        });
+    }
+
+    const PAYLOAD = 'x'.repeat(1000);
+    const DAY = 24 * 3600 * 1000;
+
+    /** 12 sessioner, ældst først som i lageret: Modul 1 er 12 dage gammel. */
+    function twelveSessions() {
+        const history = [];
+        const sessions = {};
+        for (let i = 1; i <= 12; i++) {
+            const id = `s${i}`;
+            history.push({ id, name: `Modul ${i}`, date: new Date(Date.now() - (13 - i) * DAY).toISOString() });
+            sessions[id] = { id, name: `Modul ${i}`, groups: [], pad: PAYLOAD };
+        }
+        return { history, sessions };
+    }
+
+    /** Hvor mange tegn én gendannet payload fylder (nøgle + værdi). Det nye
+     *  id er en uuid på 36 tegn. Modul 1–9 er ét tegn kortere. */
+    const ONE = 'grupdk_session_'.length + 36
+        + JSON.stringify({ id: 'x'.repeat(36), name: 'Modul 10', groups: [], pad: PAYLOAD }).length;
+
+    it('beholder de NYESTE sessioner, når der kun er plads til nogle', () => {
+        // Plads til tre payloads og listen (ca. 330 tegn), ikke til en fjerde.
+        quota(3 * ONE + 500);
+        const res = writeClassExtras('3a.csv', twelveSessions());
+
+        const list = JSON.parse(localStorage.getItem('grupdk_history_3a.csv'));
+        expect(list.map(e => e.name)).toEqual(['Modul 10', 'Modul 11', 'Modul 12']);
+        // Hver indgang peger på en payload, der findes.
+        list.forEach(e => expect(localStorage.getItem(`grupdk_session_${e.id}`)).not.toBeNull());
+        expect(res.sessionsRestored).toBe(3);
+        expect(res.sessionsMissing).toBe(9);
+        expect(res.failed).toEqual(['historik']);
+        expect(res.written).not.toContain('historik');
+    });
+
+    it('giver de ældste payloads tilbage, når listen selv mangler plads', () => {
+        // Præcis plads til tre payloads, men ikke til listen ved siden af.
+        quota(3 * ONE + 100);
+        const res = writeClassExtras('3a.csv', twelveSessions());
+
+        // Den ældste af de tre (Modul 10) gav plads til listen; de to
+        // nyeste er tilbage.
+        const list = JSON.parse(localStorage.getItem('grupdk_history_3a.csv'));
+        expect(list.map(e => e.name)).toEqual(['Modul 11', 'Modul 12']);
+        expect(res.sessionsRestored).toBe(2);
+        expect(res.sessionsMissing).toBe(10);
+        expect(res.written).not.toContain('historik');
+        // Ingen payload ligger tilbage uden en plads i listen.
+        const payloadKeys = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k.startsWith('grupdk_session_')) payloadKeys.push(k);
+        }
+        expect(payloadKeys.sort()).toEqual(list.map(e => `grupdk_session_${e.id}`).sort());
+    });
+
+    it('ved samme tidspunkt vinder den, der står bagerst i listen', () => {
+        quota(ONE + 600);
+        const same = new Date(Date.now() - DAY).toISOString();
+        const res = writeClassExtras('3a.csv', {
+            history: [{ id: 'a', name: 'Først', date: same }, { id: 'b', name: 'Sidst', date: same }],
+            sessions: { a: { id: 'a', pad: PAYLOAD }, b: { id: 'b', pad: PAYLOAD } },
+        });
+        const list = JSON.parse(localStorage.getItem('grupdk_history_3a.csv'));
+        expect(list.map(e => e.name)).toEqual(['Sidst']);
+        expect(res.sessionsRestored).toBe(1);
+        expect(res.sessionsMissing).toBe(1);
+    });
+
+    it('listen gemmes i sin egen rækkefølge, når alt er plads til', () => {
+        const res = writeClassExtras('3a.csv', twelveSessions());
+        const list = JSON.parse(localStorage.getItem('grupdk_history_3a.csv'));
+        expect(list.map(e => e.name)).toEqual(Array.from({ length: 12 }, (_, i) => `Modul ${i + 1}`));
+        expect(res.sessionsRestored).toBe(12);
+        expect(res.sessionsMissing).toBe(0);
+        expect(res.written).toContain('historik');
+        expect(res.failed).toEqual([]);
+    });
+
+    it('kvitteringen fra restoreBackup bærer tallene pr. klasse', async () => {
+        // Hvad klassen selv fylder (den skrives af py_bridge, uden om kvoten
+        // her), måles først — så er budgettet det samme som ovenfor.
+        quota(Infinity);
+        await api.restoreBackup([entry('3a.csv')]);
+        const classSize = used();
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+
+        quota(classSize + 3 * ONE + 500);
+        const res = await api.restoreBackup([{ ...entry('3a.csv'), ...twelveSessions() }]);
+        expect(res.written).toBe(1);
+        expect(res.partial).toEqual([{
+            filename: '3a.csv', parts: ['historik'], sessionsRestored: 3, sessionsMissing: 9,
+        }]);
+        const list = JSON.parse(localStorage.getItem('grupdk_history_3a.csv'));
+        expect(list.map(e => e.name)).toEqual(['Modul 10', 'Modul 11', 'Modul 12']);
     });
 });

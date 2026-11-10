@@ -20,6 +20,7 @@
 // session-id'er og melde en fyldt lagerplads — den samme vej bruges her.
 import * as api from './api.js';
 import { plural } from './plural.js';
+import { describePartialRestore } from './restoreReceipt.js';
 import { readClassExtras } from './storage.js';
 import { CLASSES_KEY } from './storageKeys.js';
 import { toCurrentEntries } from './migrateStorage.js';
@@ -158,8 +159,8 @@ export async function adoptWwwEntries(entries) {
         let msg = `${plural(res.written, 'klasse er', 'klasser er')} hentet fra www.dida.dk, hvor du havde gemt dem. `
             + 'dida.dk bruger nu kun adressen uden www.';
         if (partial.length > 0) {
-            const parts = [...new Set(partial.flatMap(p => p.parts))].join(', ');
-            msg += ` Bemærk: ${parts} kom ikke med for ${partial.map(p => p.filename).join(', ')}.`;
+            // Samme ordlyd som backup-gendannelsen, med tal pr. klasse.
+            msg += ` Bemærk: ${describePartialRestore(partial).join('; ')}.`;
         }
         if (failed.length > 0 || skippedInvalid > 0) {
             msg += ` ${plural(failed.length + skippedInvalid, 'klasse', 'klasser')} kunne IKKE hentes. ${BACKUP_HINT}`;

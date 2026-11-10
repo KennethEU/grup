@@ -334,6 +334,19 @@ describe('writeClassExtras — sessionerne må ikke skrive oven i hinanden', () 
         expect(res.prunedSessions).toBe(2);
     });
 
+    it('melder ikke historikken skrevet, når lofterne tog alle sessioner', () => {
+        const oldDate = new Date(Date.now() - 200 * 24 * 3600 * 1000).toISOString();
+        const res = writeClassExtras('3a.csv', {
+            history: [{ id: 'g1', name: 'Sidste skoleår', date: oldDate }],
+            sessions: { g1: { id: 'g1' } },
+        });
+
+        expect(localStorage.getItem('grupdk_history_3a.csv')).toBeNull();
+        expect(res.written).not.toContain('historik');
+        expect(res.sessionsRestored).toBe(0);
+        expect(res.sessionsMissing).toBe(0);
+    });
+
     it('siger 0 udrensede, når alt i filen kom med', () => {
         const recentDate = new Date().toISOString();
         const res = writeClassExtras('3a.csv', {

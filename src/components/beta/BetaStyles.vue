@@ -302,7 +302,9 @@ html.beta .news-content .news-intro {
     line-height: 1.55;
     color: var(--ink-2);
 }
-html.beta .news-content .news-filter { padding: 12px 28px 0; gap: 4px; }
+/* Luft og en hårlinje under filteret, så listen ikke ser ud til at glide ind
+   under knapperne, når man ruller. */
+html.beta .news-content .news-filter { padding: 12px 28px; gap: 4px; border-block-end: 1px solid var(--rule); }
 /* Filteret: stille bløde knapper — den valgte er en let flade med ink-tekst */
 html.beta .news-content .filter-btn {
     border: 0;
@@ -344,5 +346,7 @@ html.beta .news-content .news-tag::before {
 }
 html.beta .news-content .news-entry.is-fix .news-tag::before { background: var(--color-warning); }
 html.beta .news-content .news-entry h3 { font-size: 14px; font-weight: 600; color: var(--ink); }
-html.beta .news-content .news-entry p { font-size: 13px; color: var(--ink-2); }
+html.beta .news-content .news-entry p,
+html.beta .news-content .news-items { font-size: 13px; color: var(--ink-2); }
+html.beta .news-content .news-items li::marker { color: var(--ink-4); }
 </style>
