@@ -219,6 +219,32 @@ test('fremgangen vises, og Stop beholder den bedste deling', async ({ page }) =>
     console.log(`[motor_beta] Stop → svar ${stopMs} ms, kerner ${stats.cores}`);
 });
 
+test('Stop straks på et hold med 400 elever: en deling lander, ikke "urørte"', async ({ page }) => {
+    // Appen venter kun 2,5 sek. (STOP_WAIT_MS) på motorens svar efter Stop.
+    // Trykkes Stop, før motoren har vist fremgang (trådene er ved at starte),
+    // skal den stadig nå at svare med sin første hurtige deling — ellers står
+    // der "Stop og behold de bedste" på knappen, og intet beholdes.
+    // Målt 10/11 2026: 330 ms ved 400 elever (82. gennemsyn).
+    test.setTimeout(120000);
+    const header = 'Navn\tKøn\tHold\tNiveau\n';
+    const lines = Array.from({ length: 400 }, (_, i) =>
+        `Elev ${i + 1}\t${i % 3 ? 'K' : 'M'}\th${i % 7}\t${['Lav', 'Middel', 'Høj'][i % 5 % 3]}`);
+    await createClass(page, 'Meget stort hold', header + lines.join('\n'));
+    await chooseNextEngine(page);
+    await setRules(page, [
+        { type: 'distribute', column: 'Køn' }, { type: 'distribute', column: 'Niveau' },
+        { type: 'cluster', column: 'Hold' },
+    ]);
+    await clickGo(page);
+    const overlay = page.locator('.processing-overlay');
+    await overlay.locator('.cancel-generation').click();
+    await expect(overlay).toBeHidden({ timeout: 10000 });
+    await expect(page.locator('.toast').filter({ hasText: 'de bedste, motoren nåede at finde' })).toBeVisible();
+    await expect(page.locator('.toast').filter({ hasText: 'urørte' })).toHaveCount(0);
+    await expect(page.locator('.group-card')).toHaveCount(100);
+    expect(await page.evaluate(() => (window as any).appDebug.state.isGenerating)).toBe(false);
+});
+
 test('en umulig Skal sammen giver advarslen, og knappen danner uden aftalen', async ({ page }) => {
     test.setTimeout(150000);
     await createClass(page);

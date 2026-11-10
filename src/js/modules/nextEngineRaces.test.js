@@ -10,7 +10,7 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { nextTick } from 'vue';
-import { tryNextEngine, abortNextEngine, engineCheck } from './nextEngine.js';
+import { tryNextEngine, abortNextEngine, engineCheck, engineTogetherStop } from './nextEngine.js';
 import { cancelGeneration } from './generation.js';
 import { state } from './state.js';
 import { clearRuns } from './runHistory.js';
@@ -200,5 +200,86 @@ describe('check() — beskederne før kørslen', () => {
         expect(w.posted.length).toBe(before + 1);
         w.onmessage({ data: { type: 'checked', id: lastCheck(w).id, answer: { status: 'ok', messages: [message] } } });
         expect(engineCheck.value?.messages.length).toBe(1);
+    });
+});
+
+// ─── Stop og motorens svar på samme tid (82. gennemsyn, 10/11 2026) ─────────
+// Motoren ser Stop højst hvert 150. ms (LOOK_UP_MS i solve.js), så en lille
+// klasse bliver ofte færdig, før den ser det. Hvad der end kommer tilbage
+// efter Stop, skal appen ende i én rolig tilstand: overlayet væk, grupperne
+// enten lagt eller urørte — aldrig en fejlbesked, aldrig en halv tilstand.
+describe('Stop, og så svarer motoren', () => {
+    const OLD = () => [
+        { name: 'Group 1', members: ['r1', 'r3'] },
+        { name: 'Group 2', members: ['r2', 'r4'] },
+    ];
+    const NEW_GROUPS = [{ members: ['r1', 'r2'] }, { members: ['r3', 'r4'] }];
+
+    /** Start en kørsel, tryk Stop, og lad tråden svare med `message`. */
+    async function stopThenReply(filename, message) {
+        stubWorkers();
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+        window.notifyInfo = vi.fn();
+        window.notifyError = vi.fn();
+        state.currentClass = makeClass(filename);
+        state.groupMode = 'size';
+        state.storedStandardGroups = OLD();
+        const run = tryNextEngine(false);
+        expect(state.isGenerating).toBe(true);
+        cancelGeneration();
+        const w = runWorkers()[0];
+        // Stop beder tråden om den foreløbig bedste — én gang.
+        expect(w.posted.filter(m => m.type === 'cancel').length).toBe(1);
+        // Et tryk mere (dobbeltklik, eller Enter på knappen) sender ikke igen.
+        cancelGeneration();
+        expect(w.posted.filter(m => m.type === 'cancel').length).toBe(1);
+        expect(state.isGenerating).toBe(true); // "Stopper …" står, til svaret kommer
+        w.onmessage({ data: message });
+        expect(await run).toBe('done');
+        expect(state.isGenerating).toBe(false);
+        expect(state.activeJobId).toBe(null);
+        expect(w.terminated).toBe(true);
+        expect(window.notifyError).not.toHaveBeenCalled();
+        return w;
+    }
+    const answer = (extra) => ({ type: 'answer', answer: {
+        contractVersion: 3, messages: [], rules: [{ rule: 0, met: true }], playback: null, ...extra,
+    } });
+
+    it('"ok" lige efter Stop: motoren nåede at blive færdig, og grupperne lander', async () => {
+        await stopThenReply('ok-efter-stop', answer({ status: 'ok', groups: NEW_GROUPS }));
+        expect(state.storedStandardGroups.map(g => g.members)).toEqual([['r1', 'r2'], ['r3', 'r4']]);
+        expect(window.notifyInfo).not.toHaveBeenCalledWith(expect.stringMatching(/urørte/));
+    });
+
+    it('"stopped" med en deling: den lander, og beskeden siger "de bedste"', async () => {
+        await stopThenReply('stoppet', answer({ status: 'stopped', groups: NEW_GROUPS }));
+        expect(state.storedStandardGroups.map(g => g.members)).toEqual([['r1', 'r2'], ['r3', 'r4']]);
+        expect(window.notifyInfo).toHaveBeenCalledWith(expect.stringMatching(/de bedste, motoren nåede/));
+    });
+
+    it('"stopped" uden en deling: grupperne står urørte', async () => {
+        await stopThenReply('stoppet-tom', answer({ status: 'stopped', groups: null }));
+        expect(state.storedStandardGroups).toStrictEqual(OLD());
+        expect(window.notifyInfo).toHaveBeenCalledWith(expect.stringMatching(/stoppet\. Dine nuværende grupper er urørte/));
+    });
+
+    it('motoren kaster efter Stop: et Stop uden deling, ingen fejlbesked', async () => {
+        await stopThenReply('crash-efter-stop', { type: 'crash', message: 'boom' });
+        expect(state.storedStandardGroups).toStrictEqual(OLD());
+        expect(window.notifyInfo).toHaveBeenCalledWith(expect.stringMatching(/urørte/));
+    });
+
+    it('et svar, der bryder kontrakten efter Stop: grupperne står urørte', async () => {
+        await stopThenReply('skaevt-efter-stop', answer({ status: 'stopped', groups: [{ members: ['r1', 'x9'] }] }));
+        expect(state.storedStandardGroups).toStrictEqual(OLD());
+        expect(window.notifyInfo).toHaveBeenCalledWith(expect.stringMatching(/urørte/));
+    });
+
+    it('"impossible" efter Stop: ingen rød advarsel, den kommer igen ved næste Dan grupper', async () => {
+        await stopThenReply('umulig-efter-stop', answer({ status: 'impossible', groups: null,
+            messages: [{ code: 'together-impossible', type: 'stop', students: ['r1', 'r2'], text: 'x' }] }));
+        expect(state.storedStandardGroups).toStrictEqual(OLD());
+        expect(engineTogetherStop.value).toBe(null);
     });
 });

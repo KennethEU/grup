@@ -110,9 +110,35 @@ function measureScroll() {
 // imellem, ellers glider beskederne hen over vinduet.
 const MIN_BESIDE = 240;   // mindste bredde på en besked ved siden af panelet
 const GAP = 8;            // luft mellem panelet og stakken
+
+// ─── Vælg kun igen, når noget har ændret sig ────────────────────────────────
+// Valget kræver, at stakken et øjeblik står på sin almindelige plads (se
+// chooseModalRoom), og det tvinger browseren til at regne layoutet ud to gange
+// og tegne de fem beskeders slørede baggrund igen — hvert 300. ms, så længe et
+// vindue og beskederne stod åbne. Målt 10/11 2026 i Chromium med fem fejl og
+// "Gem session" åben: 6,8 layout-beregninger i sekundet og ca. 6 ms CPU i
+// sekundet ved 4× neddrosling (uden beskeder: 0 og 0,4 ms). Intet var flyttet.
+// Derfor huskes, hvad valget blev truffet ud fra: hvilken slags vindue,
+// panelets kanter, vinduets størrelse og beskedernes højder. Er alt det
+// det samme, står valget ved magt, og intet røres. Ændrer noget sig (vinduet
+// vokser, skærmen drejes, en besked kommer eller går), vælges der igen.
+let lastRoomKey = null;
+function currentPanel() {
+    if (host.value) return { mode: 'dialog', panel: host.value };
+    if (document.body.classList.contains('has-modal')) return { mode: 'modal', panel: topModalPanel() };
+    return { mode: 'none', panel: null };
+}
+function roomKey(el) {
+    const { mode, panel } = currentPanel();
+    if (!panel) return mode;
+    const p = panel.getBoundingClientRect();
+    const heights = [...el.querySelectorAll('.toast')].map(t => t.offsetHeight).join(',');
+    return [mode, p.left, p.top, p.right, p.bottom, window.innerWidth, window.innerHeight, heights].join('|');
+}
 function measureModalRoom() {
     const el = containerEl.value;
     if (!el) return;
+    if (roomKey(el) === lastRoomKey) return;
     // Målingen sætter kassen tilbage til sin almindelige størrelse et
     // øjeblik, og browseren klipper så rulningen til den. Uden at huske den
     // sprang stakken til toppen hvert 300. ms — en lærer, der havde rullet ned
@@ -124,9 +150,19 @@ function measureModalRoom() {
     } finally {
         el.scrollTop = scrolled;
     }
+    // Nøglen læses EFTER valget, i den tilstand stakken nu står i — det er
+    // den, næste måling sammenligner med (ved siden af er beskederne smallere
+    // og dermed højere end på den almindelige plads).
+    lastRoomKey = roomKey(el);
 }
 function chooseModalRoom(el) {
-    const panel = host.value ? null : (document.body.classList.contains('has-modal') ? topModalPanel() : null);
+    // Står stakken inde i et <dialog>, er det selve vinduet, der skal holdes
+    // fri: opskriftens "Dan grupper" og importens to spørgsmål havde ellers
+    // fem blivende fejl hen over deres knapper ved 800×480 og 375×700 (målt
+    // 10/11 2026). Dialogen er sit eget panel — opskriftens er gennemsigtig
+    // med panelet i fuld størrelse indeni. Stakken er `position: fixed` uden
+    // en transform imellem, så målene er de samme som skærmens.
+    const { panel } = currentPanel();
     // Først stakkens almindelige plads: valget regnes altid ud fra den, så
     // det ikke afhænger af, hvad der blev valgt sidst.
     delete el.dataset.modalRoom;
@@ -162,6 +198,8 @@ function follow() {
 function stopFollowing() {
     clearInterval(followTimer);
     followTimer = null;
+    // Tom stak: næste besked vælger plads forfra.
+    lastRoomKey = null;
 }
 watch(() => notifications.value.length, (n, old) => {
     // Straks ved hver NY besked — så den aldrig vises ét interval det forkerte
@@ -184,6 +222,14 @@ watch(() => notifications.value.length, (n, old) => {
 // Åbner eller lukker et vindue, flytter stakken med det samme — ikke først
 // ved næste måling. Lytter kun på 'open'-attributten; det koster intet.
 let dialogObserver = null;
+function onDialogOpen() {
+    updateHost();
+    // Stakken flytter ind i (eller ud af) vinduet med det samme, men dens
+    // plads ved siden af/under vinduet måles først, når vinduet har sin
+    // størrelse — ellers stod den ét interval (op til 300 ms) med valget fra
+    // det sted, den kom fra.
+    if (notifications.value.length) requestAnimationFrame(follow);
+}
 // Det samme for de almindelige vinduer: de sætter `has-modal` på <body>.
 // Kun <body>s egen class-attribut (ikke hele siden), og kun når der står
 // beskeder — uden beskeder er der intet at flytte. requestAnimationFrame:
@@ -195,7 +241,7 @@ function onBodyClass() {
 }
 onMounted(() => {
     window.addEventListener('resize', follow, { passive: true });
-    dialogObserver = new MutationObserver(updateHost);
+    dialogObserver = new MutationObserver(onDialogOpen);
     dialogObserver.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
     modalObserver = new MutationObserver(onBodyClass);
     modalObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
@@ -370,6 +416,15 @@ dialog[open] > .notification-container.in-dialog {
     inset-block-start: auto;
     inset-block-end: 10px;
     max-block-size: min(50dvh, calc(100dvh - var(--header-height, 64px) - 34px));
+}
+/* Ved siden af eller under vinduet, når der er plads — samme måling og samme
+   valg som ved Vue-vinduerne ovenfor (measureModalRoom). Attributten gør
+   reglerne tungere end den foregående. */
+dialog[open] > .notification-container.in-dialog[data-modal-room="beside"] {
+    max-inline-size: var(--toast-modal-inline, min(92vw, 400px));
+}
+dialog[open] > .notification-container.in-dialog[data-modal-room="under"] {
+    max-block-size: var(--toast-modal-block, 50dvh);
 }
 
 .toast {

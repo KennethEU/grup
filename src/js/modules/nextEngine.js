@@ -1063,6 +1063,16 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     finalGroups.sort((a, b) => (groupNumberOf(a.name) ?? 999999) - (groupNumberOf(b.name) ?? 999999));
 
     // Emnerne hører kun til stamgrupperne.
+    //
+    // Emnekortet i lageret er det, ALT andet læser emnerne fra: kortet på
+    // skærmen (GroupCard), matrix-rundens kilder (topicFor), Vis for klassen,
+    // eksporten og en genindlæsning (hydrateGroupTopics). Kan det nye kort
+    // ikke skrives, står det FORRIGE kort tilbage med de samme gruppenavne
+    // ("Group 1" …). Så må grupperne ikke bare have topic: null — skærmen og
+    // matrix ville stadig vise og bruge de gamle emner på de nye grupper.
+    // Reglen er derfor: grupperne får det emne, der faktisk står i lageret,
+    // og beskeden siger, hvad det er (gennemsyn 84, landTopics.test.js).
+    const topicsFromStorage = () => finalGroups.forEach(g => { g.topic = storage.getTopic(g.name, 'S_') || null; });
     if (!isMatrix) {
         const hasTopics = (input.topics || []).length > 0;
         if (hasTopics) {
@@ -1072,20 +1082,31 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
                 if (Object.prototype.hasOwnProperty.call(lockedTopics, String(g.name))) g.topic = lockedTopics[String(g.name)];
             }
             if (storage.replaceTopicsForPrefix('S_', finalGroups) === false) {
-                finalGroups.forEach(g => { g.topic = null; });
-                window.notifyError?.(
-                    'Lagerplads fuld — emnerne kunne ikke gemmes, så grupperne '
-                    + 'står uden emne. Slet en gammel session for at frigøre plads.'
-                );
+                // Prøv i stedet at fjerne de gamle stamgruppe-emner: det gør
+                // kortet MINDRE, så det plejer at gå, selv når lageret er fuldt.
+                if (storage.replaceTopicsForPrefix('S_', []) !== false) {
+                    finalGroups.forEach(g => { g.topic = null; });
+                    window.notifyError?.(
+                        'Lagerplads fuld — emnerne kunne ikke gemmes, så grupperne '
+                        + 'står uden emne. Slet en gammel session for at frigøre plads.'
+                    );
+                } else {
+                    topicsFromStorage();
+                    window.notifyError?.(
+                        'Lagerplads fuld — de nye emner kunne ikke gemmes, så grupperne '
+                        + 'står med emnerne fra forrige dannelse. Slet en gammel session '
+                        + 'for at frigøre plads, og dan grupperne igen.'
+                    );
+                }
             }
+        } else if (storage.clearTopics('S_') === false) {
+            topicsFromStorage();
+            window.notifyError?.(
+                'Lagerplads fuld — de gamle gruppeemner kunne ikke fjernes, så de '
+                + 'står stadig på grupperne. Slet en gammel session for at frigøre '
+                + 'plads, og dan grupperne igen.'
+            );
         } else {
-            if (storage.clearTopics('S_') === false) {
-                window.notifyError?.(
-                    'Lagerplads fuld — de gamle gruppeemner kunne ikke fjernes. '
-                    + 'Genindlæser du siden, kan de dukke op på de nye grupper igen. '
-                    + 'Slet en gammel session for at frigøre plads.'
-                );
-            }
             finalGroups.forEach(g => { g.topic = null; });
         }
     }

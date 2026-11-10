@@ -307,8 +307,9 @@ test('Mange fejlbeskeder ved 800×480 — kan altid lukkes, og Gem som kolonne e
     expect(await closesReachable(page)).toEqual(allHit);
 });
 
-// Stakken måles hvert 300. ms ud fra sin ALMINDELIGE plads (attributten tages
-// af og sættes på igen). Den måling må ikke rulle stakken tilbage: læreren,
+// Stakken måles hvert 300. ms; når noget har ændret sig, vælges pladsen igen
+// ud fra stakkens ALMINDELIGE plads (attributten tages af og sættes på
+// igen). Den måling må ikke rulle stakken tilbage: læreren,
 // der har rullet ned til den nederste besked for at lukke den, skal finde den
 // samme sted et øjeblik efter.
 async function scrolledStays(page) {
@@ -346,4 +347,140 @@ test('Stakken ved et vindue bliver, hvor læreren har rullet den hen', async ({ 
     await expect.poll(() => room(page)).toBe('under');
     await page.waitForTimeout(400);
     expect(await scrolledStays(page)).toEqual({ same: true, lastHit: true });
+});
+
+// Inde i et <dialog> (opskriften, importens to spørgsmål) stod stakken nederst
+// til højre oven på vinduets knapper: med fem blivende fejl var opskriftens
+// "Dan grupper igen" dækket ved 800×480 og 375×700, og importens "Disse
+// klasser findes allerede" mistede alle fire knapper ved 375×700 (målt 10/11).
+// Samme regel som ved Vue-vinduerne: ved siden af eller under vinduet, når
+// der er plads. Ved 800×480 er der ingen plads ved importens vinduer (48 px
+// under) — kendt grænse, som ved Aftaler; dér kræves kun, at alt kan lukkes.
+async function dialogControlsFree(page) {
+    return page.evaluate(() => {
+        const open = [...document.querySelectorAll('dialog[open]')];
+        const dlg = open[open.length - 1];
+        return [...dlg.querySelectorAll('button, input')].filter((el) => {
+            if (el.closest('.notification-container')) return false;
+            const r = el.getBoundingClientRect();
+            if (!r.width) return false;
+            const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+            return !(top && el.contains(top));
+        }).map((el) => el.getAttribute('aria-label') || el.textContent!.trim() || el.tagName);
+    });
+}
+// Under opskriften er der 150-270 px — nok til den højeste besked i alle tre
+// browsere (målt 10/11), så "under" kræves overalt.
+for (const [width, height] of [[800, 480], [375, 700]] as const) {
+    test(`Mange fejlbeskeder i opskriftens vindue står under det — Dan grupper er fri, ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width: 1280, height: 720 });
+        await createClass(page, 'Beskeder i opskriften');
+        await goToGroups(page);
+        await generateGroups(page);
+        const dialog = await openRecipe(page);
+        await page.setViewportSize({ width, height });
+        await fiveErrors(page);
+        await expect(dialog.locator('.toast').filter({ hasText: '5. Fordel' })).toBeVisible();
+        await expect.poll(() => room(page)).not.toBeNull();
+        await expect.poll(() => dialogControlsFree(page)).toEqual([]);
+        await expect.poll(() => closesReachable(page)).toEqual(allHit);
+    });
+}
+
+const existingBackup = { name: 'b.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify([
+    { filename: 'existing.csv', name: 'existing.csv', columns: ['Name'], data: [{ Name: 'X' }], rules: [], id_column: 'Name' },
+])) };
+for (const [width, height, mayLackRoom] of [[1280, 600, false], [375, 700, false], [800, 480, true]] as const) {
+    test(`Mange fejlbeskeder ved importens spørgsmål — knapperne er fri, når der er plads, ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width: 1280, height: 720 });
+        await page.goto('/');
+        await page.waitForFunction(() => Boolean((window as any).appDebug?.pyBridge));
+        await page.evaluate(() => (window as any).appDebug.pyBridge.createClass('Existing', 'Name\nOriginal'));
+        await page.getByRole('button', { name: 'Indsæt klasseliste fra Excel / Sheets' }).click();
+        await page.getByRole('button', { name: 'Upload fil eller gendan backup' }).click();
+        await page.locator('input[type=file]').setInputFiles([existingBackup]);
+        await page.getByRole('button', { name: 'Importér filer', exact: true }).click();
+        const dialog = page.locator('dialog[open]');
+        await expect(dialog).toContainText('Disse klasser findes allerede');
+        await page.setViewportSize({ width, height });
+        await fiveErrors(page);
+        await expect(dialog.locator('.toast').filter({ hasText: '5. Fordel' })).toBeVisible();
+        if (!mayLackRoom) {
+            await expect.poll(() => room(page)).not.toBeNull();
+            await expect.poll(() => dialogControlsFree(page)).toEqual([]);
+        }
+        await expect.poll(() => closesReachable(page)).toEqual(allHit);
+        // Svaret virker stadig, og stakken følger med ud af vinduet. Uden
+        // plads (800×480) ligger beskederne over knapperne: så svares med Escape.
+        if (mayLackRoom) await page.keyboard.press('Escape');
+        else await dialog.getByRole('button', { name: 'Spring over (behold mine)' }).click();
+        await expect(page.locator('dialog[open]')).toHaveCount(0);
+        await expect.poll(() => page.evaluate(() =>
+            document.querySelector('.notification-container')!.parentElement === document.body)).toBe(true);
+    });
+}
+
+// Står intet og flytter sig, må målingen ikke røre stakken. Før tog den hvert
+// 300. ms pladsvalget af og satte det på igen — to layout-beregninger og en ny
+// tegning af fem slørede beskeder hver gang, så længe vinduet stod åbent (målt
+// 10/11 2026: 6,8 layouts i sekundet med "Gem session" og fem fejl). Ændrer
+// noget sig derimod (vinduet bliver mindre og større igen), skal stakken
+// vælge plads igen — det er risikoen ved at huske valget.
+async function roomMutations(page, ms) {
+    return page.evaluate((wait) => new Promise<number>((resolve) => {
+        const box = document.querySelector('.notification-container')!;
+        let count = 0;
+        const mo = new MutationObserver((records) => { count += records.length; });
+        mo.observe(box, { attributes: true, attributeFilter: ['data-modal-room', 'style'] });
+        setTimeout(() => { mo.disconnect(); resolve(count); }, wait);
+    }), ms);
+}
+test('Stakken ved et vindue vælger kun plads igen, når noget har ændret sig', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await createClass(page, 'Stakken i ro');
+    await goToGroups(page);
+    await generateGroups(page);
+    await openSaveSession(page);
+    await fiveErrors(page);
+    await expect.poll(() => room(page)).toBe('beside');
+    await page.waitForTimeout(700);   // beskederne er gledet ind
+    expect(await roomMutations(page, 1500)).toBe(0);
+
+    // Vinduet mindre: ingen plads ved siden af længere, men under
+    await page.setViewportSize({ width: 1024, height: 700 });
+    await expect.poll(() => room(page)).toBe('under');
+    await expect.poll(() => controlsFree(page)).toEqual([]);
+    expect(await closesReachable(page)).toEqual(allHit);
+    // Panelet vokser, mens skærmen er den samme (som når en liste i vinduet
+    // bliver længere): ingen plads under længere — stakken skal vælge igen
+    await page.evaluate(() => {
+        const overlays = [...document.querySelectorAll('[aria-modal="true"]')];
+        (overlays[overlays.length - 1].firstElementChild as HTMLElement).style.minBlockSize = '640px';
+    });
+    await expect.poll(() => room(page)).toBe(null);
+    await page.evaluate(() => {
+        const overlays = [...document.querySelectorAll('[aria-modal="true"]')];
+        (overlays[overlays.length - 1].firstElementChild as HTMLElement).style.minBlockSize = '';
+    });
+    await expect.poll(() => room(page)).toBe('under');
+    // … og større igen: tilbage ved siden af
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await expect.poll(() => room(page)).toBe('beside');
+    await expect.poll(() => controlsFree(page)).toEqual([]);
+
+    // En besked lukkes: stakken bliver lavere, og der vælges igen uden fejl
+    await page.locator('.toast').filter({ hasText: '1. Fordel' }).locator('.toast-close').click();
+    await expect.poll(() => controlsFree(page)).toEqual([]);
+    expect(await closesReachable(page)).toEqual(allHit);
+});
+test('Stakken i opskriftens vindue står stille, når intet ændrer sig — 800×480', async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 480 });
+    await createClass(page, 'Stakken i ro i vinduet');
+    await goToGroups(page);
+    await generateGroups(page);
+    await openRecipe(page);
+    await fiveErrors(page);
+    await expect.poll(() => room(page)).toBe('under');
+    await page.waitForTimeout(700);
+    expect(await roomMutations(page, 1500)).toBe(0);
 });
