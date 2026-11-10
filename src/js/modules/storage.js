@@ -116,6 +116,66 @@ function _noticeForeignGroups(e) {
     else console.warn(msg);
 }
 
+// --- TILBAGE-KNAPPEN (browserens hurtig-cache, "bfcache") ---
+//
+// Går læreren fra Grupper til en anden side i SAMME fane og trykker Tilbage,
+// kan browseren vise siden fra hukommelsen i stedet for at indlæse den igen
+// (målt i Firefox 10/11 2026: `pageshow` med `persisted === true`, og
+// gruppemotorens tråde forhindrer det ikke). Mens siden ligger dér, får den
+// INGEN storage-hændelser — og de kommer heller ikke bagefter. Dannede hun
+// grupper i en anden fane imens, fik den her fane aldrig beskeden, og hendes
+// næste træk her skrev den anden fanes grupper væk. Uden en lyd.
+//
+// Derfor husker vi, hvad der stod i lageret, da siden blev gemt væk, og ser
+// efter, når den kommer frem igen. Er det ændret, kan det KUN være en anden
+// fane: en side i hurtig-cachen kører ingen kode og skriver intet.
+//
+// HVORFOR IKKE ved hver `visibilitychange`: dér ville et mislykket gem i
+// fanen selv (fuldt lager) få lageret og skærmen til at være forskellige, og
+// læreren fik en falsk "ændret i en anden fane". Her sammenlignes lageret med
+// lageret selv (før og efter), så fanens egne fejlede gemninger tæller ikke.
+
+/** Det, der stod under klassens gruppenøgle, da siden blev gemt væk. */
+let _groupsAtHide = null;
+
+/**
+ * Siden gemmes væk (eller lukkes). Kaldes fra main.js EFTER
+ * flushPendingWrites(), så fanens egen sidste skrivning er med i billedet.
+ */
+export function rememberStorageAtHide() {
+    _groupsAtHide = null;
+    if (!state.currentClass || !state.currentClass.filename) return;
+    const key = `${GROUPS_PREFIX}${state.currentClass.filename}`;
+    try { _groupsAtHide = { key, raw: localStorage.getItem(key) }; } catch { /* låst lager */ }
+}
+
+/**
+ * Siden er kommet frem igen. Gør kun noget, når den kom fra hurtig-cachen
+ * (`persisted`) — en almindelig indlæsning læser alt forfra alligevel.
+ *
+ * Vi sender de hændelser, siden gik glip af, gennem de SAMME lyttere som en
+ * rigtig hændelse, så der ikke er en ekstra vej at holde ens:
+ *  - én med `key: null` ("alt kan være ændret"): klasselisten og emnerne
+ *    læses forfra, og AppTopbar ser efter, om klassen er slettet imens.
+ *  - én for gruppenøglen, hvis den er ændret: _noticeForeignGroups() afgør
+ *    som altid, om der er noget at sige (fx ikke, hvis skærmen allerede viser
+ *    de samme grupper).
+ */
+export function checkStorageAfterRestore(e) {
+    if (!e || !e.persisted) return;
+    const seen = _groupsAtHide;
+    _groupsAtHide = null;
+    const send = (init) => {
+        try { window.dispatchEvent(new StorageEvent('storage', init)); }
+        catch { /* gamle browsere uden StorageEvent-konstruktør */ }
+    };
+    send({ key: null, newValue: null });
+    if (!seen || !state.currentClass || `${GROUPS_PREFIX}${state.currentClass.filename}` !== seen.key) return;
+    let raw;
+    try { raw = localStorage.getItem(seen.key); } catch { return; }
+    if (raw !== null && raw !== seen.raw) send({ key: seen.key, newValue: raw, oldValue: seen.raw });
+}
+
 // Hvem står i hvilken gruppe — det eneste, der afgør, om grupperne er de samme.
 function _memberLists(groups) {
     return JSON.stringify((groups || []).map(g => (g && g.members) || []));

@@ -473,6 +473,77 @@ describe('grupperne — to faner', () => {
         expect(warnings).toHaveLength(2);
     });
 
+    // Tilbage-knappen: siden kommer frem fra browserens hurtig-cache og har
+    // ikke fået de storage-hændelser, der kom, mens den lå dér. main.js kalder
+    // rememberStorageAtHide() på `pagehide` og checkStorageAfterRestore() på
+    // `pageshow` — her kaldes de direkte med samme slags hændelse.
+    function pageshow(persisted) {
+        const ev = new Event('pageshow');
+        Object.defineProperty(ev, 'persisted', { value: persisted });
+        return ev;
+    }
+
+    it('en kørsel i en anden fane, mens siden lå i hurtig-cachen, siges højt ved Tilbage', () => {
+        openClass('fane-9a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        storage.saveGroupsToStorage();
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        storage.rememberStorageAtHide();
+        // Den anden fane danner grupper — ingen hændelse når hertil
+        localStorage.setItem('grupdk_groups_fane-9a.csv',
+            JSON.stringify({ standard: [{ name: 'Gruppe 1', members: ['r1'] }, { name: 'Gruppe 2', members: ['r2'] }], matrix: null }));
+        storage.checkStorageAfterRestore(pageshow(true));
+
+        expect(warnings).toHaveLength(1);
+        expect(warnings[0]).toContain('ændret i en anden fane');
+    });
+
+    it('ingen falsk besked ved Tilbage, når fanens eget gem fejlede (fuldt lager)', () => {
+        openClass('fane-10a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        storage.saveGroupsToStorage();
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        // Læreren flytter en elev, men lageret er fuldt: skærm og lager er nu forskellige
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1'] }, { name: 'Gruppe 2', members: ['r2'] }];
+        const spy = blockWrites();
+        storage.saveGroupsToStorage();
+        spy.mockRestore();
+
+        // (Det fejlede gem siger selv til om det fulde lager — den besked er ikke den, vi tæller.)
+        storage.rememberStorageAtHide();
+        storage.checkStorageAfterRestore(pageshow(true));
+        expect(warnings.filter(m => m.includes('anden fane'))).toHaveLength(0);
+    });
+
+    it('en almindelig indlæsning (ikke fra hurtig-cachen) gør intet', () => {
+        openClass('fane-11a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        storage.saveGroupsToStorage();
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        storage.rememberStorageAtHide();
+        localStorage.setItem('grupdk_groups_fane-11a.csv', JSON.stringify({ standard: [], matrix: null }));
+        storage.checkStorageAfterRestore(pageshow(false));
+        expect(warnings).toHaveLength(0);
+    });
+
+    it('klasselisten læses forfra ved Tilbage — en klasse oprettet i en anden fane imens er med', () => {
+        pyBridge._invalidateClassesCache();
+        expect(pyBridge.getClasses()).toEqual([]);
+        storage.rememberStorageAtHide();
+        localStorage.setItem('grupdk_classes', JSON.stringify([{ filename: 'ny.csv', name: 'Ny' }]));
+        storage.checkStorageAfterRestore(pageshow(true));
+        expect(pyBridge.getClasses().map(c => c.filename)).toEqual(['ny.csv']);
+    });
+
     it('en anden klasses grupper rører os ikke', () => {
         openClass('fane-2a.csv');
         const warnings = [];

@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { createApp, defineComponent, h, ref, nextTick } from 'vue';
-import { useModalFocus } from './useModalFocus.js';
+import { useModalFocus, topModalPanel } from './useModalFocus.js';
 
 // Siden bagved et vindue skal være inert (useModalFocus' syncInert): ellers
 // kan en skærmlæsers læsemarkør vandre uden om fokusfælden og ned i siden.
@@ -108,5 +108,24 @@ describe('useModalFocus — siden bagved er inert', () => {
         app.unmount(); apps.pop();           // før useModalFocus' nextTick
         await nextTick(); await nextTick();
         expect(inertIds()).toEqual(['grid']);
+    });
+});
+
+// Beskedstakken (NotificationManager) spørger efter det øverste vindues panel
+// for at stille sig ved siden af det. Panelet er overlayets første barn — her
+// knappen, i appen `.modal-content` eller `.avoid-modal`.
+describe('topModalPanel', () => {
+    it('giver det øverste vindues panel, og null når alle er lukket', async () => {
+        buildPage();
+        expect(topModalPanel()).toBeNull();
+        const first = mountModal(document.getElementById('modal-slot'));
+        const second = mountModal(document.getElementById('body-slot'));
+        await nextTick();
+        expect(topModalPanel()).toBe(document.querySelector('#body-slot .modal-overlay > button'));
+        second.unmount(); apps.pop();
+        await nextTick();
+        expect(topModalPanel()).toBe(document.querySelector('#modal-slot .modal-overlay > button'));
+        first.unmount(); apps.pop();
+        expect(topModalPanel()).toBeNull();
     });
 });

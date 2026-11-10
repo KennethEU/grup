@@ -81,6 +81,20 @@ export function isModalOpen() {
     return openModals.length > 0;
 }
 
+/**
+ * Det øverste vindues panel (den hvide kasse), eller null uden vindue.
+ *
+ * Alle vinduerne er bygget ens: en baggrund over hele skærmen (det element,
+ * stakken kender) med panelet som første barn — `.modal-content` i de fleste,
+ * `.avoid-modal` i Aftaler. Beskedstakken (NotificationManager) spørger, så
+ * den kan stille sig ved siden af panelet i stedet for oven på dets knapper.
+ */
+export function topModalPanel() {
+    const top = openModals[openModals.length - 1]?.value;
+    if (!top || !top.isConnected) return null;
+    return top.firstElementChild || top;
+}
+
 // ---- Fokusring kun til tastaturet ------------------------------------
 // Et tekstfelt får ALTID :focus-visible, også når fokus sættes af kode. Når
 // læreren åbner et vindue med musen, og vi flytter fokus ind i feltet, så det

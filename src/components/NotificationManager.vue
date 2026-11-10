@@ -3,6 +3,7 @@ import { computed, ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { notificationState, notificationActions } from '../js/modules/notificationState.js';
 import { CheckCircle, XCircle, Info, X } from 'lucide-vue-next';
 import { reactiveState as appState } from '../js/modules/reactiveState.js';
+import { topModalPanel } from '../composables/useModalFocus.js';
 
 const notifications = computed(() => notificationState.notifications);
 
@@ -87,10 +88,75 @@ function measureScroll() {
     canScroll.value = !!el && el.scrollHeight > el.clientHeight;
 }
 
+// ─── Ved siden af et Vue-vindue, ikke oven på dets knapper ──────────────────
+// Mens et af de almindelige vinduer står åbent (body.has-modal), står stakken
+// nederst til højre. Målt 10/11 2026 med fem blivende fejlbeskeder: i Aftaler
+// lå stakken over "Fjern aftale"-krydsene ved 1280×600, 1024×700, 800×480 og
+// 375×700, i "Gem session" over selve Gem-knappen ved 1024×700 og 800×480 (og
+// over feltet og Annuller på en telefon), og i "Gem som kolonne" over feltet
+// og knappen ved 800×480. Fejlbeskeder bliver stående, til de klikkes væk —
+// læreren måtte lukke dem alle, før vinduet kunne bruges.
+//
+// Derfor måles panelet, og stakken flytter, hvis der er plads:
+//   1. til HØJRE for panelet, hvis beskederne dér kan være mindst 240 px
+//      brede (smallere er svære at læse) — så får de hele højden;
+//   2. ellers UNDER panelet, hvis den højeste besked kan stå hel dér;
+//   3. ellers som før, oven på panelet. Ved 800×480 er der hverken plads ved
+//      siden af eller under Aftaler og "Gem session" — så er det bedre, at
+//      beskederne kan ses og lukkes, end at de klemmes ned i en stribe, der
+//      kun viser en halv besked.
+// Valget skrives som `data-modal-room` og to mål direkte på elementet (ikke
+// gennem Vue), af samme grund som `--toast-top` ovenfor: Vue må ikke tegne
+// imellem, ellers glider beskederne hen over vinduet.
+const MIN_BESIDE = 240;   // mindste bredde på en besked ved siden af panelet
+const GAP = 8;            // luft mellem panelet og stakken
+function measureModalRoom() {
+    const el = containerEl.value;
+    if (!el) return;
+    // Målingen sætter kassen tilbage til sin almindelige størrelse et
+    // øjeblik, og browseren klipper så rulningen til den. Uden at huske den
+    // sprang stakken til toppen hvert 300. ms — en lærer, der havde rullet ned
+    // til den nederste besked for at lukke den, nåede det ikke (målt 10/11
+    // 2026). Den skrives tilbage, når valget er truffet; intet tegnes imellem.
+    const scrolled = el.scrollTop;
+    try {
+        chooseModalRoom(el);
+    } finally {
+        el.scrollTop = scrolled;
+    }
+}
+function chooseModalRoom(el) {
+    const panel = host.value ? null : (document.body.classList.contains('has-modal') ? topModalPanel() : null);
+    // Først stakkens almindelige plads: valget regnes altid ud fra den, så
+    // det ikke afhænger af, hvad der blev valgt sidst.
+    delete el.dataset.modalRoom;
+    if (!panel) return;
+    const p = panel.getBoundingClientRect();
+    const box = el.getBoundingClientRect();
+    const overlaps = box.left < p.right + GAP && box.right > p.left
+        && box.top < p.bottom + GAP && box.bottom > p.top;
+    if (!overlaps) return;
+    // Kassens kanter: 10 px fra skærmens kant og 10 px luft indeni hver side
+    // (se `padding` i stilen) — beskederne selv står 20 px inde.
+    const beside = window.innerWidth - p.right - GAP - 10 - 20;
+    if (beside >= MIN_BESIDE) {
+        el.style.setProperty('--toast-modal-inline', `${Math.floor(beside)}px`);
+        el.dataset.modalRoom = 'beside';
+        return;
+    }
+    const under = window.innerHeight - p.bottom - GAP - 10 - 20;
+    const tallest = Math.max(0, ...[...el.querySelectorAll('.toast')].map(t => t.offsetHeight));
+    if (tallest > 0 && under >= tallest) {
+        el.style.setProperty('--toast-modal-block', `${Math.floor(under)}px`);
+        el.dataset.modalRoom = 'under';
+    }
+}
+
 let followTimer = null;
 function follow() {
     updateHost();
     measureRibbon();
+    measureModalRoom();
     measureScroll();
 }
 function stopFollowing() {
@@ -118,15 +184,27 @@ watch(() => notifications.value.length, (n, old) => {
 // Åbner eller lukker et vindue, flytter stakken med det samme — ikke først
 // ved næste måling. Lytter kun på 'open'-attributten; det koster intet.
 let dialogObserver = null;
+// Det samme for de almindelige vinduer: de sætter `has-modal` på <body>.
+// Kun <body>s egen class-attribut (ikke hele siden), og kun når der står
+// beskeder — uden beskeder er der intet at flytte. requestAnimationFrame:
+// vinduet er sat ind i siden, men dets panel har først sin plads, når
+// browseren har regnet layoutet.
+let modalObserver = null;
+function onBodyClass() {
+    if (notifications.value.length) requestAnimationFrame(follow);
+}
 onMounted(() => {
     window.addEventListener('resize', follow, { passive: true });
     dialogObserver = new MutationObserver(updateHost);
     dialogObserver.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
+    modalObserver = new MutationObserver(onBodyClass);
+    modalObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     updateHost();
 });
 onBeforeUnmount(() => {
     window.removeEventListener('resize', follow);
     dialogObserver?.disconnect();
+    modalObserver?.disconnect();
     stopFollowing();
 });
 
@@ -252,6 +330,17 @@ body.has-modal .notification-container {
     inset-block-start: auto;
     inset-block-end: 10px;
     max-block-size: min(50dvh, calc(100dvh - var(--header-height, 64px) - 34px));
+}
+
+/* Ved siden af eller under vinduets panel, når der er plads (målt i
+   measureModalRoom; `data-modal-room` og de to mål sættes derfra). Uden
+   plads gælder reglen ovenfor uændret. Attribut-vælgeren gør reglen tungere
+   end bredden i BetaStyles.vue (html.beta). */
+body.has-modal .notification-container[data-modal-room="beside"] {
+    max-inline-size: var(--toast-modal-inline, min(92vw, 400px));
+}
+body.has-modal .notification-container[data-modal-room="under"] {
+    max-block-size: var(--toast-modal-block, 50dvh);
 }
 
 /* En åben menu ligger OVER beskederne, mens den står åben. Stakken står

@@ -6,6 +6,7 @@ import { createApp } from 'vue';
 import App from '../../components/App.vue';
 import { undo, redo, state, undoShortcut } from './state.js';
 import { autoSave, flushPendingWrites } from './classActions.js';
+import { rememberStorageAtHide, checkStorageAfterRestore } from './storage.js';
 import { initGlobalTooltip } from './tooltip.js';
 import { isModalOpen } from '../../composables/useModalFocus.js';
 import { pyBridge } from './py_bridge.js';
@@ -52,7 +53,13 @@ app.mount('#app');
 // men den springes over på iOS/Safari, når fanen ryddes væk. `pagehide` fyrer
 // begge steder. At gemme to gange koster ingenting — autoSave skriver bare
 // det samme igen.
-window.addEventListener('pagehide', flushPendingWrites);
+window.addEventListener('pagehide', () => {
+    flushPendingWrites();
+    // Efter gemmet: kommer siden tilbage via Tilbage-knappen, ses der efter,
+    // om en anden fane har ændret noget imens — se storage.js.
+    rememberStorageAtHide();
+});
+window.addEventListener('pageshow', checkStorageAfterRestore);
 window.addEventListener('beforeunload', flushPendingWrites);
 
 // Undo/Redo keyboard shortcuts

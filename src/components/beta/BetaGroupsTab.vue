@@ -194,16 +194,18 @@ html.beta .group-grid {
     justify-content: start;
     column-gap: 36px;
     row-gap: 28px;
-    /* Luft under bjælken, så dens streg og kortenes streg ikke står tæt
-       som en dobbeltstreg. */
+    /* Luft mellem bjælkens streg og gruppernes overskrifter (og den blå
+       streg, et kort får under et træk). */
     padding-block-start: 12px;
 }
 html.beta .group-card {
     background: transparent;
     border: none;
-    /* En tynd, lys streg — kun nok til at skille grupperne ad. En sort streg
-       over hvert kort blev til fire tunge vandrette linjer på række. */
-    border-block-start: 1px solid var(--rule);
+    /* Ingen streg over kortene (Kenneth 10/11): bjælken over grupperne har
+       allerede sin streg, så de stod som en dobbeltstreg, og luften mellem
+       kolonnerne skiller grupperne ad. Stregen er gennemsigtig i stedet for
+       væk, så kortet ikke hopper 1 px, når den bliver blå under et træk. */
+    border-block-start: 1px solid transparent;
     border-radius: 0;
     box-shadow: none;
 }
@@ -211,9 +213,9 @@ html.beta .group-card:hover {
     transform: none;
     box-shadow: none;
 }
+/* En låst gruppe ses på den mørkere baggrund (og hængelåsen). */
 html.beta .group-card.locked {
     background: var(--paper-2);
-    border-block-start-color: var(--ink-3);
 }
 /* Når en elev trækkes hen over en gruppe: kun en svag tone og stregen
    foroven i accentfarven — ingen ramme rundt om. */
