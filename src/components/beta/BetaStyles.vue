@@ -29,12 +29,17 @@ import './screens/info-sider.css';
 html.beta .notification-container { max-inline-size: min(92vw, 400px); }
 /* Nederst til højre, lige over bundlinjen (52 px): foroven dækkede beskeden
    gruppekortenes titler (øverste højre kort) og knapperne i bjælken. Nederst
-   er der kun luft. `--toast-top` (målt af NotificationManager) bruges ikke
-   her, så stakken følger ikke bjælken. */
+   er der kun luft. Stakken står ikke under bjælken (den vokser nedefra), men
+   `--toast-top` (bjælkens bund + 2 px, målt af NotificationManager) er dens
+   LOFT: 10/11 2026 nåede fem blivende fejlbeskeder (det højeste antal) op over bjælken over
+   grupperne og dækkede "Dan grupper igen", "Vis for klassen" og
+   "Matrix-runde" — loftet regnede kun med topbjælken (64/112 px), ikke med
+   bjælken under den. Regnestykket: 62 px bundlinje + 20 px polstring
+   (kassen er content-box), så kassens top står præcis på `--toast-top`. */
 html.beta .notification-container {
     inset-block-start: auto;
     inset-block-end: 62px;
-    max-block-size: calc(100dvh - var(--header-height, 64px) - 96px);
+    max-block-size: calc(100dvh - var(--toast-top, calc(var(--header-height, 64px) + 2px)) - 82px);
 }
 html.beta .toast {
     padding: 10px 10px 10px 12px;

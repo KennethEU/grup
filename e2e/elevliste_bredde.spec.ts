@@ -96,3 +96,31 @@ test('Vis-kolonnen står først og bliver stående til venstre', async ({ page }
     });
     expect(pinned).toEqual({ text: 'KM', inView: true });
 });
+
+// Tastaturet (gennemsyn 4/11 2026): browserne ruller kun en celle frem, når
+// den er HELT ude af syne, og ved ikke, at de faste kolonner dækker kanten.
+// Med Skift+Tab landede fokus i en celle bag Vis-kolonnen (og med Tab bag
+// slet-krydset), så man skrev i en celle, man ikke kunne se.
+test('Tab og Skift+Tab: den fokuserede celle står aldrig bag de faste kolonner', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 600 });
+    await createClass(page, 'Tab gennem rækken',
+        [MANY.join(','), manyRow('Emma Hansen'), manyRow('Oliver Nielsen')].join('\n'));
+    await page.locator('tbody tr').first().locator('td.cell-data').first().click();
+    const covered = () => page.evaluate(() => {
+        const cell = (document.activeElement as HTMLElement).closest('td')!;
+        const cells = cell.parentElement!.children;
+        const i = Array.prototype.indexOf.call(cells, cell);
+        if (i < 3 || i === cells.length - 1) return '';
+        const r = cell.getBoundingClientRect();
+        const left = cells[2].getBoundingClientRect().right;
+        const right = cells[cells.length - 1].getBoundingClientRect().left;
+        return r.left < left - 1 || r.right > right + 1 ? (cell.textContent || '').trim() : '';
+    });
+    const hidden: string[] = [];
+    for (const key of [...Array(17).fill('Tab'), ...Array(17).fill('Shift+Tab')]) {
+        await page.keyboard.press(key);
+        const name = await covered();
+        if (name) hidden.push(`${key}: ${name}`);
+    }
+    expect(hidden).toEqual([]);
+});

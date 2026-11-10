@@ -4,6 +4,10 @@
 // Alt, der ændrer grupperne, går gennem to funktioner:
 //   tryMoves(moves)    – hvad ville det ændre? (gør det, læser, gør det om igen)
 //   commitMoves(moves) – gør det.
+// Et bytte af to enkelte elever prøves oftest af alt, så det har sin egen,
+// hurtigere vej: trySwap(s, t) flytter ingen, men spørger hver regel, hvad
+// de to gruppers tal ville blive (modulernes after). Den giver det samme som
+// tryMoves([s, t's gruppe, t, s's gruppe]).
 // moves er en flad liste [elev, tilGruppe, elev, tilGruppe, …]; gruppe −1
 // betyder "ud af alle grupper". En bytning er to flytninger.
 
@@ -92,6 +96,40 @@ export class State {
     }
     this.dirty.length = 0;
     return delta;
+  }
+
+  // Ændringen pr. trin, hvis elev s og elev t (i hver sin gruppe) byttede
+  // plads. Ingen flyttes. Svaret ligger i this.delta, som ved tryMoves.
+  trySwap(s, t) {
+    this.evaluations++;
+    const g = this.groupOf[s];
+    const h = this.groupOf[t];
+    const delta = this.delta;
+    delta.fill(0);
+    const mods = this.modules;
+    const contrib = this.contrib;
+    for (let m = 0; m < mods.length; m++) {
+      const mod = mods[m];
+      const d = mod.after(g, s, t) - contrib[m][g] + (mod.after(h, t, s) - contrib[m][h]);
+      if (d !== 0) delta[mod.level] += mod.weight * d;
+    }
+    return delta;
+  }
+
+  // Sætter elev s sidst i sin gruppes liste (bytter plads med den sidste).
+  // Det er præcis, hvad den gamle vej (tryMoves: ud og ind igen) gjorde ved
+  // rækkefølgen. Søgningen går gruppernes lister igennem forfra, så med samme
+  // rækkefølge giver den hurtige vej de samme svar som før, bytte for bytte.
+  moveLast(s) {
+    const list = this.members[this.groupOf[s]];
+    const at = this.pos[s];
+    const end = list.length - 1;
+    if (at === end) return;
+    const last = list[end];
+    list[at] = last;
+    this.pos[last] = at;
+    list[end] = s;
+    this.pos[s] = end;
   }
 
   // Gør moves og opdaterer tallene. Giver ændringen pr. trin (en kopi) og

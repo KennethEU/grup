@@ -8,8 +8,16 @@ export async function fetchClasses() {
     return await response.json();
 }
 
-export async function fetchClass(filename) {
-    const response = await fetch(`/api/classes/${filename}`);
+/**
+ * Hent én klasse. `track: true` KUN når klassen skal på skærmen (AppTopbar:
+ * valg af klasse og genindlæsning efter omdøbning). Backuppen og andre, der
+ * bare læser, lader den være — se getClass() i py_bridge.js.
+ */
+export async function fetchClass(filename, { track = false } = {}) {
+    // Filnavnet kodes, så et ? eller # i et gammelt filnavn ikke bliver til
+    // en del af adressen (adapteren afkoder det igen).
+    const query = track ? '?track=1' : '';
+    const response = await fetch(`/api/classes/${encodeURIComponent(filename)}${query}`);
     return await response.json();
 }
 

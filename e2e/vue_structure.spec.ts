@@ -14,7 +14,7 @@ test('Vue-visningerne indlæses', async ({ page }) => {
     await expect(eduView).toContainText('Pædagogisk vejledning');
     await expect(eduView).toContainText('Denne guide hjælper dig');
 
-    await page.getByRole('button', { name: 'GDPR & Data' }).click();
+    await page.getByRole('button', { name: 'Privatliv & GDPR' }).click();
     const gdprView = page.locator('#view-gdpr');
     await expect(gdprView).toBeVisible({ timeout: 10000 });
     await expect(gdprView).toContainText('GDPR & datasikkerhed');

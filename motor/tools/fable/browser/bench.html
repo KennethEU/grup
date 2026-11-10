@@ -1,0 +1,51 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Motoren i browseren: før og efter</title>
+<body style="font-family: system-ui; padding: 16px">
+<h1>Motoren i browseren: før og efter</h1>
+<p>Hvert input køres som appen (uden frø, appens budget) tre gange med hver udgave af motoren.</p>
+<pre id="out">Kører …</pre>
+<script type="module">
+  const FILES = ['001-rigtig-realistisk-koen.json', '002-rigtig-realistisk-koen-karakter.json', '009-rigtig-realistisk-adskil-altid-spansk.json', '010-rigtig-realistisk-seks-regler.json', '015-rigtig-elever29-koen-karakter.json', '020-rigtig-gamle-grupper-fem-fordel.json', '116-tilfaeldig-12.json', '124-tilfaeldig-20.json', '167-tilfaeldig-63.json', '186-tilfaeldig-82.json', 's2-085-tilfaeldig-37.json', 's2-087-tilfaeldig-39.json', 's2-145-tilfaeldig-97.json', 's2-298-tilfaeldig-250.json', '253-tilfaeldig-149.json', '225-tilfaeldig-121.json'];
+  const VERSIONS = ['before', 'swap', 'after'];
+  const REPEATS = 3;
+  const out = document.getElementById('out');
+  window.results = [];
+  window.done = false;
+  function runOnce(version, input) {
+    return new Promise((resolve) => {
+      const worker = new Worker(`./bench-worker.js?engine=${version}`, { type: 'module' });
+      let t0 = 0;
+      worker.onmessage = (e) => {
+        if (e.data.ready) {
+          t0 = performance.now();
+          worker.postMessage(input);
+          return;
+        }
+        worker.terminate();
+        resolve({ ...e.data, wall: performance.now() - t0 });
+      };
+      worker.onerror = (e) => resolve({ error: e.message || 'workerfejl' });
+    });
+  }
+  for (const file of FILES) {
+    const input = await (await fetch(`./testdata/${file}`)).json();
+    // Som appen: intet frø, og appens budget.
+    const n = input.students.length;
+    input.seed = null;
+    input.budget = { maxSeconds: n > 100 ? 30 : 10, maxAttempts: 20, minAttempts: n <= 60 ? 3 : 2 };
+    const row = { file, n, hidden: document.hidden };
+    for (let r = 0; r < REPEATS; r++) {
+      for (const version of VERSIONS) {
+        const result = await runOnce(version, input);
+        (row[version] ||= []).push(result);
+      }
+    }
+    row.hiddenAfter = document.hidden;
+    window.results.push(row);
+    const med = (list, key) => list.map((x) => x[key]).sort((a, b) => a - b)[1];
+    out.textContent = window.results.map((x) => `${x.file} (n=${x.n}) ` + VERSIONS.map((v) => `${v}: ${(med(x[v], 'wall') / 1000).toFixed(2)} s, ${med(x[v], 'attempts')} forsøg, ${x[v][0].cores} kerner`).join(' · ')).join('\n');
+  }
+  window.done = true;
+  out.textContent += '\nFÆRDIG';
+</script>

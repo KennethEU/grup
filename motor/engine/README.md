@@ -69,9 +69,9 @@ const before = check(input); // beskederne før kørslen, uden grupper
 | `sizes.js` | Antal grupper og størrelser (spec. 4) |
 | `feasibility.js` | Skal sammen-tjekket og tom matrix-kilde (spec. 5.1) |
 | `rules.js` | Regelmodulerne: mål, bedst mulige, opfyldt, rangordenen (spec. 6, 7, 16) |
-| `bounds.js` | Hvor godt Balancér overhovedet kan blive, og om Fordels dagens test kan bestås |
+| `bounds.js` | Hvor godt Balancér overhovedet kan blive, og hvor mange grupper der mindst må falde uden om Fordels dagens test |
 | `modules.js` | De samme regler som små tællere pr. gruppe (spec. 10.2) |
-| `state.js` | Hvem er hvor, og hvad det koster ("prøv" og "gør") |
+| `state.js` | Hvem er hvor, og hvad det koster ("prøv" og "gør"). Et bytte af to elever prøves uden at flytte dem (`trySwap`, modulernes `after`) |
 | `search.js` | Ét forsøg: byg grådigt, forbedr, ryst (spec. 10) |
 | `solve.js` | Mange forsøg, budget, fremgang, Stop, flere kerner (spec. 11) |
 | `worker.js` | Én ekstra kerne |

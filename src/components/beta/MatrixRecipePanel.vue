@@ -87,15 +87,37 @@ const payload = () => ({
 const saveSoon = debounce(() => emit('settingsChanged', payload()), 300);
 const unregisterPending = registerPendingWrite(saveSoon.flush);
 
+// Hver handling herunder sender KUN noget, når en værdi faktisk ændres. Et
+// klik på det, der allerede er valgt, eller et klik i feltet og videre, må
+// ikke gemme klassen: med samme klasse åben i to faner skrev den gamle fane
+// ellers hele sin udgave over den nye fanes rettelser (målt 10/11 2026,
+// e2e/to_faner.spec.ts).
 function setStrategy(s) {
+    if (s === strategy.value) return;
     strategy.value = s;
     if (s === 'size') groupMode.value = 'size';
     else if (s === 'count') groupMode.value = 'number';
     saveSoon();
 }
-function setRepType(t) { repType.value = t; saveSoon(); }
-function stepTarget(d) { groupTarget.value = clampTarget(clampedTarget() + d); saveSoon(); }
-function onTargetBlur() { groupTarget.value = clampedTarget(); saveSoon(); }
+function setRepType(t) {
+    if (t === repType.value) return;
+    repType.value = t;
+    saveSoon();
+}
+function stepTarget(d) {
+    const next = clampTarget(clampedTarget() + d);
+    if (next === groupTarget.value) return;
+    groupTarget.value = next;
+    saveSoon();
+}
+// Det indtastede er allerede sendt (@input). Blur retter kun et tal uden for
+// grænserne — og sender kun, hvis det faktisk blev rettet.
+function onTargetBlur() {
+    const clamped = clampedTarget();
+    if (clamped === groupTarget.value) return;
+    groupTarget.value = clamped;
+    saveSoon();
+}
 function toggleMod() { groupMod.value = groupMod.value === '-' ? '+' : '-'; saveSoon(); }
 
 // Uden emner på stamgrupperne kan der ikke blandes på emner.
@@ -104,7 +126,12 @@ const hasTopics = computed(() => homeGroups.value.some(g => {
     const stored = getTopic(g.name, 'S_');
     return !!(stored && stored.trim());
 }));
-watch(hasTopics, (has) => { if (!has && repType.value === 'topic') setRepType('group'); }, { immediate: true });
+// Kun det viste valg skiftes — der gemmes ikke. Før gemte det hele klassen,
+// så snart matrix-opskriften blev vist (klasse uden emner), og en gammel fane
+// skrev så sin udgave over den nye fanes rettelser bare ved at åbne Matrix-
+// runden (målt 10/11 2026). Dannelsen bruger panelets valg (generate()), og
+// valget gemmes med næste rigtige ændring eller dannelse.
+watch(hasTopics, (has) => { if (!has && repType.value === 'topic') repType.value = 'group'; }, { immediate: true });
 
 const info = computed(() => strategy.value !== 'full_strict' ? null : fullMatrixInfo({
     groups: homeGroups.value,

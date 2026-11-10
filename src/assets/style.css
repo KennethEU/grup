@@ -791,8 +791,9 @@ input[type="checkbox"] {
     border-color: var(--rule-2, var(--border-medium)) !important;
 }
 
-/* Telefon: topbjælken bliver to rækker (se AppTopbar.vue), og alt, der måler
-   sig efter den — toasts, fejlbanneret — skal vide det. */
-@media (max-width: 700px) {
+/* Smalle vinduer og telefon: topbjælken bliver to rækker (se AppTopbar.vue),
+   og alt, der måler sig efter den — toasts, fejlbanneret, elevlistens
+   højde — skal vide det. Grænsen skal være den samme som i AppTopbar.vue. */
+@media (max-width: 900px) {
     :root { --header-height: 112px; }
 }

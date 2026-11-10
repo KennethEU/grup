@@ -18,6 +18,13 @@ html.beta .students-header-sticky .header-inner {
 html.beta .students-header-sticky .ribbon-content {
     max-inline-size: none;
     margin-inline: 0;
+    /* Bryd hellere end at skære af (9/11 2026). Zonerne kan ikke skrumpe, og
+       bjælken har ingen rulning: ved 1.024 px med et langt navn i "Vis:"
+       stod "Flyt" og "Slet kolonne" UDEN FOR vinduet (målt: slutter ved
+       1.183 px) og kunne slet ikke nås. Nu rykker højre zone ned på en
+       række for sig, venstrestillet under "VIS:", når den ikke kan være der. */
+    flex-wrap: wrap;
+    column-gap: 16px;
 }
 html.beta .students-header-sticky .ribbon-group { gap: 2px; }
 html.beta .students-header-sticky .pill-group {
@@ -57,9 +64,28 @@ html.beta .students-header-sticky .id-label {
     text-transform: uppercase;
     color: var(--ink-3);
 }
-html.beta .students-header-sticky .id-value { color: var(--ink); font-weight: 600; }
+html.beta .students-header-sticky .id-value {
+    color: var(--ink);
+    font-weight: 600;
+    /* Et langt kolonnenavn ("Fornavn og efternavn på eleven") tog 200 px og
+       skubbede resten af bjælken ned på en ny række. Hele navnet står i
+       listen, når vælgeren åbnes. */
+    max-inline-size: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 html.beta .students-header-sticky .id-chevron { color: var(--ink-4); opacity: 1; }
 html.beta .students-header-sticky .inline-sep { background: var(--rule-2); opacity: 1; margin-inline: 8px; }
+/* Under 1.200 px rykker knapperne tættere (10 → 6 px luft), så hele bjælken
+   kan være på én række ved 1.024 px med "Aftaler N" og "Vis skjult". Kanten
+   følger med (22 → 26 px), så teksten stadig starter 32 px inde. */
+@media (max-width: 1199px) {
+    html.beta .students-header-sticky .header-inner { padding-inline: 26px; }
+    html.beta .students-header-sticky .pill-btn,
+    html.beta .students-header-sticky .ribbon-btn,
+    html.beta .students-header-sticky .id-drawer-btn { padding-inline: 6px; }
+}
 /* Slet: stille tekst, rød først når musen er over — destruktivt står sidst */
 html.beta .students-header-sticky .ribbon-btn.danger {
     background: transparent;
@@ -93,11 +119,18 @@ html.beta .table-container {
        rullepanelet nederst kan ses uden at rulle hele siden ned først — og
        overskriftsrækken (sticky nedenfor) bliver stående. */
     overflow: auto;
-    /* Hele skærmen: tabellen går til vinduets bund (topbar 65 + værktøjslinje
-       49 = 114 px over den, og 8 px luft under) og ud til begge kanter.
-       Fanens 32 px til siderne lægges i stedet i første og sidste celle, så
-       teksten stadig flugter med værktøjslinjen. */
-    max-block-size: calc(100dvh - 122px);
+    /* Hele skærmen: tabellen går til vinduets bund (topbjælken 64 + 1 px
+       streg + værktøjslinjen) og ud til begge kanter.
+       Værktøjslinjen er 49 px på én række, men bryder over to på en smal
+       skærm; StudentsTab.vue måler den og sætter --students-toolbar-h, så
+       tabellens rullebjælke ikke havner under vindueskanten (10/11 2026).
+       Før stod der fast 122 px her. Fanens 32 px til siderne lægges i stedet
+       i første og sidste celle, så teksten stadig flugter med værktøjslinjen.
+       Nederst slutter tabellen 8 px over kanten. (En dag 10/11 2026 var det
+       32 px, for at holde fri af privatlivslinket nederst til højre, der lå
+       oven på den nederste rækkes slet-kryds. Linket står nu bag skjoldet
+       øverst, og feltet er væk, se index.html.) */
+    max-block-size: calc(100dvh - var(--header-height, 64px) - 1px - var(--students-toolbar-h, 49px) - 8px);
     min-block-size: 240px;
     margin-inline: -32px;
     /* En fast, synlig rullekant: macOS skjuler ellers den slanke bjælke, indtil

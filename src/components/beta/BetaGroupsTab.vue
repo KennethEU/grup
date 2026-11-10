@@ -80,8 +80,27 @@ function onSwitchView(mode) {
     groupActions.setViewMode(mode);
 }
 
+/**
+ * Skriv opskriftens indstillinger på klassen. Giver true, hvis noget faktisk
+ * blev ændret.
+ *
+ * Tal og tekst regnes ens: ældre klasser har gruppestørrelsen gemt som
+ * tekst ("4"), mens feltet giver et tal (4). Før talte det som en ændring,
+ * så bare at klikke i feltet og videre gemte klassen. Med samme klasse åben
+ * i to faner skrev den gamle fane så hele sin udgave af klassen over den
+ * nye fanes rettelser (målt 10/11 2026, e2e/to_faner.spec.ts).
+ */
+function sameSettings(a, b) {
+    if (!a || !b) return false;
+    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+    for (const k of keys) {
+        if (String(a[k] ?? '') !== String(b[k] ?? '')) return false;
+    }
+    return true;
+}
+
 function saveSettings(settings) {
-    if (!reactiveState.currentClass) return;
+    if (!reactiveState.currentClass) return false;
     const settingsKey = isMatrix.value ? 'matrixSettings' : 'settings';
     const saved = {
         groupMode: settings.groupMode,
@@ -90,7 +109,9 @@ function saveSettings(settings) {
     };
     if (settings.matrixStrategy) saved.matrixStrategy = settings.matrixStrategy;
     if (settings.matrixRepresentationType) saved.matrixRepresentationType = settings.matrixRepresentationType;
+    if (sameSettings(reactiveState.currentClass[settingsKey], saved)) return false;
     reactiveState.currentClass[settingsKey] = saved;
+    return true;
 }
 
 function onGenerate(settings) {
@@ -120,8 +141,8 @@ function onRulesChanged() {
 }
 
 function onSettingsChanged(settings) {
-    saveSettings(settings);
-    debouncedAutoSave();
+    // Intet nyt (fx et klik i feltet og videre): intet gem.
+    if (saveSettings(settings)) debouncedAutoSave();
 }
 
 // Over grupperne står kun det, der handler om de dannede grupper. Advarsler om

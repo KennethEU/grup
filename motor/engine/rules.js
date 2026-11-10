@@ -595,17 +595,24 @@ export function compareVectors(a, b, tolerance = 1e-9) {
 // bedre, spec. 11.2.) En regel uden kendt grænse er aldrig "ved grænsen",
 // medmindre den er 0. bounds er Balancérs grænser fra bounds.js (kan mangle).
 // Fordel er først ved det bedst mulige, når den også består dagens test, eller
-// når bounds viser, at dagens test ikke kan bestås i de puljer, hvor den fejler.
+// når bounds viser, at der i hver pulje ikke kan være færre grupper uden om
+// dagens test, end der er nu.
 export function atBestPossible(task, evaluation, bounds = null) {
   for (const rule of task.rules) {
     const r = evaluation.results[rule.index];
     if (rule.type === 'aggregate') continue;
     const bound = bounds ? bounds.get(rule.index) : null;
-    // Hver gruppe uden om dagens test skal stå i en pulje, hvor testen
-    // beviseligt ikke kan bestås (spørgsmål 47; før så det kun på reglen).
+    // I hver pulje må der ikke være flere grupper uden om dagens test, end
+    // der beviseligt må være (bounds.js minMisses). Før var det nok, at
+    // puljen ikke kunne bestå i ALLE grupper; så stoppede motoren også med 2
+    // grupper uden om, hvor 1 var nok.
     if (rule.type === 'distribute' && r.met === false) {
-      if (!bound || !bound.groups) return false;
-      if (r.groups.some((g, i) => g.met === false && !bound.groups[i])) return false;
+      if (!bound || !bound.minMisses) return false;
+      const misses = new Int32Array(bound.minMisses.length);
+      r.groups.forEach((g, i) => {
+        if (g.met === false) misses[bound.groupPool[i]]++;
+      });
+      if (misses.some((count, p) => count > bound.minMisses[p])) return false;
     }
     if (bound && bound.value !== undefined) {
       if (!atBound(r.value, bound.value)) return false;

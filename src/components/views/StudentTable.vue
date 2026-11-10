@@ -59,6 +59,30 @@ function updateStickyOffsets() {
         stickyOffsets.value = next;
     }
 }
+// Tastaturet og de faste kolonner: tabber man (især med Skift+Tab) gennem en
+// række, der er rullet vandret, ruller browseren kun cellen frem, hvis den
+// er helt ude af syne — den ved ikke, at de faste kolonner dækker kanten.
+// Fokus landede derfor i en celle bag Vis-kolonnen eller slet-krydset, og man
+// skrev i en celle, man ikke kunne se (målt i alle tre browsere 4/11 2026).
+// Her rulles cellen fri af de faste kolonner i begge sider. Ikke
+// scroll-padding i CSS: Firefox følger den ikke ved Tab, og de andre ruller
+// ikke en halvt skjult celle. (Lodret, under den faste overskriftsrække, var
+// der intet problem — målt med Skift+Tab op gennem 30 rækker.)
+function revealFocused(event) {
+    const el = tableContainer.value;
+    const cell = event.target.closest?.('td, th');
+    if (!el || !cell) return;
+    const r = cell.getBoundingClientRect();
+    const cells = cell.parentElement.children;
+    const index = Array.prototype.indexOf.call(cells, cell);
+    // De faste celler står altid fremme; kun de rullende skal flyttes vandret
+    if (index >= 3 && index < cells.length - 1) {
+        const left = cells[2].getBoundingClientRect().right;
+        const right = cells[cells.length - 1].getBoundingClientRect().left;
+        if (r.left < left) el.scrollLeft -= left - r.left;
+        else if (r.right > right) el.scrollLeft += Math.min(r.right - right, r.left - left);
+    }
+}
 function onLayoutChange() {
     updateStickyOffsets();
     updateScrollEdges();
@@ -78,6 +102,7 @@ onMounted(() => {
     const el = tableContainer.value;
     if (!el) return;
     el.addEventListener('scroll', updateScrollEdges, { passive: true });
+    el.addEventListener('focusin', revealFocused);
     // Både beholderen (vinduets bredde) og tabellen (kolonner tilføjet,
     // omdøbt, skjult) kan ændre bredderne, og om der er noget at rulle til.
     resizeObserver = new ResizeObserver(onLayoutChange);
@@ -91,6 +116,7 @@ onUpdated(() => {
 });
 onBeforeUnmount(() => {
     tableContainer.value?.removeEventListener('scroll', updateScrollEdges);
+    tableContainer.value?.removeEventListener('focusin', revealFocused);
     resizeObserver?.disconnect();
 });
 
@@ -167,6 +193,15 @@ function onHeaderKeydown(e, col) {
         e.preventDefault();
         onHeaderDblClick(e, col);
     }
+}
+
+// Det, tippet viser med musen, skal en skærmlæser også have: hvilke taster
+// overskriften kan bruges med, og om kolonnens indhold er skjult. Før stod
+// det kun i det visuelle tip (data-tooltip), som skærmlæseren aldrig hører,
+// og en skjult kolonne lød præcis som en synlig.
+function headerDescription(col) {
+    const keys = 'Enter sorterer, menutasten skjuler eller viser indholdet, F2 omdøber.';
+    return isHidden(col) ? `Indholdet er skjult. ${keys}` : keys;
 }
 
 function ariaSort(col) {
@@ -442,7 +477,11 @@ function selectCellContents(cell) {
 
 function deleteRow(row) {
     deleteRowTarget.value = row;
-    deleteRowName.value = row[reactiveState.currentClass.columns[0]] || 'denne elev';
+    // Samme navn som på knappen ("Slet Anna"): Vis-kolonnen, ikke altid den
+    // første kolonne. Før kunne knappen sige ét navn og vinduet et andet,
+    // når Vis-kolonnen var fx "Kaldenavn".
+    const label = labelColumn.value ? row[labelColumn.value] : '';
+    deleteRowName.value = String(label ?? '').trim() || 'denne elev';
     showDeleteRow.value = true;
 }
 
@@ -479,7 +518,9 @@ function confirmDeleteRow() {
         <!-- few-columns: højst 4 kolonner får lidt mere luft (se stilen nederst).
              Ikke 6: seks kolonner à 120 px gjorde tabellen 1.110 px bred, så den
              rullede vandret i et vindue på 1.024 px (målt live 4/11). -->
-        <table v-else :class="{ 'few-columns': visibleColumns.length <= 4 }">
+        <!-- aria-label: uden et navn hed tabellen bare "tabel" for en
+             skærmlæser (målt i Chromiums tilgængelighedstræ 9/11 2026). -->
+        <table v-else :class="{ 'few-columns': visibleColumns.length <= 4 }" aria-label="Elevliste">
             <thead>
                 <tr>
                     <!-- Hakket bruges kun til "Lav aftale" (Skal sammen / Undgå) — derfor
@@ -513,15 +554,19 @@ function confirmDeleteRow() {
                         }"
                         tabindex="0"
                         :aria-sort="ariaSort(col)"
+                        :aria-description="headerDescription(col)"
                         :data-tooltip="'Venstre-klik / Enter: Sorter\nHøjre-klik / menutast: Skjul/Vis indhold\nDobbelt-klik / F2: Omdøb'"
                         @keydown="onHeaderKeydown($event, col)"
                         @click="onHeaderClick(col)"
                         @contextmenu="onHeaderContextMenu($event, col)"
                         @dblclick="onHeaderDblClick($event, col)">
-                        {{ col.toUpperCase() }}{{ sortIndicator(col) }}
+                        <!-- Pilen er kun til øjet: aria-sort siger det samme, og
+                             ellers hed overskriften "NAVN sort pil op". -->
+                        {{ col.toUpperCase() }}<span aria-hidden="true">{{ sortIndicator(col) }}</span>
                     </th>
-                    <!-- Slet-kolonnen tager den overskydende bredde (elevliste.css) -->
-                    <th class="th-delete"></th>
+                    <!-- Slet-kolonnen tager den overskydende bredde (elevliste.css).
+                         aria-label: en tom overskrift gav kolonnen intet navn. -->
+                    <th class="th-delete" aria-label="Slet"></th>
                 </tr>
             </thead>
             <tbody>
@@ -559,6 +604,7 @@ function confirmDeleteRow() {
                             'cell-hidden-masked': isMasked(col)
                         }"
                         :title="isMasked(col) ? 'Indhold skjult. Klik på Vis skjult for at se.' : ''"
+                        :aria-label="isMasked(col) ? 'Skjult' : null"
                         @input="onCellInput($event)"
                         @blur="onCellBlur(row, col, $event)"
                         @keydown="onCellKeydown($event, rowIndex, colIndex)"

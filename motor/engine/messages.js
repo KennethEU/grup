@@ -528,9 +528,10 @@ export function postRunMessages(task, groups, evaluation, info = {}) {
         let values = [];
         if (rule.type === 'distribute') {
           // Kun "uundgåeligt", når det retfærdige antal er nået i puljen, og
-          // dagens test beviseligt ikke kan bestås der (bounds.js). values er
-          // de samme som i check (værdierne, der ikke går lige op).
-          unavoidable = value === 0 && p !== null && Boolean(bounds.get(rule.index)?.pools?.[p]);
+          // der beviseligt ikke kan være færre grupper uden om dagens test
+          // end disse (bounds.js minMisses). values er de samme som i check
+          // (værdierne, der ikke går lige op).
+          unavoidable = value === 0 && p !== null && bad.length <= (bounds.get(rule.index)?.minMisses?.[p] ?? 0);
           const pools = p === null ? task.pools.map((_, q) => q) : [p];
           values = [...new Set(pools.flatMap((q) => unevenValues(task, rule, q, poolCount(q)).map(([v]) => spelling(rule, v))))];
           text = `Fordel på ${quote(rule.column)}${inPool(task, p)} går ikke helt op i ${bad.length === 1 ? '1 gruppe' : `${bad.length} grupper`} (${groupList(bad)}).`;

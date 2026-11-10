@@ -219,7 +219,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="rootRef" class="run-menu" :style="menuStyle" @mouseleave="clearPreview" @focusout="onRootFocusOut">
+  <div ref="rootRef" class="run-menu" data-popup-menu :style="menuStyle" @mouseleave="clearPreview" @focusout="onRootFocusOut">
 
     <!-- Trin 2: spørgsmålet -->
     <div v-if="selectedIndex !== null" class="confirm-box">

@@ -3,7 +3,7 @@ import { modalActions } from './modalState.js';
 import * as api from './api.js';
 import { togetherComponents, togetherConflict, togetherPath } from './together.js';
 import { namesText } from './recipe.js';
-import { ensureRowIds, ROW_ID, memberDisplayName, orderIdsByRow } from './utils.js';
+import { ensureRowIds, ROW_ID, memberDisplayName, orderIdsByRow, teacherColumns } from './utils.js';
 
 // Ting der venter på at blive skrevet ind i klassen, når fanen lukkes.
 //
@@ -60,6 +60,34 @@ export function flushPendingWrites() {
     autoSave();
 }
 
+/**
+ * Sæt Vis-kolonnen (det navn, der står på gruppekortene) ud fra klassen.
+ *
+ * Prioritet: (1) den kolonne, læreren gemte med klassen (`id_column` — det
+ * gamle feltnavn, hvis værdi altid har været lærerens valg), (2) et valg,
+ * der stadig er gyldigt, (3) ellers den første synlige kolonne.
+ *
+ * Kaldes, når klassen indlæses (AppTopbar `selectClass`), og fra ClassView,
+ * når klassen skifter. Før 10/11 2026 skete det KUN i ClassView, og den
+ * findes kun, mens læreren står i klassen. Blev siden genindlæst, mens hun
+ * stod i Hjælp (eller Import & backup), stod Vis-kolonnen tom, og næste gem —
+ * også det sidste, når fanen lukkes — skrev den første kolonne ind i
+ * stedet for hendes eget valg ("Vis: Fornavn" blev til "Navn"). Og fordi
+ * det var en ændring, skrev fanen HELE sin udgave af klassen, også over
+ * det, en anden fane havde rettet imens.
+ */
+export function syncDisplayColumn() {
+    const cls = state.currentClass;
+    const visible = teacherColumns(cls?.columns);
+    if (visible.length === 0) {
+        state.displayColumn = '';
+    } else if (cls.id_column && visible.includes(cls.id_column)) {
+        state.displayColumn = cls.id_column;
+    } else if (!(state.displayColumn && visible.includes(state.displayColumn))) {
+        state.displayColumn = visible[0];
+    }
+}
+
 export function autoSave() {
     if (!state.currentClass) return;
 
@@ -91,6 +119,10 @@ export function autoSave() {
     const displayColValue = state.displayColumn
         || (state.currentClass.columns && state.currentClass.columns[0])
         || '';
+    // Hukommelsen skal sige det samme som lageret. syncDisplayColumn() (når
+    // elevlistens side tegnes forfra) foretrækker klassens `id_column`, så
+    // et gammelt valg her ville tage lærerens nye tilbage.
+    state.currentClass.id_column = displayColValue;
 
     api.saveClassData(
         state.currentClass.filename,

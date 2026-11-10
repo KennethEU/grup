@@ -134,7 +134,9 @@ test('fremgang inden for 1 sekund og derefter mindst hvert 2.; Stop besvares ind
   const answer = await run(input, {
     onProgress: () => times.push(Date.now() - started),
     isCancelled: () => {
-      if (stopAt === null && Date.now() - started > 3000) stopAt = Date.now();
+      // Stop efter 0,5 s. (Før 3 s; siden bytninger prøves uden at flytte
+      // eleverne, er hele kørslen færdig på ca. 2 s, før Stop nåede at komme.)
+      if (stopAt === null && Date.now() - started > 500) stopAt = Date.now();
       return stopAt !== null;
     },
   });

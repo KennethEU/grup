@@ -255,6 +255,7 @@ export class Attempt {
       }
     };
     if (b < 0) {
+      let swapsTried = false;
       for (const h of groups) {
         if (h === g) continue;
         if (state.size[g] === state.size[h] + 1 && (!this.matrixFull || this.sourceOk(s, g, h))) consider([s, h]);
@@ -263,9 +264,18 @@ export class Attempt {
           const t = list[i];
           if (this.blockOf[t] >= 0) continue;
           if (!this.swapOk(s, t, g, h)) continue;
-          consider([s, h, t, g]);
+          // Et bytte af to enkelte elever: regnes uden at flytte nogen.
+          const delta = state.trySwap(s, t);
+          swapsTried = true;
+          if (state.sign(delta) >= 0) continue;
+          if (bestDelta === null || state.compare(delta, bestDelta) < 0) {
+            best = [s, h, t, g];
+            bestDelta = Float64Array.from(delta);
+          }
         }
       }
+      // Samme rækkefølge i gruppens liste som med den gamle vej (se moveLast).
+      if (swapsTried) state.moveLast(s);
       return best;
     }
     // En blok: mod en lige så stor blok, eller mod lige så mange enkelte

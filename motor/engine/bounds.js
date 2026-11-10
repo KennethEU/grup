@@ -30,19 +30,24 @@ const WORK_LIMIT = 30000000;
 //   Balancér: { value, minBad }
 //     value  – den mindst mulige sum af afstande (samme mål som reglen),
 //     minBad – det mindst mulige antal grupper uden for de 5 %.
-//   Fordel: { todayImpossible, pools, groups } – todayImpossible er true, når
-//     dagens test ikke kan bestås i mindst én pulje; pools[p] siger det pr.
-//     pulje og groups[g] for gruppe g's pulje.
+//   Fordel: { todayImpossible, pools, groups, minMisses, groupPool }
+//     minMisses[p] – så mange grupper i pulje p må MINDST falde uden om
+//                    dagens test (0 = vi ved ikke, om nogen må),
+//     pools[p]     – true, når det er mindst én (dagens test kan ikke bestås
+//                    i alle puljens grupper); groups[g] er det samme for
+//                    gruppe g's pulje, og groupPool[g] er gruppens pulje,
+//     todayImpossible – true, når det gælder mindst én pulje.
 export function computeBounds(task, layout) {
   const bounds = new Map();
   if (layout.wholeTask) return bounds;
   for (const rule of task.rules) {
     if (rule.type === 'distribute') {
-      const pools = fordelImpossible(task, layout, rule);
-      // groups[g]: kan gruppe g's pulje umuligt bestå dagens test? (Bruges af
-      // stopreglen, som kun kender grupperne.)
-      const groups = layout.groups.map((g) => pools[g.pool]);
-      bounds.set(rule.index, { todayImpossible: pools.some(Boolean), pools, groups });
+      const minMisses = fordelMinMisses(task, layout, rule);
+      const pools = minMisses.map((count) => count > 0);
+      // Stopreglen kender kun grupperne, så den får hver gruppes pulje med.
+      const groupPool = layout.groups.map((g) => g.pool);
+      const groups = groupPool.map((p) => pools[p]);
+      bounds.set(rule.index, { todayImpossible: pools.some(Boolean), pools, groups, minMisses, groupPool });
       continue;
     }
     if (rule.type !== 'balance') continue;
@@ -52,30 +57,47 @@ export function computeBounds(task, layout) {
   return bounds;
 }
 
-// Fordel: kan dagens test umuligt bestås i alle grupper? (Ingen værdi flere
-// gange end ⌈størrelse / antal værdier⌉, og alle værdier med, højst så mange
-// som pladser.) To enkle tælleregler pr. pulje; siger de ja, er det sikkert
-// umuligt. Siger de nej, ved vi det ikke. Svarer med én sand/falsk pr. pulje.
-//   1. En værdi har flere elever, end grupperne har plads til af den.
-//   2. Grupperne skal tilsammen have flere forskellige værdier, end
-//      værdierne kan række til (en værdi kan højst være i én gruppe pr. elev).
-function fordelImpossible(task, layout, rule) {
+// Fordel: hvor mange grupper i hver pulje må MINDST falde uden om dagens
+// test? (Dagens test: ingen værdi flere gange end ⌈størrelse / antal værdier⌉,
+// og alle værdier med, højst så mange som pladser.) Svarer med ét tal pr.
+// pulje. Tallet er en nedre grænse: færre kan aldrig lade sig gøre, men det
+// kan være, at endnu flere må falde uden om (fx på grund af andre regler).
+export function fordelMinMisses(task, layout, rule) {
   const counts = poolValueCounts(task, rule);
-  return layout.pools.map((pool) => {
-    const values = [...counts[pool.index].values()];
-    const V = values.length;
-    if (V === 0) return false;
-    const k = pool.sizes.length;
+  return layout.pools.map((pool) => minMissesInPool([...counts[pool.index].values()], pool.sizes));
+}
+
+// Én pulje. valueCounts: hvor mange elever, der har hver værdi; sizes:
+// gruppernes størrelser. Vi prøver f = 0, 1, 2 … grupper uden om og tager det
+// første f, som to enkle tælleregler ikke kan afvise:
+//   1. Plads: en gruppe, der består, har højst ⌈størrelse / antal værdier⌉ af
+//      hver værdi; en gruppe uden om kan rumme hvad som helst. Lader vi de f
+//      største grupper falde uden om, er der mest plads. Er en værdi stadig
+//      for stor, er f for lille.
+//   2. Dækning: en gruppe, der består, skal have alle værdier (højst så mange
+//      som pladser), og en værdi kan højst stå i én gruppe pr. elev. Lader vi
+//      de f grupper med størst krav falde uden om, er kravet mindst. Kan
+//      værdierne stadig ikke række, er f for lille.
+// Eksempel: 6 A og 1 B i grupper på 4 og 3. Hver gruppe må have 2 A, så der
+// er plads til 4. Én gruppe må falde uden om (4 + 2 = 6 A), og så går det op:
+// AAAA + AAB. Svaret er 1.
+export function minMissesInPool(valueCounts, sizes) {
+  const V = valueCounts.length;
+  const k = sizes.length;
+  if (V === 0) return 0;
+  const largestFirst = sizes.slice().sort((a, b) => b - a);
+  const needs = sizes.map((size) => Math.min(V, size)).sort((a, b) => a - b);
+  for (let f = 0; f < k; f++) {
     let room = 0;
-    let slots = 0;
-    for (const size of pool.sizes) {
-      room += Math.ceil(size / V);
-      slots += Math.min(V, size);
-    }
-    if (values.some((c) => c > room)) return true;
-    const reach = values.reduce((sum, c) => sum + Math.min(c, k), 0);
-    return slots > reach;
-  });
+    for (let i = 0; i < k; i++) room += i < f ? largestFirst[i] : Math.ceil(largestFirst[i] / V);
+    if (valueCounts.some((c) => c > room)) continue;
+    let need = 0;
+    for (let i = 0; i < k - f; i++) need += needs[i];
+    const reach = valueCounts.reduce((sum, c) => sum + Math.min(c, k - f), 0);
+    if (need > reach) continue;
+    return f;
+  }
+  return k;
 }
 
 function balanceBound(task, layout, rule) {

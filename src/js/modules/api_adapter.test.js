@@ -75,5 +75,15 @@ describe('api_adapter — fejlveje', () => {
         expect((await res.json()).error).toBe('Navnet er i brug');
     });
 
+
+    // Kun indlæsningen af klassen må flytte fanens "set" (py_bridge.getClass).
+    it('GET af én klasse husker kun med ?track=1', async () => {
+        const spy = vi.spyOn(pyBridge, 'getClass');
+        await fetch('/api/classes/2a.csv');
+        await fetch('/api/classes/2a.csv?track=1');
+        expect(spy.mock.calls).toEqual([['2a.csv', { track: false }], ['2a.csv', { track: true }]]);
+        spy.mockRestore();
+    });
+
 });
 

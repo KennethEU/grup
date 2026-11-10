@@ -69,12 +69,28 @@ const saveSettingsSoon = debounce(() => {
 }, 300);
 const unregisterPending = registerPendingWrite(saveSettingsSoon.flush);
 
-function setMode(mode) { groupMode.value = mode; saveSettingsSoon(); }
-function stepTarget(delta) {
-    groupTarget.value = clampTarget(clampedTarget() + delta);
+// Sender kun noget, når en værdi faktisk ændres — et klik på det valgte
+// eller i feltet og videre må ikke gemme klassen (to faner, se
+// MatrixRecipePanel.vue og sameSettings() i BetaGroupsTab.vue).
+function setMode(mode) {
+    if (mode === groupMode.value) return;
+    groupMode.value = mode;
     saveSettingsSoon();
 }
-function onTargetBlur() { groupTarget.value = clampedTarget(); saveSettingsSoon(); }
+function stepTarget(delta) {
+    const next = clampTarget(clampedTarget() + delta);
+    if (next === groupTarget.value) return;
+    groupTarget.value = next;
+    saveSettingsSoon();
+}
+// Det indtastede er allerede sendt (@input). Blur retter kun et tal uden for
+// grænserne — og sender kun, hvis det faktisk blev rettet.
+function onTargetBlur() {
+    const clamped = clampedTarget();
+    if (clamped === groupTarget.value) return;
+    groupTarget.value = clamped;
+    saveSettingsSoon();
+}
 function toggleMod() { groupMod.value = groupMod.value === '-' ? '+' : '-'; saveSettingsSoon(); }
 
 const sizeParts = computed(() => sizeSentence({ mode: groupMode.value, target: clampedTarget(), mod: groupMod.value }));

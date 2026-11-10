@@ -434,6 +434,20 @@
     border-block-end: 1px solid var(--rule);
 }
 .recipe-bar .recipe__go { padding-inline: 16px; }
+/* Handlingerne (elevtal, Matrix-runde, Vis for klassen, Dan grupper) holdes
+   sammen og skubbes til højre. Bryder bjælken, står de samlet på næste række
+   — stadig til højre, så "Dan grupper" har samme plads som på én række. */
+.recipe-bar__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-inline-start: auto;
+}
+/* Er der heller ikke plads til gruppen på sin egen række, giver
+   tastaturgenvejen plads først (den står også i knappens hjælpetekst). */
+@media (max-width: 820px) {
+    .recipe-bar .recipe__kbd { display: none; }
+}
 /* Bjælken: opsummeringen er selv knappen, der åbner opskriften */
 .recipe-bar__open {
     display: inline-flex;
@@ -640,8 +654,9 @@
     }
     .recipe-bar .recipe__kicker,
     .recipe-bar .recipe__count,
-    .recipe-bar .recipe__spacer,
     .recipe__kbd { display: none; }
+    /* Handlingerne fylder hele rækken, og "Dan grupper" er den brede */
+    .recipe-bar__actions { flex: 1 1 100%; gap: 8px; }
     .recipe-bar .recipe__go { flex: 1; justify-content: center; }
     /* Matrix-runde og Vis for klassen: kun ikonet (teksten læses stadig op) */
     .recipe-bar .recipe__soft:has(svg) {

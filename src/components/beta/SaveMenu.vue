@@ -41,7 +41,7 @@ function pick(kind) {
 </script>
 
 <template>
-  <div ref="rootRef" class="save-menu" :style="menuStyle" role="menu" aria-label="Gem grupperne"
+  <div ref="rootRef" class="save-menu" data-popup-menu :style="menuStyle" role="menu" aria-label="Gem grupperne"
        tabindex="-1" @focusout="onRootFocusOut" @keydown="onKeydown">
 
     <button class="save-item" role="menuitem" @click="pick('history')">

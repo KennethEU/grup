@@ -7,6 +7,13 @@
 //   value(g)                 – gruppens bidrag til modulets trin lige nu,
 //   level, weight            – hvilket trin i rangordenen, og vægten (målene
 //                              er allerede delt med det tilfældige, spec. 7.3).
+//   after(g, out, in)        – gruppens bidrag, HVIS elev out gik ud af gruppe g
+//                              og elev in kom ind i stedet. Intet flyttes;
+//                              tallet regnes ud fra tællerne, som de står.
+//                              Det er sådan, søgningen prøver et bytte af to
+//                              elever (state.js trySwap), og det skal altid
+//                              give det samme som at flytte dem og læse
+//                              value(g) (det tjekker tests/swap.test.mjs).
 // Summen af value(g) · weight over grupperne er trinnets tal. For de tunge
 // regler er det præcis dommerens tal; for målene er det samme tal på nær en
 // fast størrelse (som ikke ændrer sig ved bytning). Saml med tal og grupper
@@ -110,6 +117,9 @@ function separateModule(rule, G, level) {
     value(g) {
       return pairs(count[g]);
     },
+    after(g, out, inn) {
+      return pairs(count[g] - marked[out] + marked[inn]);
+    },
   };
 }
 
@@ -121,6 +131,12 @@ function avoidModule(task, G, level) {
   });
   const count = new Int32Array(task.avoid.length * G);
   const pairSum = new Int32Array(G);
+  // inList[L · n + s] = 1, når elev s er med i aftale L (bruges af after).
+  const n = task.n;
+  const inList = new Uint8Array(Math.max(1, task.avoid.length) * n);
+  task.avoid.forEach((list, L) => {
+    for (const s of list) inList[L * n + s] = 1;
+  });
   return {
     rule: null,
     level,
@@ -140,6 +156,15 @@ function avoidModule(task, G, level) {
     },
     value(g) {
       return pairSum[g];
+    },
+    after(g, out, inn) {
+      let sum = pairSum[g];
+      // out går ud: parrene med de andre fra samme aftale forsvinder.
+      for (const L of listsOf[out]) sum -= count[L * G + g] - 1;
+      // inn kommer ind: et par med hver fra samme aftale, der stadig er der
+      // (out er gået, så den tæller ikke med).
+      for (const L of listsOf[inn]) sum += count[L * G + g] - inList[L * n + out];
+      return sum;
     },
   };
 }
@@ -167,6 +192,15 @@ function sourcesModule(task, G, level) {
     },
     value(g) {
       return pairSum[g];
+    },
+    after(g, out, inn) {
+      const a = sourceOf[out];
+      const b = sourceOf[inn];
+      if (a === b) return pairSum[g];
+      let sum = pairSum[g];
+      if (a >= 0) sum -= count[a * G + g] - 1;
+      if (b >= 0) sum += count[b * G + g];
+      return sum;
     },
   };
 }
@@ -202,6 +236,25 @@ function clusterModule(rule, G, level) {
     },
     value(g) {
       return alone[g];
+    },
+    after(g, out, inn) {
+      const v = textId[out];
+      const u = textId[inn];
+      let a = alone[g];
+      if (v === u) return a;
+      if (v >= 0) {
+        // Værdien mister én: var der 1, er den enlige væk; var der 2, står én alene.
+        const c = count[v * G + g];
+        if (c === 1) a--;
+        else if (c === 2) a++;
+      }
+      if (u >= 0) {
+        // Værdien får én: var der 0, står den nye alene; var der 1, er de nu to.
+        const c = count[u * G + g];
+        if (c === 0) a++;
+        else if (c === 1) a--;
+      }
+      return a;
     },
   };
 }
@@ -272,6 +325,32 @@ function distributeModule(task, rule, G, groupPool, size, level, weight) {
       }
       return dev;
     },
+    after(g, out, inn) {
+      const v = textId[out];
+      const u = textId[inn];
+      const p = groupPool[g];
+      const N = poolN[p];
+      const s = size[g];
+      if (s !== cachedSize[g]) {
+        // Størrelsen er ændret siden sidst: regn hele gruppen med de nye antal.
+        let dev = 0;
+        for (const [val, c] of poolValues[p]) dev += fairDeviation(count[val * G + g] - (val === v ? 1 : 0) + (val === u ? 1 : 0), c, s, N);
+        return dev;
+      }
+      let dev = cachedDev[g];
+      if (v === u) return dev;
+      if (v >= 0) {
+        const c = poolTotal[v * P + p];
+        const k = count[v * G + g];
+        if (c > 0) dev += fairDeviation(k - 1, c, s, N) - fairDeviation(k, c, s, N);
+      }
+      if (u >= 0) {
+        const c = poolTotal[u * P + p];
+        const k = count[u * G + g];
+        if (c > 0) dev += fairDeviation(k + 1, c, s, N) - fairDeviation(k, c, s, N);
+      }
+      return dev;
+    },
     // Efter et forsøg (tællerne er sat tilbage) eller en bytning (nyt bidrag).
     settle(g, committed, v) {
       for (const val of touched[g]) isTouched[val * G + g] = 0;
@@ -316,21 +395,47 @@ function todayModule(task, rule, G, groupPool, size, level) {
       if (c === 0) distinct[g]--;
       if (c === overMax[g]) over[g]--;
     },
-    value(g) {
-      const values = poolValues[groupPool[g]];
-      const n = values.length;
+    value,
+    after(g, out, inn) {
+      const n = poolValues[groupPool[g]].length;
       if (n === 0) return 0;
       const s = size[g];
       const maxEach = Math.ceil(s / n);
-      if (maxEach !== overMax[g]) {
-        overMax[g] = maxEach;
-        let k = 0;
-        for (const v of values) if (count[v * G + g] > maxEach) k++;
-        over[g] = k;
+      if (maxEach !== overMax[g]) value(g); // sørger for, at over[g] passer til størrelsen
+      const v = textId[out];
+      const u = textId[inn];
+      let d = distinct[g];
+      let o = over[g];
+      if (v !== u) {
+        if (v >= 0) {
+          const c = count[v * G + g];
+          if (c === 1) d--;
+          if (c === maxEach + 1) o--;
+        }
+        if (u >= 0) {
+          const c = count[u * G + g];
+          if (c === 0) d++;
+          if (c === maxEach) o++;
+        }
       }
-      return over[g] > 0 || distinct[g] < Math.min(n, s) ? 1 : 0;
+      return o > 0 || d < Math.min(n, s) ? 1 : 0;
     },
   };
+
+  function value(g) {
+    const values = poolValues[groupPool[g]];
+    const n = values.length;
+    if (n === 0) return 0;
+    const s = size[g];
+    const maxEach = Math.ceil(s / n);
+    if (maxEach !== overMax[g]) {
+      overMax[g] = maxEach;
+      let k = 0;
+      for (const v of values) if (count[v * G + g] > maxEach) k++;
+      over[g] = k;
+    }
+    return over[g] > 0 || distinct[g] < Math.min(n, s) ? 1 : 0;
+  }
 }
 
 // Balancér: |gruppens snit − puljens snit|.
@@ -360,6 +465,23 @@ function balanceModule(task, rule, G, groupPool, level, weight) {
       const target = means[groupPool[g]];
       if (cnt[g] === 0 || target === null) return 0;
       return Math.abs(sum[g] / cnt[g] - target);
+    },
+    after(g, out, inn) {
+      const x = num[out];
+      const y = num[inn];
+      let c = cnt[g];
+      let total = sum[g];
+      if (x === x) {
+        c--;
+        total = c === 0 ? 0 : total - x;
+      }
+      if (y === y) {
+        c++;
+        total += y;
+      }
+      const target = means[groupPool[g]];
+      if (c === 0 || target === null) return 0;
+      return Math.abs(total / c - target);
     },
   };
 }
@@ -396,6 +518,27 @@ function varianceModule(rule, G, level, weight) {
       const v = sumSq[g] / c - m * m;
       return v > 0 ? v : 0;
     },
+    after(g, out, inn) {
+      const x = num[out];
+      const y = num[inn];
+      let c = cnt[g];
+      let total = sum[g];
+      let squares = sumSq[g];
+      if (x === x) {
+        c--;
+        total = c === 0 ? 0 : total - x;
+        squares = c === 0 ? 0 : squares - x * x;
+      }
+      if (y === y) {
+        c++;
+        total += y;
+        squares += y * y;
+      }
+      if (c < 2) return 0;
+      const m = total / c;
+      const v = squares / c - m * m;
+      return v > 0 ? v : 0;
+    },
   };
 }
 
@@ -421,6 +564,15 @@ function collectTextModule(rule, G, level, weight) {
     },
     value(g) {
       return distinct[g];
+    },
+    after(g, out, inn) {
+      const v = textId[out];
+      const u = textId[inn];
+      let d = distinct[g];
+      if (v === u) return d;
+      if (v >= 0 && count[v * G + g] === 1) d--;
+      if (u >= 0 && count[u * G + g] === 0) d++;
+      return d;
     },
   };
 }
@@ -467,6 +619,36 @@ function collectNumericModule(rule, G, level, weightVariance, weightCount) {
       if (c < 2) return 0;
       const m = sum[g] / c;
       const v = sumSq[g] / c - m * m;
+      return weightVariance * (v > 0 ? v : 0);
+    },
+    after(g, out, inn) {
+      const x = num[out];
+      const y = num[inn];
+      let c = cnt[g];
+      let total = sum[g];
+      let squares = sumSq[g];
+      let d = distinct[g];
+      let outText = -1; // out's tekstværdi, hvis den tælles som tekst
+      if (x === x) {
+        c--;
+        total = c === 0 ? 0 : total - x;
+        squares = c === 0 ? 0 : squares - x * x;
+      } else if (textId[out] >= 0) {
+        outText = textId[out];
+        if (count[outText * G + g] === 1) d--;
+      }
+      if (y === y) {
+        c++;
+        total += y;
+        squares += y * y;
+      } else if (textId[inn] >= 0) {
+        const u = textId[inn];
+        if (count[u * G + g] - (u === outText ? 1 : 0) === 0) d++;
+      }
+      if (c === 0) return weightCount * d;
+      if (c < 2) return 0;
+      const m = total / c;
+      const v = squares / c - m * m;
       return weightVariance * (v > 0 ? v : 0);
     },
   };

@@ -160,7 +160,7 @@ watch(() => !!rp.value, (running) => {
        fokuseres). Med en rigtig rolle bliver navnet læst op, og
        aria-describedby sørger for, at FORKLARINGEN følger med — det var det,
        fokus på roden skulle opnå. -->
-  <div ref="rootRef" class="replay-menu" :style="menuStyle" @focusout="onRootFocusOut"
+  <div ref="rootRef" class="replay-menu" data-popup-menu :style="menuStyle" @focusout="onRootFocusOut"
        tabindex="-1" role="group" aria-label="Se kørslen"
        :aria-describedby="rp ? null : 'replay-menu-intro'">
     <div class="arrow" :style="arrowStyle"></div>

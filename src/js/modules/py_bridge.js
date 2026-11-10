@@ -114,6 +114,11 @@ class ClassStore {
         this._seenModified = new Map();
         this._foreignEditWarned = new Set();
 
+        // filename -> klassens indhold (som JSON-tekst), sådan som DENNE fane
+        // sidst læste eller skrev det. Bruges til at se, om fanen overhovedet
+        // har noget nyt at gemme — se _hasOwnChange().
+        this._seenContent = new Map();
+
         // Klasser denne fane allerede har sagt fra om, fordi de var slettet
         // et andet sted. Én besked pr. klasse — se warnClassDeletedElsewhere().
         this._deletedElsewhereWarned = new Set();
@@ -226,12 +231,60 @@ class ClassStore {
         else console.error(msg);
     }
 
-    getClass(filename) {
+    /**
+     * Find én klasse i lageret.
+     *
+     * `track: true` betyder "den her udgave kommer nu på skærmen": fanen
+     * husker den som den udgave, den kender (se _hasOwnChange og
+     * _checkForeignEdit). KUN indlæsningen af klassen må sætte det. En
+     * backup eller en sammenligning, der bare læser, må ikke: så tror fanen,
+     * at den kender lagerets NYE udgave, mens skærmen stadig viser den
+     * gamle, og næste gem — fx når fanen lukkes — skriver den gamle over
+     * den nye uden advarsel. Målt 10/11 2026 med en backup i en gammel fane.
+     *
+     * Derfor er standarden at IKKE huske noget. Glemmer en ny indlæsning
+     * flaget, får fanen i værste fald en advarsel for meget eller skriver
+     * en rigtig ændring — aldrig en stille overskrivning.
+     */
+    getClass(filename, { track = false } = {}) {
         const classes = this.getClasses();
         const cls = classes.find(c => c.filename === filename);
         // Hold styr på hvilken udgave af klassen VI kender. Se _checkForeignEdit().
-        if (cls) this._seenModified.set(filename, cls.last_modified || null);
+        if (cls && track) {
+            this._seenModified.set(filename, cls.last_modified || null);
+            this._seenContent.set(filename, JSON.stringify(cls.content ?? null));
+        }
         return cls;
+    }
+
+    /**
+     * Har denne fane noget at gemme, som den ikke allerede har læst eller skrevet?
+     *
+     * Et gem skriver HELE klassen. Før skrev en fane også, når intet var
+     * ændret: et klik i en celle og videre, og især når fanen blev LUKKET
+     * (flushPendingWrites() gemmer en sidste gang). Med samme klasse åben i
+     * to faner — fx et link fra Lectio, der åbner en ny — skrev en gammel,
+     * urørt fane så sin gamle udgave over alt, hvad læreren havde lavet i
+     * den anden: rettede navne, regler, emner. Målt 10/11 2026.
+     *
+     * Her lægges det, der skal gemmes, oven på den udgave fanen kender. Står
+     * der det samme bagefter, har fanen intet nyt, og intet skrives. Har
+     * begge faner rettet, gælder det gamle: sidste gem vinder, og
+     * _checkForeignEdit() siger det.
+     */
+    _hasOwnChange(filename, newContent) {
+        const seen = this._seenContent.get(filename);
+        if (seen === undefined) return true;
+        try {
+            const known = JSON.parse(seen);
+            if (!known || typeof known !== 'object') return true;
+            // En klasse gemt af en ældre udgave mangler nogle af de nyere
+            // felter (fx columnOrders). Dem skriver første gem — det ER en
+            // ændring, og bagefter kender fanen den fulde udgave.
+            return JSON.stringify({ ...known, ...newContent }) !== seen;
+        } catch {
+            return true;
+        }
     }
 
     /**
@@ -392,6 +445,14 @@ class ClassStore {
                 content: newContent
             });
         } else {
+            // Intet nyt fra denne fane: lad lageret stå, som det står — også
+            // hvis en anden fane har skrevet i det (se _hasOwnChange). Ikke
+            // ved en gendannelse (den bærer et navn) eller en kopi fra før
+            // navneskiftet (den skal tages i brug ved første gem, nedenfor).
+            if (typeof options.name !== 'string' && !classes[idx].legacyFilename
+                && !this._hasOwnChange(filename, newContent)) {
+                return { success: true, unchanged: true };
+            }
             // Har en anden fane ændret klassen, siden vi sidst så den? Så skal
             // læreren høre det — vi er ved at skrive den andens rettelse væk.
             this._checkForeignEdit(filename, classes[idx]);
@@ -423,6 +484,8 @@ class ClassStore {
         }
         // Nu er DET her den udgave, denne fane kender.
         this._seenModified.set(filename, stamp);
+        const written = classes.find(c => c.filename === filename);
+        if (written) this._seenContent.set(filename, JSON.stringify(written.content ?? null));
         this._invalidateClassesCache();
         return { success: true };
     }
@@ -443,6 +506,7 @@ class ClassStore {
         }
         // Klassen findes ikke længere — bær ikke dens tidsstempel med rundt.
         this._seenModified.delete(filename);
+        this._seenContent.delete(filename);
         this._foreignEditWarned.delete(filename);
         // …og glem at vi har advaret om den. Kommer den tilbage fra en backup
         // og bliver slettet igen, skal beskeden kunne komme igen.

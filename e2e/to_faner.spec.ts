@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, gotoAppReady, goToGroups, generateGroups } from './helpers';
+import { createClass, gotoAppReady, goToGroups, generateGroups, goToMatrix, openRecipe } from './helpers';
 
 /**
  * To faner, ét lager.
@@ -161,4 +161,389 @@ test('"Hent de nye grupper" henter den anden fanes grupper ind', async ({ contex
     await toast.getByRole('button', { name: 'Hent de nye grupper' }).click();
     await expect.poll(() => groupsIn(tabB), { timeout: 10000 }).toBe(fresh);
     await expect(toast).toHaveCount(0);
+});
+
+/**
+ * Et klik i en celle er ikke en rettelse.
+ *
+ * Før gemte elevlisten HELE klassen, hver gang markøren forlod en celle —
+ * også når læreren bare havde klikket eller tabbet forbi. Med samme klasse
+ * åben i to faner betød det: retter hun et navn i fane A, og klikker hun
+ * bagefter blot i en celle i fane B (som stadig viser den gamle udgave),
+ * skrev B sin gamle udgave over A's rettelse ét sekund senere. Nu gemmer
+ * cellen kun, når teksten faktisk er en anden.
+ */
+test('et klik i en celle i den anden fane skriver ikke en rettelse væk', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a To Faner', { timeout: 30000 });
+    await expect(tabB.locator('#table-container tbody tr')).toHaveCount(12);
+
+    // Klassen, som den ligger i lageret (som tekst: navnet skal bare stå i den)
+    const storedNames = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+
+    // Fane A retter Anna til Annika og forlader cellen; gemmet kommer efter 1 sek.
+    await tabA.bringToFront();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await expect(cellA).toHaveText('Anna');
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => storedNames(tabA), { timeout: 10000 }).toContain('Annaka');
+
+    // Fane B: læreren klikker i en anden elevs celle og går videre uden at skrive.
+    await tabB.bringToFront();
+    const cellB = tabB.locator('#table-container tbody tr').nth(3).locator('td.cell-data').first();
+    await cellB.click();
+    await tabB.keyboard.press('Tab');
+    // Længere end gemmets ventetid (1 sek.)
+    await tabB.waitForTimeout(2500);
+
+    expect(await storedNames(tabB)).toContain('Annaka');
+});
+
+/**
+ * Samme fejl, større: at LUKKE den gamle fane.
+ *
+ * `flushPendingWrites()` gemmer en sidste gang, når en fane lukkes — for at
+ * redde en celle, læreren stod i. Men den gemte også, når fanen intet havde
+ * rørt. Åbnede læreren Grupper igen fra Lectio, arbejdede i den nye fane og
+ * lukkede så den gamle, skrev den gamle sin udgave over ALT det nye (målt
+ * 10/11 2026). Nu skriver en fane kun det, den selv har ændret.
+ */
+test('lukkes den urørte anden fane, skriver den ikke en rettelse væk', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('#table-container tbody tr')).toHaveCount(12);
+    const stored = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+
+    // Fane A retter et navn og danner grupper (de ligger i deres egen nøgle).
+    await tabA.bringToFront();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('Annaka');
+    await goToGroups(tabA);
+    await generateGroups(tabA);
+
+    // Vent, til fane A står stille, og tag et billede af HELE lageret.
+    const everything = (page: Page) => page.evaluate(() =>
+        JSON.stringify(Object.keys(localStorage).sort().map(k => [k, localStorage.getItem(k)])));
+    await expect.poll(async () => {
+        const a = await everything(tabA);
+        await tabA.waitForTimeout(1200);
+        return a === await everything(tabA) ? a : null;
+    }, { timeout: 20000 }).not.toBeNull();
+    const before = await everything(tabA);
+
+    // Den urørte fane B lukkes — og gemmer en sidste gang (flushPendingWrites).
+    await tabB.close({ runBeforeUnload: true });
+    await tabA.waitForTimeout(1500);
+
+    expect(await stored(tabA)).toContain('Annaka');
+    // Intet andet er heller skrevet: grupperne, historikken og indstillingerne
+    // ligger i egne nøgler og gemmes kun, når der venter noget (debounce.flush).
+    expect(await everything(tabA)).toBe(before);
+});
+
+/**
+ * En backup i den gamle fane er heller ikke en rettelse.
+ *
+ * Fanen husker, hvilken udgave af klassen den har på skærmen, og skriver kun,
+ * når den selv har ændret noget (_hasOwnChange i py_bridge.js). Men backuppen
+ * læste klasserne gennem samme vej som indlæsningen og flyttede dermed fanens
+ * "set" til lagerets NYE udgave — mens skærmen stadig viste den gamle. Tog
+ * læreren en backup i den gamle fane og lukkede den bagefter, skrev den sin
+ * gamle udgave over den nye fanes rettelser, og uden advarsel. Målt 10/11 2026.
+ */
+test('en backup i den urørte anden fane skriver ikke en rettelse væk, når den lukkes', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('#table-container tbody tr')).toHaveCount(12);
+    const stored = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+
+    // Fane A retter Anna til Annaka.
+    await tabA.bringToFront();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('Annaka');
+
+    // Fane B (viser stadig Anna) tager en backup af alle klasser.
+    await tabB.bringToFront();
+    await tabB.locator('.nav-tab').filter({ hasText: 'Import & backup' }).click();
+    await tabB.getByRole('button', { name: 'Eksportér', exact: true }).click();
+    await tabB.getByRole('button', { name: /Vælg alle/i }).click();
+    const pending = tabB.waitForEvent('download');
+    await tabB.getByRole('button', { name: /Download backup/i }).click();
+    await pending;
+
+    // Fane B lukkes — flushPendingWrites() gemmer en sidste gang.
+    await tabB.close({ runBeforeUnload: true });
+    await tabA.waitForTimeout(1500);
+
+    expect(await stored(tabA)).toContain('Annaka');
+});
+
+/**
+ * Et klik i gruppestørrelsen er heller ikke en rettelse.
+ *
+ * Ældre klasser har størrelsen gemt som tekst ("4"), feltet giver et tal (4).
+ * Bare at klikke i feltet og videre talte derfor som en ændring, og den
+ * gamle fane gemte HELE sin udgave af klassen — oven i den nye fanes
+ * rettelser. Målt 10/11 2026. Se sameSettings() i BetaGroupsTab.vue.
+ */
+test('et klik i gruppestørrelsen i den anden fane skriver ikke en rettelse væk', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('#table-container tbody tr')).toHaveCount(12);
+    const stored = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+
+    await tabA.bringToFront();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('Annaka');
+
+    // Fane B: læreren åbner gruppestørrelsen og går ud af feltet uden at ændre det.
+    await tabB.bringToFront();
+    await goToGroups(tabB);
+    const dialog = await openRecipe(tabB);
+    await dialog.locator('.rtok__btn[aria-label^="Gruppernes størrelse:"]').click();
+    const input = dialog.locator('.rtok__pop input[type=number]');
+    await input.focus();
+    await input.blur();
+    // Længere end indstillingernes (300 ms) og gemmets (1 sek.) ventetid
+    await tabB.waitForTimeout(2500);
+
+    expect(await stored(tabA)).toContain('Annaka');
+});
+
+/**
+ * Matrix-runden i den gamle fane.
+ *
+ * Har stamgrupperne ingen emner, skifter matrix-opskriften selv til
+ * "Stamgruppe" — og gemte før hele klassen i samme øjeblik, så bare at
+ * åbne Matrix-runden i den gamle fane skrev den nye fanes rettelser væk.
+ * Et klik på det, der allerede er valgt ("Én fra hver"), gjorde det samme.
+ * Målt 10/11 2026.
+ */
+test('at åbne Matrix-runden i den anden fane skriver ikke en rettelse væk', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    await goToGroups(tabA);
+    await generateGroups(tabA);
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a To Faner', { timeout: 30000 });
+    const stored = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+
+    // Fane A går tilbage til elevlisten og retter Anna til Annaka.
+    await tabA.bringToFront();
+    await tabA.locator('.nav-tab').filter({ hasText: /Elevliste|Elever/ }).first().click();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('Annaka');
+
+    // Fane B: Matrix-runden, opskriften, og et klik på det, der allerede er valgt.
+    await tabB.bringToFront();
+    await goToGroups(tabB);
+    await goToMatrix(tabB);
+    const dialog = await openRecipe(tabB);
+    await dialog.locator('.rtok__btn[aria-label^="Sådan blandes der"]').click();
+    await dialog.locator('.rtok__pop').getByRole('button', { name: 'Én fra hver', exact: true }).click();
+    // Længere end indstillingernes (300 ms) og gemmets (1 sek.) ventetid
+    await tabB.waitForTimeout(2500);
+
+    expect(await stored(tabA)).toContain('Annaka');
+});
+
+/**
+ * En klasse gemt af en ældre udgave af Grupper.
+ *
+ * Indlæsningen retter en del i hukommelsen: regler i det gamle format
+ * (`attribute` i stedet for `column`), og felter, som nyere udgaver altid
+ * gemmer (`hiddenColumns`, `togetherGroups`, `columnOrders` …). Før 10/11 2026
+ * blev det ikke gemt med det samme, så fanens første gem var en "ændring" —
+ * også det sidste gem, når en urørt fane blev lukket. Den skrev så hele sin
+ * gamle udgave over det, læreren havde rettet i den anden fane. Målt med en
+ * sonde over 17 gamle klasseformer; nu gemmes rettelserne, mens fanen
+ * indlæser (AppTopbar `selectClass`).
+ */
+test('en klasse fra en ældre udgave: den urørte anden fane skriver ikke en rettelse væk', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    const stored = (page: Page) => page.evaluate(() =>
+        JSON.stringify(JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content ?? null));
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('hiddenColumns');
+
+    // Klassen ligger i lageret, som en ældre udgave gemte den.
+    await tabA.evaluate(() => {
+        const list = JSON.parse(localStorage.getItem('grupdk_classes') || '[]');
+        const c = list[0].content;
+        delete c.hiddenColumns;
+        delete c.togetherGroups;
+        delete c.columnOrders;
+        c.rules = [{ type: 'distribute', attribute: 'Køn', value: '' }];
+        localStorage.setItem('grupdk_classes', JSON.stringify(list));
+    });
+
+    // Fane B åbner den, som den ligger.
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('#table-container tbody tr')).toHaveCount(12);
+    await tabB.waitForTimeout(500);
+
+    // Fane A retter Anna til Annaka.
+    await tabA.bringToFront();
+    const cellA = tabA.locator('#table-container tbody tr').first().locator('td.cell-data').first();
+    await cellA.click();
+    await tabA.keyboard.press('End');
+    await tabA.keyboard.type('ka');
+    await tabA.keyboard.press('Tab');
+    await expect.poll(() => stored(tabA), { timeout: 10000 }).toContain('Annaka');
+
+    // Den urørte fane B lukkes — flushPendingWrites() gemmer en sidste gang.
+    await tabB.close({ runBeforeUnload: true });
+    await tabA.waitForTimeout(1500);
+
+    expect(await stored(tabA)).toContain('Annaka');
+});
+
+/**
+ * Vis-kolonnen efter en genindlæsning i Hjælp.
+ *
+ * Vis-kolonnen blev før kun sat af elevlistens side (ClassView), som ikke
+ * findes, når siden er genindlæst, mens læreren står i Hjælp. Så stod den
+ * tom, og det sidste gem, når fanen blev lukket, skrev den første kolonne
+ * ind i stedet for lærerens valg — og var dermed også en "ændring", der
+ * skrev hele klassen. Nu sætter indlæsningen den (`syncDisplayColumn`).
+ */
+test('lukkes fanen efter en genindlæsning i Hjælp, bliver lærerens Vis-kolonne stående', async ({ context }) => {
+    const tab = await context.newPage();
+    await createClass(tab, '2a To Faner');
+    await expect.poll(() => tab.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content?.hiddenColumns), { timeout: 10000 })
+        .toBeTruthy();
+
+    // Læreren har valgt "Vis: Køn" og står i Hjælp, da siden genindlæses.
+    await tab.evaluate(() => {
+        const list = JSON.parse(localStorage.getItem('grupdk_classes') || '[]');
+        list[0].content.id_column = 'Køn';
+        localStorage.setItem('grupdk_classes', JSON.stringify(list));
+        sessionStorage.setItem('grupdk_nav_view', 'help');
+    });
+    await tab.reload();
+    await tab.waitForFunction(() => (window as any).appDebug?.state?.currentClass?.filename, null, { timeout: 30000 });
+    expect(await tab.evaluate(() => (window as any).appDebug.state.navView)).toBe('help');
+    expect(await tab.evaluate(() => (window as any).appDebug.state.displayColumn)).toBe('Køn');
+
+    await tab.close({ runBeforeUnload: true });
+    const st = await context.storageState();
+    const raw = st.origins.flatMap(o => o.localStorage).find(e => e.name === 'grupdk_classes')!.value;
+    expect(JSON.parse(raw)[0].content.id_column).toBe('Køn');
+});
+
+/**
+ * Vis-kolonnen efter en tur i Hjælp — uden genindlæsning.
+ *
+ * Elevlistens side tegnes forfra, hver gang læreren kommer tilbage til den,
+ * og den satte Vis-kolonnen ud fra klassens gemte `id_column`. Men valget
+ * under "Vis:" skrev kun til skærmen, aldrig til klassen, så efter Hjælp →
+ * Elevliste stod den gamle kolonne der igen, og næste gem skrev den tilbage.
+ * Fundet 10/11 2026 (75. gennemsyn). Nu gemmes valget med det samme.
+ */
+test('Vis-kolonnen bliver stående efter en tur i Hjælp', async ({ page }) => {
+    await createClass(page, '2a To Faner');
+    await page.locator('#id-column-select').selectOption('Køn');
+    await expect.poll(() => page.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]?.content?.id_column), { timeout: 10000 })
+        .toBe('Køn');
+
+    await page.getByRole('button', { name: 'Om programmet' }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.navView)).toBe('help');
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    await expect(page.locator('#table-container tbody tr')).toHaveCount(12);
+
+    expect(await page.evaluate(() => (window as any).appDebug.state.displayColumn)).toBe('Køn');
+    await page.close({ runBeforeUnload: true });
+    const st = await page.context().storageState();
+    const raw = st.origins.flatMap(o => o.localStorage).find(e => e.name === 'grupdk_classes')!.value;
+    expect(JSON.parse(raw)[0].content.id_column).toBe('Køn');
+});
+
+/**
+ * Beskeden lukket med krydset — og den anden fane danner igen.
+ *
+ * Før huskede fanen bare "sagt til om denne klasse", til læreren trykkede
+ * "Hent de nye grupper". Lukkede hun beskeden med krydset, var den brugt op:
+ * dannede den anden fane grupper én gang til, kom der ingen ny besked, og et
+ * træk i den gamle fane skrev den nye kørsel væk uden en lyd. Nu kommer
+ * beskeden igen, når den anden fane gemmer en anden fordeling.
+ */
+test('en ny kørsel i den anden fane siges højt igen, når beskeden er lukket med krydset', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a Kryds');
+    await goToGroups(tabA);
+    await generateGroups(tabA);
+
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a Kryds', { timeout: 30000 });
+    const groupsIn = (page: Page) => page.evaluate(() =>
+        JSON.stringify(((window as any).appDebug.state.storedStandardGroups || []).map((g: any) => g.members)));
+    const shownInB = await groupsIn(tabB);
+
+    /** Lad A danne, til fordelingen er en anden end `than`, og vent, til A står stille. */
+    async function newRunInA(than: string[]) {
+        let fresh = await groupsIn(tabA);
+        for (let i = 0; i < 8 && than.includes(fresh); i++) {
+            await generateGroups(tabA);
+            fresh = await groupsIn(tabA);
+        }
+        expect(than).not.toContain(fresh);
+        await expect.poll(async () => {
+            const a = await groupsIn(tabA);
+            await tabA.waitForTimeout(1000);
+            return a === await groupsIn(tabA) ? a : null;
+        }, { timeout: 20000 }).not.toBeNull();
+        return groupsIn(tabA);
+    }
+
+    const firstRun = await newRunInA([shownInB]);
+    await tabB.bringToFront();
+    const toast = tabB.locator('.toast').filter({ hasText: 'ændret i en anden fane' });
+    await expect(toast).toBeVisible({ timeout: 10000 });
+    await toast.getByRole('button', { name: 'Luk' }).click();
+    await expect(toast).toHaveCount(0);
+
+    await tabA.bringToFront();
+    await newRunInA([shownInB, firstRun]);
+    await tabB.bringToFront();
+    await expect(toast).toBeVisible({ timeout: 10000 });
+    // B viser stadig sine egne — intet skiftes af sig selv
+    expect(await groupsIn(tabB)).toBe(shownInB);
 });

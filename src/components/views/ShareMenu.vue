@@ -89,7 +89,7 @@ async function onExcel(layout) {
 </script>
 
 <template>
-  <div ref="rootRef" class="share-menu" :style="menuStyle" role="group" aria-label="Del grupperne"
+  <div ref="rootRef" class="share-menu" data-popup-menu :style="menuStyle" role="group" aria-label="Del grupperne"
        tabindex="-1" @focusout="onRootFocusOut">
 
     <button class="share-item" @click="onPrint">

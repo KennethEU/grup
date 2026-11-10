@@ -80,8 +80,13 @@ onUnmounted(() => window.removeEventListener('recipe-dialog:request', onDialogRe
                 <span v-if="warnings" class="recipe-bar__warn">{{ warnings }} {{ warnings === 1 ? 'advarsel' : 'advarsler' }}</span>
                 <span class="recipe-bar__edit">Rediger</span>
             </button>
-            <span class="recipe__spacer"></span>
-            <slot name="actions" />
+            <!-- Handlingerne er ÉN gruppe: er bjælken for smal, flytter de ned
+                 på næste række sammen og står stadig til højre. Som løse
+                 led i bjælken faldt "Dan grupper igen" alene ned i venstre
+                 side, mens "Matrix-runde" blev stående ovenover (1.024-1.280 px). -->
+            <div class="recipe-bar__actions">
+                <slot name="actions" />
+            </div>
         </div>
 
         <slot />

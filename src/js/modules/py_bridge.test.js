@@ -142,6 +142,7 @@ describe('en anden fane har ændret klassen under os', () => {
     beforeEach(() => {
         localStorage.clear();
         pyBridge._seenModified.clear();
+        pyBridge._seenContent.clear();
         pyBridge._foreignEditWarned.clear();
         pyBridge._invalidateClassesCache();
         errors = [];
@@ -162,11 +163,15 @@ describe('en anden fane har ændret klassen under os', () => {
 
     it('siger til, når vi er ved at skrive den anden fanes rettelse væk', () => {
         const res = pyBridge.createClass('2fane', 'Navn,Køn\nAnna,K\nBo,M\n', true);
-        const cls = pyBridge.getClass(res.filename);
+        const cls = pyBridge.getClass(res.filename, { track: true });
         const data = JSON.parse(JSON.stringify(cls.content.data));
 
         editFromOtherTab(res.filename, 'ANNA FRA FANE A');
 
+        // Denne fane har sin EGEN rettelse. Uden den skrives intet: et gem
+        // af det, fanen allerede kender, lader den anden fanes stå
+        // (_hasOwnChange, se persistence.test.js).
+        data[1].Navn = 'Bodil';
         pyBridge.updateClass(res.filename, data, [], 'Navn', [], {}, {}, [], [], {});
 
         expect(errors.length).toBe(1);
@@ -180,7 +185,7 @@ describe('en anden fane har ændret klassen under os', () => {
     it('advarer kun én gang pr. klasse — ikke ved hvert tastetryk', () => {
         const res = pyBridge.createClass('2fane_b', 'Navn\nAnna\n', true);
         const data = [{ Navn: 'Anna' }];
-        pyBridge.getClass(res.filename);
+        pyBridge.getClass(res.filename, { track: true });
         editFromOtherTab(res.filename, 'X');
 
         pyBridge.updateClass(res.filename, data, [], 'Navn', [], {}, {}, [], [], {});
@@ -208,7 +213,7 @@ describe('en anden fane har ændret klassen under os', () => {
         // det gamle stempel, og næste gem kaldte det "ændret i en anden fane".
         const res = pyBridge.createClass('2fane_e', 'Navn\nAnna\n', true);
         const data = [{ Navn: 'Anna' }];
-        pyBridge.getClass(res.filename);
+        pyBridge.getClass(res.filename, { track: true });
 
         const spy = vi.spyOn(localStorage, 'setItem').mockImplementation(() => {
             const e = new Error('fuld');

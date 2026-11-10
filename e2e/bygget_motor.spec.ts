@@ -48,7 +48,7 @@ test.beforeEach(async () => {
     // Samme rækkefølge som grup.dk i app.js: .br-routen, så de rå filer.
     app.use('/assets', require(resolve(ROOT, 'routes', 'grupper-assets.js'))());
     app.use(express.static(resolve(ROOT, 'public', 'grupper')));
-    // Skrifttyperne og privacy-link.js kommer fra dida.dk's fælles public/.
+    // Skrifttyperne kommer fra dida.dk's fælles public/.
     app.use(express.static(resolve(ROOT, 'public')));
     app.use((req: any, res: any) => res.status(404).type('text/plain').send('Not found'));
     server = await new Promise((done, fail) => {

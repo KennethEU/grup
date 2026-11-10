@@ -71,9 +71,13 @@ export function initApiAdapter() {
 
         // Find stien til routingen
         let pathname;
+        // ?track=1 på GET /api/classes/<filename>: klassen kommer på skærmen
+        // (se getClass i py_bridge.js)
+        let track = false;
         try {
             const u = new URL(urlString, window.location.origin);
             pathname = u.pathname;
+            track = u.searchParams.get('track') === '1';
         } catch (e) {
             pathname = urlString; // reserve
         }
@@ -114,7 +118,7 @@ export function initApiAdapter() {
                 // 3. GET /api/classes/<filename>
                 if (url.startsWith('/api/classes/') && (!options.method || options.method === 'GET')) {
                     const filename = decodeURIComponent(url.split('/').pop());
-                    const cls = pyBridge.getClass(filename);
+                    const cls = pyBridge.getClass(filename, { track });
 
                     if (!cls) return jsonResponse({ error: 'Class not found' }, 404);
 

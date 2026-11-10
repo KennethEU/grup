@@ -49,37 +49,9 @@ function precompressAssets() {
     }
 }
 
-// /privacy-link.js (Privatlivspolitik-linket nederst på siden) ligger i
-// repoets public/, ikke i grup.dk/public/. I produktionen
-// serverer app.js' express.static('public') den også på grup.dk; Vites
-// dev-server kender kun sin egen public/ og svarede med SPA-fallbacken
-// (index.html med status 200 — scriptet fejlede som "Unexpected token '<'"
-// på hver sidevisning, og e2e-suiten så det samme). Løsning: server den
-// rigtige fil herfra. EN FIL DER IKKE FINDES SKAL GIVE 404 — også her
-// (SPA-fallbacken ville svare 200 med index.html; se CLAUDE.md om 404).
-function servePrivacyLinkInDev(file) {
-    return {
-        name: 'serve-privacy-link-in-dev',
-        apply: 'serve',
-        configureServer(server) {
-            server.middlewares.use('/privacy-link.js', (req, res) => {
-                let body
-                try { body = readFileSync(file) } catch {
-                    res.statusCode = 404
-                    res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-                    return res.end('Ukendt fil')
-                }
-                res.setHeader('Content-Type', 'text/javascript; charset=utf-8')
-                res.end(body)
-            })
-        },
-    }
-}
-
 export default defineConfig({
     plugins: [
         vue(),
-        servePrivacyLinkInDev('../public/privacy-link.js'),
         precompressAssets(),
     ],
     base: './', // Use relative paths for assets so it can sit in any subdirectory

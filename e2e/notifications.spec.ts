@@ -95,3 +95,79 @@ test('Beskeder — en høj stak bliver på skærmen, og den sidste luk-knap kan 
     await page.locator('.toast').last().locator('.toast-close').click();
     await expect(page.locator('.toast')).toHaveCount(4);
 });
+
+/**
+ * Stakkens ramme tager kun klik, når den kan rulle.
+ *
+ * Kassen om beskederne har 10 px luft hele vejen rundt (til skyggen) og 8 px
+ * mellem beskederne. Med `pointer-events: auto` på kassen tog den luft klik:
+ * "Klasse oprettet!" står de første sekunder nederst til højre i elevlisten,
+ * og et klik lige ved siden af beskeden ramte kassen i stedet for det, der
+ * stod bag den (målt 10/11 2026, 71. gennemsyn). Kassen skal kun tage imod
+ * musen, når den har noget at rulle — så skal hjulet og rullebjælken virke.
+ */
+test('Beskeder — rammen om én besked lader klik gå igennem; en høj stak kan stadig rulles', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto('/');
+    await expect(page.locator('#vue-modals')).toBeAttached();
+
+    // Det, der står i luften til venstre for beskeden, midt i dens højde.
+    const gapHit = () => page.evaluate(() => {
+        const c = document.querySelector('.notification-container') as HTMLElement;
+        const t = c.querySelector('.toast')!.getBoundingClientRect();
+        const el = document.elementFromPoint(t.left - 5, t.top + t.height / 2);
+        return !!el && c.contains(el);
+    });
+
+    await page.evaluate(() => (window as any).notifyError('Én besked'));
+    await expect(page.locator('.toast')).toHaveCount(1);
+    await expect.poll(gapHit).toBe(false);
+    // Beskeden selv og dens kryds kan stadig rammes
+    await expect.poll(() => page.locator('.toast-close').evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return !!top && el.contains(top);
+    })).toBe(true);
+
+    // En stak, der ikke kan være der: nu tager kassen musen, og hjulet ruller
+    await page.evaluate(() => {
+        const long = 'Bemærkninger til grupperingen: reglen "Ensartede: Niveau" og reglen '
+            + '"Blandede: Niveau" trækker i hver sin retning. '.repeat(4);
+        // Fem lange: højst fem står ad gangen (MAX_VISIBLE), den korte ryger
+        for (let i = 1; i <= 5; i++) (window as any).notifyError(`${long} (${i})`);
+    });
+    await expect(page.locator('.toast').filter({ hasText: 'Én besked' })).toHaveCount(0);
+    await expect(page.locator('.toast')).toHaveCount(5);
+    // Stakken skal rulle, når beskederne har lagt sig — ellers beviser resten intet
+    await expect.poll(() => page.evaluate(() => {
+        const c = document.querySelector('.notification-container') as HTMLElement;
+        return c.scrollHeight > c.clientHeight;
+    })).toBe(true);
+    await expect.poll(gapHit).toBe(true);
+    const box = (await page.locator('.notification-container').boundingBox())!;
+    await page.mouse.move(box.x + 4, box.y + box.height / 2);   // i rammen, ikke på en besked
+    // toPass: et hjul, mens beskederne stadig glider ind (0,28 sek.), kan gå tabt
+    await expect(async () => {
+        await page.mouse.wheel(0, 300);
+        expect(await page.evaluate(() =>
+            (document.querySelector('.notification-container') as HTMLElement).scrollTop)).toBeGreaterThan(0);
+    }).toPass({ timeout: 5000 });
+
+    // Lukkes de fleste, kan stakken ikke rulle mere — og rammen giver slip igen
+    // (én ad gangen: en lukket besked står i DOM'en, mens den glider ud)
+    for (let n = 5; n > 1; n--) {
+        await page.locator('.toast').first().locator('.toast-close').click();
+        await expect(page.locator('.toast')).toHaveCount(n - 1);
+    }
+    await expect.poll(gapHit).toBe(false);
+
+    // Den tomme kasse (20×20 px luft) tager heller ikke klik
+    await page.locator('.toast-close').click();
+    await expect(page.locator('.toast')).toHaveCount(0);
+    await expect.poll(() => page.evaluate(() => {
+        const c = document.querySelector('.notification-container') as HTMLElement;
+        const r = c.getBoundingClientRect();
+        const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return !!el && c.contains(el);
+    })).toBe(false);
+});

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, defineAsyncComponent, watch } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
-import { teacherColumns } from '../../js/modules/utils.js';
+import { syncDisplayColumn } from '../../js/modules/classActions.js';
 import StudentsTab from './StudentsTab.vue';
 import HistoryTab from './HistoryTab.vue';
 
@@ -25,21 +25,10 @@ const activeTab = computed({
 // *referencen* udskiftes — altså ved en ægte indlæsning/skift af klasse — så
 // det er trygt at udlede den her uden at overskrive et valg midt i sessionen
 // (de omtildeler ikke currentClass).
-watch(() => reactiveState.currentClass, (cls) => {
-    const visible = teacherColumns(cls?.columns);
-    if (visible.length === 0) {
-        reactiveState.displayColumn = '';
-    // Prioritet 1: brug den kolonne, læreren gemte MED klassen.
-    // `id_column` er det gamle feltnavn; dets værdi HAR altid været
-    // lærerens valgte kolonne, så gamle klasser migrerer gratis her.
-    } else if (cls.id_column && visible.includes(cls.id_column)) {
-        reactiveState.displayColumn = cls.id_column;
-    // Prioritet 2: behold et valg, der stadig er gyldigt.
-    // Prioritet 3: ellers den første synlige kolonne.
-    } else if (!(reactiveState.displayColumn && visible.includes(reactiveState.displayColumn))) {
-        reactiveState.displayColumn = visible[0];
-    }
-}, { immediate: true });
+// Selve valget står i `syncDisplayColumn()` (classActions.js), fordi
+// indlæsningen også skal sætte det — ClassView findes kun, mens læreren
+// står i klassen.
+watch(() => reactiveState.currentClass, syncDisplayColumn, { immediate: true });
 
 </script>
 

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { createClass } from './helpers';
+import { createClass, goToGroups, generateGroups, openRecipe, closeRecipe } from './helpers';
 
 // Toasts ligger i højre side — præcis hvor topbarens ikoner sidder — og en
 // fejlbesked bliver stående til den klikkes væk. Lå den oven på baren, var
@@ -75,4 +75,134 @@ test('En besked fra FØR båndet fandtes, flytter ned under det', async ({ page 
     await expect.poll(async () => Math.min(...await page.locator('.toast').evaluateAll(
         els => els.map(e => e.getBoundingClientRect().top))), { timeout: 2000 })
         .toBeGreaterThanOrEqual(band.y + band.height);
+});
+
+// Beta-stakken står nederst og vokser opad. Dens loft var en fast
+// `100dvh - topbjælken - 96px`, der ikke kendte bjælken over grupperne: fem
+// blivende fejlbeskeder nåede op over den og dækkede "Dan grupper igen",
+// "Vis for klassen" og "Matrix-runde" (målt 10/11 ved 1280×600, 800×600 og
+// 800×480 — samme fejl som 23/9, bare nedefra). Nu er bjælkens bund loftet.
+for (const [width, height] of [[1280, 600], [800, 480]] as const) {
+    test(`Mange fejlbeskeder når ikke op over bjælken over grupperne — ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width: 1280, height: 720 });
+        await createClass(page, 'Mange beskeder');
+        await goToGroups(page);
+        await generateGroups(page);
+        await page.setViewportSize({ width, height });
+        const text = 'Fordel på Køn kan ikke gå helt op: 14 elever har værdien Pige, og der er kun plads til 12. ';
+        // Højst 5 beskeder står ad gangen (MAX_VISIBLE i notificationState.js);
+        // de ældste ryger. Vent på den sidste.
+        await page.evaluate((t) => {
+            for (let i = 0; i < 5; i++) (window as any).notifyError(`${i + 1}. ${t.repeat(3)}`);
+        }, text);
+        await expect(page.locator('.toast').filter({ hasText: '5. Fordel' })).toBeVisible();
+
+        // Stakken skal rulle (ellers beviser testen intet), og HELE kassen —
+        // ikke kun beskederne — skal stå under bjælken: kassen tager selv imod
+        // klik, mens den kan rulle (klassen can-scroll i NotificationManager.vue).
+        await expect.poll(() => page.evaluate(() => {
+            const box = document.querySelector('.notification-container')!;
+            const bar = document.querySelector('.groups-header-sticky')!.getBoundingClientRect();
+            return {
+                scrolls: box.scrollHeight > box.clientHeight,
+                belowBar: box.getBoundingClientRect().top >= bar.bottom,
+            };
+        })).toEqual({ scrolls: true, belowBar: true });
+
+        // Og knappen kan trykkes: det, der står i dens midte, er knappen selv
+        const go = page.locator('.recipe-bar .recipe__go');
+        const hit = await go.evaluate((el) => {
+            const r = el.getBoundingClientRect();
+            const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+            return !!top && el.contains(top);
+        });
+        expect(hit).toBe(true);
+    });
+}
+
+// En åben menu skal ligge OVER beskederne. Stakken står nederst til højre og
+// vokser opad — dér, hvor Gem-menuen åbner over bundlinjen, og hvor "Lav
+// aftale" falder ned i elevlisten. Med fem blivende fejlbeskeder ramte et
+// klik på "Gem i Historik" beskeden i stedet (målt 10/11 ved 1280×720,
+// 1280×600 og 800×480; "Undgå hinanden" ved 800×480).
+async function centreHitsItself(locator) {
+    return locator.evaluateAll((els) => els.map((el) => {
+        const r = el.getBoundingClientRect();
+        const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return !!top && el.contains(top);
+    }));
+}
+const fiveErrors = (page) => page.evaluate(() => {
+    for (let i = 0; i < 5; i++) (window as any).notifyError(
+        `${i + 1}. Fordel på Køn kan ikke gå helt op: 14 elever har værdien Pige, og der er kun plads til 12.`);
+});
+
+test('En åben menu ligger over mange fejlbeskeder — Gem og Lav aftale, 800×480', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await createClass(page, 'Menu over beskeder');
+    await page.setViewportSize({ width: 800, height: 480 });
+
+    // "Lav aftale" i elevlisten
+    await fiveErrors(page);
+    await expect(page.locator('.toast').filter({ hasText: '5. Fordel' })).toBeVisible();
+    await page.getByRole('checkbox', { name: 'Anna med i aftale', exact: true }).check();
+    await page.getByRole('checkbox', { name: 'Bob med i aftale', exact: true }).check();
+    await page.locator('#create-agreement-btn').click();
+    const agreementItems = page.locator('.agreement-menu [role="menuitem"]');
+    await expect(agreementItems).toHaveCount(2);
+    expect(await centreHitsItself(agreementItems)).toEqual([true, true]);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.agreement-menu')).toHaveCount(0);
+
+    // Gem-menuen over bundlinjen
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await goToGroups(page);
+    await generateGroups(page);
+    await page.setViewportSize({ width: 800, height: 480 });
+    await fiveErrors(page);
+    await expect(page.locator('.toast').filter({ hasText: '5. Fordel' })).toBeVisible();
+    await page.locator('.save-anchor .action-pill').click();
+    const saveItems = page.locator('.save-menu [role="menuitem"]');
+    await expect(saveItems).toHaveCount(2);
+    expect(await centreHitsItself(saveItems)).toEqual([true, true]);
+
+    // Menuen lukket: beskederne er øverst igen (deres kryds kan rammes)
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.save-menu')).toHaveCount(0);
+    const firstClose = page.locator('.toast-close').first();
+    expect(await centreHitsItself(firstClose)).toEqual([true]);
+});
+
+// Opskriftens vindue er et <dialog> i browserens øverste lag, og alt uden for
+// det er inert. En besked givet, mens det stod åbent (fx "Browserens
+// lagerplads er fuld!" ved gem af en regelændring), lå dæmpet bag vinduets
+// baggrund og kunne hverken lukkes eller høres af en skærmlæser (målt 10/11:
+// 0 alerts i Chromiums tilgængelighedstræ). Nu flytter stakken ind i vinduet.
+test('En besked i opskriftens vindue står over vinduet og kan lukkes — og flytter ud igen', async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 480 });
+    await createClass(page, 'Besked i vinduet');
+    await goToGroups(page);
+    await generateGroups(page);
+    // En blivende fejl FØR vinduet åbner, og én mens det står åbent
+    await page.evaluate(() => (window as any).notifyError('Før vinduet'));
+    const dialog = await openRecipe(page);
+    await page.evaluate(() => (window as any).notifyError('Browserens lagerplads er fuld!'));
+    await expect(dialog.locator('.toast')).toHaveCount(2);
+
+    // poll: beskederne glider ind (0,28 sek.), og imens rammer midten ved siden af
+    const closes = page.locator('.toast-close');
+    await expect.poll(() => centreHitsItself(closes)).toEqual([true, true]);
+    // Vinduets egne knapper er stadig fri
+    expect(await centreHitsItself(dialog.locator('.recipe-dialog__foot button'))).not.toContain(false);
+
+    // Krydset virker inde i vinduet — og vinduet bliver stående
+    await page.locator('.toast').filter({ hasText: 'Før vinduet' }).locator('.toast-close').click();
+    await expect(page.locator('.toast')).toHaveCount(1);
+    await expect(dialog).toBeVisible();
+
+    // Lukkes vinduet, står beskeden på siden igen og kan stadig lukkes
+    await closeRecipe(page);
+    await expect.poll(() => page.evaluate(() =>
+        document.querySelector('.notification-container')!.parentElement === document.body)).toBe(true);
+    await expect.poll(() => centreHitsItself(page.locator('.toast-close'))).toEqual([true]);
 });

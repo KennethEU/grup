@@ -38,8 +38,15 @@ function toggleHiddenContent() {
 
 // "Vis:"-kolonnen ligger i reactiveState, så vælgeren skriver direkte dertil
 // (StudentTable og gruppekortene læser den samme sted fra).
+//
+// Valget gemmes med det samme (autoSave skriver det som klassens
+// `id_column`, også i hukommelsen). Før 10/11 2026 skrev vælgeren kun til
+// skærmen: elevlistens side tegnes forfra efter Hjælp eller Import & backup
+// og sætter Vis-kolonnen ud fra klassens `id_column` — og så stod den gamle
+// kolonne der igen.
 function onDisplayColumnChange(e) {
     reactiveState.displayColumn = e.target.value;
+    autoSave();
 }
 
 // Ranger værdier: "Ensartede" og "Balancér" kan kun arbejde med tal. Har
@@ -232,7 +239,7 @@ function onColumnLayout() {
                             <span>Lav aftale</span>
                             <ChevronDown :size="13" :class="{ 'menu-chevron-open': showAgreementMenu }" />
                         </button>
-                        <div v-if="showAgreementMenu && hasSelection" class="agreement-menu" role="menu"
+                        <div v-if="showAgreementMenu && hasSelection" class="agreement-menu" data-popup-menu role="menu"
                              @keydown.down.prevent="moveAgreementMenu()" @keydown.up.prevent="moveAgreementMenu()">
                             <button ref="togetherItemRef" class="agreement-menu-btn" type="button" role="menuitem" @click="chooseAgreement('together')">
                                 <Link2 :size="15" />

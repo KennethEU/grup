@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import { notificationState, notificationActions } from '../js/modules/notificationState.js';
 import { CheckCircle, XCircle, Info, X } from 'lucide-vue-next';
 import { reactiveState as appState } from '../js/modules/reactiveState.js';
@@ -45,7 +45,54 @@ function measureRibbon() {
         }
     }
 }
+// ─── Inde i et åbent <dialog> ───────────────────────────────────────────────
+// Opskriftens vindue (og Nyheder, telefonbeskeden og importens to spørgsmål)
+// er et rigtigt <dialog> åbnet med showModal(). Det står i browserens øverste
+// lag — over ALT, også en z-index på 10000 — og alt uden for det er inert.
+// En besked givet, mens vinduet stod åbent (fx "Browserens lagerplads er
+// fuld!", når en regelændring ikke kunne gemmes), lå derfor dæmpet bag
+// vinduets mørke baggrund, delvist dækket af vinduet, og kunne hverken
+// lukkes eller læses op af en skærmlæser (set på skærmbillede og målt
+// 10/11 2026 ved 1280×600 og 800×480). Samme løsning som guiden
+// (RecipeGuide.vue): stakken flytter ind i selve vinduet, mens det står
+// åbent, og tilbage til <body>, når det lukker.
+//
+// Kun <dialog>-elementer: Vue-vinduerne (.modal-overlay) er almindelige lag
+// under stakken og har deres egen regel (body.has-modal nedenfor).
+const host = ref(null);   // det åbne <dialog>, eller null = <body>
+function openDialog() {
+    // Alle <dialog> i appen åbnes med showModal(). Står flere åbne, er det
+    // sidst åbnede som regel også det sidste i siden.
+    const open = document.querySelectorAll('dialog[open]');
+    return open[open.length - 1] || null;
+}
+function updateHost() {
+    const next = openDialog();
+    // isConnected: et vindue kan forsvinde helt (fanen skiftes), mens det
+    // står åbent. Så findes der ingen 'open'-ændring at lytte efter, og
+    // beskederne ville blive i et element, der ikke er på siden længere.
+    if (next !== host.value) host.value = next && next.isConnected ? next : null;
+}
+
+// ─── Kassen tager kun musen, når den kan rulle ──────────────────────────────
+// Kassen om beskederne har luft hele vejen rundt (til skyggen) og mellem
+// beskederne. Tog den altid imod musen, ramte et klik i den luft kassen i
+// stedet for det, der stod bagved — fx elevlistens slet-kryds, mens "Klasse
+// oprettet!" stod nederst til højre (målt 10/11 2026). Beskederne tager selv
+// imod klik; kassen skal kun, når den har noget at rulle, for så skal hjulet
+// og rullebjælken virke (se `pointer-events` i stilen nedenfor).
+const canScroll = ref(false);
+function measureScroll() {
+    const el = containerEl.value;
+    canScroll.value = !!el && el.scrollHeight > el.clientHeight;
+}
+
 let followTimer = null;
+function follow() {
+    updateHost();
+    measureRibbon();
+    measureScroll();
+}
 function stopFollowing() {
     clearInterval(followTimer);
     followTimer = null;
@@ -53,13 +100,33 @@ function stopFollowing() {
 watch(() => notifications.value.length, (n, old) => {
     // Straks ved hver NY besked — så den aldrig vises ét interval det forkerte
     // sted — og derefter løbende, indtil stakken er tom.
-    if (n > (old || 0)) measureRibbon();
-    if (n > 0 && !followTimer) followTimer = setInterval(measureRibbon, 300);
-    else if (n === 0) stopFollowing();
+    if (n > (old || 0)) follow();
+    // Den nye besked står først i siden efter Vues næste tegning; mål
+    // rulningen dér, ikke først ved næste interval.
+    if (n !== old) nextTick(measureScroll);
+    if (n > 0 && !followTimer) followTimer = setInterval(follow, 300);
+    else if (n === 0) {
+        stopFollowing();
+        // Tom stak: intet at rulle. Målingen nedenfor ser stadig beskeder,
+        // der glider ud, og intervallet er stoppet — uden denne linje kunne
+        // `can-scroll` blive hængende på den tomme kasse (20×20 px luft).
+        canScroll.value = false;
+        return;
+    }
 }, { flush: 'sync' });
-onMounted(() => window.addEventListener('resize', measureRibbon, { passive: true }));
+
+// Åbner eller lukker et vindue, flytter stakken med det samme — ikke først
+// ved næste måling. Lytter kun på 'open'-attributten; det koster intet.
+let dialogObserver = null;
+onMounted(() => {
+    window.addEventListener('resize', follow, { passive: true });
+    dialogObserver = new MutationObserver(updateHost);
+    dialogObserver.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
+    updateHost();
+});
 onBeforeUnmount(() => {
-    window.removeEventListener('resize', measureRibbon);
+    window.removeEventListener('resize', follow);
+    dialogObserver?.disconnect();
     stopFollowing();
 });
 
@@ -93,8 +160,8 @@ function runAction(note) {
          bagved inert (useModalFocus), skal beskederne stadig kunne læses op
          og klikkes væk. Inde i #app blev de inerte sammen med resten, så snart
          et bekræft- eller navngiv-vindue (som ligger i <body>) var åbent. -->
-    <Teleport to="body">
-    <div ref="containerEl" class="notification-container" data-modal-keep :style="containerTop ? { '--toast-top': containerTop } : null">
+    <Teleport :to="host || 'body'">
+    <div ref="containerEl" class="notification-container" :class="{ 'in-dialog': host, 'can-scroll': canScroll }" data-modal-keep :style="containerTop ? { '--toast-top': containerTop } : null">
         <transition-group name="toast">
             <div
                 v-for="note in notifications"
@@ -143,10 +210,13 @@ function runAction(note) {
        altså aldrig komme væk igen. Derfor et loft på pladsen under topbaren,
        og en rulning når det ikke passer.
 
-       `pointer-events: auto` er prisen: containeren skal selv kunne tage imod
-       hjulet for at kunne rulle. Den dækker nu også rammen og mellemrummene
-       omkring beskederne — men kun mens der ER beskeder; er stakken tom, er
-       kassen 0×0 og dækker ingenting.
+       Kassen tager kun imod musen (`pointer-events: auto`), mens den KAN
+       rulle (klassen `can-scroll`, målt i measureScroll): så skal hjulet og
+       rullebjælken virke, også i luften mellem beskederne. Ellers går et
+       klik i rammen og mellemrummene igennem til det, der står bagved —
+       beskederne selv tager stadig imod klik (`.toast` har sit eget `auto`).
+       Før tog rammen altid klik: "Klasse oprettet!" dækkede de første
+       sekunder elevlistens slet-kryds med sin 10 px luft (målt 10/11 2026).
 
        LUFTEN INDENI er ikke pynt: `overflow-y` gør også den vandrette akse til
        en rullecontainer, og uden luft blev beskedernes bløde skygge skåret af
@@ -168,6 +238,9 @@ function runAction(note) {
     max-block-size: calc(100dvh - var(--toast-top, calc(var(--header-height, 64px) + 2px)) - 32px);
     overflow-y: auto;
     overscroll-behavior: contain;
+    pointer-events: none;
+}
+.notification-container.can-scroll {
     pointer-events: auto;
 }
 
@@ -176,6 +249,35 @@ function runAction(note) {
    hele hovedet i de fire sekunder, de lever, og en fejlbesked bliver stående,
    til den klikkes væk. Klassen sættes ét sted: useModalFocus' stak. */
 body.has-modal .notification-container {
+    inset-block-start: auto;
+    inset-block-end: 10px;
+    max-block-size: min(50dvh, calc(100dvh - var(--header-height, 64px) - 34px));
+}
+
+/* En åben menu ligger OVER beskederne, mens den står åben. Stakken står
+   nederst til højre og vokser opad — præcis dér, hvor Gem-menuen åbner over
+   bundlinjen, og hvor "Lav aftale"-menuen falder ned i elevlisten. Målt 10/11
+   2026 med fem blivende fejlbeskeder: begge punkter i Gem-menuen var dækket
+   ved 1280×720, 1280×600 og 800×480, og "Undgå hinanden" ved 800×480 — et
+   klik på dem ramte beskeden. Menuerne sidder inde i bjælkernes egne lag
+   (bundlinjen 1000, elevlistens værktøjslinje 100), så de kan kun komme
+   øverst, hvis stakken går UNDER bjælkerne, så længe menuen står åben. 99
+   er stadig over alt andet på siden. Beskederne bliver stående og kan læses
+   ved siden af menuen; når den lukker, er de øverst igen.
+   Menuerne bærer selv mærket `data-popup-menu` (Gem, Del, kørselshistorik,
+   afspilning og "Lav aftale"). Et åbent vindue går forud: dér skal stakken
+   stå over vinduet. */
+body:not(.has-modal):has([data-popup-menu]) .notification-container {
+    z-index: 99;
+}
+
+/* Inde i et åbent <dialog> (se updateHost): nederst til højre som ved de
+   andre vinduer. z-index 1, ikke 10000: inde i vinduet er det vinduets egne
+   lag, stakken skal under — opskriftens ordvælger (60) og guiden — mens den
+   stadig står over vinduets almindelige indhold. `dialog[open] >` gør reglen
+   tungere end body.has-modal og beta-reglen i BetaStyles.vue. */
+dialog[open] > .notification-container.in-dialog {
+    z-index: 1;
     inset-block-start: auto;
     inset-block-end: 10px;
     max-block-size: min(50dvh, calc(100dvh - var(--header-height, 64px) - 34px));

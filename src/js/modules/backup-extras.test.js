@@ -344,3 +344,53 @@ describe('writeClassExtras — sessionerne må ikke skrive oven i hinanden', () 
         expect(res.prunedSessions).toBe(0);
     });
 });
+
+// En backup LÆSER klasserne. Den må ikke flytte, hvilken udgave fanen tror,
+// den har på skærmen (getClass med track i py_bridge.js) — ellers skriver en
+// gammel fane, der har taget en backup, sin gamle udgave over den nye fanes
+// rettelser, når den lukkes. Målt i e2e/to_faner.spec.ts 10/11 2026.
+describe('backuppen og fanens udgave af klassen', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+        pyBridge._seenModified.clear();
+        pyBridge._seenContent.clear();
+        window.notifyError = () => {};
+    });
+
+    it('en backup i den gamle fane lader den anden fanes rettelse stå ved næste gem', async () => {
+        pyBridge.createClass('3a', 'Navn\nAnna\nBo\n', true);
+        const file = pyBridge.getClasses()[0].filename;
+        // Denne fane åbner klassen og gemmer én gang (som appen gør).
+        const mine = await api.fetchClass(file, { track: true });
+        await api.saveClassData(file, mine.data, [], 'Navn', [], {}, {}, [], [], {});
+        const onScreen = structuredClone(mine.data);
+
+        // Den anden fane retter Anna til Annika — udenom denne fanes cache.
+        const list = JSON.parse(localStorage.getItem('grupdk_classes'));
+        list[0].content.data[0].Navn = 'Annika';
+        list[0].last_modified = new Date(Date.now() + 1000).toISOString();
+        localStorage.setItem('grupdk_classes', JSON.stringify(list));
+        pyBridge._invalidateClassesCache();
+
+        // Denne fane tager en backup (den får den nye udgave med) …
+        const seenBefore = pyBridge._seenContent.get(file);
+        const res = await api.exportClasses([file]);
+        expect(res.data[0].data[0].Navn).toBe('Annika');
+        expect(pyBridge._seenContent.get(file)).toBe(seenBefore);
+
+        // … og gemmer så sin skærm uden egne rettelser (fx når fanen lukkes).
+        await api.saveClassData(file, onScreen, [], 'Navn', [], {}, {}, [], [], {});
+        const stored = JSON.parse(localStorage.getItem('grupdk_classes'))[0];
+        expect(stored.content.data[0].Navn).toBe('Annika');
+    });
+
+    it('kun indlæsningen (track) flytter fanens udgave', async () => {
+        pyBridge.createClass('3a', 'Navn\nAnna\n', true);
+        const file = pyBridge.getClasses()[0].filename;
+        await api.fetchClass(file);
+        expect(pyBridge._seenContent.has(file)).toBe(false);
+        await api.fetchClass(file, { track: true });
+        expect(pyBridge._seenContent.has(file)).toBe(true);
+    });
+});

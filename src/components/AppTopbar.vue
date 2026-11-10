@@ -7,7 +7,7 @@ import { reactiveState as state } from '../js/modules/reactiveState.js';
 import * as api from '../js/modules/api.js';
 import * as storage from '../js/modules/storage.js';
 import { getStoragePressureWarning, pyBridge } from '../js/modules/py_bridge.js';
-import { autoSave } from '../js/modules/classActions.js';
+import { autoSave, syncDisplayColumn } from '../js/modules/classActions.js';
 import { migrateRefsToRowIds, teacherColumns, columnsOfRows, normalizeCellText } from '../js/modules/utils.js';
 import { clearClassMemory } from '../js/modules/classMemory.js';
 import { isModalOpen } from '../composables/useModalFocus.js';
@@ -227,7 +227,7 @@ const selectClass = async (filename, index, goToStudents = false) => {
     isClassMenuOpen.value = false;
 
     try {
-        const data = await api.fetchClass(filename);
+        const data = await api.fetchClass(filename, { track: true });
         state.currentClass = data;
 
         if (state.currentClass.columns) {
@@ -265,7 +265,6 @@ const selectClass = async (filename, index, goToStudents = false) => {
         // åbnes, selvom svaret aldrig ændrer sig.
         if (!Array.isArray(state.currentClass.topics)) {
             state.currentClass.topics = storage.deriveClassTopicsFromGroupTopics();
-            setTimeout(autoSave, 0);
         }
 
         const saved = storage.loadGroupsFromStorage();
@@ -304,17 +303,15 @@ const selectClass = async (filename, index, goToStudents = false) => {
                 groupSets: [state.storedStandardGroups, state.storedMatrixGroups],
             }
         );
-        if (_mig.rowIdsAdded > 0 || _mig.refsRemapped > 0) {
-            // Skriv resultatet ned med det samme, så migreringen kun kører én
-            // gang pr. klasse — og så de nye id'er overlever en lukket fane.
-            if (_mig.refsRemapped > 0) storage.saveGroupsToStorage();
-            setTimeout(autoSave, 0);
-        }
+        // Skriv resultatet ned med det samme, så migreringen kun kører én
+        // gang pr. klasse — og så de nye id'er overlever en lukket fane.
+        // (Selve klassen gemmes nedenfor, sammen med alt det andet.)
+        if (_mig.refsRemapped > 0) storage.saveGroupsToStorage();
 
         // Migration: "å" som a + ring (kopieret ud af en PDF, importeret før
         // 2026-09-24) gemmes som ét tegn — se nfc() i utils.js. Idempotent:
         // på en klasse i orden ændres intet, og der gemmes ikke.
-        if (normalizeCellText(state.currentClass.data) > 0) setTimeout(autoSave, 0);
+        normalizeCellText(state.currentClass.data);
 
         if (state.currentClass.settings) {
             state.groupMode = state.currentClass.settings.groupMode || 'size';
@@ -328,6 +325,30 @@ const selectClass = async (filename, index, goToStudents = false) => {
         // Ved ny klasse-oprettelse (goToStudents=true): altid til elevliste
         state.navView = goToStudents ? 'class' : (savedNav || 'class');
         state.classViewTab = goToStudents ? 'students' : ((savedTab && ['students', 'groups', 'history'].includes(savedTab)) ? savedTab : 'students');
+
+        // Vis-kolonnen sættes HER og ikke kun i ClassView, som ikke findes,
+        // når fanen er genindlæst i Hjælp eller Import & backup. Se
+        // syncDisplayColumn().
+        syncDisplayColumn();
+
+        // Gem det, indlæsningen har rettet i hukommelsen — NU, mens lageret
+        // stadig er præcis det, fanen lige har læst.
+        //
+        // Ovenfor rettes en del: regler i det gamle format, emner, _rowId,
+        // "å" som to tegn, og en klasse fra en ældre udgave mangler nogle
+        // felter, som et gem altid skriver (togetherGroups, hiddenColumns,
+        // columnOrders, matrixSettings …). Før 10/11 2026 blev kun nogle af
+        // dem gemt med det samme. Resten lå kun i hukommelsen, og så var
+        // fanens FØRSTE gem en "ændring" — også når læreren intet havde
+        // gjort, fx når fanen blev lukket (flushPendingWrites gemmer en
+        // sidste gang). Med klassen åben i to faner skrev en gammel, urørt
+        // fane så hele sin udgave over det, læreren havde rettet i den
+        // anden — uden en advarsel, hun kunne se (den kom i den fane, der
+        // lukkede). Målt med en sonde over 17 gamle klasseformer.
+        //
+        // Har indlæsningen intet rettet, skriver gemmet ingenting
+        // (updateClass → _hasOwnChange), så det er gratis at kalde altid.
+        setTimeout(autoSave, 0);
 
     } catch (e) {
         console.error(e);
@@ -395,7 +416,7 @@ const confirmRename = async (newName) => {
             // den siger i sig selv, at loadClasses() aldrig skulle vælge om.
             refreshClassList();
             if (state.currentClass && state.currentClass.filename === c.filename) {
-                api.fetchClass(c.filename).then(data => {
+                api.fetchClass(c.filename, { track: true }).then(data => {
                     state.currentClass = data;
                 }).catch(err => {
                     console.error("Fejl ved genindlæsning:", err);
@@ -644,7 +665,7 @@ onUnmounted(() => {
 
         <div style="flex: 1"></div>
 
-        <button id="topbar-guide-btn" type="button" class="topbar-guide"
+        <button id="topbar-guide-btn" type="button" class="topbar-guide" title="Vis guide"
                 :class="{ 'is-unused': !guideEvent }" :disabled="!guideEvent" @click="showGuide">
             <Lightbulb :size="15" />
             <span>Vis guide</span>
@@ -712,7 +733,7 @@ onUnmounted(() => {
         <!-- Samme som fanerne: de tre ikoner åbner hver sin side, og den man
              står på var kun markeret med farve. aria-current gør den hørbar. -->
         <button class="topbar-icon" :class="{active: state.navView === 'edu'}" :aria-current="state.navView === 'edu' ? 'page' : null" @click="navigateTo('edu')" title="Pædagogisk guide" aria-label="Pædagogisk guide"><BookOpen :size="18" /></button>
-        <button class="topbar-icon" :class="{active: state.navView === 'gdpr'}" :aria-current="state.navView === 'gdpr' ? 'page' : null" @click="navigateTo('gdpr')" title="GDPR & Data" aria-label="GDPR &amp; Data"><ShieldCheck :size="18" /></button>
+        <button class="topbar-icon" :class="{active: state.navView === 'gdpr'}" :aria-current="state.navView === 'gdpr' ? 'page' : null" @click="navigateTo('gdpr')" title="Privatliv & GDPR" aria-label="Privatliv &amp; GDPR"><ShieldCheck :size="18" /></button>
         <button class="topbar-icon" :class="{active: state.navView === 'help'}" :aria-current="state.navView === 'help' ? 'page' : null" @click="navigateTo('help')" title="Om programmet" aria-label="Om programmet"><HelpCircle :size="18" /></button>
     </div>
   </header>
@@ -828,6 +849,10 @@ onUnmounted(() => {
     align-items: center;
     gap: 0;
     height: 64px;
+    /* Fanerne skrumper ikke — klassepillen gør (den har "…"). Før brød
+       "Import & backup" over tre linjer ved 1.024-1.180 px med et langt
+       klassenavn (målt 9/11 2026). */
+    flex-shrink: 0;
 }
 
 .nav-tab {
@@ -844,6 +869,7 @@ onUnmounted(() => {
     transition-duration: 0.2s;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .nav-tab:hover {
@@ -945,81 +971,6 @@ onUnmounted(() => {
 .chevron {
     font-size: 10px;
     color: var(--text-subtle);
-}
-
-/* Smal skærm og browser-zoom: en bærbar på 1366×768 med 150 % zoom er 911
-   CSS-pixel bred. Dér fik klassenavnet 7 px af pillen — "2.a (testdata)"
-   stod som "2", uden "…", så det lignede et helt navn, og læreren kunne ikke
-   se, hvilken klasse der var åben. Ordet "Klasse" og fanernes luft tog
-   pladsen. Under 1100 px står ordet derfor kun i knappens tilgængelige navn
-   (skærmlæseren siger stadig "Klasse 2.a …"), og fanerne rykker tættere. */
-@media (max-width: 1099px) {
-    .class-label {
-        position: absolute;
-        inline-size: 1px;
-        block-size: 1px;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
-    }
-
-    .class-trigger {
-        padding-inline-start: 16px;
-    }
-
-    .nav-tab {
-        padding-inline: 10px;
-    }
-}
-
-/* Telefon (under 700 px): Grupper er lavet til computer, men skal kunne
-   bruges i en nødsituation. På én række løb fanerne ind i ikonerne, og
-   klassevælgeren forsvandt. Nu er bjælken to rækker: logo og ikoner øverst,
-   faner og klasse nederst. Fanerne ruller sidelæns, hvis de ikke kan være der.
-   Højden (--header-height: 112px) sættes i style.css, så alt, der måler sig
-   efter bjælken, følger med. */
-@media (max-width: 700px) {
-    .topbar {
-        flex-wrap: wrap;
-        padding-inline: 12px;
-    }
-    .brand { block-size: 56px; }
-    .brand-sep { display: none; }
-    .nav-right { gap: 2px; }
-    .topbar-guide { display: none; }
-    /* Fanerne får hele nederste række; klassevælgeren rykker op mellem
-       logoet og ikonerne. `display: contents` lader de to stå hver for sig
-       i bjælken, selv om de ligger i samme boks i markup. */
-    .brand-text { display: none; }
-    .nav-center { display: contents; }
-    .nav-center > div[style] { display: none; }
-    .class-context {
-        order: 1;
-        flex: 1;
-        max-inline-size: none;
-        margin-inline: 10px;
-    }
-    .nav-right { order: 2; }
-    /* Klassemenuen centreret under pillen gik ud over venstre kant */
-    .glass-dropdown {
-        left: 0;
-        transform: none;
-        width: min(280px, calc(100vw - 24px));
-    }
-    .main-nav {
-        order: 3;
-        flex-basis: 100%;
-        block-size: 55px;
-        min-inline-size: 0;
-        overflow-x: auto;
-        scrollbar-width: none;
-        border-block-start: 1px solid var(--surface-tint);
-    }
-    .nav-tab {
-        white-space: nowrap;
-        padding-inline: 10px;
-    }
-    .nav-tab:first-child { padding-inline-start: 0; }
 }
 
 /* Klassemenuen */
@@ -1198,5 +1149,130 @@ onUnmounted(() => {
 .fade-slide-down-leave-to {
     opacity: 0;
     transform: translate(-50%, -10px);
+}
+
+/* ── Smalle vinduer ──────────────────────────────────────────────────────────
+   Medieblokkene står SIDST med vilje. En regel her har samme vægt som
+   grundreglen, så den, der står længst nede, vinder. Stod de før grundreglerne
+   for .nav-right, .topbar-guide og .glass-dropdown, virkede intet af det, de
+   satte på dem: ikonerne fik aldrig den smallere afstand, pæren aldrig den
+   smallere polstring, og klassemenuen stod 11 px uden for venstre kant ved
+   375 px (målt 10/11 2026). Læg nye grundregler OVEN OVER denne linje. */
+/* Smal skærm og browser-zoom: en bærbar på 1366×768 med 150 % zoom er 911
+   CSS-pixel bred. Dér fik klassenavnet 7 px af pillen — "2.a (testdata)"
+   stod som "2", uden "…", så det lignede et helt navn, og læreren kunne ikke
+   se, hvilken klasse der var åben. Ordet "Klasse" og fanernes luft tog
+   pladsen. Under 1100 px står ordet derfor kun i knappens tilgængelige navn
+   (skærmlæseren siger stadig "Klasse 2.a …"), og fanerne rykker tættere. */
+@media (max-width: 1099px) {
+    .class-label {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .class-trigger {
+        padding-inline-start: 16px;
+    }
+
+    .nav-tab {
+        padding-inline: 10px;
+    }
+
+    /* "Vis guide" som pære alene. Siden 9/11 skrumper fanerne ikke (så
+       "Import & backup" ikke brød over tre linjer), og så tog de og guide-
+       knappen al pladsen: ved 911 px stod klassenavnet på 31 px — ét tegn.
+       Ordet står stadig i knappens navn (skærmlæser) og som tip (title). */
+    .topbar-guide {
+        padding-inline: 10px;
+    }
+    .topbar-guide span {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+}
+
+/* Smalle vinduer (under 900 px) og telefon: på én række løb fanerne ind i
+   ikonerne, og klassevælgeren forsvandt. Ved 850 px var der 34 px til
+   klassenavnet, under 800 px intet, og under 780 px lå pillen oven i
+   ikonerne (målt 10/11 2026) — fx et vindue på halvdelen af en bærbar.
+   Nu er bjælken to rækker: logo, klasse og ikoner øverst, fanerne nederst.
+   Fanerne ruller sidelæns, hvis de ikke kan være der. Højden
+   (--header-height: 112px) sættes i style.css med SAMME grænse, så alt, der
+   måler sig efter bjælken, følger med. */
+@media (max-width: 900px) {
+    .topbar {
+        flex-wrap: wrap;
+    }
+    .brand { block-size: 56px; }
+    .brand-sep { display: none; }
+    .nav-right { gap: 2px; }
+    /* Fanerne får hele nederste række; klassevælgeren rykker op mellem
+       logoet og ikonerne. `display: contents` lader de to stå hver for sig
+       i bjælken, selv om de ligger i samme boks i markup. */
+    .nav-center { display: contents; }
+    /* Guidens pære står lige efter logoet (stregen mellem dem er væk) */
+    .topbar-guide { margin-inline-start: 12px; }
+    .nav-center > div[style] { display: none; }
+    .class-context {
+        order: 1;
+        flex: 1;
+        max-inline-size: none;
+        margin-inline: 10px;
+    }
+    .nav-right { order: 2; }
+    /* Klassemenuen centreret under pillen gik ud over venstre kant */
+    .glass-dropdown {
+        left: 0;
+        transform: none;
+        width: min(280px, calc(100vw - 24px));
+    }
+    .main-nav {
+        order: 3;
+        flex-basis: 100%;
+        block-size: 55px;
+        min-inline-size: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        border-block-start: 1px solid var(--surface-tint);
+    }
+    .nav-tab {
+        white-space: nowrap;
+        padding-inline: 10px;
+    }
+    .nav-tab:first-child { padding-inline-start: 0; }
+    /* Fanerækken ruller sidelæns og klipper derfor alt uden for sig selv:
+       fokusringen 2 px udenfor stod kun som to lodrette streger. Indenfor
+       kan den ses hele vejen rundt. */
+    .nav-tab:focus-visible { outline-offset: -2px; }
+}
+
+/* Telefon (under 700 px): Grupper er lavet til computer, men skal kunne
+   bruges i en nødsituation. Ordet "grup.dk" må vige for klassen; logoets
+   ikon, guidens pære og ikonerne bliver. (Her stod før også
+   `.topbar-guide { display: none }`, men den virkede aldrig — grundreglen
+   længere nede har samme vægt og vinder — og guiden bruges på telefon:
+   e2e/guide_smal_skaerm.spec.ts.) */
+@media (max-width: 700px) {
+    .topbar { padding-inline: 12px; }
+    .brand-text { display: none; }
+    /* Kun ikonet står foran pæren; klassenavnet skal have pladsen */
+    .topbar-guide { margin-inline-start: 6px; }
+    /* Klassemenuen: under pillen var den 8 px for bred ved 375 px (pillen
+       står 85 px inde). Her ligger den fast under øverste række i hele
+       skærmens bredde (12 px fra kanterne, som bjælken). */
+    .glass-dropdown {
+        position: fixed;
+        inset-block-start: 56px;
+        inset-inline: 12px;
+        width: auto;
+    }
 }
 </style>

@@ -54,8 +54,9 @@ if (typeof window !== 'undefined' && window.addEventListener) {
     });
 }
 
-// Klasser vi allerede har sagt til om, at grupperne blev ændret et andet sted.
-const _foreignGroupsWarned = new Set();
+// Pr. klasse: den fordeling (hvem står hvor), vi sidst har sagt til om, at
+// en anden fane har gemt. Filnavn → _memberLists(...) af den anden fanes grupper.
+const _foreignGroupsWarned = new Map();
 
 /**
  * Har den ANDEN fane dannet grupper i den klasse, vi står i?
@@ -72,8 +73,16 @@ const _foreignGroupsWarned = new Set();
  * hver gang grupperne gemmes (det sker ved hvert træk, hvert emne, hver lås).
  *
  * Vi retter ikke skærmen af os selv: det ville rive lærerens arbejde væk midt
- * i en time. Hun får beskeden én gang pr. klasse og bestemmer selv — med en
- * knap, "Hent de nye grupper", der henter den anden fanes grupper ind her.
+ * i en time. Hun får beskeden og bestemmer selv — med en knap, "Hent de nye
+ * grupper", der henter den anden fanes grupper ind her.
+ *
+ * Hvornår kommer den igen? Når den anden fane gemmer en ANDEN fordeling end
+ * den, vi sidst sagde til om. Den anden fane gemmer ved hvert emne og hver
+ * lås, og de gemninger skal ikke give en ny besked hver gang. Men før kom den
+ * kun én gang pr. klasse, til læreren trykkede "Hent": lukkede hun den med
+ * krydset, var den brugt op, og en NY kørsel i den anden fane blev skrevet
+ * væk af næste træk her uden en lyd. (Står beskeden stadig på skærmen,
+ * lægges der ikke en til; notificationState springer dubletter over.)
  */
 function _noticeForeignGroups(e) {
     if (!e.key || !e.key.startsWith(GROUPS_PREFIX)) return;
@@ -83,14 +92,19 @@ function _noticeForeignGroups(e) {
     if (e.newValue === null) return;
     if (!state.currentClass || !state.currentClass.filename) return;
     if (e.key !== `${GROUPS_PREFIX}${state.currentClass.filename}`) return;
-    if (_foreignGroupsWarned.has(state.currentClass.filename)) return;
+    // Samme fordeling som den, vi sidst sagde til om: intet nyt at sige.
+    let incoming;
+    try { incoming = _incomingMemberLists(e.newValue); } catch { incoming = null; }
+    if (incoming !== null && _foreignGroupsWarned.get(state.currentClass.filename) === incoming) return;
     // Viser fanen allerede de samme grupper, er der intet at sige. Den anden
     // fane gemmer flere gange pr. kørsel, og efter "Hent de nye grupper" kom
     // beskeden ellers straks igen om grupper, læreren lige havde hentet.
     // Det koster ét JSON.parse, men kun i de ANDRE faner og kun for netop
     // denne klasse — ikke ved fanens egne gemninger.
-    if (_sameGroupsAsShown(e.newValue)) return;
-    _foreignGroupsWarned.add(state.currentClass.filename);
+    // Glem samtidig det, vi sidst sagde til om: ændrer den anden fane grupperne
+    // tilbage til netop den fordeling, er det nyt igen.
+    if (_sameGroupsAsShown(e.newValue)) { _foreignGroupsWarned.delete(state.currentClass.filename); return; }
+    _foreignGroupsWarned.set(state.currentClass.filename, incoming);
 
     const filename = state.currentClass.filename;
     const displayName = state.currentClass.name || filename;
@@ -105,6 +119,13 @@ function _noticeForeignGroups(e) {
 // Hvem står i hvilken gruppe — det eneste, der afgør, om grupperne er de samme.
 function _memberLists(groups) {
     return JSON.stringify((groups || []).map(g => (g && g.members) || []));
+}
+
+// Stamgrupper og matrix under ét, så de kan sammenlignes som én tekst.
+// Kaster ved ulæselig JSON — kalderen afgør, hvad det betyder.
+function _incomingMemberLists(newValue) {
+    const saved = JSON.parse(newValue);
+    return _memberLists(saved?.standard) + '|' + _memberLists(saved?.matrix);
 }
 
 function _sameGroupsAsShown(newValue) {
@@ -143,8 +164,8 @@ function _sameGroupsAsShown(newValue) {
  * Kendt rest: emnekortet læses fra lageret, så kørslen, pushRun() lægger til
  * side, får den anden fanes emner med, hvis den har skrevet nogen.
  *
- * Bagefter må beskeden gerne komme igen, hvis den anden fane ændrer dem endnu en
- * gang: læreren har jo set den første og handlet på den.
+ * Bagefter kommer beskeden igen, hvis den anden fane ændrer dem endnu en gang
+ * (det gør den også uden "Hent"; se _noticeForeignGroups).
  * @returns {boolean} true, hvis grupperne blev hentet
  */
 export function adoptForeignGroups(filename) {
@@ -342,6 +363,10 @@ export function saveGroupsToStorage() {
         // nye stamgrupper. Læses igen i selectClass() (AppTopbar.vue).
         matrixStale: !!state.matrixGroupsStale,
     };
+    // Nu står DENNE fanes grupper i lageret. Gemmer den anden fane bagefter
+    // den fordeling, vi sagde til om sidst, er den væk igen ved næste træk
+    // her — så skal beskeden kunne komme igen.
+    _foreignGroupsWarned.delete(state.currentClass.filename);
     return safeSave(`${GROUPS_PREFIX}${state.currentClass.filename}`, JSON.stringify(data)) !== false;
 }
 

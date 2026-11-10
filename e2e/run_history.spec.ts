@@ -310,11 +310,10 @@ test('Tabber man ud af kørselsmenuen, slipper forhåndsvisningen', async ({ pag
         (window as any).appDebug.state.previewRunIndex)).not.toBeNull();
 
     // Tab videre, indtil fokus er ude af menuen — ét tryk ad gangen, og stop
-    // dér. Før stod her 8 tryk i træk: siden privacy-link.js også hentes under
-    // udvikling (26/10), ligger "Privatlivspolitik" sidst på siden, og 8 tryk
-    // løb forbi den og helt ud af dokumentet. Fokus på <body> tæller med vilje
-    // ikke som "udenfor" (se onRootFocusOut), så menuen blev stående — en
-    // lærer, der tabber ud, lander på linket, og så lukker den.
+    // dér. Før stod her 8 tryk i træk, og de løb helt ud af dokumentet. Fokus
+    // på <body> tæller med vilje ikke som "udenfor" (se onRootFocusOut), så
+    // menuen blev stående. (Fra 26/10 til 10/11 2026 lå privacy-link.js'
+    // "Privatlivspolitik" sidst på siden; det felt er fjernet.)
     for (let i = 0; i < 12; i++) {
         await page.keyboard.press('Tab');
         const inside = await page.evaluate(() => {

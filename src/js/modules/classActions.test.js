@@ -14,7 +14,7 @@ vi.mock('./modalState.js', async (importOriginal) => {
     return { ...actual, modalActions: { ...actual.modalActions, openDeleteColumn: vi.fn() } };
 });
 
-import { handleAddRow, handleSeparateAction, coveredSeparationIndexes, autoSave, registerPendingWrite, flushPendingWrites } from './classActions.js';
+import { handleAddRow, handleSeparateAction, coveredSeparationIndexes, autoSave, registerPendingWrite, flushPendingWrites, syncDisplayColumn } from './classActions.js';
 import { saveClassData } from './api.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -372,5 +372,60 @@ describe('handleTogetherAction', () => {
         expect(state.currentClass.togetherGroups).toHaveLength(1);
         expect(saveClassData).not.toHaveBeenCalled();
         expect(window.notifyError).toHaveBeenCalledWith(expect.stringContaining('undgåelse'));
+    });
+});
+
+// Vis-kolonnen sættes ved indlæsningen (AppTopbar) og i ClassView. Før
+// 10/11 2026 kun i ClassView, så en genindlæsning i Hjælp gav en tom
+// Vis-kolonne, og næste gem skrev den første kolonne over lærerens valg.
+describe('syncDisplayColumn', () => {
+    beforeEach(() => {
+        state.displayColumn = '';
+        state.currentClass = { filename: 'test', columns: ['Navn', 'Køn', 'Karakter'], id_column: 'Køn', data: [] };
+    });
+
+    it('bruger lærerens gemte valg', () => {
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('Køn');
+    });
+
+    it('et gemt valg, der ikke findes, giver den første kolonne', () => {
+        state.currentClass.id_column = 'Findes ikke';
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('Navn');
+    });
+
+    it('beholder et gyldigt valg, når klassen intet har gemt', () => {
+        state.currentClass.id_column = '';
+        state.displayColumn = 'Karakter';
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('Karakter');
+    });
+
+    it('et valg fra en anden klasse bruges ikke', () => {
+        state.currentClass.id_column = '';
+        state.displayColumn = 'Fornavn';
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('Navn');
+    });
+
+    it('interne felter og ingen klasse giver ingen Vis-kolonne', () => {
+        state.currentClass = { columns: ['_rowId'] };
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('');
+        state.currentClass = null;
+        syncDisplayColumn();
+        expect(state.displayColumn).toBe('');
+    });
+
+    it('og autoSave gemmer valget som id_column', () => {
+        state.activeView = 'standard';
+        syncDisplayColumn();
+        saveClassData.mockClear();
+        autoSave();
+        expect(saveClassData.mock.calls[0][3]).toBe('Køn');
+        // …og hukommelsen siger det samme, så elevlistens side ikke tager
+        // det gamle valg frem, når den tegnes forfra (fx efter Hjælp).
+        expect(state.currentClass.id_column).toBe('Køn');
     });
 });

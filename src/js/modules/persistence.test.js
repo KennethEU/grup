@@ -73,8 +73,80 @@ describe('klasselisten — to faner', () => {
         // fane starter tom, så det skal den også gøre her — ellers tier
         // advarslen om en slettet klasse, fordi den blev sagt i forrige test.
         pyBridge._seenModified.clear();
+        pyBridge._seenContent.clear();
+        pyBridge._foreignEditWarned.clear();
         pyBridge._deletedElsewhereWarned.clear();
         window.notifyError = () => {};
+    });
+
+    // En fane uden egne rettelser må ikke skrive sin gamle udgave over den
+    // anden fanes. Det skete før ved hvert gem uden ændring — et klik i en
+    // celle, og især når fanen blev lukket (flushPendingWrites). Se
+    // _hasOwnChange() i py_bridge.js.
+    describe('en fane uden egne rettelser skriver ikke', () => {
+        /** Den anden fane retter Anna til Annika — udenom pyBridge's cache. */
+        function otherTabRenames(file, name) {
+            const list = JSON.parse(localStorage.getItem('grupdk_classes'));
+            const cls = list.find(c => c.filename === file);
+            cls.content.data[0].Navn = name;
+            cls.last_modified = new Date(Date.now() + 1000).toISOString();
+            localStorage.setItem('grupdk_classes', JSON.stringify(list));
+            pyBridge._invalidateClassesCache();
+        }
+        const stored = (file) => JSON.parse(localStorage.getItem('grupdk_classes'))
+            .find(c => c.filename === file);
+        /** Opret og gem én gang med alle felter — som appen gør lige efter oprettelsen. */
+        function createSaved(csv) {
+            pyBridge.createClass('3a', csv, true);
+            const file = pyBridge.getClasses()[0].filename;
+            const first = pyBridge.getClass(file, { track: true });
+            pyBridge.updateClass(file, first.content.data, [], 'Navn', [], {}, {}, [], [], {});
+            return file;
+        }
+
+        it('et gem af det, fanen allerede kender, lader den anden fanes rettelse stå', () => {
+            const file = createSaved('Navn\nAnna\nBo\n');
+            const mine = pyBridge.getClass(file, { track: true });   // denne fane har klassen åben
+            const data = structuredClone(mine.content.data);
+            otherTabRenames(file, 'Annika');
+            const stamp = stored(file).last_modified;
+
+            const res = pyBridge.updateClass(file, data, mine.content.rules, 'Navn', [], {}, {}, [], [], {});
+
+            expect(res.success).toBe(true);
+            expect(stored(file).content.data[0].Navn).toBe('Annika');
+            expect(stored(file).last_modified).toBe(stamp);
+        });
+
+        it('en rigtig rettelse i denne fane gemmes stadig — med advarslen', () => {
+            const warnings = [];
+            window.notifyError = (m) => warnings.push(m);
+            const file = createSaved('Navn\nAnna\nBo\n');
+            const mine = pyBridge.getClass(file, { track: true });
+            const data = structuredClone(mine.content.data);
+            otherTabRenames(file, 'Annika');
+
+            data[1].Navn = 'Bodil';
+            pyBridge.updateClass(file, data, mine.content.rules, 'Navn', [], {}, {}, [], [], {});
+
+            expect(stored(file).content.data[1].Navn).toBe('Bodil');
+            expect(warnings.join(' ')).toContain('også åben i en anden fane');
+        });
+
+        it('efter et gem er DET den udgave, fanen kender — fortryd tilbage gemmes', () => {
+            const file = createSaved('Navn\nAnna\n');
+            const mine = pyBridge.getClass(file, { track: true });
+            const data = structuredClone(mine.content.data);
+
+            data[0].Navn = 'Anne';
+            pyBridge.updateClass(file, data, mine.content.rules, 'Navn', [], {}, {}, [], [], {});
+            expect(stored(file).content.data[0].Navn).toBe('Anne');
+
+            // Ctrl+Z: tilbage til den udgave, fanen åbnede med. Det ER en ændring.
+            data[0].Navn = 'Anna';
+            pyBridge.updateClass(file, data, mine.content.rules, 'Navn', [], {}, {}, [], [], {});
+            expect(stored(file).content.data[0].Navn).toBe('Anna');
+        });
     });
 
     it('en klasse oprettet i den anden fane overlever et gem i denne fane', () => {
@@ -341,9 +413,64 @@ describe('grupperne — to faner', () => {
         fromOtherTab('grupdk_groups_fane-1a.csv', JSON.stringify({ standard: [], matrix: null }));
 
         // Grupper skrives ved hvert træk, hvert emne og hver lås. Én besked
-        // pr. klasse — ellers dækker de skærmen og bliver klikket væk.
+        // pr. fordeling — ellers dækker de skærmen og bliver klikket væk.
         expect(warnings).toHaveLength(1);
         expect(warnings[0]).toContain('ændret i en anden fane');
+    });
+
+    // Før huskede fanen bare "sagt til om denne klasse" — til læreren trykkede
+    // "Hent de nye grupper". Lukkede hun beskeden med krydset, var den brugt
+    // op: en NY kørsel i den anden fane gav ingen besked, og et træk her skrev
+    // den væk uden en lyd.
+    it('en ny kørsel i den anden fane siges højt igen, selv om den første besked blev lukket', () => {
+        openClass('fane-6a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        const first = JSON.stringify({ standard: [{ name: 'Gruppe 1', members: ['r2', 'r1'] }], matrix: null });
+        fromOtherTab('grupdk_groups_fane-6a.csv', first);
+        // Samme fordeling igen (den anden fane gemmer et emne eller en lås): ingen ny besked
+        fromOtherTab('grupdk_groups_fane-6a.csv', first);
+        expect(warnings).toHaveLength(1);
+
+        // Den anden fane danner grupper én gang til
+        fromOtherTab('grupdk_groups_fane-6a.csv',
+            JSON.stringify({ standard: [{ name: 'Gruppe 1', members: ['r1'] }, { name: 'Gruppe 2', members: ['r2'] }], matrix: null }));
+        expect(warnings).toHaveLength(2);
+    });
+
+    it('har fanen selv gemt sine grupper siden, siges den samme fordeling højt igen', () => {
+        openClass('fane-7a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        const theirs = JSON.stringify({ standard: [{ name: 'Gruppe 1', members: ['r2', 'r1'] }], matrix: null });
+        fromOtherTab('grupdk_groups_fane-7a.csv', theirs);
+        // Læreren flytter alligevel her: fanens egne grupper står i lageret igen
+        storage.saveGroupsToStorage();
+        // Den anden fane gemmer sin fordeling igen (fx en lås): den er væk igen, hvis hun flytter
+        fromOtherTab('grupdk_groups_fane-7a.csv', theirs);
+        expect(warnings).toHaveLength(2);
+    });
+
+    it('går den anden fane tilbage til de viste grupper og så frem igen, siges det højt igen', () => {
+        openClass('fane-8a.csv');
+        state.storedStandardGroups = [{ name: 'Gruppe 1', members: ['r1', 'r2'] }];
+        state.storedMatrixGroups = null;
+        const warnings = [];
+        window.notifyError = (m) => warnings.push(m);
+
+        const run1 = JSON.stringify({ standard: [{ name: 'Gruppe 1', members: ['r2', 'r1'] }], matrix: null });
+        fromOtherTab('grupdk_groups_fane-8a.csv', run1);
+        // Den anden fane henter de grupper frem, denne fane viser (fx fra kørselsmenuen) …
+        fromOtherTab('grupdk_groups_fane-8a.csv', JSON.stringify({ standard: state.storedStandardGroups, matrix: null }));
+        // … og så kørsel 1 igen: et træk her ville skrive den væk
+        fromOtherTab('grupdk_groups_fane-8a.csv', run1);
+        expect(warnings).toHaveLength(2);
     });
 
     it('en anden klasses grupper rører os ikke', () => {

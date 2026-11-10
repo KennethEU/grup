@@ -1,7 +1,7 @@
 
 <script setup>
 import PageLayout from './PageLayout.vue';
-import { ShieldCheck, CheckCircle, CloudOff, FolderOpen, Globe } from 'lucide-vue-next';
+import { ShieldCheck, CheckCircle, CloudOff, FolderOpen, Globe, FileText } from 'lucide-vue-next';
 import { UI_NAMES } from '../js/modules/beta.js';
 </script>
 
@@ -11,6 +11,18 @@ import { UI_NAMES } from '../js/modules/beta.js';
         <h2 class="view-title"><ShieldCheck :size="22" class="title-icon" />GDPR &amp; datasikkerhed</h2>
         <p class="view-subtitle">
             Det korte svar: <strong>Elevernes oplysninger forlader aldrig din computer.</strong>
+        </p>
+        <!-- Privatlivspolitikken står øverst her, bag skjoldet "Privatliv & GDPR"
+             i topbjælken. Før lagde den fælles /privacy-link.js et løst felt
+             nederst til højre oven på Grupper; det er fjernet (10/11 2026).
+             Relativ: grup.dk/privatliv.html (app.js) og dida.dk/grupper/privatliv.html -->
+        <p class="content-text">
+            <!-- Afstanden står i stilen: Vue fjerner mellemrummet mellem ikonet og
+                 linket, når de står på hver sin linje -->
+            <FileText :size="15" style="vertical-align:-2px; margin-inline-end:4px;" />
+            <a href="privatliv.html" target="_blank" rel="noopener noreferrer"
+                class="content-link">Læs privatlivspolitikken for grup.dk</a>
+            (åbner i en ny fane).
         </p>
 
         <div class="feature-grid">
