@@ -175,7 +175,10 @@ export function initApiAdapter() {
                             allowCreate: body.allowCreate === true,
                             name: typeof body.name === 'string' ? body.name : undefined,
                             togetherGroups: body.togetherGroups,
-                            hiddenColumns: body.hiddenColumns
+                            hiddenColumns: body.hiddenColumns,
+                            // Bruges kun, når klassen ingen elever har
+                            // (se updateClass i py_bridge.js).
+                            columns: body.columns
                         }
                     );
 

@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { isLectioFormat, extractLectioNames } from './lectio.js';
+import { pyBridge } from './py_bridge.js';
 // Listen er i Lectios eget format (taget fra en rigtig liste), men navnene er
 // opdigtede — se testdata/README.md. `?raw` giver filen som tekst.
 import LIST from '../../../testdata/lectio_elevliste.txt?raw';
@@ -102,8 +103,78 @@ describe('Lectio-hold med mellemrum i navnet', () => {
         expect(isLectioFormat(', 2a SA 03 (2a SA)\n , 2a SA 11 (2a SA)')).toBe(false);
     });
 
+    // Navnet har selv et komma, så det kommer ud i anførselstegn — ellers
+    // læser CSV-tolkningen bagefter det som to kolonner (se herunder).
     it('stopper ved sidste komma — resten af navnet bliver', () => {
         expect(extractLectioNames('Holm, Anna, 2a SA 04 (2a SA)\nLund, Bo, 2a SA 05 (2a SA)'))
-            .toBe('Holm, Anna\nLund, Bo');
+            .toBe('"Holm, Anna"\n"Lund, Bo"');
+    });
+});
+
+// Teksten fra extractLectioNames læses som CSV, og CSV-læsningen gætter
+// skilletegnet. Før gav én linje "Hansen, Bo" HELE klassen to kolonner:
+// "Hansen" i Navn, "Bo" i en ny "Info 1" og en tom "Info 1" hos alle andre.
+describe('navne med skilletegn bliver i ét felt hele vejen ind i klassen', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+    });
+
+    const importNames = (text) => {
+        const res = pyBridge.createClass('2Tz', extractLectioNames(text), false);
+        expect(res.error).toBeUndefined();
+        return pyBridge.getClass(res.filename).content;
+    };
+
+    it.each([
+        ['et komma', 'Hansen, Bo'],
+        ['et semikolon', 'Bo; Ida'],
+        ['et komma og anførselstegn', 'Holm, Mads "Mini"'],
+        ['anførselstegn alene', 'Mads "Mini" Holm'],
+    ])('en linje skrevet til i hånden med %s', (_label, name) => {
+        for (const text of [LIST.trim() + '\n' + name, name + '\n' + LIST.trim()]) {
+            const content = importNames(text);
+            expect(content.columns).toEqual(['Navn']);
+            expect(content.data).toHaveLength(LINES.length + 1);
+            expect(content.data.map(r => r.Navn)).toContain(name);
+            expect(content.data.map(r => r.Navn)).toContain('Zakarias Ploug');
+        }
+    });
+
+    it('en hel Lectio-liste giver præcis navnene i én kolonne', () => {
+        const content = importNames(LIST);
+        expect(content.columns).toEqual(['Navn']);
+        expect(content.data.map(r => r.Navn)).toEqual(extractLectioNames(LIST).split('\n'));
+    });
+});
+
+// Genkendelsen var før ét mønster med "^.*\S.*" foran holdet. Det var
+// kvadratisk i linjens længde (ca. 40 ms pr. ændring i feltet med en indsat
+// Excel-liste på 300 × 20 celler). Den nye vej skal give præcis samme svar.
+describe('genkendelsen giver samme svar som det gamle mønster', () => {
+    const OLD_LINE = /^.*\S.*,\s*[^,()]*\S\s+\d+\s+\([^()]*\S[^()]*\)\s*$/;
+    // Små brikker, der netop rammer mønstrets kanter: komma, parenteser,
+    // tal, mellemrum, tabulator og bogstaver.
+    const PIECES = [',', ', ', '(', ')', ' ', '\t', '0', '12', 'a', 'Bo', '2a SA', ' 04 ', '(2a)', 'Ø'];
+
+    it('på 20.000 tilfældige linjer', () => {
+        let seed = 7;
+        const rand = (n) => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed % n; };
+        for (let i = 0; i < 20000; i++) {
+            const parts = Array.from({ length: 1 + rand(12) }, () => PIECES[rand(PIECES.length)]);
+            const a = parts.join('');
+            const b = a + '\n' + a;
+            const oldAnswer = OLD_LINE.test(a.trim());
+            expect(isLectioFormat(b), JSON.stringify(a)).toBe(oldAnswer);
+        }
+    });
+
+    it('en lang linje tager ikke lang tid', () => {
+        const long = 'a, b 1 '.repeat(2000);
+        const start = performance.now();
+        isLectioFormat(long + '\n' + long);
+        // Før ca. 600 ms; nu under 1 ms. Grænsen er rummelig, så en travl
+        // maskine ikke gør testen rød.
+        expect(performance.now() - start).toBeLessThan(100);
     });
 });

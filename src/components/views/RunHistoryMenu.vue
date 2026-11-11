@@ -149,7 +149,15 @@ function restore(index, alsoSettings) {
     const result = restoreRun(index, alsoSettings);
     if (result) {
         autoSave();
-        if (result.saved === false) {
+        if (result.groupsSaved !== false && result.topicsSaved === false) {
+            // Grupperne er gemt; kun emnekortet blev afvist. restoreRun har
+            // lagt lagerets emner på grupperne, så skærmen viser det, der står.
+            window.notifyError?.(
+                'Kørslen er hentet frem, men dens emner kunne ikke gemmes — ' +
+                'lagerpladsen er fuld. Grupperne står med de emner, der var gemt i forvejen. ' +
+                'Slet en gammel klasse eller ryd historikken, og hent kørslen igen.'
+            );
+        } else if (result.saved === false) {
             // Kørslen står på skærmen, men kunne ikke skrives til lageret.
             // En grøn kvittering ville sende læreren videre i den tro at det
             // hele er på plads — og næste genindlæsning ville hente de gamle

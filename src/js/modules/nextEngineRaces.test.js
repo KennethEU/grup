@@ -10,7 +10,7 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { nextTick } from 'vue';
-import { tryNextEngine, abortNextEngine, engineCheck, engineTogetherStop } from './nextEngine.js';
+import { tryNextEngine, abortNextEngine, engineCheck, engineTogetherStop, dropIdleEngineWorker } from './nextEngine.js';
 import { cancelGeneration } from './generation.js';
 import { state } from './state.js';
 import { clearRuns } from './runHistory.js';
@@ -64,6 +64,7 @@ async function flush(times = 5) {
 
 afterEach(() => {
     abortNextEngine();
+    dropIdleEngineWorker();
     clearRuns();
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
@@ -238,7 +239,10 @@ describe('Stop, og så svarer motoren', () => {
         expect(await run).toBe('done');
         expect(state.isGenerating).toBe(false);
         expect(state.activeJobId).toBe(null);
-        expect(w.terminated).toBe(true);
+        // Et svar (også efter Stop) lægger tråden til side til næste kørsel;
+        // en fejl lukker den (89. gennemsyn, se "Kørslens tråd genbruges" i
+        // nextEngine.js).
+        expect(w.terminated).toBe(message.type !== 'answer');
         expect(window.notifyError).not.toHaveBeenCalled();
         return w;
     }

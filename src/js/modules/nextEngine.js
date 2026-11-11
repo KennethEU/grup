@@ -18,6 +18,7 @@
 import { ref, computed, markRaw, reactive, watch } from 'vue';
 import { state } from './state.js';
 import * as storage from './storage.js';
+import { saveTopicsOrSettle } from './topicSettle.js';
 import * as replay from './replay.js';
 import { pushRun, markClean } from './runHistory.js';
 import { beginRun, announce, commitRun } from './setupNotices.js';
@@ -27,7 +28,7 @@ import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
     ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
-    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText,
+    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell,
 } from './utils.js';
 
 export const CONTRACT_VERSION = 3;
@@ -124,8 +125,8 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
             let values = raw.map(v => asText(v).trim()).filter(Boolean);
             // En værdi, som KUN låste elever har, gør ingenting (svar 5) — den
             // fjernes her, og står ingen tilbage, sendes reglen ikke.
-            const inFree = new Set(free.map(s => asText(s[column]).trim()));
-            const inLocked = new Set(present.filter(s => lockedIds.has(idOf(s))).map(s => asText(s[column]).trim()));
+            const inFree = new Set(free.map(s => asText(ownCell(s, column)).trim()));
+            const inLocked = new Set(present.filter(s => lockedIds.has(idOf(s))).map(s => asText(ownCell(s, column)).trim()));
             values = values.filter(v => inFree.has(v) || !inLocked.has(v));
             if (!values.length) continue;
             rule.values = values;
@@ -138,7 +139,12 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
     const columns = [...new Set(rules.map(r => r.column))];
     const students = free.map(row => {
         const out = { [ROW_ID]: idOf(row) };
-        for (const c of columns) out[c] = asText(row[c]);
+        // ownCell, ikke row[c]: en manglende celle i en kolonne kaldt
+        // "constructor" ville ellers sende teksten på en indbygget funktion
+        // som elevens værdi (se ownCell i utils.js). Det her er den eneste
+        // vej ind i motoren, så værnet står her, selv om klassen fyldes ud,
+        // når den åbnes (fillMissingCells).
+        for (const c of columns) out[c] = asText(ownCell(row, c));
         return out;
     });
 
@@ -674,6 +680,55 @@ function defaultWorker() {
     return new Worker(new URL('./engine-worker.js', import.meta.url), { type: 'module' });
 }
 
+// ─── Kørslens tråd genbruges ────────────────────────────────────────────────
+// Før startede hver "Dan grupper" en ny tråd og lukkede den efter svaret.
+// 89. gennemsyn (11/11 2026) mente, at Chrome ikke gav al hukommelsen fra en
+// lukket tråd tilbage — men det var målt med RSS, som på macOS svinger
+// 600–1150 MB mellem ens kørsler. Målt med `phys_footprint` (90. gennemsyn)
+// vokser hverken en ny tråd pr. kørsel eller én genbrugt tråd målbart fra 5
+// til 60 kørsler. Genbruget sparer altså ikke målbar hukommelse; det er
+// beholdt, fordi én ledig tråd er billig, og deploy-tjekket i
+// `tryNextEngine()` bygger på det (docs/grupper.md, "Kørslens tråd genbruges").
+//
+// Nu lægges tråden til side efter et rigtigt svar og bruges igen næste gang.
+// Det er sikkert, fordi motoren intet husker mellem to kørsler: engine-worker
+// nulstiller sit eneste flag (`cancelled`) ved hver 'run', og motorens egne
+// hjælpetråde (motor/engine/solve.js) startes og lukkes inde i hver kørsel.
+// Gik noget galt (fejl, tavshed, Stop uden svar, en ny kørsel midt i en
+// gammel), lukkes tråden som før — den kan være låst fast midt i et forsøg.
+let idle = null;   // { key, worker }: en ledig tråd fra en tidligere kørsel
+
+// Hvilken fabrik tråden kom fra. Testene giver hver kørsel sin egen falske
+// fabrik (eller udskifter `Worker`); en tråd må aldrig gå videre til en anden.
+function factoryKey(makeWorker) {
+    return makeWorker === defaultWorker && typeof Worker !== 'undefined' ? Worker : makeWorker;
+}
+
+function takeWorker(makeWorker) {
+    const key = factoryKey(makeWorker);
+    if (idle && idle.key === key) {
+        const { worker } = idle;
+        idle = null;
+        return worker;
+    }
+    dropIdleEngineWorker();
+    return makeWorker();
+}
+
+/** Står der en ledig tråd fra en tidligere kørsel? */
+export function hasIdleEngineWorker() {
+    return !!idle;
+}
+
+/** Luk den ledige tråd (hvis der er en). Til testene, og når en anden fabrik overtager. */
+export function dropIdleEngineWorker() {
+    if (!idle) return;
+    try { idle.worker.terminate(); } catch { /* væk i forvejen */ }
+    idle = null;
+}
+
+let runSeq = 0;   // kørslens nummer: tråden sender det med tilbage
+
 /**
  * Kør motoren i sin egen tråd. Svarer ALTID (aldrig en hængende
  * promise):
@@ -689,12 +744,22 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
         let timer = null;
         let done = false;
         let stopping = false;
+        const runId = ++runSeq;
 
-        const finish = (result) => {
+        // `reusable`: tråden svarede rent og står nu ledig — den lægges til
+        // side til næste kørsel. Alt andet lukker den.
+        const finish = (result, reusable = false) => {
             if (done) return;
             done = true;
             clearTimeout(timer);
-            try { worker && worker.terminate(); } catch { /* allerede væk */ }
+            if (worker && reusable) {
+                worker.onmessage = null;
+                worker.onerror = null;
+                dropIdleEngineWorker();
+                idle = { key: factoryKey(makeWorker), worker };
+            } else {
+                try { worker && worker.terminate(); } catch { /* allerede væk */ }
+            }
             if (current && current.worker === worker) current = null;
             resolve(result);
         };
@@ -716,7 +781,7 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
         };
 
         try {
-            worker = makeWorker();
+            worker = takeWorker(makeWorker);
         } catch (e) {
             finish({ kind: 'failed', reason: 'den kunne ikke startes' });
             return;
@@ -725,11 +790,15 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
 
         worker.onmessage = (e) => {
             const m = e.data || {};
+            // En besked fra en tidligere kørsel i samme tråd hører ikke til
+            // her. (Tråden sender altid nummeret med; testenes falske tråde
+            // sender ingenting, derfor kun når det er der.)
+            if (m.id !== undefined && m.id !== runId) return;
             if (m.type === 'progress') {
                 keepAlive();
                 try { onProgress && onProgress(m.progress); } catch { /* skærmen må ikke vælte motoren */ }
             } else if (m.type === 'answer') {
-                finish(stopping ? { kind: 'answer', answer: m.answer, afterStop: true } : { kind: 'answer', answer: m.answer });
+                finish(stopping ? { kind: 'answer', answer: m.answer, afterStop: true } : { kind: 'answer', answer: m.answer }, true);
             } else if (m.type === 'crash') {
                 console.error('[Gruppemotor] Fejl:', m.message);
                 finish(stopping ? { kind: 'cancelled' } : { kind: 'failed', reason: 'den stødte på en fejl' });
@@ -742,7 +811,7 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
         };
 
         keepAlive();
-        worker.postMessage({ type: 'run', input });
+        worker.postMessage({ type: 'run', id: runId, input });
     });
 }
 
@@ -852,6 +921,15 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     const originFilename = state.currentClass.filename;
     const lockedGroups = viewGroups.filter(g => g && g.locked);
 
+    // Genbruges en tråd fra en tidligere kørsel, hentes motorens fil ikke
+    // igen — og så opdager denne fane ikke længere en deploy på, at filen er
+    // væk (rsync --delete; se fejlvejen nedenfor). Motorens hjælpetråde ville
+    // så fejle i stilhed, og den gamle motor regnede videre på én kerne. Derfor
+    // spørges der samtidig (uden at vente) om en ny udgave, som fejlvejen gør.
+    // Målt 11/11 2026 (89. gennemsyn) med en sonde, der gjorde trådfilerne til
+    // 404 efter første kørsel: før genbruget kom beskeden ved første tryk.
+    const buildCheck = hasIdleEngineWorker() ? checkForNewBuild() : null;
+
     let result;
     try {
         result = await runNextEngine(input, {
@@ -863,6 +941,18 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
         });
     } finally {
         nextRun.value = { active: false, progress: null, stopping: false };
+    }
+
+    // Ny udgave på serveren: den gamle tråd skal ikke bruges igen (næste
+    // kørsel henter filen og går fejlvejen, som før genbruget). Grupperne fra
+    // denne kørsel lander som normalt; beskeden kommer kun her, når kørslen
+    // lykkedes — fejlvejen siger den selv.
+    if (buildCheck) {
+        buildCheck.then((isNew) => {
+            if (!isNew) return;
+            dropIdleEngineWorker();
+            if (result.kind === 'answer') window.notifyError?.(NEW_BUILD_MESSAGE);
+        });
     }
 
     const stoppedByTeacher = result.kind === 'cancelled' || result.afterStop === true
@@ -1062,17 +1152,13 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
 
     finalGroups.sort((a, b) => (groupNumberOf(a.name) ?? 999999) - (groupNumberOf(b.name) ?? 999999));
 
-    // Emnerne hører kun til stamgrupperne.
-    //
-    // Emnekortet i lageret er det, ALT andet læser emnerne fra: kortet på
-    // skærmen (GroupCard), matrix-rundens kilder (topicFor), Vis for klassen,
-    // eksporten og en genindlæsning (hydrateGroupTopics). Kan det nye kort
-    // ikke skrives, står det FORRIGE kort tilbage med de samme gruppenavne
-    // ("Group 1" …). Så må grupperne ikke bare have topic: null — skærmen og
-    // matrix ville stadig vise og bruge de gamle emner på de nye grupper.
-    // Reglen er derfor: grupperne får det emne, der faktisk står i lageret,
-    // og beskeden siger, hvad det er (gennemsyn 84, landTopics.test.js).
-    const topicsFromStorage = () => finalGroups.forEach(g => { g.topic = storage.getTopic(g.name, 'S_') || null; });
+    // Emnerne. Emnekortet i lageret er det, ALT andet læser emnerne fra:
+    // kortet på skærmen (GroupCard), matrix-rundens kilder (topicFor), Vis
+    // for klassen, eksporten og en genindlæsning (hydrateGroupTopics). Kan
+    // det nye kort ikke skrives, står det FORRIGE kort tilbage med de samme
+    // gruppenavne ("Group 1" …). Reglen bor i saveTopicsOrSettle(): grupperne
+    // får det emne, der faktisk står i lageret, og beskeden siger, hvad det
+    // er (gennemsyn 84 og 85, landTopics.test.js).
     if (!isMatrix) {
         const hasTopics = (input.topics || []).length > 0;
         if (hasTopics) {
@@ -1081,33 +1167,45 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
             for (const g of lockedGroups) {
                 if (Object.prototype.hasOwnProperty.call(lockedTopics, String(g.name))) g.topic = lockedTopics[String(g.name)];
             }
-            if (storage.replaceTopicsForPrefix('S_', finalGroups) === false) {
-                // Prøv i stedet at fjerne de gamle stamgruppe-emner: det gør
-                // kortet MINDRE, så det plejer at gå, selv når lageret er fuldt.
-                if (storage.replaceTopicsForPrefix('S_', []) !== false) {
-                    finalGroups.forEach(g => { g.topic = null; });
-                    window.notifyError?.(
-                        'Lagerplads fuld — emnerne kunne ikke gemmes, så grupperne '
-                        + 'står uden emne. Slet en gammel session for at frigøre plads.'
-                    );
-                } else {
-                    topicsFromStorage();
-                    window.notifyError?.(
-                        'Lagerplads fuld — de nye emner kunne ikke gemmes, så grupperne '
-                        + 'står med emnerne fra forrige dannelse. Slet en gammel session '
-                        + 'for at frigøre plads, og dan grupperne igen.'
-                    );
-                }
-            }
-        } else if (storage.clearTopics('S_') === false) {
-            topicsFromStorage();
-            window.notifyError?.(
-                'Lagerplads fuld — de gamle gruppeemner kunne ikke fjernes, så de '
-                + 'står stadig på grupperne. Slet en gammel session for at frigøre '
-                + 'plads, og dan grupperne igen.'
-            );
         } else {
             finalGroups.forEach(g => { g.topic = null; });
+        }
+        const topicResult = saveTopicsOrSettle('S_', finalGroups);
+        if (topicResult === 'cleared' && hasTopics) {
+            window.notifyError?.(
+                'Lagerplads fuld — emnerne kunne ikke gemmes, så grupperne '
+                + 'står uden emne. Slet en gammel session for at frigøre plads.'
+            );
+        } else if (topicResult === 'stale') {
+            window.notifyError?.(hasTopics
+                ? 'Lagerplads fuld — de nye emner kunne ikke gemmes, så grupperne '
+                    + 'står med emnerne fra forrige dannelse. Slet en gammel session '
+                    + 'for at frigøre plads, og dan grupperne igen.'
+                : 'Lagerplads fuld — de gamle gruppeemner kunne ikke fjernes, så de '
+                    + 'står stadig på grupperne. Slet en gammel session for at frigøre '
+                    + 'plads, og dan grupperne igen.');
+        }
+    } else {
+        // Matrixgrupperne får ikke emner fra motoren, men emnekortet kan have
+        // matrix-emner fra før (en hentet session, et emne valgt på et
+        // matrixkort) under de samme navne. Uden oprydning stod de gamle
+        // emner på de NYE matrixgrupper — på skærmen, i eksporten og efter en
+        // genindlæsning. En låst matrixgruppe beholder sit emne.
+        for (const g of newGroups) g.topic = null;
+        for (const g of lockedGroups) g.topic = g.topic || storage.getTopic(g.name, 'M_') || null;
+        const lockedHadTopic = lockedGroups.some(g => g.topic);
+        const topicResult = saveTopicsOrSettle('M_', finalGroups);
+        if (topicResult === 'stale') {
+            window.notifyError?.(
+                'Lagerplads fuld — de gamle emner på matrixgrupperne kunne ikke '
+                + 'fjernes, så de står stadig på grupperne. Slet en gammel session '
+                + 'for at frigøre plads, og dan matrixgrupperne igen.'
+            );
+        } else if (topicResult === 'cleared' && lockedHadTopic) {
+            window.notifyError?.(
+                'Lagerplads fuld — emnerne på de låste matrixgrupper kunne ikke '
+                + 'gemmes, så de står uden emne. Slet en gammel session for at frigøre plads.'
+            );
         }
     }
 

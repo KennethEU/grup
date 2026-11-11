@@ -5,7 +5,9 @@
 // skærmen. Ændres noget i motor/engine, skal motorens egne tests og dommeren
 // bestå (npm run test:motor — se docs/grupper.md).
 //
-//   ind:  { type: 'run', input }     dan grupper
+//   ind:  { type: 'run', id, input } dan grupper (`id` sendes med tilbage i
+//                                    progress, answer og crash: tråden genbruges
+//                                    mellem kørsler, se nextEngine.js)
 //         { type: 'cancel' }         læreren trykkede Stop
 //         { type: 'check', id, input }  opskriftens advarsler (motorens check())
 //   ud:   { type: 'checked', id, answer }  svaret på 'check' (null, hvis den kastede)
@@ -40,9 +42,10 @@ self.onmessage = async (e) => {
         return;
     }
     if (msg.type !== 'run') return;
+    const id = msg.id;
 
     if (!ENGINE_INFO || ENGINE_INFO.contractVersion !== (msg.input && msg.input.contractVersion)) {
-        self.postMessage({ type: 'crash', message: `Motoren taler kontraktversion ${ENGINE_INFO && ENGINE_INFO.contractVersion}, appen ${msg.input && msg.input.contractVersion}.` });
+        self.postMessage({ type: 'crash', id, message: `Motoren taler kontraktversion ${ENGINE_INFO && ENGINE_INFO.contractVersion}, appen ${msg.input && msg.input.contractVersion}.` });
         return;
     }
 
@@ -50,12 +53,12 @@ self.onmessage = async (e) => {
     try {
         const answer = await run(msg.input, {
             onProgress: (p) => {
-                if (!cancelled) self.postMessage({ type: 'progress', progress: p && p.progress ? p.progress : p });
+                if (!cancelled) self.postMessage({ type: 'progress', id, progress: p && p.progress ? p.progress : p });
             },
             isCancelled: () => cancelled,
         });
-        self.postMessage({ type: 'answer', answer });
+        self.postMessage({ type: 'answer', id, answer });
     } catch (err) {
-        self.postMessage({ type: 'crash', message: err && err.message ? err.message : String(err) });
+        self.postMessage({ type: 'crash', id, message: err && err.message ? err.message : String(err) });
     }
 };

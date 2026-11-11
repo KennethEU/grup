@@ -137,7 +137,10 @@ export function autoSave() {
         state.currentClass.columnOrders || {},
         {
             togetherGroups: state.currentClass.togetherGroups || [],
-            hiddenColumns: state.currentClass.hiddenColumns || []
+            hiddenColumns: state.currentClass.hiddenColumns || [],
+            // Kun brugt, når klassen ingen elever har: så er der ingen
+            // rækker at udlede kolonnerne af (se updateClass i py_bridge.js).
+            columns: state.currentClass.columns || []
         }
     ).then(() => {
         // Save button feedback is handled by Vue via reactivity if needed

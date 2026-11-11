@@ -227,9 +227,43 @@ function toggleLock() {
 // Opslagene går gennem de delte kort i lookups.js.
 const EMPTY_INFO = Object.freeze({ name: '', absent: false, originTags: [], ruleTags: [] });
 
+// Oprindelsen (stamgruppen) for KUN dette korts elever — og det GAMLE kort
+// igen, når intet af det har ændret sig.
+//
+// `homeGroupOriginById` bygges forfra, hver gang en stamgruppe ændrer sig.
+// "Meld fraværende" i Matrix tager også eleven ud af hendes stamgruppe, så
+// hvert matrixkort fik et nyt kort, regnede memberInfo om og tegnede hele
+// sin elevliste om — selvom ingen af dets elevers oprindelse var ændret
+// (målt 11/11, 88. gennemsyn: 4 af 4 matrixkort ved ét klik). Vue giver
+// den forrige værdi med (`prev`); returneres den, sker der intet videre.
+const originsHere = computed((prev) => {
+    if (!isMatrix.value) return null;
+    const all = homeGroupOriginById.value;
+    const next = new Map();
+    const add = (m) => {
+        const id = resolveMemberId(m);
+        const origin = all.get(id);
+        if (origin) next.set(id, origin);
+    };
+    for (const m of membersWithPreview.value) {
+        if (!isPreview(m)) add(m);
+    }
+    // Under et byt står den anden elev også på kortet (se memberInfo).
+    if (incomingMember.value) add(incomingMember.value);
+
+    if (prev && prev.size === next.size) {
+        let same = true;
+        for (const [id, origin] of next) {
+            if (prev.get(id) !== origin) { same = false; break; }
+        }
+        if (same) return prev;
+    }
+    return next;
+});
+
 const memberInfo = computed(() => {
     const byId = studentById.value;
-    const origins = isMatrix.value ? homeGroupOriginById.value : null;
+    const origins = originsHere.value;
     const ruleCols = props.activeRuleColumns;
     const map = new Map();
 
@@ -343,40 +377,82 @@ const isPreviewing = computed(() => reactiveState.previewRunIndex !== null);
 // flimre med halvt indtonede navne i stedet for at vise, hvem der flyttede
 // sig. Derfor følger varigheden hastigheden — dog aldrig længere end de 250
 // ms, den er tegnet til, og aldrig så kort at bevægelsen forsvinder helt.
+//
+// EN TEKST, IKKE ET OBJEKT: afspilningen skifter `state.replay` ud ved hvert
+// eneste billede. Et objekt herfra ville være nyt hver gang, og så tegnede
+// ALLE kort sig om ved hvert bytte (se replayMark herunder). En tekst, der
+// er den samme som sidst, får Vue til at lade kortet være.
 const listDuration = computed(() => {
     const r = reactiveState.replay;
     if (!r) return null;
-    const ms = Math.max(40, Math.min(250, r.speed));
-    return { '--list-dur': `${ms}ms` };
+    return `${Math.max(40, Math.min(250, r.speed))}ms`;
 });
 
 // Uden fremhævningen er en gentegning af 30 kort bare et flimmer, hvor man
 // ikke kan se HVAD der skete. Farven kommer fra hændelsens art, så det er til
 // at se, når motoren gør det værre med vilje.
-const replayKind = computed(() => {
+//
+// HVEM I DETTE KORT flyttede i det seneste billede — samlet i én tekst
+// ("art:id,id"), og '' når ingen af kortets elever var med.
+//
+// HVORFOR EN TEKST: kortet læste før `state.replay` direkte for hver elev.
+// Da `state.replay` udskiftes ved hvert billede, tegnede alle kort sig om
+// hver gang, selvom kun to elever flyttede. Hver gentegning får Vues
+// TransitionGroup til at lægge en kopi af en elevrække ind i siden og måle
+// den — med 300 elever (75 kort) var det 75 målinger pr. billede, og en
+// afspilning på 60 ms holdt en langsom skolecomputer travl hele tiden
+// (målt 11/11 med 4× neddrosling: 3,1 s lange opgaver på 3,5 s).
+// Teksten regnes stadig ud i hvert kort, men den er den samme som sidst for
+// næsten alle kort, og så tegner Vue dem ikke om.
+const replayMark = computed(() => {
     const r = reactiveState.replay;
-    return r && r.last ? r.last.kind : null;
+    if (!r || !r.last || !isReplaying.value) return '';
+    // `moved` bærer alle i billedet — ved et blok-bytte (Skal sammen) flere
+    // end to. a/b er reserven for en hændelse uden listen.
+    const moved = Array.isArray(r.last.moved) ? r.last.moved : [r.last.a, r.last.b];
+    const here = (props.group.members || [])
+        .map(m => resolveMemberId(m))
+        .filter(id => moved.includes(id));
+    return here.length ? `${r.last.kind}:${here.join('\u0001')}` : '';
+});
+
+// Teksten pakket ud igen. Regnes kun om, når teksten ændrer sig.
+const replayMoved = computed(() => {
+    const mark = replayMark.value;
+    if (!mark) return { kind: null, ids: new Set() };
+    const cut = mark.indexOf(':');
+    return { kind: Number(mark.slice(0, cut)), ids: new Set(mark.slice(cut + 1).split('\u0001')) };
 });
 
 function isReplayMoved(member) {
-    const r = reactiveState.replay;
-    if (!r || !r.last) return false;
-    const id = resolveMemberId(member);
-    // `moved` bærer alle i billedet — ved et blok-bytte (Skal sammen) flere
-    // end to. a/b er reserven for en hændelse uden listen.
-    if (Array.isArray(r.last.moved)) return r.last.moved.includes(id);
-    return id === r.last.a || id === r.last.b;
+    return replayMoved.value.ids.has(resolveMemberId(member));
 }
+
+// Den markerede elevs id, hvis hun er markeret på DETTE kort — ellers null.
+//
+// HVORFOR EN COMPUTED PR. KORT: isPicked() kaldes for hver elev inde i
+// elevlisten. Læste den `pickedMemberId` direkte, tegnede ALLE kort deres
+// elevliste om, hver gang en elev blev markeret eller sluppet — og hver
+// gentegning får Vues TransitionGroup til at lægge en kopi af en elevrække
+// ind og måle den (samme mekanisme som afspilningen, se replayMark). Med 300
+// elever (75 kort) og 4× neddrosling kostede et klik på en elev 190 ms, og
+// at slippe hende igen det samme (målt 11/11). Nu ændrer værdien sig kun på
+// kortet, hvor eleven står; de andre får null før og efter, og Vue lader
+// deres lister være. "Flyt hertil" på de andre kort står uden for listen.
+//
+// Under en forhåndsvisning står der en anden fordeling på kortene. Et
+// sammenfald dér — eleven lå tilfældigvis i en gruppe med samme navn i den
+// gamle kørsel — ville fremhæve hende i et billede, hun ikke er markeret i.
+const pickedHereId = computed(() => {
+    if (isPreviewing.value) return null;
+    if (pickedFromGroup.value?.name !== props.group.name) return null;
+    return pickedMemberId.value ?? null;
+});
 
 function isPicked(member) {
     if (isPreview(member)) return false;
-    // Under en forhåndsvisning står der en anden fordeling på kortene. Et
-    // sammenfald dér — eleven lå tilfældigvis i en gruppe med samme navn i
-    // den gamle kørsel — ville fremhæve hende i et billede, hun ikke er
-    // markeret i.
-    if (isPreviewing.value) return false;
-    return pickedMemberId.value === resolveMemberId(member)
-        && pickedFromGroup.value?.name === props.group.name;
+    const id = pickedHereId.value;
+    return id !== null && id === resolveMemberId(member);
 }
 
 // Vises "Flyt hertil" på dette kort? Kun når en elev fra en ANDEN gruppe er
@@ -616,8 +692,24 @@ function rowMember(m) {
     return isSwapIncoming(m) ? incomingMember.value : m;
 }
 
+// De elever på DETTE kort, der lige har byttet plads — samlet i én tekst,
+// '' når ingen af kortets elever var med. Samme grund som pickedHereId:
+// `justSwappedIds` sættes ved hvert bytte og ryddes 1,5 s efter, og læst
+// direkte for hver elev tegnede det alle kort om begge gange. Teksten er den
+// samme som før på alle andre kort end de to, og så lader Vue dem være.
+const justSwappedHere = computed(() => {
+    const ids = justSwappedIds.value;
+    if (!ids.size) return '';
+    return (props.group.members || [])
+        .map(m => resolveMemberId(m))
+        .filter(id => ids.has(id))
+        .join('\u0001');
+});
+
 function isJustSwapped(m) {
-    return !isPreview(m) && justSwappedIds.value.has(resolveMemberId(m));
+    if (isPreview(m)) return false;
+    const here = justSwappedHere.value;
+    return here !== '' && here.split('\u0001').includes(resolveMemberId(m));
 }
 
 // Hvilken elev musen hviler over, og siden hvornår.
@@ -734,12 +826,31 @@ function isAbsent(m) {
 // Sættet er bygget ÉN gang for hele visningen (avoidConflictIds i lookups.js),
 // så det her er ét Set-opslag pr. elev — ikke en gennemløbning af
 // undgåelses-listen pr. elev pr. gennemtegning.
-const avoidIds = computed(() =>
-    avoidConflictIds.value[isMatrix.value ? 'matrix' : 'standard']);
+//
+// KUN DETTE KORTS ELEVER, SOM ÉN TEKST ('' når ingen af dem er i et brud).
+// `avoidConflictIds` regnes om ved HVER flytning og hvert "Meld fraværende",
+// så snart klassen har en undgåelse — og giver så nye Set'er. Læste hvert
+// kort sættet direkte for hver elev, tegnede ALLE kort deres elevliste om
+// (målt 11/11, 88. gennemsyn: 12 af 12 lister ved én flytning med 48 elever,
+// uden undgåelse 2). Teksten her er den samme som før på de kort, flytningen
+// ikke rører, og så lader Vue deres liste være. Samme mønster som
+// `justSwappedHere` og `pickedHereId` nedenfor.
+const avoidHere = computed(() => {
+    const ids = avoidConflictIds.value[isMatrix.value ? 'matrix' : 'standard'];
+    if (!ids.size) return '';
+    const here = [];
+    for (const m of membersWithPreview.value) {
+        if (isPreview(m)) continue;
+        const id = resolveMemberId(m);
+        if (ids.has(id)) here.push(id);
+    }
+    return here.join('\u0001');
+});
 
 function isAvoidConflict(m) {
     if (isPreview(m)) return false;
-    return avoidIds.value.has(resolveMemberId(m));
+    const here = avoidHere.value;
+    return here !== '' && here.split('\u0001').includes(resolveMemberId(m));
 }
 
 /**
@@ -897,7 +1008,7 @@ function onDrop(e) {
             name="list"
             tag="ul"
             class="group-members-list"
-            :style="listDuration"
+            :style="listDuration ? { '--list-dur': listDuration } : null"
             :class="{ 'drag-over': isDragOver, empty: group.members.length === 0 }"
             @dragover="onDragOver"
             @dragleave="onDragLeave"
@@ -920,7 +1031,7 @@ function onDrop(e) {
                     'swap-incoming': isSwapIncoming(member),
                     'just-swapped': isJustSwapped(member)
                 }"
-                :data-replay-kind="isReplayMoved(member) ? replayKind : null"
+                :data-replay-kind="isReplayMoved(member) ? replayMoved.kind : null"
                 :title="memberTitle(member)"
                 @click="onMemberActivate(member, $event)"
                 @keydown.enter.self.prevent="onMemberActivate(member, $event)"

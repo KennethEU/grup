@@ -467,6 +467,61 @@ export function normalizeCellText(data) {
 }
 
 /**
+ * Elevens celle i kolonnen — men KUN hvis rækken selv har den.
+ *
+ * `row[kolonne]` spørger også objektets arv. Hedder kolonnen "constructor",
+ * "toString" eller "valueOf" (navne ethvert JavaScript-objekt har), og
+ * mangler cellen på rækken, svarer `row[kolonne]` med en indbygget funktion
+ * i stedet for ingenting — og den blev til teksten
+ * "function Object() { [native code] }", som om eleven havde skrevet det.
+ * Svarer `null` for en manglende celle.
+ */
+export function ownCell(row, col) {
+    if (!row || typeof row !== 'object') return null;
+    return Object.hasOwn(row, col) ? row[col] : null;
+}
+
+/**
+ * Giv hver elevrække en tom celle i de kolonner, den mangler.
+ *
+ * Alt, der i dag skriver en række (import, "+ Kolonne", ny elev,
+ * "Gem som kolonne", "Kategorisér"), skriver en celle i HVER kolonne. Men en
+ * klasse gemt af en ældre udgave, eller en håndredigeret backup, kan have
+ * rækker, hvor en celle mangler helt. Det er normalt ligegyldigt (en manglende
+ * celle og en tom celle læses ens) — undtagen i en kolonne med et navn,
+ * JavaScript selv bruger (se ownCell). Kaldes, når klassen åbnes, så hullerne
+ * er væk ét sted, i stedet for at hvert eneste læsested skal huske det.
+ *
+ * Kun lærerens egne kolonner (teacherColumns). Programmets skjulte kolonner
+ * (`__MatrixSource__`, `__Rang:…__`) opfindes ikke på rækker uden dem.
+ *
+ * Kolonnerne må ikke flytte sig: den gemte rækkefølge læses af rækkernes
+ * nøgler (columnsOfRows, første række først). En række MED huller skrives
+ * derfor om i kolonnelistens rækkefølge, og andre nøgler (`_rowId`,
+ * `_excluded`, skjulte kolonner) lægges bagest i deres egen rækkefølge.
+ * Rækker uden huller røres ikke.
+ *
+ * @returns {number} hvor mange celler der blev tilføjet (0 = intet at gemme)
+ */
+export function fillMissingCells(data, columns) {
+    const cols = teacherColumns(Array.isArray(columns) ? columns : []);
+    if (!Array.isArray(data) || cols.length === 0) return 0;
+    let filled = 0;
+    for (const row of data) {
+        if (!row || typeof row !== 'object') continue;
+        const missing = cols.filter(c => !Object.hasOwn(row, c));
+        if (missing.length === 0) continue;
+        const entries = cols.map(c => [c, Object.hasOwn(row, c) ? row[c] : '']);
+        const colSet = new Set(cols);
+        const rest = Object.keys(row).filter(k => !colSet.has(k)).map(k => [k, row[k]]);
+        for (const k of Object.keys(row)) delete row[k];
+        for (const [k, v] of [...entries, ...rest]) row[k] = v;
+        filled += missing.length;
+    }
+    return filled;
+}
+
+/**
  * Nøglen to celleværdier sammenlignes på: uden mellemrum i enderne, samme
  * tegnform (se `nfc()`) og uden forskel på store og små bogstaver. "Dreng",
  * " dreng " og "Åse"/"Åse" bliver hver ét.
@@ -487,7 +542,9 @@ export function valueKey(raw) {
 export function canonicalSpellings(rows, col) {
     const groups = new Map();   // nøgle -> Map<stavemåde, antal>
     for (const row of (Array.isArray(rows) ? rows : [])) {
-        const raw = row ? row[col] : null;
+        // Kun en celle rækken SELV har (se ownCell). Ellers tilbød rullelisten
+        // "function Object() { [native code] }" i en kolonne kaldt "constructor".
+        const raw = ownCell(row, col);
         if (raw == null) continue;
         const spelling = nfc(raw).trim();
         if (spelling === '') continue;

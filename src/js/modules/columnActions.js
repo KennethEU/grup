@@ -12,8 +12,13 @@
 
 import { teacherColumns } from './utils.js';
 
-/** Interne felter (ét ledende underscore) — se isInternalField() i utils.js. */
-const INTERNAL_PREFIX_RE = /^_[^_]/;
+/**
+ * Navne programmet holder for sig selv: ét ledende underscore er et internt
+ * felt (`_rowId`, `_excluded` — se isInternalField() i utils.js), to er
+ * programmets egne skjulte kolonner (`__MatrixSource__`, `__Rang:…__`).
+ * Begge slags skjules af teacherColumns() — se validateColumnName().
+ */
+const RESERVED_PREFIX_RE = /^_/;
 
 /**
  * Duer navnet som kolonnenavn?
@@ -35,11 +40,23 @@ export function validateColumnName(raw, columns, self = null) {
     // elevlisten, ud af Excel-eksporten og ud af det, motoren får — og en
     // regel på kolonnen ville så regne på en kolonne, der ikke findes.
     // Nemmere at sige nej med det samme end at forklare bagefter.
-    if (INTERNAL_PREFIX_RE.test(name)) {
+    //
+    // TO underscores blev før lukket igennem, fordi `__MatrixSource__` er en
+    // ægte kolonne. Men teacherColumns() skjuler ALT med "__" foran — så en
+    // kolonne læreren kaldte "__Niveau" blev gemt, men stod ingen steder:
+    // ikke i elevlisten, ikke i Slet/Omdøb/Kategorisér, ikke i reglerne. Hun
+    // kunne hverken se eller fjerne den. Og "Gem som kolonne" med navnet
+    // "__MatrixSource__" skrev oven i matrixdannelsens eget input. Programmet
+    // selv navngiver aldrig sine kolonner gennem denne funktion, så nej til
+    // alle. Det samme gælder et navn, der KUN er "_": isInternalField()
+    // regner det som internt. Importen gør det samme med en overskrift, der
+    // begynder med "_" (normalizeImportHeaders i importData.js).
+    if (RESERVED_PREFIX_RE.test(name)) {
+        const suggestion = name.replace(/^_+/, '').trim();
         return {
             ok: false,
-            error: `Et kolonnenavn må ikke begynde med "_" — det bruger programmet til sine egne felter. ` +
-                `Prøv fx "${name.replace(/^_+/, '')}".`
+            error: `Et kolonnenavn må ikke begynde med "_" — det bruger programmet til sine egne felter.` +
+                (suggestion ? ` Prøv fx "${suggestion}".` : '')
         };
     }
 

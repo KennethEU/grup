@@ -3,6 +3,20 @@
 import { cleanupClassStorage, readClassExtras, writeClassExtras } from './storage.js';
 import { MAX_ROWS_PER_CLASS } from './py_bridge.js';
 
+/**
+ * Adressen til én klasse. Filnavnet kodes ALTID — også ved gem, omdøbning og
+ * sletning, ikke kun ved hentning. Nye klasser har kun a-z, 0-9, æøå og _ i
+ * filnavnet, men en klasse fra før 7/5 2026 kan have #, ?, / eller %: backup-
+ * gendannelsen tog dengang filnavnet fra filen uden at rense det. Ukodet
+ * skar adressen navnet over ("gammel #2.csv" blev til "gammel "), og så
+ * kunne klassen hentes, men hverken gemmes, omdøbes eller slettes — og et /
+ * kunne få sletningen til at ramme en anden klasse. Adapteren afkoder det
+ * igen. Værn: classFilenameUrl.test.js.
+ */
+function classUrl(filename) {
+    return `/api/classes/${encodeURIComponent(filename)}`;
+}
+
 export async function fetchClasses() {
     const response = await fetch('/api/classes');
     return await response.json();
@@ -14,20 +28,18 @@ export async function fetchClasses() {
  * bare læser, lader den være — se getClass() i py_bridge.js.
  */
 export async function fetchClass(filename, { track = false } = {}) {
-    // Filnavnet kodes, så et ? eller # i et gammelt filnavn ikke bliver til
-    // en del af adressen (adapteren afkoder det igen).
     const query = track ? '?track=1' : '';
-    const response = await fetch(`/api/classes/${encodeURIComponent(filename)}${query}`);
+    const response = await fetch(`${classUrl(filename)}${query}`);
     return await response.json();
 }
 
 export async function deleteClass(filename) {
-    const response = await fetch(`/api/classes/${filename}`, { method: 'DELETE' });
+    const response = await fetch(classUrl(filename), { method: 'DELETE' });
     return await response.json();
 }
 
 export async function renameClass(filename, newName) {
-    const response = await fetch(`/api/classes/${filename}/rename`, {
+    const response = await fetch(`${classUrl(filename)}/rename`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newName })
@@ -69,7 +81,7 @@ export async function createClassFromPaste(name, content, hasHeaders) {
 // læreren har foldet væk i elevlisten — udelades den, bevarer
 // updateClass() det gemte valg frem for at tørre det af.
 export async function saveClassData(filename, data, rules, idColumn, separations, settings, matrixSettings, matrixRules, topics, columnOrders, options = {}) {
-    const response = await fetch(`/api/classes/${filename}`, {
+    const response = await fetch(classUrl(filename), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -85,7 +97,8 @@ export async function saveClassData(filename, data, rules, idColumn, separations
             matrixRules: matrixRules,
             topics: topics,
             columnOrders: columnOrders,
-            hiddenColumns: options.hiddenColumns
+            hiddenColumns: options.hiddenColumns,
+            columns: options.columns
         })
     });
     return await response.json();
@@ -346,7 +359,10 @@ export async function restoreBackup(entries, opts = {}) {
                     // Backuppen bærer også de skjulte kolonner. Uden dem stod
                     // klassen tilbage med alle Lectio-kolonnerne foldet ud
                     // igen, netop den dag gendannelsen skulle redde dagen.
-                    hiddenColumns: Array.isArray(cls.hiddenColumns) ? cls.hiddenColumns : []
+                    hiddenColumns: Array.isArray(cls.hiddenColumns) ? cls.hiddenColumns : [],
+                    // En klasse uden elever har kun denne liste til at bære
+                    // sine kolonner — se updateClass() i py_bridge.js.
+                    columns: Array.isArray(cls.columns) ? cls.columns : undefined
                 }
             );
             results.push(res);

@@ -23,6 +23,31 @@ describe('filerne i det byggede program', () => {
         for (const name of wanted) expect(files.has(name), name).toBe(true);
     });
 
+    // Deploy sker også med FTP, og et filter på `__*` æder en fil med "__"
+    // i navnet (CLAUDE.md). Vites hash kunne før selv give "__"; nu er den
+    // base36 (vite.config.js), men et "__" kan også komme fra et modulnavn.
+    it('intet filnavn i det byggede program har "__"', () => {
+        const all = [];
+        const walk = (url, prefix) => {
+            for (const entry of readdirSync(url, { withFileTypes: true })) {
+                const path = prefix + entry.name;
+                all.push(path);
+                if (entry.isDirectory()) walk(new URL(entry.name + '/', url), path + '/');
+            }
+        };
+        walk(root, '');
+        expect(all.length).toBeGreaterThan(10);
+        expect(all.filter(path => path.split('/').pop().includes('__'))).toEqual([]);
+    });
+
+    it('hashen i filnavnene er base36 (ingen "_" at danne "__" med)', () => {
+        const hashed = [...files].filter(name => /\.(js|css)$/.test(name));
+        expect(hashed.length).toBeGreaterThan(10);
+        for (const name of hashed) {
+            expect(name, name).toMatch(/-[a-z0-9]{8}\.(js|css)$/);
+        }
+    });
+
     it.each(scripts)('hver del, %s henter, findes', (script) => {
         const code = readFileSync(new URL(script, dir), 'utf8');
         for (const name of new Set(code.match(HASHED) || [])) {

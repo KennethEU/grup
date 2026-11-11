@@ -101,8 +101,8 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
       </p>
 
       <p v-if="!hasStudents" class="note">
-        Klassen har ingen elever endnu. Kolonnernes rækkefølge gemmes sammen med
-        elevrækkerne, så der skal være mindst én elev, før den kan flyttes.
+        Klassen har ingen elever endnu, så elevlisten står ikke fremme. Tilføj
+        en elev først — så kan du flytte kolonnerne og se, hvor de lander.
       </p>
 
       <p v-else-if="fullOrder.length < 2" class="note">

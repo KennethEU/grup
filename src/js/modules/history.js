@@ -1,5 +1,6 @@
 import { state } from './state.js';
 import * as storage from './storage.js';
+import { saveTopicsOrSettle } from './topicSettle.js';
 import { ROW_ID, newUuid, memberIdStr, memberDisplayName, homeGroupFingerprint, mergeClassTopics, classTopicSpelling } from './utils.js';
 import { pushRun, markClean, markCleanWithInputs } from './runHistory.js';
 
@@ -305,12 +306,18 @@ export function restoreSession(sessionId) {
     };
     const restoredStandardGroups = restoreSet(session.groups);
 
-    // Emnerne skrives samlet nedenfor (replaceTopicsForPrefix), ikke ét kald
+    // Emnerne skrives samlet nedenfor (saveTopicsOrSettle), ikke ét kald
     // pr. gruppe. Før var det N fulde skrivninger af det samme kort plus en
     // pruneTopics() til sidst, og INGEN af svarene blev set på: løb kvoten
     // tør halvvejs, stod kortet med sessionens emner for de første grupper og
     // forgårsdagens for resten — mens skærmen viste sessionens.
-    let topicsSaved = true;
+    //
+    // Kan kortet slet ikke skrives, står det FORRIGE kort tilbage med de
+    // samme gruppenavne. Så får grupperne det, der står i lageret (se
+    // topicSettle.js) — ellers viste kortet på skærmen sessionens emner,
+    // mens matrix-runden, eksporten og en session gemt lige bagefter brugte
+    // de forrige (gennemsyn 85, restoreTopics.test.js).
+    const topicResults = [];
 
     // 3. Opdater State
     state.storedStandardGroups = restoredStandardGroups;
@@ -342,18 +349,16 @@ export function restoreSession(sessionId) {
 
     // Sessionens emner ind, og emner for grupper sessionen ikke har, ud —
     // i én skrivning.
-    if (storage.replaceTopicsForPrefix('S_', restoredStandardGroups) === false) {
-        topicsSaved = false;
-    }
+    // Stamgrupperne FØR matrixen: begge ligger i samme nøgle, så matrixens
+    // skrivning skal bære stamgruppernes endelige emner med.
+    topicResults.push(saveTopicsOrSettle('S_', restoredStandardGroups));
 
     // Håndter Matrix hvis sessionen har det
     if (session.type === "WITH_MATRIX" && Array.isArray(session.matrixGroups)) {
         state.storedMatrixGroups = restoreSet(session.matrixGroups);
         useClassSpelling(state.storedMatrixGroups);
         // Matrixens emner ind, og de gamle ud — én skrivning, som ovenfor.
-        if (storage.replaceTopicsForPrefix('M_', state.storedMatrixGroups) === false) {
-            topicsSaved = false;
-        }
+        topicResults.push(saveTopicsOrSettle('M_', state.storedMatrixGroups));
         // Matrixen passer nu til de netop gendannede stamgrupper. Havde
         // "forældet"-flaget stået tilbage fra en tidligere generering, ville
         // det første skift væk fra og tilbage til matrixvisningen danne
@@ -365,8 +370,10 @@ export function restoreSession(sessionId) {
         state.matrixSourceFingerprint = homeGroupFingerprint(state.storedStandardGroups);
     } else {
         state.storedMatrixGroups = null; // Nulstil matrix hvis session kun var standard
-        // Ingen matrixgrupper, så ingen matrix-emner
-        if (storage.replaceTopicsForPrefix('M_', []) === false) topicsSaved = false;
+        // Ingen matrixgrupper, så ingen matrix-emner. Afvises skrivningen, er
+        // der ingen matrixgrupper at vise dem på, og næste matrix-runde
+        // rydder dem selv (landAnswer) — så ingen besked om det.
+        storage.replaceTopicsForPrefix('M_', []);
         // Sessionen havde ingen matrix, men stamgrupperne er nye — så en
         // matrix skal netop dannes forfra, næste gang læreren går derover.
         state.matrixGroupsStale = true;
@@ -382,14 +389,29 @@ export function restoreSession(sessionId) {
     // hele tiden (den melder tilbage til kørselsmenuen); session-gendannelsen
     // blev glemt. Beskeden gives her, fordi begge kaldsteder (HistoryTab og
     // PreviewSessionModal) kalder funktionen uden at se på svaret.
-    // Emnekortet tæller med i den samme besked: falder DEN skrivning, står
-    // grupperne rigtigt efter en genindlæsning, men med de forrige emner på.
-    // Læreren skal have det at vide af samme grund og på samme måde.
-    if (storage.saveGroupsToStorage() === false || !topicsSaved) {
+    // Emnekortet får sin egen besked: falder KUN den skrivning, er grupperne
+    // gemt og står rigtigt efter en genindlæsning — men uden emne eller med
+    // de forrige emner (saveTopicsOrSettle har lagt det samme på grupperne).
+    if (storage.saveGroupsToStorage() === false) {
         if (window.notifyError) window.notifyError(
             'Sessionen er hentet frem, men kunne IKKE gemmes — browserens '
             + 'lagerplads er fuld. Grupperne står på skærmen nu, men er væk, '
             + 'når du genindlæser siden. Ryd op og hent sessionen igen.'
+        );
+    } else if (topicResults.includes('stale')) {
+        // Grupperne ER gemt; kun emnerne kunne ikke skrives, og de forrige
+        // står tilbage — nu også på grupperne, så alt viser det samme.
+        window.notifyError?.(
+            'Sessionen er hentet frem, men dens emner kunne ikke gemmes — '
+            + 'browserens lagerplads er fuld. Grupperne står med emnerne fra før. '
+            + 'Slet en gammel session for at frigøre plads, og hent sessionen igen.'
+        );
+    } else if (topicResults.includes('cleared')
+        && (sessionTopics.length > 0 || readableGroups(session.matrixGroups).some(g => g.topic))) {
+        window.notifyError?.(
+            'Sessionen er hentet frem, men dens emner kunne ikke gemmes — '
+            + 'browserens lagerplads er fuld, så grupperne står uden emne. '
+            + 'Slet en gammel session for at frigøre plads, og hent sessionen igen.'
         );
     }
 

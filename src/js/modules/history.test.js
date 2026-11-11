@@ -295,6 +295,7 @@ describe('restoreSession', () => {
     // selv, og læreren skal have det at vide.
     it('siger fra, hvis emnekortet ikke kunne gemmes', () => {
         window.notifyError = vi.fn();
+        state.storedStandardGroups[0].topic = 'Klima';
         const meta = saveCurrentSession('Med emner', false);
         storageMock.replaceTopicsForPrefix.mockImplementationOnce(() => false);
 

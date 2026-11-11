@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, goToGroups, generateGroups } from './helpers';
+import { createClass, goToGroups, generateGroups, openSaveColumn } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Omdøb en kolonne — og alt det, der peger på navnet.
@@ -71,4 +71,38 @@ test('et kolonnenavn med "_" afvises, og kolonnen står uændret', async ({ page
 
     await expect(page.locator('.toast.error')).toContainText('må ikke begynde med');
     await expect(page.locator('th').filter({ hasText: 'Køn' }).first()).toBeVisible();
+});
+
+// To underscores foran blev før godkendt — men teacherColumns() skjuler alt
+// med "__" foran. Kolonnen blev gemt og stod så INGEN steder: ikke i
+// elevlisten, ikke i menuerne. Læreren kunne hverken se eller slette den.
+test('et kolonnenavn med "__" foran afvises ved omdøb, og kolonnen står uændret', async ({ page }) => {
+    await createClass(page, 'Omdøb E2E', CSV);
+
+    await renameColumn(page, 'Køn', '__Køn');
+
+    await expect(page.locator('.toast.error')).toContainText('må ikke begynde med');
+    await expect(page.locator('th').filter({ hasText: 'Køn' }).first()).toBeVisible();
+});
+
+test('"Gem som kolonne" med "__" foran afvises og lægger ingen skjult kolonne i klassen', async ({ page }) => {
+    await createClass(page, 'Omdøb E2E', CSV);
+    await goToGroups(page);
+    await generateGroups(page);
+
+    await openSaveColumn(page);
+    await page.locator('#gk-navn').fill('__Runde');
+    await page.locator('.modal-overlay').getByRole('button', { name: 'Gem kolonne' }).click();
+
+    // notifyInfo, ikke en fejl: vinduet er åbent, og navnet skal bare rettes.
+    await expect(page.locator('.toast').filter({ hasText: 'må ikke begynde med' })).toHaveCount(1);
+    // Vinduet bliver stående, så navnet kan rettes.
+    await expect(page.locator('#gk-navn')).toBeVisible();
+    const state = await page.evaluate(() => {
+        const cls = (window as any).appDebug.state.currentClass;
+        return { columns: [...(cls?.columns || [])], inRow: '__Runde' in (cls?.data?.[0] || {}) };
+    });
+    expect(state.columns).toContain('Køn');
+    expect(state.columns).not.toContain('__Runde');
+    expect(state.inRow).toBe(false);
 });

@@ -161,29 +161,47 @@ const isPreviewing = computed(() => reactiveState.previewRunIndex !== null);
 // Rækkefølgen betyder noget: en afspilning er noget læreren har startet
 // aktivt, en forhåndsvisning er bare musen der hviler i historik-menuen.
 // Derfor vinder afspilningen.
+// Forrige billedes kort: gruppenavn → { source, key, card }.
+//
+// HVORFOR: et bytte flytter to elever, men billedet bygges forfra hver gang.
+// Fik alle kort et nyt gruppe-objekt, tegnede alle 75 kort (300 elever) sig
+// om ved hvert bytte, og det holdt en langsom computer travl hele
+// afspilningen (se replayMark i GroupCard.vue). Et kort, hvis elever er de
+// samme som i forrige billede, får derfor SAMME objekt igen, og så lader Vue
+// det være. Kun en hukommelse til næste billede — intet gemmes.
+let lastReplayCards = new Map();
+
 const replayGroups = computed(() => {
     const r = reactiveState.replay;
     // Skifter læreren visning midt i en afspilning, hører optagelsen ikke til
     // de kort, der nu står på skærmen (isReplaying er falsk). Så tegner vi den ikke.
-    if (!isReplaying.value || !r.seating.length) return null;
+    if (!isReplaying.value || !r.seating.length) {
+        lastReplayCards = new Map();
+        return null;
+    }
 
     const locked = new Set(r.lockedGroups);
     const real = groups.value;
     const byName = new Map(real.map(g => [g.name, g]));
+    const nextCards = new Map();
 
     // De låste grupper stod uden for hele kørslen og skal stå helt stille.
     const frames = r.seating.map((members, i) => {
         const name = r.groupNames[i] || `Group ${i + 1}`;
         const source = byName.get(name);
-        return {
-            ...(source || {}),
-            name,
-            // Spøgelseseleverne er motorens egne pladsholdere. De er med i
-            // optagelsen, så hvert bytte er en ombytning af to — men de er
-            // ikke elever, og de tegnes ikke.
-            members: members.filter(m => !String(m).startsWith(r.phantomPrefix)),
-        };
+        // Spøgelseseleverne er motorens egne pladsholdere. De er med i
+        // optagelsen, så hvert bytte er en ombytning af to — men de er
+        // ikke elever, og de tegnes ikke.
+        const shown = members.filter(m => !String(m).startsWith(r.phantomPrefix));
+        const key = shown.join('\u0001');
+        const before = lastReplayCards.get(name);
+        const card = (before && before.source === source && before.key === key)
+            ? before.card
+            : { ...(source || {}), name, members: shown };
+        nextCards.set(name, { source, key, card });
+        return card;
     });
+    lastReplayCards = nextCards;
 
     // Mens der deles ud, tegnes en gruppe først, når den har fået sin første
     // elev. Ellers stod der seks tomme kasser og ventede, og man kunne ikke

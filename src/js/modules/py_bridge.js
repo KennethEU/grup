@@ -404,6 +404,19 @@ class ClassStore {
             // men at gemme dem i første omgang er bare støj i lageret.
             // __MatrixSource__ (dobbelt underscore) er et ægte input og bliver.
             newContent.columns = columnsOfRows(data).filter(h => !isInternalField(h));
+        } else if (Array.isArray(options.columns)) {
+            // Ingen elever = ingen nøgler at udlede kolonnerne af. Så er den
+            // liste, fanen har i hukommelsen, den eneste kilde. Uden den blev
+            // "+ Kolonne", et omdøb og en sletning i en klasse uden elever
+            // aldrig gemt — og et omdøb gemte reglerne på det NYE navn, mens
+            // kolonnen hed det gamle efter genindlæsning. En backup af en tom
+            // klasse kom tilbage helt uden kolonner. (92. gennemsyn.)
+            const seen = new Set();
+            newContent.columns = options.columns.filter(c => {
+                if (typeof c !== 'string' || !c || isInternalField(c) || seen.has(c)) return false;
+                seen.add(c);
+                return true;
+            });
         }
 
         const stamp = new Date().toISOString();

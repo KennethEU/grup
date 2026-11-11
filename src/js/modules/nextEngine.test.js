@@ -2,7 +2,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { buildEngineInput, contractProblem, runNextEngine, tryNextEngine, abortNextEngine, stopNextEngine, appBudget, freeNumbers, fillMessageText, coveredByRecipeHint, playbackToRecording, issueKey, severityOf, dedupeAnswerMessages, attemptsText, resultSlot, replacedByResult, noteKeys, runStatusFor } from './nextEngine.js';
+import { buildEngineInput, contractProblem, runNextEngine, tryNextEngine, abortNextEngine, stopNextEngine, appBudget, freeNumbers, fillMessageText, coveredByRecipeHint, playbackToRecording, issueKey, severityOf, dedupeAnswerMessages, attemptsText, resultSlot, replacedByResult, noteKeys, runStatusFor, dropIdleEngineWorker } from './nextEngine.js';
 import { seatingAt, frameCount } from './replay.js';
 import { state } from './state.js';
 import { listRuns, clearRuns } from './runHistory.js';
@@ -258,13 +258,116 @@ function fakeWorker(behaviour) {
 describe('runNextEngine — tråden, tidsgrænsen og Stop', () => {
     afterEach(() => { vi.useRealTimers(); abortNextEngine(); });
 
-    it('giver svaret videre og lukker tråden', async () => {
+    it('giver svaret videre og lægger tråden til side (lukker den ikke)', async () => {
         let w;
         const result = await runNextEngine({}, { makeWorker: () => (w = fakeWorker((self, m) => {
             if (m.type === 'run') queueMicrotask(() => self.onmessage({ data: { type: 'answer', answer: { status: 'ok' } } }));
         })) });
         expect(result).toEqual({ kind: 'answer', answer: { status: 'ok' } });
+        expect(w.terminated).toBe(false);
+        dropIdleEngineWorker();
         expect(w.terminated).toBe(true);
+    });
+
+    // 89. gennemsyn: tråden genbruges efter et rent svar. (Grunden dengang,
+    // hukommelse pr. lukket tråd, holdt ikke ved en måling med footprint i
+    // 90.; genbruget er beholdt, og deploy-tjekket bygger på det.)
+    describe('genbrug af tråden', () => {
+        // Én fabrik til alle kørsler i testen (som den rigtige `defaultWorker`).
+        function factory(answerWith = 'answer') {
+            const made = [];
+            const make = () => {
+                const w = fakeWorker((self, m) => {
+                    if (m.type !== 'run') return;
+                    const data = answerWith === 'answer'
+                        ? { type: 'answer', id: m.id, answer: { status: 'ok' } }
+                        : { type: 'crash', id: m.id, message: 'bum' };
+                    queueMicrotask(() => self.onmessage({ data }));
+                });
+                made.push(w);
+                return w;
+            };
+            return { make, made };
+        }
+        afterEach(() => dropIdleEngineWorker());
+
+        it('to rene kørsler bruger samme tråd, og hver kørsel har sit eget nummer', async () => {
+            const f = factory();
+            await runNextEngine({}, { makeWorker: f.make });
+            await runNextEngine({}, { makeWorker: f.make });
+            expect(f.made).toHaveLength(1);
+            const ids = f.made[0].posted.filter(m => m.type === 'run').map(m => m.id);
+            expect(ids).toHaveLength(2);
+            expect(ids[0]).not.toBe(ids[1]);
+            expect(f.made[0].terminated).toBe(false);
+        });
+
+        it('svar efter Stop: tråden genbruges også', async () => {
+            vi.useFakeTimers();
+            const f = factory();
+            let w;
+            const p = runNextEngine({}, { makeWorker: () => (w = f.make()) });
+            // fakeWorker svarer selv; Stop, før svaret er kommet
+            stopNextEngine();
+            expect((await p).afterStop).toBe(true);
+            expect(w.terminated).toBe(false);
+        });
+
+        it('en fejl lukker tråden, og næste kørsel får en ny', async () => {
+            const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+            const bad = factory('crash');
+            expect((await runNextEngine({}, { makeWorker: bad.make })).kind).toBe('failed');
+            expect(bad.made[0].terminated).toBe(true);
+            await runNextEngine({}, { makeWorker: bad.make }).catch(() => {});
+            expect(bad.made).toHaveLength(2);
+            spy.mockRestore();
+        });
+
+        it('tavshed lukker tråden, og næste kørsel får en ny', async () => {
+            vi.useFakeTimers();
+            const made = [];
+            const make = () => { const w = fakeWorker(() => {}); made.push(w); return w; };
+            const p = runNextEngine({}, { silenceMs: 1000, makeWorker: make });
+            vi.advanceTimersByTime(1001);
+            expect((await p).kind).toBe('failed');
+            expect(made[0].terminated).toBe(true);
+            runNextEngine({}, { makeWorker: make });
+            expect(made).toHaveLength(2);
+        });
+
+        it('en ny kørsel midt i en gammel lukker den gamle tråd', async () => {
+            vi.useFakeTimers();
+            const made = [];
+            const make = () => { const w = fakeWorker(() => {}); made.push(w); return w; };
+            const first = runNextEngine({}, { makeWorker: make });
+            runNextEngine({}, { makeWorker: make });
+            expect(await first).toEqual({ kind: 'cancelled' });
+            expect(made).toHaveLength(2);
+            expect(made[0].terminated).toBe(true);
+            expect(made[1].terminated).toBe(false);
+        });
+
+        it('en besked med en anden kørsels nummer rører ingenting', async () => {
+            vi.useFakeTimers();
+            let w;
+            const seen = [];
+            const p = runNextEngine({}, { onProgress: (pr) => seen.push(pr), makeWorker: () => (w = fakeWorker(() => {})) });
+            const id = w.posted[0].id;
+            w.onmessage({ data: { type: 'progress', id: id - 1, progress: { attempt: 9 } } });
+            w.onmessage({ data: { type: 'answer', id: id - 1, answer: { status: 'ok', groups: 'gammel' } } });
+            w.onmessage({ data: { type: 'answer', id, answer: { status: 'ok', groups: 'ny' } } });
+            expect(seen).toEqual([]);
+            expect((await p).answer.groups).toBe('ny');
+        });
+
+        it('en anden fabrik får aldrig en tråd fra den forrige', async () => {
+            const a = factory();
+            const b = factory();
+            await runNextEngine({}, { makeWorker: a.make });
+            await runNextEngine({}, { makeWorker: b.make });
+            expect(b.made).toHaveLength(1);
+            expect(a.made[0].terminated).toBe(true);
+        });
     });
 
     it('en fejl i motoren er en fejl, ikke et hængende løfte', async () => {

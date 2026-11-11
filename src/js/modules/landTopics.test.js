@@ -153,3 +153,47 @@ describe('klassen har ikke længere emner, og de gamle kan ikke fjernes', () => 
         expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/står stadig på grupperne/));
     });
 });
+
+describe('en matrix-runde lander, og emnekortet har matrix-emner fra før', () => {
+    // Matrix-emner kommer fra en hentet session eller et emne valgt på et
+    // matrixkort. Motoren giver ikke matrixgrupperne emner, så de nye "Group 1"
+    // og "Group 2" arvede før de gamle emner fra kortet — på skærmen
+    // (GroupCard: group.topic || getTopic), i eksporten og efter en genindlæsning.
+    async function landMatrix(groups) {
+        const done = tryNextEngine(true);
+        lastRunWorker().onmessage({ data: { type: 'answer', answer: {
+            contractVersion: 3, status: 'ok', groups, lockedTopics: {},
+            messages: [], rules: [], playback: null,
+        } } });
+        expect(await done).toBe('done');
+    }
+    const matrixShown = () => state.storedMatrixGroups.map(g => g.topic || storage.getTopic(g.name, 'M_') || null);
+
+    it('de nye matrixgrupper står uden de gamle emner', async () => {
+        state.currentClass = makeClass(['Klima', 'Migration']);
+        await land([{ members: ['r1', 'r2'], topic: 'Klima' }, { members: ['r3', 'r4'], topic: 'Migration' }]);
+        storage.replaceTopicsForPrefix('M_', [{ name: 'Group 1', topic: 'Migration' }, { name: 'Group 2', topic: 'Klima' }]);
+
+        await landMatrix([{ members: ['r1', 'r3'] }, { members: ['r2', 'r4'] }]);
+
+        expect(matrixShown()).toEqual([null, null]);
+        expect(Object.keys(JSON.parse(localStorage.getItem(topicKey))).filter(k => k.startsWith('M_'))).toEqual([]);
+        // Stamgruppernes emner er urørte.
+        expect(groupTopics()).toEqual(['Klima', 'Migration']);
+        expect(storage.getTopic('Group 1', 'S_')).toBe('Klima');
+        expect(window.notifyError).not.toHaveBeenCalled();
+    });
+
+    it('kan de gamle ikke fjernes, står de på grupperne — og beskeden siger det', async () => {
+        state.currentClass = makeClass(['Klima', 'Migration']);
+        await land([{ members: ['r1', 'r2'], topic: 'Klima' }, { members: ['r3', 'r4'], topic: 'Migration' }]);
+        storage.replaceTopicsForPrefix('M_', [{ name: 'Group 1', topic: 'Migration' }, { name: 'Group 2', topic: 'Klima' }]);
+
+        rejectTopicWrites();
+        await landMatrix([{ members: ['r1', 'r3'] }, { members: ['r2', 'r4'] }]);
+
+        expect(state.storedMatrixGroups.map(g => g.topic)).toEqual(['Migration', 'Klima']);
+        expect(matrixShown()).toEqual(['Migration', 'Klima']);
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/matrixgrupperne/));
+    });
+});

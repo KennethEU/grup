@@ -8,7 +8,7 @@ import * as api from '../js/modules/api.js';
 import * as storage from '../js/modules/storage.js';
 import { getStoragePressureWarning, pyBridge } from '../js/modules/py_bridge.js';
 import { autoSave, syncDisplayColumn } from '../js/modules/classActions.js';
-import { migrateRefsToRowIds, teacherColumns, columnsOfRows, normalizeCellText } from '../js/modules/utils.js';
+import { migrateRefsToRowIds, teacherColumns, columnsOfRows, normalizeCellText, fillMissingCells } from '../js/modules/utils.js';
 import { clearClassMemory } from '../js/modules/classMemory.js';
 import { isModalOpen } from '../composables/useModalFocus.js';
 import { modalActions } from '../js/modules/modalState.js';
@@ -313,6 +313,13 @@ const selectClass = async (filename, index, goToStudents = false) => {
         // på en klasse i orden ændres intet, og der gemmes ikke.
         normalizeCellText(state.currentClass.data);
 
+        // Migration: en række, hvor en celle mangler helt (klasse fra en
+        // ældre udgave, håndredigeret backup), får en tom celle. Ellers kan en
+        // kolonne kaldt fx "constructor" læse en indbygget funktion på hullet
+        // — se fillMissingCells() i utils.js. Idempotent; gemmes med autoSave
+        // nedenfor, kun hvis noget blev fyldt.
+        fillMissingCells(state.currentClass.data, state.currentClass.columns);
+
         if (state.currentClass.settings) {
             state.groupMode = state.currentClass.settings.groupMode || 'size';
         } else {
@@ -335,7 +342,7 @@ const selectClass = async (filename, index, goToStudents = false) => {
         // stadig er præcis det, fanen lige har læst.
         //
         // Ovenfor rettes en del: regler i det gamle format, emner, _rowId,
-        // "å" som to tegn, og en klasse fra en ældre udgave mangler nogle
+        // "å" som to tegn, huller i elevrækkerne, og en klasse fra en ældre udgave mangler nogle
         // felter, som et gem altid skriver (togetherGroups, hiddenColumns,
         // columnOrders, matrixSettings …). Før 10/11 2026 blev kun nogle af
         // dem gemt med det samme. Resten lå kun i hukommelsen, og så var

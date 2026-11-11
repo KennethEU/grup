@@ -79,6 +79,21 @@ test('en liste kopieret fra Lectio giver en klasse med navnene alene', async ({ 
     expect(names.some((n: string) => /2Tz|\(/.test(n))).toBe(false);
 });
 
+// En linje skrevet til i hånden med komma ("Hansen, Bo") gav før HELE
+// klassen to kolonner: "Hansen" i Navn, "Bo" i en ny "Info 1" og en tom
+// "Info 1" hos alle de andre. Se extractLectioNames i lectio.js.
+test('en Lectio-liste med et navn skrevet til i hånden med komma får kun Navn-kolonnen', async ({ page }) => {
+    await createClass(page, 'Lectio 2Tz komma', LECTIO.trim() + '\nHansen, Bo');
+
+    const columns = await page.evaluate(() =>
+        [...(window as any).appDebug.state.currentClass.columns]);
+    expect(columns).toEqual(['Navn']);
+    const names = (await classData(page)).map((r: any) => r.Navn);
+    expect(names).toHaveLength(LECTIO.trim().split('\n').length + 1);
+    expect(names).toContain('Hansen, Bo');
+    await expect(page.getByRole('cell', { name: 'Hansen, Bo', exact: true })).toBeVisible();
+});
+
 test('den realistiske klasse: import, fravær, aftaler og en skæv Fordel', async ({ page }) => {
     await createClass(page, 'Realistisk klasse', asExcelPaste(CLASS_DATA.rows));
 

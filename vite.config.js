@@ -85,6 +85,17 @@ export default defineConfig({
         // Chrome/Edge 111 og Firefox 113 er de første med oklch() — et lavere
         // tal ville få minifieren til at regne ALLE farver om til rgb.
         // Værn: built_css.test.js læser det byggede stilark.
-        cssTarget: ['safari15.4', 'chrome111', 'firefox113', 'edge111']
+        cssTarget: ['safari15.4', 'chrome111', 'firefox113', 'edge111'],
+        // FILNAVNE UDEN "__". Hashen i et filnavn er som standard base64 og
+        // kan derfor selv indeholde "_" — en bygning 11/11 2026 gav
+        // `file-text-__dUWk4U.js`. Et FTP-filter på `__*` æder sådan en fil
+        // (CLAUDE.md, "Filnavne med __"), og så mangler en del af programmet.
+        // base36 er kun a-z og 0-9. Værn: built_files.test.js.
+        rolldownOptions: { output: { hashCharacters: 'base36' } }
+    },
+    // Motorens to tråde (engine-worker og worker) bygges for sig og skal
+    // have samme hash-alfabet.
+    worker: {
+        rolldownOptions: { output: { hashCharacters: 'base36' } }
     },
 })

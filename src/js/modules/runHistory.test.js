@@ -683,7 +683,7 @@ describe('en fejlet skrivning må ikke se ud som en succes', () => {
         pushRun();
         state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
 
-        expect(restoreRun(0)).toEqual({ restored: true, saved: true });
+        expect(restoreRun(0)).toEqual({ restored: true, saved: true, groupsSaved: true, topicsSaved: true });
     });
 });
 

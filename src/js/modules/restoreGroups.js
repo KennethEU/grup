@@ -13,6 +13,7 @@
 
 import { state, pushUndo } from './state.js';
 import * as storage from './storage.js';
+import { saveTopicsOrSettle } from './topicSettle.js';
 import { autoSave } from './classActions.js';
 import { pushRun, markClean } from './runHistory.js';
 import {
@@ -837,8 +838,11 @@ export function applyPlan(plan) {
     // emnelisten ovenfor — uden den rydder næste generering emnekortet,
     // fordi klassen ingen emner har). Én skrivning, ikke én pr. gruppe plus en udrensning: kortet er ÉN nøgle,
     // og en halvskreven gendannelse er værre end en der ikke skete.
-    const topicWriteFailed =
-        storage.replaceTopicsForPrefix('S_', groups) === false;
+    // Kan kortet ikke skrives, står det FORRIGE kort tilbage med de samme
+    // gruppenavne — så får grupperne det, der står i lageret, ellers viste
+    // skærmen ét emne og matrix-runden, eksporten og en senere gemt session
+    // et andet (topicSettle.js, gennemsyn 85).
+    const topicResult = saveTopicsOrSettle('S_', groups);
 
     // 4. Fraværet. Ét felt, to indgange — her sættes begge veje på én gang,
     // og det er derfor forhåndsvisningen nævner eleverne ved navn først.
@@ -877,10 +881,22 @@ export function applyPlan(plan) {
     state.activeView = 'standard';
     state.classViewTab = 'groups';
 
-    if (saved === false || topicWriteFailed) {
+    if (saved === false) {
         window.notifyError?.(
             'Grupperne står på skærmen, men lagerpladsen er fuld — de er ikke gemt. '
             + 'Slet en gammel session for at frigøre plads.'
+        );
+    } else if (topicResult === 'stale') {
+        window.notifyError?.(
+            'Grupperne er gendannet, men deres emner kunne ikke gemmes — lagerpladsen '
+            + 'er fuld. Grupperne står med emnerne fra før. Slet en gammel session '
+            + 'for at frigøre plads, og gendan grupperne igen.'
+        );
+    } else if (topicResult === 'cleared' && plan.groups.some(g => g.topic)) {
+        window.notifyError?.(
+            'Grupperne er gendannet, men deres emner kunne ikke gemmes — lagerpladsen '
+            + 'er fuld, så grupperne står uden emne. Slet en gammel session for at '
+            + 'frigøre plads, og gendan grupperne igen.'
         );
     } else {
         const parts = [`${groups.length} ${groups.length === 1 ? 'gruppe' : 'grupper'} gendannet`];

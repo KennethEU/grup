@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { renameColumn, reorderColumns, movableColumns, validateColumnName, deleteColumn } from './columnActions.js';
+import { teacherColumns } from './utils.js';
 
 /** En lille klasse med de felter et omdøb skal kunne ramme. */
 function makeClass() {
@@ -39,8 +40,44 @@ describe('validateColumnName', () => {
         expect(res.error).toContain('Køn'); // forslaget uden underscore
     });
 
-    it('tillader et navn med to underscores (fx __MatrixSource__)', () => {
-        expect(validateColumnName('__MatrixSource__', []).ok).toBe(true);
+    // teacherColumns() skjuler alt med "__" foran: kolonnen blev gemt, men
+    // stod ingen steder, og "__MatrixSource__" skrev oven i matrixens input.
+    it('afviser et navn med to underscores foran', () => {
+        for (const n of ['__Niveau', '__MatrixSource__', '__proto__', '__Rang:Niveau__']) {
+            const res = validateColumnName(n, []);
+            expect(res.ok, n).toBe(false);
+            expect(res.error, n).toContain('_');
+        }
+        expect(validateColumnName('__Niveau', []).error).toContain('"Niveau"');
+    });
+
+    it('afviser et navn der kun er underscores — uden et tomt forslag', () => {
+        for (const n of ['_', '__', ' ___ ']) {
+            const res = validateColumnName(n, []);
+            expect(res.ok, n).toBe(false);
+            expect(res.error, n).not.toContain('Prøv fx');
+        }
+    });
+
+    it('tillader underscore inde i eller bagest i navnet', () => {
+        expect(validateColumnName('Runde_2', []).ok).toBe(true);
+        expect(validateColumnName('Niveau_', []).ok).toBe(true);
+    });
+
+    // Hvert navn, valideringen siger ja til, skal læreren kunne SE bagefter.
+    it('alt der godkendes, står også i teacherColumns', () => {
+        for (const n of ['Navn', 'Runde_2', 'x__y', '_', '__a', '_a', 'Køn']) {
+            const res = validateColumnName(n, []);
+            if (res.ok) expect(teacherColumns([res.name]), n).toEqual([res.name]);
+        }
+    });
+
+    it('omdøb til et navn med to underscores afvises og ændrer intet', () => {
+        const cls = makeClass();
+        const before = JSON.stringify(cls);
+        const res = renameColumn(cls, makeUi(), 'Køn', '__Køn');
+        expect(res.ok).toBe(false);
+        expect(JSON.stringify(cls)).toBe(before);
     });
 
     it('afviser et navn der allerede findes', () => {

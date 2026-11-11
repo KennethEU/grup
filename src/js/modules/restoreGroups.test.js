@@ -34,6 +34,10 @@ vi.mock('./storage.js', () => ({
         });
         return true;
     }),
+    // Grupperne får det, der står i kortet (saveTopicsOrSettle, når intet kunne skrives).
+    hydrateGroupTopics: vi.fn((groups, prefix) => {
+        (groups || []).forEach(g => { g.topic = savedTopics.get(`${prefix}${g.name}`) || null; });
+    }),
     saveGroupsToStorage: vi.fn(() => !storageRejects),
 }));
 

@@ -573,7 +573,15 @@ export function restoreRun(index, alsoSettings = false) {
     // Så står kørslen på skærmen, men ikke i lageret, og næste genindlæsning
     // henter de gamle grupper frem igen. Det MÅ ikke kvitteres som en succes
     // — samme regel som resten af persistens-stien.
-    return { restored: true, saved: groupsSaved && topicsSaved !== false };
+    // groupsSaved og topicsSaved hver for sig: falder KUN emnekortet, er
+    // grupperne gemt og står med de emner, der er i lageret (hydreret
+    // ovenfor) — det er en anden besked end "kørslen er væk ved genindlæsning".
+    return {
+        restored: true,
+        saved: groupsSaved && topicsSaved !== false,
+        groupsSaved,
+        topicsSaved: topicsSaved !== false,
+    };
 }
 
 /**
