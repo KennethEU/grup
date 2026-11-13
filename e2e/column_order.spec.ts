@@ -181,9 +181,54 @@ test('en rangering ingen elev længere rammer, får advarslen tilbage', async ({
     await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
     await expect(hint(page)).toBeVisible();
     await expect(hint(page)).toContainText('kan kun arbejde med tal');
+    // Og den står ALENE (gennemsyn 101, 13/11 2026): den forældede rækkefølge
+    // blev før sendt til motoren, som svarede "4 elever har en værdi i
+    // "Niveau", som ikke står i rækkefølgen" — to advarsler om samme regel.
+    const allHints = page.locator('dialog.recipe-dialog[open] .gh-hint');
+    await expect(allHints.filter({ hasText: 'Niveau' })).toHaveCount(1);
+    await expect(allHints.filter({ hasText: 'ikke står i rækkefølgen' })).toHaveCount(0);
 
     // Og rammer bare ÉN elev igen, tier den som før.
     await writeLevels(page, ['Lav', 'B', 'C', 'A']);
     await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
     await expect(hint(page)).toHaveCount(0);
+});
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Tal i NOGLE FÅ celler (gennemsyn 100, 13/11 2026).
+//
+// Motoren regner med tal, så snart én celle er et tal: reglen bruges på de
+// elever, og resten placeres frit. Advarslen sagde "gør ingenting" — det
+// passede ikke, og den afløser motorens egen note om det samme.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+test('få tal i en kolonne med ord: advarslen siger, at reglen kun virker for dem', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV.replace('Anna\tLav', 'Anna\t3').replace('Bo\tMiddel', 'Bo\t4'));
+    await goToGroups(page);
+    await addUniformRule(page);
+
+    const few = page.locator('dialog.recipe-dialog[open] .gh-hint').filter({ hasText: 'virker kun for de få elever' });
+    await expect(few).toBeVisible();
+    await expect(few).toContainText('resten har tekst og placeres frit');
+    await expect(few.locator('.gh-hint-action')).toHaveText('Ranger værdierne…');
+    await expect(hint(page)).toHaveCount(0);
+    // Kun ÉN besked om kolonnen — motorens "der ikke er et tal" fra
+    // prøvekørslen står ikke ved siden af.
+    await page.waitForTimeout(1500);
+    await expect(page.locator('dialog.recipe-dialog[open] .gh-hint').filter({ hasText: 'der ikke er et tal' })).toHaveCount(0);
+    if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT });
+});
+
+test('en gemt rangering med samme værdi to gange vises og gemmes med ét trin pr. værdi', async ({ page }) => {
+    await createClass(page, 'Rang E2E', CSV);
+    // Kun muligt fra en håndredigeret backup: "Lav" og "lav" som to trin.
+    // Motoren giver rangen efter pladsen i listen, så dubletten gav et hul.
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.columnOrders = { Niveau: ['Lav', 'lav', 'Middel', 'Høj'] };
+    });
+    await page.locator('button').filter({ hasText: /^\s*Ranger\s*$/ }).first().click();
+    await expect(page.locator('#order-col')).toHaveValue('Niveau');
+    await expect(page.locator('.order-row .col-name')).toHaveText(['Lav', 'Middel', 'Høj']);
+    await page.getByRole('button', { name: 'Gem rækkefølge' }).click();
+    const saved = await page.evaluate(() => (window as any).appDebug.state.currentClass.columnOrders.Niveau);
+    expect(saved).toEqual(['Lav', 'Middel', 'Høj']);
 });

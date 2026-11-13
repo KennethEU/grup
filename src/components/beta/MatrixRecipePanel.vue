@@ -9,7 +9,7 @@ import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
 import { Users } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { debounce, splitByLockedGroups } from '../../js/modules/utils.js';
-import { matrixSentence, matrixSummary, addRule, revealRule, recipeHintText, clampTarget, namesText, isRecipeHint, expectedNewGroups, currentLastNotes } from '../../js/modules/recipe.js';
+import { matrixSentence, matrixSummary, shownMatrixRepType, addRule, revealRule, recipeHintText, clampTarget, namesText, isRecipeHint, expectedNewGroups, currentLastNotes } from '../../js/modules/recipe.js';
 import { fullMatrixInfo } from '../../js/modules/matrixInfo.js';
 import { getTopic } from '../../js/modules/storage.js';
 import { registerPendingWrite } from '../../js/modules/classActions.js';
@@ -42,6 +42,13 @@ const groupMod = ref('+');
 const strategy = ref('full_strict');
 const repType = ref('topic');
 
+// Uden emner på stamgrupperne kan der ikke blandes på emner.
+const hasTopics = computed(() => homeGroups.value.some(g => {
+    if (g.topic && g.topic.trim()) return true;
+    const stored = getTopic(g.name, 'S_');
+    return !!(stored && stored.trim());
+}));
+
 function clampedTarget() {
     return clampTarget(groupTarget.value);
 }
@@ -56,7 +63,7 @@ function loadSettings() {
     let saved = s?.matrixStrategy || 'full_strict';
     if (saved === 'full' || saved === 'full_flex') saved = 'full_strict';
     strategy.value = saved;
-    repType.value = s?.matrixRepresentationType || 'topic';
+    repType.value = shownMatrixRepType(s?.matrixRepresentationType, hasTopics.value);
 }
 watch(() => state.currentClass, loadSettings, { immediate: true });
 // Indstillingerne kan blive skiftet ud UDEN at klassen gør det: "Ja, tag alt
@@ -73,7 +80,7 @@ watch(() => state.currentClass?.matrixSettings, (s) => {
     if (same(s.groupMode, groupMode.value) && same(s.groupTarget, clampedTarget())
         && same(s.groupMod, groupMod.value)
         && same(s.matrixStrategy || 'full_strict', strategy.value)
-        && same(s.matrixRepresentationType || 'topic', repType.value)) return;
+        && same(shownMatrixRepType(s.matrixRepresentationType, hasTopics.value), repType.value)) return;
     loadSettings();
 });
 
@@ -120,18 +127,16 @@ function onTargetBlur() {
 }
 function toggleMod() { groupMod.value = groupMod.value === '-' ? '+' : '-'; saveSoon(); }
 
-// Uden emner på stamgrupperne kan der ikke blandes på emner.
-const hasTopics = computed(() => homeGroups.value.some(g => {
-    if (g.topic && g.topic.trim()) return true;
-    const stored = getTopic(g.name, 'S_');
-    return !!(stored && stored.trim());
-}));
-// Kun det viste valg skiftes — der gemmes ikke. Før gemte det hele klassen,
-// så snart matrix-opskriften blev vist (klasse uden emner), og en gammel fane
-// skrev så sin udgave over den nye fanes rettelser bare ved at åbne Matrix-
-// runden (målt 10/11 2026). Dannelsen bruger panelets valg (generate()), og
-// valget gemmes med næste rigtige ændring eller dannelse.
-watch(hasTopics, (has) => { if (!has && repType.value === 'topic') repType.value = 'group'; }, { immediate: true });
+// Kommer der emner på stamgrupperne (eller forsvinder de), skifter det viste
+// valg med — til det samme, som tjekket og prøvekørslen regner på
+// (shownMatrixRepType). Kun det viste valg skiftes — der gemmes ikke. Før
+// gemte det hele klassen, så snart matrix-opskriften blev vist (klasse uden
+// emner), og en gammel fane skrev så sin udgave over den nye fanes rettelser
+// bare ved at åbne Matrix-runden (målt 10/11 2026). Dannelsen bruger panelets
+// valg (generate()), og valget gemmes med næste rigtige ændring eller dannelse.
+watch(hasTopics, (has) => {
+    repType.value = shownMatrixRepType(state.currentClass?.matrixSettings?.matrixRepresentationType, has);
+});
 
 const info = computed(() => strategy.value !== 'full_strict' ? null : fullMatrixInfo({
     groups: homeGroups.value,
@@ -139,10 +144,14 @@ const info = computed(() => strategy.value !== 'full_strict' ? null : fullMatrix
     idCol: props.idColumn || state.currentClass?.columns?.[0] || '',
     repType: repType.value,
     storedTopic: (g) => getTopic(g.name, 'S_'),
+    // De låste matrixgrupper bliver stående: deres elever fordeles ikke, og
+    // grupperne tæller med i antallet (som i "Pr. gruppe" og "Antal" herunder).
+    lockedGroups: (state.storedMatrixGroups || []).filter(g => g.locked),
 }));
 
 // Skønnet "→ N matrixgrupper · ca. M elever" for ALLE tre måder at blande på.
-// "Én fra hver" kender matrixInfo; "Pr. gruppe" og "Antal" regnes af
+// "Én fra hver" kender matrixInfo (holdt op mod motoren i
+// matrixVsEngine.test.js); "Pr. gruppe" og "Antal" regnes af
 // expectedNewGroups (samme regnestykke som motoren) på de elever, der ikke
 // står i en låst matrixgruppe. Låste grupper bliver stående og tæller med.
 const estimate = computed(() => {

@@ -3,6 +3,7 @@
 import { reactiveState } from './reactiveState.js';
 import { autoSave } from './classActions.js';
 import { clearTopics } from './storage.js';
+import { eqTopic } from './utils.js';
 
 /** Opret emne-listen på klassen, når den mangler. */
 export function ensureTopicsArray() {
@@ -21,7 +22,10 @@ export function addClassTopic(text) {
     const v = String(text || '').trim();
     if (!v) return false;
     const topics = reactiveState.currentClass.topics;
-    if (topics.some(t => t.toLowerCase() === v.toLowerCase())) return false;
+    // eqTopic, ikke t.toLowerCase(): et tal i listen (kun muligt fra en
+    // håndredigeret backup) fik sammenligningen til at kaste, og "Tilføj"
+    // gjorde ingenting.
+    if (topics.some(t => eqTopic(t, v))) return false;
     topics.push(v);
     autoSave();
     return true;

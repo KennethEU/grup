@@ -14,7 +14,7 @@ import { useModalFocus } from '../composables/useModalFocus.js';
 import { useReorderDrag, useReorderKeys } from '../composables/useReorderDrag.js';
 import { reactiveState as state } from '../js/modules/reactiveState.js';
 import { autoSave } from '../js/modules/classActions.js';
-import { isInternalField, columnIsNumeric } from '../js/modules/utils.js';
+import { isInternalField, columnIsNumeric, valueKey } from '../js/modules/utils.js';
 
 const props = defineProps({
     // Kolonnen der skal rangeres, hvis vinduet er åbnet fra en advarsel om
@@ -55,7 +55,7 @@ function uniqueValues(col) {
     for (const s of (state.currentClass?.data || [])) {
         const v = String(s[col] ?? '').trim();
         if (v === '') continue;
-        const key = v.toLowerCase();
+        const key = valueKey(v);
         if (!set.has(key)) set.set(key, v);
     }
     return [...set.values()].sort((a, b) => a.localeCompare(b, 'da', { numeric: true }));
@@ -91,9 +91,19 @@ function load(col) {
     // hun flytte dem på plads i stedet for at starte forfra.
     const saved = (state.currentClass?.columnOrders || {})[col];
     if (Array.isArray(saved) && saved.length) {
-        const set = new Set(found.map(v => v.toLowerCase()));
-        const known = saved.filter(v => set.has(String(v).trim().toLowerCase()));
-        const added = found.filter(v => !saved.some(g => String(g).trim().toLowerCase() === v.toLowerCase()));
+        // Samme værdi kun ÉN gang (første vinder). En rangering fra en
+        // håndredigeret backup kan have "Lav" og "lav" som to trin; motoren
+        // giver rangen efter PLADSEN i listen, så dubletten ville give et hul
+        // i skalaen (Lav 1, Høj 3) — og listen to rækker med samme værdi.
+        const set = new Set(found.map(valueKey));
+        const seen = new Set();
+        const known = saved.filter(v => {
+            const key = valueKey(v);
+            if (!set.has(key) || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+        const added = found.filter(v => !seen.has(valueKey(v)));
         order.value = [...known, ...added];
     } else {
         order.value = found;

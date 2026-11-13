@@ -840,14 +840,19 @@ describe('computeTopicAdjustedTarget', () => {
         expect(r.direction).toBe('up');
     });
 
-    // Size mode — balanced ''
-    it('size (no mod): 28 students, size 3, 3 topics → ceil to 10, round up to 12', () => {
-        const r = computeTopicAdjustedTarget({
+    // Uden flueben regnes som "+" — det er sådan, motoren får det
+    // (buildEngineInput: alt andet end "-" er "plus").
+    it('størrelse uden flueben: regnes som "+"', () => {
+        const blank = computeTopicAdjustedTarget({
             mode: 'size', sizeNum: 3, sizeMod: '',
             studentCount: 28, lockedCount: 0, topicCount: 3,
         });
-        expect(r.naiveNew).toBe(10); // ceil(28/3)
-        expect(r.adjustedNew).toBe(9); // 10 → nearest multiple of 3 → 9 (tie-prefer-smaller)
+        const plus = computeTopicAdjustedTarget({
+            mode: 'size', sizeNum: 3, sizeMod: '+',
+            studentCount: 28, lockedCount: 0, topicCount: 3,
+        });
+        expect(blank).toEqual(plus);
+        expect(blank.naiveNew).toBe(9); // floor(28/3)
     });
 
     it('justerer ikke, når tallet allerede er et multiplum', () => {
@@ -887,16 +892,20 @@ describe('computeTopicAdjustedTarget', () => {
         expect(r.didAdjust).toBe(false);
     });
 
-    // Floor of t when no locks: don't go below one group per topic
-    it('størrelse uden låste: mindst topicCount', () => {
-        const r = computeTopicAdjustedTarget({
+    // Færre grupper end emner: kun "én elev mindre" giver én gruppe pr. emne
+    // (motorens spec. 4.4, svar 41). "Én elev ekstra" holder størrelsen.
+    it('færre grupper end emner: "+" holder størrelsen, "-" giver én pr. emne', () => {
+        const plus = computeTopicAdjustedTarget({
             mode: 'size', sizeNum: 10, sizeMod: '+',
             studentCount: 5, lockedCount: 0, topicCount: 3,
         });
-        // naiveNew = floor(5/10) = 0 → max(1,0) = 1
-        // adjustedNew should be at least t = 3 (but also <= studentCount = 5)
-        expect(r.adjustedNew).toBeGreaterThanOrEqual(3);
-        expect(r.adjustedNew).toBeLessThanOrEqual(5);
+        expect(plus.adjustedNew).toBe(1);
+        const minus = computeTopicAdjustedTarget({
+            mode: 'size', sizeNum: 10, sizeMod: '-',
+            studentCount: 5, lockedCount: 0, topicCount: 3,
+        });
+        expect(minus.adjustedNew).toBe(3);
+        expect(minus.adjustedSizes).toEqual([2, 2, 1]);
     });
 
     // Regression: with FEWER present students than topics (many absent), the
@@ -929,14 +938,35 @@ describe('computeTopicAdjustedTarget', () => {
         expect(r.adjustedNew).toBe(groups);
     });
 
-    // Det eneste sted, størrelsen må vige: færre grupper end emner.
-    it('færre grupper end emner: én gruppe pr. emne vinder over størrelsen', () => {
-        const r = computeTopicAdjustedTarget({
+    // Det eneste sted, størrelsen må vige: færre grupper end emner — og kun
+    // ved "én elev mindre". Fundet 12/11 2026: appen lovede også 5 grupper ved
+    // "én elev ekstra", men motoren danner 4 (og skriver, at et emne ingen får).
+    it('færre grupper end emner: én gruppe pr. emne kun ved "-"', () => {
+        const plus = computeTopicAdjustedTarget({
             mode: 'size', sizeNum: 5, sizeMod: '+',
             studentCount: 24, lockedCount: 0, topicCount: 5,
         });
-        expect(r.naiveTotal).toBe(4);
-        expect(r.adjustedNew).toBe(5);
+        expect(plus.naiveTotal).toBe(4);
+        expect(plus.adjustedNew).toBe(4);
+        const minus = computeTopicAdjustedTarget({
+            mode: 'size', sizeNum: 6, sizeMod: '-',
+            studentCount: 24, lockedCount: 0, topicCount: 5,
+        });
+        expect(minus.naiveTotal).toBe(4);
+        expect(minus.adjustedNew).toBe(5);
+    });
+
+    // Med en "Opdel" regner motoren pr. pulje.
+    it('Opdel: grupperne tælles pr. pulje', () => {
+        const whole = computeTopicAdjustedTarget({
+            mode: 'size', sizeNum: 4, sizeMod: '+', studentCount: 28, lockedCount: 0, topicCount: 1,
+        });
+        const pools = computeTopicAdjustedTarget({
+            mode: 'size', sizeNum: 4, sizeMod: '+', studentCount: 28, poolSizes: [13, 15], lockedCount: 0, topicCount: 1,
+        });
+        expect(whole.adjustedNew).toBe(7);
+        expect(pools.adjustedNew).toBe(6);            // 3 + 3
+        expect(pools.adjustedSizes).toEqual([5, 4, 4, 5, 5, 5]);
     });
 
     it('giver aldrig flere grupper end elever, når der er færre elever end emner', () => {
@@ -949,16 +979,17 @@ describe('computeTopicAdjustedTarget', () => {
     });
 });
 
-// Afrundingens løfter siden 1/11 2026, prøvet over mange klasser på én gang.
-// Gruppetallet ligger altid mellem 1 og antal frie elever. Runder hjælperen
-// (og der er mindst lige så mange grupper som emner), lander totalen på et
-// multiplum af antal emner, og alle grupper holder lærerens valg: "4+" er 4-5,
-// "4-" er 3-4, uden flueben 3-5. Færre grupper end emner giver én pr. emne,
-// så længe der er elever nok.
+// Afrundingens løfter, prøvet over mange klasser på én gang. Tallene kommer
+// fra motorens egen funktion (se plannedNewGroups), så det her er motorens
+// regler set fra appen: gruppetallet ligger altid mellem 1 og antal frie
+// elever. Runder den, lander totalen på et multiplum af antal emner, og alle
+// grupper holder lærerens valg: "4+" er 4-5, "4-" er 3-4. Færre grupper end
+// emner giver én pr. emne ved "-", så længe der er elever nok; ved "+" bliver
+// størrelsen stående.
 describe('computeTopicAdjustedTarget — løfterne over mange klasser', () => {
     it('holder sig inden for lærerens størrelse, når den runder', () => {
         const broken = [];
-        for (const mod of ['+', '-', ''])
+        for (const mod of ['+', '-'])
         for (let students = 1; students <= 40; students++)
         for (const size of [2, 3, 4, 5, 6])
         for (let locked = 0; locked <= 4; locked++)
@@ -969,8 +1000,10 @@ describe('computeTopicAdjustedTarget — løfterne over mange klasser', () => {
             });
             const label = JSON.stringify({ mod, students, size, locked, topics, a });
             if (a.adjustedNew < 1 || a.adjustedNew > students) broken.push(`antal ${label}`);
+            if (a.adjustedSizes.reduce((x, y) => x + y, 0) !== students) broken.push(`elever ${label}`);
             if (a.naiveTotal < topics) {
-                const expected = Math.min(students, topics - locked);
+                const perTopic = topics - locked;
+                const expected = mod === '-' && topics > 1 && perTopic <= students ? perTopic : a.naiveNew;
                 if (a.adjustedNew !== expected) broken.push(`én pr. emne ${label}`);
                 continue;
             }
@@ -1404,8 +1437,16 @@ describe('homeGroupFingerprint', () => {
 
 describe('cellIsNumber', () => {
     it('læser danske tal, inkl. komma som decimaltegn', () => {
-        for (const v of ['7', '7,5', '-3', '02', '00', '12.', '1e3', ' 7 ']) {
+        for (const v of ['7', '7,5', '-3', '02', '00', '12.', ' 7 ', '+ 5', '- 5']) {
             expect(cellIsNumber(v), v).toBe(true);
+        }
+    });
+
+    // "1e3" var 1000 i appen og tekst i motoren til 13/11 2026 (og "2e2" kan
+    // være et holdnavn). Nu læser appen med motorens egen funktion.
+    it('læser ikke eksponent-skrivemåden som et tal (motoren gør heller ikke)', () => {
+        for (const v of ['1e3', '2E2', '1,5e2']) {
+            expect(cellIsNumber(v), v).toBe(false);
         }
     });
 
@@ -1610,6 +1651,41 @@ describe('setupSignature', () => {
             expect(setupSignature(c, false, 'size')).not.toBe(base);
         }
         expect(setupSignature(cls(), false, 'number')).not.toBe(base);
+    });
+
+    // Matrix-runden: valget emne/stamgruppe og Undgå hinanden hører med
+    // (begge sendes til motoren i matrix); Skal sammen og emnelisten gør ikke.
+    it('matrix: skifter med kilden og med Undgå hinanden, ikke med Skal sammen og emnelisten', () => {
+        const matrix = () => ({
+            ...cls(),
+            matrixRules: [{ type: 'distribute', column: 'Køn' }],
+            matrixSettings: { groupTarget: 4, groupMod: '+', matrixStrategy: 'full_strict', matrixRepresentationType: 'group' },
+        });
+        const base = setupSignature(matrix(), true, 'size');
+        expect(setupSignature(matrix(), true, 'size')).toBe(base);
+        const changed = [
+            (c) => { c.matrixSettings.matrixRepresentationType = 'topic'; },
+            (c) => { c.matrixSettings.matrixStrategy = 'count'; },
+            (c) => { c.separations = [{ ids: ['r1', 'r2'] }]; },
+            (c) => { c.matrixRules = []; },
+        ];
+        for (const edit of changed) {
+            const c = matrix(); edit(c);
+            expect(setupSignature(c, true, 'size')).not.toBe(base);
+        }
+        const same = [
+            (c) => { c.togetherGroups = []; },
+            (c) => { c.topics = ['B', 'C']; },
+            (c) => { c.rules = []; },
+        ];
+        for (const edit of same) {
+            const c = matrix(); edit(c);
+            expect(setupSignature(c, true, 'size')).toBe(base);
+        }
+        // Uden et gemt valg er kilden "emne" (som i motorens input).
+        const unset = matrix(); delete unset.matrixSettings.matrixRepresentationType;
+        const topic = matrix(); topic.matrixSettings.matrixRepresentationType = 'topic';
+        expect(setupSignature(unset, true, 'size')).toBe(setupSignature(topic, true, 'size'));
     });
 });
 

@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, createClassAndGoToGroups, goToGroups, generateGroups, addTopics, goToMatrix } from './helpers';
+import { createClass, createClassAndGoToGroups, goToGroups, generateGroups, addTopics, goToMatrix, setGroupSize } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Fravær, efternølere og klasse-emner — dækker de adfærds-fixes der er
@@ -101,6 +101,33 @@ test('Klassens emner runder gruppeantallet og står på kortene — hintet passe
         await topicSelects.nth(2).inputValue(),
     ];
     expect(values.sort()).toEqual(['EmneA', 'EmneA', 'EmneB']);
+});
+
+// Fundet 12/11 2026 (gennemsyn 96): appen havde sit eget regnestykke for
+// antal grupper, og det var uenigt med motoren, når størrelsen gav færre
+// grupper end emner ved "én elev ekstra". 12 elever i grupper på 5 og 5 emner:
+// opskriften skrev "ca. 5 grupper" og "der skal være mindst 5 grupper", mens
+// motoren dannede 2 og selv skrev, at tre emner ingen gruppe fik — to beskeder,
+// der modsagde hinanden. Nu regner appen med motorens egen funktion.
+test('Færre grupper end emner ved "én elev ekstra": skønnet, beskeden og grupperne siger det samme', async ({ page }) => {
+    await createClass(page, 'Emner og størrelse');
+    await goToGroups(page);
+    await addTopics(page, ['A', 'B', 'C', 'D', 'E']);
+    await setGroupSize(page, 5);
+
+    const dialog = page.locator('dialog.recipe-dialog[open]');
+    // Skønnet i størrelses-ordet
+    await dialog.locator('.rtok__btn[aria-label^="Gruppernes størrelse:"]').click();
+    await expect(dialog.locator('.rtok__pop .recipe-pop-note')).toHaveText('ca. 2 grupper af 12 elever');
+    await page.keyboard.press('Escape');
+    await expect(dialog.locator('.rtok__pop')).toHaveCount(0);
+
+    // Appen lover ikke én gruppe pr. emne — motoren siger, hvad der sker.
+    await expect(dialog).not.toContainText('mindst 5 grupper');
+    await expect(dialog).toContainText('Der er 5 emner, men kun 2 grupper');
+
+    await generateGroups(page);
+    await expect(page.locator('.group-card')).toHaveCount(2);
 });
 
 // Matrixgrupper dannes PÅ TVÆRS af stamgrupperne. Tilføjer læreren en elev

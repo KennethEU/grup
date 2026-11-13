@@ -14,6 +14,7 @@ import {
 import { ruleSentence, ruleIsIncomplete, updateRuleField, deleteRule, columnFitness, findTwinRule, ruleDisplayOrder,
     tierIsOrdered, tierPositions, moveRuleInTier, setTierOrder } from '../../js/modules/recipe.js';
 import { runStatusFor } from '../../js/modules/nextEngine.js';
+import { trialFor } from '../../js/modules/trialRun.js';
 import { ruleHints } from '../../js/modules/hints.js';
 import RuleMark from './RuleMark.vue';
 import { useReorderDrag } from '../../composables/useReorderDrag.js';
@@ -86,6 +87,8 @@ const anyMovable = computed(() => Object.keys(tierCounts.value).some(tierMovable
 // Under et træk vises ingen mærker: de hører til regler, der lige nu er på
 // vej et andet sted hen.
 const marks = computed(() => (dragPositions.value.length ? null : runStatusFor(props.isMatrix)?.rules || null));
+// Uden et rigtigt resultat: mærkerne fra prøvekørslen i baggrunden (dæmpede).
+const trialMarks = computed(() => (dragPositions.value.length || marks.value ? null : trialFor(props.isMatrix)?.rules || null));
 // Noten ved en regel før kørslen (flere puljer: én sætning pr. pulje).
 const noteFor = (index) => (ruleHints.value[index] || []).map(h => h.text).join(' ');
 
@@ -248,7 +251,7 @@ const isDragged = (index) => dragPositions.value.length > 0 && dragPositions.val
     <li class="recipe__line recipe__line--rule" :data-rule-index="index"
         :class="{ 'is-incomplete': ruleIsIncomplete(rule), 'is-dragging': isDragged(index) }"
         @dragover="dragOver(index, $event)" @drop="dragDrop($event)">
-        <span class="recipe__no"><RuleMark v-if="marks && marks[index]" :mark="marks[index]" />{{ lineNo.get(index) }}</span>
+        <span class="recipe__no"><RuleMark v-if="marks && marks[index]" :mark="marks[index]" /><RuleMark v-else-if="trialMarks && trialMarks[index]" :mark="trialMarks[index]" trial />{{ lineNo.get(index) }}</span>
         <span class="recipe__text">
             <template v-for="(p, i) in ruleSentence(rule, sentenceContext)" :key="'p' + i">
                 <RecipeToken v-if="p.token === 'type'" :text="p.text" label="Regel" wide v-slot="{ close }">

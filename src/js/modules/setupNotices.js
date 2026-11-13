@@ -66,7 +66,15 @@ export function commitRun(signature = null) {
  */
 export function announce(text, type = 'info', keys = null) {
     const list = pending || setupNotices.last[pendingView];
-    if (list.some(n => n.text === text && n.type === type)) return;
+    const same = list.find(n => n.text === text && n.type === type);
+    if (same) {
+        // Samme tekst to gange (fx samme regel sat ind to gange i opskriften):
+        // den står kun én gang, men husker BEGGE sagers nøgler. Før blev den
+        // anden sags nøgler smidt væk, så motorens røde varsel om regel
+        // nummer to stod i opskriften ved siden af resultatet (13/11 2026).
+        if (keys && keys.length) same.keys = [...new Set([...(same.keys || []), ...keys])];
+        return;
+    }
     // `keys`: fra motorens beskeder — deres nøgler for "samme
     // sag" (nextEngine.noteKeys), så opskriften kan skjule motorens varsel om
     // en sag, sidste dannelse allerede har resultatet af. Uden nøgler som før.

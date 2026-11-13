@@ -19,14 +19,15 @@ import { brokenTogether, togetherComponents } from './together.js';
 import { computed, ref, toRaw, watch } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
-import { computeTopicAdjustedTarget, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
+import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
     brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn } from './utils.js';
 import { currentLastNotes, ruleTypeLabel, namesText } from './recipe.js';
 import { setupNotices } from './setupNotices.js';
+import { trialNotes } from './trialRun.js';
 import { studentById } from './lookups.js';
 import { generateMatrixGroups, generateWithoutTogether } from './generation.js';
 import { autoSave } from './classActions.js';
-import { engineTogetherStop, provideRecipeHintIds, engineCheck, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources } from './nextEngine.js';
+import { engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, lastRunInputIsCurrent } from './nextEngine.js';
 
 
 // Hvilke beskeder læreren selv har klikket væk i denne session.
@@ -178,29 +179,38 @@ const topicRoundingHint = computed(() => {
     if (!sizeNum) return null;
 
     const locked = (state.storedStandardGroups || []).filter(g => g.locked);
-    const studentCount = _split(locked).freeCount;
+    const split = _split(locked);
+    const studentCount = split.freeCount;
     if (studentCount <= 0) return null;
+    // Med en "Opdel" regner motoren pr. pulje — beskeden skal regne på de
+    // samme puljer, ellers lover den et antal, motoren ikke danner.
+    const poolSizes = poolSizesFor(split.free, state.currentClass.rules);
 
-    // Samme hjælper som generation.js bruger, så beskeden og motoren ikke
-    // kan komme til at sige hver sit tal.
+    // Motorens eget regnestykke (plannedNewGroups i utils.js), så beskeden og
+    // motoren ikke kan komme til at sige hver sit tal.
     const adj = computeTopicAdjustedTarget({
         mode: 'size',
         sizeNum,
-        // SAMME reserve som generation.js (`activeMod || '+'`). To
-        // forskellige reserver fik banneret og motoren til at være uenige om
-        // klasser gemt, før groupMod fandtes.
+        // SAMME reserve som buildEngineInput: alt andet end "-" er "+".
         sizeMod: settings.groupMod || '+',
         studentCount,
+        poolSizes,
         lockedCount: locked.length,
         topicCount: topics.length,
     });
     if (!adj) return null;
 
-    // "4–5 elever": hvad et givent antal nye grupper betyder for størrelsen.
-    const perGroup = (groups) => {
-        const lo = Math.floor(studentCount / groups);
-        const hi = Math.ceil(studentCount / groups);
+    // "4–5": den mindste og den største af de nye grupper.
+    const sizeRange = (sizes) => {
+        const lo = Math.min(...sizes);
+        const hi = Math.max(...sizes);
         return lo === hi ? `${lo}` : `${lo}–${hi}`;
+    };
+    // Hvad et fast antal nye grupper betyder for størrelsen (til knapperne,
+    // der skifter til "Antal grupper") — også regnet af motorens funktion.
+    const perGroup = (groups) => {
+        const plan = plannedNewGroups({ mode: 'number', target: groups + locked.length, poolSizes, lockedCount: locked.length });
+        return plan ? sizeRange(plan.sizes) : '';
     };
     const countButton = (total, note) => ({
         label: `Brug ${groupList(total)} (${note})`,
@@ -231,6 +241,9 @@ const topicRoundingHint = computed(() => {
 
     // FÆRRE GRUPPER END EMNER: her kan størrelsen og emnerne ikke begge holde.
     // Grunden er ikke et "multiplum", men at hvert emne skal have en gruppe.
+    // Motoren gør det kun ved "én elev mindre" (Kenneths svar 41 til motoren);
+    // ved "én elev ekstra" holder den størrelsen og skriver selv, at et emne
+    // ingen gruppe får — så dér er der ingen besked herfra.
     if (adj.naiveTotal < topics.length && adj.adjustedTotal === topics.length) {
         const lost = topics.length - adj.naiveTotal;
         return {
@@ -238,7 +251,7 @@ const topicRoundingHint = computed(() => {
             kind: 'info',
             anchor: ANCHOR_TARGET,
             text: `Du har ${topics.length} emner, så der skal være mindst ${topics.length} grupper. `
-                + `Derfor får grupperne ${perGroup(adj.adjustedNew)} elever i stedet for ${perGroup(adj.naiveNew)}.`,
+                + `Derfor får grupperne ${sizeRange(adj.adjustedSizes)} elever i stedet for ${sizeRange(adj.naiveSizes)}.`,
             actions: [countButton(adj.naiveTotal, `${lost} ${lost === 1 ? 'emne' : 'emner'} udgår`)],
         };
     }
@@ -272,6 +285,7 @@ const topicRoundingHint = computed(() => {
             sizeNum,
             sizeMod: mod,
             studentCount,
+            poolSizes,
             lockedCount: locked.length,
             topicCount: topics.length,
         });
@@ -281,20 +295,12 @@ const topicRoundingHint = computed(() => {
         }
     }
 
-    // NÅR LOFTET HAR TAGET MULTIPLUMMET, MÅ TEKSTEN IKKE LOVE DET ALLIGEVEL.
-    //
-    // Når `computeTopicAdjustedTarget()` runder, er det til et multiplum af
-    // antal emner — men trin 3 lægger et loft over: der dannes aldrig flere grupper end der
-    // er frie elever. Er der færre elever end emner (mange fraværende, eller
-    // et lille resthold ved siden af nogle låste grupper), skærer loftet
-    // multiplummet væk igen, og totalen ER ikke længere deleligt med
-    // emnetallet. Målt over 2.400 kombinationer: 63 af dem ramte netop dét, og
-    // i alle 63 stod der stadig "så hvert emne får lige mange (multiplum af
-    // N)" — om et tal der ikke var et multiplum af N.
-    //
-    // Beskeden siger nu hvad der faktisk skete. Den er stadig værd at vise:
-    // tallet ÆNDREDE sig, og læreren skal kunne se hvorfor.
-    const isMultipleOfTopics = adj.adjustedTotal % topics.length === 0;
+    // Motoren runder kun til et multiplum, der kan dannes (aldrig flere
+    // grupper end elever), så totalen ER et multiplum, når vi når hertil. Er
+    // der færre grupper end emner, uden at der rundes ("én elev ekstra", eller
+    // færre elever end emner), er vi allerede gået ud længere oppe — dér
+    // skriver motoren selv, at et emne ingen gruppe får (more-topics-than-groups).
+    if (adj.adjustedTotal % topics.length !== 0) return null;
 
     // Hvad afrundingen betyder for gruppernes størrelse. Uden den står der kun
     // et gruppetal, og at 7 grupper blev til 10 betyder, at gruppen på 4
@@ -302,9 +308,8 @@ const topicRoundingHint = computed(() => {
     const sizeText = (() => {
         const n = adj.adjustedNew;
         if (!n || n > studentCount) return '';
-        const lo = Math.floor(studentCount / n);
-        const hi = Math.ceil(studentCount / n);
-        const per = lo === hi ? `${lo}` : `${lo}–${hi}`;
+        const hi = Math.max(...adj.adjustedSizes);
+        const per = sizeRange(adj.adjustedSizes);
         return ` Det giver ${n === adj.adjustedTotal ? '' : 'nye '}${groupList(n)} på ${per} ${hi === 1 ? 'elev' : 'elever'}.`;
     })();
 
@@ -315,15 +320,10 @@ const topicRoundingHint = computed(() => {
         // båndet. Den vises som en markering DÉR i stedet for som et banner
         // over resultatet — se ANCHOR_TARGET nedenfor.
         anchor: ANCHOR_TARGET,
-        text: isMultipleOfTopics
-            ? `${topics.length} emner: antal grupper rundes ${dir} fra ${adj.naiveTotal} til `
-                + `${adj.adjustedTotal}, så hvert emne får lige mange (multiplum af ${topics.length}).`
-                + sizeText
-                + altText
-            : `${topics.length} emner, men kun ${studentCount} `
-                + `${studentCount === 1 ? 'elev' : 'elever'} til rådighed: antal grupper `
-                + `${dir === 'op' ? 'hæves' : 'sænkes'} fra ${adj.naiveTotal} til ${adj.adjustedTotal}. `
-                + `Der kan ikke blive én gruppe pr. emne — mindst ét emne får ingen.`,
+        text: `${topics.length} emner: antal grupper rundes ${dir} fra ${adj.naiveTotal} til `
+            + `${adj.adjustedTotal}, så hvert emne får lige mange (multiplum af ${topics.length}).`
+            + sizeText
+            + altText,
     };
 });
 
@@ -389,8 +389,16 @@ const topicCountMismatchHint = computed(() => {
     // grupper til 8 elever. Beskeden tier nu i stedet; det ægte problem
     // (for mange grupper til for få elever) siger `tooManyGroupsHint` allerede
     // ved det samme felt.
-    const free = _split(locked).freeCount;
+    const split = _split(locked);
+    const free = split.freeCount;
     if (sug.nextNew > free) return null;
+
+    // Giver en "Opdel" flere puljer, end der er bedt om nye grupper, danner
+    // motoren én gruppe pr. pulje — altså FLERE end det tastede tal — og siger
+    // det selv ("… Opdel giver 4 puljer … Der dannes derfor 4 nye grupper").
+    // Regnestykket her bygger på det tastede tal og ville stå ved siden af med
+    // et antal grupper, der ikke bliver dannet.
+    if (poolSizesFor(split.free, state.currentClass.rules).length > total - locked.length) return null;
 
     return {
         id: 'hint:topic-count-mismatch',
@@ -507,15 +515,26 @@ const numericRuleOnTextHint = computed(() => {
         // Men rangeringen skal RAMME noget. Er klasselisten skiftet ud med en,
         // der bruger andre ord, står rækkefølgen der stadig uden at passe på en
         // eneste elev — og så gør reglen lige så lidt som før. Dét skal hintet
-        // blive ved med at sige (og generation.js dropper rang-kolonnen helt i
-        // netop det tilfælde, så de to er enige).
+        // blive ved med at sige (og buildEngineInput i nextEngine.js sender
+        // ikke rækkefølgen i netop det tilfælde — samme prøve — så motoren
+        // regner på kolonnen, som om den ikke var rangeret).
         if (rankingAffectsColumn(rows, col, (state.currentClass.columnOrders || {})[col])) continue;
+        // Står der et tal i NOGLE få celler, gør reglen ikke "ingenting":
+        // motoren regner med tal, så snart én celle er et tal (`hasNumbers` i
+        // motor/engine/task.js), bruger reglen på netop de elever og placerer
+        // resten frit. Beskeden skal sige det, motoren gør (og den afløser
+        // motorens egen note om det samme, se coveredByRecipeHint).
+        const someNumbers = rows.some(s => cellNumber(s[col]) !== null);
+        const way = `Giv værdierne en rækkefølge — `
+            + `eller brug ${ruleTypeLabel('group_sort')} eller ${ruleTypeLabel('cluster')} i stedet.`;
         out.push({
             id: `hint:non-numeric:${isMatrix.value ? 'matrix' : 'stam'}:${type}:${col}`,
             kind: 'conflict',
-            text: `${ruleTypeLabel(type)} på "${col}" gør ingenting: reglen kan kun arbejde `
-                + `med tal, og der står tekst i kolonnen. Giv værdierne en rækkefølge — `
-                + `eller brug ${ruleTypeLabel('group_sort')} eller ${ruleTypeLabel('cluster')} i stedet.`,
+            text: someNumbers
+                ? `${ruleTypeLabel(type)} på "${col}" virker kun for de få elever, der har et tal `
+                    + `i kolonnen: reglen kan kun arbejde med tal, og resten har tekst og placeres frit. ${way}`
+                : `${ruleTypeLabel(type)} på "${col}" gør ingenting: reglen kan kun arbejde `
+                    + `med tal, og der står tekst i kolonnen. ${way}`,
             // Advarslen peger på sin egen udvej. Uden knappen skal læreren selv
             // gætte hvor rangeringen bor.
             action: { label: 'Ranger værdierne…', run: () => modalActions.openColumnOrder(col) },
@@ -650,6 +669,7 @@ const engineTogetherHint = computed(() => {
 // Har "Sidste dannelse" resultatet af en sag (samme issueKey, eller for en
 // advarsel om en regel: et resultat på samme plads — resultSlot i
 // nextEngine.js), står motorens varsel om den ikke også her.
+// Det gælder kun, mens kørslen fik det input, der står nu.
 const engineCheckHints = computed(() => {
     const chk = engineCheck.value;
     if (!chk) return null;
@@ -659,8 +679,12 @@ const engineCheckHints = computed(() => {
         studentName: (id) => memberDisplayName(id, data, state.displayColumn),
         groupName: () => null,
     };
-    const lastKeys = new Set(currentLastNotes(setupNotices, cls, isMatrix.value, state.groupMode)
-        .flatMap(n => n.keys || []));
+    // Kun mens sidste kørsel fik præcis det input, der står nu: et resultat
+    // fra før en låsning eller en rettet celle må ikke skjule en ny advarsel
+    // (lastRunInputIsCurrent i nextEngine.js).
+    const lastKeys = new Set(lastRunInputIsCurrent(isMatrix.value)
+        ? currentLastNotes(setupNotices, cls, isMatrix.value, state.groupMode).flatMap(n => n.keys || [])
+        : []);
     const out = [];
 
     // Skal sammen: alle de umulige blokke i én advarsel, som appens egen —
@@ -679,8 +703,15 @@ const engineCheckHints = computed(() => {
     // Svaret ligger i en ref, så input er Vues proxy — WeakMap'en kender kun
     // det rå objekt (toRaw), ellers fandt ingen note sin linje.
     const sources = ruleSources.get(toRaw(chk.input)) || [];
+    // "N elever har en værdi, der ikke er et tal" står ikke ved siden af
+    // appens egen advarsel om samme regel og kolonne (den med "Ranger
+    // værdierne…"). Efter kørslen og i prøvekørslen blev den allerede sorteret
+    // fra (coveredByRecipeHint); her i det hurtige tjek stod de to side om
+    // side til 13/11 2026. Har læreren lukket appens advarsel, vises motorens.
+    const ownIds = numericRuleOnTextHint.value.map(h => h.id).filter(id => !dismissedIds.value.has(id));
     for (const m of chk.messages) {
         if (isTogetherStop(m)) continue;
+        if (coveredByRecipeHint(m, chk.input, ownIds)) continue;
         const key = issueKey(m);
         if (lastKeys.has(key) || replacedByResult(m, lastKeys)) continue;
         const text = fillMessageText(m, fill);
@@ -694,6 +725,17 @@ const engineCheckHints = computed(() => {
     }
     return out;
 });
+
+// Prøvekørslen i baggrunden (trialRun.js): det, en kort gruppedannelse fandt
+// ud over tjekket. Står i SAMME stak og ser ud som de andre advarsler —
+// Kenneth 12/11: advarsler skal stå ét sted, og læreren skal ikke kunne se
+// forskel på, hvor de kommer fra. Derfor samme id-forstavelse ("engine:", se
+// isRecipeHint i recipe.js) og samme farver som tjekkets.
+const trialHints = computed(() => trialNotes(isMatrix.value).map(n => ({
+    id: `engine:trial:${n.key}|${n.text}`,
+    kind: n.type === 'error' ? 'conflict' : 'info',
+    text: n.text,
+})));
 
 // "Fordel på X kan ikke gå helt lige op" står ved reglens linje som et lille
 // i i stedet for i stakken over opskriften. Kenneth 4/11: syv af dem stod
@@ -732,9 +774,15 @@ const togetherRuleCostHint = computed(() => {
         // ord er to forskellige rang. Læst som tal var hvert ord "ingenting",
         // og hintet tav om en aftale, der binder Ensartede på niveauet.
         const order = (cls.columnOrders || {})[attr];
-        const ranked = Array.isArray(order) && order.length > 0;
+        // Kun en rækkefølge, der rammer noget, sendes til motoren (se
+        // buildEngineInput); en forældet tæller ikke som rangeret her heller.
+        const ranked = rankingAffectsColumn(cls.data || [], attr, order);
+        // Saml regner med tal, så snart ÉN celle i kolonnen er et tal (motorens
+        // `mode` i motor/engine/task.js), ikke først når flertallet er det.
+        // Med flertals-tærsklen (columnIsNumeric) sammenlignede beskeden ord,
+        // som motoren slet ikke ser på i en kolonne med nogle få tal.
         const numeric = !ranked && (type === 'minimizediff'
-            || (type === 'group_sort' && columnIsNumeric(cls.data, attr)));
+            || (type === 'group_sort' && (cls.data || []).some(row => cellNumber(row?.[attr]) !== null)));
         const valueOf = raw => numeric ? cellNumber(raw) : String(raw ?? '').trim().toLowerCase() || null;
         // Ingen indsnævring på en valgt værdi: de tre regeltyper her arbejder
         // alle på HELE kolonnen (RULES_WITHOUT_VALUES i utils.js), og feltet
@@ -782,6 +830,8 @@ const allHints = computed(() => [
     // Motorens check(): advarslerne om reglerne og aftalerne (listen ved
     // engineCheckHints ovenfor). null, mens motoren hentes første gang.
     ...(engineCheckHints.value || []),
+    // … og det, prøvekørslen i baggrunden fandt oveni (trialHints ovenfor).
+    ...trialHints.value,
 ].filter(Boolean));
 
 // Vis kun de beskeder, læreren ikke har klikket væk.

@@ -107,14 +107,14 @@ describe('hints — emne-afrundingen lover kun det, loftet lader den holde', () 
         expect(t).toMatch(/multiplum af 3/);
     });
 
-    it('lover IKKE et multiplum, når elev-loftet har taget det væk', () => {
-        // Kun 2 elever til stede og 3 emner: loftet skærer ned til 2 grupper,
-        // og 2 er ikke et multiplum af 3.
+    it('lover IKKE et multiplum, når der er færre elever end emner', () => {
+        // Kun 2 elever til stede og 3 emner: motoren danner én gruppe og
+        // skriver selv, at to emner ingen gruppe får. Herfra kommer intet —
+        // før stod der en besked om et antal, motoren ikke dannede.
         state.currentClass.data = students(30, 28);
         const t = targetTexts().join('\n');
         expect(t).not.toMatch(/multiplum/);
-        expect(t).toMatch(/3 emner, men kun 2 elever til rådighed/);
-        expect(t).toMatch(/mindst ét emne får ingen/i);
+        expect(t).not.toMatch(/emner/);
     });
 });
 
@@ -145,9 +145,11 @@ describe('hints — emner og gruppestørrelse', () => {
         expect(h.actions.map(a => a.label)).toEqual(['Brug 5 grupper (5–6 elever)', 'Brug 10 grupper (2–3 elever)']);
     });
 
-    it('siger prisen ved færre grupper end emner, og knappen vælger det rå antal', () => {
+    it('siger prisen ved færre grupper end emner ("én elev mindre"), og knappen vælger det rå antal', () => {
+        // 24 elever i grupper på 6 med "én elev mindre" er 4 grupper, men der
+        // er 5 emner: motoren giver hvert emne én gruppe (svar 41).
         state.currentClass.data = students(24, 0);
-        state.currentClass.settings = { groupTarget: '5', groupMod: '+' };
+        state.currentClass.settings = { groupTarget: '6', groupMod: '-' };
         const h = hint('hint:topic-floor');
         expect(h.text).toMatch(/mindst 5 grupper/);
         expect(h.text).toMatch(/4–5 elever i stedet for 6/);
@@ -156,6 +158,28 @@ describe('hints — emner og gruppestørrelse', () => {
         h.actions[0].run();
         expect(state.groupMode).toBe('number');
         expect(state.currentClass.settings.groupTarget).toBe(4);
+    });
+
+    it('lover ikke én gruppe pr. emne ved "én elev ekstra" — motoren holder størrelsen', () => {
+        // Fundet 12/11 2026: her stod "der skal være mindst 5 grupper", mens
+        // motoren dannede 4 og selv skrev, at et emne ingen gruppe fik.
+        state.currentClass.data = students(24, 0);
+        state.currentClass.settings = { groupTarget: '5', groupMod: '+' };
+        expect(hint('hint:topic-floor')).toBeUndefined();
+        expect(hint('hint:topic-rounding')).toBeUndefined();
+        expect(hint('hint:topic-uneven')).toBeUndefined();
+    });
+
+    it('regner pr. pulje, når klassen har en "Opdel"', () => {
+        // 28 elever, "4+", 2 emner. Uden Opdel: 7 grupper (går ikke op med 2).
+        // Med Opdel på 13 + 15: 3 + 3 = 6 grupper — det går op, så ingen besked.
+        state.currentClass.topics = ['A', 'B'];
+        expect(hint('hint:topic-rounding').text).toMatch(/rundes ned fra 7 til 6/);
+        state.currentClass.data = students(28, 0).map((r, i) => ({ ...r, Hold: i < 13 ? 'x' : 'y' }));
+        state.currentClass.columns = ['Navn', 'Hold'];
+        state.currentClass.rules = [{ type: 'aggregate', column: 'Hold', value: '' }];
+        expect(hint('hint:topic-rounding')).toBeUndefined();
+        expect(hint('hint:topic-uneven')).toBeUndefined();
     });
 
     it('tier, når tallet går op', () => {

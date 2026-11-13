@@ -19,6 +19,24 @@
 // kort og konkret: "Hvad er nyt?" + "Hvornår er det nyttigt?"
 export const NEWS = [
     {
+        date: '2026-11-13',
+        title: 'Rettelse: matrix-runden tæller de låste grupper, og "EU" og "eu" er samme emne',
+        type: 'fix',
+        body: 'Havde du låst en matrixgruppe og valgt "Én fra hver", kunne opskriften vise et forkert antal matrixgrupper, fx "4 matrixgrupper", hvor der blev dannet 3. Nu tæller skønnet de låste grupper med og regner kun på de elever, der skal fordeles.\nStod samme emne med forskellige store og små bogstaver på to stamgrupper (fx "EU" og "eu"), blev de regnet som to emner, når matrixgrupperne blev dannet på emner. Så kom der færre matrixgrupper, end opskriften viste, og to fra samme emne i hver. Nu er det ét emne.\nEn låst stamgruppe beholder også sit emne, når det er stavet med andre store og små bogstaver end på klassens emneliste.\nBad du om flere grupper, end der er elever, kunne der stå "ca. 0,3 elever pr. gruppe" i opskriften. Nu regner skønnet på det antal grupper, der bliver dannet.\nHavde du en "Adskil"-regel på en værdi (fx "Dreng") og en låst gruppe, kunne reglen blive sprunget over, hvis værdien stod med andre store og små bogstaver hos eleverne uden for den låste gruppe ("dreng"). Nu gælder reglen for dem.\nStod der tal i nogle få celler i en kolonne med ord, sagde advarslen, at "Balancér" eller "Ensartede" på kolonnen "gør ingenting". Reglen virker for de elever, der har et tal, og det siger advarslen nu.\nHavde du givet en kolonnes værdier en rækkefølge (fx Lav, Middel, Høj) og siden skiftet klasselisten ud, så kolonnen nu har tal eller helt andre ord, blev den gamle rækkefølge stadig brugt. Så gjorde "Balancér", "Ensartede" og "Saml" på kolonnen ingenting, også når kolonnen var tal, og der stod to advarsler om det samme. Nu ses der bort fra en rækkefølge, som ingen elev har en værdi fra.\nLåste du grupper, efter at grupperne var dannet, kunne en ny advarsel i opskriften mangle (fx at seks elever nu skal adskilles i kun to grupper), fordi resultatet fra sidste dannelse handlede om samme regel. Nu kommer advarslen, så snart det, der skal dannes, er et andet end sidst.\nSkiftede du i matrix-runden mellem "Stamgruppe" og "Emne", eller fjernede du en "Undgå hinanden"-aftale, blev resultatet fra sidste dannelse stående i opskriften, selv om det handlede om det gamle valg. Nu forsvinder det, når opskriften er en anden.\nHavde stamgrupperne ingen emner, kunne matrix-opskriften efter "Ja, tag alt med" i kørselshistorikken sige "én fra hvert emne". Der blandes på stamgrupperne, og det står der nu.',
+    },
+    {
+        date: '2026-11-12',
+        title: 'Opskriften prøves, mens du skriver den',
+        type: 'feature',
+        body: 'Når du har ændret noget i gruppeopskriften og holder en kort pause, prøver Grupper nu opskriften af i baggrunden. Ved hver regel kommer et dæmpet mærke, der viser, om reglen kunne holdes, og det, der ikke gik op, står sammen med de andre advarsler øverst i opskriften. Så kan du se det, før du trykker Dan grupper.\nPrøvekørslen danner ikke dine grupper. De dannes først, når du trykker Dan grupper, og dér leder Grupper længere, så resultatet kan blive bedre end prøven.',
+    },
+    {
+        date: '2026-11-12',
+        title: 'Rettelse: opskriften viser det antal grupper, der faktisk bliver dannet',
+        type: 'fix',
+        body: 'Havde klassen flere emner, end størrelsen gav grupper (fx 24 elever i grupper på 5 med "én elev ekstra" og 5 emner), stod der "ca. 5 grupper" i opskriften og en besked om, at der skulle være mindst 5 grupper. Men der blev dannet 4, og en anden besked sagde, at et emne ingen gruppe fik. Nu siger opskriften det, der sker: 4 grupper, og at et emne ikke får en gruppe. Vil du have en gruppe til hvert emne, så vælg "én elev mindre" eller et fast antal grupper.\nMed en "Opdel"-regel kunne "ca. … grupper" også være forkert, fordi hver del af klassen får sine egne grupper. Nu tæller skønnet og beskeden om emnerne hver del for sig.',
+    },
+    {
         date: '2026-11-11',
         title: 'Rettelse: et navn med komma i en liste fra Lectio, og kolonner i en klasse uden elever',
         type: 'fix',

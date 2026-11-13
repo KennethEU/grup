@@ -30,6 +30,12 @@ function sourceWords(task) {
     : { each: 'hver stamgruppe', one: 'stamgruppe', the: 'Stamgruppen', theMany: 'stamgrupperne', many: 'stamgrupper' };
 }
 
+// "1 gruppe" / "3 grupper": "kun 1 grupper" stod i beskeden om emnerne, når
+// der kun blev én gruppe (rettet 13/11 2026).
+function groupsWord(count) {
+  return count === 1 ? '1 gruppe' : `${count} grupper`;
+}
+
 function number(x) {
   return Number.isInteger(x) ? String(x) : String(Math.round(x * 100) / 100).replace('.', ',');
 }
@@ -88,7 +94,7 @@ export function stopMessages(task, reasons) {
     let text;
     switch (r.code) {
       case 'together-too-big':
-        text = `Skal sammen samler ${r.count} elever ({elever}), men den største gruppe har ${r.biggest} pladser.`;
+        text = `Skal sammen samler ${r.count} elever ({elever}), men den største gruppe har ${r.biggest === 1 ? '1 plads' : `${r.biggest} pladser`}.`;
         break;
       case 'together-cannot-pack':
         finding.pool = r.pool;
@@ -173,7 +179,7 @@ export function preRunMessages(task, layout, blocks, withRuleLimits = true, sepa
         message(
           task,
           { type: 'note', code: note.code, rule: task.splitRules[0]?.index ?? null },
-          `Der blev bedt om ${task.size.count} grupper, men Opdel giver ${task.pools.length} puljer, og hver pulje skal have mindst én gruppe. Der dannes derfor ${layout.total} nye grupper.`,
+          `Der blev bedt om ${groupsWord(task.size.count)}, men Opdel giver ${task.pools.length} puljer, og hver pulje skal have mindst én gruppe. Der dannes derfor ${layout.total} nye grupper.`,
         ),
       );
     } else if (note.code === 'topic-rounding') {
@@ -195,7 +201,7 @@ export function preRunMessages(task, layout, blocks, withRuleLimits = true, sepa
       message(
         task,
         { type: 'note', code: 'more-topics-than-groups', values: task.topics.slice(allGroups) },
-        `Der er ${task.topics.length} emner, men kun ${allGroups} grupper, så ${task.topics.length - allGroups === 1 ? 'et emne får' : `${task.topics.length - allGroups} emner får`} ingen gruppe.`,
+        `Der er ${task.topics.length} emner, men kun ${groupsWord(allGroups)}, så ${task.topics.length - allGroups === 1 ? 'et emne får' : `${task.topics.length - allGroups} emner får`} ingen gruppe.`,
       ),
     );
   }
@@ -453,7 +459,7 @@ function sourceSpreadMessage(task, groupCount) {
   return message(
     task,
     { type: 'note', code: 'matrix-sources-spread', values: big.map((source) => source.label) },
-    `Højst én fra ${w.each} kan ikke lade sig gøre med ${groupCount} matrixgrupper: nogle ${w.many} har flere elever, end der er grupper. ` +
+    `Højst én fra ${w.each} kan ikke lade sig gøre med ${groupCount === 1 ? '1 matrixgruppe' : `${groupCount} matrixgrupper`}: nogle ${w.many} har flere elever, end der er grupper. ` +
       `Hver gruppe får ${joinAnd(parts)}, så jævnt som det kan blive.${others} ` +
       `Vil du have højst én fra hver, skal der være mindst ${needed} matrixgrupper.`,
   );

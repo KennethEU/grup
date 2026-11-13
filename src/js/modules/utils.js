@@ -1,5 +1,10 @@
 // utils.js - hjælpefunktioner og fælles konstanter
 
+// Motorens rene regneregel for antal grupper (ingen tråd, ingen søgning) —
+// se plannedNewGroups længere nede.
+import { planGroupCounts, splitEven } from '../../../motor/engine/sizes.js';
+import { parseNumber } from '../../../motor/engine/values.js';
+
 // --- HTML Sanitization (prevent XSS from CSV/user data) ---
 export function escapeHtml(str) {
     if (str == null) return '';
@@ -29,6 +34,14 @@ export const RULE_TYPES = Object.freeze({
  * stede. "Sidste dannelse" i opskriften hører kun til, mens aftrykket passer —
  * ændrer læreren noget, handler noterne om en anden opskrift og tælles ikke
  * med i advarslerne.
+ *
+ * Matrix-runden har sit eget: om der blandes på emner eller stamgrupper
+ * (noten "Højst én fra hver stamgruppe kan ikke lade sig gøre …" handler om
+ * netop det valg), og Undgå hinanden-aftalerne, som også gælder i matrix.
+ * Begge manglede til 13/11 2026: skiftede læreren til "ét fra hvert emne",
+ * eller fjernede hun en aftale, stod det gamle resultat der stadig — og
+ * prøvekørslen holdt pause, fordi den troede, resultatet passede. Skal
+ * sammen og emnelisten sendes ikke til motoren i matrix og er ikke med.
  */
 export function setupSignature(cls, isMatrix = false, groupMode = 'size') {
     if (!cls) return '';
@@ -39,11 +52,11 @@ export function setupSignature(cls, isMatrix = false, groupMode = 'size') {
     const present = (cls.data || []).filter(r => !r._excluded).length;
     return JSON.stringify({
         s: isMatrix
-            ? [settings.matrixStrategy, settings.groupTarget, settings.groupMod]
+            ? [settings.matrixStrategy, settings.groupTarget, settings.groupMod, settings.matrixRepresentationType || 'topic']
             : [groupMode, settings.groupTarget, settings.groupMod],
         r: ruleParts,
         t: isMatrix ? [] : ids(cls.togetherGroups),
-        a: isMatrix ? [] : ids(cls.separations),
+        a: ids(cls.separations),
         e: isMatrix ? [] : (cls.topics || []).map(x => String(x ?? '').trim()).filter(Boolean),
         p: present,
     });
@@ -1245,6 +1258,15 @@ export function eqTopic(a, b) {
 }
 
 /**
+ * Nøglen, to emner sammenlignes på: uden mellemrum i enderne, uden forskel på
+ * store og små bogstaver og med ens tegn for é/å (NFC). Bruges, hvor emner
+ * skal TÆLLES sammen (matrix-kilderne i buildEngineInput og fullMatrixInfo).
+ */
+export function topicKey(topic) {
+    return nfc(String(topic ?? '').trim()).toLowerCase();
+}
+
+/**
  * Find `topic`s plads i `classTopics`, uden hensyn til store/små bogstaver og
  * mellemrum i enderne. Svarer -1, hvis det ikke findes, eller emnet er tomt.
  */
@@ -1298,29 +1320,103 @@ export function classTopicSpelling(classTopics, topic) {
 }
 
 
-// ─── Antal grupper, når klassen har emner ─────────────────────────────────
+// ─── Antal grupper: motorens eget regnestykke ─────────────────────────────
 
 /**
- * Hvor mange grupper emnerne giver anledning til, når klassen har emner.
- * Returnerer null, når der intet er at regne på (ingen emner eller elever).
+ * Hvor mange NYE grupper danner motoren, og hvor store bliver de?
  *
- * VIGTIGT: den ENESTE kilde til tallet. generation.js danner efter det,
- * hints.js forklarer det, og recipe.js (expectedNewGroups) viser det som skøn
- * i opskriften. Hver sin udregning fik før beskeden og motoren til at sige
- * hvert sit tal; derfor blev hjælperen samlet her.
+ * Regnes af motorens EGEN funktion (`planGroupCounts` i motor/engine/sizes.js),
+ * ikke af en kopi. Før 12/11 2026 havde appen sit eget regnestykke fra den
+ * gamle motors tid, og de to var uenige: 24 elever, grupper på 5 med "én elev
+ * ekstra" og 5 emner gav "ca. 5 grupper" i opskriften og beskeden "der skal
+ * være mindst 5 grupper", mens motoren dannede 4 og selv skrev, at et emne
+ * ingen gruppe fik. Med en "Opdel" var skønnet forkert i hver tredje klasse,
+ * fordi motoren regner pr. pulje.
+ *
+ * Ind (som buildEngineInput i nextEngine.js sender det til motoren):
+ *   mode        'size' (elever pr. gruppe) | 'number' (antal grupper i alt)
+ *   target      tallet i feltet
+ *   mod         '-' = én elev mindre; alt andet = én elev ekstra
+ *   poolSizes   frie elever pr. Opdel-pulje (uden Opdel: [antal frie elever])
+ *   lockedCount antal låste grupper
+ *   topicCount  antal emner (0 i matrix)
+ *
+ * Ud: { newGroups, sizes } — sizes er de nye gruppers størrelser.
+ * Null, når der ingen elever er, eller tallet ikke kan bruges.
+ */
+export function plannedNewGroups({ mode = 'size', target = 0, mod = '+', poolSizes = [], lockedCount = 0, topicCount = 0 } = {}) {
+    const pools = (poolSizes || []).map(n => Math.max(0, Math.floor(Number(n) || 0))).filter(n => n > 0);
+    const wanted = Math.floor(Number(target) || 0);
+    if (!pools.length || wanted < 1) return null;
+    let size;
+    if (mode === 'number') {
+        // Motoren får slet ikke et antal, der ikke er større end de låste
+        // (buildEngineInput siger selv fra). Skønnet er da mindst én ny gruppe.
+        size = { mode: 'count', count: Math.max(wanted, lockedCount + 1) };
+    } else {
+        size = { mode: 'perGroup', target: wanted, adjust: mod === '-' ? 'minus' : 'plus' };
+    }
+    const { counts } = planGroupCounts(pools, lockedCount, size, topicCount);
+    const sizes = counts.flatMap((g, i) => splitEven(pools[i], g));
+    return { newGroups: sizes.length, sizes };
+}
+
+/**
+ * De frie elever delt i Opdel-puljer, som motoren gør det (buildTask i
+ * motor/engine/task.js): én pulje pr. kombination af Opdel-kolonnernes værdier,
+ * sammenlignet med valueKey (en tom celle er sin egen pulje). Uden en Opdel
+ * med kolonne er hele holdet én pulje.
+ *
+ * @param {Array} freeRows  tilstedeværende elever uden for låste grupper
+ * @param {Array} rules     klassens regler (kun stamgrupper har Opdel)
+ * @returns {number[]} elever pr. pulje
+ */
+export function poolSizesFor(freeRows, rules) {
+    const rows = Array.isArray(freeRows) ? freeRows : [];
+    const columns = (rules || [])
+        .filter(r => r && (r.type || r.name) === RULE_TYPES.AGGREGATE)
+        .map(r => r.column || r.attribute)
+        .filter(Boolean);
+    if (!columns.length) return rows.length ? [rows.length] : [];
+    const counts = new Map();
+    for (const row of rows) {
+        const key = JSON.stringify(columns.map(c => valueKey(ownCell(row, c) ?? '')));
+        counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    return [...counts.values()];
+}
+
+/**
+ * Hvad emnerne gør ved antallet af grupper, når læreren har valgt en
+ * størrelse. Returnerer null, når der intet er at regne på (ingen emner eller
+ * elever).
+ *
+ * Begge tal kommer fra plannedNewGroups ovenfor — altså fra motoren selv:
+ * det rå antal er motorens tal UDEN emner, det justerede er tallet MED.
+ * hints.js forklarer forskellen, og recipe.js (expectedNewGroups) viser det
+ * justerede som skøn i opskriften.
+ *
+ * Motorens regler (spec. 4.4, Kenneths svar 40 og 41): totalen (med de låste)
+ * rundes til et multiplum af antal emner — ned ved "én elev ekstra", op ved
+ * "én elev mindre" — men kun når alle grupper bagefter holder lærerens
+ * størrelse. Én undtagelse: giver "én elev mindre" færre grupper end emner,
+ * får hvert emne alligevel én gruppe. Ved "én elev ekstra" bliver størrelsen
+ * stående, og motoren skriver selv, at et emne ingen gruppe får.
  *
  * Ind:
  *   mode          'size' | 'number'
  *   sizeNum       ønsket gruppestørrelse (kun størrelses-tilstand)
- *   sizeMod       '+' | '-' | ''            (kun størrelses-tilstand)
+ *   sizeMod       '+' | '-'                 (kun størrelses-tilstand)
  *   numberTarget  grupper i alt, låste iberegnet (kun antals-tilstand)
  *   studentCount  frie elever: uden låste grupper og uden fraværende
+ *   poolSizes     de frie elever pr. Opdel-pulje (udeladt: én pulje)
  *   lockedCount   antal låste grupper
  *   topicCount    antal emner på klassen
  *
  * Ud: null, eller
  *   { naiveNew, adjustedNew,
  *     naiveTotal, adjustedTotal,
+ *     naiveSizes, adjustedSizes,           (de nye gruppers størrelser)
  *     direction:  'up' | 'down' | 'none',
  *     didAdjust:  boolean }
  *   hvor *Total = *New + lockedCount.
@@ -1331,84 +1427,35 @@ export function computeTopicAdjustedTarget({
     sizeMod = '',
     numberTarget = 0,
     studentCount = 0,
+    poolSizes = null,
     lockedCount = 0,
     topicCount = 0,
 }) {
     if (topicCount <= 0 || studentCount <= 0) return null;
+    const common = {
+        mode,
+        target: mode === 'number' ? numberTarget : sizeNum,
+        mod: sizeMod,
+        poolSizes: Array.isArray(poolSizes) && poolSizes.length ? poolSizes : [studentCount],
+        lockedCount,
+    };
+    const naive = plannedNewGroups({ ...common, topicCount: 0 });
+    const adjusted = plannedNewGroups({ ...common, topicCount });
+    if (!naive || !adjusted) return null;
 
-    // 1. Det rå antal nye grupper: det, dannelsen ville give uden emner.
-    let naiveNew;
-    if (mode === 'number') {
-        naiveNew = Math.max(1, numberTarget - lockedCount);
-    } else if (sizeMod === '+') {
-        // "+" betyder større grupper → rund NED (færre grupper).
-        // Som Pythons calculate_groups_count: den lægger en gruppe til, når
-        // den største gruppe ellers ville blive mere end sizeNum + 1. Gør vi
-        // ikke det samme her, starter emne-afrundingen fra et tal, Python
-        // aldrig ville have dannet (11 elever, "4+": Python danner 3 grupper,
-        // en ren nedrunding siger 2).
-        naiveNew = Math.max(1, Math.floor(studentCount / Math.max(sizeNum, 1)));
-        const maxGroup = Math.ceil(studentCount / naiveNew);
-        if (maxGroup > sizeNum + 1 && naiveNew < studentCount) naiveNew += 1;
-    } else {
-        // "" eller "-" → rund OP (flere grupper, mindre grupper)
-        naiveNew = Math.max(1, Math.ceil(studentCount / Math.max(sizeNum || 3, 1)));
-    }
-
-    const naiveTotal = naiveNew + lockedCount;
-
-    // 2. EMNERNE MÅ IKKE TAGE LÆRERENS STØRRELSE (ændret 1/11 2026).
-    //
-    // Før blev totalen ALTID rundet til et multiplum af antal emner, så hvert
-    // emne fik lige mange grupper. Det koster størrelsen: 28 elever, "4+" og
-    // 5 emner blev til 10 grupper på 2-3, selvom 7 grupper på 4 var præcis
-    // det, læreren bad om. Lige mange grupper pr. emne er kun en fordel for
-    // Matrix, og emnerne fordeles efter antal elever uanset hvad.
-    //
-    // Derfor: der rundes kun, når ALLE grupper bagefter stadig ligger inden
-    // for lærerens valg. Ellers bliver det rå tal stående, og nogle emner får
-    // en gruppe mere end andre (topicRoundingHint siger det og tilbyder
-    // multiplerne som knapper).
-    const t = topicCount;
-    let adjustedNew = naiveNew;
-    if (mode !== 'number') {
-        const size = sizeNum || 3;
-        const low = sizeMod === '+' ? size : size - 1;
-        const high = sizeMod === '-' ? size : size + 1;
-        const fits = (groups) => groups >= 1 && groups <= studentCount
-            && Math.floor(studentCount / groups) >= low
-            && Math.ceil(studentCount / groups) <= high;
-
-        const below = Math.floor(naiveTotal / t) * t;
-        const above = Math.ceil(naiveTotal / t) * t;
-        // Samme retning som fluebenet: "+" foretrækker færre grupper, "-" flere.
-        const preferBelow = sizeMod === '+'
-            || (sizeMod !== '-' && naiveTotal - below <= above - naiveTotal);
-        const candidates = preferBelow ? [below, above] : [above, below];
-        const fitting = candidates.find(total => total > lockedCount && fits(total - lockedCount));
-        if (fitting !== undefined) adjustedNew = fitting - lockedCount;
-
-        // FÆRRE GRUPPER END EMNER er det eneste rigtige dilemma: enten bliver
-        // grupperne mindre, eller også får et emne ingen gruppe. Et emne må
-        // ikke forsvinde i stilhed, så standarden er én gruppe pr. emne —
-        // beskeden siger prisen og har en knap til den anden vej.
-        if (naiveTotal < t) adjustedNew = t - lockedCount;
-    }
-
-    // 3. Loftet vinder over alt andet: aldrig flere grupper end elever (ellers
-    // bygger Python tomme fantomgrupper). Det gælder også "én gruppe pr. emne".
-    adjustedNew = Math.min(studentCount, Math.max(1, adjustedNew));
-
-    const adjustedTotal = adjustedNew + lockedCount;
+    const naiveTotal = naive.newGroups + lockedCount;
+    const adjustedTotal = adjusted.newGroups + lockedCount;
     let direction = 'none';
     if (adjustedTotal > naiveTotal) direction = 'up';
     else if (adjustedTotal < naiveTotal) direction = 'down';
 
     return {
-        naiveNew,
-        adjustedNew,
+        naiveNew: naive.newGroups,
+        adjustedNew: adjusted.newGroups,
         naiveTotal,
         adjustedTotal,
+        naiveSizes: naive.sizes,
+        adjustedSizes: adjusted.sizes,
         direction,
         didAdjust: naiveTotal !== adjustedTotal,
     };
@@ -1431,15 +1478,16 @@ export function suggestTopicMultiple({ numberTarget, lockedCount = 0, topicCount
 }
 
 /**
- * Er cellen et tal? Samme tolkning som Pythons scoring._numeric_val:
- * komma bliver til punktum ("7,5"), hele cellen skal kunne læses som ét tal
- * ("7abc" er ikke et tal), og nan/inf tæller IKKE med — de er tekst på linje
- * med "fritaget".
+ * Er cellen et tal? Motorens EGEN tolkning (`parseNumber` i
+ * motor/engine/values.js, spec. 3.2): kun cifre, evt. fortegn og højst ét
+ * decimaltegn (komma eller punktum). "7,5" og "7.5" er 7,5; "7 dage", "nan",
+ * "0x1A" og "1.000,5" er tekst.
  *
- * `Number()` og Pythons `float()` er ikke enige af sig selv: JS læser "0x1A"
- * som 26 og "nan" som NaN, Python gør det modsatte. De to steder her og i
- * scoring._numeric_val skal give samme svar, ellers kan hintet i skærmen sige
- * ét og motoren gøre noget andet på præcis den kolonne, hintet handler om.
+ * Til 13/11 2026 havde appen sin egen læsning her (fra tiden med Python-
+ * motoren), og de to var uenige to steder: appen læste "1e3" som 1000
+ * (motoren: tekst), og motoren læser "- 5" som -5 (appen: tekst). Så kunne
+ * gruppekortets snit, sorteringen og advarslerne regne en celle med, som
+ * motoren placerede frit, og omvendt. Nu er der én definition.
  */
 export function cellIsNumber(raw) {
     return cellNumber(raw) !== null;
@@ -1462,15 +1510,7 @@ export function cellIsNumber(raw) {
  * på 5,0 — se `GroupCard.vue`.
  */
 export function cellNumber(raw) {
-    const text = String(raw ?? '').trim();
-    if (text === '') return null;
-    // Kun de tegn et tal skrives med — JS læser ellers "0x1A" som 26. Pythons
-    // float() er rummeligere den anden vej: "1_0" er 10 og "٣" er 3 dér,
-    // men ikke her. Kendt og bevidst ikke udlignet — ingen dansk klasseliste
-    // har de tegn (docs/grupper.md, "læser JS og Python den samme celle ens?").
-    if (/[^0-9eE+\-.,\s]/.test(text)) return null;
-    const n = Number(text.replace(',', '.'));
-    return Number.isFinite(n) ? n : null;
+    return parseNumber(raw);
 }
 
 /**
@@ -1551,18 +1591,21 @@ export function columnIsNumeric(rows, col) {
  * én elev skal have en værdi, der står i den. Ellers er rang-kolonnen tom hele
  * vejen ned, og reglen gør nøjagtig lige så lidt som uden rangering.
  * Sammenligningen er ufølsom for store/små bogstaver og mellemrum, samme regel
- * som applyColumnOrders i utils.js.
+ * som applyColumnOrders i utils.js — og begge bruger valueKey(), som er
+ * motorens egen nøgle (normalizeText i motor/engine/values.js).
  */
 export function rankingAffectsColumn(rows, col, order) {
     if (!Array.isArray(order) || order.length < 2) return false;
     const seen = new Set();
     for (const v of order) {
         if (v == null) continue;
-        const n = String(v).trim().toLowerCase();
+        const n = valueKey(v);
         if (n) seen.add(n);
     }
-    if (!seen.size) return false;
-    return rows.some(s => seen.has(String(s[col] ?? '').trim().toLowerCase()));
+    // To TRIN, ikke to linjer: "Lav" og "lav" er samme trin for motoren, og
+    // en skala med ét trin kan ingen regel bruge.
+    if (seen.size < 2) return false;
+    return (rows || []).some(s => seen.has(valueKey(ownCell(s, col))));
 }
 
 /**
@@ -1668,7 +1711,7 @@ export function applyColumnOrders(data, rules, orders) {
         let rank = 0;
         for (const v of order) {
             if (v == null) continue;
-            const key = String(v).trim().toLowerCase();
+            const key = valueKey(v);
             if (key === '' || lookup.has(key)) continue;  // dublet: første vinder
             lookup.set(key, ++rank);
         }
@@ -1691,7 +1734,7 @@ export function applyColumnOrders(data, rules, orders) {
             const raw = row[col];
             const text = raw == null ? '' : String(raw).trim();
             if (text === '') continue;       // ikke udfyldt — ikke urangeret
-            if (lookups[col].get(text.toLowerCase()) !== undefined) { s.hit++; continue; }
+            if (lookups[col].get(valueKey(text)) !== undefined) { s.hit++; continue; }
             s.count++;
             if (s.values.size < 3) s.values.add(text);
         }
@@ -1729,7 +1772,7 @@ export function applyColumnOrders(data, rules, orders) {
         for (const col of active) {
             const raw = row[col];
             const text = raw == null ? '' : String(raw).trim();
-            const rank = text === '' ? undefined : lookups[col].get(text.toLowerCase());
+            const rank = text === '' ? undefined : lookups[col].get(valueKey(text));
             // Tom celle ELLER en værdi uden for rangeringen (fx en efternøler
             // med et nyt niveau) bliver TOM — ikke 0.
             //

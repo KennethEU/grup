@@ -142,6 +142,16 @@ describe('buildEngineInput — kontraktens input', () => {
         expect(build(['Group 1', 'Gruppe 1'])).toEqual(['Group 1', 'Gruppe 1']);
     });
 
+    it('en låst gruppes emne sendes med klasselistens stavemåde ("klima" → "Klima"), ukendte emner som de er', () => {
+        // Motoren sammenligner tegn for tegn: "klima" var for den et ugyldigt
+        // emne, og den låste gruppe fik et nyt (måske "Migration").
+        const topicOf = (topic) => base({ viewGroups: [{ ...locked[0], topic }] }).lockedGroups[0].topic;
+        expect(topicOf(' klima ')).toBe('Klima');
+        expect(topicOf('MIGRATION')).toBe('Migration');
+        expect(topicOf('Energi')).toBe('Energi');
+        expect(topicOf('')).toBeNull();
+    });
+
     it('budgettet: 20 forsøg, 3/2, 10 sek. til og med 100 elever, 30 over', () => {
         expect(appBudget(60)).toEqual({ maxSeconds: 10, maxAttempts: 20, minAttempts: 3 });
         expect(appBudget(61).minAttempts).toBe(2);

@@ -43,7 +43,10 @@ export async function run(input, hooks = {}) {
         stats: { attempts: 0, seconds: (Date.now() - started) / 1000 },
       };
     }
-    const result = await solve(task, layout, feasibility.blocks, { budget: input.budget, seed: input.seed, hooks, input });
+    // hooks.cores (valgfri): hvor mange kerner motoren højst må bruge. Appens
+    // prøvekørsel beder om 1, så tre korte forsøg ikke starter hjælpetråde.
+    // Uden den vælger motoren selv (coreCount i solve.js).
+    const result = await solve(task, layout, feasibility.blocks, { budget: input.budget, seed: input.seed, hooks, input, cores: hooks.cores });
     if (!result.best) {
       // Stoppet, før der var en hel deling (kontrakt 5).
       return {

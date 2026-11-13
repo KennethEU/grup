@@ -8,6 +8,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { state, pushUndo, canUndo } from './state.js';
 import { clearClassMemory } from './classMemory.js';
 import * as replay from './replay.js';
+import { lastRunStatus, lastRunInputIsCurrent, inputFingerprint, buildEngineInput } from './nextEngine.js';
 
 // storage.js rører localStorage gennem py_bridge; her handler testene kun om
 // state, så lageret stubbes væk.
@@ -119,5 +120,23 @@ describe('clearClassMemory', () => {
 
         expect(state.showAgreementsModal).toBe(false);
         expect(state.agreementTab).toBe('together');
+    });
+
+    it('rydder mærkerne fra sidste dannelse: en kopi af klassen har samme aftryk', () => {
+        // 2a er dannet. En kopi ("2a_kopi") har de samme elev-id'er, så det
+        // input, appen ville sende, er tegn for tegn det samme.
+        state.groupMode = 'size';
+        state.activeView = 'standard';
+        state.storedStandardGroups = [];
+        const input = buildEngineInput({ cls: state.currentClass, isMatrix: false, groupMode: 'size' });
+        lastRunStatus.standard = { input: inputFingerprint(input), groups: '', skipTogether: [] };
+        expect(lastRunInputIsCurrent(false)).toBe(true);
+
+        clearClassMemory();
+        state.currentClass = makeClass('2a_kopi');
+        state.storedStandardGroups = [];
+
+        expect(lastRunStatus).toEqual({ standard: null, matrix: null });
+        expect(lastRunInputIsCurrent(false)).toBe(false);
     });
 });

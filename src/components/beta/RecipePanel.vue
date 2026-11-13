@@ -11,7 +11,7 @@
 import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
 import { Users, Shuffle } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
-import { debounce, splitByLockedGroups } from '../../js/modules/utils.js';
+import { debounce, splitByLockedGroups, poolSizesFor } from '../../js/modules/utils.js';
 import { sizeSentence, recipeSummary, addRule, revealRule, recipeHintText, expectedNewGroups, clampTarget, isRecipeHint, currentLastNotes, perGroupEstimate } from '../../js/modules/recipe.js';
 import { registerPendingWrite } from '../../js/modules/classActions.js';
 import { modalActions } from '../../js/modules/modalState.js';
@@ -27,6 +27,7 @@ import HintsStack from '../HintsStack.vue';
 import './recipe.css';
 import RuleMark from './RuleMark.vue';
 import { runStatusFor } from '../../js/modules/nextEngine.js';
+import { trialFor } from '../../js/modules/trialRun.js';
 
 const props = defineProps({
     idColumn: { type: String, default: '' },
@@ -106,15 +107,28 @@ const estimate = computed(() => {
     const n = presentCount.value;
     const t = clampedTarget();
     if (!n) return '';
-    if (groupMode.value === 'number') {
-        return perGroupEstimate(n, t);
-    }
     // Samme regnestykke som motoren (og emnernes afrunding) — se expectedNewGroups.
     // Låste grupper bliver stående og tæller med i totalen.
     const locked = (state.storedStandardGroups || []).filter(g => g.locked);
-    const free = splitByLockedGroups(state.currentClass?.data, locked, state.idColumn).freeCount;
+    // Med en "Opdel" regner motoren pr. pulje, så skønnet får puljerne med.
+    const split = splitByLockedGroups(state.currentClass?.data, locked, state.idColumn);
+    if (groupMode.value === 'number') {
+        // Det antal, motoren faktisk danner — ikke altid det tastede: der
+        // bliver aldrig flere grupper end elever, og en "Opdel" giver mindst
+        // én gruppe pr. pulje. Før stod der "ca. 0,3 elever pr. gruppe" ved
+        // 30 grupper til 8 elever (der dannes 8 med én i hver). Kan motoren
+        // slet ikke kaldes (alle låst, eller tallet er ikke over de låste),
+        // regnes der på det tastede; den sag har sin egen besked.
+        const fresh = t > locked.length ? expectedNewGroups({
+            mode: 'number', target: t, students: split.freeCount,
+            poolSizes: poolSizesFor(split.free, state.currentClass?.rules),
+            lockedGroups: locked.length,
+        }) : 0;
+        return perGroupEstimate(n, fresh > 0 ? fresh + locked.length : t);
+    }
     const fresh = expectedNewGroups({
-        mode: 'size', target: t, mod: groupMod.value, students: free,
+        mode: 'size', target: t, mod: groupMod.value, students: split.freeCount,
+        poolSizes: poolSizesFor(split.free, state.currentClass?.rules),
         lockedGroups: locked.length, topicCount: topicCount.value,
     });
     const groups = Math.max(1, fresh + locked.length);
@@ -160,10 +174,14 @@ function openAgreements() {
 // elev, lagt sammen) — "3 aftaler … 2 af 2 holdt" ville modsige sig selv.
 // Mærket følger samme regel som reglernes (ruleMarks.js).
 const agreementStatus = computed(() => {
-    const a = runStatusFor(false)?.agreements;
+    // Uden et rigtigt resultat: prøvekørslen i baggrunden (trialRun.js).
+    const real = runStatusFor(false)?.agreements;
+    const a = real || trialFor(false)?.agreements;
     if (!a || !a.total) return null;
+    const isTrial = !real;
     return {
         ...a,
+        trial: isTrial,
         text: a.broken ? `${a.broken} brudt` : 'alle holdt',
     };
 });
@@ -260,7 +278,7 @@ const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).len
                      FØR reglerne, fordi motoren tager dem først: Skal sammen
                      brydes aldrig, og Undgå vejer lige efter Adskil altid — over Klyng og Adskil. -->
                 <li v-if="agreementCount" class="recipe__line recipe__line--agreements">
-                    <span class="recipe__no"><RuleMark v-if="agreementStatus" :mark="agreementStatus.mark" /></span>
+                    <span class="recipe__no"><RuleMark v-if="agreementStatus" :mark="agreementStatus.mark" :trial="agreementStatus.trial" /></span>
                     <span class="recipe__text">
                         Der tages først hensyn til
                         <button type="button" class="recipe-tokenlike" @click="openAgreements">{{ agreementCount }} {{ agreementCount === 1 ? 'aftale' : 'aftaler' }} om bestemte elever</button>.

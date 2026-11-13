@@ -27,6 +27,31 @@ describe('Fuld matrix: antal og størrelse', () => {
         expect(info.numGroups).toBe(6);
     });
 
+    it('låste matrixgrupper: deres elever fordeles ikke, og grupperne tæller med', () => {
+        // r4 er låst: Group 2 har to frie tilbage (r5, r6), så der dannes 2 nye + 1 låst.
+        const lockedGroups = [{ name: 'Group 1', locked: true, members: [{ id: 'r4' }] }];
+        const info = fullMatrixInfo({ groups, data, idCol: '_rowId', repType: 'group', lockedGroups });
+        expect(info).toMatchObject({ numGroups: 3, totalStudents: 5, avgSize: 3 });
+    });
+
+    it('en kilde uden frie elever: ingen nye matrixgrupper, heller ikke når en er låst', () => {
+        const lockedGroups = [{ name: 'Group 1', locked: true, members: ['r1', 'r2', 'r3'] }];
+        const info = fullMatrixInfo({ groups, data, idCol: '_rowId', repType: 'group', lockedGroups });
+        expect(info).toMatchObject({ numGroups: 0, avgSize: 0 });
+    });
+
+    it('en elev uden stamgruppe fordeles også og tæller med i størrelsen', () => {
+        const more = [...data, { _rowId: 'r8' }, { _rowId: 'r9' }, { _rowId: 'r10' }];
+        const info = fullMatrixInfo({ groups, data: more, idCol: '_rowId', repType: 'group' });
+        expect(info).toMatchObject({ numGroups: 3, totalStudents: 9, avgSize: 3 });
+    });
+
+    it('en stamgruppe uden emne falder ikke sammen med et emne, der hedder som gruppen', () => {
+        const topics = { 'Group 1': '', 'Group 2': 'Group 1' };
+        const info = fullMatrixInfo({ groups, data, idCol: '_rowId', repType: 'topic', storedTopic: g => topics[g.name] });
+        expect(info).toMatchObject({ numTopics: 2, numGroups: 3 });
+    });
+
     it('uden stamgrupper er der intet at regne på', () => {
         expect(fullMatrixInfo({ groups: [], data, idCol: '_rowId', repType: 'group' })).toBeNull();
     });

@@ -11,7 +11,7 @@
 // klikke på `{ token, text, missing }`. `token` siger, hvad ordet ændrer:
 // 'type' (regeltypen), 'column' (kolonnen) eller 'value' (værdien).
 
-import { RULE_TYPES, RULE_OPTIONS, RULES_WITHOUT_VALUES, columnIsNumeric, rankingAffectsColumn, valueKey, canonicalSpellings, computeTopicAdjustedTarget, setupSignature } from './utils.js';
+import { RULE_TYPES, RULE_OPTIONS, RULES_WITHOUT_VALUES, columnIsNumeric, rankingAffectsColumn, valueKey, canonicalSpellings, plannedNewGroups, setupSignature } from './utils.js';
 
 /** Navnet på regeltypen — det samme ord som i den almindelige regelmenu. */
 export function ruleTypeLabel(type) {
@@ -193,6 +193,17 @@ export function updateRuleField(rules, index, field, value) {
     if (field === 'type' && RULES_WITHOUT_VALUES.includes(value)) next.value = '';
     if (field === 'column' && value !== rule.column) next.value = '';
     Object.assign(rule, next);
+    // En regel med en værdiliste (`values`, fx fra en håndrettet backup) læses
+    // af motoren FØR `value` (buildEngineInput, hints.js, together.js,
+    // placement.js), men opskriften viser og retter kun `value`. Retter
+    // læreren reglen, skal det, hun ser, være det, der virker — så listen går.
+    // Ingen udgave af appen har gemt listen i klassens regler (tjekket 13/11
+    // 2026, 104. gennemsyn: RuleBuilder.vue/RuleItem.vue ved 46aab0d5 og lige
+    // før de blev slettet i 28fd1232 gemte `value`; migrateStorage.js rører
+    // ikke reglerne; `values` kom først med kontrakten i 7f89a041 og står kun
+    // i motorens input og i sessionernes activeRules). Det er en sikring mod
+    // en håndrettet backup.
+    if ('values' in rule) delete rule.values;
     // Blev den en Opdel, løftes den op øverst — listen skal vise det motoren gør.
     if (field === 'type' && value === RULE_TYPES.AGGREGATE && index > 0) {
         const [moved] = rules.splice(index, 1);
@@ -213,6 +224,29 @@ export function deleteRule(rules, index) {
 //   "Størrelse" (size):       grupper på N elever (+ afrunding)
 //   "Antal"     (count):      N grupper
 // Samme indstillinger som den almindelige matrix-opsætning (matrixSettings).
+
+/**
+ * Hvad "Én fra hver" bygger på, som opskriften viser det: emne eller
+ * stamgruppe. Har stamgrupperne ingen emner, er det altid stamgruppe (knappen
+ * "Emne" kan ikke vælges). Ellers det gemte valg, og uden et gemt valg emne —
+ * det samme, som tjekket, prøvekørslen og mærkerne læser (buildEngineInput
+ * bruger det gemte valg og "topic" som reserve).
+ *
+ * Før stod panelet med sit eget valg: skiftede man til en anden klasse uden
+ * emner, viste det "Emne" (slået fra, men valgt), og fik stamgrupperne emner,
+ * efter at panelet var vist, blev "Stamgruppe" stående, mens tjekket og
+ * prøvekørslen regnede på emner (13/11 2026, 104. gennemsyn).
+ * Uden emner giver de to valg samme svar fra motoren (en stamgruppe uden emne
+ * er sit eget emne), så det gemte valg behøver ikke at blive rettet.
+ *
+ * @param {string|undefined} saved  matrixSettings.matrixRepresentationType
+ * @param {boolean} hasTopics        har mindst én stamgruppe et emne?
+ * @returns {'topic'|'group'}
+ */
+export function shownMatrixRepType(saved, hasTopics) {
+    if (!hasTopics) return 'group';
+    return saved === 'group' ? 'group' : 'topic';
+}
 
 /** Ordet man klikker på i matrix-linjen. */
 export function matrixMixText({ strategy = 'full_strict', repType = 'group', target = 4 } = {}) {
@@ -273,38 +307,33 @@ export function columnFitness(rows, column, type, columnOrders = {}) {
 }
 
 // ─── Hvor mange grupper giver størrelsen? ───────────────────────────────────
-// Samme regnestykke som motoren:
+// Regnes af motorens egen funktion (plannedNewGroups i utils.js kalder
+// planGroupCounts i motor/engine/sizes.js), så skønnet og den dannede klasse
+// ikke kan sige hver sit tal:
 //   "én elev ekstra" ('+'): ned-afrunding, men en gruppe mere, hvis den største
 //                           ellers ville blive over målet + 1.
 //   "én elev mindre" ('-'): op-afrunding.
-// Har klassen emner, afrundes der yderligere til et multiplum af antal
-// emner — det regnes af den SAMME hjælper (computeTopicAdjustedTarget),
-// så skønnet og den dannede klasse ikke kan sige hver sit tal.
+// Med en "Opdel" regnes der pr. pulje, og har klassen emner, kan totalen
+// rundes til et multiplum af antal emner (kun når størrelsen holder).
 
 /**
  * @param {{ mode: 'size'|'number', target: number, mod: '+'|'-', students: number,
- *           lockedGroups?: number, topicCount?: number }} o
- *        students = tilstedeværende elever UDEN for låste grupper
+ *           poolSizes?: number[], lockedGroups?: number, topicCount?: number }} o
+ *        students  = tilstedeværende elever UDEN for låste grupper
+ *        poolSizes = de samme elever pr. Opdel-pulje (poolSizesFor i utils.js);
+ *                    udeladt: én pulje
  * @returns {number} antal NYE grupper (de låste kommer oveni)
  */
-export function expectedNewGroups({ mode = 'size', target = 4, mod = '+', students = 0, lockedGroups = 0, topicCount = 0 } = {}) {
+export function expectedNewGroups({ mode = 'size', target = 4, mod = '+', students = 0, poolSizes = null, lockedGroups = 0, topicCount = 0 } = {}) {
     const n = Math.max(0, Math.floor(students));
-    const t = Math.max(1, Math.floor(Number(target) || 1));
     if (n <= 0) return 0;
-    if (topicCount > 0) {
-        const adj = computeTopicAdjustedTarget({
-            mode, sizeNum: t, sizeMod: mod === '-' ? '-' : '+',
-            numberTarget: mode === 'number' ? t : 0,
-            studentCount: n, lockedCount: lockedGroups, topicCount,
-        });
-        if (adj) return adj.adjustedNew;
-    }
-    // Motoren kan aldrig danne flere grupper end der er elever.
-    if (mode === 'number') return Math.min(n, Math.max(1, t - lockedGroups));
-    if (mod === '-') return Math.min(n, Math.ceil(n / t));
-    let groups = Math.max(1, Math.floor(n / t));
-    if (Math.ceil(n / groups) > t + 1 && groups < n) groups += 1;
-    return groups;
+    const plan = plannedNewGroups({
+        mode, mod,
+        target: Math.max(1, Math.floor(Number(target) || 1)),
+        poolSizes: Array.isArray(poolSizes) && poolSizes.length ? poolSizes : [n],
+        lockedCount: lockedGroups, topicCount,
+    });
+    return plan ? plan.newGroups : 0;
 }
 
 /**

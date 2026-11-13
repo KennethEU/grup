@@ -8,6 +8,8 @@
 //   ind:  { type: 'run', id, input } dan grupper (`id` sendes med tilbage i
 //                                    progress, answer og crash: tråden genbruges
 //                                    mellem kørsler, se nextEngine.js)
+//                                    Med `cores: 1` regner motoren uden
+//                                    hjælpetråde (prøvekørslen, trialRun.js)
 //         { type: 'cancel' }         læreren trykkede Stop
 //         { type: 'check', id, input }  opskriftens advarsler (motorens check())
 //   ud:   { type: 'checked', id, answer }  svaret på 'check' (null, hvis den kastede)
@@ -56,6 +58,8 @@ self.onmessage = async (e) => {
                 if (!cancelled) self.postMessage({ type: 'progress', id, progress: p && p.progress ? p.progress : p });
             },
             isCancelled: () => cancelled,
+            // Kun et helt tal over 0 gives videre; ellers vælger motoren selv.
+            cores: Number.isInteger(msg.cores) && msg.cores > 0 ? msg.cores : undefined,
         });
         self.postMessage({ type: 'answer', id, answer });
     } catch (err) {

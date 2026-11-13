@@ -66,7 +66,7 @@ const before = check(input); // beskederne før kørslen, uden grupper
 | `engine.js` | `ENGINE_INFO`, `run`, `check` |
 | `values.js` | Tekst gøres ens, tal læses (spec. 3.1–3.2) |
 | `task.js` | Klassen bliver til en opgave: numre, regler, puljer, matrix-kilder (spec. 3) |
-| `sizes.js` | Antal grupper og størrelser (spec. 4) |
+| `sizes.js` | Antal grupper og størrelser (spec. 4). `planGroupCounts` er ren (kun tal ind) og bruges også af appen til skønnet i opskriften, så app og motor ikke kan sige hvert sit antal |
 | `feasibility.js` | Skal sammen-tjekket og tom matrix-kilde (spec. 5.1) |
 | `rules.js` | Regelmodulerne: mål, bedst mulige, opfyldt, rangordenen (spec. 6, 7, 16) |
 | `bounds.js` | Hvor godt Balancér overhovedet kan blive, og hvor mange grupper der mindst må falde uden om Fordels dagens test |

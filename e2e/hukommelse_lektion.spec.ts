@@ -94,10 +94,11 @@ test('en lektion med 150 elever: én tråd til kørslerne, og intet vokser', asy
         if (round === 2) afterWarmup = await pageMetrics();
     }
 
-    // Kørslernes tråd og check()-tråden: to i alt, uanset antallet af
-    // kørsler. Før 89. gennemsyn: en ny tråd pr. kørsel (10 her).
+    // Kørslernes tråd, check()-tråden og prøvekørslens tråd (trialRun.js,
+    // 12/11 2026): tre i alt, uanset antallet af kørsler — også prøvekørslen
+    // beholder sin tråd. Før 89. gennemsyn: en ny tråd pr. kørsel (10 her).
     const log = await workerLog(page);
-    expect(log.made).toBeLessThanOrEqual(2);
+    expect(log.made).toBeLessThanOrEqual(3);
     expect(log.terminated).toBe(0);
 
     if (afterWarmup) {

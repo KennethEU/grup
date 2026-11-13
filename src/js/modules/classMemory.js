@@ -34,6 +34,7 @@ import { clearColorRegistry } from './utils.js';
 import * as replay from './replay.js';
 import { cancelPickUp } from '../../composables/useDragDrop.js';
 import { clearSetupNotices } from './setupNotices.js';
+import { lastRunStatus } from './nextEngine.js';
 
 /**
  * Ryd al hukommelses-tilstand, der hører til den klasse, vi forlader.
@@ -98,4 +99,13 @@ export function clearClassMemory() {
     // Hvilke beskeder om opsætningen læreren har set — de handlede om den
     // FORRIGE klasse. Den nye skal have sine egne første gang (setupNotices.js).
     clearSetupNotices();
+
+    // Mærkerne i opskriften fra sidste dannelse (flueben pr. regel) og
+    // aftrykket af det, motoren fik. En KOPI af en klasse har de samme
+    // elev-id'er og dermed præcis samme aftryk, så uden rydningen kunne
+    // kopien svare "ja, sidste dannelse handler om det, der står nu" om en
+    // dannelse, der blev lavet i originalen (nextEngine.js, runStatusFor og
+    // lastRunInputIsCurrent). En genindlæsning giver ingen mærker.
+    lastRunStatus.standard = null;
+    lastRunStatus.matrix = null;
 }

@@ -83,6 +83,19 @@ describe('opskriften: ændringer i regellisten', () => {
         expect(rules[0].value).toBe('');
     });
 
+    it('en gammel værdiliste (values) går, når læreren retter reglen — det viste valg er det, motoren får', async () => {
+        const { buildEngineInput } = await import('./nextEngine.js');
+        const cls = (rules) => ({
+            data: [{ _rowId: 'r1', Niveau: 'Høj' }, { _rowId: 'r2', Niveau: 'Lav' }, { _rowId: 'r3', Niveau: 'Lav' }],
+            rules, settings: { groupMode: 'size', groupTarget: 2, groupMod: '+' }, togetherGroups: [], separations: [],
+        });
+        const rules = [{ type: RULE_TYPES.SEPARATE, column: 'Niveau', value: '', values: ['Høj'] }];
+        expect(buildEngineInput({ cls: cls(rules), isMatrix: false, groupMode: 'size' }).rules[0].values).toEqual(['Høj']);
+        updateRuleField(rules, 0, 'value', 'Lav');
+        expect(rules[0]).toEqual({ type: RULE_TYPES.SEPARATE, column: 'Niveau', value: 'Lav' });
+        expect(buildEngineInput({ cls: cls(rules), isMatrix: false, groupMode: 'size' }).rules[0].values).toEqual(['Lav']);
+    });
+
     it('en regel der bliver til Opdel, flyttes øverst', () => {
         const rules = [
             { type: RULE_TYPES.DISTRIBUTE, column: 'Køn', value: '' },

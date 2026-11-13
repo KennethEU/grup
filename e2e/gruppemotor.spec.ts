@@ -149,6 +149,34 @@ test('Opdel: advarslen pr. pulje afløses af resultatet pr. pulje', async ({ pag
     await expect(results.filter({ hasText: '2.b' })).toHaveCount(1);
 });
 
+// Gennemsyn 102 (13/11): resultatet under "Sidste dannelse" skjulte tjekkets
+// advarsel om samme regel, også efter at læreren havde låst grupper — hvor
+// advarslen handler om en NY situation (færre grupper til de samme elever).
+test('en låsning efter kørslen: den nye advarsel om Adskil skjules ikke af det gamle resultat', async ({ page }) => {
+    test.setTimeout(150000);
+    const header = 'Navn\tNiveau\n';
+    const lines = Array.from({ length: 16 }, (_, i) => `Elev ${i + 1}\t${i < 12 ? 'Høj' : 'Lav'}`);
+    await createClass(page, 'Laas efter', header + lines.join('\n'));
+    await chooseNextEngine(page);
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'separate', column: 'Niveau', value: 'Høj' }];
+    });
+    await generateGroups(page);
+    await expect(page.locator('.group-card')).toHaveCount(4);
+    // Lige efter kørslen: resultatet står under "Sidste dannelse", ingen rød advarsel.
+    const first = await openRecipe(page);
+    await expect(first.locator('.recipe__lastlist li').filter({ hasText: 'Adskil' })).toHaveCount(1);
+    await expect(first.locator('.gh-hint--conflict').filter({ hasText: 'Adskil' })).toHaveCount(0);
+    // Lås to grupper: de seks "Høj", der er tilbage, skal nu i to grupper.
+    await page.evaluate(() => {
+        const s = (window as any).appDebug.state;
+        s.storedStandardGroups = s.storedStandardGroups.map((g: any, i: number) => (i < 2 ? { ...g, locked: true } : g));
+    });
+    const warning = first.locator('.gh-hint--conflict').filter({ hasText: 'Adskil' });
+    await expect(warning).toHaveCount(1);
+    await expect(warning).toContainText('6 elever skal adskilles, men der er kun 2 grupper');
+});
+
 // Kenneths matrix-runde 2 (3/11): "Kilderne "Group 2", "Group 3", "Group 5"
 // har kun 5 elever …". Stamgrupperne hedder internt "Group N", men læreren ser
 // "Gruppe N" alle andre steder. Begge motorer: ingen besked må sige "Group".
@@ -181,6 +209,39 @@ test('Opdel: advarslen pr. pulje afløses af resultatet pr. pulje', async ({ pag
         expect(await page.evaluate(() => (window as any).appDebug.nextStats.status)).toBe('ok');
     });
 }
+
+// "Sidste dannelse" i matrix gælder kun den opskrift, kørslen fik (gennemsyn
+// 103, 13/11 2026). Før så aftrykket ikke valget Stamgruppe/Emne: skiftede
+// læreren til "Emne", stod resultatet om stamgrupperne der stadig.
+test('matrix: skift fra Stamgruppe til Emne fjerner resultatet om stamgrupperne', async ({ page }) => {
+    test.setTimeout(180000);
+    const header = 'Navn\tKøn\n';
+    const lines = Array.from({ length: 26 }, (_, i) => `Elev ${i + 1}\t${i % 2 ? 'K' : 'M'}`);
+    await createClass(page, 'Matrix kilde', header + lines.join('\n'));
+    await chooseNextEngine(page);
+    await page.evaluate(() => {
+        const cls = (window as any).appDebug.state.currentClass;
+        cls.topics = ['Ukraine', 'Island'];
+        cls.matrixSettings = { matrixStrategy: 'full_strict', matrixRepresentationType: 'group' };
+    });
+    await generateGroups(page);
+    await page.getByRole('button', { name: /Matrix-runde/ }).click();
+    const dialog = page.locator('dialog.recipe-dialog[open]');
+    await expect(dialog).toBeVisible();
+    await dialog.getByRole('button', { name: /^Dan matrixgrupper/ }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.storedMatrixGroups?.length || 0), { timeout: 60000 }).toBeGreaterThan(0);
+
+    const after = await openRecipe(page);
+    const last = after.locator('.recipe__lastlist li');
+    await expect(last.filter({ hasText: /stamgruppe/i }).first()).toBeVisible();
+
+    await after.locator('.rtok__btn[aria-label^="Sådan blandes der"]').click();
+    await after.getByRole('button', { name: 'Emne', exact: true }).click();
+    // Valget gemmes et øjeblik efter (300 ms) — så handler noterne om en anden opskrift.
+    await expect(last).toHaveCount(0);
+    await after.getByRole('button', { name: 'Stamgruppe', exact: true }).click();
+    await expect(last.filter({ hasText: /stamgruppe/i }).first()).toBeVisible();
+});
 
 test('fremgangen vises, og Stop beholder den bedste deling', async ({ page }) => {
     test.setTimeout(180000);

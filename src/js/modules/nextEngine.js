@@ -28,7 +28,7 @@ import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
     ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
-    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell,
+    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn,
 } from './utils.js';
 
 export const CONTRACT_VERSION = 3;
@@ -125,9 +125,13 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
             let values = raw.map(v => asText(v).trim()).filter(Boolean);
             // En værdi, som KUN låste elever har, gør ingenting (svar 5) — den
             // fjernes her, og står ingen tilbage, sendes reglen ikke.
-            const inFree = new Set(free.map(s => asText(ownCell(s, column)).trim()));
-            const inLocked = new Set(present.filter(s => lockedIds.has(idOf(s))).map(s => asText(ownCell(s, column)).trim()));
-            values = values.filter(v => inFree.has(v) || !inLocked.has(v));
+            //
+            // Sammenlignes på valueKey, som motoren selv gør (normalizeText):
+            // tegn for tegn blev "Dreng" hos en låst elev og "dreng" hos de frie
+            // til "kun låste har den", og reglen blev slet ikke sendt.
+            const inFree = new Set(free.map(s => valueKey(ownCell(s, column))));
+            const inLocked = new Set(present.filter(s => lockedIds.has(idOf(s))).map(s => valueKey(ownCell(s, column))));
+            values = values.filter(v => inFree.has(valueKey(v)) || !inLocked.has(valueKey(v)));
             if (!values.length) continue;
             rule.values = values;
         }
@@ -152,7 +156,17 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
     for (const r of rules) {
         if (!ORDERED_RULES.includes(r.type)) continue;
         const order = cls.columnOrders && cls.columnOrders[r.column];
-        if (Array.isArray(order) && order.length) columnOrders[r.column] = order.map(asText);
+        // Kun en rækkefølge, der RAMMER noget (mindst to trin, og mindst én
+        // elev med en værdi fra den). Er klasselisten skiftet ud med en, der
+        // bruger andre ord — eller er kolonnen nu tal — står den gamle
+        // rækkefølge der stadig. Sendt alligevel regnede motoren kolonnen for
+        // rangeret, så HVER elev stod "uden for rækkefølgen": en Balancér på
+        // en talkolonne gjorde ingenting, og opskriften viste appens advarsel
+        // ("gør ingenting … der står tekst") ved siden af motorens ("23 elever
+        // har en værdi, som ikke står i rækkefølgen"). Samme prøve som
+        // advarslen i hints.js og kolonnevalget i recipe.js (columnFitness),
+        // så de tre altid er enige om, hvorvidt kolonnen er rangeret.
+        if (rankingAffectsColumn(cls.data, r.column, order)) columnOrders[r.column] = order.map(asText);
     }
 
     // Aftalerne. Skal sammen sendes som samlede blokke; en blok, der kun har
@@ -169,6 +183,17 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
 
     // Nummeret, læreren ser. En låst gruppe uden nummer i navnet (sker ikke i
     // dag) får et højt, ledigt nummer, så den ikke tager et af de nye.
+    //
+    // Emnet på en låst gruppe sendes, som det står på KLASSENS liste: motoren
+    // sammenligner tegn for tegn, så en låst gruppe med "eu" (fra en hentet
+    // session, eller fordi emnet er slettet og skrevet igen som "EU") ellers
+    // regnes for at stå uden gyldigt emne og får et nyt — måske et helt andet.
+    // I resten af appen er de to det samme emne (findTopicIndex).
+    const classTopics = isMatrix ? [] : (cls.topics || []).map(t => asText(t).trim()).filter(Boolean);
+    const listedTopic = (topic) => {
+        const at = findTopicIndex(classTopics, topic);
+        return at === -1 ? topic : classTopics[at];
+    };
     let spare = 1000;
     const lockedGroups = locked.map(g => {
         const number = groupNumberOf(g.name) ?? spare++;
@@ -177,7 +202,7 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
             number,
             name: groupDisplayName(g.name),
             members: presentMembers(g.members),
-            topic: (!isMatrix && g.topic && String(g.topic).trim()) ? String(g.topic).trim() : null,
+            topic: (!isMatrix && g.topic && String(g.topic).trim()) ? listedTopic(String(g.topic).trim()) : null,
         };
     });
 
@@ -214,13 +239,25 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
         // tilbage. Giver to grupper samme visningsnavn, bruges de interne.
         const shown = homeGroups.map(g => groupDisplayName(g.name));
         const unique = new Set(shown).size === shown.length;
+        // Samme emne med forskellig stavemåde ("EU" på ét kort, "eu" på et
+        // andet — muligt, når emnerne skrives i hånden på kortene) er ÉT emne
+        // i hele appen (eqTopic, matrixSourceById), men motoren sammenligner
+        // teksten tegn for tegn og så to kilder: "Én fra hvert emne" gav
+        // halvt så mange matrixgrupper, som opskriften lovede, med to fra
+        // "samme" emne i hver. Derfor sendes den første stavemåde for dem alle.
+        const spelling = new Map();
+        const oneSpelling = (topic) => {
+            const key = topicKey(topic);
+            if (!spelling.has(key)) spelling.set(key, topic);
+            return spelling.get(key);
+        };
         matrix = {
             source: repType === 'group' ? 'homeGroup' : 'topic',
             homeGroups: homeGroups.map((g, i) => {
                 const stored = topicFor(g.name);
                 const topic = (stored && stored.trim()) ? stored.trim()
                     : (g.topic && String(g.topic).trim()) ? String(g.topic).trim() : null;
-                return { id: unique ? shown[i] : String(g.name), members: presentMembers(g.members), topic };
+                return { id: unique ? shown[i] : String(g.name), members: presentMembers(g.members), topic: topic === null ? null : oneSpelling(topic) };
             }),
         };
     }
@@ -234,7 +271,7 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
         agreements: { together, avoid },
         lockedGroups,
         size,
-        topics: isMatrix ? [] : (cls.topics || []).map(t => asText(t).trim()).filter(Boolean),
+        topics: classTopics,
         matrix,
         budget: appBudget(students.length),
         seed: null,
@@ -525,7 +562,8 @@ function ensureCheckWorker() {
 }
 
 let pendingCheck = null;
-const checkInput = computed(() => currentEngineInput(state.activeView === 'matrix'));
+// Eksporteret: prøvekørslen (trialRun.js) regner på præcis samme input.
+export const checkInput = computed(() => currentEngineInput(state.activeView === 'matrix'));
 // Klassens filnavn er en del af nøglen: en kopi af en klasse (fx "3a_kopi"
 // fra flytningen af lagernøglerne, eller en backup lagt ind som ny klasse)
 // har de samme elev-id'er og dermed præcis samme input. Uden filnavnet
@@ -583,7 +621,7 @@ export const engineCheck = computed(() => {
 export const lastRunStatus = reactive({ standard: null, matrix: null });
 
 /** Input'et uden budget og frø — det, der afgør, hvad motoren svarede. */
-function inputFingerprint(input) {
+export function inputFingerprint(input) {
     if (!input) return '';
     const { budget, seed, lockedGroups, ...rest } = input;
     // Hvilken af klassens regler hver regel i input kom fra: en regel uden
@@ -611,6 +649,28 @@ export function runStatusFor(isMatrix) {
     if (homeGroupFingerprint(groups) !== status.groups) return null;
     if (inputFingerprint(currentEngineInput(isMatrix, status.skipTogether)) !== status.input) return null;
     return status;
+}
+
+/**
+ * Handler "Sidste dannelse" stadig om det, appen ville sende nu? Samme input
+ * som kørslen fik (regler, celler i reglernes kolonner, fravær, låste
+ * grupper, aftaler, størrelse) — men uden at se på, om en elev er flyttet i
+ * hånden bagefter (det ændrer ikke, hvad tjekket før kørslen siger).
+ *
+ * Bruges, når et resultat fra sidste kørsel skal SKJULE en advarsel fra
+ * tjekket (engineCheckHints i hints.js). Noterne under "Sidste dannelse"
+ * bliver stående efter det løsere aftryk (setupSignature), som ikke ser
+ * celler og låse. Låser læreren to grupper efter kørslen, er der færre
+ * grupper til de samme elever: tjekkets nye advarsel ("8 elever skal
+ * adskilles, men der er kun 2 grupper") må ikke skjules af det gamle
+ * resultat om samme regel. Reglernes numre i input kan også være rykket (en
+ * Adskil, hvis værdi nu kun står i en låst gruppe, sendes ikke), så pladsen
+ * "regel 0" kan være en helt anden regel end ved kørslen.
+ */
+export function lastRunInputIsCurrent(isMatrix) {
+    const status = lastRunStatus[isMatrix ? 'matrix' : 'standard'];
+    if (!status) return false;
+    return inputFingerprint(currentEngineInput(isMatrix, status.skipTogether)) === status.input;
 }
 
 /**
@@ -679,6 +739,8 @@ let current = null;   // { worker, finish, stop } for kørslen i gang
 function defaultWorker() {
     return new Worker(new URL('./engine-worker.js', import.meta.url), { type: 'module' });
 }
+/** En ny tråd med motoren — til prøvekørslen (trialRun.js), som har sin egen. */
+export const makeEngineWorker = defaultWorker;
 
 // ─── Kørslens tråd genbruges ────────────────────────────────────────────────
 // Før startede hver "Dan grupper" en ny tråd og lukkede den efter svaret.
@@ -1240,6 +1302,10 @@ function setRunStatus(viewKey, marks, input, groups, skipTogether = []) {
 /** Opskriftens advarsler lige nu — sat af hints.js (undgår en import-kreds). */
 let recipeHintIds = () => [];
 export function provideRecipeHintIds(fn) { recipeHintIds = fn; }
+/** Opskriftens advarsler lige nu (tom liste, hvis hints.js ikke kan svare). */
+export function currentRecipeHintIds() {
+    try { return recipeHintIds(); } catch { return []; }
+}
 
 /** Oversigten i udviklerkonsollen (kun under udvikling). */
 function logAnswer(answer, input) {
