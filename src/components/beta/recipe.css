@@ -574,40 +574,10 @@
    bagkant har sin egen polstring, så punktummet rykkes helt ind til den. */
 .recipe__punct { margin-inline-start: -3px; }
 
-/* Sidste dannelse: hvad motoren sagde ved sidste kørsel (RecipeLastRun.vue).
-   Stille tekst nederst i vinduet, ikke noget der råber. */
-.recipe__last {
-    margin-block-start: 20px;
-    padding-block-start: 14px;
-    border-block-start: 1px solid var(--rule);
-}
-.recipe__lastkicker {
-    font: 500 10px var(--mono, 'JetBrains Mono', ui-monospace, Menlo, monospace);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-}
-.recipe__lastlist {
-    list-style: none;
-    margin: 10px 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--ink-3);
-}
-.recipe__lastlist li {
-    padding-inline-start: 10px;
-    border-inline-start: 2px solid var(--rule-2, var(--rule));
-    white-space: pre-line;
-    text-wrap: pretty;
-}
-.recipe__lastlist li.is-error {
-    border-inline-start-color: var(--color-error);
-    color: var(--ink-2);
-}
+/* Noterne fra sidste dannelse står i stakken øverst (lastRunHints i
+   hints.js). Motorens tekster kan have linjeskift, så de bevares her, som de
+   gjorde under det gamle "Sidste dannelse" nederst i vinduet. */
+.recipe-dialog .gh-hint--last .gh-hint-text { white-space: pre-line; }
 
 /* Trinene i regellisten (RecipeRules.vue), når motoren ordner efter type:
    en lille mono-etiket over hvert trin og ingen streg under den, så den hører

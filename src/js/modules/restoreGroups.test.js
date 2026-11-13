@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { state } from './state.js';
 import { ROW_ID_PATTERN } from './utils.js';
+import { setupNotices, beginRun, announce, commitRun, clearSetupNotices } from './setupNotices.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // restoreGroups.js — gendan grupper fra tekst eller fra en gemt kolonne
@@ -587,6 +588,17 @@ describe('applyPlan', () => {
         });
         return { ok: applyPlan(plan), plan, data: state.currentClass.data };
     };
+
+    // Stamgrupperne skiftes ud; matrixen står. Kun stamgruppernes noter om
+    // RESULTATET handler om grupper, der ikke står der længere (106. gennemsyn).
+    it('fjerner stamgruppernes resultat-noter, ikke matrixens', () => {
+        clearSetupNotices();
+        beginRun('standard'); announce('Opsætning'); announce('Resultat stam', 'info', null, true); commitRun('s');
+        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun('m');
+        restore('Gruppe 1\nAnna Quist Fassov');
+        expect(setupNotices.last.standard.map(n => n.text)).toEqual(['Opsætning']);
+        expect(setupNotices.last.matrix.map(n => n.text)).toEqual(['Resultat matrix']);
+    });
 
     it('skriver grupperne med interne navne og _rowId-medlemmer', () => {
         restore('Gruppe 1\nAnna Quist Fassov\nGustav Føgh\n\nGruppe 6\nMelad Sayed');

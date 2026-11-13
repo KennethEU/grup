@@ -16,6 +16,7 @@ import * as storage from './storage.js';
 import { saveTopicsOrSettle } from './topicSettle.js';
 import { autoSave } from './classActions.js';
 import { pushRun, markClean } from './runHistory.js';
+import { forgetRunResults } from './setupNotices.js';
 import {
     ROW_ID, ensureRowIds, isInternalField, memberDisplayName, groupDisplayName,
     mergeClassTopics, classTopicSpelling, buildStudentIndex,
@@ -764,6 +765,10 @@ export function applyPlan(plan) {
 
     pushUndo();
     pushRun();
+    // Noterne om sidste kørsels RESULTAT handler ikke om grupperne herefter. Kun
+    // stamgrupperne skiftes ud; matrixen står, og dens noter passer stadig
+    // (forgetRunResults i setupNotices.js).
+    forgetRunResults(['standard']);
 
     const data = state.currentClass.data;
     const displayColumn = state.displayColumn

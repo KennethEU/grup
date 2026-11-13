@@ -164,6 +164,57 @@ test('"Hent de nye grupper" henter den anden fanes grupper ind', async ({ contex
 });
 
 /**
+ * "Hent de nye grupper" skifter hele fordelingen ud. Noterne om fane B's egen
+ * sidste kørsel ("… par ender i samme gruppe (Gruppe 1)") handler så om
+ * grupper, der ikke står der længere, og skal væk (106. gennemsyn,
+ * forgetRunResults i setupNotices.js).
+ */
+test('"Hent de nye grupper": "Sidste dannelse" nævner ikke fanens egne, forladte grupper', async ({ context }) => {
+    const csv = 'Navn\tKøn\n' +
+        'Anna\tK\nBo\tM\nCarl\tM\nDan\tM\nEmil\tM\nFrode\tM\nGustav\tM\nHans\tM\nIb\tM\nJens\tM\nKurt\tM\nLis\tK';
+    const separateBoys = (page: Page) => page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'separate', column: 'Køn', value: 'M' }];
+    });
+    const groupsIn = (page: Page) => page.evaluate(() =>
+        JSON.stringify(((window as any).appDebug.state.storedStandardGroups || []).map((g: any) => g.members)));
+
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a Faner Noter', csv);
+    await separateBoys(tabA);
+    await goToGroups(tabA);
+    await generateGroups(tabA);
+
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a Faner Noter', { timeout: 30000 });
+    await separateBoys(tabB);
+    await goToGroups(tabB);
+    await generateGroups(tabB);
+    const recipeB = await openRecipe(tabB);
+    await expect(recipeB.locator('.gh-hint--last', { hasText: 'ender i samme gruppe' })).not.toHaveCount(0);
+    await tabB.keyboard.press('Escape');
+    const before = await groupsIn(tabB);
+
+    // Fane A danner nye grupper, indtil fordelingen er en anden.
+    await tabA.bringToFront();
+    let fresh = before;
+    for (let i = 0; i < 5 && fresh === before; i++) {
+        await generateGroups(tabA);
+        fresh = await groupsIn(tabA);
+    }
+    expect(fresh).not.toBe(before);
+
+    await tabB.bringToFront();
+    const toast = tabB.locator('.toast').filter({ hasText: 'ændret i en anden fane' });
+    await expect(toast).toBeVisible({ timeout: 10000 });
+    await toast.getByRole('button', { name: 'Hent de nye grupper' }).click();
+    await expect.poll(() => groupsIn(tabB), { timeout: 10000 }).not.toBe(before);
+
+    const after = await openRecipe(tabB);
+    await expect(after.locator('.gh-hint--last', { hasText: 'ender i samme gruppe' })).toHaveCount(0);
+});
+
+/**
  * Et klik i en celle er ikke en rettelse.
  *
  * Før gemte elevlisten HELE klassen, hver gang markøren forlod en celle —

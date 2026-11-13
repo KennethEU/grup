@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ruleSentence, ruleIsIncomplete, sizeSentence, namesText, recipeSummary, ruleTypeLabel, findTwinRule, ruleValueExists, expectedNewGroups, typingOutsideRecipe, perGroupEstimate, currentLastNotes } from './recipe.js';
+import { ruleSentence, ruleIsIncomplete, sizeSentence, namesText, recipeSummary, ruleTypeLabel, findTwinRule, ruleValueExists, expectedNewGroups, typingOutsideRecipe, perGroupEstimate } from './recipe.js';
 import { setupSignature } from './utils.js';
 import { RULE_TYPES, RULE_OPTIONS } from './utils.js';
 
@@ -335,37 +335,6 @@ describe('perGroupEstimate', () => {
         expect(perGroupEstimate(28, 4)).toBe('ca. 7 elever pr. gruppe');
         expect(perGroupEstimate(3, 3)).toBe('ca. 1 elev pr. gruppe');
         expect(perGroupEstimate(0, 3)).toBe('');
-    });
-});
-
-describe('currentLastNotes — "Sidste dannelse" gælder kun, mens opsætningen passer', () => {
-    const cls = () => ({ settings: { groupTarget: 4, groupMod: '+' }, rules: [{ type: 'distribute', column: 'Køn' }], data: [] });
-    const notices = (c) => ({
-        last: { standard: [{ text: 'Noget', type: 'info' }], matrix: [] },
-        lastSignature: { standard: setupSignature(c, false, 'size'), matrix: null },
-    });
-
-    it('viser noterne, når reglerne er de samme', () => {
-        const c = cls();
-        expect(currentLastNotes(notices(c), c, false, 'size')).toHaveLength(1);
-    });
-
-    it('skjuler dem, når en regel eller størrelsen er ændret siden', () => {
-        const c = cls();
-        const n = notices(c);
-        c.rules.push({ type: 'cluster', column: 'X' });
-        expect(currentLastNotes(n, c, false, 'size')).toEqual([]);
-        const c2 = cls();
-        const n2 = notices(c2);
-        c2.settings.groupTarget = 5;
-        expect(currentLastNotes(n2, c2, false, 'size')).toEqual([]);
-    });
-
-    it('uden aftryk (fx en ældre kørsel) vises intet', () => {
-        const c = cls();
-        const n = notices(c);
-        n.lastSignature.standard = null;
-        expect(currentLastNotes(n, c, false, 'size')).toEqual([]);
     });
 });
 

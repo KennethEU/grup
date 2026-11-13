@@ -61,6 +61,7 @@ import { saveCurrentSession, deleteSession, restoreSession, renameSession, loadS
 // handling koster, ikke kun hvad der står i lageret bagefter.
 import * as storageMock from './storage.js';
 import { listRuns, clearRuns, hasManualChanges, markClean, pushRun } from './runHistory.js';
+import { setupNotices, beginRun, announce, commitRun, clearSetupNotices } from './setupNotices.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // History Module Tests
@@ -247,6 +248,19 @@ describe('restoreSession', () => {
 
         expect(state.storedStandardGroups[0].members).toEqual(['r1', 'r2']);
         expect(window.notifyInfo).not.toHaveBeenCalled();
+    });
+
+    // En gendannet session er en anden fordeling: noterne om sidste kørsels
+    // RESULTAT ("2 par ender i samme gruppe (Gruppe 1)") går, opsætningens
+    // noter bliver (106. gennemsyn).
+    it('fjerner noterne om sidste kørsels resultat i begge visninger', () => {
+        const meta = saveCurrentSession('Gemt', false);
+        clearSetupNotices();
+        beginRun('standard'); announce('Opsætning'); announce('Resultat', 'info', null, true); commitRun('s');
+        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun('m');
+        restoreSession(meta.id);
+        expect(setupNotices.last.standard.map(n => n.text)).toEqual(['Opsætning']);
+        expect(setupNotices.last.matrix).toEqual([]);
     });
 
     // En låst gruppe er en beslutning læreren har truffet. Kom sessionen

@@ -125,7 +125,7 @@ test('den realistiske klasse: import, fravær, aftaler og en skæv Fordel', asyn
     // Før kørslen motorens advarsel, efter kørslen dens resultat under
     // "Sidste dannelse" — det ene eller det andet står der.
     await openRecipe(page);
-    await expect(page.locator('dialog.recipe-dialog[open]').locator('.gh-hint, .recipe__lastlist li')
+    await expect(page.locator('dialog.recipe-dialog[open]').locator('.gh-hint')
         .filter({ hasText: 'Fordel på "Køn"' }).first()).toBeVisible();
 });
 
@@ -140,7 +140,7 @@ test('opskriften siger en skæv Fordel én gang, ikke også under "Sidste dannel
     await page.locator('.recipe-bar__open').click();
     const recipe = page.locator('dialog.recipe-dialog[open]');
     // Samme sag én gang: advarslen før kørslen er afløst af resultatet.
-    await expect(recipe.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Fordel på "Køn"' })).toHaveCount(1);
+    await expect(recipe.locator('.gh-hint').filter({ hasText: 'Fordel på "Køn"' })).toHaveCount(1);
     await expect(page.locator('.recipe-bar__warn')).toHaveText('1 advarsel');
     if (process.env.DUBLET_SHOT) await page.screenshot({ path: process.env.DUBLET_SHOT });
 });

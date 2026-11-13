@@ -1227,14 +1227,17 @@ export function matrixSourceById(sourceGroups, repType = 'topic', topicFor = nul
     for (const g of (sourceGroups || [])) {
         if (!g || !Array.isArray(g.members)) continue;
         let source;
+        // topicKey (NFC, trimmet, små bogstaver): samme nøgle som motoren
+        // bruger, når den sammenligner emner. Før blev der kun gjort småt, så
+        // "Økonomi" med ø som o + streg og med ø som ét tegn var to kilder her.
         if (repType === 'group') {
-            source = String(g.name ?? '').trim().toLowerCase();
+            source = topicKey(g.name);
         } else {
             const stored = topicFor ? topicFor(g.name) : null;
             const topic = (stored && stored.trim()) ? stored.trim()
                 : (g.topic && String(g.topic).trim()) ? String(g.topic).trim()
                 : String(g.name ?? '');
-            source = topic.toLowerCase();
+            source = topicKey(topic);
         }
         for (const m of g.members) {
             const id = memberIdStr(m);

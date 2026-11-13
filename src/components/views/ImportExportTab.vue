@@ -4,6 +4,7 @@ import { reactiveState } from '../../js/modules/reactiveState.js';
 import { Upload, Download } from 'lucide-vue-next';
 import ImportSection from './ImportSection.vue';
 import ExportSection from './ExportSection.vue';
+import UnreadableCopyNotice from './UnreadableCopyNotice.vue';
 
 const activeSubTab = computed({
     get: () => reactiveState.importViewTab,
@@ -62,6 +63,9 @@ onMounted(() => nextTick(() => requestAnimationFrame(updateIndicator)));
 
         <!-- Fanernes indhold -->
         <div class="tab-content-wrapper">
+            <!-- Kun når en ulæselig klasseliste ligger gemt til side: står over
+                 begge faner, så læreren ser den, uanset hvor hun lander. -->
+            <UnreadableCopyNotice />
             <div v-if="activeSubTab === 'import'" key="import" class="tab-content">
                 <ImportSection />
             </div>

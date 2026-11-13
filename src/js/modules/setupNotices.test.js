@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
-    setupNotices, announce, announceOnce, beginRun, commitRun, clearSetupNotices,
+    setupNotices, announce, announceOnce, beginRun, commitRun, clearSetupNotices, forgetRunResults,
 } from './setupNotices.js';
 
 beforeEach(() => {
@@ -70,5 +70,34 @@ describe('setupNotices — aftrykket af opsætningen følger de sidste noter', (
         expect(setupNotices.lastSignature.standard).toBe('sig-1');
         clearSetupNotices();
         expect(setupNotices.lastSignature.standard).toBeNull();
+    });
+});
+
+describe('forgetRunResults — noterne om resultatet går, når fordelingen skiftes ud', () => {
+    it('fjerner kun resultat-noterne; opsætningens noter og aftrykket bliver', () => {
+        beginRun('standard');
+        announce('Fordel på "Køn" kan ikke gå helt lige op.', 'info');
+        announce('Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 3).', 'info', ['k1'], true);
+        commitRun('aftryk');
+        forgetRunResults(['standard']);
+        expect(setupNotices.last.standard).toEqual([{ text: 'Fordel på "Køn" kan ikke gå helt lige op.', type: 'info' }]);
+        // Aftrykket bliver: prøvekørslen i baggrunden skal opføre sig som før.
+        expect(setupNotices.lastSignature.standard).toBe('aftryk');
+    });
+
+    it('rører kun de visninger, den får', () => {
+        beginRun('standard'); announce('Stam', 'info', null, true); commitRun('s');
+        beginRun('matrix'); announce('Matrix', 'info', null, true); commitRun('m');
+        forgetRunResults(['standard']);
+        expect(setupNotices.last.standard).toEqual([]);
+        expect(setupNotices.last.matrix.map(n => n.text)).toEqual(['Matrix']);
+        forgetRunResults();
+        expect(setupNotices.last.matrix).toEqual([]);
+    });
+
+    it('samme tekst to gange: er den ene et resultat, er noten et resultat', () => {
+        beginRun('standard'); announce('A'); announce('A', 'info', null, true); commitRun();
+        forgetRunResults(['standard']);
+        expect(setupNotices.last.standard).toEqual([]);
     });
 });

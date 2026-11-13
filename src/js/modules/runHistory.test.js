@@ -28,8 +28,10 @@ vi.mock('./storage.js', () => ({
 import {
     pushRun, restoreRun, listRuns, clearRuns, hasRuns,
     hasManualChanges, markClean, describeRules,
-    hasSettingsChanges, previewRunGroups, runChanges, MAX_RUNS,
+    hasSettingsChanges, settingsChanges, unsavedRecipeChanges, previewRunGroups, runChanges, MAX_RUNS,
 } from './runHistory.js';
+import { renameColumn, deleteColumn } from './columnActions.js';
+import { setupNotices, beginRun, announce, commitRun, clearSetupNotices } from './setupNotices.js';
 import * as replay from './replay.js';
 
 function classFile(filename = 'test-class') {
@@ -586,9 +588,13 @@ describe('hasSettingsChanges — spørg kun når der er noget at svare på', () 
         expect(hasSettingsChanges(0)).toBe(true);
     });
 
-    it('opdager et nyt klasse-emne', () => {
+    // Emnelisten flettes ved BEGGE svar (restoreRun), så de to knapper ville
+    // gøre det samme. Før kom spørgsmålet alligevel (13/11 2026).
+    it('spørger IKKE for et nyt klasse-emne — begge svar fletter emnerne', () => {
         state.currentClass.topics = ['Liberalisme'];
-        expect(hasSettingsChanges(0)).toBe(true);
+        expect(hasSettingsChanges(0)).toBe(false);
+        restoreRun(0, false);
+        expect(state.currentClass.topics).toEqual(['Liberalisme']);
     });
 
     it('opdager skiftet mellem størrelse og antal', () => {
@@ -777,5 +783,158 @@ describe('runHistory — navne der hedder det samme som Objects egne felter', ()
         state.currentClass.data = [];
         const firstMemberName = previewRunGroups(0, false)[0].members[0].name;
         expect(firstMemberName).toBe('Proto Jensen');
+    });
+});
+
+describe('settingsChanges — spørgsmålet siger, hvad et ja skifter ud', () => {
+    beforeEach(() => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+        state.currentClass.settings = { groupTarget: '4' };
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
+        markClean();
+        pushRun();
+    });
+
+    it('tom liste, når intet er ændret', () => {
+        expect(settingsChanges(0)).toEqual([]);
+    });
+
+    // Før stod der "Reglerne eller indstillingerne", også når det kun var en
+    // ny aftale — og et ja skrev den væk.
+    it('nævner kun aftalerne, når det kun er en aftale, der er ny', () => {
+        state.currentClass.togetherGroups = [{ ids: ['r1', 'r2'] }];
+        expect(settingsChanges(0)).toEqual(['agreements']);
+    });
+
+    it('nævner regler og størrelse hver for sig', () => {
+        state.currentClass.rules = [];
+        state.currentClass.settings = { groupTarget: '6' };
+        expect(settingsChanges(0)).toEqual(['rules', 'settings']);
+    });
+
+    it('matrixreglerne er regler, matrix-indstillingerne og tilstanden indstillinger', () => {
+        state.currentClass.matrixRules = [{ type: 'distribute', column: 'Køn' }];
+        state.groupMode = 'number';
+        expect(settingsChanges(0)).toEqual(['rules', 'settings']);
+    });
+});
+
+describe('kolonner omdøbt eller slettet efter kørslen', () => {
+    // Kørselshistorikken har sin EGEN kopi af reglerne. Den fulgte ikke med et
+    // omdøb: "Ja, tag alt med" hentede reglen tilbage på et navn, der ikke
+    // fandtes længere (13/11 2026).
+    beforeEach(() => {
+        state.currentClass.columns = ['Navn', 'Køn'];
+        state.currentClass.data.forEach((r, i) => { r.Køn = i % 2 ? 'D' : 'P'; });
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+        state.currentClass.matrixRules = [{ type: 'separate', column: 'Køn', value: 'P' }];
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2', 'r3'] }];
+        markClean();
+        pushRun();
+        // Endnu en kørsel, så _lastRunInputs også bærer reglen.
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r3', 'r2', 'r1'] }];
+        markClean();
+    });
+
+    it('et omdøb følger med ind i historikken — "tag alt med" giver reglen på det nye navn', () => {
+        renameColumn(state.currentClass, state, 'Køn', 'Kon');
+        expect(hasSettingsChanges(0)).toBe(false);
+        restoreRun(0, true);
+        expect(state.currentClass.rules).toEqual([{ type: 'distribute', column: 'Kon' }]);
+        expect(state.currentClass.matrixRules[0].column).toBe('Kon');
+    });
+
+    it('et omdøb følger også med i det input, der lægges i historikken næste gang', () => {
+        renameColumn(state.currentClass, state, 'Køn', 'Kon');
+        pushRun();                                   // kørslen på skærmen lægges i historikken
+        expect(state._runHistory[0].rules[0].column).toBe('Kon');
+    });
+
+    it('en sletning fjerner reglen fra historikken også', () => {
+        deleteColumn(state.currentClass, state, 'Køn');
+        expect(hasSettingsChanges(0)).toBe(false);
+        restoreRun(0, true);
+        expect(state.currentClass.rules).toEqual([]);
+        expect(state.currentClass.matrixRules).toEqual([]);
+    });
+
+    it('rører ikke en anden klasses kørsler', () => {
+        state._runHistory[0].classFile = 'anden-klasse';
+        renameColumn(state.currentClass, state, 'Køn', 'Kon');
+        expect(state._runHistory[0].rules[0].column).toBe('Køn');
+    });
+});
+
+describe('unsavedRecipeChanges — hvad et ja faktisk koster', () => {
+    // Kørsel A (størrelse 4) → kørsel B (størrelse 5) står på skærmen.
+    beforeEach(() => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+        state.currentClass.settings = { groupTarget: '4' };
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+        markClean();
+        state.currentClass.settings = { groupTarget: '5' };
+        pushRun();                                   // A i historikken
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r2', 'r1'] }];
+        markClean();                                 // B dannet med størrelse 5
+    });
+
+    it('intet rettet siden dannelsen: intet tabt — og "tag alt med" frem og tilbage giver det samme', () => {
+        expect(unsavedRecipeChanges()).toEqual([]);
+        restoreRun(0, true);                         // A med størrelse 4
+        expect(state.currentClass.settings.groupTarget).toBe('4');
+        restoreRun(0, true);                         // B igen, øverst i listen
+        expect(state.currentClass.settings.groupTarget).toBe('5');
+    });
+
+    it('en aftale lavet efter dannelsen er tabt efter et ja — og det siges', () => {
+        state.currentClass.separations = [{ ids: ['r1', 'r2'] }];
+        expect(unsavedRecipeChanges()).toEqual(['agreements']);
+        restoreRun(0, true);
+        restoreRun(0, true);                         // tilbage til B
+        expect(state.currentClass.separations).toEqual([]);
+    });
+
+    it('ingen dannelse i fanen: intet at miste', () => {
+        clearRuns();
+        expect(unsavedRecipeChanges()).toEqual([]);
+    });
+});
+
+describe('"Sidste dannelse" efter en hentet kørsel (106. gennemsyn)', () => {
+    // Tre dannelser med samme opskrift, og kørsel 1 hentes frem: der kommer
+    // intet spørgsmål, aftrykket passer stadig — og før stod kørsel 3's
+    // "2 par ender i samme gruppe (Gruppe 3)" om grupper, der nu var andre.
+    const landNotes = (view, signature) => {
+        beginRun(view);
+        announce('Fordel på "Køn" kan ikke gå helt lige op.', 'info');
+        announce('Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 1).', 'info', ['k'], true);
+        commitRun(signature);
+    };
+    beforeEach(() => clearSetupNotices());
+
+    for (const alsoSettings of [false, true]) {
+        it(`resultatet går, opsætningens note bliver (${alsoSettings ? 'Ja, tag alt med' : 'Nej, kun grupperne / samme opskrift'})`, () => {
+            state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+            pushRun();                                      // kørsel 1
+            state.storedStandardGroups = [{ name: 'Group 1', members: ['r2', 'r3'] }];
+            state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1', 'r3'] }];
+            landNotes('standard', 'stam');
+            landNotes('matrix', 'matrix');
+
+            restoreRun(0, alsoSettings);
+
+            for (const view of ['standard', 'matrix']) {
+                expect(setupNotices.last[view].map(n => n.text)).toEqual(['Fordel på "Køn" kan ikke gå helt lige op.']);
+            }
+            expect(setupNotices.lastSignature).toEqual({ standard: 'stam', matrix: 'matrix' });
+        });
+    }
+
+    it('en flytning i hånden rører ikke noterne (bevidst; forslag (78))', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+        landNotes('standard', 'stam');
+        markClean();
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }, { name: 'Group 2', members: ['r2'] }];
+        expect(setupNotices.last.standard).toHaveLength(2);
     });
 });

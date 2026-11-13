@@ -69,6 +69,41 @@ export function validateColumnName(raw, columns, self = null) {
 }
 
 /**
+ * Reglerne i kørselshistorikken (runHistory.js) — de ligger der som KOPIER.
+ *
+ * Hver kørsel i fanens historik har sin egen kopi af reglerne, og
+ * `state._lastRunInputs` (det input, grupperne på skærmen blev dannet med)
+ * har én til. Kopierne fulgte ikke med et omdøb eller en sletning (13/11
+ * 2026): omdøbte læreren "Niveau" til "Faglighed" og hentede en kørsel med
+ * "Ja, tag alt med", kom reglen tilbage på "Niveau" — en kolonne, der ikke
+ * findes. Reglen gjorde så ingenting, og den rigtige regel var væk. Og
+ * spørgsmålet "Skal de fra dengang også med?" kom, selvom læreren kun havde
+ * rettet et navn. `_lastRunInputs` er lige så vigtig som listen: næste kørsel
+ * lægges i historikken MED den.
+ *
+ * Kun kørsler fra DENNE klasse (`classFile`). `ui` er `state` i appen; i
+ * testene er det et lille objekt uden historik, så alt er valgfrit.
+ *
+ * @param {object} cls
+ * @param {object} ui
+ * @param {(list: object[]) => object[]} change  får en regelliste, giver den nye
+ */
+function forEachRunRuleList(cls, ui, change) {
+    if (!ui) return;
+    const holders = [];
+    const runs = Array.isArray(ui._runHistory) ? ui._runHistory : [];
+    for (const run of runs) {
+        if (run && run.classFile === (cls.filename || null)) holders.push(run);
+    }
+    if (ui._lastRunInputs && typeof ui._lastRunInputs === 'object') holders.push(ui._lastRunInputs);
+    for (const holder of holders) {
+        for (const key of ['rules', 'matrixRules']) {
+            if (Array.isArray(holder[key])) holder[key] = change(holder[key]);
+        }
+    }
+}
+
+/**
  * Omdøb ÉN nøgle i et rækkeobjekt uden at flytte den bagerst.
  *
  * `row[nyt] = row[gammelt]; delete row[gammelt]` virker — men den flytter
@@ -152,6 +187,14 @@ export function renameColumn(cls, ui, oldName, rawName) {
         const hi = cls.hiddenColumns.indexOf(oldName);
         if (hi !== -1) cls.hiddenColumns[hi] = name;
     }
+
+    // Kørselshistorikken har sin egen kopi af reglerne (se runRuleLists).
+    forEachRunRuleList(cls, ui, (list) => {
+        for (const r of list) {
+            if (r && r.column === oldName) r.column = name;
+        }
+        return list;
+    });
 
     let displayMoved = false;
     if (ui) {
@@ -239,6 +282,9 @@ export function deleteColumn(cls, ui, colName) {
         cls[key] = arr.filter(r => !(r && r.column === colName));
         rulesRemoved += before - cls[key].length;
     }
+    // Også i kørselshistorikkens kopi — ellers kom reglen tilbage med "Ja,
+    // tag alt med" og pegede på en kolonne, der ikke findes.
+    forEachRunRuleList(cls, ui, (list) => list.filter(r => !(r && r.column === colName)));
 
     // Rangeringen ryger med. Blev den stående, ville en NY kolonne med samme
     // navn arve en rækkefølge, læreren aldrig har valgt til den — og en

@@ -21,13 +21,13 @@ import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
 import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
     brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn } from './utils.js';
-import { currentLastNotes, ruleTypeLabel, namesText } from './recipe.js';
+import { ruleTypeLabel, namesText } from './recipe.js';
 import { setupNotices } from './setupNotices.js';
 import { trialNotes } from './trialRun.js';
 import { studentById } from './lookups.js';
 import { generateMatrixGroups, generateWithoutTogether } from './generation.js';
 import { autoSave } from './classActions.js';
-import { engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, lastRunInputIsCurrent } from './nextEngine.js';
+import { engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, shownLastNotes } from './nextEngine.js';
 
 
 // Hvilke beskeder læreren selv har klikket væk i denne session.
@@ -681,10 +681,8 @@ const engineCheckHints = computed(() => {
     };
     // Kun mens sidste kørsel fik præcis det input, der står nu: et resultat
     // fra før en låsning eller en rettet celle må ikke skjule en ny advarsel
-    // (lastRunInputIsCurrent i nextEngine.js).
-    const lastKeys = new Set(lastRunInputIsCurrent(isMatrix.value)
-        ? currentLastNotes(setupNotices, cls, isMatrix.value, state.groupMode).flatMap(n => n.keys || [])
-        : []);
+    // (shownLastNotes / lastRunApplies i nextEngine.js).
+    const lastKeys = new Set(shownLastNotes(isMatrix.value).flatMap(n => n.keys || []));
     const out = [];
 
     // Skal sammen: alle de umulige blokke i én advarsel, som appens egen —
@@ -736,6 +734,28 @@ const trialHints = computed(() => trialNotes(isMatrix.value).map(n => ({
     kind: n.type === 'error' ? 'conflict' : 'info',
     text: n.text,
 })));
+
+// Noterne fra sidste dannelse: hvad motoren sagde om opsætningen og om de
+// grupper, kørslen gav. Stod før under "Sidste dannelse" nederst i
+// opskriften; Kenneth sagde ja 13/11 2026 til at samle dem i stakken øverst,
+// så alt, læreren skal være opmærksom på, står ét sted — før og efter Dan
+// grupper. Kun mens sidste kørsel stadig gælder (shownLastNotes). Står aldrig
+// samtidig med prøvekørslens (trialHints): den holder pause netop dér.
+//
+// Id'et har kørslens nummer (lastRunNo) med: lukker læreren en note med
+// krydset, gælder det DEN kørsel. Ved næste dannelse kommer den igen, også
+// med samme tekst. `source: 'last'` giver stakken en klasse, så testene kan
+// skelne dem fra tjekkets advarsler; læreren ser ingen forskel.
+const lastRunHints = computed(() => {
+    const view = isMatrix.value ? 'matrix' : 'standard';
+    const runNo = setupNotices.lastRunNo[view];
+    return shownLastNotes(isMatrix.value).map((n, i) => ({
+        id: `engine:last:${view}:${runNo}:${i}|${n.text}`,
+        kind: n.type === 'error' ? 'conflict' : 'info',
+        text: n.text,
+        source: 'last',
+    }));
+});
 
 // "Fordel på X kan ikke gå helt lige op" står ved reglens linje som et lille
 // i i stedet for i stakken over opskriften. Kenneth 4/11: syv af dem stod
@@ -830,8 +850,10 @@ const allHints = computed(() => [
     // Motorens check(): advarslerne om reglerne og aftalerne (listen ved
     // engineCheckHints ovenfor). null, mens motoren hentes første gang.
     ...(engineCheckHints.value || []),
-    // … og det, prøvekørslen i baggrunden fandt oveni (trialHints ovenfor).
+    // … og det, prøvekørslen i baggrunden fandt oveni (trialHints ovenfor),
+    // eller, efter Dan grupper, det sidste kørsel sagde (lastRunHints).
     ...trialHints.value,
+    ...lastRunHints.value,
 ].filter(Boolean));
 
 // Vis kun de beskeder, læreren ikke har klikket væk.

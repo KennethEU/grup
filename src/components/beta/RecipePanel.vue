@@ -12,7 +12,7 @@ import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
 import { Users, Shuffle } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { debounce, splitByLockedGroups, poolSizesFor } from '../../js/modules/utils.js';
-import { sizeSentence, recipeSummary, addRule, revealRule, recipeHintText, expectedNewGroups, clampTarget, isRecipeHint, currentLastNotes, perGroupEstimate } from '../../js/modules/recipe.js';
+import { sizeSentence, recipeSummary, addRule, revealRule, recipeHintText, expectedNewGroups, clampTarget, isRecipeHint, perGroupEstimate } from '../../js/modules/recipe.js';
 import { registerPendingWrite } from '../../js/modules/classActions.js';
 import { modalActions } from '../../js/modules/modalState.js';
 import { hintsFor, ANCHOR_TARGET, bannerHints } from '../../js/modules/hints.js';
@@ -21,8 +21,6 @@ import RecipeTopics from './RecipeTopics.vue';
 import RecipeToken from './RecipeToken.vue';
 import RecipeRules from './RecipeRules.vue';
 import RecipeLayout from './RecipeLayout.vue';
-import RecipeLastRun from './RecipeLastRun.vue';
-import { setupNotices } from '../../js/modules/setupNotices.js';
 import HintsStack from '../HintsStack.vue';
 import './recipe.css';
 import RuleMark from './RuleMark.vue';
@@ -212,8 +210,8 @@ onUnmounted(unregisterPending);
 
 // Advarsler om opsætningen (regler, aftaler, hvad der kan gå op) står her i
 // opskriften — før man danner grupper — og tælles i bjælken.
-const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).length
-    + currentLastNotes(setupNotices, state.currentClass, false, state.groupMode).length);
+// Noterne fra sidste dannelse er med i stakken (lastRunHints i hints.js).
+const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).length);
 </script>
 
 <template>
@@ -299,8 +297,8 @@ const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).len
                 </li>
             </ol>
 
-            <!-- Hvad motoren sagde ved sidste dannelse (i stedet for en besked) -->
-            <RecipeLastRun view="standard" />
+            <!-- Det, motoren sagde ved sidste dannelse, står i stakken øverst
+                 (lastRunHints i hints.js) — ikke længere under "Sidste dannelse" her. -->
         </template>
 
         <template #footer="{ close }">

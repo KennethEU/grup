@@ -15,6 +15,7 @@ import { legacyProtection, removeLegacyClassData } from './migrateStorage.js';
 // bruger den anden, før en funktion kaldes (kun adoptForeignGroups gør).
 import { pushRun } from './runHistory.js';
 import * as replay from './replay.js';
+import { forgetRunResults } from './setupNotices.js';
 
 /** Højst så mange gemte sessioner beholdes pr. klasse */
 const MAX_HISTORY_SESSIONS = 50;
@@ -250,6 +251,9 @@ export function adoptForeignGroups(filename) {
     replay.stop();
     state.previewRunIndex = null;
     pushRun();
+    // Noterne om sidste kørsels RESULTAT handler ikke om grupperne herefter
+    // (forgetRunResults i setupNotices.js).
+    forgetRunResults(['standard', 'matrix']);
 
     // Den anden fane kan også have skrevet emner; cachen må ikke vise de gamle.
     _invalidateTopicCache();
@@ -803,6 +807,41 @@ function unreadableListKept() {
         return localStorage.getItem(UNREADABLE_CLASSES_KEY) !== null;
     } catch (e) {
         return true;
+    }
+}
+
+/**
+ * Den ulæselige klasseliste, der er lagt til side — som rå tekst, eller null,
+ * når der ingen er (eller lageret ikke kan læses).
+ *
+ * Boksen "En klasseliste, der ikke kunne læses" under Import & backup viser
+ * sig kun, når der er noget her (UnreadableCopyNotice.vue).
+ */
+export function unreadableCopy() {
+    try {
+        return localStorage.getItem(UNREADABLE_CLASSES_KEY);
+    } catch (e) {
+        return null;
+    }
+}
+
+/**
+ * Slet den ulæselige kopi — kun når læreren selv beder om det i boksen.
+ *
+ * Kopien indeholder elevnavne for alle klasserne dengang, også dem læreren
+ * siden har slettet, og så længe den findes, rydder opstarten ikke op efter
+ * slettede klasser og gamle sessioner (unreadableListKept ovenfor). Appen
+ * sletter den derfor aldrig selv: det er lærerens sidste vej til de gamle
+ * klasser. Næste opstart rydder op som normalt.
+ *
+ * @returns {boolean} true, hvis kopien er væk
+ */
+export function deleteUnreadableCopy() {
+    try {
+        localStorage.removeItem(UNREADABLE_CLASSES_KEY);
+        return localStorage.getItem(UNREADABLE_CLASSES_KEY) === null;
+    } catch (e) {
+        return false;
     }
 }
 

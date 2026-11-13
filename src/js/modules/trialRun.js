@@ -48,13 +48,12 @@
 import { reactive, computed, watch, toRaw, markRaw } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import {
-    checkInput, engineCheck, runStatusFor, inputFingerprint, makeEngineWorker, ruleSources,
+    checkInput, engineCheck, lastRunApplies, inputFingerprint, makeEngineWorker, ruleSources,
     contractProblem, dedupeAnswerMessages, APP_OWNED_CODES, coveredByRecipeHint, currentRecipeHintIds,
     fillMessageText, severityOf, issueKey, resultSlot, noteKeys,
 } from './nextEngine.js';
 import { ruleMarks } from './ruleMarks.js';
-import { setupNotices } from './setupNotices.js';
-import { setupSignature, memberDisplayName } from './utils.js';
+import { memberDisplayName } from './utils.js';
 
 /** Tre forsøg, fast frø: hurtig og altid den samme for samme opskrift. */
 export const TRIAL_BUDGET = Object.freeze({ maxSeconds: 0.6, maxAttempts: 3, minAttempts: 3 });
@@ -189,11 +188,12 @@ function wantedKey() {
     // Tjekket skal have svaret om NETOP dette input, og sige "kan dannes".
     const chk = engineCheck.value;
     if (!chk || chk.status !== 'ok' || toRaw(chk.input) !== toRaw(input)) return '';
-    // Et rigtigt resultat for denne opskrift vinder over en prøve.
-    if (runStatusFor(isMatrix)) return '';
-    const view = viewOf(isMatrix);
-    const lastSignature = setupNotices.lastSignature[view];
-    if (lastSignature && lastSignature === setupSignature(state.currentClass, isMatrix, state.groupMode)) return '';
+    // Et rigtigt resultat for præcis det, der skal dannes, vinder over en
+    // prøve. Samme svar som noterne i stakken (lastRunApplies i
+    // nextEngine.js, forslag 78): før holdt prøvekørslen pause efter det
+    // løsere aftryk (setupSignature), så en låsning eller en rettet celle
+    // efter Dan grupper hverken gav en prøve eller fjernede det gamle resultat.
+    if (lastRunApplies(isMatrix)) return '';
     return keyFor(input, isMatrix);
 }
 // Regnes ÉN gang pr. ændring og deles af alle, der spørger (mærkerne,
@@ -203,7 +203,8 @@ const wanted = computed(wantedKey);
 
 // ─── Tråden og køen ─────────────────────────────────────────────────────────
 // Én prøvekørsel ad gangen. Ændres opskriften imens, startes den næste, når
-// svaret er kommet (højst et øjeblik senere) — så to kørsler aldrig deler tråd.
+// svaret er kommet OG opskriften har stået stille i TRIAL_QUIET_MS (quietLeft)
+// — så to kørsler aldrig deler tråd, og en halvskrevet opskrift ikke prøves.
 
 let worker = null;
 let busy = null;        // { id, key, timer } for prøvekørslen i gang
@@ -211,6 +212,21 @@ let quietTimer = null;
 let seq = 0;
 let failedKey = '';     // en opskrift, tråden gik ned på, prøves ikke igen og igen
 let failures = 0;       // fejl i træk uden et svar imellem (TRIAL_MAX_FAILURES)
+let lastChangeAt = 0;   // sidste gang det, der skal prøves, ændrede sig (Date.now())
+
+/**
+ * Hvor længe der stadig skal ventes, før opskriften har stået stille i
+ * TRIAL_QUIET_MS. 0, hvis den allerede har.
+ *
+ * HVORFOR (107. gennemsyn, 13/11 2026): når et svar kom (eller tråden
+ * fejlede), startede den næste prøvekørsel MED DET SAMME — også selvom
+ * læreren havde ændret opskriften for 100 ms siden og stadig var i gang.
+ * Svaret ryddede nemlig ventetiden. Med et hold på 130 elever tager en
+ * prøvekørsel et halvt sekund, så den næste kørte på en halvskrevet opskrift.
+ */
+function quietLeft() {
+    return Math.max(0, lastChangeAt + TRIAL_QUIET_MS - Date.now());
+}
 
 function dropWorker() {
     if (!worker) return;
@@ -237,6 +253,11 @@ function start() {
         input,
         sources: ruleSources.get(input) || [],
         checkMessages: (engineCheck.value?.messages || []).slice(),
+        // Opskriftens advarsler NU, sammen med tjekket: svaret gemmes under
+        // denne opskrifts nøgle, så det skal læses med denne opskrifts
+        // advarsler — ikke med dem, der står, når svaret kommer (læreren kan
+        // have skiftet klasse imens). 107. gennemsyn.
+        hintIds: currentRecipeHintIds(),
     };
     try {
         if (!worker) {
@@ -263,8 +284,9 @@ function giveUp() {
     failures++;
     finishBusy();
     dropWorker();
-    // Er opskriften ændret imens, prøves den nye (indtil grænsen er nået).
-    if (failures < TRIAL_MAX_FAILURES) schedule(0);
+    // Er opskriften ændret imens, prøves den nye (indtil grænsen er nået),
+    // når den har stået stille.
+    if (failures < TRIAL_MAX_FAILURES) schedule(quietLeft());
 }
 
 function onMessage(e) {
@@ -281,15 +303,15 @@ function onMessage(e) {
         result = readTrialAnswer(context.input, m.answer, {
             sources: context.sources,
             checkMessages: context.checkMessages,
-            hintIds: currentRecipeHintIds(),
+            hintIds: context.hintIds,
         });
     } catch (err) {
         console.error('[Gruppemotor] Prøvekørslens svar kunne ikke læses:', err);
     }
     if (result) trial[viewOf(context.isMatrix)] = markRaw({ key, ...result });
     else failedKey = key;
-    // Er opskriften ændret imens, prøves den nye nu.
-    schedule(0);
+    // Er opskriften ændret imens, prøves den nye — når den har stået stille.
+    schedule(quietLeft());
 }
 
 function schedule(delay = TRIAL_QUIET_MS) {
@@ -300,6 +322,7 @@ function schedule(delay = TRIAL_QUIET_MS) {
 // Hver gang det, der skal prøves, ændrer sig: vent, til det har stået stille.
 if (typeof Worker !== 'undefined') {
     watch(wanted, (key) => {
+        lastChangeAt = Date.now();
         clearTimeout(quietTimer);
         if (key) schedule();
     }, { immediate: true });

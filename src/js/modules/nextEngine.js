@@ -20,8 +20,8 @@ import { state } from './state.js';
 import * as storage from './storage.js';
 import { saveTopicsOrSettle } from './topicSettle.js';
 import * as replay from './replay.js';
-import { pushRun, markClean } from './runHistory.js';
-import { beginRun, announce, commitRun } from './setupNotices.js';
+import { pushRun, markClean, provideLastRunState } from './runHistory.js';
+import { beginRun, announce, commitRun, setupNotices } from './setupNotices.js';
 import { togetherComponents } from './together.js';
 import { ruleDisplayOrder } from './recipe.js';
 import { ruleMarks } from './ruleMarks.js';
@@ -449,6 +449,18 @@ export function replacedByResult(msg, keys) {
     return WARNING_CODES.has(msg?.code) && keys.has(resultSlot(msg));
 }
 
+/**
+ * Handler beskeden i et svar EFTER kørslen om netop de grupper, kørslen gav
+ * ("Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 3)")? Det gør
+ * "rule-not-met" altid dér: motorens postRunMessages laver dem, og varslet
+ * før kørslen med samme kode ("Fordel … kan ikke gå helt lige op") sendes
+ * ikke med i svaret (engine.js). Alt andet handler om opsætningen. Sådan en
+ * note fjernes, når fordelingen skiftes ud (forgetRunResults i setupNotices.js).
+ */
+export function isResultNote(msg) {
+    return msg?.code === 'rule-not-met';
+}
+
 /** Nøglerne, en note i "Sidste dannelse" husker: sin egen og sin plads. */
 export function noteKeys(msg) {
     return [issueKey(msg), resultSlot(msg)].filter(Boolean);
@@ -671,6 +683,44 @@ export function lastRunInputIsCurrent(isMatrix) {
     const status = lastRunStatus[isMatrix ? 'matrix' : 'standard'];
     if (!status) return false;
     return inputFingerprint(currentEngineInput(isMatrix, status.skipTogether)) === status.input;
+}
+
+// ─── Gælder sidste kørsel stadig? ÉT svar for hele appen (forslag 78) ───────
+// Fire steder spurgte før hver på sin måde: noterne fra sidste dannelse
+// (setupSignature, der hverken ser celler, fravær ud over antallet eller
+// låste grupper), prøvekørslen (runStatusFor eller setupSignature),
+// skjulningen af tjekkets advarsler (lastRunInputIsCurrent) og bjælkens
+// tælling. Så kunne de være uenige: efter en låsning stod det gamle resultat
+// i opskriften, og prøvekørslen holdt pause, selv om næste Dan grupper regnede
+// på noget andet. Kenneth sagde ja 13/11 2026.
+//
+// Nu: sidste kørsel gælder, så længe appen ville sende motoren PRÆCIS det
+// input, kørslen fik. Så står noterne i stakken, og prøvekørslen holder
+// pause; ellers er noterne væk, og prøvekørslen går i gang. Det er hinandens
+// modsætninger, så der aldrig står to svar på samme spørgsmål.
+//
+// En flytning i hånden ændrer ikke, hvad der skal dannes (stamgrupper i
+// matrix undtaget: de ER en del af matrixens input), og rører derfor ikke
+// noterne. Regnes som computed, så motorens input kun bygges én gang pr.
+// ændring, uanset hvor mange der spørger.
+const lastRunCurrent = {
+    standard: computed(() => lastRunInputIsCurrent(false)),
+    matrix: computed(() => lastRunInputIsCurrent(true)),
+};
+
+/** Gælder sidste kørsel i visningen stadig for det, der står nu? */
+export function lastRunApplies(isMatrix) {
+    return lastRunCurrent[isMatrix ? 'matrix' : 'standard'].value;
+}
+
+/**
+ * Noterne fra sidste dannelse — men kun mens kørslen stadig gælder
+ * (lastRunApplies). Ellers en tom liste: de handler om noget andet end det,
+ * der skal dannes nu.
+ */
+export function shownLastNotes(isMatrix) {
+    const list = setupNotices.last[isMatrix ? 'matrix' : 'standard'] || [];
+    return list.length && lastRunApplies(isMatrix) ? list : [];
 }
 
 /**
@@ -1182,7 +1232,7 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     for (const m of dedupeAnswerMessages(answer.messages)) {
         if (APP_OWNED_CODES.has(m.code)) continue;
         if (coveredByRecipeHint(m, input, hintIds)) continue;
-        notes.push([fillMessageText(m, fill), severityOf(m, answer.status), noteKeys(m)]);
+        notes.push([fillMessageText(m, fill), severityOf(m, answer.status), noteKeys(m), isResultNote(m)]);
     }
 
     // En afspilning, der ikke kan læses, må ikke koste læreren grupperne:
@@ -1198,7 +1248,7 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     const marks = ruleMarks(input, answer, ruleSources.get(input), severityOf);
 
     pushRun();
-    for (const [text, type, keys] of notes) announce(text, type, keys);
+    for (const [text, type, keys, result] of notes) announce(text, type, keys, result);
     commitRun(setupSignature(state.currentClass, isMatrix, state.groupMode));
 
     const finalGroups = [...lockedGroups, ...newGroups];
@@ -1298,6 +1348,45 @@ function setRunStatus(viewKey, marks, input, groups, skipTogether = []) {
         ...marks,
     });
 }
+
+// ─── En hentet kørsel får sine egne noter og mærker tilbage (forslag 88) ────
+// Kørselshistorikken (runHistory.js) lægger fordelingen på skærmen i stakken,
+// før den skiftes ud. Med den gemmes nu også det, sidste dannelse sagde
+// (noterne og mærkerne ved reglerne), så en hentet kørsel kan få SINE noter
+// tilbage — før forsvandt noterne om resultatet blot (forgetRunResults), og
+// gik læreren kørsel 3 → kørsel 1 → kørsel 3, kom kørsel 3's noter heller
+// ikke igen. Kenneth sagde ja 13/11 2026.
+//
+// Kun i fanen (ligesom resten af historikken). Om de vises, afgør det samme
+// svar som altid (lastRunApplies): passer opskriften ikke længere til
+// kørslen (fx efter "Nej, kun grupperne" med en anden opskrift), står der
+// intet, og prøvekørslen går i gang.
+
+/** Sidste dannelses noter og mærker, som de står nu (til kørselshistorikken). */
+function captureLastRun() {
+    const copy = (list) => JSON.parse(JSON.stringify(list || []));
+    return {
+        notes: { standard: copy(setupNotices.last.standard), matrix: copy(setupNotices.last.matrix) },
+        runNo: { ...setupNotices.lastRunNo },
+        signature: { ...setupNotices.lastSignature },
+        // Mærkerne er markRaw og skiftes altid ud hele (setRunStatus), så
+        // de kan deles uden kopi.
+        status: { standard: lastRunStatus.standard, matrix: lastRunStatus.matrix },
+    };
+}
+
+/** Læg en hentet kørsels noter og mærker tilbage. false, hvis der ingen var. */
+function restoreLastRun(saved) {
+    if (!saved || !saved.notes) return false;
+    for (const view of ['standard', 'matrix']) {
+        setupNotices.last[view] = JSON.parse(JSON.stringify(saved.notes[view] || []));
+        setupNotices.lastSignature[view] = saved.signature?.[view] ?? null;
+        setupNotices.lastRunNo[view] = saved.runNo?.[view] ?? 0;
+        lastRunStatus[view] = saved.status?.[view] || null;
+    }
+    return true;
+}
+provideLastRunState({ capture: captureLastRun, restore: restoreLastRun });
 
 /** Opskriftens advarsler lige nu — sat af hints.js (undgår en import-kreds). */
 let recipeHintIds = () => [];

@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, goToGroups, generateGroups, stepGroupSize, closeRecipe } from './helpers';
+import { createClass, goToGroups, generateGroups, stepGroupSize, closeRecipe, openRecipe } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // KØRSELSHISTORIK — de seneste gruppedannelser i fanen.
@@ -185,6 +185,13 @@ test('Klik henter kørslen frem — og spørger først om indstillingerne skal m
     // indstillingerne ER anderledes — og så skal der spørges først.
     await expect(page.locator('.confirm-box')).toBeVisible();
     await expect(page.getByText(/Skal de fra dengang også med/)).toBeVisible();
+    // Spørgsmålet nævner, HVAD der er ændret (kun størrelsen her — ikke
+    // reglerne eller aftalerne) (13/11 2026). Intet er rettet efter seneste
+    // dannelse, så intet går tabt: den forladte opskrift ligger øverst i
+    // historikken og kan hentes igen.
+    await expect(page.locator('.confirm-text')).toContainText('Indstillingerne er ændret siden');
+    await expect(page.locator('.confirm-text')).not.toContainText(/reglerne|aftalerne/i);
+    await expect(page.locator('.confirm-text')).not.toContainText('ikke hentes tilbage');
 
     await page.locator('.btn-primary-confirm').click();   // "Nej, kun grupperne"
 
@@ -444,4 +451,135 @@ test('Fokus på historik-knappen slipper forhåndsvisningen, men menuen bliver',
     await expect.poll(async () => await page.evaluate(() =>
         (window as any).appDebug.state.previewRunIndex)).toBeNull();
     await expect(page.locator('.run-menu')).toBeVisible();
+});
+
+test('En kolonne omdøbt efter kørslen: "tag alt med" giver reglen på det nye navn', async ({ page }) => {
+    // FUNDET 13/11: kørselshistorikken har sin egen kopi af reglerne, og den
+    // fulgte ikke med et omdøb. "Ja, tag alt med" hentede reglen tilbage på
+    // "Køn" — en kolonne, der ikke fandtes længere — og spørgsmålet nævnte
+    // reglerne, selvom læreren kun havde rettet et navn.
+    const csv = 'Navn\tKøn\n' +
+        'Anna\tK\nBo\tM\nCarl\tM\nDorte\tK\nEmil\tM\nFrida\tK\nGustav\tM\nHanne\tK\nIda\tK\nJens\tM';
+    await createClass(page, 'Kørsler omdøb', csv);
+    // Reglen sættes direkte på klassen: det er kopien i historikken, testen
+    // handler om, ikke regelmenuen.
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+    });
+    await goToGroups(page);
+    await twoRuns(page);
+
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    await page.locator('th').filter({ hasText: 'Køn' }).first().dblclick();
+    const input = page.locator('.modal-content input[type="text"]');
+    await expect(input).toBeVisible();
+    await input.fill('Kon');
+    await page.getByRole('button', { name: 'Omdøb', exact: true }).click();
+    await expect(page.locator('th').filter({ hasText: 'Kon' }).first()).toBeVisible();
+
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).click();
+    // twoRuns() ændrede størrelsen — det, og KUN det, er ændret siden.
+    await expect(page.locator('.confirm-text')).toContainText('Indstillingerne er ændret siden');
+    await expect(page.locator('.confirm-text')).not.toContainText(/reglerne/i);
+    await page.locator('.k-alt').click();                 // "Ja, tag alt med"
+    await expect(page.locator('.run-menu')).toBeHidden();
+
+    const columns = await page.evaluate(() =>
+        (window as any).appDebug.state.currentClass.rules.map((r: any) => r.column));
+    expect(columns).toEqual(['Kon']);
+});
+
+test('En aftale lavet efter seneste dannelse: spørgsmålet siger, at den går tabt ved et ja', async ({ page }) => {
+    await createClass(page, 'Kørsler aftale tabt');
+    await goToGroups(page);
+    await twoRuns(page);
+    // En "Undgå hinanden"-aftale EFTER seneste dannelse. Den ligger ingen
+    // steder i historikken, så et ja skriver den væk for altid.
+    await page.evaluate(() => {
+        const s = (window as any).appDebug.state;
+        const ids = s.currentClass.data.slice(0, 2).map((r: any) => r._rowId);
+        s.currentClass.separations = [{ ids }];
+    });
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).click();
+    await expect(page.locator('.confirm-text')).toContainText('Indstillingerne og aftalerne er ændret siden');
+    await expect(page.locator('.confirm-text')).toContainText('ændret i aftalerne siden sidste dannelse, ikke hentes tilbage');
+});
+
+test('En hentet kørsel: "Sidste dannelse" nævner ikke grupper fra den kørsel, man forlod', async ({ page }) => {
+    // FUNDET 13/11 (106. gennemsyn): "Sidste dannelse" var den NYESTE kørsels
+    // noter, også efter at en ældre kørsels grupper var hentet frem med "Nej,
+    // kun grupperne". "Adskil på "Køn": … par ender i samme gruppe (Gruppe 1,
+    // Gruppe 2)" handlede så om grupper, der nu var nogle helt andre elever.
+    const csv = 'Navn\tKøn\n' +
+        'Anna\tK\nBo\tM\nCarl\tM\nDan\tM\nEmil\tM\nFrode\tM\nGustav\tM\nHans\tM\nIb\tM\nJens\tM\nKurt\tM\nLis\tK';
+    await createClass(page, 'Kørsler sidste dannelse', csv);
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'separate', column: 'Køn', value: 'M' }];
+    });
+    await goToGroups(page);
+    await twoRuns(page);
+
+    const last = (await openRecipe(page)).locator('.gh-hint--last');
+    await expect(last.filter({ hasText: 'ender i samme gruppe' }).first()).toBeVisible();
+    await closeRecipe(page);
+
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).click();
+    await page.locator('.btn-primary-confirm').click();     // "Nej, kun grupperne"
+    await expect(page.locator('.run-menu')).toBeHidden();
+
+    const dialog = await openRecipe(page);
+    // Afsnittet forsvinder helt, hvis resultatet var den eneste note.
+    await expect(dialog.locator('.gh-hint--last', { hasText: 'ender i samme gruppe' })).toHaveCount(0);
+});
+
+// Forslag 88 (Kenneths ja 13/11 2026): en hentet kørsel får sine EGNE noter
+// og mærker tilbage, når opskriften er den samme som dengang. Før forsvandt
+// noterne om resultatet, og kørsel 2 → kørsel 1 → kørsel 2 gav dem ikke igen.
+test('En hentet kørsel får sine egne noter og mærker tilbage — frem og tilbage', async ({ page }) => {
+    const csv = 'Navn\tKøn\n' +
+        'Anna\tK\nBo\tM\nCarl\tM\nDan\tM\nEmil\tM\nFrode\tM\nGustav\tM\nHans\tM\nIb\tM\nJens\tM\nKurt\tM\nLis\tK';
+    await createClass(page, 'Kørsler egne noter', csv);
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'separate', column: 'Køn', value: 'M' }];
+    });
+    await goToGroups(page);
+
+    /** Noterne fra sidste dannelse og reglens mærke, som de står i opskriften. */
+    const readRecipe = async () => {
+        const dialog = await openRecipe(page);
+        const notes = await dialog.locator('.gh-hint--last').allInnerTexts();
+        const mark = await dialog.locator('.recipe__line--rule .rule-mark').first().getAttribute('aria-label').catch(() => null);
+        await closeRecipe(page);
+        return { notes, mark };
+    };
+
+    await generateGroups(page);
+    const run1 = await readRecipe();
+    expect(run1.notes.join(' ')).toContain('ender i samme gruppe');
+    expect(run1.mark).toBeTruthy();
+
+    await stepGroupSize(page, 1);
+    await generateGroups(page);
+    const run2 = await readRecipe();
+    expect(run2.notes.join(' ')).toContain('ender i samme gruppe');
+    expect(run2.notes).not.toEqual(run1.notes);
+
+    // Kørsel 1 med "Ja, tag alt med": opskriften er kørsel 1's, og dens noter
+    // og mærke står der igen — ikke kørsel 2's.
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).click();
+    await page.locator('.k-alt').click();
+    await expect(page.locator('.run-menu')).toBeHidden();
+    expect(await readRecipe()).toEqual(run1);
+
+    // Og tilbage til kørsel 2 (øverst i stakken nu): dens noter kommer igen.
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(1).click();
+    await page.locator('.k-alt').click();
+    await expect(page.locator('.run-menu')).toBeHidden();
+    expect(await readRecipe()).toEqual(run2);
 });

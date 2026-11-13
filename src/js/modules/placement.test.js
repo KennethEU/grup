@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { separationConflictIds, partnersOutside, findBestGroup } from './placement.js';
+import { separationConflictIds, partnersOutside, findBestGroup, placementRules, brokenSeparateRules } from './placement.js';
+import { matrixSourceById } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // placement.js — efternøler-placering
@@ -631,5 +632,143 @@ describe('findBestGroup — lige score trækker lod', () => {
         const seen = new Set();
         for (let i = 0; i < 200; i++) seen.add(findBestGroup(student('Ny'), equalGroups(), ctx).name);
         expect([...seen].sort()).toEqual(['G1', 'G2', 'G3']);
+    });
+});
+
+// 108. gennemsyn (13/11 2026): placeringen regner med det samme som motoren.
+describe('placementRules — i matrix kun de regler, motoren får', () => {
+    const rules = [
+        { type: 'aggregate', column: 'Hold' },
+        { type: 'balance', column: 'Kar' },
+    ];
+
+    it('fjerner en gammel gemt Opdel i matrix, men ikke i stamgrupperne', () => {
+        expect(placementRules(rules, true)).toEqual([{ type: 'balance', column: 'Kar' }]);
+        expect(placementRules(rules, false)).toBe(rules);
+        expect(placementRules(null, true)).toEqual([]);
+    });
+
+    it('en efternøler i matrix holdes ikke væk fra en gruppe af en Opdel, motoren ignorerer', () => {
+        // M1 er MINDST. Med Opdel på "Hold" ville M2 (rent A-hold) vinde;
+        // motoren sender aldrig Opdel i matrix, så størrelsen afgør.
+        const students = [
+            student('Bob', { Hold: 'B' }), student('Carl', { Hold: 'A' }), student('Dina', { Hold: 'A' }),
+        ];
+        const groups = [group('M1', ['Bob']), group('M2', ['Carl', 'Dina'])];
+        const ctx = (rs) => baseCtx({ rules: rs, allStudents: students });
+        const ny = student('Ny', { Hold: 'A' });
+        expect(findBestGroup(ny, groups, ctx(placementRules([{ type: 'aggregate', column: 'Hold' }], true))).name)
+            .toBe('M1');
+        // Stamgrupperne beholder Opdel som før.
+        expect(findBestGroup(ny, groups, ctx(placementRules([{ type: 'aggregate', column: 'Hold' }], false))).name)
+            .toBe('M2');
+    });
+});
+
+describe('findBestGroup — "Adskil altid" vejer tungest af reglerne (forslag 91)', () => {
+    // Som i motoren (levelPlan i motor/engine/rules.js): "Adskil altid" er
+    // første trin, før undgåelserne og før matrixens stamgrupper. En
+    // almindelig Adskil ligger UNDER begge.
+    const students = [
+        student('Bob', { Rolle: 'Ordstyrer' }),
+        student('Carl', { Rolle: 'Referent' }),
+    ];
+    const strict = [{ type: 'strict_separate', column: 'Rolle', values: ['Ordstyrer'] }];
+    const loose = [{ type: 'separate', column: 'Rolle', values: ['Ordstyrer'] }];
+
+    it('matrix: hellere to fra samme stamgruppe end at bryde "Adskil altid"', () => {
+        // M1 har Bob (ordstyrer, anden stamgruppe). M2 har Carl fra Annas egen stamgruppe.
+        const sourceById = new Map([['Anna', 'grp 1'], ['Bob', 'grp 2'], ['Carl', 'grp 1']]);
+        const groups = [group('M1', ['Bob']), group('M2', ['Carl'])];
+        const found = findBestGroup(student('Anna', { Rolle: 'Ordstyrer' }), groups, baseCtx({
+            rules: strict, sourceById, allStudents: students,
+        }));
+        expect(found.name).toBe('M2');
+    });
+
+    it('matrix: en almindelig Adskil viger stadig for stamgrupperne', () => {
+        const sourceById = new Map([['Anna', 'grp 1'], ['Bob', 'grp 2'], ['Carl', 'grp 1']]);
+        const groups = [group('M1', ['Bob']), group('M2', ['Carl'])];
+        const found = findBestGroup(student('Anna', { Rolle: 'Ordstyrer' }), groups, baseCtx({
+            rules: loose, sourceById, allStudents: students,
+        }));
+        expect(found.name).toBe('M1');
+    });
+
+    it('hellere bryde en undgåelse end "Adskil altid"', () => {
+        // G1 har Bob (ordstyrer). G2 har Carl, som Anna skal undgå.
+        const groups = [group('G1', ['Bob']), group('G2', ['Carl'])];
+        const found = findBestGroup(student('Anna', { Rolle: 'Ordstyrer' }), groups, baseCtx({
+            rules: strict, separations: [{ ids: ['Anna', 'Carl'] }], allStudents: students,
+        }));
+        expect(found.name).toBe('G2');
+    });
+
+    it('emnefordelingen vejer stadig over "Adskil altid"', () => {
+        const topicStudents = [...students, student('Dina'), student('Eva')];
+        const groups = [
+            group('G1', ['Bob'], { topic: 'EU' }),
+            group('G2', ['Carl', 'Dina', 'Eva'], { topic: 'Klima' }),
+        ];
+        const found = findBestGroup(student('Anna', { Rolle: 'Ordstyrer' }), groups, baseCtx({
+            rules: strict, classTopics: ['EU', 'Klima'], allStudents: topicStudents,
+        }));
+        expect(found.name).toBe('G1');
+    });
+});
+
+describe('brokenSeparateRules — advarslen om en brudt Adskil-regel', () => {
+    const students = [
+        student('Bob', { Rolle: 'Ordstyrer' }),
+        student('Carl', { Rolle: 'Referent' }),
+        student('Dina', { Rolle: 'ordstyrer ', _excluded: true }),
+        student('Eva', { Rolle: 'ORDSTYRER' }),
+    ];
+    const rules = [{ type: 'strict_separate', column: 'Rolle', values: ['Ordstyrer'] }];
+    const ctx = { idCol: 'Navn', rules, allStudents: students };
+
+    it('nævner dem i gruppen med samme valgte værdi — uden forskel på store/små bogstaver', () => {
+        const found = brokenSeparateRules(student('Ny', { Rolle: 'Ordstyrer' }), group('G', ['Bob', 'Carl', 'Eva']), ctx);
+        expect(found).toEqual([{ column: 'Rolle', strict: true, ids: ['Bob', 'Eva'] }]);
+    });
+
+    it('en fraværende tæller ikke (samme som scoringen)', () => {
+        expect(brokenSeparateRules(student('Ny', { Rolle: 'Ordstyrer' }), group('G', ['Dina', 'Carl']), ctx))
+            .toEqual([]);
+    });
+
+    it('intet, når eleven ikke har en af de valgte værdier, og aldrig eleven selv', () => {
+        expect(brokenSeparateRules(student('Ny', { Rolle: 'Referent' }), group('G', ['Bob']), ctx)).toEqual([]);
+        expect(brokenSeparateRules(student('Bob', { Rolle: 'Ordstyrer' }), group('G', ['Bob']), ctx)).toEqual([]);
+    });
+});
+
+describe('værdier og kilder sammenlignes i NFC som i motoren', () => {
+    // "å" som ét tegn og som a + ring (U+030A) — fx fra en kopi på en Mac.
+    // I NFC er de det samme, og det er motorens normalizeText også.
+    const composed = 'Bål';
+    const decomposed = 'Ba\u030Al';
+
+    it('Opdel ser de to stavemåder som én værdi', () => {
+        // G1 er STØRST, men rummer kun elevens egen værdi; G2 er mindst, men
+        // en anden værdi. Ses de to stavemåder som to værdier, vinder G2.
+        const students = [
+            student('Bob', { Hold: decomposed }), student('Bo', { Hold: decomposed }),
+            student('Carl', { Hold: 'Andet' }),
+        ];
+        const groups = [group('G1', ['Bob', 'Bo']), group('G2', ['Carl'])];
+        const found = findBestGroup(student('Ny', { Hold: composed }), groups, baseCtx({
+            rules: [{ type: 'aggregate', column: 'Hold' }],
+            allStudents: students,
+        }));
+        expect(found.name).toBe('G1');
+    });
+
+    it('matrixSourceById giver samme kilde for de to stavemåder', () => {
+        const map = matrixSourceById([
+            { name: 'Gruppe 1', topic: composed, members: ['a'] },
+            { name: 'Gruppe 2', topic: decomposed, members: ['b'] },
+        ], 'topic');
+        expect(map.get('a')).toBe(map.get('b'));
     });
 });

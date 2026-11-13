@@ -11,7 +11,7 @@
 // klikke på `{ token, text, missing }`. `token` siger, hvad ordet ændrer:
 // 'type' (regeltypen), 'column' (kolonnen) eller 'value' (værdien).
 
-import { RULE_TYPES, RULE_OPTIONS, RULES_WITHOUT_VALUES, columnIsNumeric, rankingAffectsColumn, valueKey, canonicalSpellings, plannedNewGroups, setupSignature } from './utils.js';
+import { RULE_TYPES, RULE_OPTIONS, RULES_WITHOUT_VALUES, columnIsNumeric, rankingAffectsColumn, valueKey, canonicalSpellings, plannedNewGroups } from './utils.js';
 
 /** Navnet på regeltypen — det samme ord som i den almindelige regelmenu. */
 export function ruleTypeLabel(type) {
@@ -383,19 +383,9 @@ const RECIPE_HINT_PREFIXES = [
     'engine:',
 ];
 
-/**
- * "Sidste dannelse": noterne fra sidste kørsel — men kun mens opsætningen
- * stadig er den, kørslen blev lavet med. Har læreren ændret en regel, en
- * størrelse eller en aftale siden, handler noterne om en anden opskrift: de
- * vises ikke og tælles ikke med i bjælkens "N advarsler".
- */
-export function currentLastNotes(notices, cls, isMatrix = false, groupMode = 'size') {
-    const view = isMatrix ? 'matrix' : 'standard';
-    const list = notices?.last?.[view] || [];
-    if (!list.length) return [];
-    const signature = notices.lastSignature?.[view];
-    return signature && signature === setupSignature(cls, isMatrix, groupMode) ? list : [];
-}
+// "Sidste dannelse"-noterne afgøres af lastRunApplies/shownLastNotes i
+// nextEngine.js (forslag 78, 13/11 2026) — ikke af aftrykket (setupSignature)
+// her, som hverken så celler, låste grupper eller hvem der er væk.
 
 /** Hører advarslen til opsætningen (gruppeopskriften) frem for resultatet? */
 export function isRecipeHint(hint) {

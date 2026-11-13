@@ -161,7 +161,7 @@ const isResultHint = (h) => !isRecipeHint(h);
             @switchView="onSwitchView"
             @showClass="showingClass = true"
         >
-            <!-- Bemærkningerne fra sidste dannelse står i opskriftens vindue (RecipeLastRun). -->
+            <!-- Bemærkningerne fra sidste dannelse står i stakken i opskriftens vindue (lastRunHints i hints.js). -->
             <HintsStack :filter="isResultHint" />
             <div class="groups-scroll-content">
                 <GroupResultsPanel

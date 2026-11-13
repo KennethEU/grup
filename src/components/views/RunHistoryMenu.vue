@@ -18,7 +18,7 @@ import { ref, computed, watch, nextTick, onUnmounted } from 'vue';
 import { useBarPopover } from '../../composables/useBarPopover.js';
 import { useBarMenuDismiss } from '../../composables/useBarMenuDismiss.js';
 import { reactiveState } from '../../js/modules/reactiveState.js';
-import { listRuns, restoreRun, hasManualChanges, hasSettingsChanges } from '../../js/modules/runHistory.js';
+import { listRuns, restoreRun, hasManualChanges, settingsChanges, unsavedRecipeChanges } from '../../js/modules/runHistory.js';
 import { autoSave } from '../../js/modules/classActions.js';
 import { groupCountText } from '../../js/modules/utils.js';
 import { Undo2, SlidersHorizontal } from 'lucide-vue-next';
@@ -31,6 +31,10 @@ const runs = computed(() => listRuns());
 const selectedIndex = ref(null);
 const manualChanges = ref(false);
 const settingsChanged = ref(false);
+// Hvad der er ændret siden kørslen: 'rules', 'settings', 'agreements'.
+const changedKinds = ref([]);
+// Det af det, der er rettet SIDEN seneste dannelse — kun det går tabt ved et ja.
+const lostKinds = ref([]);
 const hiddenSetOnly = ref(false);
 
 const rootRef = ref(null);
@@ -110,7 +114,8 @@ function clearPreview() {
 // ─── Klik: stil spørgsmålet ─────────────────────────────────────────────────
 function select(index) {
     const hasManual = hasManualChanges();
-    const hasSettings = hasSettingsChanges(index);
+    const kinds = settingsChanges(index);
+    const hasSettings = kinds.length > 0;
     // Ligger hele forskellen i det sæt kortene ikke viser, har læreren netop
     // IKKE set hvad hun siger ja til — forhåndsvisningen var jo identisk med
     // det der stod i forvejen. Så skal der spørges, også når der hverken er
@@ -129,10 +134,31 @@ function select(index) {
     selectedIndex.value = index;
     manualChanges.value = hasManual;
     settingsChanged.value = hasSettings;
+    changedKinds.value = kinds;
+    lostKinds.value = hasSettings ? unsavedRecipeChanges() : [];
     hiddenSetOnly.value = hiddenOnly;
     // Lad kortene blive stående på den kørsel der spørges om — så ser man
     // hele tiden hvad man er ved at sige ja til.
     reactiveState.previewRunIndex = index;
+}
+
+// ─── Spørgsmålet om indstillingerne ─────────────────────────────────────────
+// Det skal sige, HVAD et ja skifter ud. Før stod der altid "Reglerne eller
+// indstillingerne", også når det kun var en "Undgå hinanden"-aftale, der var
+// ny — og et ja skrev aftalen væk for altid (se settingsChanges i runHistory.js).
+//
+// "Kan ikke hentes tilbage" siges KUN om det, der er rettet efter seneste
+// dannelse (unsavedRecipeChanges). Opskriften, grupperne på skærmen blev
+// dannet med, lægges øverst i historikken og kan hentes igen med "tag alt med".
+const KIND_WORDS = { rules: 'reglerne', settings: 'indstillingerne', agreements: 'aftalerne' };
+
+/** "Reglerne og aftalerne" — i fast rækkefølge; stort forbogstav, hvis `capital`. */
+function changedText(kinds, capital = true) {
+    const words = ['rules', 'settings', 'agreements'].filter(k => kinds.includes(k)).map(k => KIND_WORDS[k]);
+    if (!words.length) return '';
+    const text = words.length === 1 ? words[0]
+        : `${words.slice(0, -1).join(', ')} og ${words[words.length - 1]}`;
+    return capital ? text.charAt(0).toUpperCase() + text.slice(1) : text;
 }
 
 function back() {
@@ -246,7 +272,11 @@ onUnmounted(() => {
            faktisk er anderledes i dag end dengang. Er de ens, gør de to svar
            det samme, og så er der kun én knap. -->
       <p v-if="settingsChanged" class="confirm-text">
-        Reglerne eller indstillingerne er ændret siden. Skal de fra dengang også med?
+        {{ changedText(changedKinds) }} er ændret siden. Skal de fra dengang også med?
+        <template v-if="lostKinds.length">
+          Siger du ja, kan det, du har ændret i {{ changedText(lostKinds, false) }} siden
+          sidste dannelse, ikke hentes tilbage.
+        </template>
       </p>
       <div class="confirm-actions">
         <button class="k-back" @click="back">Tilbage</button>

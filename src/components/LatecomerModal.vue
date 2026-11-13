@@ -8,7 +8,7 @@ import * as storage from '../js/modules/storage.js';
 import { autoSave } from '../js/modules/classActions.js';
 // Selve placerings-logikken (emne > undgåelse > størrelse > regler) bor i
 // placement.js, hvor den er dækket af unit-tests — se placement.test.js.
-import { separationConflictIds, partnersOutside, findBestGroup } from '../js/modules/placement.js';
+import { separationConflictIds, partnersOutside, findBestGroup, placementRules, brokenSeparateRules } from '../js/modules/placement.js';
 import { mergeTogether } from '../js/modules/together.js';
 import { ROW_ID, memberIdStr, memberDisplayName, groupDisplayName, matrixSourceById } from '../js/modules/utils.js';
 
@@ -92,7 +92,9 @@ function placementCtx() {
     const repType = (cls.matrixSettings || {}).matrixRepresentationType || 'topic';
     return {
         idCol: idCol.value,
-        rules: (isMatrixMode.value ? cls.matrixRules : cls.rules) || [],
+        // placementRules: i matrix uden en gammel gemt "Opdel", som motoren
+        // aldrig får (se placement.js).
+        rules: placementRules(isMatrixMode.value ? cls.matrixRules : cls.rules, isMatrixMode.value),
         separations: cls.separations || [],
         classTopics: isMatrixMode.value ? [] : (cls.topics || []),
         allStudents: cls.data || [],
@@ -188,6 +190,7 @@ function confirmAdd() {
         const target = findBestGroup(student, groups, ctx);
         if (target) {
             const conflictNames = separationConflictNames(student, target);
+            const brokenRules = brokenSeparateRules(student, target, ctx);
             target.members.push(String(studentId));
             student._excluded = false;
             results.push(`${getLabel(student)} → ${groupDisplayName(target.name)}`);
@@ -196,9 +199,23 @@ function confirmAdd() {
                 warnings.push(
                     `${getLabel(student)} er sat sammen med ${conflictNames.join(' og ')} i ` +
                     `${groupDisplayName(target.name)}, selvom de helst skal undgå hinanden — ` +
-                    `emnefordelingen vejede tungere. Byt manuelt hvis det er et problem.`
+                    `der var ingen bedre plads. Byt manuelt, hvis det er et problem.`
                 );
             }
+            // En Adskil-regel, der må brydes (fx to ordstyrere i samme gruppe).
+            // Før skete det i stilhed, selvom placeringen vejer reglen lige så
+            // tungt som en undgåelse. "Der var ingen bedre plads" — ikke
+            // "emnefordelingen": i matrix og uden emner er det kilderne, en
+            // aftale eller gruppestørrelsen, der har afgjort det.
+            brokenRules.forEach(({ column, strict, ids }) => {
+                const names = ids.map(id => memberDisplayName(id, state.currentClass.data, state.displayColumn));
+                warnings.push(
+                    `${getLabel(student)} er sat sammen med ${names.join(' og ')} i ` +
+                    `${groupDisplayName(target.name)}, selvom "${strict ? 'Adskil altid' : 'Adskil'}" på ` +
+                    `"${column}" skal holde dem fra hinanden — der var ingen bedre plads. ` +
+                    `Byt manuelt, hvis det er et problem.`
+                );
+            });
 
             // Matrixgrupper dannes PÅ TVÆRS af stamgrupperne. Placerer vi en
             // elev her, som ikke står i nogen stamgruppe, har hun ingen
@@ -259,7 +276,7 @@ function confirmAdd() {
         autoSave();
         window.notifySuccess?.(`Tilføjet:\n${results.join('\n')}`);
     }
-    if (warnings.length > 0) window.notifyInfo?.(`OBS — en aftale kunne ikke overholdes:\n${warnings.join('\n')}`);
+    if (warnings.length > 0) window.notifyInfo?.(`OBS — noget kunne ikke overholdes:\n${warnings.join('\n')}`);
     if (notes.length > 0) window.notifyInfo?.(notes.join('\n'));
     // "Kunne ikke placere X" er en fejl, ikke en oplysning: eleven står
     // stadig uden gruppe, og beskeden stod i samme grå toast som kvitteringen
@@ -283,8 +300,8 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
       <h3 id="dlg-efternoeler">Tilføj elev til gruppe</h3>
       <p class="subtitle">
         Vælg én eller flere elever. Systemet finder den bedste gruppe automatisk
-        — emnefordelingen vejer tungest, og du får en advarsel hvis en undgåelse
-        ikke kan overholdes.
+        — emnefordelingen vejer tungest, og du får en advarsel, hvis en undgåelse
+        eller en Adskil-regel ikke kan overholdes.
       </p>
 
       <div class="student-list">

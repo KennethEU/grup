@@ -55,6 +55,7 @@ function runAction(a, event) {
             :class="{
                 'gh-hint--conflict': h.kind === 'conflict',
                 'gh-hint--info': h.kind === 'info',
+                'gh-hint--last': h.source === 'last',
             }"
             :role="h.kind === 'conflict' ? 'alert' : 'status'"
         >

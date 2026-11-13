@@ -101,3 +101,36 @@ test('En partner i en låst gruppe giver stadig advarslen', async ({ page }) => 
     await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
         .toContainText('Anna skulle sammen med Clara');
 });
+
+// 108. gennemsyn (13/11 2026): en Adskil-regel, der må brydes, gav ingen
+// advarsel — placeringen vejer den som en undgåelse, men vinduet advarede kun
+// om undgåelser og aftaler. Her er kun én gruppe ulåst, og den har allerede
+// en ordstyrer, så Anna (også ordstyrer) MÅ sættes dér.
+test('En Adskil-regel, der må brydes, giver en advarsel', async ({ page }) => {
+    await createClass(page, 'Efternøler adskil');
+    await goToGroups(page);
+    await generateGroups(page);
+    await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const cls = state.currentClass;
+        const idOf = (name: string) => cls.data.find((s: any) => s.Navn === name)._rowId;
+        const anna = idOf('Anna');
+        // Anna ud af sin gruppe; den første ANDEN gruppe er den eneste ulåste.
+        state.storedStandardGroups.forEach((g: any) => {
+            g.members = g.members.filter((m: any) => String(m?.id ?? m) !== anna);
+        });
+        const open = state.storedStandardGroups.find((g: any) => g.members.length > 0);
+        state.storedStandardGroups.forEach((g: any) => { g.locked = g !== open; });
+        const mate = String(open.members[0]?.id ?? open.members[0]);
+        cls.data.forEach((s: any) => {
+            s.Rolle = (s._rowId === anna || s._rowId === mate) ? 'Ordstyrer' : 'Referent';
+        });
+        cls.rules = [{ type: 'strict_separate', column: 'Rolle', values: ['Ordstyrer'] }];
+    });
+    await setAbsent(page, ['Anna']);
+    await addLatecomers(page, ['Anna']);
+
+    await expect(page.locator('.toast').filter({ hasText: 'Tilføjet' })).toHaveCount(1);
+    await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
+        .toContainText('"Adskil altid" på "Rolle"');
+});

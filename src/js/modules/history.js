@@ -3,6 +3,7 @@ import * as storage from './storage.js';
 import { saveTopicsOrSettle } from './topicSettle.js';
 import { ROW_ID, newUuid, memberIdStr, memberDisplayName, homeGroupFingerprint, mergeClassTopics, classTopicSpelling } from './utils.js';
 import { pushRun, markClean, markCleanWithInputs } from './runHistory.js';
+import { forgetRunResults } from './setupNotices.js';
 
 // Hent reglerne fra den reaktive tilstand (ikke fra DOM'en)
 function captureActiveRules() {
@@ -255,6 +256,9 @@ export function restoreSession(sessionId) {
     // tilbage: "Gem"-sessionen er jo netop hentet frem, fordi man fortrød.
     // Kaldes FØR den første overskrivning nedenfor.
     pushRun();
+    // Noterne om sidste kørsels RESULTAT handler ikke om grupperne herefter
+    // (forgetRunResults i setupNotices.js).
+    forgetRunResults(['standard', 'matrix']);
 
     // 2. Find status på elever
     const currentStudents = state.currentClass.data; // Alle elever i klassen NU

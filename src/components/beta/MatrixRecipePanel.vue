@@ -9,7 +9,7 @@ import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
 import { Users } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { debounce, splitByLockedGroups } from '../../js/modules/utils.js';
-import { matrixSentence, matrixSummary, shownMatrixRepType, addRule, revealRule, recipeHintText, clampTarget, namesText, isRecipeHint, expectedNewGroups, currentLastNotes } from '../../js/modules/recipe.js';
+import { matrixSentence, matrixSummary, shownMatrixRepType, addRule, revealRule, recipeHintText, clampTarget, namesText, isRecipeHint, expectedNewGroups } from '../../js/modules/recipe.js';
 import { fullMatrixInfo } from '../../js/modules/matrixInfo.js';
 import { getTopic } from '../../js/modules/storage.js';
 import { registerPendingWrite } from '../../js/modules/classActions.js';
@@ -18,8 +18,6 @@ import { useGenerateShortcut, GENERATE_SHORTCUT } from '../../composables/useGen
 import RecipeToken from './RecipeToken.vue';
 import RecipeRules from './RecipeRules.vue';
 import RecipeLayout from './RecipeLayout.vue';
-import RecipeLastRun from './RecipeLastRun.vue';
-import { setupNotices } from '../../js/modules/setupNotices.js';
 import HintsStack from '../HintsStack.vue';
 import './recipe.css';
 
@@ -210,8 +208,8 @@ onUnmounted(unregisterPending);
 
 // Advarsler om opsætningen (regler, aftaler, hvad der kan gå op) står her i
 // opskriften — før man danner grupper — og tælles i bjælken.
-const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).length
-    + currentLastNotes(setupNotices, state.currentClass, true, state.groupMode).length);
+// Noterne fra sidste dannelse er med i stakken (lastRunHints i hints.js).
+const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).length);
 </script>
 
 <template>
@@ -278,7 +276,6 @@ const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).len
                         <span class="recipe__text recipe__topicsnote">Emner fra stamgrupperne: {{ topicsLine }}</span>
                     </li>
                 </ol>
-                <RecipeLastRun view="matrix" />
             </template>
         </template>
 

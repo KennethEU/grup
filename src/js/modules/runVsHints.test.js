@@ -29,13 +29,13 @@ vi.mock('./nextEngine.js', async (importOriginal) => {
 
 import {
     buildEngineInput, engineCheck, APP_OWNED_CODES, freeNumbers, fillMessageText, severityOf, noteKeys,
-    dedupeAnswerMessages, lastRunStatus, inputFingerprint, replacedByResult, issueKey,
+    dedupeAnswerMessages, lastRunStatus, inputFingerprint, replacedByResult, issueKey, isResultNote,
+    shownLastNotes, lastRunApplies,
 } from './nextEngine.js';
 import { state } from './state.js';
 import { brokenSeparations, groupDisplayName, setupSignature, valueKey } from './utils.js';
-import { beginRun, announce, commitRun, clearSetupNotices, setupNotices } from './setupNotices.js';
-import { allHints } from './hints.js';
-import { currentLastNotes } from './recipe.js';
+import { beginRun, announce, commitRun, clearSetupNotices, setupNotices, forgetRunResults } from './setupNotices.js';
+import { allHints, hints as shownHints, dismiss } from './hints.js';
 import { check, run } from '../../../motor/engine/engine.js';
 
 function rng(seed) {
@@ -130,7 +130,7 @@ function land(setup, input, answer, { isMatrix = false, locked = setup.locked } 
         if (APP_OWNED_CODES.has(m.code)) continue;
         const text = fillMessageText(m, fill);
         texts.push({ m, text });
-        announce(text, severityOf(m, answer.status), noteKeys(m));
+        announce(text, severityOf(m, answer.status), noteKeys(m), isResultNote(m));
     }
     commitRun(setupSignature(setup.cls, isMatrix, setup.groupMode));
     const finalGroups = [...locked, ...newGroups];
@@ -139,6 +139,12 @@ function land(setup, input, answer, { isMatrix = false, locked = setup.locked } 
     lastRunStatus[view] = { input: inputFingerprint(input), groups: '', skipTogether: [] };
     return { finalGroups, groupNames, texts };
 }
+
+/**
+ * Tjekkets advarsler i stakken (motorens check()), uden noterne fra sidste
+ * dannelse, som siden 13/11 2026 står i samme stak (lastRunHints, source 'last').
+ */
+const checkHints = () => allHints.value.filter(h => h.id.startsWith('engine:') && h.source !== 'last');
 
 /** Gruppenavnene ("Gruppe 3"), en udfyldt besked nævner. */
 const namedGroups = (text) => [...text.matchAll(/Gruppe \d+/g)].map(x => x[0]);
@@ -224,7 +230,7 @@ describe('efter kørslen siger motoren og appen det samme', () => {
                 const gone = lastKeys.has(issueKey(m)) || replacedByResult(m, lastKeys);
                 expect(gone, context()).toBe(true);
             }
-            leftovers += hints.filter(h => h.id.startsWith('engine:') && h.kind === 'conflict').length;
+            leftovers += hints.filter(h => h.id.startsWith('engine:') && h.source !== 'last' && h.kind === 'conflict').length;
         }
         // Udsnittet skal nå det, testen handler om.
         expect(runs).toBeGreaterThan(100);
@@ -263,15 +269,108 @@ describe('et gammelt resultat skjuler ikke en ny advarsel', () => {
         expect(setupNotices.last.standard.some(n => /par ender i samme gruppe/.test(n.text))).toBe(true);
 
         refreshCheck(setup);
-        expect(allHints.value.filter(h => h.id.startsWith('engine:'))).toEqual([]);
+        expect(checkHints()).toEqual([]);
+
+        // Resultatet er mærket som et resultat; det kommer af kørslens grupper.
+        expect(setupNotices.last.standard.find(n => /par ender i samme gruppe/.test(n.text)).result).toBe(true);
 
         // Lås de to første grupper (samme opskrift, samme antal til stede —
         // aftrykket for "Sidste dannelse" er uændret).
         state.storedStandardGroups = state.storedStandardGroups.map((g, i) => (i < 2 ? { ...g, locked: true } : g));
         const after = refreshCheck(setup);
         expect(after.messages.some(m => m.code === 'separate-unavoidable')).toBe(true);
-        const shown = allHints.value.filter(h => h.id.startsWith('engine:'));
+        const shown = checkHints();
         expect(shown.map(h => h.kind)).toContain('conflict');
+    });
+
+    // Forslag 78 (Kenneths ja 13/11 2026): efter en låsning handler sidste
+    // dannelse om noget andet end det, der skal dannes nu. Så er noterne væk,
+    // og prøvekørslen må gå i gang (samme svar: lastRunApplies).
+    it('efter en låsning gælder sidste dannelse ikke længere: noterne går', async () => {
+        const setup = makeSetup();
+        setClass(setup, []);
+        const input = inputNow(setup);
+        const answer = await run({ ...input, seed: 7, budget: BUDGET }, {});
+        land(setup, input, answer);
+        expect(lastRunApplies(false)).toBe(true);
+        expect(shownLastNotes(false).some(n => /par ender i samme gruppe/.test(n.text))).toBe(true);
+
+        // En elev flyttet i hånden ændrer ikke, hvad der skal dannes.
+        const [g1, g2] = state.storedStandardGroups;
+        state.storedStandardGroups = [
+            { ...g1, members: g1.members.slice(1) },
+            { ...g2, members: [...g2.members, g1.members[0]] },
+            ...state.storedStandardGroups.slice(2),
+        ];
+        expect(lastRunApplies(false)).toBe(true);
+
+        state.storedStandardGroups = state.storedStandardGroups.map((g, i) => (i === 0 ? { ...g, locked: true } : g));
+        expect(lastRunApplies(false)).toBe(false);
+        expect(shownLastNotes(false)).toEqual([]);
+    });
+
+    // Siden 13/11 2026 står noterne i stakken øverst i opskriften, ikke under
+    // "Sidste dannelse" nederst (Kenneths ja).
+    it('noterne står i stakken; et lukket kryds gælder kun den kørsel', async () => {
+        const setup = makeSetup();
+        setClass(setup, []);
+        const input = inputNow(setup);
+        const answer = await run({ ...input, seed: 7, budget: BUDGET }, {});
+        land(setup, input, answer);
+        const last = () => shownHints.value.filter(h => h.source === 'last');
+        const note = last().find(h => /par ender i samme gruppe/.test(h.text));
+        expect(note).toBeTruthy();
+        expect(note.id.startsWith('engine:last:')).toBe(true);
+        expect(note.kind).toBe('info');
+
+        dismiss(note.id);
+        expect(last().some(h => h.text === note.text)).toBe(false);
+
+        // Næste dannelse med samme resultat: noten kommer igen.
+        land(setup, input, answer);
+        expect(last().some(h => h.text === note.text)).toBe(true);
+    });
+
+    it('en rettet celle i en regels kolonne: noterne går', async () => {
+        const setup = makeSetup();
+        setClass(setup, []);
+        const input = inputNow(setup);
+        const answer = await run({ ...input, seed: 7, budget: BUDGET }, {});
+        land(setup, input, answer);
+        expect(shownLastNotes(false).length).toBeGreaterThan(0);
+        state.currentClass.data[0].Køn = 'Pige';
+        expect(shownLastNotes(false)).toEqual([]);
+    });
+});
+
+describe('en hentet kørsel: resultatet går, og tjekkets advarsel kommer igen (106. gennemsyn)', () => {
+    it('efter forgetRunResults skjuler intet gammelt resultat advarslen om reglen', async () => {
+        const data = Array.from({ length: 16 }, (_, k) => ({
+            _rowId: 'r' + (k + 1), Navn: 'Elev ' + (k + 1), Køn: k < 12 ? 'Dreng' : 'Pige',
+        }));
+        const setup = {
+            cls: {
+                filename: 'hentet', columns: ['Navn', 'Køn'], data,
+                rules: [{ type: 'separate', column: 'Køn', value: 'Dreng' }],
+                togetherGroups: [], separations: [], topics: [], columnOrders: {},
+                settings: { groupTarget: '4', groupMod: '+', groupMode: 'size' },
+            },
+            groupMode: 'size', locked: [],
+        };
+        setClass(setup, []);
+        const input = inputNow(setup);
+        const answer = await run({ ...input, seed: 7, budget: BUDGET }, {});
+        land(setup, input, answer);
+        refreshCheck(setup);
+        expect(checkHints()).toEqual([]);
+
+        // Fordelingen skiftes ud (en ældre kørsel med samme opskrift hentes):
+        // resultatet om "Gruppe N" går, og tjekkets advarsel om, at Adskil
+        // ikke kan gå op, står i opskriften i stedet — den er stadig sand.
+        forgetRunResults(['standard']);
+        expect(setupNotices.last.standard.some(n => /par ender i samme gruppe/.test(n.text))).toBe(false);
+        refreshCheck(setup);
+        expect(checkHints().length).toBeGreaterThan(0);
     });
 });
 
@@ -375,7 +474,7 @@ describe('matrix: efter kørslen siger motoren og appen det samme', () => {
                 if (!['separate-unavoidable', 'cluster-unavoidable', 'avoid-unavoidable'].includes(m.code)) continue;
                 expect(lastKeys.has(issueKey(m)) || replacedByResult(m, lastKeys), context()).toBe(true);
             }
-            leftovers += hints.filter(h => h.id.startsWith('engine:') && h.kind === 'conflict').length;
+            leftovers += hints.filter(h => h.id.startsWith('engine:') && h.source !== 'last' && h.kind === 'conflict').length;
         }
         expect(runs).toBeGreaterThan(100);
         expect(brokenRuns).toBeGreaterThan(10);
@@ -413,18 +512,21 @@ describe('matrix: "Sidste dannelse" gælder kun den opskrift, kørslen fik', () 
         expect(setupNotices.last.matrix.some(n => /står i samme gruppe/.test(n.text))).toBe(true);
         return setup;
     };
-    const notesNow = (setup) => currentLastNotes(setupNotices, setup.cls, true, setup.groupMode);
+    // Ændringerne går gennem state.currentClass (den reaktive udgave), som
+    // i appen: shownLastNotes er en computed og ser kun reaktive ændringer.
+    const notesNow = () => shownLastNotes(true);
 
     it('fjernes aftalen bagefter, står resultatet om den ikke længere under "Sidste dannelse"', async () => {
-        const setup = await runMatrix();
-        expect(notesNow(setup).length).toBeGreaterThan(0);
-        setup.cls.separations = [];
-        expect(notesNow(setup)).toEqual([]);
+        await runMatrix();
+        expect(notesNow().length).toBeGreaterThan(0);
+        state.currentClass.separations = [];
+        expect(notesNow()).toEqual([]);
     });
 
     it('skiftes der fra "én fra hver stamgruppe" til "ét fra hvert emne", gælder noterne ikke mere', async () => {
-        const setup = await runMatrix();
-        setup.cls.matrixSettings = { ...setup.cls.matrixSettings, matrixRepresentationType: 'topic' };
-        expect(notesNow(setup)).toEqual([]);
+        await runMatrix();
+        expect(notesNow().length).toBeGreaterThan(0);
+        state.currentClass.matrixSettings = { ...state.currentClass.matrixSettings, matrixRepresentationType: 'topic' };
+        expect(notesNow()).toEqual([]);
     });
 });

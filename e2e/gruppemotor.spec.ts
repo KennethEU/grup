@@ -99,7 +99,7 @@ test('matrix med to emner: samme sag står kun én gang, og den er ikke rød', a
     await page.getByRole('button', { name: /Matrix-runde/ }).click();
     const dialog = page.locator('dialog.recipe-dialog[open]');
     await expect(dialog).toBeVisible();
-    const sources = dialog.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hvert emne' });
+    const sources = dialog.locator('.gh-hint').filter({ hasText: 'Højst én fra hvert emne' });
     // Før kørslen: motorens check() — ÉN besked om emnerne, blå (ikke rød).
     await expect(sources).toHaveCount(1);
     await expect(sources).toContainText('6 matrixgrupper');
@@ -112,13 +112,13 @@ test('matrix med to emner: samme sag står kun én gang, og den er ikke rød', a
 
     // Efter kørslen: kun resultatet, én gang, og ikke rødt.
     const after = await openRecipe(page);
-    const again = after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Højst én fra hvert emne' });
+    const again = after.locator('.gh-hint').filter({ hasText: 'Højst én fra hvert emne' });
     await expect(again).toHaveCount(1);
     expect((await again.innerText()).trim()).toBe(beforeText);
-    await expect(after.locator('.recipe__lastlist li.is-error').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
+    await expect(after.locator('.gh-hint--last.gh-hint--conflict').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
     await expect(after.locator('.gh-hint--conflict').filter({ hasText: 'Højst én fra hvert emne' })).toHaveCount(0);
     // Kilderne er spredt så jævnt, som det kan lade sig gøre: ingen "par"-besked.
-    await expect(after.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: /par fra samme|ikke spredt så jævnt/ })).toHaveCount(0);
+    await expect(after.locator('.gh-hint').filter({ hasText: /par fra samme|ikke spredt så jævnt/ })).toHaveCount(0);
 });
 
 // Opdel (kontrakt v3, spørgsmål 50): Adskil kan ikke gå op i nogen af de to
@@ -135,14 +135,14 @@ test('Opdel: advarslen pr. pulje afløses af resultatet pr. pulje', async ({ pag
             { type: 'aggregate', column: 'Hold' }, { type: 'separate', column: 'Niveau', value: 'Høj' }];
     });
     const dialog = await openRecipe(page);
-    const adskil = (scope: any) => scope.locator('.gh-hint, .recipe__lastlist li').filter({ hasText: 'Adskil' });
+    const adskil = (scope: any) => scope.locator('.gh-hint').filter({ hasText: 'Adskil' });
     await expect(dialog.locator('.gh-hint--conflict').filter({ hasText: 'Adskil' })).toHaveCount(2);
     await clickGo(page);
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 30000 }).toBe(false);
     expect(await page.evaluate(() => (window as any).appDebug.nextStats.status)).toBe('ok');
     const after = await openRecipe(page);
     await expect(after.locator('.gh-hint--conflict').filter({ hasText: 'Adskil' })).toHaveCount(0);
-    await expect(after.locator('.recipe__lastlist li.is-error')).toHaveCount(0);
+    await expect(after.locator('.gh-hint--last.gh-hint--conflict')).toHaveCount(0);
     const results = adskil(after);
     await expect(results).toHaveCount(2);
     await expect(results.filter({ hasText: '2.a' })).toHaveCount(1);
@@ -165,7 +165,7 @@ test('en låsning efter kørslen: den nye advarsel om Adskil skjules ikke af det
     await expect(page.locator('.group-card')).toHaveCount(4);
     // Lige efter kørslen: resultatet står under "Sidste dannelse", ingen rød advarsel.
     const first = await openRecipe(page);
-    await expect(first.locator('.recipe__lastlist li').filter({ hasText: 'Adskil' })).toHaveCount(1);
+    await expect(first.locator('.gh-hint--last').filter({ hasText: 'Adskil' })).toHaveCount(1);
     await expect(first.locator('.gh-hint--conflict').filter({ hasText: 'Adskil' })).toHaveCount(0);
     // Lås to grupper: de seks "Høj", der er tilbage, skal nu i to grupper.
     await page.evaluate(() => {
@@ -200,7 +200,7 @@ test('en låsning efter kørslen: den nye advarsel om Adskil skjules ikke af det
         await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.storedMatrixGroups?.length || 0), { timeout: 60000 }).toBeGreaterThan(0);
         const after = await openRecipe(page);
         const said = [
-            ...(await after.locator('.gh-hint, .recipe__lastlist li').allInnerTexts()),
+            ...(await after.locator('.gh-hint').allInnerTexts()),
             ...(await page.locator('.toast').allInnerTexts()),
         ].join('\n');
         test.info().annotations.push({ type: 'beskeder', description: said });
@@ -232,7 +232,7 @@ test('matrix: skift fra Stamgruppe til Emne fjerner resultatet om stamgrupperne'
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.storedMatrixGroups?.length || 0), { timeout: 60000 }).toBeGreaterThan(0);
 
     const after = await openRecipe(page);
-    const last = after.locator('.recipe__lastlist li');
+    const last = after.locator('.gh-hint--last');
     await expect(last.filter({ hasText: /stamgruppe/i }).first()).toBeVisible();
 
     await after.locator('.rtok__btn[aria-label^="Sådan blandes der"]').click();
@@ -574,7 +574,7 @@ test('Skal sammen med to ordstyrere: ingen stop, en blå note, og resultatet næ
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 30000 }).toBe(false);
     expect(await page.evaluate(() => (window as any).appDebug.nextStats.status)).toBe('ok');
     dialog = await openRecipe(page);
-    const result = dialog.locator('.recipe__lastlist li').filter({ hasText: 'er et af parrene, fordi de skal være sammen' });
+    const result = dialog.locator('.gh-hint--last').filter({ hasText: 'er et af parrene, fordi de skal være sammen' });
     await expect(result).toHaveCount(1);
     await expect(result).toContainText('Asta Brink');
     // Noten er afløst af resultatet: samme sag én gang.
@@ -622,7 +622,7 @@ test('hvad blev opfyldt: et mærke pr. regel og aftalerne — væk, når opskrif
     // Fordel på Køn kan ikke gå helt lige op (15 P, 14 D, 1 Andet i 7 grupper):
     // det bedst mulige, og "Sidste dannelse" siger hvorfor.
     await expect(lines.filter({ hasText: 'Køn' }).locator('.rule-mark')).toHaveAttribute('aria-label', 'Ikke helt — det bedst mulige');
-    await expect(dialog.locator('.recipe__lastlist li').filter({ hasText: 'Fordel på "Køn"' })).toHaveCount(1);
+    await expect(dialog.locator('.gh-hint--last').filter({ hasText: 'Fordel på "Køn"' })).toHaveCount(1);
     await expect(dialog.locator('.rule-mark[aria-label="Opfyldt"]').first()).toBeVisible();
     await expect(dialog.locator('.recipe__agreed')).toHaveText('alle holdt');
     await dialog.screenshot({ path: test.info().outputPath('hvad-blev-opfyldt.png') });
@@ -694,7 +694,7 @@ test('opskriften står stille, mens en regel trækkes — og når pilene flytter
     const dialog = await openRecipe(page);
     const top = () => dialog.locator('.recipe-dialog__panel').evaluate(el => Math.round(el.getBoundingClientRect().top));
     const height = () => dialog.locator('.recipe-dialog__panel').evaluate(el => Math.round(el.getBoundingClientRect().height));
-    await expect(dialog.locator('.recipe__lastlist li').first()).toBeVisible();
+    await expect(dialog.locator('.gh-hint--last').first()).toBeVisible();
     const top0 = await top();
     const height0 = await height();
     const goals = dialog.locator('.recipe__line--rule').filter({ has: page.locator('.recipe__grip') });
@@ -710,13 +710,13 @@ test('opskriften står stille, mens en regel trækkes — og når pilene flytter
         expect(await height()).toBe(height0);
     }
     // Rækkerne flytter sig under musen, men klassens liste først ved slip.
-    await expect(dialog.locator('.recipe__lastlist li').first()).toBeVisible();
+    await expect(dialog.locator('.gh-hint--last').first()).toBeVisible();
     await page.mouse.up();
     // Pilen ændrer rækkefølgen med det samme: "Sidste dannelse" hører til den
     // gamle opsætning og forsvinder, vinduet bliver lavere — men toppen står.
     const first = goals.first();
     await first.hover();
     await first.getByRole('button', { name: 'Flyt ned' }).click();
-    await expect(dialog.locator('.recipe__lastlist')).toHaveCount(0);
+    await expect(dialog.locator('.gh-hint--last')).toHaveCount(0);
     expect(await top()).toBe(top0);
 });

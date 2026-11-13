@@ -27,6 +27,13 @@ import {
 } from './utils.js';
 import { cancelPickUp } from '../../composables/useDragDrop.js';
 import * as replay from './replay.js';
+import { forgetRunResults } from './setupNotices.js';
+
+// Sidste dannelses noter og mærker (forslag 88). nextEngine.js leverer de to
+// funktioner (captureLastRun/restoreLastRun), fordi nextEngine.js selv
+// importerer denne fil — samme greb som provideRecipeHintIds.
+let lastRunState = { capture: () => null, restore: () => false };
+export function provideLastRunState(fns) { lastRunState = fns; }
 
 /** Hvor mange kørsler der huskes. Nok til en typisk time. */
 export const MAX_RUNS = 5;
@@ -186,6 +193,11 @@ function snapshotData() {
 
         // ── Kun til visning ──
         presentCount: countPresent(),
+
+        // ── Det, sidste dannelse sagde om DISSE grupper (forslag 88) ──
+        // Noterne og mærkerne, som de står nu. pushRun() kaldes, før de nye
+        // grupper (og deres noter) lander, så det er de forladte gruppers.
+        lastRun: lastRunState.capture(),
     };
 }
 
@@ -469,12 +481,68 @@ function stableString(v) {
  * @param {number} index    plads i listen fra listRuns()
  */
 export function hasSettingsChanges(index) {
+    return settingsChanges(index).length > 0;
+}
+
+/**
+ * Hvad "Ja, tag alt med" skifter ud — de felter, restoreRun() kun skriver,
+ * når læreren siger ja — samlet i de tre ting, læreren kender dem som.
+ *
+ * Emnelisten (`classTopics`) er IKKE med: restoreRun() fletter den ved BEGGE
+ * svar. Var den med, kom spørgsmålet, når læreren kun havde tilføjet et emne
+ * siden — og de to knapper gjorde præcis det samme (13/11 2026).
+ */
+const SETTINGS_KINDS = Object.freeze({
+    rules: ['rules', 'matrixRules'],
+    settings: ['settings', 'matrixSettings', 'groupMode'],
+    agreements: ['separations', 'togetherGroups'],
+});
+
+/**
+ * Hvilke af de tre ting er anderledes i dag end da kørslen blev dannet?
+ * Svaret er en liste med 'rules', 'settings' og/eller 'agreements' — tom,
+ * når "tag alt med" og "kun grupperne" ville gøre det samme.
+ *
+ * HVORFOR SPØRGSMÅLET SKAL NÆVNE DEM: før stod der altid "Reglerne eller
+ * indstillingerne er ændret siden", også når det kun var en "Undgå
+ * hinanden"-aftale, læreren havde lavet. Var aftalen lavet efter seneste
+ * dannelse, skrev et ja den væk uden vej tilbage — se unsavedRecipeChanges().
+ *
+ * @param {number} index    plads i listen fra listRuns()
+ * @returns {string[]}
+ */
+export function settingsChanges(index) {
     const fn = state.currentClass?.filename || null;
     const run = state._runHistory.filter(r => r.classFile === fn)[index];
-    if (!run || !state.currentClass) return false;
+    if (!run || !state.currentClass) return [];
 
     const nowInputs = snapshotInputs();
-    return Object.keys(nowInputs).some(k => stableString(run[k]) !== stableString(nowInputs[k]));
+    return Object.keys(SETTINGS_KINDS).filter(kind =>
+        SETTINGS_KINDS[kind].some(k => stableString(run[k]) !== stableString(nowInputs[k])));
+}
+
+/**
+ * Hvad har læreren rettet i opskriften SIDEN grupperne på skærmen blev dannet
+ * (eller hentet)? Det, og kun det, er tabt efter "Ja, tag alt med".
+ *
+ * restoreRun() lægger nemlig fordelingen på skærmen øverst i historikken MED
+ * det input, den blev dannet med (`_lastRunInputs`). Har læreren ikke rørt
+ * opskriften siden, kan "tag alt med" på den øverste kørsel give hende
+ * præcis det tilbage, hun forlod — så må spørgsmålet ikke sige, at noget går
+ * tabt. Har hun lavet en aftale eller rettet en regel bagefter, ligger den
+ * rettelse ingen steder, og Ctrl+Z gælder kun elevlisten.
+ *
+ * Uden `_lastRunInputs` (ingen dannelse i fanen endnu) bruger pushRun() de
+ * nuværende værdier, så intet går tabt: tom liste.
+ *
+ * @returns {string[]} 'rules', 'settings' og/eller 'agreements'
+ */
+export function unsavedRecipeChanges() {
+    const last = state._lastRunInputs;
+    if (!last || !state.currentClass) return [];
+    const nowInputs = snapshotInputs();
+    return Object.keys(SETTINGS_KINDS).filter(kind =>
+        SETTINGS_KINDS[kind].some(k => stableString(last[k]) !== stableString(nowInputs[k])));
 }
 
 /**
@@ -552,6 +620,13 @@ export function restoreRun(index, alsoSettings = false) {
     state.matrixSourceFingerprint = (fresh.matrix && fresh.matrix.length)
         ? homeGroupFingerprint(state.storedStandardGroups)
         : null;
+
+    // ── Noterne og mærkerne fra kørslens egen dannelse (forslag 88) ──
+    // Kørslen får det tilbage, den selv sagde. Om det vises, afgør
+    // lastRunApplies (samme opskrift som dengang). Har snapshottet intet,
+    // gælder det gamle: noterne om det forladte RESULTAT fjernes
+    // (forgetRunResults i setupNotices.js).
+    if (!lastRunState.restore(fresh.lastRun)) forgetRunResults(['standard', 'matrix']);
 
     const groupsSaved = storage.saveGroupsToStorage() !== false;
     markClean();
