@@ -87,6 +87,9 @@
 }
 .recipe__text { flex: 1; min-inline-size: 0; text-wrap: pretty; }
 .recipe__line.is-incomplete .recipe__text { color: var(--ink-3); }
+/* En gammel Opdel i matrix-runden: står der, men gør ingenting (RecipeRules.vue) */
+.recipe__line.is-ignored .recipe__text,
+.recipe__line.is-ignored .rtok__btn { color: var(--ink-3); text-decoration: line-through; }
 .recipe__line--quiet { font-size: 14px; }
 .recipe__hints {
     flex-basis: 100%;

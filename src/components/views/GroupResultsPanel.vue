@@ -15,7 +15,7 @@ import { hasRuns, previewRunGroups } from '../../js/modules/runHistory.js';
 import RunHistoryMenu from './RunHistoryMenu.vue';
 import ReplayMenu from './ReplayMenu.vue';
 import * as replay from '../../js/modules/replay.js';
-import { homeGroupFingerprint } from '../../js/modules/utils.js';
+import { homeGroupFingerprint, MATRIX_EXCLUDED_RULES } from '../../js/modules/utils.js';
 import { groupNumberOf } from '../../js/modules/nextEngine.js';
 
 const props = defineProps({
@@ -43,10 +43,15 @@ const hasGroups = computed(() => groups.value.length > 0);
 const allLocked = computed(() => groups.value.length > 0 && groups.value.every(g => g.locked));
 
 // Visningens regler — stamgruppernes eller matrixens.
+// En gammel gemt "Opdel" i matrixreglerne (fra en ældre udgave eller en
+// importeret klasse) får motoren aldrig (MATRIX_EXCLUDED_RULES, se
+// buildEngineInput), så dens kolonne skal heller ikke stå som mærkat på
+// matrixkortene, som om grupperne var delt efter den (110. gennemsyn).
 const viewRules = computed(() => {
     const cls = reactiveState.currentClass;
     if (!cls) return [];
-    return (props.isMatrix ? cls.matrixRules : cls.rules) || [];
+    if (!props.isMatrix) return cls.rules || [];
+    return (cls.matrixRules || []).filter(r => !MATRIX_EXCLUDED_RULES.includes(r?.type || r?.name));
 });
 
 // De kolonner, reglerne står på — dem er det, mærkaterne på kortene viser.

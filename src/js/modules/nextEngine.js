@@ -28,7 +28,7 @@ import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
     ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
-    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn,
+    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
 } from './utils.js';
 
 export const CONTRACT_VERSION = 3;
@@ -71,6 +71,26 @@ const ORDERED_RULES = [RULE_TYPES.BALANCE, RULE_TYPES.MINIMIZEDIFF, RULE_TYPES.G
 const asText = (v) => (v === undefined || v === null) ? '' : nfc(String(v));
 
 /**
+ * Hvilke elever motoren får som "frie" (dem, den skal placere): hverken
+ * fraværende eller låst fast i en gruppe i visningen. Kontrakten: de
+ * fraværende findes ingen steder i input, og de låstes celler sendes ikke.
+ *
+ * Eksporteret, så opskriftens advarsel om en tal-regel på tekst
+ * (numericRuleOnTextHint i hints.js) ser på præcis de elever, motoren ser —
+ * ellers kunne de to være uenige om, hvorvidt kolonnen har tal (hullet fra
+ * 101. gennemsyn, lukket i 111.).
+ */
+export function engineRowSplit(rows, viewGroups) {
+    const idOf = (row) => String(row[ROW_ID] ?? '').trim();
+    const present = (rows || []).filter(r => !r._excluded);
+    const locked = (viewGroups || []).filter(g => g && g.locked);
+    const lockedIds = new Set();
+    locked.forEach(g => (g.members || []).forEach(m => { const id = memberIdStr(m); if (id) lockedIds.add(id); }));
+    const free = present.filter(r => !lockedIds.has(idOf(r)));
+    return { present, locked, lockedIds, free };
+}
+
+/**
  * Byg kontraktens input (afsnit 2) ud fra lærerens klasse.
  *
  * Ren funktion: alt kommer ind som argumenter, så den kan testes uden
@@ -92,16 +112,9 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
     if (!cls || !Array.isArray(cls.data)) return null;
     const idOf = (row) => String(row[ROW_ID] ?? '').trim();
 
-    // Fraværende ud først (kontrakten: de findes ingen steder i input).
-    const present = cls.data.filter(r => !r._excluded);
+    const { present, locked, lockedIds, free } = engineRowSplit(cls.data, viewGroups);
     const presentIds = new Set(present.map(idOf));
     const presentMembers = (members) => (members || []).map(memberIdStr).filter(id => id && presentIds.has(id));
-
-    // De låste grupper og deres elever.
-    const locked = (viewGroups || []).filter(g => g && g.locked);
-    const lockedIds = new Set();
-    locked.forEach(g => (g.members || []).forEach(m => { const id = memberIdStr(m); if (id) lockedIds.add(id); }));
-    const free = present.filter(r => !lockedIds.has(idOf(r)));
     if (free.length === 0) return null;
 
     // Reglerne i den rækkefølge, opskriften VISER dem: i
@@ -166,7 +179,9 @@ export function buildEngineInput({ cls, isMatrix, groupMode, overrideSettings = 
         // har en værdi, som ikke står i rækkefølgen"). Samme prøve som
         // advarslen i hints.js og kolonnevalget i recipe.js (columnFitness),
         // så de tre altid er enige om, hvorvidt kolonnen er rangeret.
-        if (rankingAffectsColumn(cls.data, r.column, order)) columnOrders[r.column] = order.map(asText);
+        // Trinene, ikke listen som den står: motoren giver rangen efter pladsen,
+        // så en dublet ville give et hul i skalaen (rankSteps i utils.js).
+        if (rankingAffectsColumn(cls.data, r.column, order)) columnOrders[r.column] = rankSteps(order).map(asText);
     }
 
     // Aftalerne. Skal sammen sendes som samlede blokke; en blok, der kun har

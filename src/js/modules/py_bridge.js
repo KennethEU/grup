@@ -17,6 +17,9 @@ import { removeLegacyClassData, isQuotaError } from './migrateStorage.js';
  *  (nextEngine.appBudget), og 500 holder kørslen inden for det. */
 export const MAX_ROWS_PER_CLASS = 500;
 
+/** Svaret, når en klasse ikke (længere) findes — læreren kan se det. */
+export const CLASS_GONE = 'Klassen findes ikke længere. Den er måske slettet i en anden fane.';
+
 /**
  * localStorage.setItem, der tåler fuld lagerplads.
  * Viser læreren en besked, når lageret er fuldt.
@@ -534,7 +537,9 @@ class ClassStore {
     renameClass(filename, newName) {
         let classes = this._readClassesForWrite();
         let idx = classes.findIndex(c => c.filename === filename);
-        if (idx === -1) return { error: "Class not found" };
+        // Teksten ses af læreren ("Fejl ved omdøbning: …"), fx når klassen er
+        // slettet i en anden fane — derfor dansk (109. gennemsyn).
+        if (idx === -1) return { error: CLASS_GONE };
 
         this._checkForeignEdit(filename, classes[idx]);
         const stamp = new Date().toISOString();

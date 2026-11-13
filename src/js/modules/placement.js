@@ -268,15 +268,17 @@ export function partnersOutside(student, group, { idCol, togetherComponents = []
 
 /**
  * Balancér, Ensartede og Saml på en RANGERET tekstkolonne ("Lav < Middel <
- * Høj"). Gruppedannelsen regner dem med rangen 1, 2, 3 — generation.js sender
- * en skjult tal-kolonne med via `applyColumnOrders()`. Placeringen læste
+ * Høj"). Gruppedannelsen regner dem med rangen 1, 2, 3 — buildEngineInput
+ * (nextEngine.js) sender trinene til motoren, som selv giver hvert trin sit
+ * tal. Placeringen læste
  * cellen direkte, og `cellNumber("Høj")` er ingenting: reglen blev sprunget
  * over, og efternøleren blev sat efter gruppestørrelse og lodtrækning, mens
  * gruppedannelsen havde balanceret på niveauet.
  *
- * Derfor den SAMME funktion her — ikke en kopi af opslaget — så "hvad tæller
- * som rangeret" (store/små bogstaver, mellemrum, en rangering ingen elev
- * rammer) ikke kan drive fra gruppedannelsen. Rækkerne kopieres; klassens
+ * Derfor samme trin her som i motorens input (`rankSteps()` i utils.js, som
+ * både `applyColumnOrders()` og buildEngineInput bruger), så "hvad tæller som
+ * rangeret" (store/små bogstaver, mellemrum, dubletter, ét trin, en rangering
+ * ingen elev rammer) ikke kan drive fra gruppedannelsen. Rækkerne kopieres; klassens
  * egne rækker røres ikke.
  *
  * Eleven sendes med i rækkerne, hvis kalderen ikke allerede har hende dér

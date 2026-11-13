@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch, nextTick, onUnmounted } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
-import { getColorForString, memberDisplayName, isMemberAbsent, groupDisplayName, groupShortName, debounce, cellNumber } from '../../js/modules/utils.js';
+import { getColorForString, memberDisplayName, isMemberAbsent, groupDisplayName, groupShortName, debounce, cellNumber, rankingAffectsColumn } from '../../js/modules/utils.js';
 import { studentById, homeGroupOriginById, avoidConflictIds } from '../../js/modules/lookups.js';
 import { getTopic, saveTopic, saveGroupsToStorage, refreshTopicDatalistSoon } from '../../js/modules/storage.js';
 import {
@@ -55,12 +55,19 @@ const displayName = computed(() => groupDisplayName(props.group.name));
 // havde balanceret på 5,0. En ord-kolonne (også en rangeret "Lav/Middel/Høj")
 // giver intet tal og står derfor ikke med; et snit på 2,3 er ikke et niveau.
 // Tallet skrives med komma, som resten af den danske flade.
+//
+// Er kolonnen rangeret, og står der TAL i cellerne (fx "3", "1", "2" sat i en
+// anden rækkefølge), balancerer motoren på RANGEN, ikke på tallet. Et snit af
+// cellernes tal ville så tale om noget, motoren ikke har regnet på — derfor
+// intet snit dér (rest af 74, 112. gennemsyn). Samme prøve som motorens input.
 const averages = computed(() => {
     const cols = props.balanceColumns;
-    if (!cols.length || !reactiveState.currentClass) return [];
+    const cls = reactiveState.currentClass;
+    if (!cols.length || !cls) return [];
     const byId = studentById.value;
     const out = [];
     for (const col of cols) {
+        if (rankingAffectsColumn(cls.data, col, (cls.columnOrders || {})[col])) continue;
         let sum = 0, count = 0;
         for (const m of props.group.members) {
             if (isMemberAbsent(m, null, byId)) continue;

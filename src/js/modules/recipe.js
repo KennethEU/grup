@@ -378,7 +378,7 @@ export function typingOutsideRecipe(target) {
 // der: elever uden navn, en undgåelse brudt ved en flytning, en forældet matrix.
 const RECIPE_HINT_PREFIXES = [
     'conflict:', 'feasibility:', 'hint:no-value:', 'hint:non-numeric:',
-    'hint:together:', 'hint:together-cost:',
+    'hint:together:', 'hint:together-cost:', 'hint:matrix-excluded:',
     // Motorens check() — se engineCheckHints i hints.js.
     'engine:',
 ];

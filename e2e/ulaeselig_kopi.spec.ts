@@ -48,8 +48,10 @@ test('kopien kan gemmes som fil og slettes efter en bekræftelse', async ({ page
     expect(await page.evaluate(k => localStorage.getItem(k), KEY)).toBe(RAW);
     await expect(box).toBeVisible();
 
-    // "Slet" fjerner den, og boksen går.
+    // "Slet" fjerner den, og boksen går. Bekræftelsen siger, at oprydningen
+    // ved næste opstart så fjerner de gamle klassers grupper og sessioner.
     await box.getByRole('button', { name: 'Slet den' }).click();
+    await expect(page.getByRole('dialog')).toContainText('gemte grupper og sessioner');
     await page.getByRole('dialog').getByRole('button', { name: 'Slet', exact: true }).click();
     await expect(box).toHaveCount(0);
     expect(await page.evaluate(k => localStorage.getItem(k), KEY)).toBeNull();

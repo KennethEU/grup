@@ -138,8 +138,12 @@ async function writeTestData() {
   loading.value = true;
   try {
     const res = await api.restoreBackup(TEST_DATA);
-    if (res.error) {
-      window.notifyError?.("Fejl: " + res.error);
+    // En klasse, der ikke kunne skrives (fx fuld lagerplads), står i
+    // res.failed, ikke i res.error. Før kom "Testklasse oprettet" alligevel,
+    // og appen prøvede at åbne en klasse uden filnavn (109. gennemsyn).
+    const failedWrite = res.failed?.[0]?.error;
+    if (res.error || !res.written) {
+      window.notifyError?.("Testklassen kunne ikke oprettes: " + (res.error || failedWrite || 'ukendt fejl'));
     } else {
       window.notifySuccess?.(`Testklasse oprettet med ${TEST_DATA[0].data.length} elever!`);
       // Filnavnet med: skrives testklassen oven i en eksisterende, står den

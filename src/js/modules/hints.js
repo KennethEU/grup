@@ -20,14 +20,14 @@ import { computed, ref, toRaw, watch } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
 import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
-    brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn } from './utils.js';
+    brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn, MATRIX_EXCLUDED_RULES } from './utils.js';
 import { ruleTypeLabel, namesText } from './recipe.js';
 import { setupNotices } from './setupNotices.js';
 import { trialNotes } from './trialRun.js';
 import { studentById } from './lookups.js';
 import { generateMatrixGroups, generateWithoutTogether } from './generation.js';
 import { autoSave } from './classActions.js';
-import { engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, shownLastNotes } from './nextEngine.js';
+import { engineRowSplit, engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, shownLastNotes } from './nextEngine.js';
 
 
 // Hvilke beskeder læreren selv har klikket væk i denne session.
@@ -461,6 +461,38 @@ const matrixDriftHint = computed(() => {
 const NUMERIC_ONLY_TYPES = ['balance', 'minimizediff'];
 
 
+// En gammel "Opdel" i matrix-reglerne (fra en ældre udgave eller en
+// importeret klasse). Opskriften tilbyder den ikke i matrix-runden, og
+// motoren får den aldrig (buildEngineInput i nextEngine.js og placement.js
+// springer den over) — men den stod i opskriften, som om den virkede.
+// Knappen fjerner den; der gemmes ellers intet, før læreren beder om det
+// (109. gennemsyn, 13/11 2026).
+const matrixExcludedRuleHint = computed(() => {
+    if (!isMatrix.value || !state.currentClass) return null;
+    const rules = state.currentClass.matrixRules || [];
+    const stale = rules.filter(r => MATRIX_EXCLUDED_RULES.includes(r?.type || r?.name));
+    if (!stale.length) return null;
+    const first = stale[0];
+    const col = first.column || first.attribute || '';
+    const label = ruleTypeLabel(first.type || first.name);
+    return {
+        id: `hint:matrix-excluded:${stale.map(r => `${r.type || r.name}:${r.column || r.attribute || ''}`).join(',')}`,
+        kind: 'info',
+        text: `${label}${col ? ` på "${col}"` : ''} gør ingenting i matrix-runden: matrixen spreder `
+            + 'eleverne fra stamgrupperne, så reglen bliver ikke brugt. Den kommer fra en ældre udgave af Grupper.',
+        actions: [{
+            label: stale.length === 1 ? 'Fjern reglen' : 'Fjern reglerne',
+            run: () => {
+                const cls = state.currentClass;
+                if (!cls) return;
+                cls.matrixRules = (cls.matrixRules || [])
+                    .filter(r => !MATRIX_EXCLUDED_RULES.includes(r?.type || r?.name));
+                autoSave();
+            },
+        }],
+    };
+});
+
 // "Adskil" er den ENESTE regel med et værdifelt (RULES_WITHOUT_VALUES i
 // utils.js), og feltet står tomt, indtil læreren vælger noget. Uden en værdi
 // spreder reglen ingenting — og indtil for nylig meldte resultattabellen den
@@ -502,13 +534,39 @@ const numericRuleOnTextHint = computed(() => {
         seen.add(type + '|' + col);
         // Helt tom kolonne er en anden sag — den har sin egen besked fra motoren.
         const hasContent = rows.some(s => String(s[col] ?? '').trim() !== '');
+        if (!hasContent) continue;
         // columnIsNumeric, ikke "har kolonnen overhovedet et tal?": ét enkelt
         // "3" midt i Lav/Middel/Høj slukkede før både denne besked OG knappen
         // "Ranger værdierne…", som er den eneste vej ud af problemet. Samme
         // flertals-tærskel som den gamle Python-motors logic.column_has_numbers.
-        if (!hasContent || columnIsNumeric(rows, col)) continue;
-        // Har læreren allerede rangeret kolonnen, VIRKER reglen: generation.js
-        // lægger en skjult tal-kolonne ved siden af og peger reglen derover.
+        if (columnIsNumeric(rows, col)) {
+            // Kolonnen ER tal for klassen — men motoren ser kun de frie
+            // elever (engineRowSplit). Er alle med et tal fraværende eller
+            // låst fast, har motoren kun tekst tilbage, og reglen gør
+            // ingenting. Motoren siger det selv (text-only-column), men dén
+            // besked viser appen aldrig (APP_OWNED_CODES), og den ville sige
+            // "kolonnen har ingen tal" om en kolonne fuld af tal. Så siger
+            // appen det her, med den rigtige grund (hullet fra 101.
+            // gennemsyn, lukket i 111.). Ingen "Ranger"-knap: kolonnen skal
+            // ikke rangeres; det er eleverne med tallene, der mangler.
+            const free = engineRowSplit(rows, isMatrix.value ? state.storedMatrixGroups : state.storedStandardGroups).free;
+            const freeText = free.some(s => String(s[col] ?? '').trim() !== '');
+            const freeNumber = free.some(s => cellNumber(s[col]) !== null);
+            if (!freeText || freeNumber) continue;
+            if (rankingAffectsColumn(rows, col, (state.currentClass.columnOrders || {})[col])) continue;
+            out.push({
+                id: `hint:non-numeric:${isMatrix.value ? 'matrix' : 'stam'}:${type}:${col}`,
+                // Info, ikke rød: der er intet at rette i opskriften (det er
+                // fraværet eller låsningen), og motorens egen note er info.
+                kind: 'info',
+                text: `${ruleTypeLabel(type)} på "${col}" gør ingenting lige nu: alle elever med et tal `
+                    + `i kolonnen er fraværende eller låst fast i en gruppe, og resten har tekst. `
+                    + `Reglen virker igen, når elever med et tal skal placeres.`,
+            });
+            continue;
+        }
+        // Har læreren allerede rangeret kolonnen, VIRKER reglen: buildEngineInput
+        // sender trinene til motoren, som regner med rangen (1, 2, 3 …).
         // Bliver advarslen stående alligevel, skælder den ud over noget hun
         // lige har ordnet — og så holder man op med at læse hints.
         //
@@ -746,15 +804,26 @@ const trialHints = computed(() => trialNotes(isMatrix.value).map(n => ({
 // krydset, gælder det DEN kørsel. Ved næste dannelse kommer den igen, også
 // med samme tekst. `source: 'last'` giver stakken en klasse, så testene kan
 // skelne dem fra tjekkets advarsler; læreren ser ingen forskel.
+//
+// Tallet efter kørslens nummer tæller kun noter med SAMME tekst (0 for den
+// første), ikke pladsen i listen. Pladsen flytter sig, når noterne om
+// resultatet fjernes (forgetRunResults: en gendannet session, Gendan
+// grupper, "Hent de nye grupper"), og så kom en lukket note om opsætningen
+// tilbage, fordi dens id var et andet (109. gennemsyn, 13/11 2026).
 const lastRunHints = computed(() => {
     const view = isMatrix.value ? 'matrix' : 'standard';
     const runNo = setupNotices.lastRunNo[view];
-    return shownLastNotes(isMatrix.value).map((n, i) => ({
-        id: `engine:last:${view}:${runNo}:${i}|${n.text}`,
-        kind: n.type === 'error' ? 'conflict' : 'info',
-        text: n.text,
-        source: 'last',
-    }));
+    const seenTexts = new Map();
+    return shownLastNotes(isMatrix.value).map((n) => {
+        const nth = seenTexts.get(n.text) || 0;
+        seenTexts.set(n.text, nth + 1);
+        return {
+            id: `engine:last:${view}:${runNo}:${nth}|${n.text}`,
+            kind: n.type === 'error' ? 'conflict' : 'info',
+            text: n.text,
+            source: 'last',
+        };
+    });
 });
 
 // "Fordel på X kan ikke gå helt lige op" står ved reglens linje som et lille
@@ -837,6 +906,7 @@ const allHints = computed(() => [
     unnamedStudentHint.value,
     ...numericRuleOnTextHint.value,
     ...ruleWithoutValueHint.value,
+    matrixExcludedRuleHint.value,
     tooManyGroupsHint.value,
     topicRoundingHint.value,
     topicCountMismatchHint.value,

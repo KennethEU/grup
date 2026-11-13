@@ -1598,17 +1598,39 @@ export function columnIsNumeric(rows, col) {
  * motorens egen nøgle (normalizeText i motor/engine/values.js).
  */
 export function rankingAffectsColumn(rows, col, order) {
-    if (!Array.isArray(order) || order.length < 2) return false;
-    const seen = new Set();
-    for (const v of order) {
-        if (v == null) continue;
-        const n = valueKey(v);
-        if (n) seen.add(n);
-    }
+    const steps = rankSteps(order);
     // To TRIN, ikke to linjer: "Lav" og "lav" er samme trin for motoren, og
     // en skala med ét trin kan ingen regel bruge.
-    if (seen.size < 2) return false;
+    if (steps.length < 2) return false;
+    const seen = new Set(steps.map(valueKey));
     return (rows || []).some(s => seen.has(valueKey(ownCell(s, col))));
+}
+
+/**
+ * Trinene i en rangering: hver værdi ÉN gang (første vinder), uden tomme.
+ *
+ * Det ene sted, der afgør, hvad en gemt rækkefølge betyder. Motoren giver
+ * rangen efter PLADSEN i den liste, den får (motor/engine/task.js), så en
+ * dublet fra en håndrettet backup ("Lav", "lav", "Høj") ville give et hul i
+ * skalaen (Lav 1, Høj 3), mens efternøler-placeringen (applyColumnOrders)
+ * talte trin (Lav 1, Høj 2). Nu sender buildEngineInput trinene, og alle tre
+ * steder — motorens input, advarslerne og placeringen — tæller det samme.
+ * (Småting 77, 112. gennemsyn.)
+ *
+ * @returns {string[]} de oprindelige stavemåder, i lærerens rækkefølge
+ */
+export function rankSteps(order) {
+    if (!Array.isArray(order)) return [];
+    const seen = new Set();
+    const steps = [];
+    for (const v of order) {
+        if (v == null) continue;
+        const key = valueKey(v);
+        if (!key || seen.has(key)) continue;
+        seen.add(key);
+        steps.push(String(v));
+    }
+    return steps;
 }
 
 /**
@@ -1707,18 +1729,12 @@ export function applyColumnOrders(data, rules, orders) {
     const labelMap = Object.create(null);   // rang-kolonnenavn -> kolonne
 
     for (const col of used) {
-        const order = orders[col];
-        if (!Array.isArray(order) || order.length === 0) continue;
-
-        const lookup = new Map();
-        let rank = 0;
-        for (const v of order) {
-            if (v == null) continue;
-            const key = valueKey(v);
-            if (key === '' || lookup.has(key)) continue;  // dublet: første vinder
-            lookup.set(key, ++rank);
-        }
-        if (lookup.size === 0) continue;
+        // Samme trin som motorens input (rankSteps): dubletter tæller én
+        // gang, og en "rangering" med ét trin er ingen skala. Før godtog
+        // placeringen ét trin, mens motoren aldrig fik det (småting 77).
+        const steps = rankSteps(orders[col]);
+        if (steps.length < 2) continue;
+        const lookup = new Map(steps.map((v, i) => [valueKey(v), i + 1]));
 
         const rankCol = _rankColumnName(col, taken);
         taken.add(rankCol);
@@ -1734,7 +1750,9 @@ export function applyColumnOrders(data, rules, orders) {
     for (const col of Object.keys(rankCols)) {
         const s = { hit: 0, count: 0, values: new Set() };
         for (const row of rows) {
-            const raw = row[col];
+            // ownCell, som rankingAffectsColumn: en kolonne, der hedder
+            // "constructor", må ikke læse en indbygget funktion som værdi.
+            const raw = ownCell(row, col);
             const text = raw == null ? '' : String(raw).trim();
             if (text === '') continue;       // ikke udfyldt — ikke urangeret
             if (lookups[col].get(valueKey(text)) !== undefined) { s.hit++; continue; }
@@ -1773,7 +1791,7 @@ export function applyColumnOrders(data, rules, orders) {
     const newData = rows.map(row => {
         const out = { ...row };
         for (const col of active) {
-            const raw = row[col];
+            const raw = ownCell(row, col);
             const text = raw == null ? '' : String(raw).trim();
             const rank = text === '' ? undefined : lookups[col].get(valueKey(text));
             // Tom celle ELLER en værdi uden for rangeringen (fx en efternøler

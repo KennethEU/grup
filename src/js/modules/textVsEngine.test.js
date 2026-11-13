@@ -107,9 +107,11 @@ it('motoren mærker og rangerer de samme elever, som appen gør — uanset stave
         if (order && numeric && sent) {
             const ranked = applyColumnOrders(free, cls.rules, cls.columnOrders);
             const rankCol = Object.keys(ranked.labelMap)[0];
-            // Motorens rang er pladsen i listen (1, 2, 3 …); appens tæller kun
-            // de forskellige værdier. Rækkefølgen og "hvem har en rang" skal
-            // være ens, så sammenlign på værdien i stedet for på tallet.
+            // Motorens rang er pladsen i den liste, den får; appens tæller de
+            // forskellige værdier. Siden 112. gennemsyn sender appen trinene
+            // (rankSteps), så TALLET skal også være ens — også når
+            // rækkefølgen har "Dreng" og "dreng" som to linjer. Før gav en
+            // dublet motoren et hul i skalaen (Dreng 1, Pige 3).
             const keys = [];
             order.forEach(v => { const key = normalizeText(v); if (key !== null && !keys.includes(key)) keys.push(key); });
             free.forEach((r, k) => {
@@ -118,7 +120,7 @@ it('motoren mærker og rangerer de samme elever, som appen gør — uanset stave
                 if (appRank === '') expect(Number.isNaN(engineRank), label).toBe(true);
                 else {
                     expect(keys[Number(appRank) - 1], label).toBe(normalizeText(r.A));
-                    expect(Number.isNaN(engineRank), label).toBe(false);
+                    expect(engineRank, label).toBe(Number(appRank));
                     rankedSeen++;
                 }
             });

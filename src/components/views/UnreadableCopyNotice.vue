@@ -50,6 +50,10 @@ function saveAsFile() {
     setTimeout(() => URL.revokeObjectURL(url), 40000);
 }
 
+// Bekræftelsen siger, hvad sletningen også betyder: mens kopien ligger her,
+// rydder opstarten ikke op (cleanupOrphanedClassData og pruneStaleHistories i
+// storage.js). Er den væk, sletter næste opstart grupper, emner og sessioner
+// for de klasser, der kun stod i den gamle liste (109. gennemsyn).
 function confirmDelete() {
     showConfirm.value = false;
     if (deleteUnreadableCopy()) {
@@ -81,7 +85,7 @@ function confirmDelete() {
     <ConfirmModal
         v-if="showConfirm"
         title="Slet den gemte kopi"
-        message="Kopien er den sidste vej tilbage til de gamle klasser. Gem den som fil først, hvis du er i tvivl. Det kan ikke fortrydes."
+        message="Kopien er den sidste vej tilbage til de gamle klasser. Næste gang Grupper åbnes, slettes også de gemte grupper og sessioner for klasser, der kun stod i den gamle liste. Gem den som fil først, hvis du er i tvivl. Det kan ikke fortrydes."
         confirm-text="Slet"
         variant="danger"
         @confirm="confirmDelete"

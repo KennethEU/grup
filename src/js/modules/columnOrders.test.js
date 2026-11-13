@@ -9,7 +9,9 @@
 // tekstkolonnen, ikke i stedet for. Ellers ville Pythons lærervendte advarsler
 // begynde at sige "2" i stedet for "Middel".
 import { describe, it, expect } from 'vitest';
-import { applyColumnOrders, RANK_PREFIX, RULE_TYPES } from './utils.js';
+import { applyColumnOrders, rankingAffectsColumn, rankSteps, RANK_PREFIX, RULE_TYPES } from './utils.js';
+import { buildEngineInput } from './nextEngine.js';
+import { buildTask } from '../../../motor/engine/task.js';
 
 const LEVEL_COLUMN = ['Lav', 'Middel', 'Høj'];
 
@@ -276,5 +278,42 @@ describe('applyColumnOrders — motoren skal kunne se lærerens egen kolonne', (
         const result = applyColumnOrders(students('Lav'), [
             { name: RULE_TYPES.BALANCE, attribute: 'Niveau' }, ...rules], orders);
         expect(result.rules[1]).toBe(rules[0]);
+    });
+});
+
+// Småting 77 (112. gennemsyn): placeringen af en efternøler (applyColumnOrders)
+// og motorens input (buildEngineInput → rankingAffectsColumn) skal være enige
+// om, hvornår en rækkefølge er en skala, og om hvilket tal hvert trin får.
+describe('rankSteps — én regel for trinene, tre steder', () => {
+    it('tæller hver værdi én gang, første stavemåde vinder, tomme springes over', () => {
+        expect(rankSteps(['Lav', ' lav ', null, '', 'Høj', 'LAV'])).toEqual(['Lav', 'Høj']);
+        expect(rankSteps('Lav,Høj')).toEqual([]);
+        expect(rankSteps(undefined)).toEqual([]);
+    });
+
+    it('en rækkefølge med ét trin er ingen skala — heller ikke for placeringen', () => {
+        const data = students('Lav', 'Lav', 'Høj');
+        const rules = [{ name: RULE_TYPES.BALANCE, attribute: 'Niveau' }];
+        for (const order of [['Lav'], ['Lav', 'lav'], ['Lav', ' LAV ', null]]) {
+            expect(rankingAffectsColumn(data, 'Niveau', order)).toBe(false);
+            expect(applyColumnOrders(data, rules, { Niveau: order }).data).toBe(data);
+        }
+    });
+
+    it('en dublet giver ikke motoren et hul i skalaen', () => {
+        const order = ['Lav', 'lav', 'Høj'];
+        const data = students('Lav', 'Høj', 'lav', 'Høj');
+        const placed = applyColumnOrders(data, [{ name: RULE_TYPES.BALANCE, attribute: 'Niveau' }], { Niveau: order });
+        expect(placed.data.map(r => r[rankCol])).toEqual(['1', '2', '1', '2']);
+
+        const cls = {
+            data, columnOrders: { Niveau: order },
+            rules: [{ type: RULE_TYPES.BALANCE, column: 'Niveau' }],
+            settings: { groupTarget: 2, groupMod: '+' },
+        };
+        const input = buildEngineInput({ cls, isMatrix: false, groupMode: 'size', viewGroups: [] });
+        expect(input.columnOrders.Niveau).toEqual(['Lav', 'Høj']);
+        const rule = buildTask(input).rules.find(p => p.column === 'Niveau');
+        expect(Array.from(rule.num)).toEqual([1, 2, 1, 2]);
     });
 });

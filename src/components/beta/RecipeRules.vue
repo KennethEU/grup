@@ -35,6 +35,11 @@ const rows = computed(() => state.currentClass?.data || []);
 const hasAgreements = computed(() => !props.isMatrix
     && ((state.currentClass?.togetherGroups || []).length + (state.currentClass?.separations || []).length) > 0);
 const hasAggregate = computed(() => props.rules.some(r => r?.type === RULE_TYPES.AGGREGATE));
+// En gammel gemt "Opdel" i matrix-runden gør ingenting (motoren får den
+// aldrig). Advarslen øverst i opskriften siger det og har "Fjern reglen";
+// linjen selv står dæmpet og gennemstreget, så den ikke ligner en regel, der
+// virker (110. gennemsyn, forslag 94 — kun udseende).
+const isIgnored = (rule) => props.isMatrix && MATRIX_EXCLUDED_RULES.includes(rule?.type);
 
 const columnOptions = computed(() =>
     teacherColumns(state.currentClass?.columns).filter(c => c !== props.idColumn));
@@ -249,7 +254,8 @@ const isDragged = (index) => dragPositions.value.length > 0 && dragPositions.val
         <span class="recipe__text">{{ heading }}</span>
     </li>
     <li class="recipe__line recipe__line--rule" :data-rule-index="index"
-        :class="{ 'is-incomplete': ruleIsIncomplete(rule), 'is-dragging': isDragged(index) }"
+        :class="{ 'is-incomplete': ruleIsIncomplete(rule), 'is-ignored': isIgnored(rule), 'is-dragging': isDragged(index) }"
+        :title="isIgnored(rule) ? 'Virker ikke i matrix-runden — se advarslen øverst' : undefined"
         @dragover="dragOver(index, $event)" @drop="dragDrop($event)">
         <span class="recipe__no"><RuleMark v-if="marks && marks[index]" :mark="marks[index]" /><RuleMark v-else-if="trialMarks && trialMarks[index]" :mark="trialMarks[index]" trial />{{ lineNo.get(index) }}</span>
         <span class="recipe__text">

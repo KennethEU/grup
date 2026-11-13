@@ -331,6 +331,29 @@ describe('et gammelt resultat skjuler ikke en ny advarsel', () => {
         expect(last().some(h => h.text === note.text)).toBe(true);
     });
 
+    // 109. gennemsyn: id'et havde notens plads i listen. Når noterne om
+    // resultatet fjernes (fx en gendannet session), rykker en note om
+    // opsætningen op, fik et nyt id — og en lukket note kom igen.
+    it('en lukket note om opsætningen bliver lukket, når noterne om resultatet går', async () => {
+        const setup = makeSetup();
+        setClass(setup, []);
+        const input = inputNow(setup);
+        const answer = await run({ ...input, seed: 7, budget: BUDGET }, {});
+        land(setup, input, answer);
+        expect(lastRunApplies(false)).toBe(true);
+        setupNotices.last.standard = [
+            { text: 'Et resultat om Gruppe 3', type: 'info', result: true },
+            { text: 'Fordel på "Køn" kan ikke gå helt lige op', type: 'info' },
+        ];
+        const last = () => shownHints.value.filter(h => h.source === 'last');
+        const setupNote = last().find(h => /Fordel på/.test(h.text));
+        dismiss(setupNote.id);
+        expect(last().map(h => h.text)).toEqual(['Et resultat om Gruppe 3']);
+
+        forgetRunResults(['standard']);
+        expect(last()).toEqual([]);
+    });
+
     it('en rettet celle i en regels kolonne: noterne går', async () => {
         const setup = makeSetup();
         setClass(setup, []);

@@ -132,11 +132,11 @@ describe('motorens skjulte beskeder har altid en af appens egne i stedet', () =>
                 seen[m.code]++;
                 if (m.code === 'text-only-column') {
                     const rule = input.rules[m.rule];
-                    // KENDT HUL (sjældent, ikke rettet — se TODO.md, gennemsyn
-                    // 101): er kolonnen tal for flertallet af HELE klassen, men
-                    // er alle med et tal fraværende eller låst fast, ser motoren
-                    // kun tekst, mens appen kalder kolonnen for tal og tier.
-                    if (columnIsNumeric(setup.cls.data, rule.column)) { knownGap++; continue; }
+                    // Hullet fra 101. (lukket i 111.): er kolonnen tal for
+                    // HELE klassen, men er alle med et tal fraværende eller
+                    // låst fast, ser motoren kun tekst — så siger appen det nu
+                    // selv (samme id, anden tekst).
+                    if (columnIsNumeric(setup.cls.data, rule.column)) knownGap++;
                     expect(ids.some(id => id.startsWith('hint:non-numeric:') && id.endsWith(`:${rule.type}:${rule.column}`)), context()).toBe(true);
                 } else if (m.code === 'topic-rounding') {
                     expect(ids.some(id => id === 'hint:topic-rounding' || id === 'hint:topic-floor'), context()).toBe(true);
@@ -147,7 +147,8 @@ describe('motorens skjulte beskeder har altid en af appens egne i stedet', () =>
         }
         // Testen skal faktisk have mødt alle tre.
         for (const code of Object.keys(seen)) expect(seen[code], code).toBeGreaterThan(20);
-        // Hullet skal blive ved med at være sjældent (målt: 2 af 15.000).
+        // Hullet er sjældent i tilfældige klasser (målt: 2 af 15.000); den
+        // særskilte test herunder rammer det med vilje.
         expect(knownGap).toBeLessThan(N / 500);
     });
 });
@@ -391,7 +392,7 @@ describe('matrix: motorens skjulte beskeder har altid en af appens egne i stedet
                 seen[m.code]++;
                 if (m.code === 'text-only-column') {
                     const rule = input.rules[m.rule];
-                    if (columnIsNumeric(setup.cls.data, rule.column)) { knownGap++; continue; }
+                    if (columnIsNumeric(setup.cls.data, rule.column)) knownGap++;
                     expect(ids.some(id => id.startsWith('hint:non-numeric:matrix:') && id.endsWith(`:${rule.type}:${rule.column}`)), context()).toBe(true);
                 } else if (m.code === 'fewer-groups-than-asked') {
                     expect(ids, context()).toContain('hint:too-many-groups');
@@ -412,5 +413,89 @@ describe('matrix: motorens skjulte beskeder har altid en af appens egne i stedet
         expect(seen['fewer-groups-than-asked']).toBeGreaterThan(20);
         expect(seen['topic-rounding']).toBe(0);
         expect(knownGap).toBeLessThan(N / 500);
+    });
+});
+
+// Hullet fra 101. gennemsyn, med vilje (111. gennemsyn, 13/11 2026): kolonnen
+// er tal for klassen, men alle med et tal er fraværende eller låst fast.
+// Motoren siger text-only-column (som appen aldrig viser); appen skal sige det
+// selv — og kun dér, ikke når der er frie elever med tal tilbage.
+describe('en tal-kolonne, hvor alle med et tal er væk', () => {
+    function gapClass({ lockNumbers = false, excludeNumbers = false } = {}) {
+        // 6 med tal (flertallet), 4 med tekst.
+        const data = Array.from({ length: 10 }, (_, k) => ({
+            _rowId: 'r' + (k + 1), Navn: 'Elev ' + (k + 1),
+            Niveau: k < 6 ? String(1 + (k % 5)) : 'Middel', Hold: 'a',
+            _excluded: excludeNumbers && k < 6,
+        }));
+        const cls = {
+            filename: 'hul', columns: ['Navn', 'Niveau', 'Hold'], data,
+            rules: [{ type: 'balance', column: 'Niveau' }],
+            togetherGroups: [], separations: [], topics: [], columnOrders: {},
+            settings: { groupTarget: '2', groupMod: '+', groupMode: 'size' },
+        };
+        const locked = lockNumbers
+            ? [{ name: 'Group 1', locked: true, members: data.slice(0, 6).map(r => r._rowId) }]
+            : [];
+        return { cls, groupMode: 'size', locked };
+    }
+    const ownHint = (hints) => hints.find(h => h.id === 'hint:non-numeric:stam:balance:Niveau');
+
+    it('alle med et tal er fraværende: motoren og appen siger begge "gør ingenting"', () => {
+        const { answer, hints } = hintsWithCheck(gapClass({ excludeNumbers: true }));
+        expect(answer.messages.map(m => m.code)).toContain('text-only-column');
+        expect(ownHint(hints)?.text).toMatch(/fraværende eller låst fast/);
+        // Ingen "Ranger"-knap: kolonnen skal ikke rangeres.
+        expect(ownHint(hints)?.action).toBeUndefined();
+    });
+
+    it('alle med et tal er låst fast: samme besked', () => {
+        const { answer, hints } = hintsWithCheck(gapClass({ lockNumbers: true }));
+        expect(answer.messages.map(m => m.code)).toContain('text-only-column');
+        expect(ownHint(hints)?.text).toMatch(/fraværende eller låst fast/);
+    });
+
+    it('matrix: alle med et tal er låst fast i en matrixgruppe', () => {
+        const { cls } = gapClass();
+        cls.matrixRules = cls.rules;
+        cls.rules = [];
+        cls.matrixSettings = { groupTarget: '2', groupMod: '+', matrixStrategy: 'size', matrixRepresentationType: 'group' };
+        const ids = cls.data.map(r => r._rowId);
+        const home = [0, 3, 6].map((at, i) => ({ name: 'Group ' + (i + 1), members: ids.slice(at, at + (i === 2 ? 4 : 3)), topic: null }));
+        const lockedMatrix = [{ name: 'Group 1', locked: true, members: ids.slice(0, 6) }];
+        const { answer, hints } = matrixHintsWithCheck({ cls, groupMode: 'size', home, lockedMatrix });
+        expect(answer.messages.map(m => m.code)).toContain('text-only-column');
+        const own = hints.find(h => h.id === 'hint:non-numeric:matrix:balance:Niveau');
+        expect(own?.text).toMatch(/fraværende eller låst fast/);
+        expect(own?.kind).toBe('info');
+    });
+
+    it('frie elever med tal: ingen advarsel (reglen virker)', () => {
+        const { answer, hints } = hintsWithCheck(gapClass());
+        expect(answer.messages.map(m => m.code)).not.toContain('text-only-column');
+        expect(ownHint(hints)).toBeUndefined();
+    });
+
+    it('omvendt: appens "gør ingenting lige nu" står kun, når motoren siger text-only-column', () => {
+        const R = rng(SEED + 11);
+        let shown = 0;
+        for (let i = 0; i < N; i++) {
+            const setup = randomClass(R);
+            // Halvdelen af gangene: alle med et tal i Niveau er fraværende,
+            // så hullet faktisk rammes (ellers 2 af 15.000).
+            if (R() < 0.5) setup.cls.data.forEach(r => { if (/^\d+$/.test(r.Niveau)) r._excluded = true; });
+            const { input, answer, hints } = hintsWithCheck(setup);
+            if (!answer) continue;
+            for (const h of hints) {
+                if (!h.id.startsWith('hint:non-numeric:') || !/gør ingenting lige nu/.test(h.text)) continue;
+                shown++;
+                const [, , , type, column] = h.id.split(':');
+                const said = answer.messages.some(m => m.code === 'text-only-column'
+                    && input.rules[m.rule]?.type === type && input.rules[m.rule]?.column === column);
+                expect(said, JSON.stringify({ setup, id: h.id })).toBe(true);
+            }
+        }
+        // Testen skal faktisk have mødt den.
+        expect(shown).toBeGreaterThan(20);
     });
 });

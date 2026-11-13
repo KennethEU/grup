@@ -28,7 +28,7 @@ vi.mock('./storage.js', () => ({
 import {
     pushRun, restoreRun, listRuns, clearRuns, hasRuns,
     hasManualChanges, markClean, describeRules,
-    hasSettingsChanges, settingsChanges, unsavedRecipeChanges, previewRunGroups, runChanges, MAX_RUNS,
+    hasSettingsChanges, settingsChanges, unsavedRecipeChanges, markCleanWithInputs, previewRunGroups, runChanges, MAX_RUNS,
 } from './runHistory.js';
 import { renameColumn, deleteColumn } from './columnActions.js';
 import { setupNotices, beginRun, announce, commitRun, clearSetupNotices } from './setupNotices.js';
@@ -557,6 +557,36 @@ describe('inputtet hører til de grupper det dannede', () => {
 
         restoreRun(0);                     // tilbage til kørslen med '4'
         expect(state._lastRunInputs.settings.groupTarget).toBe('4');
+    });
+});
+
+describe('en gendannet session spørger ikke om regler, der er de samme (110. gennemsyn)', () => {
+    // restoreSession() i history.js pakker sessionens activeRules ud til
+    // {type, column, value} og kun for regler MED kolonne. Klassen kan have
+    // en tom linje stående eller en regel uden `value` (importeret klasse).
+    function restoredFromSession() {
+        markCleanWithInputs({ rules: [{ type: 'distribute', column: 'Køn', value: '' }] });
+    }
+
+    it('en tom regel-linje uden kolonne tæller ikke som en ændring', () => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn', value: '' }, { type: 'distribute', column: '', value: '' }];
+        restoredFromSession();
+        expect(unsavedRecipeChanges()).toEqual([]);
+    });
+
+    it('en regel uden value er det samme som en tom value', () => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+        restoredFromSession();
+        expect(unsavedRecipeChanges()).toEqual([]);
+        pushRun();
+        expect(hasSettingsChanges(0)).toBe(false);
+    });
+
+    it('en rigtig ændring opdages stadig', () => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn' }];
+        restoredFromSession();
+        state.currentClass.rules = [{ type: 'separate', column: 'Køn', value: 'Pige' }];
+        expect(unsavedRecipeChanges()).toEqual(['rules']);
     });
 });
 

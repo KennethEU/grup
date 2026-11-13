@@ -232,3 +232,55 @@ test('en gemt rangering med samme værdi to gange vises og gemmes med ét trin p
     const saved = await page.evaluate(() => (window as any).appDebug.state.currentClass.columnOrders.Niveau);
     expect(saved).toEqual(['Lav', 'Middel', 'Høj']);
 });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Tal-kolonne, men alle med et tal er fraværende (111. gennemsyn, 13/11 2026).
+//
+// Kolonnen er tal for klassen, så opskriften sagde intet. Men motoren ser kun
+// de elever, der er til stede, og de har tekst: Balancér gør ingenting.
+// Motoren sagde det selv, men den besked viser appen aldrig (den ville sige
+// "kolonnen har ingen tal" om en kolonne fuld af tal). Nu siger appen det med
+// den rigtige grund — og tier, så snart en elev med et tal er tilbage.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+test('Balancér på en tal-kolonne, hvor alle med et tal er fraværende, siger til', async ({ page }) => {
+    const csv = 'Navn\tPoint\n'
+        + 'Anna\t3\nBo\t5\nCarl\t2\nDorte\t4\nEmil\t1\nFrida\t3\n'
+        + 'Gustav\tMiddel\nHanne\tMiddel\nIda\tMiddel\nJens\tMiddel';
+    const withNumber = ['Anna', 'Bo', 'Carl', 'Dorte', 'Emil', 'Frida'];
+    // Fravær sættes, som læreren gør det: fluebenet i Elevliste.
+    const setPresent = async (name: string, present: boolean) => {
+        await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+        const box = page.locator('tr').filter({ hasText: name }).locator('.cell-checkbox input').nth(1);
+        if (present) await box.check(); else await box.uncheck();
+    };
+    const toGroups = () => page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    const stack = (p: Page) => p.locator('dialog.recipe-dialog[open] .gh-hint');
+    const gap = (p: Page) => stack(p).filter({ hasText: 'fraværende eller låst fast' });
+
+    await createClass(page, 'Point Fravaer', csv);
+    await goToGroups(page);
+    await addRecipeRule(page, { type: 'Balancér', column: 'Point' });
+    // Alle til stede: kolonnen er tal, reglen virker. Motoren noterer de fire
+    // med tekst ("… der ikke er et tal"), men ingen siger "gør ingenting".
+    await expect(stack(page).filter({ hasText: 'ikke er et tal' })).toHaveCount(1);
+    await expect(stack(page).filter({ hasText: 'gør ingenting' })).toHaveCount(0);
+    await closeRecipe(page);
+
+    // De seks med et tal er fraværende.
+    for (const name of withNumber) await setPresent(name, false);
+    await toGroups();
+    await openRecipe(page);
+    await expect(gap(page)).toBeVisible();
+    await expect(gap(page)).toContainText('gør ingenting lige nu');
+    // Ingen "Ranger"-knap: det er ikke kolonnen, der skal rettes.
+    await expect(gap(page).locator('.gh-hint-action')).toHaveCount(0);
+    // Og motorens egen besked ("kolonnen har ingen tal") står ikke ved siden af.
+    await expect(stack(page).filter({ hasText: 'kolonnen har ingen tal' })).toHaveCount(0);
+    await closeRecipe(page);
+
+    // Én med et tal er tilbage: reglen virker igen, advarslen går.
+    await setPresent('Anna', true);
+    await toGroups();
+    await openRecipe(page);
+    await expect(gap(page)).toHaveCount(0);
+});

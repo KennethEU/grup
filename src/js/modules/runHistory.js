@@ -471,6 +471,37 @@ function stableString(v) {
 }
 
 /**
+ * Et felt fra inputtet i den form, det sammenlignes i.
+ *
+ * Reglerne skrives om til det, der betyder noget for dannelsen: en regel
+ * uden kolonne er en tom linje, læreren ikke har valgt endnu (motoren får
+ * den aldrig, se buildEngineInput), og en manglende `value` er det samme
+ * som en tom. Uden det kom spørgsmålet "Reglerne er ændret siden" efter en
+ * gendannet session, hvor intet var ændret: sessionen gemmer kun regler MED
+ * kolonne og altid med en værdi (captureActiveRules i history.js), mens
+ * klassen kan have en tom linje stående eller — fra en importeret eller
+ * ældre klasse — en regel uden `value` (13/11 2026, 110. gennemsyn).
+ *
+ * En gammel værdiliste (`values`, kun fra en håndrettet backup) tages med,
+ * fordi motoren læser den.
+ */
+function comparable(key, v) {
+    if ((key !== 'rules' && key !== 'matrixRules') || !Array.isArray(v)) return v;
+    return v
+        .filter(r => r && r.column)
+        .map(r => ({
+            type: r.type || 'distribute',
+            column: r.column,
+            value: r.value ?? '',
+            ...(Array.isArray(r.values) ? { values: r.values } : {}),
+        }));
+}
+
+function sameInput(key, a, b) {
+    return stableString(comparable(key, a)) === stableString(comparable(key, b));
+}
+
+/**
  * Er regler, indstillinger, undgåelser, emner eller gruppetilstand anderledes
  * i dag, end da kørslen blev dannet?
  *
@@ -518,7 +549,7 @@ export function settingsChanges(index) {
 
     const nowInputs = snapshotInputs();
     return Object.keys(SETTINGS_KINDS).filter(kind =>
-        SETTINGS_KINDS[kind].some(k => stableString(run[k]) !== stableString(nowInputs[k])));
+        SETTINGS_KINDS[kind].some(k => !sameInput(k, run[k], nowInputs[k])));
 }
 
 /**
@@ -542,7 +573,7 @@ export function unsavedRecipeChanges() {
     if (!last || !state.currentClass) return [];
     const nowInputs = snapshotInputs();
     return Object.keys(SETTINGS_KINDS).filter(kind =>
-        SETTINGS_KINDS[kind].some(k => stableString(last[k]) !== stableString(nowInputs[k])));
+        SETTINGS_KINDS[kind].some(k => !sameInput(k, last[k], nowInputs[k])));
 }
 
 /**

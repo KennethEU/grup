@@ -7,7 +7,7 @@
 // Python-motor: /api/generate_groups og /api/jobs/<id>. Grupperne dannes nu
 // af nextEngine.js direkte.)
 
-import { pyBridge } from './py_bridge.js';
+import { pyBridge, CLASS_GONE } from './py_bridge.js';
 
 let isInitialized = false;
 
@@ -120,7 +120,7 @@ export function initApiAdapter() {
                     const filename = decodeURIComponent(url.split('/').pop());
                     const cls = pyBridge.getClass(filename, { track });
 
-                    if (!cls) return jsonResponse({ error: 'Class not found' }, 404);
+                    if (!cls) return jsonResponse({ error: CLASS_GONE }, 404);
 
                     // Flad struktur, som frontenden forventer
                     // Lager: { filename, content: { data, rules... } }

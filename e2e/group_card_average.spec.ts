@@ -72,3 +72,34 @@ test('Snittet viser hver Balancér-kolonne og tæller kun dem, der er her', asyn
     });
     await expect(line).toHaveText(/Karakter 7,0\s*Fravær 4,0/);
 });
+
+test('En rangeret kolonne med tal i cellerne får intet snit', async ({ page }) => {
+    // Læreren har rangeret "3" lavest og "1" højest (fx "1" = bedst). Motoren
+    // balancerer så på RANGEN, ikke på tallet — et snit af cellernes tal ville
+    // tale om noget, motoren ikke har regnet på (rest af 74, 112. gennemsyn).
+    const csv =
+        'Navn\tNiveau\tKarakter\n' +
+        'Anna\t1\t12\nBob\t3\t2\nClara\t2\t7\nDavid\t1\t10';
+    await createClass(page, 'Snit rangeret E2E', csv);
+    await goToGroups(page);
+    await addBalance(page, 'Niveau');
+    await addBalance(page, 'Karakter');
+    await generateGroups(page);
+
+    await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const ids = state.currentClass.data.map((s: any) => s._rowId);
+        state.storedStandardGroups.forEach((g: any, i: number) => { g.members = i === 0 ? ids : []; });
+    });
+    await page.getByRole('button', { name: 'Tags' }).click();
+    const line = page.locator('.group-card').first().locator('.group-average');
+    // Uden rangering: begge kolonner har et snit.
+    await expect(line).toHaveText(/Niveau 1,8\s*Karakter 7,8/);
+
+    await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        state.currentClass.columnOrders = { Niveau: ['3', '2', '1'] };
+    });
+    await expect(line).toHaveText(/^\s*Snit\s*Karakter 7,8\s*$/);
+    await expect(line).not.toContainText('Niveau');
+});

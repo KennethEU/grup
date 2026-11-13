@@ -393,3 +393,49 @@ describe('hints — aftalens værdier måles som motorens', () => {
     });
 });
 
+
+// (93), 109. gennemsyn: en gammel "Opdel" i matrix-reglerne gør ingenting
+// (motoren får den aldrig), men stod i opskriften som en regel. Nu en
+// advarsel i opskriften med en knap, der fjerner den.
+describe('hints — en gammel Opdel i matrix-reglerne', () => {
+    beforeEach(async () => {
+        vi.clearAllMocks();
+        state.currentClass = {
+            filename: 'test',
+            data: students(12),
+            columns: ['Navn', 'Hold'],
+            rules: [{ type: 'aggregate', column: 'Hold' }],
+            matrixRules: [{ type: 'aggregate', column: 'Hold' }, { type: 'distribute', column: 'Hold' }],
+            settings: { groupTarget: '4', groupMod: '+' },
+            matrixSettings: {},
+            separations: [],
+            topics: [],
+        };
+        state.storedStandardGroups = [];
+        state.storedMatrixGroups = [];
+        state.groupMode = 'size';
+        state.idColumn = '_rowId';
+        state.displayColumn = 'Navn';
+    });
+
+    const excluded = () => allHints.value.filter(h => h.id.startsWith('hint:matrix-excluded:'));
+
+    it('står kun i matrix-runden, og i opskriften', () => {
+        state.activeView = 'standard';
+        expect(excluded()).toEqual([]);
+        state.activeView = 'matrix';
+        const [hint] = excluded();
+        expect(hint.text).toMatch(/^Opdel på "Hold" gør ingenting i matrix-runden/);
+        expect(isRecipeHint(hint)).toBe(true);
+    });
+
+    it('knappen fjerner kun Opdel fra matrix-reglerne og gemmer', async () => {
+        const { autoSave } = await import('./classActions.js');
+        state.activeView = 'matrix';
+        excluded()[0].actions[0].run();
+        expect(state.currentClass.matrixRules).toEqual([{ type: 'distribute', column: 'Hold' }]);
+        expect(state.currentClass.rules).toEqual([{ type: 'aggregate', column: 'Hold' }]);
+        expect(autoSave).toHaveBeenCalledTimes(1);
+        expect(excluded()).toEqual([]);
+    });
+});
