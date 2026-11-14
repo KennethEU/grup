@@ -22,7 +22,7 @@
 import { state } from './state.js';
 import * as storage from './storage.js';
 import {
-    memberDisplayName, memberIdStr, ROW_ID, homeGroupFingerprint, groupCountText,
+    memberDisplayName, memberIdStr, ROW_ID, matrixOrigins, groupCountText,
     mergeClassTopics, classTopicSpelling, newUuid,
 } from './utils.js';
 import { cancelPickUp } from '../../composables/useDragDrop.js';
@@ -649,7 +649,7 @@ export function restoreRun(index, alsoSettings = false) {
     // Kørslens matrix hører til kørslens EGNE stamgrupper — begge dele kom fra
     // samme snapshot. Havde kørslen ingen matrix, er der intet at holde øje med.
     state.matrixSourceFingerprint = (fresh.matrix && fresh.matrix.length)
-        ? homeGroupFingerprint(state.storedStandardGroups)
+        ? matrixOrigins(state.storedStandardGroups, state.storedMatrixGroups)
         : null;
 
     // ── Noterne og mærkerne fra kørslens egen dannelse (forslag 88) ──

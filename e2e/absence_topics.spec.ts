@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, createClassAndGoToGroups, goToGroups, generateGroups, addTopics, goToMatrix, setGroupSize } from './helpers';
+import { createClass, createClassAndGoToGroups, goToGroups, generateGroups, addTopics, goToMatrix, goToStandard, setGroupSize } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Fravær, efternølere og klasse-emner — dækker de adfærds-fixes der er
@@ -182,4 +182,115 @@ test('et emne der hedder som et Object-felt giver ikke NaN i matrix-forhåndsvis
     const dialog = page.locator('dialog.recipe-dialog[open]');
     await expect(dialog.locator('.recipe__note')).toContainText(/\d+ matrixgrupper/);
     await expect(dialog).not.toContainText('NaN');
+});
+
+// 131. gennemsyn: den almindelige vej tilbage er fluebenet i elevlisten. Var
+// eleven væk, da matrixen blev dannet, står eleven bagefter i sin stamgruppe,
+// men i ingen matrixgruppe — og det sagde intet. Nu står der en besked med en
+// knap til "Tilføj efternøler". (Placeringen må ikke sætte eleven ved flere fra
+// sin stamgruppe end nødvendigt; i denne klasse har alle matrixgrupper én, så
+// det tjek kan ikke skelne — niveauerne prøves i placement.test.js.)
+test('En elev meldt mødt efter matrixen får en besked i matrix-runden og en plads med så få fra sin stamgruppe som muligt', async ({ page }) => {
+    await createClass(page, 'Matrix fluebenet');
+    await goToGroups(page);
+    await generateGroups(page);
+
+    await setAbsent(page, 'David');
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await goToMatrix(page);
+    await generateGroups(page);
+
+    // Mødt igen med fluebenet: eleven bliver i sin stamgruppe.
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    await page.locator('tr').filter({ hasText: 'David' }).locator('.cell-checkbox input').nth(1).check();
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+
+    // Hvor få fra Davids stamgruppe kan David højst komme til at sidde med?
+    // (I denne klasse har hver matrixgruppe allerede én fra Davids stamgruppe,
+    // så svaret er 1 — placeringen skal ikke gøre det værre.)
+    const fewestMates = () => page.evaluate(() => {
+        const st = (window as any).appDebug.state;
+        const id = st.currentClass.data.find((r: any) => r.Navn === 'David')._rowId;
+        const idOf = (m: any) => String(typeof m === 'object' ? m.id : m);
+        const home = st.storedStandardGroups.find((g: any) => g.members.map(idOf).includes(id));
+        const mates = home.members.map(idOf).filter((m: string) => m !== id);
+        const mine = st.storedMatrixGroups.filter((g: any) => g.members.map(idOf).includes(id));
+        const countIn = (g: any) => g.members.map(idOf).filter((m: string) => mates.includes(m)).length;
+        return {
+            best: Math.min(...st.storedMatrixGroups.filter((g: any) => !g.members.map(idOf).includes(id)).map(countIn)),
+            count: mine.length,
+            together: mine[0] ? countIn(mine[0]) : -1,
+        };
+    });
+
+    const hint = page.locator('.gh-hint').filter({ hasText: 'David er mødt, men står ikke i nogen matrixgruppe' });
+    await expect(hint).toBeVisible({ timeout: 10000 });
+    const before = await fewestMates();
+    expect(before.count).toBe(0);
+
+    await hint.getByRole('button', { name: 'Tilføj efternøler' }).click();
+    await page.locator('.student-item').filter({ hasText: 'David' }).locator('input[type="checkbox"]').check();
+    await page.locator('.btn-confirm').click();
+    await expect(hint).toHaveCount(0);
+
+    // David står nu i én matrixgruppe, og med så få fra sin stamgruppe som muligt.
+    const after = await fewestMates();
+    expect(after.count).toBe(1);
+    expect(after.together).toBe(before.best);
+});
+
+// Det modsatte af testen ovenfor med "i ingen stamgruppe": en elev, der sættes
+// tilbage i stamgruppe-visningen, mens der findes en matrix uden eleven.
+test('En elev tilføjet i stamgruppe-visningen får besked om, at eleven mangler en matrixgruppe', async ({ page }) => {
+    await createClass(page, 'Stam efternøler');
+    await goToGroups(page);
+    await generateGroups(page);
+
+    await setAbsent(page, 'David');
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await goToMatrix(page);
+    await generateGroups(page);
+
+    // Papirkurven tager eleven ud af begge sæt.
+    await page.evaluate(() => {
+        const st = (window as any).appDebug.state;
+        const id = st.currentClass.data.find((r: any) => r.Navn === 'David')._rowId;
+        (st.storedStandardGroups || []).forEach((g: any) => {
+            const i = g.members.findIndex((m: any) => (typeof m === 'object' ? m.id : m) === id);
+            if (i > -1) g.members.splice(i, 1);
+        });
+    });
+
+    await goToStandard(page);
+    await addLatecomer(page, 'David');
+
+    await expect(page.getByText(/står nu i en stamgruppe, men i ingen matrixgruppe/)).toBeVisible({ timeout: 10000 });
+});
+
+// Forslag 123 (131. gennemsyn): en elev, der står i både en stam- og en
+// matrixgruppe, meldes væk med fluebenet og kommer tilbage med "Tilføj
+// efternøler" i matrix-runden. Eleven bliver i sin matrixgruppe (egen gruppe
+// og "én pr. stamgruppe" er begge givet med til placeringen).
+test('En elev meldt væk efter matrixen bliver i sin matrixgruppe, når eleven tilføjes i matrix-runden', async ({ page }) => {
+    await createClass(page, 'Matrix tilbage');
+    await goToGroups(page);
+    await generateGroups(page);
+    await goToMatrix(page);
+    await generateGroups(page);
+
+    const matrixGroupOf = () => page.evaluate(() => {
+        const st = (window as any).appDebug.state;
+        const id = st.currentClass.data.find((r: any) => r.Navn === 'David')._rowId;
+        const idOf = (m: any) => String(typeof m === 'object' ? m.id : m);
+        return st.storedMatrixGroups.filter((g: any) => g.members.map(idOf).includes(id)).map((g: any) => g.name);
+    });
+    const before = await matrixGroupOf();
+    expect(before).toHaveLength(1);
+
+    await setAbsent(page, 'David');
+    await page.locator('.nav-tab').filter({ hasText: 'Grupper' }).click();
+    await addLatecomer(page, 'David');
+
+    await expect(page.getByText(/David bliver i Gruppe/)).toBeVisible({ timeout: 10000 });
+    expect(await matrixGroupOf()).toEqual(before);
 });

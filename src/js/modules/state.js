@@ -60,8 +60,8 @@ const _rawState = {
     // genindlæsning — den gamle matrix ligger stadig i storedMatrixGroups, og
     // uden flaget ville den blive vist, udskrevet og gemt som gyldig.
     matrixGroupsStale: false,
-    // Aftryk af de stamgrupper, den NUVÆRENDE matrix blev dannet ud fra —
-    // se homeGroupFingerprint() i utils.js. Driver hintet "stamgrupperne er
+    // Aftryk af, hvilken stamgruppe hver elev i den NUVÆRENDE matrix kom fra —
+    // se matrixOrigins() i utils.js. Driver hintet "stamgrupperne er
     // ændret, siden matrixen blev dannet". Lever kun i hukommelsen: efter en
     // genindlæsning ved vi ikke hvor matrixen kom fra, og så er tavshed
     // ærligere end en advarsel vi ikke kan stå inde for.
@@ -121,7 +121,7 @@ const _rawState = {
     previewRunIndex: null,
 
     // Optagelsen af den seneste gruppedannelse — læreren kan afspille den og
-    // se motoren arbejde (recorder.py → replay.js). Én pr. visning: en
+    // se motoren arbejde (motorens afspilning → replay.js). Én pr. visning: en
     // matrix-kørsel må ikke smide stamgruppernes optagelse væk, og omvendt.
     //
     // KUN I HUKOMMELSEN, med vilje. En optagelse fylder op mod to megabyte,
@@ -236,6 +236,20 @@ export function undo() {
     pruneSelection();
     state.undoVersion++;
     return true;
+}
+
+/**
+ * Smid det øverste øjebliksbillede væk uden at lægge det tilbage.
+ *
+ * Til en celle i elevlisten, hvor læreren fortryder det, hun er ved at skrive:
+ * billedet blev taget ved første tastetryk, og klassens data er stadig urørt
+ * (cellen skrives først ved blur). Billedet er altså det samme som det, der
+ * står, og et undo() ville bare bytte rækkerne ud med en kopi af dem selv.
+ */
+export function discardLastUndo() {
+    if (state._undoStack.length === 0) return;
+    state._undoStack.pop();
+    state.undoVersion++;
 }
 
 /**

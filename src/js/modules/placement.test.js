@@ -951,6 +951,35 @@ describe('findBestGroup — en tilbagevendende elevs egen gruppe (128. gennemsyn
     });
 });
 
+// Forslag 123 (131. gennemsyn): matrix-visningens efternøler. En elev, der
+// står i både en stam- og en matrixgruppe, meldes væk og kommer tilbage med
+// "Tilføj efternøler" i matrix-visningen. homeGroup er så MATRIXgruppen, og
+// "én pr. stamgruppe" (niveau 5) skal stadig vinde over den (niveau 7).
+describe('findBestGroup — en tilbagevendende elev i matrixen', () => {
+    const sourceById = new Map([
+        ['Anna', 'grp 1'], ['Bob', 'grp 1'],
+        ['Carl', 'grp 2'], ['Dina', 'grp 3'], ['Emil', 'grp 2'], ['Fie', 'grp 3'], ['Gro', 'grp 4'],
+    ]);
+    const all = ['Anna', 'Bob', 'Carl', 'Dina', 'Emil', 'Fie', 'Gro'].map(id => student(id));
+
+    it('bliver i sin matrixgruppe, også når en anden er mindre', () => {
+        // Anna er taget ud af M1 lige før placeringen. M1 har tre, M2 to, og
+        // ingen af dem har nogen fra grp 1.
+        const groups = [group('M1', ['Carl', 'Dina', 'Gro']), group('M2', ['Emil', 'Fie'])];
+        const pick = findBestGroup(student('Anna'), groups,
+            baseCtx({ sourceById, allStudents: all, homeGroup: groups[0] }));
+        expect(pick.name).toBe('M1');
+    });
+
+    it('flytter, når en fra elevens stamgruppe er kommet ind i den gamle matrixgruppe', () => {
+        // Bob (grp 1) er flyttet ind i M1, mens Anna var væk. M2 har ingen fra grp 1.
+        const groups = [group('M1', ['Bob', 'Carl', 'Dina']), group('M2', ['Emil', 'Fie', 'Gro'])];
+        const pick = findBestGroup(student('Anna'), groups,
+            baseCtx({ sourceById, allStudents: all, homeGroup: groups[0] }));
+        expect(pick.name).toBe('M2');
+    });
+});
+
 describe('partnersInGroup', () => {
     const ctx = { idCol: 'Navn', togetherComponents: [['Anna', 'Bob', 'Carl']] };
 

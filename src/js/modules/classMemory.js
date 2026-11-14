@@ -12,10 +12,12 @@
 // skulle huske at melde sig dér. Det gik galt to gange:
 //
 //   - `matrixGroupsStale` (flaget "matrixen skal dannes forfra") overlevede
-//     skiftet. Danner læreren stamgrupper i 2.a, skifter til 3.b og klikker
-//     "Matrix", så SER switchGroupMode() et sat flag og danner 3.b's matrix om
-//     med det samme — oven i den matrix hun havde rettet til i hånden. Ingen
-//     spørger om lov, for programmet tror, hun selv bad om det.
+//     skiftet. Dengang dannede et skift til matrix-visningen en forældet
+//     matrix om af sig selv, så 3.b's matrix blev dannet forfra oven i den,
+//     læreren havde rettet til i hånden. Det gør skiftet ikke længere (siden
+//     2/11 2026), men flaget skal stadig ryddes: ellers siger matrixStaleHint
+//     og "Vis for klassen" noget om 3.b, der handler om 2.a. Den nye klasses
+//     eget flag hentes bagefter fra lageret (selectClass i AppTopbar.vue).
 //   - Optagelsen (`lastRecording`) og en igangværende afspilning overlevede
 //     også. Afspilleren viser så 2.a's kørsel i 3.b's gruppekort, og når
 //     aftrykket ikke passer, siger den "Grupperne er ændret, siden optagelsen

@@ -1,0 +1,36 @@
+Lærere og elever
+menu
+Vis:  Almindelig Alm. m/billeder Afkrydsningsliste Klassebillede Administrativ
+Vis kun aktuelle elever
+Type	ID	Fornavn	Efternavn	Studieretning
+Lærer	MS	Mette Lærke	Sørensen	
+Elev	2bx 01	Adam Karim	Haddad	2026/27 2026 bx
+Elev	2bx 02	Alberte Juul	Fogh	2026/27 2026 bx
+Elev	2bx 03	Alfred Lind	Brix	2026/27 2026 bx
+Elev	2bx 04	Anna Sofie Bøgh	Kjeldsen	2026/27 2026 bx
+Elev	2bx 05	Asta Marie Lund	Toft	2026/27 2026 bx
+Elev	2bx 06	Bertram Holm	Vestergaard	2026/27 2026 bx
+Elev	2bx 07	Clara Rye	Sommer	2026/27 2026 bx
+Elev	2bx 08	Ellen Rosa	Dam	2026/27 2026 bx
+Elev	2bx 09	Emil Kaj	Ravnsborg	2026/27 2026 bx
+Elev	2bx 10	Frida Louise	Mørch	2026/27 2026 bx
+Elev	2bx 11	Hugo Strand	Lassen	2026/27 2026 bx
+Elev	2bx 12	Ingrid Bjørk	Aagaard-Lund	2026/27 2026 bx
+Elev	2bx 13	Johan Krog	Nørby	2026/27 2026 bx
+Elev	2bx 14	Josefine Marie Hvid	Elkjær	2026/27 2026 bx
+Elev	2bx 15	Karla Mai	Bonde	2026/27 2026 bx
+Elev	2bx 16	Lauge Valdemar	Friis	2026/27 2026 bx
+Elev	2bx 17	Lea Bach	Winther	2026/27 2026 bx
+Elev	2bx 18	Lærke Sol	Hedegaard	2026/27 2026 bx
+Elev	2bx 19	Malthe Ask	Vinding	2026/27 2026 bx
+Elev	2bx 20	Mira	Ivanova	2026/27 2026 bx
+Elev	2bx 21	Nora Liv	Skou	2026/27 2026 bx
+Elev	2bx 22	Oliver Brandt	Kjær	2026/27 2026 bx
+Elev	2bx 23	Philippa Grøn	Kastrup	2026/27 2026 bx
+Elev	2bx 24	Rasmus Minh Duc	Tran	2026/27 2026 bx
+Elev	2bx 25	Selma Rosa Holt	Brink	2026/27 2026 bx
+Elev	2bx 26	Sigrid Ellen	Fjord	2026/27 2026 bx
+Elev	2bx 27	Theodor Mateo Jiménez	Larsen	2026/27 2026 bx
+Elev	2bx 28	Viggo Storm	Bang	2026/27 2026 bx
+Elev	2bx 29	Ylva Josefine Rønne	Østergaard	2026/27 2026 bx
+Antal elever: 29, Antal lærere: 1, Holdets periode: 01-08-2026 - 31-07-2029, Opgørelsesdato: 14/11-2026

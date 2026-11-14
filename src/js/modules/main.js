@@ -31,8 +31,8 @@ try { localStorage.removeItem('grupper-motor'); } catch { /* uden lager: intet a
 // Expose Debug Helper
 window.appDebug = { pyBridge, state, undo, redo };
 
-// grup.dk/beta: samme app, ny skærm til gruppedannelsen (se beta.js). Kaldes
-// efter AppTopbar har sat lærerens eget tema, så beta's Rolig-tema vinder.
+// Rolig-temaet og klassen html.beta, som opskriftens stilark hænger på (se
+// beta.js). Den gamle skærm og temavalget er væk siden 2/11 2026.
 prepareBetaPage();
 
 // Mount Root Vue App

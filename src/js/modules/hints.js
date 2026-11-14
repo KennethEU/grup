@@ -19,8 +19,8 @@ import { brokenTogether, togetherComponents } from './together.js';
 import { computed, ref, toRaw, watch } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
-import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
-    brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn, rankSteps, valueKey, MATRIX_EXCLUDED_RULES } from './utils.js';
+import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, matrixOriginDrift, columnIsNumeric, cellNumber,
+    brokenSeparations, memberDisplayName, memberIdStr, ROW_ID, groupDisplayName, groupCountText, rankingAffectsColumn, rankSteps, valueKey, MATRIX_EXCLUDED_RULES } from './utils.js';
 import { ruleTypeLabel, namesText } from './recipe.js';
 import { setupNotices } from './setupNotices.js';
 import { trialNotes } from './trialRun.js';
@@ -427,28 +427,133 @@ const matrixDriftHint = computed(() => {
     if (!isMatrix.value) return null;
     if (!state.storedMatrixGroups || state.storedMatrixGroups.length === 0) return null;
     // matrixGroupsStale ejer allerede sagen "matrixen SKAL dannes forfra" og
-    // gør det automatisk ved næste visningsskift. To advarsler om samme sag er
-    // én for meget.
+    // har sin egen besked (matrixStaleHint nedenfor). To advarsler om samme
+    // sag er én for meget.
     if (state.matrixGroupsStale) return null;
 
     const fingerprint = state.matrixSourceFingerprint;
     if (!fingerprint) return null;
 
-    const currentFingerprint = homeGroupFingerprint(state.storedStandardGroups);
-    if (currentFingerprint === fingerprint) return null;
+    // Kun elever i matrixen, der har skiftet stamgruppe, tæller — se
+    // matrixOriginDrift i utils.js (en fraværende eller en ny rækkefølge i et
+    // kort gjorde før matrixen "skæv", 129. gennemsyn).
+    const drift = matrixOriginDrift(fingerprint, state.storedStandardGroups, state.storedMatrixGroups);
+    if (!drift) return null;
 
     return {
-        // Aftrykket ligger i id'et, så en NY drift giver et nyt hint. Uden det
+        // Skævheden ligger i id'et, så en NY drift giver et nyt hint. Uden det
         // ville ét klik på krydset lukke advarslen for resten af timen — også
         // for de flytninger der kommer bagefter.
-        id: `hint:matrix-drift:${currentFingerprint}`,
+        id: `hint:matrix-drift:${drift}`,
         kind: 'conflict',
         text: 'Stamgrupperne er ændret, siden matrixen blev dannet. Matrixen her '
             + 'passer derfor ikke længere til dem: nogle matrixgrupper kan have to '
             + 'elever fra samme stamgruppe og ingen fra en anden. Danner du den igen, '
             + 'kan både sammensætningen OG antallet af matrixgrupper ændre sig — '
-            + 'og rettelser du har lavet i matrixen i hånden, forsvinder.',
+            + 'og rettelser du har lavet i matrixen i hånden, forsvinder.'
+            + lockedMatrixText(state.storedMatrixGroups),
         action: { label: 'Dan matrixen igen', run: () => generateMatrixGroups() },
+    };
+});
+
+// De to beskeder ovenfor og nedenfor lover, at rettelser i hånden forsvinder,
+// når matrixen dannes igen. Det gælder ikke en LÅST matrixgruppe: den bliver
+// stående, som den er (også med elever fra de gamle stamgrupper), og er alle
+// låst, danner knappen slet intet ("Alle elever er i låste grupper"). Så det
+// siges med (135. gennemsyn). Knappen på kortet hedder "Lås op".
+export function lockedMatrixText(groups) {
+    const list = Array.isArray(groups) ? groups.filter(Boolean) : [];
+    const locked = list.filter(g => g.locked).length;
+    if (!locked) return '';
+    if (locked === list.length) {
+        return ' Alle matrixgrupperne er låst, så der er intet at danne: tryk "Lås alle op" '
+            + 'i bunden først.';
+    }
+    return locked === 1
+        ? ' Den låste matrixgruppe bliver stående, som den er — tryk "Lås op" på kortet først, '
+            + 'hvis den også skal dannes igen.'
+        : ` De ${locked} låste matrixgrupper bliver stående, som de er — tryk "Lås op" på `
+            + 'kortene først, hvis de også skal dannes igen.';
+}
+
+// ─── Matrixen hører til de FORRIGE stamgrupper ─────────────────────────────
+// Danner læreren stamgrupperne igen (eller gendanner nogle andre), bliver den
+// gamle matrix liggende, men den er dannet på tværs af grupper, der ikke
+// findes mere (matrixGroupsStale). Et skift til matrix-runden danner den IKKE
+// forfra af sig selv (setViewMode i groupActions.js); opskriftens vindue åbner
+// bare. Lukkede læreren vinduet, stod den gamle matrix der uden et ord — med
+// mærkater regnet ud fra de NYE stamgrupper, så to elever fra "Grp 3" i samme
+// matrixgruppe så ud som en fejl i programmet (132. gennemsyn).
+//
+// Udskriften, Excel og Del-menuen udelader allerede en forældet matrix
+// (matrixAvailability i groupExport.js), og "Vis for klassen" vises ikke for
+// den (MatrixRecipePanel.vue). Her får læreren at vide hvorfor, og en knap.
+const matrixStaleHint = computed(() => {
+    if (!isMatrix.value || !state.currentClass) return null;
+    if (!state.matrixGroupsStale) return null;
+    if (!Array.isArray(state.storedMatrixGroups) || state.storedMatrixGroups.length === 0) return null;
+    // Ingen stamgrupper at danne en matrix ud fra: knappen kunne intet, og
+    // opskriften siger selv "Dan stamgrupperne først".
+    if (!Array.isArray(state.storedStandardGroups) || state.storedStandardGroups.length === 0) return null;
+    return {
+        id: 'hint:matrix-stale',
+        kind: 'conflict',
+        text: 'Matrixgrupperne her er dannet ud fra de forrige stamgrupper og passer ikke '
+            + 'til dem, der står nu. Dan matrixgrupperne igen, før du bruger dem. '
+            + 'Rettelser, du har lavet i matrixen i hånden, forsvinder.'
+            + lockedMatrixText(state.storedMatrixGroups),
+        action: { label: 'Dan matrixen igen', run: () => generateMatrixGroups() },
+    };
+});
+
+// ─── Mødt, men i ingen gruppe ──────────────────────────────────────────────
+// Den almindelige vej tilbage for en elev, der var væk, er fluebenet i
+// elevlisten. Det lader eleven stå i sin stamgruppe — men blev matrixen dannet,
+// mens eleven var væk, står eleven i INGEN matrixgruppe, og det sagde intet før
+// (131. gennemsyn). Det samme gælder en elev, der er sat ind i klasselisten
+// efter dannelsen (i begge visninger), og en elev, der er sat tilbage med
+// "Tilføj efternøler" i den anden visning.
+//
+// Vi placerer ikke af os selv: læreren kan have en grund til, at eleven ikke
+// skal med. Derfor en besked med en knap til "Tilføj efternøler", der finder
+// den bedste gruppe.
+//
+// Elever, der er meldt væk, tæller ikke (de skal ikke i en gruppe i dag), og
+// en forældet matrix heller ikke: den skal dannes forfra (det siger
+// matrixStaleHint), og så kommer alle de mødte med.
+const unplacedHint = computed(() => {
+    const cls = state.currentClass;
+    if (!cls || !Array.isArray(cls.data)) return null;
+    const groups = isMatrix.value ? state.storedMatrixGroups : state.storedStandardGroups;
+    if (!Array.isArray(groups) || groups.length === 0) return null;
+    if (isMatrix.value && state.matrixGroupsStale) return null;
+
+    const seated = new Set();
+    for (const g of groups) {
+        for (const m of (g && g.members) || []) seated.add(memberIdStr(m));
+    }
+    const idCol = state.idColumn || ROW_ID;
+    const missing = cls.data
+        .filter(s => s && !s._excluded)
+        .map(s => String(s[idCol] ?? '').trim())
+        .filter(id => id && !seated.has(id));
+    if (!missing.length) return null;
+
+    const names = missing.map(id => memberDisplayName(id, cls.data, state.displayColumn));
+    const shown = names.length > 3
+        ? `${names.slice(0, 3).join(', ')} og ${names.length - 3} mere`
+        : namesText(names);
+    const one = missing.length === 1;
+    const where = isMatrix.value ? 'matrixgruppe' : 'gruppe';
+    return {
+        // Eleverne ligger i id'et: kommer der en ny til, er det en ny besked,
+        // også hvis læreren har lukket den forrige.
+        id: `hint:unplaced:${isMatrix.value ? 'matrix' : 'stam'}:${missing.join(',')}`,
+        kind: 'info',
+        text: `${shown} er mødt, men står ikke i nogen ${where}`
+            + (isMatrix.value ? ' (var måske væk, da matrixen blev dannet)' : '')
+            + `. Tryk "Tilføj efternøler" for at finde den bedste ${where} til ${one ? 'eleven' : 'dem'}.`,
+        action: { label: 'Tilføj efternøler', run: () => modalActions.openLatecomer() },
     };
 });
 
@@ -456,8 +561,6 @@ const matrixDriftHint = computed(() => {
 // udgave i motoren, så på en tekstkolonne (fx et niveau skrevet Lav/Middel/Høj)
 // gør de bogstaveligt talt ingenting. Læreren skal have det at vide MENS hun
 // vælger kolonnen, ikke først efter en kørsel der ser tilfældig ud.
-// (Ordlyden er den samme som den gamle Python-motors advarsel
-// logic.detect_non_numeric_sort_rules, så lærerne genkender den.)
 const NUMERIC_ONLY_TYPES = ['balance', 'minimizediff'];
 
 
@@ -537,8 +640,7 @@ const numericRuleOnTextHint = computed(() => {
         if (!hasContent) continue;
         // columnIsNumeric, ikke "har kolonnen overhovedet et tal?": ét enkelt
         // "3" midt i Lav/Middel/Høj slukkede før både denne besked OG knappen
-        // "Ranger værdierne…", som er den eneste vej ud af problemet. Samme
-        // flertals-tærskel som den gamle Python-motors logic.column_has_numbers.
+        // "Ranger værdierne…", som er den eneste vej ud af problemet.
         if (columnIsNumeric(rows, col)) {
             // Kolonnen ER tal for klassen — men motoren ser kun de frie
             // elever (engineRowSplit). Er alle med et tal fraværende eller
@@ -614,6 +716,9 @@ const brokenAvoidHint = computed(() => {
     if (!state.currentClass) return null;
     const groups = isMatrix.value ? state.storedMatrixGroups : state.storedStandardGroups;
     if (!groups || !groups.length) return null;
+    // En forældet matrix skal dannes forfra (matrixStaleHint), og så måles
+    // undgåelserne på den nye. Som matrixDriftHint og unplacedHint (132.).
+    if (isMatrix.value && state.matrixGroupsStale) return null;
 
     const byId = studentById.value;
     const brokenList = brokenSeparations(groups, state.currentClass.separations, byId);
@@ -714,7 +819,7 @@ const engineTogetherHint = computed(() => {
 // der ikke går lige op, Opdel-puljer, celler, der ikke er tal, Skal sammen,
 // for mange emner, matrix-kilderne). Appens egne hints ovenfor er dem med en
 // knap eller uden for motorens felt: unnamedStudentHint, ruleWithoutValueHint,
-// matrixDriftHint, brokenAvoidHint, brokenTogetherHint, togetherRuleCostHint,
+// matrixStaleHint, matrixDriftHint, unplacedHint, brokenAvoidHint, brokenTogetherHint, togetherRuleCostHint,
 // numericRuleOnTextHint ("Ranger værdierne…"), tooManyGroupsHint,
 // topicRoundingHint, topicCountMismatchHint — motorens koder for de sidste
 // fire (APP_OWNED_CODES i nextEngine.js) vises ikke.
@@ -929,7 +1034,9 @@ const allHints = computed(() => [
     tooManyGroupsHint.value,
     topicRoundingHint.value,
     topicCountMismatchHint.value,
+    matrixStaleHint.value,
     matrixDriftHint.value,
+    unplacedHint.value,
     // Efter en umulig kørsel står Skal sammen-advarslen også OVER grupperne
     // (beskeden peger dér hen); opskriftens udgave kommer fra check().
     engineTogetherHint.value,

@@ -134,6 +134,13 @@ function onOtherOpen(e) {
 function onScroll(e) {
     if (open.value && !pop.value?.contains(e.target)) open.value = false;
 }
+// Skifter vinduet størrelse (eller zoomes der), står ordet et andet sted, og
+// menuen lukker. Egen funktion: før delte den onScroll, men ved `resize` er
+// e.target selve vinduet, og `contains(window)` kaster en fejl — så menuen
+// blev stående på den gamle plads, løsrevet fra ordet (140. gennemsyn).
+function onResize() {
+    if (open.value) open.value = false;
+}
 function onKey(e) {
     if (e.key === 'Escape' && open.value) {
         // preventDefault, ikke kun stopPropagation: browseren lukker selv et
@@ -168,14 +175,14 @@ onMounted(() => {
     document.addEventListener('recipe:token-open', onOtherOpen);
     document.addEventListener('keydown', onKey, true);
     document.addEventListener('scroll', onScroll, true);
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onResize);
 });
 onUnmounted(() => {
     document.removeEventListener('click', onDocClick);
     document.removeEventListener('recipe:token-open', onOtherOpen);
     document.removeEventListener('keydown', onKey, true);
     document.removeEventListener('scroll', onScroll, true);
-    window.removeEventListener('resize', onScroll);
+    window.removeEventListener('resize', onResize);
     clearTimeout(hoverTimer);
 });
 </script>

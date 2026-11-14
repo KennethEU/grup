@@ -258,7 +258,8 @@ describe('svaret → appens form', () => {
         const rec = playbackToRecording(playback, input);
         const run = rec.runs[0];
         expect(run.merged).toBe(true);
-        expect(run.truncated).toBe(false);
+        // Slutbilledet er motorens grupper, også i rækkefølgen.
+        expect(seatingAt(run, frameCount(run))).toEqual([['c', 'd', 'a'], ['b', 'e'], []]);
         expect(run.events[0][6]).toBe('distribute:Køn');
         expect(run.events[1]).toEqual(['e', null, 1, null, null, null, null, [], 0]);
         // Uden slutbilledet som facit: spol helt igennem og sammenlign som mængder.

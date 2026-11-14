@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { createClass, goToGroups, addRecipeRule, generateGroups, openRecipe } from './helpers';
+import { createClass, goToGroups, addRecipeRule, generateGroups, openRecipe, addTopics } from './helpers';
 
 // Prøvekørslen i baggrunden (trialRun.js, 12/11 2026): når opskriften har
 // stået stille et øjeblik, danner motoren grupper én gang i sin egen tråd og
@@ -134,4 +134,51 @@ test('Kan tråden ikke hentes, holder prøvekørslen op med at prøve', async ({
     await expect(page.locator('dialog.recipe-dialog[open] .recipe__line--rule')).toHaveCount(1);
     await expect(page.locator('dialog.recipe-dialog[open] .rule-mark--trial')).toHaveCount(0);
     await expect(page.locator('.toast')).toHaveCount(0);
+});
+
+// 129. gennemsyn: mærkerne fra sidste dannelse gælder, så længe de samme
+// elever står i de samme grupper. Før forsvandt de (og prøvekørslen tog over),
+// når en elev blev trukket op eller ned i sit eget kort — samme elever, ny
+// rækkefølge, intet ændret af det, motoren regnede på.
+test('En ny rækkefølge i et kort fjerner ikke mærkerne fra sidste dannelse', async ({ page }) => {
+    await createClass(page, 'Mærker rækkefølge');
+    await goToGroups(page);
+    await addRecipeRule(page, { type: 'Fordel', column: 'Køn' });
+    await generateGroups(page);
+    let dialog = await openRecipe(page);
+    await expect(dialog.locator('.rule-mark').first()).toBeVisible();
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
+    await page.keyboard.press('Escape');
+
+    // Samme ændring som at trække en elev op eller ned i sit eget kort.
+    await page.evaluate(() => {
+        (window as any).appDebug.state.storedStandardGroups[0].members.reverse();
+    });
+    await page.waitForTimeout(1500);   // prøvekørslen ville gå i gang her
+    dialog = await openRecipe(page);
+    await expect(dialog.locator('.rule-mark').first()).toBeVisible();
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
+});
+
+// 137. gennemsyn: et nyt emne i kortets emnevælger fjerner heller ikke
+// mærkerne. Mærkerne handler om regler og aftaler, og ingen af dem ser på
+// gruppens emne, men aftrykket talte emnet med.
+test('Et nyt emne på et kort fjerner ikke mærkerne fra sidste dannelse', async ({ page }) => {
+    await createClass(page, 'Mærker emne');
+    await goToGroups(page);
+    await addTopics(page, ['Klima', 'EU', 'Velfærd']);
+    await addRecipeRule(page, { type: 'Fordel', column: 'Køn' });
+    await generateGroups(page);
+    let dialog = await openRecipe(page);
+    await expect(dialog.locator('.rule-mark').first()).toBeVisible();
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
+    await page.keyboard.press('Escape');
+
+    const select = page.locator('.group-card select.topic-select').first();
+    const before = await select.inputValue();
+    await select.selectOption(['Klima', 'EU', 'Velfærd'].find(t => t !== before)!);
+    await page.waitForTimeout(1500);   // prøvekørslen ville gå i gang her
+    dialog = await openRecipe(page);
+    await expect(dialog.locator('.rule-mark').first()).toBeVisible();
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
 });

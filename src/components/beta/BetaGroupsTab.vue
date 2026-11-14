@@ -291,8 +291,8 @@ html.beta .group-members-list li {
 }
 
 /* ── Bundlinjen (Del, Tags, Kopiér … Gem) ───────────────────────────────────
-   Den almindelige Grupper har en svævende pille midt på skærmen med glas og
-   skygge. I beta er det en flad linje i fuld bredde med en hårlinje foroven —
+   Komponentens egen styling (fra den gamle skærm, fjernet 2/11 2026) er en
+   svævende pille midt på skærmen med glas og skygge. Her er det en flad linje i fuld bredde med en hårlinje foroven —
    som en sidefod på arket. Handlingerne står i midten: med intet i venstre side
    klumpede de sig til højre, og linjen så skæv ud. Knapperne og deres logik er
    de almindelige (GroupResultsPanel.vue) — her ændres kun udseendet. */
@@ -367,7 +367,8 @@ html.beta .floating-action-bar .action-pill.active {
 }
 
 /* ── Advarslerne over grupperne (HintsStack.vue) ────────────────────────────
-   I den almindelige Grupper er de farvede kasser med skygge. På arket er de en
+   Komponentens egen styling (fra den gamle skærm) er farvede kasser med
+   skygge. På arket er de en
    stille linje med en farvet streg i venstre side — de skal kunne ses, men
    ikke råbe højere end grupperne. */
 html.beta .hints-stack { gap: 2px; margin-block: 10px 6px; }

@@ -21,8 +21,8 @@ import './screens/info-sider.css';
 <style>
 /* ── Beskederne i beta (NotificationManager.vue) ────────────────────────────
    Ikke scoped: de gælder hele appen i beta, og denne komponent er den
-   eneste beta-komponent, der altid er med. I den almindelige Grupper er en besked et
-   stort kort med en 4 px farvet kant og fuld tekst; efter en kørsel stod der
+   eneste beta-komponent, der altid er med. Komponentens egen styling (fra
+   den gamle skærm, fjernet 2/11 2026) er et stort kort med en 4 px farvet kant og fuld tekst; efter en kørsel stod der
    tre afsnit om Fordel og Balancér hen over fjerde spalte. Her er de smallere
    og stillere, og en lang besked viser sine første linjer, til musen eller
    tastaturet er på den. */

@@ -2,13 +2,20 @@
 import { ref } from 'vue';
 import { useModalFocus } from '../composables/useModalFocus.js';
 import { reactiveState as state } from '../js/modules/reactiveState.js';
-import { buildGroupsClipboardText, writeGroupsToClipboard } from '../js/modules/groupActions.js';
+import { buildGroupsClipboardText, writeGroupsToClipboard, staleMatrixBlocked } from '../js/modules/groupActions.js';
 
 const emit = defineEmits(['close']);
 
 const includeSource = ref(false);
 
 function executeCopy() {
+    // Vagten står også her, ikke kun på knappen: bliver matrixen forældet,
+    // mens vinduet står åbent (en kørsel af stamgrupperne lander), skal den
+    // gamle matrix stadig ikke i udklipsholderen.
+    if (staleMatrixBlocked()) {
+        emit('close');
+        return;
+    }
     // Teksten bygges af den DELTE funktion, så matrix-kopien viser de samme
     // navne som stamgruppe-kopien og gruppekortene.
     const text = buildGroupsClipboardText(

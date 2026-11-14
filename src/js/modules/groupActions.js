@@ -1,6 +1,6 @@
 import { state } from './state.js';
 import * as storage from './storage.js';
-import { buildGroupTable } from './groupExport.js';
+import { buildGroupTable, matrixAvailability, STALE_MATRIX_MESSAGE } from './groupExport.js';
 import { autoSave } from './classActions.js';
 import { modalActions } from './modalState.js';
 import { handleGenerate as _handleGenerate } from './generation.js';
@@ -79,8 +79,28 @@ export function writeGroupsToClipboard(text) {
     });
 }
 
+/**
+ * Står læreren i matrix-visningen med en FORÆLDET matrix? Så siger vi det og
+ * svarer true — kaldestedet skal så lade være med at tage den med ud.
+ *
+ * Matrixen blev dannet ud fra de FORRIGE stamgrupper. Udskriften, Excel,
+ * Del-menuen, "Vis for klassen" og Historik udelader den allerede, men
+ * "Kopiér" og "Gem som kolonne" tog den med uden et ord (134. gennemsyn).
+ * Værst var "Kopiér" med "Inkludér kilde i parentes": kilden slås op i de
+ * NUVÆRENDE stamgrupper, så listen, læreren lagde på Lectio, gav eleverne
+ * en stamgruppe, de ikke kom fra.
+ */
+export function staleMatrixBlocked() {
+    if (state.activeView !== 'matrix') return false;
+    if (matrixAvailability() !== 'stale') return false;
+    if (window.notifyInfo) window.notifyInfo(STALE_MATRIX_MESSAGE);
+    return true;
+}
+
 export function copyGroupsToClipboard() {
     const isMatrix = state.activeView === 'matrix';
+
+    if (staleMatrixBlocked()) return;
 
     if (isMatrix) {
         modalActions.openCopyOptions();
@@ -129,6 +149,7 @@ export function handleSaveAsColumn() {
         if (window.notifyInfo) window.notifyInfo("Du skal generere grupper først!");
         return;
     }
+    if (staleMatrixBlocked()) return;
     modalActions.openSaveColumn();
 }
 

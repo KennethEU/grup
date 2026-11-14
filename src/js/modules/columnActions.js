@@ -69,6 +69,32 @@ export function validateColumnName(raw, columns, self = null) {
 }
 
 /**
+ * Et kolonnenavn, der ikke findes i forvejen: `base`, ellers "base 2",
+ * "base 3" … "Gem som kolonne" foreslår det, når vinduet åbner.
+ *
+ * Før foreslog vinduet altid "Stamgrupper" (eller "Matrix Runde"). Gemte
+ * læreren grupperne igen næste uge, var standardnavnet sidste uges kolonne,
+ * og ét tryk på knappen ("Overskriv …") skrev oven i den. Et standardvalg
+ * må ikke kunne slette noget (forslag 137, Kenneth sagde ja 14/11 2026).
+ * Læreren kan stadig skrive det gamle navn selv og overskrive.
+ *
+ * "Findes" betyder det samme som i vinduets advarsel og i
+ * validateColumnName: præcis samme navn i `columns`.
+ *
+ * @param {string} base
+ * @param {string[]} columns
+ * @returns {string}
+ */
+export function freeColumnName(base, columns) {
+    const list = Array.isArray(columns) ? columns : [];
+    if (!list.includes(base)) return base;
+    for (let n = 2; ; n++) {
+        const name = `${base} ${n}`;
+        if (!list.includes(name)) return name;
+    }
+}
+
+/**
  * Reglerne i kørselshistorikken (runHistory.js) — de ligger der som KOPIER.
  *
  * Hver kørsel i fanens historik har sin egen kopi af reglerne, og
@@ -272,8 +298,8 @@ export function deleteColumn(cls, ui, colName) {
         cls.data.forEach(row => { if (row) delete row[colName]; });
     }
 
-    // En regel på en slettet kolonne peger på ingenting (den gamle Python-
-    // motor væltede eller gjorde stille ingenting); den fjernes med kolonnen.
+    // En regel på en slettet kolonne peger på ingenting; den fjernes med
+    // kolonnen.
     let rulesRemoved = 0;
     for (const key of ['rules', 'matrixRules']) {
         const arr = cls[key];

@@ -1,9 +1,14 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { isLectioFormat, extractLectioNames } from './lectio.js';
+import { isLectioFormat, extractLectioNames, readLectio } from './lectio.js';
 import { pyBridge } from './py_bridge.js';
 // Listen er i Lectios eget format (taget fra en rigtig liste), men navnene er
 // opdigtede — se testdata/README.md. `?raw` giver filen som tekst.
 import LIST from '../../../testdata/lectio_elevliste.txt?raw';
+// Lectios to sider med elevlisten, kopieret af Kenneth 14/11 2026 med navne,
+// hold, lokale og initialer skiftet ud (testdata/README.md).
+import LESSON from '../../../testdata/lectio_lektion.txt?raw';
+import TABLE from '../../../testdata/lectio_laerere_og_elever.txt?raw';
+import TABLE_EMPTY_COLS from '../../../testdata/lectio_laerere_og_elever_tomme_kolonner.txt?raw';
 const LINES = LIST.trim().split('\n');
 
 describe('isLectioFormat — genkender en liste kopieret fra Lectio', () => {
@@ -177,4 +182,90 @@ describe('genkendelsen giver samme svar som det gamle mønster', () => {
         // maskine ikke gør testen rød.
         expect(performance.now() - start).toBeLessThan(100);
     });
+});
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Lectios to sider (61, Kenneths kopier 14/11 2026). Før blev ingen af dem
+// genkendt: lektionssiden gav 44 "elever" med sidens tekst imellem, og
+// tabellen "Lærere og elever" gav hele rækken i én celle og læreren som elev.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+describe('Lectios lektionsside og "Lærere og elever"', () => {
+    // Facit: tabellens Fornavn + Efternavn for hver "Elev", læst direkte fra
+    // filen — ikke gennem koden, der skal testes.
+    const EXPECTED = TABLE.split('\n').map(l => l.split('\t'))
+        .filter(c => c[0] === 'Elev').map(c => `${c[2]} ${c[3]}`);
+
+    it('facit har 29 elever', () => {
+        expect(EXPECTED).toHaveLength(29);
+        expect(EXPECTED[0]).toBe('Adam Karim Haddad');
+    });
+
+    it.each([
+        ['lektionssiden', LESSON],
+        ['"Lærere og elever"', TABLE],
+        ['"Lærere og elever" med tomme kolonner', TABLE_EMPTY_COLS],
+    ])('%s genkendes og giver præcis de 29 navne i samme rækkefølge', (_label, text) => {
+        expect(isLectioFormat(text)).toBe(true);
+        expect(extractLectioNames(text).split('\n')).toEqual(EXPECTED);
+    });
+
+    it('sidens tekst, læreren og holdet kommer ikke med', () => {
+        for (const text of [LESSON, TABLE, TABLE_EMPTY_COLS]) {
+            const out = extractLectioNames(text);
+            expect(out).not.toMatch(/Antal|Tidspunkt|Elever:|Type|Lærer|Mette|menu|Vis |2bx|\u00a0/);
+        }
+    });
+
+    it('fortæller, hvor mange linjer fra siden der er sprunget over', () => {
+        expect(readLectio(LESSON).skipped).toBe(16);   // 13 over listen, 3 under
+        expect(readLectio(TABLE).skipped).toBe(6);     // menu (4), læreren, optællingen
+    });
+
+    it('lektionssiden med Windows-linjeskift', () => {
+        expect(extractLectioNames(LESSON.replace(/\n/g, '\r\n')).split('\n')).toEqual(EXPECTED);
+    });
+
+    it('et navn skrevet til i hånden under tabellen kommer med', () => {
+        const out = extractLectioNames(TABLE.trim() + '\nNy Elev').split('\n');
+        expect(out).toEqual([...EXPECTED, 'Ny Elev']);
+    });
+
+    it('et navn skrevet til i hånden før og efter lektionssidens liste kommer med', () => {
+        const out = extractLectioNames('Hansen, Bo\n' + LESSON.trim() + '\nNy Elev').split('\n');
+        expect(out).toEqual(['"Hansen, Bo"', ...EXPECTED, 'Ny Elev']);
+    });
+
+    // Lærerens eget regneark med Fornavn og Efternavn, men uden Lectios
+    // Type-kolonne, er IKKE fra Lectio og skal læses som før (med kolonner).
+    it('et regneark med Fornavn/Efternavn uden Type er ikke Lectio', () => {
+        expect(isLectioFormat('Fornavn\tEfternavn\tKøn\nAnna\tHolm\tPige\nBo\tLund\tDreng')).toBe(false);
+        expect(isLectioFormat('ID\tFornavn\tEfternavn\n1\tAnna\tHolm\n2\tBo\tLund')).toBe(false);
+    });
+
+    // En Excel-liste, hvor to celler tilfældigvis ender som en Lectio-linje,
+    // må ikke blive til Lectio: rækkerne mellem dem tæller med i 80 %-reglen.
+    it('en Excel-liste med to Lectio-agtige celler midt i er ikke Lectio', () => {
+        const rows = ['Navn\tKøn', 'Anna Holm, 2a 04 (2a)\tPige'];
+        for (let i = 0; i < 8; i++) rows.push(`Elev ${i}\tDreng`);
+        rows.push('Bo Lund, 2a 05 (2a)\tDreng');
+        expect(isLectioFormat(rows.join('\n'))).toBe(false);
+    });
+});
+
+describe('Lectios sider hele vejen ind i klassen', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+    });
+
+    it.each([['lektionssiden', LESSON], ['"Lærere og elever"', TABLE], ['tomme kolonner', TABLE_EMPTY_COLS]])(
+        '%s giver én kolonne Navn med 29 elever', (_label, text) => {
+            const res = pyBridge.createClass('2bx', extractLectioNames(text), false);
+            expect(res.error).toBeUndefined();
+            const content = pyBridge.getClass(res.filename).content;
+            expect(content.columns).toEqual(['Navn']);
+            expect(content.data).toHaveLength(29);
+            expect(content.data[0].Navn).toBe('Adam Karim Haddad');
+            expect(content.data[28].Navn).toBe('Ylva Josefine Rønne Østergaard');
+        });
 });

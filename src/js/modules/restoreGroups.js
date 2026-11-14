@@ -213,8 +213,7 @@ export function parseGroupsText(text) {
             // Klikker læreren "Prøv med testdata", passer eksemplet altså på
             // den klasse, hun har åben — indsætter hun det råt, virker det.
             // Med opdigtede navne var det et eksempel, der ikke kunne prøves
-            // af. BEMÆRK at det er TEST_DATA, ikke public/testdata/*.csv —
-            // den sidste hører til Python-testene og har andre navne.
+            // af.
             error: 'Kunne ikke finde nogen gruppeoverskrifter. Teksten skal se '
                  + 'sådan ud:\n\nGruppe 1\nEmma Hansen\nOliver Nielsen\n\n'
                  + 'Gruppe 2\nIda Pedersen'
@@ -877,7 +876,8 @@ export function applyPlan(plan) {
     }
 
     // 5. Matrixen er dannet ud fra ANDRE stamgrupper og må ikke blive stående
-    // og lyve. Stale-flaget danner den om ved næste skift til matrixvisningen.
+    // og lyve. Stale-flaget holder den ude af udskrift, Excel og "Vis for
+    // klassen", og matrix-runden siger, at den skal dannes igen (matrixStaleHint).
     state.matrixGroupsStale = true;
     state.matrixSourceFingerprint = null;
 

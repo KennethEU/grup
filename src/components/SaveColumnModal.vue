@@ -6,8 +6,9 @@ import { reactiveState as state } from '../js/modules/reactiveState.js';
 import { autoSave } from '../js/modules/classActions.js';
 import { getTopic } from '../js/modules/storage.js';
 import { pushUndo, clearUndoHistory } from '../js/modules/state.js';
-import { validateColumnName } from '../js/modules/columnActions.js';
+import { validateColumnName, freeColumnName } from '../js/modules/columnActions.js';
 import { groupDisplayName } from '../js/modules/utils.js';
+import { staleMatrixBlocked } from '../js/modules/groupActions.js';
 
 const emit = defineEmits(['close']);
 
@@ -65,7 +66,10 @@ const exampleTopic = computed(() => {
 });
 
 onMounted(() => {
-    colName.value = isMatrix.value ? 'Matrix Runde' : 'Stamgrupper';
+    // Et ledigt navn: "Stamgrupper", ellers "Stamgrupper 2" osv., så
+    // standardvalget aldrig skriver oven i en kolonne, der findes (137).
+    colName.value = freeColumnName(isMatrix.value ? 'Matrix Runde' : 'Stamgrupper',
+        state.currentClass?.columns);
     format.value = 'name';
 });
 
@@ -79,6 +83,13 @@ function save() {
     const check = validateColumnName(name, []);
     if (!check.ok) {
         if (window.notifyInfo) window.notifyInfo(check.error);
+        return;
+    }
+    // En forældet matrix gemmes ikke som kolonne — samme regel som de andre
+    // udgange (staleMatrixBlocked i groupActions.js). Står her også, fordi
+    // matrixen kan blive forældet, mens vinduet er åbent.
+    if (staleMatrixBlocked()) {
+        emit('close');
         return;
     }
     const groups = sourceGroups.value;

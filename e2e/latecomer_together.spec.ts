@@ -241,3 +241,29 @@ test('En aftale, der trækker over Opdel, nævnes i advarslen', async ({ page })
     await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
         .toContainText('"Skal sammen"-aftale vejer tungere');
 });
+
+// 129. gennemsyn: en elev, der bliver i sin gruppe, beholder sin plads i
+// kortet. Før blev eleven taget ud og sat ind nederst — kortet så anderledes
+// ud, og den nye rækkefølge fik matrix-advarslen "Stamgrupperne er ændret".
+test('En tilbagevendende elev, der bliver i sin gruppe, står samme sted i kortet', async ({ page }) => {
+    await createClass(page, 'Efternøler plads');
+    await goToGroups(page);
+    await generateGroups(page);
+    const before = await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const cls = state.currentClass;
+        const g = state.storedStandardGroups.find((x: any) => x.members.length >= 3);
+        const ids = g.members.map((m: any) => String(m?.id ?? m));
+        return { group: g.name, ids, name: cls.data.find((s: any) => s._rowId === ids[0]).Navn };
+    });
+
+    await setAbsent(page, [before.name]);
+    await addLatecomers(page, [before.name]);
+    await expect(page.locator('.toast').filter({ hasText: 'Tilføjet' }).last())
+        .toContainText(`${before.name} bliver i`);
+    const after = await page.evaluate((groupName) => {
+        const g = (window as any).appDebug.state.storedStandardGroups.find((x: any) => x.name === groupName);
+        return g.members.map((m: any) => String(m?.id ?? m));
+    }, before.group);
+    expect(after).toEqual(before.ids);
+});

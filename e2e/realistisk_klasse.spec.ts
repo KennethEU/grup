@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { createClass, goToGroups, generateGroups, openRecipe, goToMatrix } from './helpers';
+import { createClass, goToGroups, generateGroups, openRecipe, goToMatrix, gotoAppReady } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Grupper i browseren med de data, lærere faktisk har — ikke den pæne
@@ -12,6 +12,9 @@ import { createClass, goToGroups, generateGroups, openRecipe, goToMatrix } from 
 const DATA = resolve(import.meta.dirname, '..', 'testdata');
 const CLASS_DATA = JSON.parse(readFileSync(resolve(DATA, 'realistisk_klasse.json'), 'utf8'));
 const LECTIO = readFileSync(resolve(DATA, 'lectio_elevliste.txt'), 'utf8');
+// Lectios to sider med elevlisten (Kenneths kopier 14/11 2026, navnene skiftet ud).
+const LECTIO_LESSON = readFileSync(resolve(DATA, 'lectio_lektion.txt'), 'utf8');
+const LECTIO_TABLE = readFileSync(resolve(DATA, 'lectio_laerere_og_elever_tomme_kolonner.txt'), 'utf8');
 
 /** Rækkerne som Excel kopierer dem: tabulator, og anførselstegn kun om en
  *  celle med linjeskift, tabulator eller anførselstegn. */
@@ -78,6 +81,35 @@ test('en liste kopieret fra Lectio giver en klasse med navnene alene', async ({ 
     expect(names).toContain('Silje Anne-Marie Holt');
     expect(names.some((n: string) => /2Tz|\(/.test(n))).toBe(false);
 });
+
+// Lektionens side og "Lærere og elever" (61). Før blev ingen af dem genkendt:
+// lektionssiden gav 44 "elever" med sidens tekst imellem, og tabellen gav
+// hele rækken i én celle og læreren som elev. Mærket under feltet siger
+// antallet, før læreren trykker "Opret klasse".
+for (const [label, text, skipped] of [
+    ['lektionens side', LECTIO_LESSON, '16 linjer'],
+    ['"Lærere og elever"', LECTIO_TABLE, '6 linjer'],
+] as const) {
+    test(`Lectio: ${label} giver 29 elever med navnene alene`, async ({ page }) => {
+        await gotoAppReady(page);
+        await page.getByRole('button', { name: 'Indsæt klasseliste fra Excel / Sheets' }).click();
+        await page.getByRole('button', { name: 'Indsæt tekst / Excel' }).click();
+        await page.getByPlaceholder('F.eks. 1.g Dansk').fill(`Lectio ${label}`);
+        await page.locator('textarea:visible').first().fill(text);
+        await expect(page.locator('.lectio-badge')).toContainText('Lectio-liste genkendt: 29 elever');
+        await expect(page.locator('.lectio-badge')).toContainText(skipped);
+        await page.getByRole('button', { name: /Opret klasse/i }).click();
+        await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+
+        const columns = await page.evaluate(() => [...(window as any).appDebug.state.currentClass.columns]);
+        expect(columns).toEqual(['Navn']);
+        const names = (await classData(page)).map((r: any) => r.Navn);
+        expect(names).toHaveLength(29);
+        expect(names[0]).toBe('Adam Karim Haddad');
+        expect(names[28]).toBe('Ylva Josefine Rønne Østergaard');
+        expect(names.some((n: string) => /Antal|:|Mette|2bx|\u00a0/.test(n))).toBe(false);
+    });
+}
 
 // En linje skrevet til i hånden med komma ("Hansen, Bo") gav før HELE
 // klassen to kolonner: "Hansen" i Navn, "Bo" i en ny "Info 1" og en tom

@@ -14,7 +14,11 @@ vi.mock('./generation.js', () => ({
     handleGenerate: vi.fn(),
 }));
 
-import { buildGroupsClipboardText, deleteGroup, addEmptyGroup } from './groupActions.js';
+import {
+    buildGroupsClipboardText, deleteGroup, addEmptyGroup,
+    staleMatrixBlocked, copyGroupsToClipboard, handleSaveAsColumn,
+} from './groupActions.js';
+import { modalState } from './modalState.js';
 import * as storage from './storage.js';
 
 beforeEach(() => {
@@ -208,5 +212,60 @@ describe('addEmptyGroup — den nye gruppe får det næste LEDIGE nummer', () =>
         expect(state.storedMatrixGroups.map(g => g.name)).toEqual(['Group 2', 'Group 3']);
         expect(state.storedStandardGroups.map(g => g.name)).toEqual(['Group 1']);
         expect(storage.saveTopic).toHaveBeenCalledWith('Group 3', null, 'M_');
+    });
+});
+
+// 134. gennemsyn: en forældet matrix (dannet ud fra de FORRIGE stamgrupper)
+// kom ikke med i udskriften, Excel, Del-menuen, "Vis for klassen" eller
+// Historik — men "Kopiér" og "Gem som kolonne" tog den med uden et ord.
+describe('staleMatrixBlocked — Kopiér og Gem som kolonne springer en forældet matrix over', () => {
+    let info;
+    beforeEach(() => {
+        info = vi.fn();
+        globalThis.window = globalThis.window || {};
+        window.notifyInfo = info;
+        state.storedStandardGroups = [{ name: 'Group 1', members: [{ id: 'r1' }, { id: 'r2' }] }];
+        state.storedMatrixGroups = [{ name: 'Group 1', members: [{ id: 'r1' }, { id: 'r3' }] }];
+        state.lastGeneratedGroups = state.storedStandardGroups;
+        state.activeView = 'matrix';
+        state.matrixGroupsStale = true;
+        modalState.showCopyOptions = false;
+        modalState.showSaveColumn = false;
+    });
+
+    it('siger det og svarer true i matrix-visningen med en forældet matrix', () => {
+        expect(staleMatrixBlocked()).toBe(true);
+        expect(info).toHaveBeenCalledWith(expect.stringContaining('forrige stamgrupper'));
+    });
+
+    it('lader en frisk matrix og stamgrupperne passere uden en besked', () => {
+        state.matrixGroupsStale = false;
+        expect(staleMatrixBlocked()).toBe(false);
+        state.matrixGroupsStale = true;
+        state.activeView = 'standard';
+        expect(staleMatrixBlocked()).toBe(false);
+        expect(info).not.toHaveBeenCalled();
+    });
+
+    it('Kopiér åbner ikke kopivinduet for en forældet matrix', () => {
+        copyGroupsToClipboard();
+        expect(modalState.showCopyOptions).toBe(false);
+        state.matrixGroupsStale = false;
+        copyGroupsToClipboard();
+        expect(modalState.showCopyOptions).toBe(true);
+    });
+
+    it('Gem som kolonne åbner ikke vinduet for en forældet matrix', () => {
+        handleSaveAsColumn();
+        expect(modalState.showSaveColumn).toBe(false);
+        state.matrixGroupsStale = false;
+        handleSaveAsColumn();
+        expect(modalState.showSaveColumn).toBe(true);
+    });
+
+    it('Gem som kolonne i stamgrupperne virker, selvom matrixen er forældet', () => {
+        state.activeView = 'standard';
+        handleSaveAsColumn();
+        expect(modalState.showSaveColumn).toBe(true);
     });
 });

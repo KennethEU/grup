@@ -203,6 +203,11 @@ function confirmAdd() {
         // elevlisten tager hende ikke ud af gruppen). Den vinder ved helt lige
         // score, så eleven ikke flyttes ved lodtrækning (128. gennemsyn).
         const home = groups.find(g => !g.locked && g.members.some(m => memberIdStr(m) === idStr)) || null;
+        // Elevens plads i kortet: bliver eleven i gruppen, kommer den tilbage
+        // på samme plads. Før røg den ned i bunden af kortet, og den nye
+        // rækkefølge alene fik matrix-advarslen "Stamgrupperne er ændret" til
+        // at komme (129. gennemsyn).
+        const homeIndex = home ? home.members.findIndex(m => memberIdStr(m) === idStr) : -1;
 
         // Fjern eleven fra enhver (ulåst) gruppe FØR placeringen, så eleven
         // ikke kan ende i to grupper på én gang — og så gruppestørrelser og
@@ -218,7 +223,11 @@ function confirmAdd() {
             const conflictNames = separationConflictNames(student, target);
             const brokenRules = brokenSeparateRules(student, target, ctx);
             const brokenSplit = brokenSplitRule(student, target, ctx);
-            target.members.push(String(studentId));
+            if (home && target === home && homeIndex >= 0 && homeIndex <= target.members.length) {
+                target.members.splice(homeIndex, 0, String(studentId));
+            } else {
+                target.members.push(String(studentId));
+            }
             student._excluded = false;
             // Sig, om eleven blev, hvor den stod, eller blev flyttet — før
             // stod der "→ Gruppe 5" i begge tilfælde, så læreren ikke kunne se,
@@ -288,7 +297,7 @@ function confirmAdd() {
                 if (!inHomeGroup) {
                     notes.push(
                         `${getLabel(student)} står nu i en matrixgruppe, men i ingen stamgruppe. ` +
-                        `Gå til Grupper og tilføj eleven dér også, hvis der skal være en.`
+                        `Gå til Stamgrupperne og tilføj eleven dér også, hvis der skal være en.`
                     );
                 }
             }
@@ -296,6 +305,29 @@ function confirmAdd() {
             errors.push(`Kunne ikke placere ${getLabel(student)}.`);
         }
     });
+
+    // Det modsatte: eleven er sat i en stamgruppe, men der findes en matrix,
+    // og i den står eleven ikke. Vinduet rører kun den visning, læreren står i,
+    // så sig det (131. gennemsyn). Tjekket sker efter løkken, så også en elev,
+    // der blev stående i en låst stamgruppe, er med. En forældet matrix
+    // dannes forfra med eleven, så snart læreren går derover — så tier vi.
+    if (!isMatrixMode.value && !state.matrixGroupsStale
+        && Array.isArray(state.storedMatrixGroups) && state.storedMatrixGroups.length) {
+        const inMatrix = new Set();
+        state.storedMatrixGroups.forEach(g => g.members.forEach(m => inMatrix.add(memberIdStr(m))));
+        const inHome = new Set();
+        groups.forEach(g => g.members.forEach(m => inHome.add(memberIdStr(m))));
+        chosen.forEach(studentId => {
+            const idStr = String(studentId).trim();
+            if (!inHome.has(idStr) || inMatrix.has(idStr)) return;
+            const student = state.currentClass.data.find(s => s[idCol.value] == studentId);
+            if (!student) return;
+            notes.push(
+                `${getLabel(student)} står nu i en stamgruppe, men i ingen matrixgruppe. ` +
+                `Gå til ${UI_NAMES.matrix} og tilføj eleven dér også, hvis der skal være en.`
+            );
+        });
+    }
 
     // En aftale, der ikke kunne opfyldes — typisk fordi de andre sidder i en
     // LÅST gruppe, som ikke er en kandidat. Motoren behandler aftalen som et

@@ -91,14 +91,29 @@ const averagesText = computed(() =>
 // tværs af kørsler, så setup() kører IKKE igen. Der skal derfor en eksplicit
 // watch til, for at holde feltet i takt, når gruppens emne ryddes udefra
 // (clearAllTopics / gruppedannelse uden klasseemner).
-const topicValue = ref(getTopic(props.group.name, topicPrefix.value) || (isMatrix.value ? 'MATRIX' : ''));
+const topicValue = ref(getTopic(props.group.name, topicPrefix.value) || '');
+
+// Sand, mens læreren står i emnefeltet. Så er det HENDES tekst, der står i
+// feltet, og intet udefra må skrive i det (138. gennemsyn). Før skrev
+// watch'en nedenfor i feltet midt i en sætning, hver gang det udskudte gem
+// ramte gruppen: emnet gemmes trimmet, så "Den " blev til "Den", og det næste
+// ord kom til at hænge fast ("Denkolde"). På et matrixkort var det værre:
+// et tømt felt blev til "MATRIX" — og feltet forsvandt, fordi et matrixkort
+// uden emne ikke har et felt. Læreren kunne ikke skrive det nye emne, og det
+// gamle var slettet.
+//
+// Alt, der skifter emnet udefra (Ryd emner, en ny dannelse, Hent session),
+// begynder med et klik et andet sted, og klikket tager fokus fra feltet
+// først. onTopicBlur henter så gruppens emne ind igen.
+const topicEditing = ref(false);
 
 watch(
     () => props.group.topic,
     (newTopic) => {
         // Hold den lokale, redigerbare ref i takt, hver gang gruppens emne
         // sættes udefra (fx efter clearAllTopics eller en ny kørsel uden emner).
-        topicValue.value = newTopic || (isMatrix.value ? 'MATRIX' : '');
+        if (topicEditing.value) return;
+        topicValue.value = newTopic || '';
     }
 );
 
@@ -167,7 +182,7 @@ function persistTopic(group, cleanVal, isMatrixCard, filename) {
     if (saveTopic(group.name, cleanVal, prefix) === false) {
         // Det afviste emne må ikke vises som gemt eller komme med i en
         // efterfølgende matrix/session via gruppens kopi af emnet.
-        topicValue.value = getTopic(group.name, prefix) || (isMatrixCard ? 'MATRIX' : '');
+        topicValue.value = getTopic(group.name, prefix) || '';
         return;
     }
     group.topic = cleanVal;
@@ -204,18 +219,19 @@ function onTopicInput(e) {
 }
 
 function onTopicFocus() {
-    if (isMatrix.value && topicValue.value === 'MATRIX') {
-        topicValue.value = '';
-    }
+    topicEditing.value = true;
 }
 
 function onTopicBlur() {
     // Klik videre til fx Matrix eller en anden klasse: emnet skal være
     // gemt, inden den næste handling begynder at læse eller udskifte grupper.
     debouncedPersistTopic.flush();
-    if (isMatrix.value && topicValue.value.trim() === '') {
-        topicValue.value = 'MATRIX';
-    }
+    topicEditing.value = false;
+    // Feltet viser nu det, der faktisk er gemt (trimmet). Blev gemmet
+    // afvist, eller hørte skrivningen til grupper, der er skiftet ud, står
+    // det rigtige emne der i stedet for lærerens kladde. Et tømt matrixkort
+    // mister her sit felt (se skabelonen).
+    topicValue.value = props.group.topic || '';
 }
 
 function toggleLock() {
@@ -990,8 +1006,10 @@ function onDrop(e) {
             </select>
             <!-- Uden emner på klassen: et frit felt pr. gruppe -->
             <!-- Et matrixkort uden emne har intet at skrive i feltet (pladsholderen
-                 "MATRIX" var kun et tomt felt, der lignede en fejl) -->
-            <input v-else-if="!isMatrix || (topicValue && topicValue !== 'MATRIX')"
+                 "MATRIX" var kun et tomt felt, der lignede en fejl). Mens læreren
+                 står i feltet, bliver det stående, også når hun har slettet
+                 det gamle emne for at skrive et nyt (topicEditing). -->
+            <input v-else-if="!isMatrix || topicEditing || (topicValue && topicValue !== 'MATRIX')"
                    type="text"
                    aria-label="Emne for gruppen"
                    list="topics-datalist"
@@ -1505,8 +1523,7 @@ function onDrop(e) {
     background: var(--color-warning-bg);
 }
 
-.group-members-list li.replay-moved[data-replay-kind="2"],
-.group-members-list li.replay-moved[data-replay-kind="3"],
+/* 4 = uddelingen (KIND_DEAL i replay.js). */
 .group-members-list li.replay-moved[data-replay-kind="4"] {
     outline-color: var(--text-link);
     background: var(--surface-tint);

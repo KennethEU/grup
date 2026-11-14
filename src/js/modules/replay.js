@@ -1,9 +1,9 @@
 // replay.js — afspilningen af en optaget gruppedannelse.
 //
-// HVAD DEN GØR: motoren har skrevet ned, hvordan grupperne så ud til at
-// begynde med, og hvilke to elever der byttede plads hver eneste gang
-// (recorder.py). Her spilles det igennem, så læreren kan se det ske i de
-// rigtige gruppekort.
+// HVAD DEN GØR: motoren har skrevet ned, hvordan eleverne blev delt ud, og
+// hvert bytte og hver flytning bagefter (motor/engine/playback.js; appen
+// laver det om til hændelser i playbackToRecording i nextEngine.js). Her
+// spilles det igennem, så læreren kan se det ske i de rigtige gruppekort.
 //
 // INGEN DOM HERINDE. Filen regner kun ud, hvem der sidder hvor på et givet
 // tidspunkt; Vue tegner det. Det er den samme opdeling som resten af
@@ -14,15 +14,21 @@
 // historik-menuens forhåndsvisning (previewRunIndex) allerede gør. Stopper
 // afspilningen, falder kortene tilbage til sandheden af sig selv, fordi de
 // aldrig holdt op med at læse den.
+//
+// Optagelsen findes kun i hukommelsen (state.lastRecording, ryddes ved
+// klasseskift og genindlæsning), så den kommer altid fra JS-motoren. Den
+// gamle Python-motors optagelser havde flere slags hændelser (efterpas,
+// "opfylder en regel", bytter med spøgelseselever og afkortede optagelser);
+// de kan ikke nås længere og er fjernet (133. gennemsyn).
 
 import { markRaw } from 'vue';
 import { state } from './state.js';
+import { ruleTypeLabel } from './recipe.js';
 
-// Samme tal som recorder.py's KIND_*. De to filer skal være enige.
+// Hændelsernes art (tredje felt). Motoren giver kun to: et trin, der gør
+// grupperne bedre, og et ryst, der gør dem værre med vilje (effect "worse").
 export const KIND_IMPROVE = 0;  // motoren fandt et bytte der gør det bedre
 export const KIND_UPHILL = 1;   // motoren gør det VÆRRE med vilje
-export const KIND_RULE = 2;     // motor B opfylder en regel
-export const KIND_JOINT = 3;    // efterpasset
 // Findes kun her: uddelingen er ikke en hændelse i optagelsen, men et [elev,
 // gruppe]-par i `deal`. Afspilleren behandler den som en art, så kortene kan
 // fremhæve den elev, der lige blev lagt.
@@ -34,37 +40,99 @@ export const MIN_SPEED_MS = 1;
 export const MAX_SPEED_MS = 2000;
 export const DEFAULT_SPEED_MS = 60;
 
-// Regelnavnene som motoren kender dem → det læreren kalder dem i menuen.
-// Samme oversættelse som i HintsStack: advarsler og afspilning må ikke bruge
-// hvert sit ord om den samme regel.
-const RULE_LABELS = {
-    distribute: 'Fordel',
-    cluster: 'Klyng',
-    separate: 'Adskil',
-    strict_separate: 'Adskil',
-    aggregate: 'Opdel',
-    balance: 'Balancér',
-    minimizediff: 'Ensartede',
-    group_sort: 'Saml',
-};
-
 let timer = null;
 
-/** Regeltekst til én hændelse: "Adskil på Navn" — eller null. */
+/**
+ * Regeltekst til én hændelse: "Adskil på Navn" — eller null.
+ *
+ * Navnet er det samme som i opskriften og regelmenuen (ruleTypeLabel i
+ * recipe.js): afspilning og opskrift må ikke bruge hvert sit ord om den samme
+ * regel. Til 14/11 2026 havde filen sin egen tabel, og "Adskil altid" hed
+ * bare "Adskil" her.
+ */
 export function ruleLabel(raw) {
     if (!raw) return null;
     const cut = String(raw).indexOf(':');
-    const name = cut === -1 ? String(raw) : String(raw).slice(0, cut);
+    const type = cut === -1 ? String(raw) : String(raw).slice(0, cut);
     const attr = cut === -1 ? '' : String(raw).slice(cut + 1);
-    const label = RULE_LABELS[name.toLowerCase()] || name;
-    // Motor B lægger selv en "fordel spøgelserne"-regel forrest, som læreren
-    // ikke har bedt om. Den skal ikke se ud som en af hendes egne.
-    if (attr === '_rowId' || attr === 'phantom') return 'Udjævner gruppestørrelser';
+    const label = ruleTypeLabel(type.toLowerCase());
     return attr ? `${label} på ${attr}` : label;
 }
 
 /**
- * Hvem sidder hvor efter `n` bytter?
+ * Hvor står hver elev til sidst? elev → [gruppe, plads], fra motorens svar.
+ * Bruges til at tegne hvert billede i den rækkefølge, kortene ender i.
+ */
+function finalRank(run) {
+    if (!Array.isArray(run.final)) return null;
+    const rank = new Map();
+    run.final.forEach((group, gi) => group.forEach((id, i) => rank.set(id, [gi, i])));
+    return rank;
+}
+
+/**
+ * Sortér hver gruppe efter, hvor eleverne ender: de elever, der ender i
+ * gruppen, står på deres endelige plads (indbyrdes), og dem, der er på vej
+ * videre, nederst i den rækkefølge, de kom.
+ *
+ * HVORFOR: motoren flytter eleverne rundt i gruppens liste på sin egen måde
+ * (en elev, der går, får sin plads overtaget af gruppens sidste, og
+ * søgningen sætter elever sidst uden at skrive det i loggen — moveLast i
+ * motor/engine/state.js). Den rækkefølge kan ikke regnes ud af loggen. Før
+ * 14/11 2026 sprang afspilningen derfor til motorens facit i det allersidste
+ * billede, og navnene byttede plads inde i HVER gruppe i samme sekund (målt:
+ * 35 af 35 kørsler på testklassen). Nu står de rigtigt hele vejen.
+ */
+function orderByFinal(seating, rank) {
+    if (!rank) return seating;
+    return seating.map((group, gi) => {
+        const at = (id) => {
+            const r = rank.get(id);
+            return r && r[0] === gi ? r[1] : Infinity;
+        };
+        // Array.prototype.sort er stabil, så dem på vej videre beholder
+        // deres indbyrdes rækkefølge.
+        return group.slice().sort((a, b) => {
+            const x = at(a);
+            const y = at(b);
+            return x === y ? 0 : x - y;
+        });
+    });
+}
+
+/**
+ * Optagelsen med kortenes rækkefølge som facit.
+ *
+ * HVORFOR: trækker læreren en elev op eller ned i sit EGET kort efter
+ * dannelsen, står de samme elever stadig i de samme grupper — afspilningen
+ * passer. Men dens sidste billede tegnes i motorens rækkefølge (`final`, se
+ * orderByFinal), og så ville kortene springe, når afspilningen stopper. Før
+ * 14/11 2026 blev "Se kørslen" derfor slået fra med "Grupperne er ændret",
+ * selvom ingen elev havde skiftet gruppe (136. gennemsyn, kandidat 126).
+ *
+ * Kun det vindende forsøg får kortenes rækkefølge — det er dét, kortene
+ * viser. Optagelsen selv ændres aldrig (den er markRaw og deles); der laves
+ * en overfladisk kopi. En gruppe, kortene ikke kender, beholder motorens.
+ *
+ * @param recording   optagelsen ({ best_run_index, runs })
+ * @param groupNames  gruppenavn pr. indeks i optagelsen
+ * @param cards       grupperne, som de står på kortene ({ name, members })
+ * @param idOf        medlem → elev-id (memberIdStr)
+ */
+export function withCardOrder(recording, groupNames, cards, idOf = String) {
+    if (!recording || !Array.isArray(recording.runs)) return recording;
+    const best = recording.best_run_index || 0;
+    const run = recording.runs[best];
+    if (!run || !Array.isArray(run.final)) return recording;
+    const byName = new Map((cards || []).map(g => [g.name, (g.members || []).map(idOf)]));
+    const final = run.final.map((ids, i) => byName.get((groupNames || [])[i]) || ids);
+    const runs = recording.runs.slice();
+    runs[best] = { ...run, final };
+    return { ...recording, runs };
+}
+
+/**
+ * Hvem sidder hvor efter `n` billeder (først uddelingen, så bytterne)?
  *
  * Spoler altid forfra. Det lyder dyrt, men er det ikke: 9.408 bytter på
  * almindelige arrays tager under 5 ms, og til gengæld findes der ingen
@@ -74,32 +142,22 @@ export function ruleLabel(raw) {
  */
 export function seatingAt(run, n) {
     const deal = run.deal || [];
-    const seating = run.seed.map(() => []);
-    const total = frameCount(run);
+    const rank = finalRank(run);
 
-    // Motor B sorterer medlemmerne, når resultatet skrives til sin outputfil,
-    // og efterpasset kan ændre rækkefølgen efter sidste optagede bytte. Den
-    // rækkefølge kan ikke altid rekonstrueres fra deltaerne alene. Ved et
-    // komplet slutbillede bruger vi derfor motorens gemte facit. En afkortet
-    // optagelse må ikke gøre det — dér mangler der bevidst hændelser, og
-    // afspilleren skal blive ved med at vise advarslen om den manglende slutning.
-    if (!run.truncated && n >= total && Array.isArray(run.final)) {
-        return run.final.map(group => group.slice());
+    // FASE 1 — uddelingen. Motoren lægger eleverne ud én ad gangen; det er
+    // dét, der sker, før noget som helst bliver byttet. Er vi stadig midt i
+    // den, står resten af pladserne tomme.
+    if (n < deal.length) {
+        const seating = run.seed.map(() => []);
+        for (let i = 0; i < Math.max(0, n); i++) {
+            const [id, gi] = deal[i];
+            if (seating[gi]) seating[gi].push(id);
+        }
+        return orderByFinal(seating, rank);
     }
 
-    // FASE 1 — uddelingen. Motoren sorterer eleverne og lægger dem ud én ad
-    // gangen; det er dét, der sker, før noget som helst bliver byttet. Er vi
-    // stadig midt i den, står resten af pladserne tomme.
-    const dealt = Math.max(0, Math.min(n, deal.length));
-    for (let i = 0; i < dealt; i++) {
-        const [id, gi] = deal[i];
-        if (seating[gi]) seating[gi].push(id);
-    }
-    if (n < deal.length) return seating;
-
-    // FASE 2 — bytterne. Herfra er alle på plads, og vi kan lige så godt tage
-    // det færdige udgangspunkt: det er den samme fordeling, og det er den,
-    // Python-testen holder os op på.
+    // FASE 2 — bytterne. Herfra er alle på plads, og udgangspunktet er
+    // uddelingens fordeling (seed).
     const after = run.seed.map(g => g.slice());
     const where = new Map();
     after.forEach((group, gi) => group.forEach(m => where.set(m, gi)));
@@ -108,16 +166,14 @@ export function seatingAt(run, n) {
     for (let i = 0; i < stop; i++) {
         const event = run.events[i];
         if (isMove(event)) { moveTo(after, where, event[0], event[8]); continue; }
-        const kind = event[2];
-        for (const [a, b] of pairsOf(event)) swapPair(after, where, a, b, kind);
+        for (const [a, b] of pairsOf(event)) swapPair(after, where, a, b);
     }
-    return after;
+    return orderByFinal(after, rank);
 }
 
 /**
  * En flytning uden makker: én elev går til en anden gruppe (b er null, og
- * målgruppen står som niende felt). Motoren (motor/engine) laver dem;
- * den gamle Python-motors optagelser byttede altid to.
+ * målgruppen står som niende felt).
  */
 function isMove(event) {
     return event[1] === null && Number.isInteger(event[8]);
@@ -137,41 +193,31 @@ function moveTo(after, where, a, to) {
  * Parrene i én hændelse. Næsten altid ét: to elever, der byttede plads.
  *
  * Et blok-bytte (en Skal sammen-aftale der flytter samlet) har de øvrige par
- * som ottende felt — se recorder.swap_block. De skal anvendes i SAMME billede;
- * før var hvert par sit eget billede, og så stod aftalens elever i hver sin
- * gruppe imellem dem, noget motoren aldrig gjorde.
+ * som ottende felt. De skal anvendes i SAMME billede; før var hvert par sit
+ * eget billede, og så stod aftalens elever i hver sin gruppe imellem dem,
+ * noget motoren aldrig gjorde.
  */
 function pairsOf(event) {
     const extra = Array.isArray(event[7]) ? event[7] : [];
     return [[event[0], event[1]], ...extra];
 }
 
-function swapPair(after, where, a, b, kind) {
+function swapPair(after, where, a, b) {
     const ga = where.get(a);
     const gb = where.get(b);
     // En hændelse vi ikke kan placere, springes over i stedet for at
-    // vælte afspilningen. Sker det, er optagelsen og resultatet uenige,
-    // og så fanger Python-testen det (test_recorder.py) længe før det her.
+    // vælte afspilningen. Sker det, er optagelsen og resultatet uenige —
+    // engineChain.test.js holder øje med, at afspilningen ender i grupperne.
     if (ga === undefined || gb === undefined || ga === gb) return;
     const ia = after[ga].indexOf(a);
     const ib = after[gb].indexOf(b);
     if (ia === -1 || ib === -1) return;
-
-    // Motor A og den gamle motor B bytter ved at fjerne begge
-    // elever og sætte den nye elev SIDST i den anden gruppe. Før stod de
-    // på samme pladser i afspilleren, så medlemskabet var rigtigt, men
-    // rækkefølgen i slutbilledet ikke lignede resultatet på kortene.
-    // Efterpasset (KIND_JOINT) bytter derimod to listepositioner direkte
-    // og skal derfor beholde den gamle pladsering.
-    if (kind === KIND_JOINT) {
-        after[ga][ia] = b;
-        after[gb][ib] = a;
-    } else {
-        after[ga].splice(ia, 1);
-        after[gb].splice(ib, 1);
-        after[ga].push(b);
-        after[gb].push(a);
-    }
+    // Begge ud, og den nye bagerst. Rækkefølgen inde i gruppen ordnes
+    // bagefter af orderByFinal.
+    after[ga].splice(ia, 1);
+    after[gb].splice(ib, 1);
+    after[ga].push(b);
+    after[gb].push(a);
     where.set(a, gb);
     where.set(b, ga);
 }
@@ -181,49 +227,28 @@ export function frameCount(run) {
     return (run.deal || []).length + run.events.length;
 }
 
-/**
- * Hændelsen der lige er sket — det er den, kortene fremhæver.
- *
- * `soloMove` er vigtig: motor B fylder grupperne op med spøgelseselever, og de
- * tegnes ikke (de er ikke elever). Bytter en rigtig elev med et spøgelse, ser
- * det derfor ud, som om hun vandrer alene mellem to grupper — igen og igen.
- *
- * Det er ikke en fejl i afspilningen, det er hvad motoren gør: et spøgelse har
- * ingen værdi i nogen kolonne, så det kan aldrig bryde en regel, og
- * `valid_swap` i den gamle motor B godkender det som eneste mulige makker. Målt på
- * lærerens eget hold var 69-94 % af motor B's bytter af den slags — og for
- * reglen "Fordel på Køn" var det 100 %.
- *
- * Uden det her flag stod der bare "Bytte 143", mens én elev hoppede frem og
- * tilbage uden synlig grund.
- */
-function eventAt(run, n, phantomPrefix) {
+/** Hændelsen der lige er sket — det er den, kortene fremhæver. */
+function eventAt(run, n) {
     const deal = run.deal || [];
     if (n <= 0) return null;
     if (n <= deal.length) {
         const [id, gi] = deal[n - 1];
-        return { a: id, b: null, kind: KIND_DEAL, groupIndex: gi, passNum: null,
-                 before: null, after: null, rule: null };
+        return { a: id, b: null, kind: KIND_DEAL, groupIndex: gi, rule: null };
     }
     const i = n - deal.length;
     if (i > run.events.length) return null;
     const event = run.events[i - 1];
-    const [a, b, kind, passNum, before, after, rule] = event;
+    const [a, b, kind, , , , rule] = event;
     if (isMove(event)) {
-        return { a, b: null, kind, passNum, before, after, rule: ruleLabel(rule),
-                 moved: [a], pairCount: 1, soloMove: false, isMove: true, groupIndex: event[8] };
+        return { a, b: null, kind, rule: ruleLabel(rule),
+                 moved: [a], pairCount: 1, isMove: true, groupIndex: event[8] };
     }
-    const p = phantomPrefix || '\u0000tom:';
-    const aGhost = String(a).startsWith(p);
-    const bGhost = String(b).startsWith(p);
     const pairs = pairsOf(event);
     return {
-        a, b, kind, passNum, before, after, rule: ruleLabel(rule),
+        a, b, kind, rule: ruleLabel(rule),
         // Alle der flyttede i billedet — ved et blok-bytte flere end to.
         moved: pairs.flat(),
         pairCount: pairs.length,
-        // Én af de to er en tom plads — den anden ser ud til at flytte alene.
-        soloMove: aGhost !== bGhost,
     };
 }
 
@@ -234,7 +259,7 @@ function apply() {
     state.replay = {
         ...r,
         seating: seatingAt(run, r.frameIndex),
-        last: eventAt(run, r.frameIndex, r.phantomPrefix),
+        last: eventAt(run, r.frameIndex),
         total: frameCount(run),
         dealCount: (run.deal || []).length,
     };
@@ -263,7 +288,7 @@ function tick() {
 /**
  * Begynd en afspilning.
  *
- * @param recording   optagelsen fra Python
+ * @param recording   optagelsen (playbackToRecording i nextEngine.js)
  * @param groupNames  gruppenavn pr. indeks i optagelsen — fanget da resultatet
  *                    kom hjem, ikke regnet ud igen her (generation.js)
  * @param lockedGroups de låste grupper, der stod udenfor hele kørslen
@@ -283,7 +308,6 @@ export function start(recording, groupNames, lockedGroups, view = 'standard') {
         groupNames: groupNames || [],
         lockedGroups: lockedGroups || [],
         view,
-        phantomPrefix: recording.phantom_prefix || '\u0000tom:',
         runIndex: recording.best_run_index || 0,
         frameIndex: 0,
         speed: DEFAULT_SPEED_MS,
@@ -360,13 +384,4 @@ export function setSpeed(ms) {
         clearTimer();
         timer = setTimeout(tick, safe);
     }
-}
-
-export function selectRun(i) {
-    const r = state.replay;
-    if (!r) return;
-    const idx = Math.max(0, Math.min(parseInt(i, 10) || 0, r.recording.runs.length - 1));
-    pause();
-    state.replay = { ...state.replay, runIndex: idx, frameIndex: 0 };
-    apply();
 }

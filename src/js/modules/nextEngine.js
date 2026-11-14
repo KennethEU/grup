@@ -28,7 +28,8 @@ import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
     ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
-    groupDisplayName, homeGroupFingerprint, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
+    groupDisplayName, groupSetFingerprint, matrixOrigins, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
+    matrixSourceById, lockedMatrixDuplicates,
 } from './utils.js';
 
 export const CONTRACT_VERSION = 3;
@@ -681,7 +682,28 @@ export function inputFingerprint(input) {
     rest.sources = ruleSources.get(input) || null;
     // Et låst grupper-emne, motoren selv har givet (lockedTopics), ændrer
     // input bagefter uden at ændre grupperne eller reglerne: emnet tæller ikke.
-    rest.lockedGroups = (lockedGroups || []).map(({ topic, ...g }) => g);  // eslint-disable-line no-unused-vars
+    //
+    // Elevernes rækkefølge i et kort tæller heller ikke: en låst gruppe eller
+    // en stamgruppe (matrixens kilde) er de samme elever, uanset hvem der står
+    // øverst. Med rækkefølgen i aftrykket forsvandt matrixens mærker og noter,
+    // og prøvekørslen gik i gang, når læreren trak en elev op eller ned i sit
+    // eget stamkort (130. gennemsyn; 129. rettede det samme for
+    // matrix-advarslen og stamvisningens mærker). Kun aftrykket sorteres —
+    // motoren får input, som det er.
+    const sorted = (members) => [...(members || [])].sort();
+    rest.lockedGroups = (lockedGroups || []).map(({ topic, members, ...g }) => ({ ...g, members: sorted(members) }));  // eslint-disable-line no-unused-vars
+    if (rest.matrix) {
+        // Med "Én fra hver stamgruppe" ser motoren ikke stamgruppernes emner
+        // (task.js: kilden er gruppen), så et nyt emne på en stamgruppe
+        // ændrer ikke matrixen. Med "Én fra hvert emne" er emnet kilden.
+        const byGroup = rest.matrix.source === 'homeGroup';
+        rest.matrix = {
+            ...rest.matrix,
+            homeGroups: (rest.matrix.homeGroups || []).map(h => ({
+                ...h, members: sorted(h.members), topic: byGroup ? null : h.topic,
+            })),
+        };
+    }
     return JSON.stringify(rest);
 }
 
@@ -697,7 +719,7 @@ export function runStatusFor(isMatrix) {
     const status = lastRunStatus[isMatrix ? 'matrix' : 'standard'];
     if (!status) return null;
     const groups = (isMatrix ? state.storedMatrixGroups : state.storedStandardGroups) || [];
-    if (homeGroupFingerprint(groups) !== status.groups) return null;
+    if (groupSetFingerprint(groups) !== status.groups) return null;
     // Samme svar som lastRunApplies (samme input som kørslen) — og fra samme
     // computed, så input ikke bygges forfra for hver, der spørger (mærkerne i
     // RecipeRules og aftalerne i RecipePanel). Målt i 114. gennemsyn: med 150
@@ -800,12 +822,12 @@ export function playbackToRecording(playback, input) {
     return {
         best_run_index: 0,
         runs: [{
-            won: true,
             seed,
             deal: best.deal.map(([id, g]) => [id, g]),
             events,
+            // Motorens grupper: afspilningen tegner hvert billede i deres
+            // rækkefølge (orderByFinal i replay.js).
             final: best.groups.map(g => g.slice()),
-            truncated: false,
             // Slutningen er lagt sammen til ét spring (for mange trin).
             merged: !!best.cut,
         }],
@@ -1290,6 +1312,14 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     // Mærkerne i opskriften (hvad blev opfyldt) — også regnet ud FØR pushRun.
     const marks = ruleMarks(input, answer, ruleSources.get(input), severityOf);
 
+    // En låst matrixgruppe dannes ikke om, så den kan have to fra samme kilde
+    // (låst før stamgrupperne blev dannet om). Motoren ser kun de frie elever
+    // og siger det ikke; det gør vi her (135. gennemsyn).
+    if (isMatrix && input.matrix) {
+        const text = lockedMatrixNote(input);
+        if (text) notes.push([text, 'info', null, true]);
+    }
+
     pushRun();
     for (const [text, type, keys, result] of notes) announce(text, type, keys, result);
     commitRun(setupSignature(state.currentClass, isMatrix, state.groupMode));
@@ -1365,7 +1395,10 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     }
 
     state.lastRecording[viewKey] = runRecording;
-    state.lastRecordingFingerprint[viewKey] = runRecording ? homeGroupFingerprint(finalGroups) : null;
+    // Uden elevernes rækkefølge i kortet og uden emnet: en elev trukket op
+    // eller ned i sin egen gruppe (withCardOrder i replay.js) eller et nyt
+    // emne på et kort slår ikke afspilningen fra.
+    state.lastRecordingFingerprint[viewKey] = runRecording ? groupSetFingerprint(finalGroups) : null;
     if (isMatrix) state.storedMatrixGroups = finalGroups;
     else state.storedStandardGroups = finalGroups;
     setRunStatus(viewKey, marks, input, finalGroups, skipTogether);
@@ -1373,18 +1406,44 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     // Nye stamgrupper gør matrixgrupperne forældede; nye matrixgrupper husker,
     // hvilke stamgrupper de blev dannet ud fra.
     state.matrixGroupsStale = !isMatrix;
-    state.matrixSourceFingerprint = isMatrix ? homeGroupFingerprint(state.storedStandardGroups) : null;
+    state.matrixSourceFingerprint = isMatrix ? matrixOrigins(state.storedStandardGroups, finalGroups) : null;
     storage.saveGroupsToStorage();
     markClean();
 
     logAnswer(answer, input);
 }
 
+/**
+ * Noten om låste matrixgrupper med to elever fra samme kilde, eller null.
+ * Kilderne er dem, motoren fik (input.matrix.homeGroups — samme emne-
+ * stavemåde og samme medlemmer), og de låstes medlemmer er de mødte.
+ * Eksporteret for testens skyld.
+ */
+export function lockedMatrixNote(input) {
+    if (!input || !input.matrix || !(input.lockedGroups || []).length) return null;
+    const byGroup = input.matrix.source === 'homeGroup';
+    const sourceById = matrixSourceById(
+        input.matrix.homeGroups.map(h => ({ name: h.id, topic: byGroup ? null : h.topic, members: h.members })),
+        byGroup ? 'group' : 'topic',
+    );
+    const names = lockedMatrixDuplicates(
+        input.lockedGroups.map(g => ({ name: g.id, members: g.members })),
+        sourceById,
+    ).map(groupDisplayName);
+    if (!names.length) return null;
+    const what = byGroup ? 'samme stamgruppe' : 'samme emne';
+    const which = names.length === 1
+        ? `Den låste matrixgruppe ${names[0]} har`
+        : `De låste matrixgrupper ${names.slice(0, -1).join(', ')} og ${names[names.length - 1]} har`;
+    return `${which} to eller flere elever fra ${what}. En låst gruppe dannes ikke om — `
+        + 'lås den op, og dan matrixen igen, hvis den også skal have én fra hver.';
+}
+
 /** Gem mærkerne for kørslen, der lige er landet (se runStatusFor). */
 function setRunStatus(viewKey, marks, input, groups, skipTogether = []) {
     lastRunStatus[viewKey] = markRaw({
         input: inputFingerprint(input),
-        groups: homeGroupFingerprint(groups),
+        groups: groupSetFingerprint(groups),
         // "Dan grupper uden aftalen": samme aftaler sprunget over, når det
         // nuværende input sammenlignes med kørslens.
         skipTogether: [...skipTogether],

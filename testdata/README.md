@@ -42,6 +42,26 @@ Formatet er taget fra en rigtig liste (september 2026); navnene er opdigtede.
 
 **Brugt af:** `src/js/modules/lectio.test.js`, `e2e/realistisk_klasse.spec.ts`.
 
+## `lectio_lektion.txt` og `lectio_laerere_og_elever*.txt` — Lectios to sider
+
+Kenneths kopier fra Lectio 14/11 2026, med de samme 29 opdigtede elever i alle
+tre. Navne, lærer, hold (`2bx`), lokale, initialer og dato er skiftet ud; kun
+formen er Lectios.
+
+- `lectio_lektion.txt`: lektionens side. Sidens linjer over listen
+  ("Tidspunkt: …", "Type: Lektion", "Ingen forløb." …), den første elev efter
+  "Elever:" og en tabulator, og "Antal elever: 29" og "System information: …"
+  under.
+- `lectio_laerere_og_elever.txt`: siden "Lærere og elever" som tabel. Menuen
+  over ("Lærere og elever", "menu", "Vis: …"), overskriften `Type ID Fornavn
+  Efternavn Studieretning`, læreren som første række og optællingen under.
+- `lectio_laerere_og_elever_tomme_kolonner.txt`: samme side i en anden
+  visning: ingen Studieretning, men ti tomme kolonner, hvor hver celle er et
+  hårdt mellemrum (U+00A0).
+
+**Brugt af:** `src/js/modules/lectio.test.js` (alle tre skal give præcis de
+samme 29 navne), `e2e/realistisk_klasse.spec.ts`.
+
 ## `kontrakt/` — input i den nye motors format
 
 Testklasser i formatet fra `docs/grupper-js-motor-kontrakt.md` (version 2, afsnit 2):

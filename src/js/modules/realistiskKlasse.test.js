@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { pyBridge } from './py_bridge.js';
 import { cellNumber, columnIsNumeric, ROW_ID } from './utils.js';
 // Den fælles realistiske testklasse — se testdata/README.md. Samme fil læses
-// af Python-testene og e2e, så de tre lag prøver det samme af.
+// af e2e (og replay.test.js med den rigtige motor), så lagene prøver det samme af.
 import FIXTURE from '../../../testdata/realistisk_klasse.json';
 
 const { columns, rows } = FIXTURE;

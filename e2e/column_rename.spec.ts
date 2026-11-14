@@ -106,3 +106,33 @@ test('"Gem som kolonne" med "__" foran afvises og lægger ingen skjult kolonne i
     expect(state.columns).not.toContain('__Runde');
     expect(state.inRow).toBe(false);
 });
+
+// Forslag 137 (Kenneth sagde ja 14/11 2026): gemmer læreren grupperne som
+// kolonne igen (fx næste uge), foreslår vinduet "Stamgrupper 2", og knappen
+// hedder "Gem kolonne". Før stod "Stamgrupper" der igen, knappen hed
+// "Overskriv "Stamgrupper"", og ét tryk skrev oven i sidste uges grupper.
+test('"Gem som kolonne" to gange giver to kolonner, ikke en overskrivning', async ({ page }) => {
+    await createClass(page, 'Gem to gange E2E', CSV);
+    await goToGroups(page);
+    await generateGroups(page);
+
+    await openSaveColumn(page);
+    await expect(page.locator('#gk-navn')).toHaveValue('Stamgrupper');
+    await page.locator('.modal-overlay').getByRole('button', { name: 'Gem kolonne' }).click();
+    await expect(page.locator('.modal-overlay')).toHaveCount(0);
+
+    await openSaveColumn(page);
+    await expect(page.locator('#gk-navn')).toHaveValue('Stamgrupper 2');
+    await expect(page.locator('.overwrite-warning')).toHaveCount(0);
+    await page.locator('.modal-overlay').getByRole('button', { name: 'Gem kolonne' }).click();
+    await expect(page.locator('.modal-overlay')).toHaveCount(0);
+
+    const columns = await page.evaluate(() => [...(window as any).appDebug.state.currentClass.columns]);
+    expect(columns).toContain('Stamgrupper');
+    expect(columns).toContain('Stamgrupper 2');
+
+    // Det gamle navn kan stadig skrives selv — så advarer vinduet som før.
+    await openSaveColumn(page);
+    await page.locator('#gk-navn').fill('Stamgrupper');
+    await expect(page.locator('.modal-overlay').getByRole('button', { name: 'Overskriv "Stamgrupper"' })).toBeVisible();
+});

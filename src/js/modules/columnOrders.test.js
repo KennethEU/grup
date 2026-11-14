@@ -6,7 +6,7 @@
 // rækkefølgen, og de tre tal-regler får en tal-kolonne at arbejde med.
 //
 // Det bærende valg testene holder fast i: rang-kolonnen lægges VED SIDEN AF
-// tekstkolonnen, ikke i stedet for. Ellers ville Pythons lærervendte advarsler
+// tekstkolonnen, ikke i stedet for. Ellers ville de lærervendte beskeder
 // begynde at sige "2" i stedet for "Middel".
 import { describe, it, expect } from 'vitest';
 import { applyColumnOrders, rankingAffectsColumn, rankSteps, RANK_PREFIX, RULE_TYPES } from './utils.js';

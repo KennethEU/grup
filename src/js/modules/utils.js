@@ -125,19 +125,13 @@ export const RULE_WEIGHT_NOTES = Object.freeze({
  * andre HAVDE et, og det var en løgn: de arbejder alle på hele kolonnen, og
  * ingen af dem så nogensinde på `values`.
  *
- *   Opdel   — `solve_aggregate` deler op efter ALLE værdier i kolonnen
- *             (`cluster_by_attr`), uanset hvad der stod i feltet.
- *   Saml    — tæller forskellige værdier i gruppen; ingen værdi-filtrering.
- *   Klyng   — straffer enlige elever på enhver værdi. Klyng kører altid motor
- *             A (WEIGHED_ENGINE_TYPES), så motor B's værdi-udgave nås aldrig.
- *   Fordel  — den værste af de fire: motor A og resultat-scoreren ser hele
- *             kolonnen, mens motor B's Python-regel FAKTISK ville have
- *             spredt kun den valgte værdi. Samme regel gav altså to
- *             forskellige grupperinger alt efter, hvilke ANDRE regler læreren
- *             havde valgt — og opfyldelsesprocenten i tabellen målte hele
- *             kolonnen i begge tilfælde. Nu sendes `values` ikke med for
- *             nogen af de fire (generation.js), så alle tre steder er enige:
- *             reglen gælder kolonnen.
+ *   Opdel, Saml, Klyng og Fordel ser på alle værdier i kolonnen; ingen af
+ *   dem filtrerer på en valgt værdi. Med den gamle Python-motor (til 3/11
+ *   2026) var Fordel den værste: dens ene motor spredte kun den valgte
+ *   værdi, den anden hele kolonnen, alt efter hvilke ANDRE regler læreren
+ *   havde valgt. Appen sender `values` kun med Adskil og Adskil altid
+ *   (VALUE_RULES i nextEngine.js), og JS-motoren regner de fire på hele
+ *   kolonnen — reglen gælder kolonnen.
  *
  * Skal én bestemt værdi behandles for sig, er det "Adskil", der gør det — den
  * er den eneste regel, hvor værdien har haft en virkning hele vejen igennem.
@@ -784,10 +778,9 @@ export function migrateRefsToRowIds(cls, oldIdCol, refs = {}) {
 /**
  * "1 gruppe" / "3 grupper" — dansk bøjning af et gruppeantal.
  *
- * docs/grupper.md gør det til en regel, at antal bøjes, og at de tre
- * advarselskilder lyder ens. `logic.py` har `_groups_text()`, og HintsStack havde
- * sin egen lokale kopi — men `generation.js` havde ingen og skrev
- * "Du har låst 1 grupper". Reglen bor her nu, så alle tre kilder kan dele den.
+ * docs/grupper.md gør det til en regel, at antal bøjes, og at advarslerne
+ * lyder ens. HintsStack havde engang sin egen lokale kopi, og `generation.js`
+ * skrev "Du har låst 1 grupper". Reglen bor her, så alle kan dele den.
  *
  * @param {number} n
  * @returns {string}
@@ -993,41 +986,107 @@ export function isMemberAbsent(m, data, byId) {
 }
 
 /**
- * Aftryk af de stamgrupper, en matrix er dannet ud fra.
+ * Aftryk af grupperne: hvem står i hvilken gruppe — uden elevernes
+ * rækkefølge i kortet, uden emnet og uden låsen.
  *
- * Matrixgrupper dannes PÅ TVÆRS af stamgrupperne: hver elev får et
- * `__MatrixSource__` sat efter den stamgruppe hun står i, og motoren spreder
- * kilderne ud. Flytter læreren bagefter en elev i hånden, rører det kun
- * stamgrupperne — matrixen bliver stående og er nu skæv (to elever fra samme
- * stamgruppe i én matrixgruppe, og en anden stamgruppe uden repræsentant).
- * Aftrykket her gør driften målbar, så hintet i Matrix-visningen kun dukker
- * op når der FAKTISK er noget at advare om.
+ * Bruges af "Sidste dannelse"s mærker (runStatusFor i nextEngine.js) og af
+ * afspilningen ("Se kørslen", GroupResultsPanel.vue). Begge gælder, så længe
+ * de samme elever står i de samme grupper, og intet andet:
+ *   - **rækkefølgen i kortet** — at trække en elev op eller ned i sit EGET
+ *     kort ændrer intet af det, motoren har regnet på (129. gennemsyn), og
+ *     afspilningens sidste billede tegnes i kortenes rækkefølge (withCardOrder
+ *     i replay.js, 136. gennemsyn)
+ *   - **emnet** — mærkerne handler om regler og aftaler, og ingen af dem ser
+ *     på gruppens emne (ruleMarks.js, motor/engine/rules.js). Afspilningen
+ *     tegner kortene med det emne, de har NU (replayGroups i
+ *     GroupResultsPanel.vue). Før 137. gennemsyn talte emnet med, så et nyt
+ *     emne på et kort slog "Se kørslen" fra med "Grupperne er ændret" og
+ *     fjernede mærkerne (inputFingerprint ser heller ikke en låst gruppes
+ *     emne).
+ *   - **låsen** — en lås ændrer ikke, hvem der står i gruppen.
  *
- * Hvad der tælles med, og hvorfor:
- *   - **medlemmerne** — det er dem der bliver fordelt
- *   - **emnet** — med matrix-strategien "Emner" ER emnet kildeværdien, så to
- *     grupper der bytter emne skævvrider matrixen præcis som en flyttet elev
- *   - **navnet** — kildeværdien med strategien "Grupper"
- *
- * Og hvad der bevidst IKKE tælles med: **`locked`**. At låse en stamgruppe
- * ændrer ikke hvem der står i den, så matrixen er lige så gyldig bagefter.
- * Talte vi låsen med, ville et tryk på hængelåsen udløse en advarsel om en
- * skævhed, der ikke findes — og et hint man lærer at klikke væk, er værre end
- * intet hint.
- *
- * Emnet læses fra `g.topic` og IKKE fra emne-kortet i lageret, så funktionen
- * kan blive her i utils.js uden at importere `storage` (som selv importerer
- * utils). De to holdes i sync alle de steder et emne skrives, og skulle de
- * alligevel drive fra hinanden, er værste udfald et manglende eller et
- * overflødigt hint — ikke ødelagte data.
- *
- * @param {Array} groups   stamgrupperne
- * @returns {string}       aftryk til sammenligning med `===`
+ * Matrix-advarslen "Stamgrupperne er ændret" bruger noget andet
+ * (matrixOrigins herunder): dér ER emnet kilden med strategien "Emner".
  */
-export function homeGroupFingerprint(groups) {
+export function groupSetFingerprint(groups) {
     return (groups || []).map(g =>
-        `${g.name}:${g.topic || ''}:${(g.members || []).map(memberIdStr).join(',')}`
+        `${g.name}:${(g.members || []).map(memberIdStr).sort().join(',')}`
     ).join('|');
+}
+
+/**
+ * Hvilken stamgruppe kom hver elev i matrixen fra? — det, matrixen er dannet
+ * ud fra, gemt som tekst (JSON af [id, oprindelse]-par, sorteret).
+ *
+ * Oprindelsen er stamgruppens navn OG emne: med strategien "Emner" er emnet
+ * kilden, med "Grupper" navnet. Kun elever, der står i en MATRIXgruppe, er
+ * med — det er dem, matrixen kan passe eller ikke passe til.
+ *
+ * HVORFOR IKKE HELE STAMGRUPPERNE (som før 129. gennemsyn): aftrykket var alle
+ * stamgruppernes medlemslister i rækkefølge, så tre ting, der ikke gør
+ * matrixen skæv, gav den røde advarsel "Stamgrupperne er ændret" og en knap,
+ * der danner matrixen forfra (og kaster lærerens rettelser i den væk):
+ *   - en elev meldt fraværende med papirkurven (excludeMember tager eleven ud
+ *     af BÅDE stamgruppen og matrixgruppen — matrixen passer stadig)
+ *   - en elev trukket op eller ned i sit eget stamkort
+ *   - en tilbagevendende elev sat tilbage i sin egen stamgruppe
+ *
+ * @returns {string} aldrig tom ('[]' uden elever), så `null` stadig kan
+ *                   betyde "ved ikke, hvor matrixen kom fra"
+ */
+export function matrixOrigins(standardGroups, matrixGroups) {
+    const origin = new Map();
+    for (const g of standardGroups || []) {
+        if (!g) continue;
+        const where = `${g.name}:${g.topic || ''}`;
+        for (const m of g.members || []) {
+            const id = memberIdStr(m);
+            // Første stamgruppe vinder — samme som homeGroupOriginById.
+            if (id && !origin.has(id)) origin.set(id, where);
+        }
+    }
+    const ids = new Set();
+    for (const g of matrixGroups || []) {
+        for (const m of (g && g.members) || []) {
+            const id = memberIdStr(m);
+            if (id) ids.add(id);
+        }
+    }
+    return JSON.stringify([...ids].sort().map(id => [id, origin.get(id) ?? '']));
+}
+
+/**
+ * Er matrixen skæv i forhold til stamgrupperne nu?
+ *
+ * Kun elever, der står i matrixen NU og stod der, da den blev dannet, tæller:
+ * har én af dem en anden stamgruppe (eller stamgruppen et andet emne), er
+ * matrixen skæv. En elev, der er taget ud af matrixen (fraværende), som er
+ * kommet ind bagefter (efternøler i matrix-visningen, som placement.js
+ * allerede holder fra sin stamgruppes kilde), eller som ikke står i nogen
+ * stamgruppe nu (meldt væk med papirkurven og sat tilbage i matrixen), tæller
+ * ikke.
+ *
+ * @param {string|null} snapshot  matrixOrigins() fra dengang matrixen blev dannet
+ * @returns {string|null} en nøgle for den skævhed, der er nu (ny skævhed →
+ *                        ny nøgle, så et lukket hint kan komme igen), eller
+ *                        null når matrixen passer — eller vi ikke ved det
+ */
+export function matrixOriginDrift(snapshot, standardGroups, matrixGroups) {
+    if (!snapshot) return null;
+    let then;
+    try {
+        then = new Map(JSON.parse(snapshot));
+    } catch {
+        // Et aftryk, vi ikke kan læse, ved vi intet om — så tier vi.
+        return null;
+    }
+    const now = JSON.parse(matrixOrigins(standardGroups, matrixGroups));
+    // `where === ''`: eleven står ikke i nogen stamgruppe nu — typisk meldt
+    // væk med papirkurven (ude af begge sæt) og sat tilbage som efternøler i
+    // matrix-visningen. Så har eleven ingen stamgruppe at være skæv i forhold
+    // til; samme tanke som "en fraværende tæller ikke".
+    const drifted = now.filter(([id, where]) => where !== '' && then.has(id) && then.get(id) !== where);
+    return drifted.length ? drifted.map(([id, where]) => `${id}=${where}`).join('|') : null;
 }
 
 /**
@@ -1043,17 +1102,15 @@ export function homeGroupFingerprint(groups) {
  *   - en gemt session eller en gendannet backup kommer ind med grupper,
  *     der blev dannet dengang undgåelsen ikke fandtes
  *
- * Og motoren selv kan bryde den: undgåelsen er en BLØD regel (vægt 1.000.000
- * i scoring.py), og Opdel vejer tungere (5.000.000). Målt: Opdel('Emne') med
- * to elever i samme emne og kun én gruppe dér satte dem sammen — men DET
- * tilfælde advarer logic.py allerede om før kørslen (Check 3).
+ * Og motoren selv kan bryde den: undgåelsen er ikke en hård grænse, men et
+ * trin i motorens rangorden (levelPlan i motor/engine/rules.js). Kun "Adskil
+ * altid" står over den, og Opdel deler eleverne i puljer, FØR der rangordnes.
+ * Står to, der skal undgå hinanden, i en Opdel-pulje med for få grupper, ender
+ * de sammen — men DET siger motoren selv før kørslen (`avoid-unavoidable` i
+ * motor/engine/messages.js).
  *
- * Klyng står med 2.000.000 i den samme tabel, men brød den ikke i nogen af de
- * kørsler, der er prøvet: `_score_cluster` straffer kun en elev der sidder
- * ALENE med sin værdi, ikke en klynge der ikke er samlet, så reglen giver
- * efter længe før undgåelsen gør. Vægttallet alene siger altså ikke, hvem der
- * vinder — derfor måles der HER på grupperne selv og ikke på reglerne:
- * uanset hvordan de to elever endte sammen, opdager tjekket det.
+ * Derfor måles der HER på grupperne selv og ikke på reglerne: uanset hvordan
+ * de to elever endte sammen, opdager tjekket det.
  *
  * Hvem der tælles med: kun elever der stadig står i klassen OG ikke er
  * markeret fraværende. Et spøgelse (slettet elevrække) og en fraværende elev
@@ -1243,6 +1300,40 @@ export function matrixSourceById(sourceGroups, repType = 'topic', topicFor = nul
             const id = memberIdStr(m);
             if (id) out.set(id, source);
         }
+    }
+    return out;
+}
+
+/**
+ * Hvilke LÅSTE matrixgrupper har to eller flere elever fra samme kilde?
+ *
+ * Motoren rører ikke en låst gruppe: den placerer kun de frie elever, og "én
+ * fra hver" gælder kun dem. En låst matrixgruppe, der blev låst FØR
+ * stamgrupperne blev dannet om, kan derfor stå med to elever fra samme NYE
+ * stamgruppe efter "Dan matrixen igen" — og bagefter sagde intet det,
+ * for matrixens aftryk (matrixOrigins) regnes ud fra resultatet, som det
+ * står (135. gennemsyn). Den bruges af landAnswer i nextEngine.js til en note
+ * under "Sidste dannelse".
+ *
+ * @param lockedGroups  de låste matrixgrupper ({ name, members })
+ * @param sourceById    elev-id → kilde (matrixSourceById)
+ * @returns navnene (de interne, "Group 2") i den rækkefølge, de kom ind
+ */
+export function lockedMatrixDuplicates(lockedGroups, sourceById) {
+    const out = [];
+    for (const g of lockedGroups || []) {
+        if (!g || !Array.isArray(g.members)) continue;
+        const seen = new Set();
+        let twice = false;
+        for (const m of g.members) {
+            const source = sourceById.get(memberIdStr(m));
+            // En elev uden stamgruppe (fx sat ind i klasselisten senere) har
+            // ingen kilde og kan ikke give en dublet.
+            if (source === undefined) continue;
+            if (seen.has(source)) { twice = true; break; }
+            seen.add(source);
+        }
+        if (twice) out.push(g.name);
     }
     return out;
 }
@@ -1610,8 +1701,7 @@ export function sortRowsByColumn(rows, col, dir, order) {
 /**
  * Hvor mange af de UDFYLDTE celler i kolonnen er tal?
  *
- * Spejler logic.count_numeric_cells i Python. Tomme celler tælles ikke med
- * nogen af stederne — "ikke udfyldt" er sin egen tilstand.
+ * Tomme celler tælles ikke med — "ikke udfyldt" er sin egen tilstand.
  *
  * @returns {{numeric: number, filled: number, examples: string[]}}
  *          `examples` er op til tre udfyldte værdier, der IKKE er tal.
@@ -1625,7 +1715,7 @@ export function columnNumericStats(rows, col) {
         out.filled++;
         if (cellIsNumber(text)) out.numeric++;
         // FORSKELLIGE eksempler: står der "ukendt" i 18 celler, hjælper det
-        // ingen at få det at vide tre gange. Samme valg som logic.count_numeric_cells.
+        // ingen at få det at vide tre gange.
         else if (out.examples.length < 3 && !out.examples.includes(text)) out.examples.push(text);
     }
     return out;
@@ -1634,8 +1724,8 @@ export function columnNumericStats(rows, col) {
 /**
  * Kan kolonnen bære en TAL-regel — er FLERTALLET af værdierne tal?
  *
- * Samme tærskel som logic.column_has_numbers i Python, og af samme grund: da
- * spørgsmålet var "er der mindst ÉN celle med et tal?", kunne én enkelt celle
+ * Flertallet, ikke "mindst én": da spørgsmålet var "er der mindst ÉN celle
+ * med et tal?", kunne én enkelt celle
  * med "3" i stedet for "Middel" slukke både advarslen og knappen "Ranger værdierne…"
  * for hele klassen.
  */
@@ -1729,9 +1819,9 @@ function _rankColumnName(col, taken) {
  * tal-regler der bruger den, over på den.
  *
  * **Hvorfor ved siden af og ikke i stedet for?** Erstattede vi Lav/Middel/Høj
- * med 1/2/3, ville motoren virke — men Pythons lærervendte advarsler ville
- * begynde at sige "2" i stedet for "Middel" (klynge-singletons, "eleverne blev
- * ikke fundet", emnenavne i rum-advarslerne). At oversætte tal tilbage til ord
+ * med 1/2/3, ville motoren virke — men de lærervendte beskeder ville
+ * begynde at sige "2" i stedet for "Middel" (beskeder, der nævner en
+ * kolonnes værdier). At oversætte tal tilbage til ord
  * inde i fri prosa er skrøbeligt. Med en parallel kolonne står tekstkolonnen
  * urørt, og ALLE de advarsler er rigtige af sig selv; tilbage-oversættelsen
  * skrumper til ét kolonnenavn, som er entydigt (`labelMap`).
@@ -1862,7 +1952,7 @@ export function applyColumnOrders(data, rules, orders) {
             // øvrige, mod 21 med en tom celle). Det er præcis den "aktivt
             // spredt ud"-fejl, kodebasen tidligere har ryddet op i for tomme
             // celler. "Ikke udfyldt" er en tilstand begge motorer allerede
-            // håndterer rigtigt — værn: test_column_rank.py.
+            // håndterer rigtigt.
             out[rankCols[col]] = rank === undefined ? '' : String(rank);
         }
         return out;

@@ -13,7 +13,7 @@ import { UI_NAMES } from './beta.js';
 // gruppenavnet, og matrixens oprindelse som diskret grå tekst.
 export function openOverview() {
     // En forældet matrix hører til de FORRIGE stamgrupper. Den ligger stadig
-    // i state (visningsskiftet danner den forfra — se matrixGroupsStale), men
+    // i state (til læreren danner den igen — se matrixGroupsStale), men
     // på papiret stod den som "Runde 2" under de nye stamgrupper, med
     // oprindelses-mærkater regnet ud fra grupper, den aldrig kom fra.
     const matrixGroups = state.matrixGroupsStale ? null : state.storedMatrixGroups;

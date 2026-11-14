@@ -141,3 +141,20 @@ test('størrelses-menuen kan bruges med tastaturet alene', async ({ page }) => {
     await expect(dialog).toBeVisible();
     await expect(token).toBeFocused();
 });
+
+test('en ord-menu lukker, når vinduet skifter størrelse — uden en fejl i konsollen', async ({ page }) => {
+    // Før delte resize lytteren med scroll: `pop.contains(window)` kastede
+    // "parameter 1 is not of type 'Node'", og menuen blev stående på den
+    // gamle plads, løsrevet fra ordet (140. gennemsyn).
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await createClassAndGoToGroups(page);
+    const dialog = await openRecipe(page);
+    await dialog.locator('.rtok__btn[aria-label^="Gruppernes størrelse:"]').click();
+    const pop = dialog.locator('.rtok__pop');
+    await expect(pop).toBeVisible();
+    const size = page.viewportSize()!;
+    await page.setViewportSize({ width: size.width - 40, height: size.height - 40 });
+    await expect(pop).toHaveCount(0);
+    expect(errors).toEqual([]);
+});

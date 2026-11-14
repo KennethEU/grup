@@ -220,7 +220,10 @@ const recipeWarnings = computed(() => bannerHints.value.filter(isRecipeHint).len
     <RecipeLayout :warnings="recipeWarnings" kicker="Runde 2 · matrix" :summary="hasHomeGroups ? summary : ''" :auto-open="!hasGroups || state.matrixGroupsStale">
         <template #actions>
             <button type="button" class="recipe__textbtn" @click="emit('switchView', 'standard')">← Stamgrupperne</button>
-            <button v-if="hasGroups" type="button" class="recipe__soft" @click="emit('showClass')">
+            <!-- En forældet matrix hører til de forrige stamgrupper og må ikke på
+                 smartboardet (udskriften og Del-menuen udelader den også); hintet
+                 matrixStaleHint i hints.js siger hvorfor (132. gennemsyn). -->
+            <button v-if="hasGroups && !state.matrixGroupsStale" type="button" class="recipe__soft" @click="emit('showClass')">
                 <Users :size="14" aria-hidden="true" /> Vis for klassen
             </button>
             <button type="button" class="recipe__go" :disabled="state.isGenerating || !hasHomeGroups" @click="generate">

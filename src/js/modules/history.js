@@ -1,7 +1,7 @@
 import { state } from './state.js';
 import * as storage from './storage.js';
 import { saveTopicsOrSettle } from './topicSettle.js';
-import { ROW_ID, newUuid, memberIdStr, memberDisplayName, homeGroupFingerprint, mergeClassTopics, classTopicSpelling } from './utils.js';
+import { ROW_ID, newUuid, memberIdStr, memberDisplayName, matrixOrigins, mergeClassTopics, classTopicSpelling } from './utils.js';
 import { pushRun, markClean, markCleanWithInputs } from './runHistory.js';
 import { forgetRunResults } from './setupNotices.js';
 import { isRuleShape, giveUsableGroupNames, topicText } from './classShape.js';
@@ -158,7 +158,7 @@ export function saveCurrentSession(baseName, includeMatrix) {
 
     // Matrixen kommer kun med, hvis der ER en, og den passer til stamgrupperne.
     // En ny stam-generering lader den gamle matrix blive liggende i state og
-    // sætter kun flaget (visningsskiftet danner den forfra). Gemte vi den med,
+    // sætter kun flaget (læreren danner den igen i matrix-runden). Gemte vi den med,
     // kom sessionen senere tilbage med en matrix fra ANDRE stamgrupper — og
     // restoreSession() markerer den som frisk. Uden matrix overhovedet kastede
     // `null.map` nedenfor en fejl, og gemningen stoppede uden en lyd.
@@ -418,7 +418,7 @@ export function restoreSession(sessionId) {
         // Sessionens matrix hører til sessionens EGNE stamgrupper, som lige er
         // skrevet ind ovenfor — så aftrykket tages af dem. Uden det ville
         // hintet enten tie for evigt eller fyre med det samme.
-        state.matrixSourceFingerprint = homeGroupFingerprint(state.storedStandardGroups);
+        state.matrixSourceFingerprint = matrixOrigins(state.storedStandardGroups, state.storedMatrixGroups);
     } else {
         state.storedMatrixGroups = null; // Nulstil matrix hvis session kun var standard
         // Ingen matrixgrupper, så ingen matrix-emner. Afvises skrivningen, er
@@ -426,7 +426,7 @@ export function restoreSession(sessionId) {
         // rydder dem selv (landAnswer) — så ingen besked om det.
         storage.replaceTopicsForPrefix('M_', []);
         // Sessionen havde ingen matrix, men stamgrupperne er nye — så en
-        // matrix skal netop dannes forfra, næste gang læreren går derover.
+        // matrix skal netop dannes forfra (matrix-runden siger det: matrixStaleHint).
         state.matrixGroupsStale = true;
         state.matrixSourceFingerprint = null;
     }

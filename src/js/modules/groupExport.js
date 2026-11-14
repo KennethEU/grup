@@ -86,8 +86,10 @@ export function buildGroupTable(isMatrix, includeSource = false) {
  * Er der en matrix, der kan komme med ud?
  *
  * 'stale' er en matrix, der hører til de FORRIGE stamgrupper (se
- * matrixGroupsStale i state.js). Udskriften og Excel-eksporten udelader den
- * af samme grund, og det skal Del-menuen også.
+ * matrixGroupsStale i state.js). Ingen udgang tager den med: udskriften,
+ * Excel-eksporten, Del-menuen, "Vis for klassen", Historik, "Kopiér" og
+ * "Gem som kolonne" (de to sidste siden 134. gennemsyn — se
+ * staleMatrixBlocked i groupActions.js).
  *
  * @returns {'ok'|'stale'|'none'}
  */
@@ -96,6 +98,13 @@ export function matrixAvailability() {
     if (!Array.isArray(matrix) || matrix.length === 0) return 'none';
     return state.matrixGroupsStale ? 'stale' : 'ok';
 }
+
+/**
+ * Det, læreren får at vide, når en udgang springer en forældet matrix over.
+ * Ét sted, så Del-menuen, "Kopiér" og "Gem som kolonne" siger det samme.
+ */
+export const STALE_MATRIX_MESSAGE =
+    'Matrixgrupperne hører til de forrige stamgrupper. Dan dem igen, hvis de skal med.';
 
 /**
  * Én kolonne pr. gruppe: overskriften i første række, eleverne nedenunder.

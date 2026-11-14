@@ -45,9 +45,6 @@ const currentRun = computed(() => {
     return r ? r.recording.runs[r.runIndex] : null;
 });
 
-// Motor A's tal er PARRETS score — de to grupper der byttede — ikke klassens
-// samlede. Det skal stå der, ellers læses 14,2 som en samlet score, og så
-// lyver linjen. Efterpasset er det eneste sted med et ægte totaltal.
 const status = computed(() => {
     const r = rp.value;
     if (!r) return '';
@@ -56,47 +53,31 @@ const status = computed(() => {
 
     const e = r.last;
 
-    // Uddelingen først: motoren sorterer klassen og lægger eleverne ud én ad
-    // gangen. Hver motor har sin egen rækkefølge — se `deal` i recorder.py.
+    // Uddelingen først: motoren lægger eleverne ud én ad gangen (`deal` i
+    // motorens afspilning, motor/engine/playback.js).
     if (e.kind === replay.KIND_DEAL) {
         return `Deler ud · elev ${r.frameIndex} af ${r.dealCount} → gruppe ${e.groupIndex + 1}`;
     }
 
     const parts = [`Bytte ${r.frameIndex - r.dealCount} af ${r.total - r.dealCount}`];
-    if (e.kind === replay.KIND_JOINT) parts.push('efterpas');
-    else if (e.passNum != null) parts.push(`pas ${e.passNum}`);
-    // "under X", ikke bare "X". Regelnavnet siger, hvilken regel motoren var
-    // i gang med — IKKE hvilken regel der forårsagede byttet. Målt på et
-    // rigtigt hold (22 elever, 6 Fordel-regler): 409 af 419 bytter faldt på
-    // den SIDSTE regel, og flyttede man den regel forrest, faldt de 409 til 8
-    // — mens den nye sidste regel så tog 281. Bytterne hober sig op dér, hvor
-    // motoren kæmper, og det er altid den sidst anvendte regel, fordi de
-    // øvrige allerede binder hvert eneste bytte.
-    if (e.rule) parts.push(`under ${e.rule}`);
-    // Den ene af de to er en tom plads, som ikke tegnes. Uden den her linje
-    // ser det ud, som om eleven vandrer alene mellem to grupper uden grund —
-    // og det gør hun tit: paa laererens eget hold var 69-94 % af motor B's
-    // bytter af den slags.
-    if (e.soloMove) parts.push('bytter med en tom plads');
+    // Reglen er den, byttet hjalp mest på det trin i rangordenen, der afgjorde
+    // det (lastRule i motor/engine/state.js). Kun trin, der gør grupperne
+    // bedre, har en regel. Før 3/11 2026 stod der "under X": den gamle
+    // Python-motor kendte kun den regel, den var i gang med, ikke den, der
+    // fik byttet til at ske (133. gennemsyn).
+    if (e.rule) parts.push(`hjælper ${e.rule}`);
     // Motoren kan flytte én elev uden en makker.
     if (e.isMove) parts.push(`flytter til gruppe ${e.groupIndex + 1}`);
     // Et blok-bytte: en Skal sammen-aftale flytter samlet, så den ikke
     // splittes. Uden linjen lignede det et almindeligt bytte, der tilfældigvis
     // flyttede fire elever på én gang.
     if (e.pairCount > 1) parts.push(`Skal sammen flytter samlet (${e.pairCount} elever hver vej)`);
-    if (e.before != null && e.after != null) {
-        const fmt = (v) => Number(v).toFixed(1).replace('.', ',');
-        const scopeLabel = e.kind === replay.KIND_JOINT ? 'i alt' : 'parret';
-        parts.push(`${scopeLabel} ${fmt(e.before)} → ${fmt(e.after)}`);
-    }
     return parts.join(' · ');
 });
 
 const KIND_TEXT = {
     [replay.KIND_IMPROVE]: 'Gør grupperne bedre',
     [replay.KIND_UPHILL]: 'Gør det værre med vilje — for at komme videre',
-    [replay.KIND_RULE]: 'Opfylder en regel',
-    [replay.KIND_JOINT]: 'Efterpas',
     [replay.KIND_DEAL]: 'Deler ud — den første fordeling',
 };
 const kindLabel = computed(() => {
@@ -104,10 +85,27 @@ const kindLabel = computed(() => {
     return r && r.last ? (KIND_TEXT[r.last.kind] || '') : '';
 });
 
-const speed = computed({
-    get: () => (rp.value ? rp.value.speed : replay.DEFAULT_SPEED_MS),
-    set: (v) => replay.setSpeed(v),
+// Hastighedsfeltet har sin EGEN tekst, så det aldrig skrives om, mens læreren
+// taster. Før var det bundet direkte til den gemte hastighed (altid et helt tal
+// fra 1 til 2000): slettede man tallet for at skrive et nyt, blev det tomme felt
+// til 60 med det samme, og "5" blev til "605" (139. gennemsyn). Nu gælder et
+// gyldigt tal med det samme (setSpeed klemmer det ind i grænserne), et tomt
+// felt ændrer intet, og først når feltet forlades, viser det den hastighed,
+// der faktisk gælder.
+const currentSpeed = computed(() => (rp.value ? rp.value.speed : replay.DEFAULT_SPEED_MS));
+const speedText = ref(String(currentSpeed.value));
+const speedEditing = ref(false);
+watch(currentSpeed, (s) => {
+    if (!speedEditing.value) speedText.value = String(s);
 });
+function onSpeedInput() {
+    const n = parseInt(String(speedText.value), 10);
+    if (Number.isFinite(n)) replay.setSpeed(n);
+}
+function onSpeedBlur() {
+    speedEditing.value = false;
+    speedText.value = String(currentSpeed.value);
+}
 
 // Escape, klik udenfor, fokus der forlader menuen, fokus ind ved åbning og
 // tilbage til knappen ved lukning — reglerne bor i useBarMenuDismiss.js, som
@@ -213,17 +211,10 @@ watch(() => !!rp.value, (running) => {
       <label class="speed-field">
         <span>ms pr. bytte</span>
         <input type="number" :min="replay.MIN_SPEED_MS" :max="replay.MAX_SPEED_MS" step="10"
-               v-model.number="speed"
+               v-model="speedText"
+               @focus="speedEditing = true" @input="onSpeedInput" @blur="onSpeedBlur"
                aria-label="Hastighed i millisekunder pr. bytte" />
       </label>
-
-      <select v-if="rp.recording.runs.length > 1" class="runs"
-              :value="rp.runIndex" aria-label="Vælg kørsel"
-              @change="replay.selectRun($event.target.value)">
-        <option v-for="(run, i) in rp.recording.runs" :key="i" :value="i">
-          Kørsel {{ i + 1 }}{{ run.won ? ' (vandt)' : '' }}
-        </option>
-      </select>
     </div>
 
     <p class="status">{{ status }}</p>
@@ -231,18 +222,10 @@ watch(() => !!rp.value, (running) => {
 
     <p v-if="kindLabel" class="kind" :data-kind="rp.last ? rp.last.kind : ''">{{ kindLabel }}</p>
 
-    <!-- Et slutbillede der LIGNER lærerens grupper uden at være dem, er værre
-         end ingen animation. Etiketten står fast, ikke som et tooltip. -->
-    <p v-if="currentRun && !currentRun.won" class="warning">
-      Denne kørsel blev valgt fra — det er ikke dine grupper.
-    </p>
-    <!-- Den nye motor: for mange trin til at vise alle, så slutningen er lagt
+    <!-- For mange trin til at vise alle, så slutningen er lagt
          sammen til ét spring. Grupperne til sidst er stadig de rigtige. -->
     <p v-if="currentRun && currentRun.merged" class="warning">
       Der var for mange bytter til at vise dem alle — slutningen er samlet i ét spring.
-    </p>
-    <p v-if="currentRun && currentRun.truncated" class="warning">
-      Optagelsen stopper efter {{ rp.total - rp.dealCount }} bytter — slutningen vises ikke.
     </p>
     </template>
   </div>
@@ -335,18 +318,6 @@ watch(() => !!rp.value, (running) => {
 
 .speed-field input {
     inline-size: 64px;
-    padding-inline: 6px;
-    padding-block: 4px;
-    border: 1px solid var(--border-input);
-    border-radius: 8px;
-    background: var(--bg-input);
-    color: var(--text-main);
-    font-size: 12px;
-}
-
-.runs {
-    flex: 1 1 auto;
-    min-inline-size: 0;
     padding-inline: 6px;
     padding-block: 4px;
     border: 1px solid var(--border-input);

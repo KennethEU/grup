@@ -14,7 +14,7 @@ import { reactiveState } from '../../js/modules/reactiveState.js';
 import { useBarPopover } from '../../composables/useBarPopover.js';
 import { useBarMenuDismiss } from '../../composables/useBarMenuDismiss.js';
 import { openOverview } from '../../js/modules/overview.js';
-import { downloadGroupsWorkbook, matrixAvailability } from '../../js/modules/groupExport.js';
+import { downloadGroupsWorkbook, matrixAvailability, STALE_MATRIX_MESSAGE } from '../../js/modules/groupExport.js';
 import { Printer, Columns3, Rows3 } from 'lucide-vue-next';
 
 const emit = defineEmits(['close']);
@@ -43,9 +43,7 @@ const setOptions = computed(() => [
 // kan vælges.
 const showSetChoice = computed(() => matrixStatus.value !== 'none');
 
-const matrixNote = computed(() => (matrixStatus.value === 'stale'
-    ? 'Matrixgrupperne hører til de forrige stamgrupper. Dan dem igen, hvis de skal med.'
-    : ''));
+const matrixNote = computed(() => (matrixStatus.value === 'stale' ? STALE_MATRIX_MESSAGE : ''));
 
 /** Den visning læreren står i — ellers det første, der kan vælges. */
 function defaultChoice() {

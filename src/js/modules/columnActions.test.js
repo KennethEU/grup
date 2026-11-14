@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { renameColumn, reorderColumns, movableColumns, validateColumnName, deleteColumn } from './columnActions.js';
+import { renameColumn, reorderColumns, movableColumns, validateColumnName, deleteColumn, freeColumnName } from './columnActions.js';
 import { teacherColumns } from './utils.js';
 
 /** En lille klasse med de felter et omdøb skal kunne ramme. */
@@ -32,8 +32,8 @@ describe('validateColumnName', () => {
 
     it('afviser et navn der begynder med ét underscore', () => {
         // Ellers bliver kolonnen et INTERNT felt: væk fra elevlisten, væk fra
-        // eksporten, væk fra CSV'en til motoren — og reglen på den vælter
-        // gruppedannelsen med en rå Python-fejl.
+        // eksporten og væk fra motorens input — og reglen på den peger på
+        // en kolonne, motoren aldrig får.
         const res = validateColumnName('_Køn', ['Navn']);
         expect(res.ok).toBe(false);
         expect(res.error).toContain('_');
@@ -86,6 +86,30 @@ describe('validateColumnName', () => {
 
     it('tillader at en kolonne "kolliderer" med sig selv', () => {
         expect(validateColumnName('Navn', ['Navn', 'Køn'], 'Navn').ok).toBe(true);
+    });
+});
+
+// "Gem som kolonne" foreslår et ledigt navn (forslag 137): standardvalget må
+// aldrig være en kolonne, der findes, for så skriver ét tryk oven i den.
+describe('freeColumnName', () => {
+    it('giver navnet selv, når det er ledigt', () => {
+        expect(freeColumnName('Stamgrupper', ['Navn', 'Køn'])).toBe('Stamgrupper');
+        expect(freeColumnName('Matrix Runde', undefined)).toBe('Matrix Runde');
+    });
+
+    it('giver det næste ledige nummer, når navnet findes', () => {
+        expect(freeColumnName('Stamgrupper', ['Navn', 'Stamgrupper'])).toBe('Stamgrupper 2');
+        expect(freeColumnName('Stamgrupper', ['Stamgrupper', 'Stamgrupper 2', 'Stamgrupper 3'])).toBe('Stamgrupper 4');
+        expect(freeColumnName('Matrix Runde', ['Matrix Runde'])).toBe('Matrix Runde 2');
+    });
+
+    it('springer et hul over, men tager det første ledige', () => {
+        expect(freeColumnName('Stamgrupper', ['Stamgrupper', 'Stamgrupper 3'])).toBe('Stamgrupper 2');
+    });
+
+    it('det foreslåede navn går altid igennem validateColumnName mod klassens kolonner', () => {
+        const columns = ['Navn', 'Stamgrupper', 'Stamgrupper 2'];
+        expect(validateColumnName(freeColumnName('Stamgrupper', columns), columns).ok).toBe(true);
     });
 });
 

@@ -6,7 +6,7 @@ import { compactImportSheet, sheetDataCells } from '../../js/modules/importData.
 import { plural } from '../../js/modules/plural.js';
 import { describePartialRestore } from '../../js/modules/restoreReceipt.js';
 import { MAX_ROWS_PER_CLASS } from '../../js/modules/py_bridge.js';
-import { isLectioFormat, extractLectioNames } from '../../js/modules/lectio.js';
+import { readLectio, extractLectioNames } from '../../js/modules/lectio.js';
 import { EXCEL_UNAVAILABLE_MESSAGE, NEW_BUILD_MESSAGE, reportPartUnavailable } from '../../js/modules/newBuild.js';
 import { FolderUp, ClipboardPaste, FileText, FileUp } from 'lucide-vue-next';
 
@@ -491,11 +491,25 @@ async function importExcelOrCsv(excelFiles, options) {
 
 // ── Genkend elevlister fra Lectio ──
 // Klassekoden efter navnet fjernes automatisk: "Navn Efternavn, 3se3 01 (3se3)".
-// Selve genkendelsen bor i lectio.js, hvor den er testet.
+// Fra lektionens side og fra "Lærere og elever" springes sidens øvrige tekst
+// og læreren over (61). Selve genkendelsen bor i lectio.js, hvor den er testet.
 
-const lectioDetected = computed(() =>
-    activeImportMode.value === 'paste' && isLectioFormat(rawData.value)
+const lectioRead = computed(() =>
+    activeImportMode.value === 'paste' ? readLectio(rawData.value) : null
 );
+
+// Mærket under feltet: hvor mange elever, før læreren trykker "Opret klasse".
+const lectioBadgeText = computed(() => {
+    const read = lectioRead.value;
+    if (!read) return '';
+    const n = read.names.length;
+    let text = `Lectio-liste genkendt: ${n} ${n === 1 ? 'elev' : 'elever'}. Kun navnene kommer med`;
+    if (read.skipped > 0) {
+        text += `; ${read.skipped} ${read.skipped === 1 ? 'linje' : 'linjer'} fra Lectios side`
+            + ' (fx overskrifter, lærere og optællingen) springes over';
+    }
+    return text + '.';
+});
 
 // ── Indsat tekst ──
 
@@ -518,7 +532,7 @@ const handlePasteSubmit = async () => {
         let headersForImport = hasHeaders.value;
 
         // Ved Lectio-format importeres kun navnene, uden klassekoder.
-        if (isLectioFormat(rawData.value)) {
+        if (readLectio(rawData.value)) {
             contentToImport = extractLectioNames(rawData.value);
             headersForImport = false;
         }
@@ -711,14 +725,14 @@ async function downloadTemplate() {
             <p class="data-hint">
                 Format: Hver linje er en elev. Kolonner adskilles med tabulator (fra Excel/Sheets), komma eller semikolon.
                 <br>Eksempel: <code>Navn [TAB] Køn [TAB] Info</code> eller <code>Navn, Køn, Info</code>
-                <br>Lectio-format understøttes også — indsæt direkte fra elevlisten.
+                <br>Fra Lectio: kopiér elevlisten fra en lektion eller fra siden "Lærere og elever", og indsæt den her. Kun navnene kommer med.
             </p>
             <textarea id="import-raw-data" v-model="rawData" placeholder="Navn	Køn	Info
 Elev 1	M	...
 Elev 2	K	..." class="input-full textarea-data"></textarea>
-            <div v-if="lectioDetected" class="lectio-badge">
+            <div v-if="lectioRead" class="lectio-badge" role="status">
                 <svg class="hi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;flex-shrink:0;vertical-align:-2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                Lectio-format registreret — klassekoder fjernes automatisk, kun navne importeres
+                {{ lectioBadgeText }}
             </div>
           </div>
 

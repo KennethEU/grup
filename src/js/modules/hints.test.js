@@ -224,7 +224,7 @@ describe('hints — forslaget skal kunne følges', () => {
 });
 
 // Aftaler kan begrænse søgningen; de beviser ikke i sig selv, at en regel
-// er umulig. Motorens modbeviser ligger også i test_together.py.
+// er umulig.
 describe('hints — aftalens pris på de øvrige regler', () => {
     beforeEach(() => {
         vi.clearAllMocks();
@@ -483,5 +483,165 @@ describe('hints — en gammel Opdel i matrix-reglerne', () => {
         expect(state.currentClass.rules).toEqual([{ type: 'aggregate', column: 'Hold' }]);
         expect(autoSave).toHaveBeenCalledTimes(1);
         expect(excluded()).toEqual([]);
+    });
+});
+
+// 131. gennemsyn: en elev, der var væk, da matrixen blev dannet, og som er
+// meldt mødt igen med fluebenet, står i sin stamgruppe, men i ingen
+// matrixgruppe. Det sagde intet før.
+describe('hints — mødt, men i ingen gruppe', () => {
+    const unplaced = () => allHints.value.filter(h => h.id.startsWith('hint:unplaced:'));
+
+    beforeEach(() => {
+        state.currentClass = {
+            filename: 'test',
+            data: students(6, 0),
+            columns: ['Navn'],
+            rules: [],
+            matrixRules: [],
+            settings: { groupTarget: '3', groupMod: '+' },
+            separations: [],
+            topics: [],
+        };
+        state.storedStandardGroups = [
+            { name: 'Group 1', members: ['r0', 'r1', 'r2'] },
+            { name: 'Group 2', members: ['r3', 'r4', 'r5'] },
+        ];
+        // r5 var væk, da matrixen blev dannet.
+        state.storedMatrixGroups = [
+            { name: 'Group 1', members: ['r0', 'r3'] },
+            { name: 'Group 2', members: ['r1', 'r4'] },
+            { name: 'Group 3', members: ['r2'] },
+        ];
+        state.matrixGroupsStale = false;
+        state.groupMode = 'size';
+        state.idColumn = '_rowId';
+        state.displayColumn = 'Navn';
+    });
+
+    it('nævner eleven i matrix-visningen og har en knap til "Tilføj efternøler"', () => {
+        state.activeView = 'matrix';
+        const [h] = unplaced();
+        expect(h.text).toMatch(/^S5 er mødt, men står ikke i nogen matrixgruppe/);
+        expect(h.action.label).toBe('Tilføj efternøler');
+    });
+
+    it('tier i stamgruppe-visningen, når alle står i en stamgruppe', () => {
+        state.activeView = 'standard';
+        expect(unplaced()).toEqual([]);
+    });
+
+    it('tier om en elev, der er meldt væk', () => {
+        state.activeView = 'matrix';
+        state.currentClass.data[5]._excluded = true;
+        expect(unplaced()).toEqual([]);
+    });
+
+    it('tier, når matrixen er forældet (den dannes forfra med eleven)', () => {
+        state.activeView = 'matrix';
+        state.matrixGroupsStale = true;
+        expect(unplaced()).toEqual([]);
+    });
+
+    it('nævner en ny elev i klasselisten i stamgruppe-visningen', () => {
+        state.activeView = 'standard';
+        state.currentClass.data.push({ Navn: 'Ny', _rowId: 'r6', _excluded: false });
+        const [h] = unplaced();
+        expect(h.text).toMatch(/^Ny er mødt, men står ikke i nogen gruppe\./);
+    });
+
+    it('tier, før der er dannet grupper', () => {
+        state.activeView = 'matrix';
+        state.storedMatrixGroups = [];
+        expect(unplaced()).toEqual([]);
+    });
+
+    it('nævner højst tre navne', () => {
+        state.activeView = 'matrix';
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r0'] }];
+        expect(unplaced()[0].text).toMatch(/^S1, S2, S3 og 2 mere er mødt/);
+    });
+});
+
+// 132. gennemsyn: efter en ny dannelse af stamgrupperne står den gamle matrix
+// stadig i matrix-runden (et skift dertil danner den ikke forfra). Lukkede
+// læreren opskriftens vindue, stod der intet om, at den var forældet.
+describe('hints — en forældet matrix', () => {
+    const stale = () => allHints.value.filter(h => h.id === 'hint:matrix-stale');
+    const avoidBroken = () => allHints.value.filter(h => h.id.startsWith('hint:avoid-broken:'));
+
+    beforeEach(() => {
+        state.currentClass = {
+            filename: 'test',
+            data: students(6, 0),
+            columns: ['Navn'],
+            rules: [],
+            matrixRules: [],
+            settings: { groupTarget: '3', groupMod: '+' },
+            separations: [{ ids: ['r0', 'r3'] }],
+            topics: [],
+        };
+        state.storedStandardGroups = [
+            { name: 'Group 1', members: ['r0', 'r1', 'r2'] },
+            { name: 'Group 2', members: ['r3', 'r4', 'r5'] },
+        ];
+        // r0 og r3 skal undgå hinanden, men står sammen i den gamle matrix.
+        state.storedMatrixGroups = [
+            { name: 'Group 1', members: ['r0', 'r3'] },
+            { name: 'Group 2', members: ['r1', 'r4'] },
+            { name: 'Group 3', members: ['r2', 'r5'] },
+        ];
+        state.matrixGroupsStale = true;
+        state.activeView = 'matrix';
+        state.groupMode = 'size';
+        state.idColumn = '_rowId';
+        state.displayColumn = 'Navn';
+    });
+
+    it('siger det i matrix-runden og har en knap til at danne matrixen igen', () => {
+        const [h] = stale();
+        expect(h.kind).toBe('conflict');
+        expect(h.text).toMatch(/dannet ud fra de forrige stamgrupper/);
+        expect(h.action.label).toBe('Dan matrixen igen');
+        // Står over grupperne, ikke i opskriften.
+        expect(isRecipeHint(h)).toBe(false);
+    });
+
+    it('tier, når matrixen passer til stamgrupperne', () => {
+        state.matrixGroupsStale = false;
+        expect(stale()).toEqual([]);
+    });
+
+    it('tier i stamgruppe-visningen', () => {
+        state.activeView = 'standard';
+        expect(stale()).toEqual([]);
+    });
+
+    it('tier, når der ingen matrix er', () => {
+        state.storedMatrixGroups = [];
+        expect(stale()).toEqual([]);
+    });
+
+    it('tier, når der ingen stamgrupper er at danne den ud fra', () => {
+        state.storedStandardGroups = [];
+        expect(stale()).toEqual([]);
+    });
+
+    // 135. gennemsyn: beskeden lovede, at rettelser i hånden forsvinder — men
+    // en låst matrixgruppe bliver stående, og er alle låst, danner knappen intet.
+    it('siger, at en låst matrixgruppe bliver stående', () => {
+        expect(stale()[0].text).not.toMatch(/låst/);
+        state.storedMatrixGroups[0].locked = true;
+        expect(stale()[0].text).toMatch(/Den låste matrixgruppe bliver stående.*"Lås op"/);
+        state.storedMatrixGroups[1].locked = true;
+        expect(stale()[0].text).toMatch(/De 2 låste matrixgrupper bliver stående/);
+        state.storedMatrixGroups[2].locked = true;
+        expect(stale()[0].text).toMatch(/Alle matrixgrupperne er låst.*"Lås alle op"/);
+    });
+
+    it('undgåelses-advarslen tier om en forældet matrix, men taler om en frisk', () => {
+        expect(avoidBroken()).toEqual([]);
+        state.matrixGroupsStale = false;
+        expect(avoidBroken()).toHaveLength(1);
     });
 });

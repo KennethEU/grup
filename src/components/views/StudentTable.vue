@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
-import { pushUndo, undo, redo, undoShortcut, clearUndoHistory, pruneSelection } from '../../js/modules/state.js';
+import { pushUndo, undo, redo, discardLastUndo, undoShortcut, clearUndoHistory, pruneSelection } from '../../js/modules/state.js';
 import { renameColumn } from '../../js/modules/columnActions.js';
 import { teacherColumns, debounce, sortRowsByColumn, nfc } from '../../js/modules/utils.js';
 import { autoSave, registerPendingWrite } from '../../js/modules/classActions.js';
@@ -434,6 +434,22 @@ function onCellKeydown(e, rowIndex, colIndex) {
 
     if (shortcut === 'undo') {
         e.preventDefault();
+        // Står læreren midt i en rettelse af DENNE celle, tager Ctrl+Z det
+        // skrevne tilbage, som i et regneark. Før blev appens fortryd kaldt:
+        // den lagde billedet fra første tastetryk tilbage (= det, der allerede
+        // stod i klassen), cellen viste stadig det skrevne, og blur gemte det
+        // bagefter. Ctrl+Z gjorde altså intet synligt (139. gennemsyn).
+        if (hasPushedUndo) {
+            const row = displayData.value[rowIndex];
+            const col = orderedColumns.value[colIndex];
+            if (row && col) {
+                e.currentTarget.textContent = getCellText(row, col);
+                selectCellContents(e.currentTarget);
+                discardLastUndo();
+                hasPushedUndo = false;
+                return;
+            }
+        }
         if (undo()) autoSave();
     } else if (shortcut === 'redo') {
         e.preventDefault();

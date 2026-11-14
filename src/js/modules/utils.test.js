@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { state, pushUndo, undo, redo, clearUndoHistory } from './state.js';
 import { togetherComponents } from './together.js';
 import { RULE_WEIGHT_NOTES, newUuid } from './utils.js';
-import { setupSignature, orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, homeGroupFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
+import { setupSignature, orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, groupSetFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 1. escapeHtml
@@ -936,7 +936,7 @@ describe('computeTopicAdjustedTarget', () => {
 
     // Regression: with FEWER present students than topics (many absent), the
     // student cap must win over the topic floor — never more groups than there
-    // are students (otherwise Python builds empty phantom groups).
+    // are students (otherwise the engine would get empty groups).
     // Regression: afrundingen må ikke efterlade én kæmpe gruppe ved siden af de
     // låste. Med 18 frie elever, "4+" og 5 emner ligger begge multipler (1 eller
     // 6 nye grupper) uden for valget, så det rå tal bliver stående.
@@ -1388,72 +1388,67 @@ describe('isMemberAbsent — én kilde til "er eleven her?"', () => {
 });
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// homeGroupFingerprint — driver hintet "matrixen passer ikke længere"
+// groupSetFingerprint — afgør, om "Sidste dannelse"s mærker og "Se kørslen"
+// stadig hører til grupperne på skærmen
 //
-// Matrixen dannes PÅ TVÆRS af stamgrupperne, så den bliver skæv, hvis
-// stamgrupperne ændrer sig bagefter. Aftrykket skal fange præcis DE
-// ændringer der skævvrider den — og ikke andet, for et hint man lærer at
-// klikke væk, er værre end intet hint.
+// Kun HVEM der står i HVILKEN gruppe tæller. Rækkefølgen i kortet, emnet og
+// låsen gør ikke (137. gennemsyn tog emnet ud; før hed den gamle udgave med
+// rækkefølge og emne homeGroupFingerprint).
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-describe('homeGroupFingerprint', () => {
+describe('groupSetFingerprint', () => {
     const lockSplitGroups = () => ([
         { name: 'Group 1', topic: 'Liberalisme', locked: false, members: ['r1', 'r2'] },
         { name: 'Group 2', topic: 'Konservatisme', locked: false, members: ['r3', 'r4'] },
     ]);
 
     it('er uændret når intet er ændret', () => {
-        expect(homeGroupFingerprint(lockSplitGroups())).toBe(homeGroupFingerprint(lockSplitGroups()));
+        expect(groupSetFingerprint(lockSplitGroups())).toBe(groupSetFingerprint(lockSplitGroups()));
     });
 
-    it('ændrer sig når en elev flyttes mellem stamgrupper', () => {
-        const before = homeGroupFingerprint(lockSplitGroups());
+    it('ændrer sig når en elev flyttes til en anden gruppe', () => {
+        const before = groupSetFingerprint(lockSplitGroups());
         const g = lockSplitGroups();
         g[0].members = ['r1'];
         g[1].members = ['r3', 'r4', 'r2'];
-        expect(homeGroupFingerprint(g)).not.toBe(before);
+        expect(groupSetFingerprint(g)).not.toBe(before);
     });
 
-    // Med matrix-strategien "Emner" ER emnet kildeværdien, så to grupper der
-    // bytter emne skævvrider matrixen præcis som en flyttet elev.
-    it('ændrer sig når to groups bytter emne', () => {
-        const before = homeGroupFingerprint(lockSplitGroups());
+    // Afspilningen tegner kortene med det emne, de har nu, og mærkerne ser
+    // ikke på emner. Et nyt emne på et kort må ikke sige "Grupperne er ændret".
+    it('ændrer sig IKKE når en gruppe får et andet emne, eller to bytter emne', () => {
+        const before = groupSetFingerprint(lockSplitGroups());
         const g = lockSplitGroups();
         g[0].topic = 'Konservatisme';
         g[1].topic = 'Liberalisme';
-        expect(homeGroupFingerprint(g)).not.toBe(before);
+        expect(groupSetFingerprint(g)).toBe(before);
+        g[0].topic = null;
+        expect(groupSetFingerprint(g)).toBe(before);
     });
 
-    // DET HER er den vigtige: en lås ændrer ikke hvem der står i gruppen, så
-    // matrixen er lige så gyldig bagefter. Talte låsen med, ville et tryk på
-    // hængelåsen advare om en skævhed der ikke findes.
     it('ændrer sig IKKE når en gruppe låses', () => {
-        const before = homeGroupFingerprint(lockSplitGroups());
+        const before = groupSetFingerprint(lockSplitGroups());
         const g = lockSplitGroups();
         g[0].locked = true;
-        expect(homeGroupFingerprint(g)).toBe(before);
+        expect(groupSetFingerprint(g)).toBe(before);
     });
 
-    it('ser forskel på rækkefølgen af medlemmer inden for en gruppe', () => {
-        // En omrokering inden for samme gruppe ændrer ikke matrixen, men
-        // aftrykket er bevidst simpelt: hellere ét hint for meget i et
-        // hjørnetilfælde end at bygge en sorteret sammenligning, der kan
-        // drive fra den rigtige kildeberegning i generation.js.
+    it('ændrer sig IKKE når rækkefølgen inde i et kort ændres', () => {
         const g = lockSplitGroups();
         g[0].members = ['r2', 'r1'];
-        expect(homeGroupFingerprint(g)).not.toBe(homeGroupFingerprint(lockSplitGroups()));
+        expect(groupSetFingerprint(g)).toBe(groupSetFingerprint(lockSplitGroups()));
     });
 
     it('håndterer tom liste og null', () => {
-        expect(homeGroupFingerprint([])).toBe('');
-        expect(homeGroupFingerprint(null)).toBe('');
-        expect(homeGroupFingerprint(undefined)).toBe('');
+        expect(groupSetFingerprint([])).toBe('');
+        expect(groupSetFingerprint(null)).toBe('');
+        expect(groupSetFingerprint(undefined)).toBe('');
     });
 
     it('læser id-værdien ud af objekt-medlemmer (spøgelser) som af rene strenge', () => {
         const a = [{ name: 'G', topic: null, members: ['r1', 'r2'] }];
         const b = [{ name: 'G', topic: null, members: [{ id: 'r1', name: 'Anna' }, 'r2'] }];
-        expect(homeGroupFingerprint(a)).toBe(homeGroupFingerprint(b));
+        expect(groupSetFingerprint(a)).toBe(groupSetFingerprint(b));
     });
 });
 
@@ -1482,17 +1477,16 @@ describe('cellIsNumber', () => {
         }
     });
 
-    // Number() og Pythons float() er ikke enige af sig selv: JS læser "0x1A"
-    // som 26 og afviser "nan", Python gør præcis det modsatte. Er de to sider
-    // uenige, kan hintet i skærmen sige ét og motoren gøre noget andet på
-    // netop den kolonne, hintet handler om.
-    it('afviser nan og inf — som Pythons scoring._numeric_val gør efter rettelsen', () => {
+    // Number() læser "0x1A" som 26 og "Infinity" som et tal. cellNumber er
+    // motorens egen læsning (parseNumber i motor/engine/values.js), så hintet
+    // i skærmen og motoren er enige om netop den kolonne, hintet handler om.
+    it('afviser nan og inf', () => {
         for (const v of ['nan', 'NaN', 'inf', '-inf', 'Infinity']) {
             expect(cellIsNumber(v), v).toBe(false);
         }
     });
 
-    it('afviser hex og understreger, som Python ikke kan læse', () => {
+    it('afviser hex og understreger', () => {
         expect(cellIsNumber('0x1A')).toBe(false);
         expect(cellIsNumber('1_0')).toBe(false);
     });
@@ -1646,8 +1640,7 @@ describe('columnIsNumeric', () => {
 
     // Hed engang "har kolonnen overhovedet ét tal?", og så kunne én elev, der
     // skrev "3" i stedet for "Middel", slukke både advarslen og knappen
-    // "Ranger værdierne…" for hele klassen. Samme flertals-tærskel som
-    // logic.column_has_numbers i motoren.
+    // "Ranger værdierne…" for hele klassen. Nu gælder flertallet.
     it('én talcelle i en tekstkolonne gør den ikke til en talkolonne', () => {
         const vals = Array(23).fill('Middel');
         vals[5] = '3';

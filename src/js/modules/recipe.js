@@ -1,11 +1,9 @@
-// Opskriften i beta (grup.dk/beta): klassens indstillinger og regler læst
-// som danske sætninger.
+// Opskriften: klassens indstillinger og regler læst som danske sætninger.
 //
 // Filen ÆNDRER ingenting. Den oversætter kun det, der allerede står i
 // klassen (`settings`, `rules`, `togetherGroups`, `separations`, `topics`),
-// til sætningsdele, som RecipePanel tegner. Selve ændringerne sker de samme
-// steder som i den almindelige Grupper — så motoren får præcis det samme,
-// uanset hvilken skærm læreren bruger.
+// til sætningsdele, som RecipePanel tegner. Selve ændringerne sker i
+// klassens data, som motoren læser (buildEngineInput i nextEngine.js).
 //
 // En sætningsdel er enten almindelig tekst `{ text }` eller et ord, man kan
 // klikke på `{ token, text, missing }`. `token` siger, hvad ordet ændrer:
@@ -13,7 +11,7 @@
 
 import { RULE_TYPES, RULE_OPTIONS, RULES_WITHOUT_VALUES, columnIsNumeric, rankingAffectsColumn, valueKey, canonicalSpellings, plannedNewGroups } from './utils.js';
 
-/** Navnet på regeltypen — det samme ord som i den almindelige regelmenu. */
+/** Navnet på regeltypen — det samme ord i opskriften, regelmenuen og afspilningen. */
 export function ruleTypeLabel(type) {
     if (type === RULE_TYPES.STRICT_SEPARATE) return 'Adskil altid';
     return RULE_OPTIONS.find(o => o.value === type)?.label || 'Regel';

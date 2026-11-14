@@ -15,7 +15,7 @@ import { hasRuns, previewRunGroups } from '../../js/modules/runHistory.js';
 import RunHistoryMenu from './RunHistoryMenu.vue';
 import ReplayMenu from './ReplayMenu.vue';
 import * as replay from '../../js/modules/replay.js';
-import { homeGroupFingerprint, MATRIX_EXCLUDED_RULES } from '../../js/modules/utils.js';
+import { groupSetFingerprint, memberIdStr, MATRIX_EXCLUDED_RULES } from '../../js/modules/utils.js';
 import { groupNumberOf } from '../../js/modules/nextEngine.js';
 
 const props = defineProps({
@@ -194,15 +194,11 @@ const replayGroups = computed(() => {
     const frames = r.seating.map((members, i) => {
         const name = r.groupNames[i] || `Group ${i + 1}`;
         const source = byName.get(name);
-        // Spøgelseseleverne er motorens egne pladsholdere. De er med i
-        // optagelsen, så hvert bytte er en ombytning af to — men de er
-        // ikke elever, og de tegnes ikke.
-        const shown = members.filter(m => !String(m).startsWith(r.phantomPrefix));
-        const key = shown.join('\u0001');
+        const key = members.join('\u0001');
         const before = lastReplayCards.get(name);
         const card = (before && before.source === source && before.key === key)
             ? before.card
-            : { ...(source || {}), name, members: shown };
+            : { ...(source || {}), name, members };
         nextCards.set(name, { source, key, card });
         return card;
     });
@@ -387,13 +383,17 @@ const gridDuration = computed(() => {
 // Optagelsen findes kun i hukommelsen (se state.js), og den hører til DE
 // grupper, den dannede. Har læreren flyttet en elev i hånden siden, ville
 // afspilningen køre hen mod en placering, kortene ikke har — så siger vi fra
-// i stedet.
+// i stedet. En ny rækkefølge INDE i et kort er ikke en flytning: aftrykket
+// er uden rækkefølgen (groupSetFingerprint), og afspilningen tegnes i
+// kortenes rækkefølge (withCardOrder i replay.js) — 136. gennemsyn. Et nyt
+// emne på et kort er det heller ikke: billederne tegnes med kortets emne,
+// som det er nu (replayGroups ovenfor) — 137. gennemsyn.
 const viewKey = computed(() => (props.isMatrix ? 'matrix' : 'standard'));
 const recording = computed(() => reactiveState.lastRecording[viewKey.value]);
 
 const recordingMatches = computed(() => {
     if (!recording.value) return false;
-    return homeGroupFingerprint(groups.value)
+    return groupSetFingerprint(groups.value)
         === reactiveState.lastRecordingFingerprint[viewKey.value];
 });
 
@@ -411,7 +411,8 @@ function startReplay() {
     // et øjeblik fra menuen tegnede sig, til der klikkes, og i det øjeblik kan
     // en elev være flyttet.
     if (!rec || !recordingMatches.value) return;
-    replay.start(rec.data, rec.groupNames, rec.lockedGroups, viewKey.value);
+    const data = replay.withCardOrder(rec.data, rec.groupNames, groups.value, memberIdStr);
+    replay.start(data, rec.groupNames, rec.lockedGroups, viewKey.value);
 }
 
 const replayMenuOpen = ref(false);
