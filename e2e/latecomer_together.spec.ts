@@ -134,3 +134,110 @@ test('En Adskil-regel, der må brydes, giver en advarsel', async ({ page }) => {
     await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
         .toContainText('"Adskil altid" på "Rolle"');
 });
+
+// 127. gennemsyn (14/11 2026): en brudt "Opdel" gav ingen advarsel. Her er
+// kun én gruppe ulåst, og alle i den er på hold B, mens Anna er på hold A —
+// så Anna MÅ sættes dér, og læreren skal have det at vide.
+test('En Opdel-regel, der må brydes, giver en advarsel', async ({ page }) => {
+    await createClass(page, 'Efternøler opdel');
+    await goToGroups(page);
+    await generateGroups(page);
+    await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const cls = state.currentClass;
+        const anna = cls.data.find((s: any) => s.Navn === 'Anna')._rowId;
+        state.storedStandardGroups.forEach((g: any) => {
+            g.members = g.members.filter((m: any) => String(m?.id ?? m) !== anna);
+        });
+        const open = state.storedStandardGroups.find((g: any) => g.members.length > 0);
+        state.storedStandardGroups.forEach((g: any) => { g.locked = g !== open; });
+        cls.data.forEach((s: any) => { s.Hold = s._rowId === anna ? 'A' : 'B'; });
+        cls.rules = [{ type: 'aggregate', column: 'Hold' }];
+    });
+    await setAbsent(page, ['Anna']);
+    await addLatecomers(page, ['Anna']);
+
+    await expect(page.locator('.toast').filter({ hasText: 'Tilføjet' })).toHaveCount(1);
+    await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
+        .toContainText('"Opdel" på "Hold"');
+});
+
+// 128. gennemsyn (14/11 2026): en fraværende, der er meldt væk med fluebenet,
+// står stadig i sin gruppe. Kom to fraværende fra hver sin (lige store)
+// gruppe tilbage i samme tryk, trak placeringen lod mellem deres to grupper,
+// og halvdelen af gangene byttede de plads. Fire runder, så det gamle er rødt
+// med 15/16 sandsynlighed.
+test('To fraværende, der kommer tilbage, bliver i hver deres gruppe', async ({ page }) => {
+    await createClass(page, 'Efternøler bliver');
+    await goToGroups(page);
+    await generateGroups(page);
+    const pair = await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const cls = state.currentClass;
+        const groups = state.storedStandardGroups;
+        const nameOf = (m: any) => cls.data.find((s: any) => s._rowId === String(m?.id ?? m))?.Navn;
+        for (let i = 0; i < groups.length; i++) {
+            for (let j = i + 1; j < groups.length; j++) {
+                if (groups[i].members.length === groups[j].members.length) {
+                    return [
+                        { name: nameOf(groups[i].members[0]), group: groups[i].name },
+                        { name: nameOf(groups[j].members[0]), group: groups[j].name },
+                    ];
+                }
+            }
+        }
+        return null;
+    });
+    expect(pair).not.toBeNull();
+    const names = pair!.map(p => p.name);
+
+    for (let round = 0; round < 4; round++) {
+        await setAbsent(page, names);
+        await addLatecomers(page, names);
+        await expect(page.locator('.toast').filter({ hasText: 'Tilføjet' }).last())
+            .toContainText(`${names[0]} bliver i`);
+        const now = await page.evaluate((names) => {
+            const state = (window as any).appDebug.state;
+            const cls = state.currentClass;
+            return names.map((n: string) => {
+                const id = cls.data.find((s: any) => s.Navn === n)._rowId;
+                return state.storedStandardGroups.find((g: any) =>
+                    g.members.some((m: any) => String(m?.id ?? m) === id))?.name;
+            });
+        }, names);
+        expect(now).toEqual(pair!.map(p => p.group));
+        for (const close of await page.locator('.toast .toast-close').all()) await close.click({ timeout: 2000 }).catch(() => {});
+    }
+});
+
+// 128. gennemsyn: trækker en "Skal sammen"-aftale eleven over på det andet
+// hold, siger advarslen det — før stod der "der var ingen bedre plads",
+// selvom der var plads på elevens eget hold.
+test('En aftale, der trækker over Opdel, nævnes i advarslen', async ({ page }) => {
+    await createClass(page, 'Efternøler aftale opdel');
+    await goToGroups(page);
+    await generateGroups(page);
+    const partner = await page.evaluate(() => {
+        const state = (window as any).appDebug.state;
+        const cls = state.currentClass;
+        const anna = cls.data.find((s: any) => s.Navn === 'Anna')._rowId;
+        state.storedStandardGroups.forEach((g: any) => {
+            g.members = g.members.filter((m: any) => String(m?.id ?? m) !== anna);
+            g.locked = false;
+        });
+        // Den første gruppe er hold B, resten (og Anna) hold A.
+        const bGroup = state.storedStandardGroups.find((g: any) => g.members.length > 0);
+        const bIds = new Set(bGroup.members.map((m: any) => String(m?.id ?? m)));
+        cls.data.forEach((s: any) => { s.Hold = bIds.has(s._rowId) ? 'B' : 'A'; });
+        cls.rules = [{ type: 'aggregate', column: 'Hold' }];
+        const mate = [...bIds][0];
+        cls.togetherGroups = [{ ids: [anna, mate] }];
+        return cls.data.find((s: any) => s._rowId === mate).Navn;
+    });
+    await setAbsent(page, ['Anna']);
+    await addLatecomers(page, ['Anna']);
+
+    await expect(sameCard(page, 'Anna', partner)).toHaveCount(1);
+    await expect(page.locator('.toast').filter({ hasText: 'kunne ikke overholdes' }))
+        .toContainText('"Skal sammen"-aftale vejer tungere');
+});

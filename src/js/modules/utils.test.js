@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { state, pushUndo, undo, redo, clearUndoHistory } from './state.js';
 import { togetherComponents } from './together.js';
 import { RULE_WEIGHT_NOTES, newUuid } from './utils.js';
-import { setupSignature, orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, homeGroupFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
+import { setupSignature, orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, homeGroupFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 1. escapeHtml
@@ -785,6 +785,13 @@ describe('eqTopic', () => {
         expect(eqTopic('  Liberalisme ', 'LIBERALISME')).toBe(true);
         expect(eqTopic('Liberalisme', 'Konservatisme')).toBe(false);
     });
+    it('å som a + ring (fra en PDF på en Mac) er samme emne som å tastet', () => {
+        const typed = '\u00c5rhus';            // Å som ét tegn
+        const pasted = 'A\u030arhus';          // A + kombinerende ring
+        expect(typed === pasted).toBe(false);
+        expect(eqTopic(typed, pasted)).toBe(true);
+        expect(eqTopic(' ', ' ')).toBe(false);
+    });
 });
 
 describe('findTopicIndex', () => {
@@ -797,6 +804,25 @@ describe('findTopicIndex', () => {
         expect(findTopicIndex(['Liberalisme', 'Konservatisme'], 'liberalisme')).toBe(0);
         expect(findTopicIndex(['Liberalisme', 'Konservatisme'], 'KONSERVATISME')).toBe(1);
         expect(findTopicIndex(['Liberalisme'], 'Socialisme')).toBe(-1);
+    });
+    it('finder emnet, selv om å er skrevet som a + ring', () => {
+        expect(findTopicIndex(['Klima', '\u00c5rhus'], 'a\u030arhus')).toBe(1);
+        expect(findTopicIndex(['A\u030arhus'], '\u00c5RHUS')).toBe(0);
+    });
+});
+
+describe('mergeClassTopics og classTopicSpelling med NFC', () => {
+    it('lægger ikke "Århus" (a + ring) til ved siden af klassens "Århus"', async () => {
+        const { mergeClassTopics } = await import('./utils.js');
+        expect(mergeClassTopics(['\u00c5rhus'], ['A\u030arhus', 'Klima'])).toEqual(['\u00c5rhus', 'Klima']);
+    });
+    it('et nyt emne gemmes i NFC', async () => {
+        const { mergeClassTopics } = await import('./utils.js');
+        expect(mergeClassTopics([], ['A\u030arhus'])).toEqual(['\u00c5rhus']);
+    });
+    it('gruppekortets vælger får klassens stavemåde', async () => {
+        const { classTopicSpelling } = await import('./utils.js');
+        expect(classTopicSpelling(['\u00c5rhus'], 'A\u030arhus')).toBe('\u00c5rhus');
     });
 });
 
@@ -1505,6 +1531,39 @@ describe('cellNumber', () => {
         for (const v of samples) {
             expect(cellIsNumber(v), v).toBe(cellNumber(v) !== null);
         }
+    });
+});
+
+describe('sortRowsByColumn — elevlistens sortering af en kolonne med rækkefølge (forslag 97)', () => {
+    const rows = ['Høj', 'Lav', '', 'Middel', 'ukendt', 'lav ', 'Høj'].map((v, i) => ({ Navn: 'E' + i, Niveau: v }));
+    const order = ['Lav', 'Middel', 'Høj'];
+    const values = (list) => list.map(r => r.Niveau);
+
+    it('stigende: efter rækkefølgen, så værdier uden for den, tomme til sidst', () => {
+        expect(values(sortRowsByColumn(rows, 'Niveau', 'asc', order)))
+            .toEqual(['Lav', 'lav ', 'Middel', 'Høj', 'Høj', 'ukendt', '']);
+    });
+
+    it('faldende: rækkefølgen vendt, men værdier uden for den og tomme stadig til sidst', () => {
+        expect(values(sortRowsByColumn(rows, 'Niveau', 'desc', order)))
+            .toEqual(['Høj', 'Høj', 'Middel', 'Lav', 'lav ', 'ukendt', '']);
+    });
+
+    it('uden rækkefølge: alfabetisk som før (compareCellValues)', () => {
+        expect(values(sortRowsByColumn(rows, 'Niveau', 'asc', undefined)))
+            .toEqual(['', 'Høj', 'Høj', 'Lav', 'lav ', 'Middel', 'ukendt']);
+    });
+
+    it('en rækkefølge, som ingen celle rammer, eller med ét trin, tæller ikke (samme prøve som motoren)', () => {
+        const alfa = values(sortRowsByColumn(rows, 'Niveau', 'asc', undefined));
+        expect(values(sortRowsByColumn(rows, 'Niveau', 'asc', ['A', 'B']))).toEqual(alfa);
+        expect(values(sortRowsByColumn(rows, 'Niveau', 'asc', ['Høj', 'høj']))).toEqual(alfa);
+    });
+
+    it('rører ikke klassens egen liste', () => {
+        const before = values(rows);
+        sortRowsByColumn(rows, 'Niveau', 'asc', order);
+        expect(values(rows)).toEqual(before);
     });
 });
 

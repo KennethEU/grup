@@ -2,28 +2,53 @@
 // kommer tilbage) sættes ind i grupper, der allerede er dannet? Bruges af
 // LatecomerModal.
 //
-// Prioritering (vigtigst først — vægtene er adskilt i størrelsesordener,
-// så et højere niveau aldrig kan overtrumfes af et lavere):
-// 1. Skal sammen (×10.000.000.000) — en aftale er lærerens KRAV, ikke en vægt.
+// Prioritering (vigtigst først). Niveauerne sammenlignes ét ad gangen
+// (compareLevels nedenfor), så et højere niveau aldrig kan overtrumfes af et
+// lavere — heller ikke af mange brud på det lavere:
+// 1. Skal sammen — en aftale er lærerens KRAV, ikke en vægt.
 //    Motoren pakker aftaler som hele enheder, før noget andet afgøres; her
 //    trækker de eleven hen til dem, hun har en aftale med
-// 2. Emne med færrest elever (×100.000.000) — så matrixfordelingen går op.
-// 3. Opdel (×20.000.000) — en gruppe må kun rumme én værdi. Strukturel som i
+// 2. Opdel — en gruppe må kun rumme én værdi. Strukturel som i
 //    motoren, der deler klassen i puljer, før noget andet sker
-// 4. "Adskil altid" (×5.000.000) — vejer tungest af REGLERNE, som i motoren,
+// 3. Emne med færrest elever — så emnefordelingen går op.
+// 4. "Adskil altid" — vejer tungest af REGLERNE, som i motoren,
 //    hvor den er det første trin i rangordenen (`levelPlan` i
 //    motor/engine/rules.js), før undgåelserne og før matrixens stamgrupper.
 //    Opskriften lover: "brydes kun, hvis intet andet er muligt"
-// 5. Matrix: én pr. stamgruppe (×500.000). I matrix-visningen findes der
+// 5. Matrix: én pr. stamgruppe. I matrix-visningen findes der
 //    ingen emner og ingen Opdel (se placementRules); dér holder dette trin
 //    styr på "én pr. kilde", som motoren har som sit eget trin (kilderne)
-// 6. Undgåelser OG almindelige Adskil-regler (×50.000) — brydes KUN når et
+// 6. Undgåelser OG almindelige Adskil-regler — brydes KUN når et
 //    højere hensyn tvinger det. Læreren får så en advarsel i stedet for en
 //    blokering (håndteres i LatecomerModal)
-// 7. Mindste gruppe (×100) — balance inden for emnet
-// 8. Øvrige regler som svag tiebreaker: Fordel, Klyng, Saml, Balancér og
-//    Ensartede — leddet er afgrænset til under 100, så det aldrig kan
-//    overtrumfe niveau 7 (se nedenfor)
+// 7. Elevens egen gruppe — en fraværende, der stadig stod i sin gruppe
+//    (`homeGroup`), bliver dér, medmindre et af niveauerne ovenfor siger
+//    andet. Gruppestørrelsen og de bløde regler kan ikke flytte eleven
+//    (forslag 120, Kenneth sagde ja 14/11 2026)
+// 8. Mindste gruppe — balance inden for emnet
+// 9. Øvrige regler som svag tiebreaker: Fordel, Klyng, Saml, Balancér og
+//    Ensartede — kun når alt ovenfor står lige
+// Står flere grupper helt lige: lodtrækning.
+//
+// Egen gruppe lå før KUN som tiebreaker ved helt lige score (128.
+// gennemsyn). Men var en anden gruppe mindre i lokalet i dag (fordi to fra
+// den også var væk), blev eleven flyttet dertil — varigt, for grupperne
+// gemmes sådan. Grupperne på tavlen skal holde; en skæv dag er bedre end en
+// elev, der kommer tilbage til en anden gruppe end sin egen.
+//
+// Opdel stod før UNDER emnet. Men motoren giver først grupperne emner, når de
+// er dannet (assignTopics i motor/engine/topics.js), og flytter aldrig en elev
+// over på det andet hold for at jævne emnerne ud. Placeringen gjorde: havde
+// emnet med færrest elever kun grupper på det andet hold, blev efternøleren
+// sat dér, i stilhed (127. gennemsyn).
+//
+// Før 14/11 2026 blev niveauerne lagt sammen til ét tal med vægte (×20
+// millioner for Opdel, ×5 millioner for "Adskil altid" osv.). Men hvert led
+// blev ganget med et ANTAL (hvor mange i gruppen der bryder reglen), så fire
+// brud på et lavere niveau vejede som ét på niveauet over: en efternøler
+// kunne bryde Opdel for at slippe for en gruppe med fire ordstyrere, og tolv
+// undgåelser kunne slå "én pr. stamgruppe" (126. gennemsyn, to tests i
+// placement.test.js).
 //
 // "Adskil altid" lå før på samme vægt som en almindelig Adskil og en
 // undgåelse, og i matrix under stamgrupperne. Så kunne en efternøler i
@@ -37,7 +62,7 @@
 // uden at noget sagde fra. Værst var aftalen: motoren behandler den som et
 // krav, og placeringen kendte den slet ikke.
 //
-// GENNEMGÅENDE: alt der måles på kolonner og pladser (niveau 2-8)
+// GENNEMGÅENDE: alt der måles på kolonner og pladser (niveau 2-6, 8 og 9)
 // tæller kun de elever, der FAKTISK sidder i gruppen — se isPresentMember()
 // nedenfor. Elev↔elev-aftalerne (niveau 1 og undgåelserne i niveau 6) tæller
 // bevidst også de fraværende: de er beslutninger om gruppens sammensætning,
@@ -45,17 +70,30 @@
 
 import { RULE_TYPES, MATRIX_EXCLUDED_RULES, findTopicIndex, memberIdStr, cellNumber, applyColumnOrders, valueKey } from './utils.js';
 
-// Vægtene, samlet ét sted. De skal blive ved med at være adskilt i
-// størrelsesordener — ellers kan to lavere hensyn lægge sig sammen og
-// overtrumfe et højere, og så holder prioriteringen ovenfor ikke.
-const W_TOGETHER  = 10_000_000_000;
-const W_TOPIC     = 100_000_000;
-const W_AGGREGATE = 20_000_000;
-const W_STRICT    = 5_000_000;   // "Adskil altid"
-const W_SOURCE    = 500_000;     // matrix: én pr. stamgruppe/emne
-const W_AVOID     = 50_000;      // undgåelser og almindelig "Adskil"
-const W_SIZE      = 100;
-const W_RULES     = 90;          // loft for hele tiebreaker-leddet
+// Pladsen for hvert niveau i en gruppes score (en liste, vigtigst først —
+// se prioriteringen øverst). Højere er bedre på alle pladser, så et brud
+// tælles negativt.
+const L_TOGETHER  = 0;
+const L_AGGREGATE = 1;
+const L_TOPIC     = 2;
+const L_STRICT    = 3;   // "Adskil altid"
+const L_SOURCE    = 4;   // matrix: én pr. stamgruppe
+const L_AVOID     = 5;   // undgåelser og almindelig "Adskil"
+const L_HOME      = 6;   // elevens egen gruppe (en fraværende, der kommer tilbage)
+const L_SIZE      = 7;
+const L_RULES     = 8;   // de bløde regler, 0-1
+const LEVELS      = 9;
+
+/**
+ * Sammenlign to gruppers score niveau for niveau: det første niveau, hvor de
+ * er forskellige, afgør. Positivt, hvis `a` er bedst; 0, hvis de står helt lige.
+ */
+function compareLevels(a, b) {
+    for (let i = 0; i < LEVELS; i++) {
+        if (a[i] !== b[i]) return a[i] - b[i];
+    }
+    return 0;
+}
 
 // memberIdStr hentes fra utils.js. Den stod her i en anden, ordret identisk
 // kopi, og LatecomerModal hentede den herfra, mens groupActions, overview og
@@ -213,6 +251,41 @@ export function brokenSeparateRules(student, group, { idCol, rules = [], allStud
 }
 
 /**
+ * Bryder eleven "Opdel" ved at sidde i `group`? Svarer `{ column, ids }` med
+ * id'erne på dem i gruppen, der har en ANDEN værdi i kolonnen end eleven —
+ * eller `null`, hvis reglen holder (eller ikke kan sige noget: ingen Opdel,
+ * eller eleven har ikke svaret). Samme måling som scoringen: kun dem, der
+ * sidder der i dag, og værdierne som motoren ser dem (`normValue`).
+ *
+ * Findes, fordi placeringen kan blive tvunget over på det andet hold — af en
+ * aftale med en på det andet hold, eller fordi alle grupper på elevens eget
+ * hold er låst — og det skete i stilhed, mens en brudt Adskil og en brudt
+ * undgåelse fik en advarsel (127. gennemsyn).
+ *
+ * `rules` skal være dem, placeringen bruger (`placementRules`), så en gammel
+ * Opdel i matrix, som motoren aldrig får, heller ikke advarer.
+ */
+export function brokenSplitRule(student, group, { idCol, rules = [], allStudents = [] }) {
+    const split = (rules || []).find(r => (r?.type || r?.name) === RULE_TYPES.AGGREGATE);
+    const col = split ? (split.column || split.attribute) : null;
+    if (!col) return null;
+    const studVal = normValue(student[col]);
+    if (studVal === null) return null;
+    const byId = buildIndex(allStudents, idCol);
+    const studId = String(student[idCol] ?? '').trim();
+    const ids = [];
+    for (const m of (group.members || [])) {
+        const mIdStr = memberIdStr(m);
+        if (mIdStr === studId || !isPresentMember(mIdStr, byId)) continue;
+        const mate = byId.get(mIdStr);
+        if (!mate) continue;
+        const mv = normValue(mate[col]);
+        if (mv !== null && mv !== studVal) ids.push(mIdStr);
+    }
+    return ids.length ? { column: col, ids } : null;
+}
+
+/**
  * Id'erne på dem i `group`, eleven skal undgå (undgåelses-aftalerne). Eleven
  * er aldrig i konflikt med sig selv — det tæller, når en fraværende, der
  * stadig står i gruppen, sættes tilbage.
@@ -267,6 +340,22 @@ export function partnersOutside(student, group, { idCol, togetherComponents = []
 
 
 /**
+ * De elever, `student` har en "Skal sammen"-aftale med, og som SIDDER i
+ * `group` — modstykket til partnersOutside(). Bruges af LatecomerModal til at
+ * sige, at det var aftalen, der trak eleven over på det andet hold, når Opdel
+ * må brydes (128. gennemsyn).
+ */
+export function partnersInGroup(student, group, { idCol, togetherComponents = [] }) {
+    const studId = String(student[idCol]).trim();
+    const component = togetherComponents.find(ids => ids.some(id => String(id).trim() === studId));
+    if (!component) return [];
+    const inGroup = new Set((group.members || []).map(memberIdStr));
+    return component
+        .map(id => String(id).trim())
+        .filter(id => id !== studId && inGroup.has(id));
+}
+
+/**
  * Balancér, Ensartede og Saml på en RANGERET tekstkolonne ("Lav < Middel <
  * Høj"). Gruppedannelsen regner dem med rangen 1, 2, 3 — buildEngineInput
  * (nextEngine.js) sender trinene til motoren, som selv giver hvert trin sit
@@ -316,6 +405,9 @@ function rankForPlacement(student, rules, allStudents, columnOrders) {
  *                               `columnOrders`: klassens rangering af
  *                               tekstkolonner (Lav < Middel < Høj) — se
  *                               rankForPlacement() nedenfor.
+ *                               `homeGroup`: gruppen, en tilbagevendende
+ *                               elev stod i (samme objekt som i `groups`);
+ *                               den vinder over gruppestørrelsen og de bløde regler (niveau 7).
  * @returns den valgte gruppe, eller null når ingen gruppe er ulåst
  */
 export function findBestGroup(student, groups, ctx) {
@@ -355,7 +447,7 @@ export function findBestGroup(student, groups, ctx) {
     // og ryger fra her — det gælder alle tre bunker.
     const tieRules = [];      // niveau 8: svag retning (fordel/klyng/saml)
     const numericRules = [];  // niveau 8: Balancér og Ensartede
-    const hardRules = [];     // niveau 3, 4 og 6: Opdel og Adskil
+    const hardRules = [];     // niveau 2, 4 og 6: Opdel og Adskil
 
     // Hvem Balancér skal ligne: de elever, der er HER i dag (plus eleven selv,
     // som kan stå som fraværende, mens hun sættes tilbage) — og under Opdel
@@ -448,10 +540,10 @@ export function findBestGroup(student, groups, ctx) {
 
     // ALLE grupper med den højeste score — der trækkes lod mellem dem til sidst.
     let bestGroups = [];
-    let bestScore = -Infinity;
+    let bestScore = null;
 
     unlocked.forEach(g => {
-        let score = 0;
+        const score = new Array(LEVELS).fill(0);
         const present = countPresent(g, byId);
 
         // Niveau 1: Skal sammen. Hver partner, der allerede sidder her, trækker
@@ -460,15 +552,15 @@ export function findBestGroup(student, groups, ctx) {
         // noget her, og LatecomerModal siger det højt bagefter.
         if (allPartners.length) {
             const here = new Set((g.members || []).map(memberIdStr));
-            score += allPartners.filter(id => here.has(id)).length * W_TOGETHER;
+            score[L_TOGETHER] = allPartners.filter(id => here.has(id)).length;
         }
 
-        // Niveau 2 og 5: emnet med færrest elever — eller, i matrix-visningen,
+        // Niveau 3 og 5: emnet med færrest elever — eller, i matrix-visningen,
         // den gruppe der ikke i forvejen har en elev fra samme stamgruppe.
         if (topicTotals) {
             const idx = findTopicIndex(classTopics, g.topic);
             if (idx !== -1) {
-                score += (maxTopicTotal - topicTotals[idx]) * W_TOPIC;
+                score[L_TOPIC] = maxTopicTotal - topicTotals[idx];
             }
         } else if (sourceById && studentSource !== null) {
             // Matrixens hele pointe: én fra hver stamgruppe. Motoren har det
@@ -481,10 +573,10 @@ export function findBestGroup(student, groups, ctx) {
                 if (!isPresentMember(mIdStr, byId)) continue;
                 if (sourceById.get(mIdStr) === studentSource) sameSource++;
             }
-            score -= sameSource * W_SOURCE;
+            score[L_SOURCE] = -sameSource;
         }
 
-        // Niveau 3, 4 og 6: Opdel, "Adskil altid" og Adskil. Alle måles på
+        // Niveau 2, 4 og 6: Opdel, "Adskil altid" og Adskil. Alle måles på
         // dem der sidder der.
         for (const r of hardRules) {
             const counts = new Map();
@@ -509,37 +601,35 @@ export function findBestGroup(student, groups, ctx) {
                 const before = valued ? valued - Math.max(...counts.values()) : 0;
                 counts.set(r.studVal, (counts.get(r.studVal) || 0) + 1);
                 const after = (valued + 1) - Math.max(...counts.values());
-                score -= (after - before) * W_AGGREGATE;
+                score[L_AGGREGATE] -= after - before;
             } else {
                 // "Adskil": højst én med værdien pr. gruppe. Sidder der en i
                 // forvejen, er pladsen her et brud. En almindelig Adskil vejer
                 // som en undgåelse (samme slags ønske); "Adskil altid" vejer
                 // over undgåelserne og stamgrupperne, som i motoren.
-                score -= matching * (r.strict ? W_STRICT : W_AVOID);
+                score[r.strict ? L_STRICT : L_AVOID] -= matching;
             }
         }
 
         // Niveau 6: undgåelser (blødt — et højere hensyn kan tvinge det, og så
         // advarer LatecomerModal i stedet for at blokere)
-        score -= separationConflictIds(student, g, { idCol, separations }).length * W_AVOID;
+        score[L_AVOID] -= separationConflictIds(student, g, { idCol, separations }).length;
 
-        // Niveau 7: helst den mindste gruppe (balance inden for emnet)
-        score -= present * W_SIZE;
+        // Niveau 8: helst den mindste gruppe (balance inden for emnet)
+        score[L_SIZE] = -present;
 
-        // Niveau 8: reglerne (Fordel spreder, Klyng og Saml samler).
+        // Niveau 9: reglerne (Fordel spreder, Klyng og Saml samler).
         //
-        // Leddet er bevidst AFGRÆNSET til under 100 — ét skridt på
-        // gruppestørrelsen. Før talte reglerne rå medlemmer (×10/×20), og så
-        // holdt prioriteringen øverst i filen ikke: to klyng-regler i en
-        // gruppe på otte gav 8×20×2 = 320 point, nok til at overtrumfe en
-        // forskel på tre elever i gruppestørrelse. Efternøleren blev sendt
-        // hen i den gruppe der i forvejen var størst, selvom "mindste gruppe"
-        // står HØJERE i prioriteringen end reglerne.
+        // Leddet afgør KUN, når alt ovenfor står lige (eget niveau). Engang
+        // talte reglerne rå medlemmer i samme sum som gruppestørrelsen, og to
+        // klyng-regler i en gruppe på otte kunne overtrumfe en forskel på tre
+        // elever i gruppestørrelse. Efternøleren blev sendt hen i den gruppe
+        // der i forvejen var størst, selvom "mindste gruppe" står HØJERE i
+        // prioriteringen end reglerne.
         //
-        // I stedet måles hver regel som en ANDEL (0-1) af gruppens medlemmer
-        // og vægtes 1 for fordel og 2 for klyng — samme indbyrdes forhold som
-        // før. Gennemsnittet ganges med 90, så leddet aldrig kan nå 100,
-        // uanset hvor mange regler eller hvor stor gruppen er.
+        // Hver regel måles som en ANDEL (0-1) af gruppens medlemmer og vægtes
+        // 1 for fordel og 2 for klyng. Leddet er gennemsnittet (0-1), så
+        // mange regler ikke vejer mere end få.
         //
         // Nævneren er de medlemmer der SIDDER DER og HAR svaret — ikke
         // gruppestørrelsen: en gruppe på seks, hvor to celler er tomme, skal
@@ -596,10 +686,16 @@ export function findBestGroup(student, groups, ctx) {
             ruleScore += Math.max(0, 1 - distance);
             ruleWeight += 1;
         }
-        if (ruleWeight > 0) score += (ruleScore / ruleWeight) * W_RULES;
+        if (ruleWeight > 0) score[L_RULES] = ruleScore / ruleWeight;
 
-        if (score > bestScore) { bestScore = score; bestGroups = [g]; }
-        else if (score === bestScore) bestGroups.push(g);
+        // Niveau 7: elevens egen gruppe. En fraværende, der er meldt væk med
+        // fluebenet, bliver stående i sin gruppe; LatecomerModal tager eleven
+        // ud lige før placeringen og giver gruppen med her som `homeGroup`.
+        if (ctx.homeGroup && g === ctx.homeGroup) score[L_HOME] = 1;
+
+        const cmp = bestScore ? compareLevels(score, bestScore) : 1;
+        if (cmp > 0) { bestScore = score; bestGroups = [g]; }
+        else if (cmp === 0) bestGroups.push(g);
     });
 
     // Står flere grupper 100 % lige, trækkes der lod. Før vandt den første:

@@ -566,9 +566,32 @@ function currentEngineInput(isMatrix, skipTogether = []) {
 const checkAnswer = ref(null);   // { id, input, answer }
 let checkWorker = null;
 let checkSeq = 0;
+// Der er lagt en ny udgave op, og tråd-filen findes ikke længere (115.
+// gennemsyn, 13/11 2026). En fane, der blev åbnet FØR en deploy, men hvor
+// ingen klasse var åben endnu (fx forsiden), har aldrig startet tjek-tråden.
+// Åbner læreren så en klasse, er den gamle tråd-fil slettet (rsync --delete):
+// tråden fejler, og før blev en ny startet — og fejlede — ved HVER ændring af
+// opskriften. Imens stod opskriften uden motorens advarsler og uden
+// prøvekørsel (den venter på tjekket), altså så den så "ren" ud, og læreren
+// hørte først om den nye udgave ved Dan grupper. Nu: én besked om at
+// genindlæse, og ingen nye forsøg. Er der IKKE en ny udgave (fx et kort
+// netværksudfald), prøves der igen ved næste ændring som før — tjekket står
+// bag alle motorens advarsler, så det må ikke give op af sig selv.
+let checkWorkerGone = false;
+
+/** Tjek-tråden fejlede: er det, fordi en ny udgave er lagt op? */
+function onCheckWorkerFailed() {
+    const check = checkForNewBuild();
+    if (!check) return;
+    check.then((isNew) => {
+        if (!isNew || checkWorkerGone) return;
+        checkWorkerGone = true;
+        window.notifyError?.(NEW_BUILD_MESSAGE);
+    });
+}
 
 function ensureCheckWorker() {
-    if (checkWorker || typeof Worker === 'undefined') return checkWorker;
+    if (checkWorker || checkWorkerGone || typeof Worker === 'undefined') return checkWorker;
     try {
         checkWorker = defaultWorker();
         checkWorker.onmessage = (e) => {
@@ -580,6 +603,7 @@ function ensureCheckWorker() {
             try { checkWorker.terminate(); } catch { /* væk i forvejen */ }
             checkWorker = null;
             checkAnswer.value = null;
+            onCheckWorkerFailed();
         };
     } catch (e) {
         console.error('[Gruppemotor] check() kunne ikke startes:', e);
@@ -674,7 +698,11 @@ export function runStatusFor(isMatrix) {
     if (!status) return null;
     const groups = (isMatrix ? state.storedMatrixGroups : state.storedStandardGroups) || [];
     if (homeGroupFingerprint(groups) !== status.groups) return null;
-    if (inputFingerprint(currentEngineInput(isMatrix, status.skipTogether)) !== status.input) return null;
+    // Samme svar som lastRunApplies (samme input som kørslen) — og fra samme
+    // computed, så input ikke bygges forfra for hver, der spørger (mærkerne i
+    // RecipeRules og aftalerne i RecipePanel). Målt i 114. gennemsyn: med 150
+    // elever og 8 regler blev input bygget 6–7 gange pr. ændring.
+    if (!lastRunApplies(isMatrix)) return null;
     return status;
 }
 

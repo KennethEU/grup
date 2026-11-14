@@ -598,3 +598,226 @@ test('en ny kørsel i den anden fane siges højt igen, når beskeden er lukket m
     // B viser stadig sine egne — intet skiftes af sig selv
     expect(await groupsIn(tabB)).toBe(shownInB);
 });
+
+/**
+ * Et vindue står åbent, mens klassen slettes i den anden fane.
+ *
+ * Vinduerne (Ranger værdier, Kategorisér, Efternøler, Gem session …) skriver
+ * i `state.currentClass`, når der trykkes OK. Sletningen i den anden fane
+ * lukker klassen her (closeOpenClass), men vinduet blev stående over
+ * Oversigten — om en klasse, der ikke findes længere. OK gav så en fejl i
+ * konsollen (`state.currentClass` er null), og vinduet stod der stadig.
+ * Nu lukkes vinduerne med klassen.
+ */
+test('et åbent vindue lukkes, når klassen slettes i den anden fane', async ({ context }) => {
+    const tabA = await context.newPage();
+    const errors: string[] = [];
+    tabA.on('pageerror', e => errors.push(e.message));
+    await createClass(tabA, '2a To Faner');
+
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a To Faner', { timeout: 30000 });
+
+    // Fane A: læreren har "Ranger værdier" åbent.
+    await tabA.bringToFront();
+    await tabA.locator('#rank-btn').click();
+    await expect(tabA.locator('.modal-overlay')).toHaveCount(1);
+
+    await tabB.bringToFront();
+    await deleteClass(tabB, '2a To Faner');
+
+    await expect(tabA.locator('.toast, .notification').filter({ hasText: 'slettet i en anden fane' }))
+        .toBeVisible({ timeout: 10000 });
+    await expect(tabA.locator('.modal-overlay')).toHaveCount(0);
+    // Og siden bagved kan bruges igen (vinduet gjorde den inert).
+    await expect(tabA.locator('[inert]:not([data-modal-keep])')).toHaveCount(0);
+    expect(errors).toEqual([]);
+});
+
+/**
+ * "Hent de nye grupper", mens Efternøler-vinduet står åbent.
+ *
+ * Beskeden kan trykkes på oven over vinduet (data-modal-keep). Får en valgt
+ * elev en gruppe i den anden fanes grupper, forsvinder hun fra vinduets
+ * liste — men hun blev hængende i valget, "Tilføj til gruppe" kunne stadig
+ * trykkes, og så blev hun flyttet ud af den gruppe, hun lige havde fået, uden
+ * at læreren kunne se, at hun var valgt.
+ */
+test('Efternøler: en valgt elev, der får en gruppe ved "Hent de nye grupper", bliver ikke flyttet', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a To Faner');
+    await goToGroups(tabA);
+    await generateGroups(tabA);
+
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a To Faner', { timeout: 30000 });
+    await goToGroups(tabB);
+
+    // Fane B: én elev står uden gruppe (kun i fanens hukommelse — som efter
+    // en elev, der er kommet til siden dannelsen).
+    const loose = await tabB.evaluate(() => {
+        const g = (window as any).appDebug.state.storedStandardGroups;
+        return String(g[0].members.shift());
+    });
+    await tabB.locator('button.action-pill[title="Tilføj efternøler"]').click();
+    const dialog = tabB.locator('.modal-overlay');
+    await expect(dialog).toBeVisible();
+    await dialog.locator(`input[type="checkbox"][value="${loose}"]`).check();
+    const add = dialog.getByRole('button', { name: 'Tilføj til gruppe' });
+    await expect(add).toBeEnabled();
+
+    // Fane A danner igen — dér har alle en gruppe.
+    await tabA.bringToFront();
+    await generateGroups(tabA);
+    const groupsIn = (page: Page) => page.evaluate(() =>
+        JSON.stringify(((window as any).appDebug.state.storedStandardGroups || []).map((g: any) => g.members)));
+    await expect.poll(async () => {
+        const a = await groupsIn(tabA);
+        await tabA.waitForTimeout(1000);
+        return a === await groupsIn(tabA) ? a : null;
+    }, { timeout: 20000 }).not.toBeNull();
+    const fresh = await groupsIn(tabA);
+
+    await tabB.bringToFront();
+    const toast = tabB.locator('.toast').filter({ hasText: 'ændret i en anden fane' });
+    await expect(toast).toBeVisible({ timeout: 10000 });
+    await toast.getByRole('button', { name: 'Hent de nye grupper' }).click();
+    await expect.poll(() => groupsIn(tabB), { timeout: 10000 }).toBe(fresh);
+
+    // Hun står ikke på listen længere, og intet er valgt.
+    await expect(dialog.locator(`input[type="checkbox"][value="${loose}"]`)).toHaveCount(0);
+    await expect(add).toBeDisabled();
+});
+
+/** En tom klasse via klassemenuens "+" — virker også, når der allerede er klasser. */
+async function newClassViaMenu(page: Page, name: string) {
+    await page.locator('.class-trigger').click();
+    await page.getByTitle('Opret ny klasse').click();
+    const input = page.getByPlaceholder('Navn på klasse');
+    await input.fill(name);
+    await page.getByRole('button', { name: 'Opret', exact: true }).click();
+    await expect(page.locator('.class-trigger')).toContainText(name, { timeout: 30000 });
+}
+
+/**
+ * Topbjælkens "Slet klasse" står åben i fane A, og klassen slettes i fane B.
+ *
+ * Vinduet ligger ikke i modalState, så closeAll() lukkede det ikke, og "Slet"
+ * stod klar til et filnavn, som fane B kunne give til en NY klasse (filnavnet
+ * kommer af navnet). Nu lukkes vinduet, når klassen forsvinder (tematik 109).
+ */
+test('"Slet klasse" lukkes, når klassen slettes i den anden fane', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '3b Bliver');
+    await newClassViaMenu(tabA, '2a Slettes');
+
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a Slettes', { timeout: 30000 });
+
+    // Fane A: åbn "Slet klasse" for 2a — men tryk ikke endnu.
+    await tabA.locator('.class-trigger').click();
+    await tabA.locator('.class-list .class-item').filter({ hasText: '2a Slettes' })
+        .locator('.delete-btn').click();
+    const confirmA = tabA.getByRole('dialog').filter({ hasText: 'Slet klasse' });
+    await expect(confirmA).toBeVisible();
+
+    // Fane B sletter 2a.
+    await deleteClass(tabB, '2a Slettes');
+
+    await expect(confirmA).toHaveCount(0, { timeout: 10000 });
+    // Den anden klasse er urørt.
+    const names = await tabB.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]').map((c: any) => c.name));
+    expect(names).toEqual(['3b Bliver']);
+});
+
+/**
+ * "Overskriv mine" i fane A må kun overskrive de klasser, der stod på listen.
+ *
+ * Backuppen har 2a (findes, står på listen) og 3b (fandtes ikke). Mens
+ * vinduet står åbent, opretter fane B en klasse "3b". Før blev den overskrevet
+ * uden at stå på listen; nu gendannes backuppens 3b som kopi ved siden af.
+ */
+test('"Overskriv mine" overskriver ikke en klasse, der blev oprettet i den anden fane imens', async ({ context }) => {
+    const tabA = await context.newPage();
+    await createClass(tabA, '2a Gendan');
+    const stored = await tabA.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]')[0]);
+    const entry = (filename: string, name: string, student: string) => ({
+        ...stored.content, filename, name,
+        data: [{ Navn: student, Køn: 'K', Karakter: '10', _rowId: 'r_' + student }],
+    });
+    const backup = JSON.stringify([
+        entry(stored.filename, '2a Gendan', 'Backup-Anna'),
+        entry('3b_ny.csv', '3b Ny', 'Backup-Bo'),
+    ]);
+
+    await tabA.locator('.nav-tab').filter({ hasText: 'Import & backup' }).click();
+    await tabA.getByRole('button', { name: 'Importér', exact: true }).click();
+    await tabA.getByRole('button', { name: 'Upload fil eller gendan backup' }).click();
+    await tabA.setInputFiles('input[type=file]', {
+        name: 'grupdk_backup.json', mimeType: 'application/json', buffer: Buffer.from(backup, 'utf-8'),
+    });
+    await tabA.getByRole('button', { name: /Importér Filer/i }).click();
+    const overwrite = tabA.getByRole('button', { name: /Overskriv mine/i });
+    await expect(overwrite).toBeVisible();
+    // Kun 2a står på listen.
+    await expect(tabA.locator('.collision-list li')).toHaveText(['2a Gendan']);
+
+    // Imens: fane B opretter "3b Ny" (filnavn 3b_ny.csv).
+    const tabB = await context.newPage();
+    await gotoAppReady(tabB);
+    await expect(tabB.locator('.class-trigger')).toContainText('2a Gendan', { timeout: 30000 });
+    await newClassViaMenu(tabB, '3b Ny');
+
+    await overwrite.click();
+    await expect.poll(() => tabA.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]').length), { timeout: 10000 }).toBe(3);
+
+    const classes = await tabA.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]')
+            .map((c: any) => ({ f: c.filename, n: c.name, first: c.content.data[0]?.Navn ?? null })));
+    // Fane B's 3b (tom, oprettet med "+") er urørt …
+    expect(classes.find((c: any) => c.f === '3b_ny.csv')).toEqual({ f: '3b_ny.csv', n: '3b Ny', first: null });
+    // … backuppens 3b står ved siden af …
+    expect(classes.find((c: any) => c.n === '3b Ny (gendannet)')?.first).toBe('Backup-Bo');
+    // … og 2a, som læreren sagde ja til, er overskrevet.
+    expect(classes.find((c: any) => c.f === stored.filename)?.first).toBe('Backup-Anna');
+    await expect(tabA.locator('.toast, .notification').filter({ hasText: 'gendannet som kopi' }))
+        .toBeVisible({ timeout: 10000 });
+});
+
+/**
+ * Værnet i selve sletningen — uden hjælp fra storage-hændelsen.
+ *
+ * Klassen fjernes fra lageret i fanens EGEN fane (en fane får ikke sin egen
+ * storage-hændelse), så "Slet klasse" står stadig åben. "Slet" skal så sige,
+ * at klassen allerede er væk, i stedet for at rydde op i tavshed.
+ */
+test('"Slet" på en klasse, der allerede er væk, siger det — og rører ikke de andre', async ({ page }) => {
+    await createClass(page, '3b Bliver');
+    await newClassViaMenu(page, '2a Væk');
+
+    await page.locator('.class-trigger').click();
+    await page.locator('.class-list .class-item').filter({ hasText: '2a Væk' })
+        .locator('.delete-btn').click();
+    const confirm = page.getByRole('dialog').filter({ hasText: 'Slet klasse' });
+    await expect(confirm).toBeVisible();
+
+    await page.evaluate(() => {
+        const list = JSON.parse(localStorage.getItem('grupdk_classes') || '[]');
+        localStorage.setItem('grupdk_classes',
+            JSON.stringify(list.filter((c: any) => c.name !== '2a Væk')));
+        (window as any).appDebug.pyBridge._invalidateClassesCache();
+    });
+    await confirm.getByRole('button', { name: 'Slet', exact: true }).click();
+
+    await expect(page.locator('.toast, .notification').filter({ hasText: 'allerede slettet' }))
+        .toBeVisible({ timeout: 10000 });
+    const names = await page.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes') || '[]').map((c: any) => c.name));
+    expect(names).toEqual(['3b Bliver']);
+});

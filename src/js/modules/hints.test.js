@@ -391,6 +391,52 @@ describe('hints — aftalens værdier måles som motorens', () => {
         state.currentClass.data[1].Value = ' lav ';
         expect(costHints()).toEqual([]);
     });
+
+    it('på en rangeret kolonne er et ord uden for rangeringen tomt, som for motoren', () => {
+        // Motoren giver kun rangeringens trin en rang (prepareRule i
+        // motor/engine/task.js); "Ukendt" er for den en tom celle og binder
+        // ingenting. Før 13/11 2026 talte hintet ordet som et niveau og
+        // sagde, at aftalen havde "forskellige værdier".
+        state.currentClass.data[0].Value = 'Lav';
+        state.currentClass.data[1].Value = 'Ukendt';
+        state.currentClass.data[2].Value = 'Høj';
+        state.currentClass.columnOrders = { Value: ['Lav', 'Middel', 'Høj'] };
+        state.currentClass.rules = [{ type: 'minimizediff', column: 'Value' }];
+        expect(costHints()).toEqual([]);
+        // En dublet i en håndrettet rækkefølge ændrer ikke trinene (rankSteps).
+        state.currentClass.columnOrders = { Value: ['Lav', 'lav', 'Høj'] };
+        state.currentClass.data[1].Value = 'Høj';
+        expect(costHints()).toHaveLength(1);
+    });
+
+    it('Saml afgør tal eller tekst ud fra de frie elever, som motoren', () => {
+        // Motoren regner Saml som tal, når én af DE FRIE elever har et tal
+        // (prepareRule i motor/engine/task.js). Er den eneste med et tal
+        // fraværende eller låst fast, er det tekst — og så har Anna og Bo
+        // forskellige værdier.
+        state.currentClass.data[0].Value = 'Høj';
+        state.currentClass.data[1].Value = 'Lav';
+        state.currentClass.data[2].Value = '2';
+        state.currentClass.rules = [{ type: 'group_sort', column: 'Value' }];
+        expect(costHints()).toEqual([]);
+        state.currentClass.data[2]._excluded = true;
+        expect(costHints()).toHaveLength(1);
+        delete state.currentClass.data[2]._excluded;
+        state.storedStandardGroups = [{ name: 'Gruppe 1', locked: true, members: ['r3'] }];
+        expect(costHints()).toHaveLength(1);
+    });
+
+    it('Fordel på en rangeret kolonne ser stadig to ens ord uden for rangeringen', () => {
+        // Motoren bruger kun rangeringen til tal-reglerne; Fordel regner på
+        // teksten. To i aftalen med "Andet" deler en værdi — også for motoren.
+        state.currentClass.data[0].Value = 'Andet';
+        state.currentClass.data[1].Value = 'Andet';
+        state.currentClass.data[2].Value = 'Pige';
+        state.currentClass.data.push({ _rowId: 'r4', Name: 'Dan', Value: 'Dreng' });
+        state.currentClass.columnOrders = { Value: ['Pige', 'Dreng'] };
+        state.currentClass.rules = [{ type: 'distribute', column: 'Value' }];
+        expect(costHints()).toHaveLength(1);
+    });
 });
 
 

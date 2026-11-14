@@ -20,7 +20,7 @@ import { computed, ref, toRaw, watch } from 'vue';
 import { reactiveState as state } from './reactiveState.js';
 import { modalActions } from './modalState.js';
 import { computeTopicAdjustedTarget, plannedNewGroups, poolSizesFor, suggestTopicMultiple, splitByLockedGroups, homeGroupFingerprint, columnIsNumeric, cellNumber,
-    brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn, MATRIX_EXCLUDED_RULES } from './utils.js';
+    brokenSeparations, memberDisplayName, memberIdStr, groupDisplayName, groupCountText, rankingAffectsColumn, rankSteps, valueKey, MATRIX_EXCLUDED_RULES } from './utils.js';
 import { ruleTypeLabel, namesText } from './recipe.js';
 import { setupNotices } from './setupNotices.js';
 import { trialNotes } from './trialRun.js';
@@ -865,14 +865,33 @@ const togetherRuleCostHint = computed(() => {
         const order = (cls.columnOrders || {})[attr];
         // Kun en rækkefølge, der rammer noget, sendes til motoren (se
         // buildEngineInput); en forældet tæller ikke som rangeret her heller.
-        const ranked = rankingAffectsColumn(cls.data || [], attr, order);
+        // Kun Saml og Ensartede: motoren læser rangeringen alene for tal-
+        // reglerne (NUMERIC_TYPES i motor/engine/task.js); Fordel bruger
+        // altid teksten, rangeret eller ej.
+        const ranked = !spreading && rankingAffectsColumn(cls.data || [], attr, order);
         // Saml regner med tal, så snart ÉN celle i kolonnen er et tal (motorens
         // `mode` i motor/engine/task.js), ikke først når flertallet er det.
         // Med flertals-tærsklen (columnIsNumeric) sammenlignede beskeden ord,
         // som motoren slet ikke ser på i en kolonne med nogle få tal.
+        // Og kun blandt de FRIE elever (engineRowSplit): motoren får hverken de
+        // fraværende eller dem i en låst gruppe. Stod det eneste tal hos en
+        // fraværende elev, regnede motoren Saml som tekst, mens rådet læste
+        // aftalens ord som "intet tal" og tav (113. gennemsyn, rettet i 116.).
+        const free = type === 'group_sort' ? engineRowSplit(cls.data, state.storedStandardGroups).free : [];
         const numeric = !ranked && (type === 'minimizediff'
-            || (type === 'group_sort' && (cls.data || []).some(row => cellNumber(row?.[attr]) !== null)));
-        const valueOf = raw => numeric ? cellNumber(raw) : String(raw ?? '').trim().toLowerCase() || null;
+            || (type === 'group_sort' && free.some(row => cellNumber(row?.[attr]) !== null)));
+        // Rangeret: kun rangeringens trin har en værdi (rangen), som i motorens
+        // prepareRule — et ord uden for rangeringen er en tom celle dér og
+        // binder ingenting. Ellers sagde hintet "forskellige værdier" om
+        // "Lav" og "Ukendt". Tekst sammenlignes med valueKey (NFC, småt), som
+        // motorens normalizeText.
+        const rankOf = ranked ? new Map(rankSteps(order).map((v, i) => [valueKey(v), i + 1])) : null;
+        const valueOf = raw => {
+            if (numeric) return cellNumber(raw);
+            const key = valueKey(raw);
+            if (!key) return null;
+            return rankOf ? (rankOf.get(key) ?? null) : key;
+        };
         // Ingen indsnævring på en valgt værdi: de tre regeltyper her arbejder
         // alle på HELE kolonnen (RULES_WITHOUT_VALUES i utils.js), og feltet
         // findes ikke længere i brugerfladen. Læste hintet stadig en gammel,

@@ -6,6 +6,7 @@ import { state } from './state.js';
 // safeStorageSet bor i py_bridge.js; her hedder den bare safeSave.
 import { safeStorageSet as safeSave } from './py_bridge.js';
 import { debounce, newUuid, mergeClassTopics } from './utils.js';
+import { isRecord, isStoredGroups, isTopicMap, giveUsableGroupNames } from './classShape.js';
 import {
     CLASSES_KEY, GROUPS_PREFIX, TOPICS_PREFIX, HISTORY_PREFIX, SESSION_PREFIX,
     LAST_CLASS_KEY, LAST_CLASS_INDEX_KEY, UNREADABLE_CLASSES_KEY,
@@ -283,7 +284,7 @@ function getTopicMap(forWrite = false) {
     try {
         const raw = localStorage.getItem(key);
         const map = raw === null ? {} : JSON.parse(raw);
-        if (!isRecord(map) || !Object.values(map).every(value => value === null || typeof value === 'string')) {
+        if (!isTopicMap(map)) {
             throw new Error('Invalid topic map');
         }
         _topicMapCache = map;
@@ -438,7 +439,23 @@ export function loadGroupsFromStorage() {
     if (!state.currentClass || !state.currentClass.filename) return null;
     try {
         const str = localStorage.getItem(`${GROUPS_PREFIX}${state.currentClass.filename}`);
-        return str ? JSON.parse(str) : null;
+        const saved = str ? JSON.parse(str) : null;
+        // En forkert form behandles som en ulæselig nøgle: ingen grupper. Før
+        // kunne en gruppe, der var `null`, eller en elevliste, der var tekst,
+        // vælte selve åbningen af klassen (classShape.js, 121. gennemsyn).
+        if (!isStoredGroups(saved)) {
+            console.error('Group Storage Error: gemte grupper har ikke den forventede form');
+            return null;
+        }
+        // Navnet er gruppens identitet (kortenes key, træk-og-slip, emnekortet).
+        // To grupper med samme navn eller en uden navn — kun muligt fra en
+        // håndrettet backup — får et ledigt "Group N" (classShape.js, 122.
+        // gennemsyn). Gemmes, næste gang grupperne gemmes.
+        if (saved) {
+            giveUsableGroupNames(saved.standard);
+            giveUsableGroupNames(saved.matrix);
+        }
+        return saved;
     } catch (e) { console.error("Group Storage Error", e); return null; }
 }
 
@@ -1081,9 +1098,9 @@ export function hydrateGroupTopics(groups, prefix) {
 // `state.currentClass`, men en backup rører klasser der ikke er åbne).
 
 /** Et JSON-opslag, ikke en liste eller null. */
-function isRecord(value) {
-    return value !== null && typeof value === 'object' && !Array.isArray(value);
-}
+// isRecord, isStoredGroups og isTopicMap bor i classShape.js: læsningen
+// herunder, gendannelsens skrivning og indlæsningen af en klasse skal kræve
+// PRÆCIS den samme form (121. gennemsyn).
 
 /**
  * Læs klassens grupper, emner og historik til backup. Manglende nøgler er
@@ -1107,10 +1124,8 @@ export function readClassExtras(filename, getItem = (key) => localStorage.getIte
         failed.add(label);
         return fallback;
     };
-    const groups = read(`${GROUPS_PREFIX}${filename}`, null, 'grupper',
-        value => value === null || (isRecord(value)
-            && ['standard', 'matrix'].every(key => value[key] == null || Array.isArray(value[key]))));
-    const groupTopics = read(`${TOPICS_PREFIX}${filename}`, {}, 'emner', isRecord);
+    const groups = read(`${GROUPS_PREFIX}${filename}`, null, 'grupper', isStoredGroups);
+    const groupTopics = read(`${TOPICS_PREFIX}${filename}`, {}, 'emner', isTopicMap);
     const historyRaw = read(`${HISTORY_PREFIX}${filename}`, [], 'historik', Array.isArray);
     const history = historyRaw.filter(entry => {
         if (isRecord(entry) && entry.id) return true;
@@ -1175,14 +1190,24 @@ export function writeClassExtras(filename, extras) {
         else written.push(label);
     };
 
-    if (extras.groups && typeof extras.groups === 'object') {
-        put(`${GROUPS_PREFIX}${filename}`, extras.groups, 'grupper');
+    // Grupper og emner skrives kun, når de har den form, appen selv kan læse
+    // (classShape.js). Før blev alt, der var et objekt, skrevet: en backup
+    // med `{ standard: "abc" }` eller en gruppe, der var `null`, gav en
+    // klasse, der ikke kunne åbnes — under en grøn kvittering. Nu lades den
+    // del ude, og 'grupper'/'emner' i `failed` giver kvitteringens "Bemærk".
+    if (extras.groups != null) {
+        if (isStoredGroups(extras.groups)) put(`${GROUPS_PREFIX}${filename}`, extras.groups, 'grupper');
+        else failed.push('grupper');
     }
 
-    if (extras.groupTopics && typeof extras.groupTopics === 'object') {
-        put(`${TOPICS_PREFIX}${filename}`, extras.groupTopics, 'emner');
-        // Cachen kan holde et emnekort fra den klasse der lå her før.
-        _invalidateTopicCache();
+    if (extras.groupTopics != null) {
+        if (isTopicMap(extras.groupTopics)) {
+            put(`${TOPICS_PREFIX}${filename}`, extras.groupTopics, 'emner');
+            // Cachen kan holde et emnekort fra den klasse der lå her før.
+            _invalidateTopicCache();
+        } else {
+            failed.push('emner');
+        }
     }
 
     if (extras.history != null && !Array.isArray(extras.history)) failed.push('historik');

@@ -236,22 +236,43 @@ async function processBackupFile(file) {
         });
     }
     if (disposed || mode === 'cancel') return [];
-    return await writeBackupEntries(inspected.valid, mode, file.name, inspected.invalid);
+    // Valget gælder kun de klasser, læreren så på listen. En klasse med samme
+    // filnavn, som en anden fane har oprettet, mens vinduet stod åbent,
+    // gendannes som kopi i stedet (se shownCollisions i api.restoreBackup).
+    return await writeBackupEntries(inspected.valid, mode, file.name, inspected.invalid,
+        inspected.collisions);
 }
 
 /** @returns {Promise<string[]>} filnavnene på de klasser, der blev skrevet */
-async function writeBackupEntries(entries, collisionMode, sourceName, invalid = []) {
+async function writeBackupEntries(entries, collisionMode, sourceName, invalid = [], shownCollisions = []) {
     // Indgangene er allerede valideret af inspectBackup().
     const tagged = entries.map(e => ({ ...e, __inspected: true }));
     // Beskeder nævner klassen ved navn, ikke ved den interne filnøgle.
     const nameOf = (filename) => entries.find(e => e.filename === filename)?.name || filename;
-    const res = await api.restoreBackup(tagged, { collisionMode });
+    const res = await api.restoreBackup(tagged, { collisionMode, shownCollisions });
+    // Har backuppen skrevet oven i den klasse, der er åben, er det, fanen har
+    // i hukommelsen, den GAMLE udgave — og lageret kalder nu den gendannede
+    // for fanens egen (py_bridge._seenContent). Et gem herfra, fx når fanen
+    // lukkes, mens næste fils "Disse klasser findes allerede" står åben,
+    // skrev den gamle udgave oven i den gendannede uden en lyd. Så slip den
+    // gamle; klassen hentes frisk, når importen er færdig (117. gennemsyn).
+    const open = state.currentClass?.filename;
+    if (open && Array.isArray(res.writtenFilenames) && res.writtenFilenames.includes(open)) {
+        state.currentClass = null;
+    }
     if (res.error) {
         if (window.notifyError) window.notifyError(`Backup-fejl: ${res.error}`);
         return [];
     }
     let msg = `Backup "${sourceName}": ${plural(res.written, 'klasse', 'klasser')} gendannet.`;
     if (res.skipped > 0) msg += ` ${res.skipped} sprunget over.`;
+    // Klasser, der fandtes, men ikke stod på listen, da læreren valgte
+    // (oprettet i en anden fane imens): de er gendannet ved siden af.
+    const keptBoth = Array.isArray(res.keptBoth) ? res.keptBoth : [];
+    if (keptBoth.length > 0) {
+        msg += ` ${keptBoth.map(nameOf).join(', ')} fandtes allerede uden at stå på listen`
+            + ` (oprettet i en anden fane imens) og er gendannet som kopi — din egen er urørt.`;
+    }
     if (invalid.length > 0) msg += ` ${invalid.length} ugyldige indgange ignoreret.`;
 
     // Backuppen kan indeholde flere gemte sessioner, end appen selv beholder
@@ -274,6 +295,16 @@ async function writeBackupEntries(entries, collisionMode, sourceName, invalid = 
             ' Behold backup-filen; der kan mangle indhold i filen eller plads i browseren.';
     }
 
+    // En gammel backup uden grupper og gemte sessioner er skrevet oven i en
+    // klasse, der havde nogle: de er væk nu (se `emptied` i restoreBackup).
+    const emptied = Array.isArray(res.emptied) ? res.emptied : [];
+    for (const e of emptied) {
+        const what = e.hadGroups && e.hadSessions ? 'grupper og gemte sessioner'
+            : (e.hadGroups ? 'grupper' : 'gemte sessioner');
+        msg += ` Backuppen af ${nameOf(e.filename)} er fra en ældre udgave af Grupper og havde ingen ${what} med,`
+            + ` så klassens ${what} her er fjernet sammen med den gamle udgave af klassen.`;
+    }
+
     // Nogle klasser kunne ikke skrives (typisk fyldt lagerplads). Det MÅ ikke
     // kvitteres som en succes — læreren gendanner netop en backup, fordi
     // hen ikke har dataene andre steder.
@@ -283,7 +314,7 @@ async function writeBackupEntries(entries, collisionMode, sourceName, invalid = 
         msg += ` ${plural(failed.length, 'klasse', 'klasser')} kunne IKKE gendannes: ${names}.` +
             ' Frigør plads (slet en gammel klasse eller ryd historikken) og prøv igen.';
         if (window.notifyError) window.notifyError(msg);
-    } else if (partial.length > 0 || res.prunedSessions > 0) {
+    } else if (partial.length > 0 || res.prunedSessions > 0 || emptied.length > 0 || keptBoth.length > 0) {
         // Grøn kvittering ville skjule at noget mangler — også når det
         // manglende er de sessioner, lofterne lugede væk. notifyInfo bliver
         // stående længe nok til at blive læst.

@@ -61,6 +61,13 @@ export async function createClass(page: Page, name = 'Test Klasse E2E', csv: str
     // Klassens tabel viser, at klassen er indlæst. 30 sek.: med 3 browsere ×
     // 16 tests side om side kan tegningen tage langt over de sædvanlige 10.
     await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+    // selectClass() gemmer det, indlæsningen har rettet, med setTimeout(autoSave, 0)
+    // — og tabellen kan stå der, før det gem er sket. En test, der derefter
+    // skriver i lageret (localStorage.setItem på grupdk_classes) og genindlæser,
+    // kunne så få sin rettelse skrevet over af fanens gem. En setTimeout(0) i
+    // siden kører efter den, der allerede venter, og gemmet er synkront
+    // (updateClass), så her er det sket (123. gennemsyn, tematik 114).
+    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 0)));
 }
 
 /**

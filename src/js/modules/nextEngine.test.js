@@ -152,6 +152,20 @@ describe('buildEngineInput — kontraktens input', () => {
         expect(topicOf('')).toBeNull();
     });
 
+    it('en låst gruppe med "Århus" som a + ring beholder klassens "Århus" hele vejen gennem motoren', async () => {
+        // Kopieret ud af en PDF på en Mac: samme ord, andre tegn. Før 13/11
+        // 2026 fandt findTopicIndex det ikke, motoren så et emne, der ikke stod
+        // på listen, og gav den låste gruppe et nyt emne (her "Klima").
+        const { buildTask } = await import('../../../motor/engine/task.js');
+        const { assignTopics } = await import('../../../motor/engine/topics.js');
+        const cls = makeClass({ topics: ['Klima', '\u00c5rhus'] });
+        const input = buildEngineInput({ cls, isMatrix: false, groupMode: 'size',
+            viewGroups: [{ ...locked[0], topic: 'A\u030arhus' }] });
+        expect(input.lockedGroups[0].topic).toBe('\u00c5rhus');
+        const { lockedTopics } = assignTopics(buildTask(input), [2]);
+        expect(lockedTopics).toEqual({});   // tom: den låste beholdt sit emne
+    });
+
     it('budgettet: 20 forsøg, 3/2, 10 sek. til og med 100 elever, 30 over', () => {
         expect(appBudget(60)).toEqual({ maxSeconds: 10, maxAttempts: 20, minAttempts: 3 });
         expect(appBudget(61).minAttempts).toBe(2);

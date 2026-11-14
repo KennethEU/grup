@@ -43,7 +43,15 @@ export function describePartialRestore(partial, nameOf = (f) => f) {
             parts = parts.filter(part => part !== 'historik');
         }
         if (parts.length > 0) {
-            notes.push(`for ${name} kunne ${parts.join(', ')} ikke gendannes`);
+            // "nogle regler og emner", ikke "nogle regler, emner".
+            const list = parts.length > 1
+                ? `${parts.slice(0, -1).join(', ')} og ${parts[parts.length - 1]}` : parts[0];
+            let note = `for ${name} kunne ${list} ikke gendannes`;
+            // "Overskriv mine": klassens egne grupper er ryddet sammen med den
+            // gamle udgave, og backuppens kunne ikke bruges i stedet. Det må
+            // læreren ikke selv skulle regne ud (121. gennemsyn).
+            if (p.replacedGroups) note += ', og klassens grupper her er fjernet sammen med den gamle udgave';
+            notes.push(note);
         }
     });
     return notes;

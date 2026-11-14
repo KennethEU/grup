@@ -408,7 +408,7 @@ import RuleMark from './beta/RuleMark.vue';
             </div>
             <div class="tip-box tip-box--amber">
                 <strong class="tip-box__title">4. Efternølere <UserPlus :size="16" style="vertical-align:-2px; margin-left:4px;" /></strong>
-                <p class="tip-box__desc">Kom der en elev for sent, efter grupperne er dannet? Tryk på <strong>personknappen</strong> i værktøjslinjen og vælg eleven. Placeringen falder dér, hvor den passer bedst — emnefordelingen vejer tungest, og du får besked, hvis en undgåelse eller en Adskil-regel ikke kan overholdes.</p>
+                <p class="tip-box__desc">Kom der en elev for sent, efter grupperne er dannet? Tryk på <strong>personknappen</strong> i værktøjslinjen og vælg eleven. Placeringen falder dér, hvor den passer bedst: aftalerne og Opdel vejer tungest, derefter emnet. Du får besked, hvis en aftale, en undgåelse, en Opdel- eller en Adskil-regel ikke kan overholdes. En elev, der var meldt væk, bliver i sin gruppe, medmindre en aftale eller en regel siger andet.</p>
             </div>
             <div class="tip-box tip-box--amber">
                 <strong class="tip-box__title">5. Undgåelser <ShieldX :size="16" style="vertical-align:-2px; margin-left:4px;" /></strong>

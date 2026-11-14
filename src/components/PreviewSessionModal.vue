@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useModalFocus } from '../composables/useModalFocus.js';
 import * as history from '../js/modules/history.js';
 import { groupDisplayName } from '../js/modules/utils.js';
+import { topicText } from '../js/modules/classShape.js';
 
 const props = defineProps({
     sessionId: { type: String, required: true }
@@ -23,7 +24,9 @@ onMounted(() => {
         return;
     }
 
-    sessionName.value = data.name || 'Session';
+    // Et navn, der ikke er tekst (fra en håndrettet backup), blev før til
+    // "[object Object]" i overskriften — se sessionLabel i HistoryTab.vue.
+    sessionName.value = topicText(data.name).trim() || 'Session';
     standardGroups.value = data.standard || [];
     matrixGroups.value = data.matrix || [];
 });

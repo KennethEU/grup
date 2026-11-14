@@ -6,9 +6,10 @@ import { reactiveState as state } from '../js/modules/reactiveState.js';
 import { pushUndo } from '../js/modules/state.js';
 import * as storage from '../js/modules/storage.js';
 import { autoSave } from '../js/modules/classActions.js';
-// Selve placerings-logikken (emne > undgåelse > størrelse > regler) bor i
+// Selve placerings-logikken (aftaler > Opdel > emne > "Adskil altid" >
+// stamgrupper > undgåelser og Adskil > størrelse > de bløde regler) bor i
 // placement.js, hvor den er dækket af unit-tests — se placement.test.js.
-import { separationConflictIds, partnersOutside, findBestGroup, placementRules, brokenSeparateRules } from '../js/modules/placement.js';
+import { separationConflictIds, partnersOutside, partnersInGroup, findBestGroup, placementRules, brokenSeparateRules, brokenSplitRule } from '../js/modules/placement.js';
 import { mergeTogether } from '../js/modules/together.js';
 import { ROW_ID, memberIdStr, memberDisplayName, groupDisplayName, matrixSourceById } from '../js/modules/utils.js';
 
@@ -68,6 +69,18 @@ const eligibleStudents = computed(() => {
 });
 
 const isReturning = (s) => !!s._excluded;
+
+// De valgte elever, der STADIG står på listen. Valget er en liste af id'er og
+// følger ikke selv med, når listen ændrer sig under vinduet: henter læreren
+// den anden fanes grupper ind ("Hent de nye grupper" — beskeden kan trykkes
+// på, mens vinduet står åbent), kan en valgt elev have fået en gruppe dér.
+// Så forsvinder hun fra listen, men blev hængende i valget, og "Tilføj"
+// flyttede hende ud af den gruppe, hun lige havde fået — uden at læreren
+// kunne se, at hun var valgt.
+const chosenIds = computed(() => {
+    const listed = new Set(eligibleStudents.value.map(s => String(getId(s))));
+    return selectedStudentIds.value.filter(id => listed.has(String(id)));
+});
 
 function getLabel(s) {
     // Lærerens visningskolonne — før gættede vi på "navn"/"name"/"elev" og
@@ -130,9 +143,17 @@ function separationConflictNames(student, group) {
 }
 
 function confirmAdd() {
-    if (!selectedStudentIds.value.length) return;
+    const chosen = chosenIds.value;
+    if (!chosen.length) return;
 
     const groups = isMatrixMode.value ? state.storedMatrixGroups : state.storedStandardGroups;
+    // Grupperne kan være skiftet ud, mens vinduet stod åbent (se chosenIds) —
+    // også med et sæt uden grupper i netop denne visning.
+    if (!Array.isArray(groups) || groups.length === 0) {
+        window.notifyInfo?.(`Der er ingen grupper at placere en efternøler i. Tryk ${UI_NAMES.generate} først.`);
+        emit('close');
+        return;
+    }
 
     // Fortryd-stakken skal have besked, FØR fluebenene vender. Vinduet sætter
     // `_excluded = false` på hver elev der kommer tilbage, og det er
@@ -145,7 +166,7 @@ function confirmAdd() {
     // Kun hvis der ER et flueben at vende: listen rummer også elever der er
     // til stede, men står uden gruppe, og for dem ændrer vinduet kun
     // grupperne — som fortryd-stakken alligevel ikke dækker.
-    const willChangeAttendance = selectedStudentIds.value.some(id => {
+    const willChangeAttendance = chosen.some(id => {
         const s = state.currentClass.data.find(r => r[idCol.value] == id);
         return s && s._excluded;
     });
@@ -156,7 +177,7 @@ function confirmAdd() {
     const errors   = [];
     const placed   = [];   // { student, target } — til aftale-tjekket bagefter
 
-    selectedStudentIds.value.forEach(studentId => {
+    chosen.forEach(studentId => {
         const student = state.currentClass.data.find(s => s[idCol.value] == studentId);
         if (!student) { errors.push(`Elev ${studentId} ikke fundet.`); return; }
 
@@ -178,6 +199,11 @@ function confirmAdd() {
             return;
         }
 
+        // Gruppen, en tilbagevendende elev stadig står i (fluebenet i
+        // elevlisten tager hende ikke ud af gruppen). Den vinder ved helt lige
+        // score, så eleven ikke flyttes ved lodtrækning (128. gennemsyn).
+        const home = groups.find(g => !g.locked && g.members.some(m => memberIdStr(m) === idStr)) || null;
+
         // Fjern eleven fra enhver (ulåst) gruppe FØR placeringen, så eleven
         // ikke kan ende i to grupper på én gang — og så gruppestørrelser og
         // adskillelses-tjek ser det rigtige billede under scoringen.
@@ -186,20 +212,53 @@ function confirmAdd() {
             g.members = g.members.filter(m => memberIdStr(m) !== idStr);
         });
 
-        const ctx = placementCtx();
+        const ctx = { ...placementCtx(), homeGroup: home };
         const target = findBestGroup(student, groups, ctx);
         if (target) {
             const conflictNames = separationConflictNames(student, target);
             const brokenRules = brokenSeparateRules(student, target, ctx);
+            const brokenSplit = brokenSplitRule(student, target, ctx);
             target.members.push(String(studentId));
             student._excluded = false;
-            results.push(`${getLabel(student)} → ${groupDisplayName(target.name)}`);
+            // Sig, om eleven blev, hvor den stod, eller blev flyttet — før
+            // stod der "→ Gruppe 5" i begge tilfælde, så læreren ikke kunne se,
+            // at en tilbagevendende elev havde skiftet gruppe.
+            if (home && target === home) {
+                results.push(`${getLabel(student)} bliver i ${groupDisplayName(target.name)}`);
+            } else if (home) {
+                results.push(`${getLabel(student)} flyttet fra ${groupDisplayName(home.name)} til ${groupDisplayName(target.name)}`);
+            } else {
+                results.push(`${getLabel(student)} → ${groupDisplayName(target.name)}`);
+            }
             placed.push({ student, target });
             if (conflictNames.length > 0) {
                 warnings.push(
                     `${getLabel(student)} er sat sammen med ${conflictNames.join(' og ')} i ` +
                     `${groupDisplayName(target.name)}, selvom de helst skal undgå hinanden — ` +
                     `der var ingen bedre plads. Byt manuelt, hvis det er et problem.`
+                );
+            }
+            // Opdel, der må brydes: eleven sidder nu med nogen fra et andet
+            // hold. Sker kun, når en aftale trækker hende over, eller når alle
+            // grupper på hendes eget hold er låst — men motoren bryder aldrig
+            // Opdel, så det må ikke ske i stilhed (127. gennemsyn).
+            //
+            // Er det en "Skal sammen"-aftale, der har trukket eleven over, siges
+            // det: "der var ingen bedre plads" passer ikke, når der var plads
+            // på elevens eget hold. Aftalen vejer tungere end Opdel her, men
+            // motoren kan ikke danne grupper med begge (together-across-pool),
+            // så læreren skal vide, at det er aftalen, der har afgjort det.
+            if (brokenSplit) {
+                const names = brokenSplit.ids.map(id => memberDisplayName(id, state.currentClass.data, state.displayColumn));
+                const byAgreement = partnersInGroup(student, target, ctx).length > 0;
+                warnings.push(
+                    `${getLabel(student)} er sat sammen med ${names.join(' og ')} i ` +
+                    `${groupDisplayName(target.name)}, selvom "Opdel" på "${brokenSplit.column}" ` +
+                    `skal holde dem i hver sin gruppe — ` +
+                    (byAgreement
+                        ? `en "Skal sammen"-aftale vejer tungere og har trukket eleven derhen. `
+                        : `der var ingen bedre plads. `) +
+                    `Byt manuelt, hvis det er et problem.`
                 );
             }
             // En Adskil-regel, der må brydes (fx to ordstyrere i samme gruppe).
@@ -300,8 +359,10 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
       <h3 id="dlg-efternoeler">Tilføj elev til gruppe</h3>
       <p class="subtitle">
         Vælg én eller flere elever. Systemet finder den bedste gruppe automatisk
-        — emnefordelingen vejer tungest, og du får en advarsel, hvis en undgåelse
-        eller en Adskil-regel ikke kan overholdes.
+        ud fra aftalerne og reglerne, og du får en advarsel, hvis en aftale, en
+        undgåelse, en Opdel- eller en Adskil-regel ikke kan overholdes. En elev,
+        der er meldt væk, bliver i sin gruppe, medmindre en aftale eller en regel
+        siger andet.
       </p>
 
       <div class="student-list">
@@ -320,7 +381,7 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 
       <div class="actions">
         <button class="btn-cancel" @click="$emit('close')">Annuller</button>
-        <button class="btn-confirm" @click="confirmAdd" :disabled="!selectedStudentIds.length">
+        <button class="btn-confirm" @click="confirmAdd" :disabled="!chosenIds.length">
           Tilføj til gruppe
         </button>
       </div>

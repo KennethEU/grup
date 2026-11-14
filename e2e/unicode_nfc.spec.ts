@@ -71,3 +71,36 @@ test('en gammel klasse med a + ring bliver rettet og gemt, når den åbnes', asy
     const inState = await page.evaluate(() => (window as any).appDebug.state.currentClass.data[0].By);
     expect(inState).toBe(NFC_AARHUS);
 });
+
+// 114. gennemsyn (13/11 2026): appen kunne selv gemme "Århus" to gange i
+// emnelisten før 1fa350fb (tastet + kopieret ud af en PDF). Motoren tæller
+// listen, som den står, og fik ét emne for meget. Når klassen åbnes, ryddes
+// listen op, og gruppens emne får listens stavemåde.
+test('en emneliste med "Århus" to gange bliver til én, når klassen åbnes', async ({ page }) => {
+    await createClass(page, 'NFC emner', CSV);
+    const filename = await page.evaluate(({ nfc, nfd }) => {
+        const all = JSON.parse(localStorage.getItem('grupdk_classes')!);
+        const cls = all[0];
+        cls.content.topics = [nfd, 'Odense', nfc];
+        localStorage.setItem('grupdk_classes', JSON.stringify(all));
+        const ids = cls.content.data.map((r: any) => r._rowId);
+        const groups = [
+            { name: 'Group 1', members: ids.slice(0, 4), topic: nfd },
+            { name: 'Group 2', members: ids.slice(4), topic: 'Odense' },
+        ];
+        localStorage.setItem('grupdk_groups_' + cls.filename, JSON.stringify({ standard: groups, matrix: null }));
+        localStorage.setItem('grupdk_topics_' + cls.filename, JSON.stringify({ 'S_Group 1': nfd, 'S_Group 2': 'Odense' }));
+        return cls.filename;
+    }, { nfc: NFC_AARHUS, nfd: NFD_AARHUS });
+    await page.reload();
+    await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+    await expect.poll(() => page.evaluate(() =>
+        JSON.parse(localStorage.getItem('grupdk_classes')!)[0].content.topics)).toEqual([NFC_AARHUS, 'Odense']);
+    const topicMap = await page.evaluate((f) => JSON.parse(localStorage.getItem('grupdk_topics_' + f)!), filename);
+    expect(topicMap['S_Group 1']).toBe(NFC_AARHUS);
+    await goToGroups(page);
+    // Emnevælgeren matcher præcist: med den gamle stavemåde stod den tom.
+    const select = page.locator('.group-card select.topic-select').first();
+    await expect(select).toHaveValue(NFC_AARHUS);
+    await expect(select.locator('option')).toHaveCount(3);   // Intet emne, Århus, Odense
+});

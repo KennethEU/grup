@@ -135,6 +135,18 @@ function onGenerate(settings) {
 const debouncedAutoSave = debounce(() => {
     classActions.autoSave();
 }, 1000);
+// Indtil gemmet er sket, findes ændringen KUN i hukommelsen. Meld det til, så
+// et klasseskift (flushPendingEdits) og en lukket fane (flushPendingWrites)
+// når at gemme det i den rigtige klasse — og gem det, når fanen forlades.
+// Før gik en regel tabt ved et skift af klasse inden for et sekund (117.).
+const unregisterPending = classActions.registerPendingWrite(debouncedAutoSave.flush);
+// onUnmounted, ikke onBeforeUnmount: opskriften (et barn) sender sine
+// ventende indstillinger i SIN onBeforeUnmount, som kører efter forælderens —
+// og det sætter netop dette gem i gang.
+onUnmounted(() => {
+    debouncedAutoSave.flush();
+    unregisterPending();
+});
 
 function onRulesChanged() {
     debouncedAutoSave();

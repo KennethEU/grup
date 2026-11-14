@@ -1251,13 +1251,18 @@ export function matrixSourceById(sourceGroups, repType = 'topic', topicFor = nul
 // ─── Sammenligning af emner ────────────────────────────────────────────────
 
 /**
- * Er to emner ens, uden hensyn til store/små bogstaver? Tomme er aldrig ens.
+ * Er to emner ens? Sammenligner på `topicKey` (store/små bogstaver, mellemrum
+ * i enderne og tegnformen for å/é er ligegyldige). Tomme er aldrig ens.
  * Brug den overalt, hvor emner sammenlignes, så forskelle i bogstaverne (fx
  * mellem det læreren skrev, og en gendannet session) ikke stille deler emnet i to.
+ *
+ * Før 13/11 2026 uden NFC: "Århus" tastet og "Århus" kopieret ud af en PDF
+ * på en Mac (a + ring) var to emner her, men ét i matrix-tællingen (topicKey).
  */
 export function eqTopic(a, b) {
     if (!a || !b) return false;
-    return String(a).trim().toLowerCase() === String(b).trim().toLowerCase();
+    const key = topicKey(a);
+    return key !== '' && key === topicKey(b);
 }
 
 /**
@@ -1270,15 +1275,21 @@ export function topicKey(topic) {
 }
 
 /**
- * Find `topic`s plads i `classTopics`, uden hensyn til store/små bogstaver og
- * mellemrum i enderne. Svarer -1, hvis det ikke findes, eller emnet er tomt.
+ * Find `topic`s plads i `classTopics` efter `topicKey` (uden hensyn til
+ * store/små bogstaver, mellemrum i enderne og tegnformen for å/é). Svarer -1,
+ * hvis det ikke findes, eller emnet er tomt.
+ *
+ * Vigtigt for motoren: buildEngineInput sender en låst gruppes emne i KLASSENS
+ * stavemåde (fundet her), og motoren sammenligner tegn for tegn. Uden NFC her
+ * blev en låst gruppe med "Århus" (a + ring) regnet for at stå uden emne og
+ * fik et nyt, selv om klassen havde "Århus".
  */
 export function findTopicIndex(classTopics, topic) {
     if (!topic || !Array.isArray(classTopics)) return -1;
-    const needle = String(topic).trim().toLowerCase();
+    const needle = topicKey(topic);
     if (!needle) return -1;
     for (let i = 0; i < classTopics.length; i++) {
-        if (String(classTopics[i] || '').trim().toLowerCase() === needle) return i;
+        if (topicKey(classTopics[i] || '') === needle) return i;
     }
     return -1;
 }
@@ -1299,10 +1310,13 @@ export function findTopicIndex(classTopics, topic) {
  */
 export function mergeClassTopics(classTopics, incoming) {
     const merged = Array.isArray(classTopics) ? [...classTopics] : [];
-    const seen = new Set(merged.map(t => String(t).trim().toLowerCase()));
+    // topicKey (også NFC): ellers kom "Århus" (a + ring) fra en gendannet
+    // session ind ved siden af klassens "Århus" — et emne for meget, og
+    // gruppeantallet rundes til et forkert multiplum.
+    const seen = new Set(merged.map(t => topicKey(t)));
     (incoming || []).forEach(t => {
-        const trimmed = String(t ?? '').trim();
-        const key = trimmed.toLowerCase();
+        const trimmed = nfc(String(t ?? '').trim());
+        const key = topicKey(trimmed);
         if (!trimmed || seen.has(key)) return;
         seen.add(key);
         merged.push(trimmed);
@@ -1546,6 +1560,51 @@ export function compareCellValues(a, b) {
     const numB = cellNumber(b);
     if (numA !== null && numB !== null) return numA - numB;
     return cellCollator.compare(String(a ?? ''), String(b ?? ''));
+}
+
+/**
+ * Elevlistens sortering af én kolonne (StudentTable.vue).
+ *
+ * Har læreren givet kolonnen en rækkefølge (fx Lav, Middel, Høj), sorteres
+ * der efter den, ikke alfabetisk (Høj, Lav, Middel): listen viser kolonnen,
+ * som grupperne bliver dannet på den. Samme prøve og samme trin som motorens
+ * input (rankingAffectsColumn og rankSteps), så "er kolonnen rangeret?" ikke
+ * kan betyde noget andet her. Værdier uden for rækkefølgen kommer efter
+ * trinene (indbyrdes som compareCellValues), og tomme celler allersidst — i
+ * begge retninger, så de ikke står øverst, når man vender sorteringen.
+ * Forslag 97, Kenneth sagde ja 14/11 2026.
+ *
+ * Uden rækkefølge: compareCellValues som før (tomme celler forrest ved
+ * stigende sortering).
+ *
+ * @param {Array}  rows  - klassens rækker (kopieres; arrayet røres ikke)
+ * @param {string} col   - kolonnen
+ * @param {'asc'|'desc'} dir
+ * @param {Array}  [order] - klassens rækkefølge for kolonnen (columnOrders[col])
+ * @returns {Array} en ny, sorteret liste
+ */
+export function sortRowsByColumn(rows, col, dir, order) {
+    const sign = dir === 'asc' ? 1 : -1;
+    const sorted = rows.slice();
+    if (!rankingAffectsColumn(rows, col, order)) {
+        return sorted.sort((a, b) => sign * compareCellValues(ownCell(a, col), ownCell(b, col)));
+    }
+    const rankOf = new Map(rankSteps(order).map((v, i) => [valueKey(v), i]));
+    // Hver række får én nøgle, før der sorteres: [gruppe, rang, tekst].
+    // Gruppe 0 = et trin i rækkefølgen, 1 = en værdi uden for den, 2 = tom.
+    const keys = new Map();
+    for (const row of rows) {
+        const text = String(ownCell(row, col) ?? '').trim();
+        const rank = text === '' ? undefined : rankOf.get(valueKey(text));
+        keys.set(row, text === '' ? [2, 0, ''] : rank === undefined ? [1, 0, text] : [0, rank, text]);
+    }
+    return sorted.sort((a, b) => {
+        const ka = keys.get(a), kb = keys.get(b);
+        if (ka[0] !== kb[0]) return ka[0] - kb[0];
+        if (ka[0] === 0) return sign * (ka[1] - kb[1]);
+        if (ka[0] === 1) return sign * compareCellValues(ka[2], kb[2]);
+        return 0;
+    });
 }
 
 /**

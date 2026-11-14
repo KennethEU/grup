@@ -1,13 +1,16 @@
 import { describe, it, expect } from 'vitest';
-import { separationConflictIds, partnersOutside, findBestGroup, placementRules, brokenSeparateRules } from './placement.js';
+import { separationConflictIds, partnersOutside, partnersInGroup, findBestGroup, placementRules, brokenSeparateRules, brokenSplitRule } from './placement.js';
 import { matrixSourceById } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // placement.js — efternøler-placering
 //
-// Kernesemantik der låses fast her: emnet vejer ALTID tungest; en
-// undgåelse brydes KUN når emne-prioriteten tvinger det (alle grupper i
-// det mindst-belastede emne har konflikt) — og kun dér advares læreren.
+// Kernesemantik der låses fast her: niveauerne sammenlignes ét ad gangen
+// (aftaler > Opdel > emne > "Adskil altid" > stamgrupper > undgåelser og
+// Adskil > elevens egen gruppe > størrelse > de bløde regler — se toppen af
+// placement.js; ved helt lige score trækkes der lod); en
+// undgåelse brydes KUN når et højere hensyn tvinger det — og kun dér
+// advares læreren.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 const student = (id, extra = {}) => ({ Navn: id, ...extra });
@@ -717,6 +720,43 @@ describe('findBestGroup — "Adskil altid" vejer tungest af reglerne (forslag 91
     });
 });
 
+describe('findBestGroup — et lavere niveau kan aldrig lægge sig sammen og slå et højere', () => {
+    // Før blev niveauerne lagt sammen med vægte (×20.000.000, ×5.000.000 …),
+    // og hvert led blev ganget med et ANTAL (fx hvor mange i gruppen der
+    // bryder "Adskil altid"). Så kunne fire brud på et lavere niveau veje som
+    // ét på niveauet over. Nu sammenlignes niveauerne ét ad gangen.
+    it('Opdel brydes ikke, selv om den anden gruppe bryder "Adskil altid" mange gange', () => {
+        const students = [
+            student('Bo', { Hold: 'B', Rolle: 'Referent' }),
+            ...['O1', 'O2', 'O3', 'O4', 'O5'].map(id => student(id, { Hold: 'A', Rolle: 'Ordstyrer' })),
+        ];
+        // G1 er lille, men på hold B. G2 er på Annas hold A, men fuld af ordstyrere.
+        const groups = [group('G1', ['Bo']), group('G2', ['O1', 'O2', 'O3', 'O4', 'O5'])];
+        const found = findBestGroup(student('Anna', { Hold: 'A', Rolle: 'Ordstyrer' }), groups, baseCtx({
+            rules: [
+                { type: 'aggregate', column: 'Hold' },
+                { type: 'strict_separate', column: 'Rolle', values: ['Ordstyrer'] },
+            ],
+            allStudents: students,
+        }));
+        expect(found.name).toBe('G2');
+    });
+
+    it('matrix: mange undgåelser slår ikke "én pr. stamgruppe"', () => {
+        const others = Array.from({ length: 12 }, (_, i) => `U${i + 1}`);
+        const students = [student('Carl'), ...others.map(id => student(id))];
+        const sourceById = new Map([['Anna', 'grp 1'], ['Carl', 'grp 1'], ...others.map(id => [id, 'grp 2'])]);
+        // M1 har Carl fra Annas egen stamgruppe. M2 har tolv, Anna skal undgå.
+        const groups = [group('M1', ['Carl']), group('M2', others)];
+        const found = findBestGroup(student('Anna'), groups, baseCtx({
+            sourceById,
+            separations: others.map(id => ({ ids: ['Anna', id] })),
+            allStudents: students,
+        }));
+        expect(found.name).toBe('M2');
+    });
+});
+
 describe('brokenSeparateRules — advarslen om en brudt Adskil-regel', () => {
     const students = [
         student('Bob', { Rolle: 'Ordstyrer' }),
@@ -770,5 +810,157 @@ describe('værdier og kilder sammenlignes i NFC som i motoren', () => {
             { name: 'Gruppe 2', topic: decomposed, members: ['b'] },
         ], 'topic');
         expect(map.get('a')).toBe(map.get('b'));
+    });
+});
+
+describe('Opdel står over emnet, og et brud siges højt (127. gennemsyn)', () => {
+    // Motoren giver grupperne emner, EFTER de er dannet hold for hold, og
+    // flytter aldrig en elev over på det andet hold for emnernes skyld.
+    const students = [
+        student('A1', { Hold: 'A' }), student('A2', { Hold: 'A' }), student('A3', { Hold: 'A' }),
+        student('B1', { Hold: 'B' }), student('B2', { Hold: 'B' }),
+    ];
+    const rules = [{ type: 'aggregate', column: 'Hold' }];
+
+    it('emnet med færrest elever trækker ikke eleven over på det andet hold', () => {
+        // Klima har færrest, men kun på hold B's gruppe.
+        const groups = [
+            group('G1', ['A1', 'A2', 'A3'], { topic: 'EU' }),
+            group('G2', ['B1'], { topic: 'Klima' }),
+            group('G3', ['B2'], { topic: 'EU' }),
+        ];
+        const found = findBestGroup(student('Ny', { Hold: 'A' }), groups, baseCtx({
+            rules, allStudents: students, classTopics: ['EU', 'Klima'],
+        }));
+        expect(found.name).toBe('G1');
+    });
+
+    it('brokenSplitRule nævner dem fra det andet hold, kun dem der sidder der', () => {
+        const rows = [...students, student('B3', { Hold: 'B', _excluded: true }), student('Tom', { Hold: '' })];
+        const g = group('G2', ['B1', 'B3', 'Tom', 'A1']);
+        const broken = brokenSplitRule(student('Ny', { Hold: 'a ' }), g, { idCol: 'Navn', rules, allStudents: rows });
+        expect(broken).toEqual({ column: 'Hold', ids: ['B1'] });
+    });
+
+    it('brokenSplitRule svarer null, når reglen holder eller intet kan sige', () => {
+        const g = group('G1', ['A1', 'A2']);
+        const ctx = { idCol: 'Navn', rules, allStudents: students };
+        expect(brokenSplitRule(student('Ny', { Hold: 'A' }), g, ctx)).toBe(null);
+        expect(brokenSplitRule(student('Ny', { Hold: '' }), group('G2', ['B1']), ctx)).toBe(null);
+        expect(brokenSplitRule(student('Ny', { Hold: 'A' }), group('G2', ['B1']),
+            { ...ctx, rules: [] })).toBe(null);
+        // En gammel Opdel i matrix fjernes af placementRules og advarer ikke.
+        expect(brokenSplitRule(student('Ny', { Hold: 'A' }), group('G2', ['B1']),
+            { ...ctx, rules: placementRules(rules, true) })).toBe(null);
+    });
+
+    it('alle grupper på elevens hold er låst: placeret på det andet hold, og bruddet kan siges', () => {
+        const groups = [
+            group('G1', ['A1', 'A2'], { locked: true }),
+            group('G2', ['B1', 'B2']),
+        ];
+        const ctx = baseCtx({ rules, allStudents: students });
+        const ny = student('Ny', { Hold: 'A' });
+        const found = findBestGroup(ny, groups, ctx);
+        expect(found.name).toBe('G2');
+        expect(brokenSplitRule(ny, found, ctx)).toEqual({ column: 'Hold', ids: ['B1', 'B2'] });
+    });
+});
+
+describe('findBestGroup — en tilbagevendende elevs egen gruppe (128. gennemsyn, forslag 120)', () => {
+    // Fire grupper á fire. Anna (G1) og Bo (G3) er meldt fraværende med
+    // fluebenet og står stadig i deres grupper. LatecomerModal tager eleven ud
+    // af sin gruppe lige før placeringen og giver gruppen med som homeGroup.
+    const rows = () => ['a1', 'a2', 'a3', 'Anna', 'b1', 'b2', 'b3', 'b4',
+        'c1', 'c2', 'c3', 'Bo', 'd1', 'd2', 'd3', 'd4']
+        .map(id => student(id, { _excluded: id === 'Anna' || id === 'Bo' }));
+
+    it('bliver i sin gruppe, når den står helt lige med en anden — uanset lodtrækningen', () => {
+        // Anna er taget ud af G1 (3 til stede). G3 har også 3 til stede (Bo
+        // er væk). Før trak lodtrækningen, og halvdelen af gangene endte Anna
+        // i G3 — og Bo bagefter i G1: de byttede gruppe uden grund.
+        for (const r of [0, 0.5, 0.99]) {
+            const groups = [
+                group('G1', ['a1', 'a2', 'a3']),
+                group('G2', ['b1', 'b2', 'b3', 'b4']),
+                group('G3', ['c1', 'c2', 'c3', 'Bo']),
+                group('G4', ['d1', 'd2', 'd3', 'd4']),
+            ];
+            const pick = findBestGroup(student('Anna'), groups,
+                baseCtx({ allStudents: rows(), random: () => r, homeGroup: groups[0] }));
+            expect(pick.name).toBe('G1');
+        }
+    });
+
+    // Forslag 120 (Kenneth sagde ja 14/11 2026): egen gruppe er et niveau
+    // over gruppestørrelsen og de bløde regler. Før vandt en gruppe, der bare
+    // var mindre i lokalet i dag, og eleven blev flyttet — varigt.
+    const fourGroups = () => [
+        group('G1', ['a1', 'a2', 'a3']),
+        group('G2', ['b1', 'b2', 'b3', 'b4']),
+        group('G3', ['c1', 'c2', 'c3', 'Bo']),
+        group('G4', ['d1', 'd2', 'd3', 'd4']),
+    ];
+
+    it('bliver i sin gruppe, også når en anden gruppe er mindre i lokalet i dag', () => {
+        // To fraværende i G3 (c3 og Bo): G3 har 2 til stede, G1 3.
+        const all = rows().map(s => (s.Navn === 'c3' ? { ...s, _excluded: true } : s));
+        const groups = fourGroups();
+        const pick = findBestGroup(student('Anna'), groups,
+            baseCtx({ allStudents: all, homeGroup: groups[0] }));
+        expect(pick.name).toBe('G1');
+    });
+
+    it('de bløde regler flytter heller ikke eleven', () => {
+        // Fordel på Køn: G1 er fuld af piger, G2 af drenge. Anna er pige, så
+        // Fordel peger på G2 — men det er en blød regel, og Anna bliver.
+        const køn = { a1: 'P', a2: 'P', a3: 'P', b1: 'D', b2: 'D', b3: 'D', b4: 'D', Anna: 'P' };
+        const all = rows().map(s => ({ ...s, Køn: køn[s.Navn] || '' }));
+        const groups = [group('G1', ['a1', 'a2', 'a3']), group('G2', ['b1', 'b2', 'b3'])];
+        const pick = findBestGroup(student('Anna', { Køn: 'P' }), groups,
+            baseCtx({ allStudents: all, rules: [{ type: 'distribute', column: 'Køn' }], homeGroup: groups[0] }));
+        expect(pick.name).toBe('G1');
+    });
+
+    it('en undgåelse med en i den gamle gruppe flytter stadig eleven', () => {
+        const groups = fourGroups();
+        const pick = findBestGroup(student('Anna'), groups,
+            baseCtx({ allStudents: rows(), separations: [{ ids: ['Anna', 'a2'] }], homeGroup: groups[0] }));
+        expect(pick.name).not.toBe('G1');
+    });
+
+    it('"Adskil altid" flytter stadig eleven', () => {
+        const rolle = { a1: 'Ordstyrer', Anna: 'Ordstyrer' };
+        const all = rows().map(s => ({ ...s, Rolle: rolle[s.Navn] || '' }));
+        const groups = fourGroups();
+        const pick = findBestGroup(student('Anna', { Rolle: 'Ordstyrer' }), groups, baseCtx({
+            allStudents: all, homeGroup: groups[0],
+            rules: [{ type: 'strict_separate', column: 'Rolle', values: ['Ordstyrer'] }],
+        }));
+        expect(pick.name).not.toBe('G1');
+    });
+
+    it('uden homeGroup trækkes der lod som før (en ny efternøler)', () => {
+        const groups = [
+            group('G1', ['a1', 'a2', 'a3']),
+            group('G3', ['c1', 'c2', 'c3', 'Bo']),
+        ];
+        const pick = findBestGroup(student('Anna'), groups,
+            baseCtx({ allStudents: rows(), random: () => 0.99 }));
+        expect(pick.name).toBe('G3');
+    });
+});
+
+describe('partnersInGroup', () => {
+    const ctx = { idCol: 'Navn', togetherComponents: [['Anna', 'Bob', 'Carl']] };
+
+    it('finder de partnere, der sidder i gruppen — aldrig eleven selv', () => {
+        const g = group('G1', ['Anna', 'Bob', 'Dina']);
+        expect(partnersInGroup(student('Anna'), g, ctx)).toEqual(['Bob']);
+    });
+
+    it('svarer tomt uden aftale eller uden partnere i gruppen', () => {
+        expect(partnersInGroup(student('Dina'), group('G1', ['Bob']), ctx)).toEqual([]);
+        expect(partnersInGroup(student('Anna'), group('G1', ['Dina']), ctx)).toEqual([]);
     });
 });

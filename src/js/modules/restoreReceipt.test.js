@@ -43,6 +43,14 @@ describe('describePartialRestore', () => {
         ]);
     });
 
+    it('flere dele bindes sammen med "og", og ryddede grupper nævnes (121. gennemsyn)', () => {
+        expect(describePartialRestore([
+            { filename: '3a.csv', parts: ['nogle regler', 'grupper'], replacedGroups: true },
+        ], nameOf)).toEqual([
+            'for 3.a kunne nogle regler og grupper ikke gendannes, og klassens grupper her er fjernet sammen med den gamle udgave',
+        ]);
+    });
+
     it('tåler en tom eller manglende liste', () => {
         expect(describePartialRestore(undefined)).toEqual([]);
         expect(describePartialRestore([])).toEqual([]);

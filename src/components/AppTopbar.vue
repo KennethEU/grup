@@ -7,9 +7,11 @@ import { reactiveState as state } from '../js/modules/reactiveState.js';
 import * as api from '../js/modules/api.js';
 import * as storage from '../js/modules/storage.js';
 import { getStoragePressureWarning, pyBridge } from '../js/modules/py_bridge.js';
-import { autoSave, syncDisplayColumn } from '../js/modules/classActions.js';
+import { autoSave, syncDisplayColumn, flushPendingEdits } from '../js/modules/classActions.js';
 import { migrateRefsToRowIds, teacherColumns, columnsOfRows, normalizeCellText, fillMissingCells } from '../js/modules/utils.js';
 import { clearClassMemory } from '../js/modules/classMemory.js';
+import { keepShaped, isRuleShape, isSeparationShape, isUsableTarget } from '../js/modules/classShape.js';
+import { tidyClassTopics } from '../js/modules/topicActions.js';
 import { isModalOpen } from '../composables/useModalFocus.js';
 import { modalActions } from '../js/modules/modalState.js';
 import { ChevronDown, Pencil, X, Plus, BookOpen, ShieldCheck, HelpCircle, Sparkles, Lightbulb } from 'lucide-vue-next';
@@ -168,6 +170,12 @@ const refreshClassList = async () => {
  * fået at vide var slettet.
  */
 const closeOpenClass = () => {
+    // Et åbent vindue (Ranger værdier, Efternøler, Gem session …) skriver i
+    // `state.currentClass`, når der trykkes OK. Slettes klassen i en ANDEN
+    // fane, mens vinduet står åbent, blev det stående over Oversigten — om en
+    // klasse, der ikke findes længere — og OK gav en fejl, fordi klassen er
+    // null nu. Vinduerne lukkes derfor med klassen.
+    modalActions.closeAll();
     clearClassMemory();
     // Grupperne kommer fra lageret, ikke fra clearClassMemory()s liste —
     // og lageret under den slettede klasse er tomt nu.
@@ -204,6 +212,22 @@ const onForeignClassesChange = async (e) => {
     const classList = await refreshClassList();
     if (classList === null) return;
 
+    // Topbjælkens egne vinduer ("Slet klasse", "Omdøb klasse") ligger ikke i
+    // modalState, så closeAll() lukker dem ikke. Er deres klasse slettet i den
+    // anden fane, lukkes de her. Ellers stod "Slet" klar til et filnavn, som
+    // den anden fane kunne give til en NY klasse (filnavnet kommer af navnet:
+    // slet "2.a" og importér "2.a" igen), og et tryk slettede så den nye
+    // (tematik 109, 120. gennemsyn).
+    const gone = (target) => target && !classList.some(c => c.filename === target.filename);
+    if (showDeleteConfirm.value && gone(deleteTarget.value)) {
+        showDeleteConfirm.value = false;
+        deleteTarget.value = null;
+    }
+    if (showRenamePrompt.value && gone(renameTarget.value)) {
+        showRenamePrompt.value = false;
+        renameTarget.value = null;
+    }
+
     const open = state.currentClass;
     if (!open) return;
     if (classList.some(c => c.filename === open.filename)) return;
@@ -218,6 +242,9 @@ const onForeignClassesChange = async (e) => {
 };
 
 const selectClass = async (filename, index, goToStudents = false) => {
+    // Det, der venter på at blive gemt, hører til den klasse, vi FORLADER —
+    // gem det, mens den stadig er den åbne (se flushPendingEdits).
+    flushPendingEdits();
     storage.saveLastClassFilename(filename);
     storage.saveLastClassIndex(index);
     // Alt det om den forrige klasse, der kun lå i hukommelsen — fortryd-stak,
@@ -258,6 +285,33 @@ const selectClass = async (filename, index, goToStudents = false) => {
         _migrateRules(state.currentClass.rules);
         _migrateRules(state.currentClass.matrixRules);
 
+        // Regler og "Undgå hinanden"-aftaler uden den form, appen kan regne
+        // på, tages ud — fx `null` i listen fra en håndrettet backup, gendannet
+        // før 121. gennemsyn. De væltede beskederne i Grupper-fanen og hver
+        // eneste gruppedannelse (classShape.js). Gemmes med autoSave nedenfor.
+        for (const [key, isShaped] of [['rules', isRuleShape], ['matrixRules', isRuleShape],
+            ['separations', isSeparationShape]]) {
+            const list = state.currentClass[key];
+            if (!Array.isArray(list)) continue;
+            const { kept, dropped } = keepShaped(list, isShaped);
+            if (dropped > 0) {
+                console.error(`[Klasse] ${dropped} ${key} uden den forventede form er taget ud`);
+                state.currentClass[key] = kept;
+            }
+        }
+
+        // En gruppestørrelse, der ikke er et tal (fx "abc" fra en håndrettet
+        // backup), sættes til opskriftens standard, 4. Ellers viste opskriften
+        // et tomt felt, og "Dan grupper" dannede grupper af én elev
+        // (isUsableTarget i classShape.js). Gemmes med autoSave nedenfor.
+        for (const key of ['settings', 'matrixSettings']) {
+            const s = state.currentClass[key];
+            if (s && typeof s === 'object' && !isUsableTarget(s.groupTarget)) {
+                console.error(`[Klasse] ${key}.groupTarget er ikke et tal; sat til 4`);
+                s.groupTarget = 4;
+            }
+        }
+
         // Migrering: klassens emner udledes af de eksisterende emner pr. gruppe,
         // hvis det nye felt endnu ikke er udfyldt. Sker én gang pr. klasse.
         // Resultatet gemmes altid (også en tom liste), så senere indlæsninger
@@ -285,6 +339,11 @@ const selectClass = async (filename, index, goToStudents = false) => {
             state.storedMatrixGroups = null;
             state.lastGeneratedGroups = null;
         }
+        // Migration: klassens emneliste uden dubletter ("Århus" tastet og
+        // "Århus" med å som a + ring, "EU" og "eu"), og stamgruppernes emner
+        // med listens stavemåde. Idempotent — se tidyClassTopics().
+        tidyClassTopics();
+
         // Emneforslagene bygges forfra for DENNE klasse — også uden gemte
         // grupper. Før 4/11 skete det kun med grupper, så en klasse uden fik
         // den forrige klasses emner foreslået i emnefeltet.
@@ -374,6 +433,14 @@ const confirmDeleteClass = async () => {
     deleteTarget.value = null;
     if (!c) return;
     try {
+        // Findes klassen stadig? Er den slettet i en anden fane, er der intet
+        // at slette — og oprydningen nedenfor må ikke køre på et filnavn, der
+        // ikke længere er dens. Læreren får besked i stedet for ingenting.
+        const fresh = await refreshClassList();
+        if (fresh && !fresh.some(x => x.filename === c.filename)) {
+            if (window.notifyInfo) window.notifyInfo(`'${c.name}' er allerede slettet (i en anden fane).`);
+            return;
+        }
         // Rækkefølgen er ikke ligegyldig: slet FØRST selve klassen, og ryd
         // først dens grupper, historik og emner bagefter. Omvendt — som før —
         // ville en fejlet sletning efterlade klassen i listen, men tømt for
@@ -418,16 +485,22 @@ const confirmRename = async (newName) => {
             window.notifyError("Fejl ved omdøbning: " + res.error);
         } else {
             window.notifySuccess("Klasse omdøbt!");
-            // Kun menuen. Klassen på skærmen hentes forfra lige nedenfor, hvis
-            // det var DEN, der blev omdøbt — den gren har altid stået her, og
-            // den siger i sig selv, at loadClasses() aldrig skulle vælge om.
+            // Kun menuen — loadClasses() ville vælge klassen om.
             refreshClassList();
+            // Var det klassen på skærmen, skiftes KUN navnet. Filnavnet og
+            // indholdet er de samme, så der er intet at hente.
+            //
+            // Før 124. gennemsyn blev klassen hentet forfra fra lageret og sat
+            // ind på skærmen som et nyt objekt. Det tabte det, der endnu kun
+            // lå i hukommelsen: en ny regel venter 1 sek. på at blive gemt
+            // (BetaGroupsTab.debouncedAutoSave), og når gemmet så kørte, læste
+            // det den hentede udgave uden reglen — intet nyt at gemme, og
+            // reglen var væk uden en lyd (e2e/omdoeb_gemmer.spec.ts). Den
+            // hentede udgave sprang også indlæsningens rettelser over
+            // (selectClass), og alt, der holdt fast i det gamle objekt, pegede
+            // på en klasse, der ikke længere stod på skærmen.
             if (state.currentClass && state.currentClass.filename === c.filename) {
-                api.fetchClass(c.filename, { track: true }).then(data => {
-                    state.currentClass = data;
-                }).catch(err => {
-                    console.error("Fejl ved genindlæsning:", err);
-                });
+                state.currentClass.name = res.name || newName;
             }
         }
     } catch (e) {

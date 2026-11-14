@@ -5,7 +5,7 @@
 // matrixRepresentationType, groupMode/groupTarget/groupMod) og reglerne i
 // `matrixRules` (uden Opdel).
 // Første linje siger, hvordan der blandes; resten er reglerne.
-import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
+import { computed, ref, watch, onUnmounted, onBeforeUnmount, nextTick } from 'vue';
 import { Users } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { debounce, splitByLockedGroups } from '../../js/modules/utils.js';
@@ -204,6 +204,10 @@ function generate() {
 // ⌘/Ctrl + Enter danner matrixgrupper — se useGenerateShortcut.js.
 useGenerateShortcut(generate);
 const shortcut = GENERATE_SHORTCUT;
+// Forlader læreren Grupper-fanen (Elevliste, Historik, Import) inden for
+// 0,3 sek., skal ændringen med. I onBeforeUnmount, ikke onUnmounted: Vue
+// sender ikke et emit fra en komponent, der allerede er væk (117. gennemsyn).
+onBeforeUnmount(() => { saveSoon.flush(); });
 onUnmounted(unregisterPending);
 
 // Advarsler om opsætningen (regler, aftaler, hvad der kan gå op) står her i

@@ -19,7 +19,7 @@ import { pushRun, markClean } from './runHistory.js';
 import { forgetRunResults } from './setupNotices.js';
 import {
     ROW_ID, ensureRowIds, isInternalField, memberDisplayName, groupDisplayName,
-    mergeClassTopics, classTopicSpelling, buildStudentIndex,
+    mergeClassTopics, classTopicSpelling, buildStudentIndex, topicKey,
 } from './utils.js';
 import { MAX_ROWS_PER_CLASS } from './py_bridge.js';
 
@@ -659,14 +659,16 @@ export function buildPlan({ groups, data, displayColumn, markAbsent = true,
     // — se `explicitTopic`. Det er en indstilling der ændrer noget bagefter
     // (gruppeantallet rundes til et multiplum af antal emner), så det skal
     // stå på skærmen og ikke ske i stilhed.
+    // topicKey (som mergeClassTopics, der lægger dem til bagefter): ellers
+    // lovede skærmen et "nyt" emne, som klassen allerede havde med å som a + ring.
     const known = new Set(
         (Array.isArray(classTopics) ? classTopics : [])
-            .map(t => String(t).trim().toLowerCase())
+            .map(t => topicKey(t))
     );
     const newTopics = [];
     planGroups.forEach(g => {
         if (!g.explicitTopic || !g.topic) return;
-        const k = g.topic.trim().toLowerCase();
+        const k = topicKey(g.topic);
         if (known.has(k)) return;
         known.add(k);
         newTopics.push(g.topic.trim());

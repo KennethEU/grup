@@ -8,7 +8,7 @@
 // Panelet sender events til BetaGroupsTab (generate, settingsChanged,
 // rulesChanged, switchView), som gemmer og danner grupperne. Selve reglerne
 // ændres på klassens egen `rules`-liste via recipe.js (kun én Opdel, øverst).
-import { computed, ref, watch, onUnmounted, nextTick } from 'vue';
+import { computed, ref, watch, onUnmounted, onBeforeUnmount, nextTick } from 'vue';
 import { Users, Shuffle } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { debounce, splitByLockedGroups, poolSizesFor } from '../../js/modules/utils.js';
@@ -206,6 +206,10 @@ function generate() {
 // ⌘/Ctrl + Enter danner grupper — se useGenerateShortcut.js.
 useGenerateShortcut(generate);
 const shortcut = GENERATE_SHORTCUT;
+// Forlader læreren Grupper-fanen (Elevliste, Historik, Import) inden for
+// 0,3 sek., skal ændringen med. I onBeforeUnmount, ikke onUnmounted: Vue
+// sender ikke et emit fra en komponent, der allerede er væk (117. gennemsyn).
+onBeforeUnmount(() => { saveSettingsSoon.flush(); });
 onUnmounted(unregisterPending);
 
 // Advarsler om opsætningen (regler, aftaler, hvad der kan gå op) står her i

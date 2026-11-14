@@ -4,6 +4,7 @@ import { saveTopicsOrSettle } from './topicSettle.js';
 import { ROW_ID, newUuid, memberIdStr, memberDisplayName, homeGroupFingerprint, mergeClassTopics, classTopicSpelling } from './utils.js';
 import { pushRun, markClean, markCleanWithInputs } from './runHistory.js';
 import { forgetRunResults } from './setupNotices.js';
+import { isRuleShape, giveUsableGroupNames, topicText } from './classShape.js';
 
 // Hent reglerne fra den reaktive tilstand (ikke fra DOM'en)
 function captureActiveRules() {
@@ -36,10 +37,36 @@ function membersOf(group) {
     return Array.isArray(group.members) ? group.members : [];
 }
 
+// Et id eller navn som tekst; alt andet end tekst og tal er tomt. Ellers stod
+// et spøgelse med et objekt som navn som "[object Object]" på kortet.
+function plainText(value) {
+    if (typeof value === 'string') return value;
+    if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+    return '';
+}
+
 // Payloads gemmer `{ id, name }`. En ren streng (ældre format) er både id og navn.
 function savedMemberOf(raw) {
     if (typeof raw === 'string') return { id: raw, name: raw };
-    return (raw && typeof raw === 'object') ? raw : { id: '', name: '' };
+    if (raw && typeof raw === 'object') return { id: plainText(raw.id), name: plainText(raw.name) };
+    return { id: '', name: '' };
+}
+
+/**
+ * Ét gemt gruppesæt, som det kan bruges: kun grupper, der er objekter, hver
+ * med et navn, der kan bruges som identitet (giveUsableGroupNames), og et
+ * emne, der er tekst (topicText). Rører ikke den gemte payload.
+ *
+ * Tælleren siger, hvor mange grupper der blev ladt ude eller omdøbt, så
+ * beskeden til læreren kan sige det (122. gennemsyn, tematik 113).
+ *
+ * @returns {{ groups: Array, dropped: number, renamed: number }}
+ */
+function usableSavedGroups(groups) {
+    const list = Array.isArray(groups) ? groups : [];
+    const kept = readableGroups(list).map(g => ({ ...g, topic: topicText(g.topic) }));
+    const renamed = giveUsableGroupNames(kept);
+    return { groups: kept, dropped: list.length - kept.length, renamed };
 }
 
 /**
@@ -250,6 +277,25 @@ export function restoreSession(sessionId) {
     // gendannelse. Se isReadableSession().
     if (!isReadableSession(session)) { if (window.notifyError) window.notifyError("Kunne ikke hente session data!"); return; }
 
+    // Gruppesættene, som de kan bruges (usableSavedGroups) — også før
+    // pushRun(). Er der INGEN læselig gruppe tilbage (fx kun `null` i listen
+    // fra en håndrettet backup), ville gendannelsen ellers skrive en tom
+    // fordeling oven i dagens grupper. Så hellere sige fra og lade dem stå.
+    const standardSet = usableSavedGroups(session.groups);
+    if (standardSet.groups.length === 0) {
+        window.notifyError?.('Sessionen kunne ikke hentes frem: der er ingen grupper i den, '
+            + 'som kan læses. Dine grupper står uændret.');
+        return;
+    }
+    // Matrixen hentes kun, når der er mindst én læselig matrixgruppe. Før
+    // afgjorde det rå felt det: `matrixGroups: "abc"` gav matrixvisningen
+    // uden en matrix, og en liste med kun `null` gav en tom matrix, der stod
+    // som frisk og derfor aldrig blev dannet forfra.
+    const matrixSet = session.type === "WITH_MATRIX"
+        ? usableSavedGroups(session.matrixGroups)
+        : { groups: [], dropped: 0, renamed: 0 };
+    const withMatrix = matrixSet.groups.length > 0;
+
     // Den fordeling der er ved at blive overskrevet, skal kunne hentes tilbage
     // fra kørselsmenuen — præcis som ved en generering. Uden det her kald var
     // en gendannet session den ENE vej at miste dagens fordeling uden en vej
@@ -298,17 +344,18 @@ export function restoreSession(sessionId) {
 
     // Ét gemt gruppesæt tilbage som grupper. Hvert sæt er en opdeling for sig
     // og får sin egen pulje i opslaget (makeSessionResolver).
-    const restoreSet = (groups) => {
-        const set = readableGroups(groups);
+    // `set` er allerede renset af usableSavedGroups() ovenfor.
+    const restoreSet = (set) => {
         const resolve = makeSessionResolver(set, currentStudents);
         return set.map(g => ({
             name: g.name,
             members: mapRestoredMembers(resolve, membersOf(g)),
-            locked: !!g.locked,
+            // Kun et rigtigt `true` låser. Med `!!` var teksten "false" låst.
+            locked: g.locked === true,
             topic: g.topic
         }));
     };
-    const restoredStandardGroups = restoreSet(session.groups);
+    const restoredStandardGroups = restoreSet(standardSet.groups);
 
     // Emnerne skrives samlet nedenfor (saveTopicsOrSettle), ikke ét kald
     // pr. gruppe. Før var det N fulde skrivninger af det samme kort plus en
@@ -358,8 +405,8 @@ export function restoreSession(sessionId) {
     topicResults.push(saveTopicsOrSettle('S_', restoredStandardGroups));
 
     // Håndter Matrix hvis sessionen har det
-    if (session.type === "WITH_MATRIX" && Array.isArray(session.matrixGroups)) {
-        state.storedMatrixGroups = restoreSet(session.matrixGroups);
+    if (withMatrix) {
+        state.storedMatrixGroups = restoreSet(matrixSet.groups);
         useClassSpelling(state.storedMatrixGroups);
         // Matrixens emner ind, og de gamle ud — én skrivning, som ovenfor.
         topicResults.push(saveTopicsOrSettle('M_', state.storedMatrixGroups));
@@ -411,7 +458,7 @@ export function restoreSession(sessionId) {
             + 'Slet en gammel session for at frigøre plads, og hent sessionen igen.'
         );
     } else if (topicResults.includes('cleared')
-        && (sessionTopics.length > 0 || readableGroups(session.matrixGroups).some(g => g.topic))) {
+        && (sessionTopics.length > 0 || matrixSet.groups.some(g => g.topic))) {
         window.notifyError?.(
             'Sessionen er hentet frem, men dens emner kunne ikke gemmes — '
             + 'browserens lagerplads er fuld, så grupperne står uden emne. '
@@ -432,8 +479,14 @@ export function restoreSession(sessionId) {
     // til UI'ets `{type, column, value}` — ellers ville sammenligningen i
     // `hasSettingsChanges()` se to forskellige former og spørge læreren om
     // indstillinger, der er nøjagtig de samme.
+    //
+    // Kun regler med en form, appen kan regne på (isRuleShape i
+    // classShape.js). En regel, der var `null`, kastede her — EFTER at
+    // grupperne var skrevet — så kørselsmenuen aldrig blev gjort "ren",
+    // fanen ikke skiftede, og næste generering advarede om flytninger,
+    // læreren aldrig havde lavet (122. gennemsyn).
     const sessionRules = Array.isArray(session.activeRules)
-        ? session.activeRules.map(r => ({
+        ? session.activeRules.filter(isRuleShape).map(r => ({
             type: r.name || r.type || 'distribute',
             column: r.attribute || r.column || '',
             value: r.values ?? r.value ?? '',
@@ -447,7 +500,18 @@ export function restoreSession(sessionId) {
 
     // Sæt activeView baseret på session-type
     // Hvis sessionen kun har stamgrupper, vis stamgrupper (ikke matrix)
-    state.activeView = (session.type === "WITH_MATRIX" && session.matrixGroups?.length) ? 'matrix' : 'standard';
+    state.activeView = withMatrix ? 'matrix' : 'standard';
+
+    // Det, der blev ladt ude eller omdøbt, siges — en halv gendannelse må
+    // ikke ligne en hel (samme regel som backup-kvitteringen).
+    const dropped = standardSet.dropped + matrixSet.dropped;
+    const renamed = standardSet.renamed + matrixSet.renamed;
+    if ((dropped > 0 || renamed > 0) && window.notifyInfo) {
+        const parts = [];
+        if (dropped > 0) parts.push(`${dropped} ${dropped === 1 ? 'gruppe' : 'grupper'} i den kunne ikke læses og er ladt ude`);
+        if (renamed > 0) parts.push(`${renamed} ${renamed === 1 ? 'gruppe' : 'grupper'} havde intet brugbart navn og har fået et nyt`);
+        window.notifyInfo(`Sessionen er hentet frem, men ${parts.join(', og ')}.`);
+    }
 
     // Efternølere: elever i klassen NU, som hverken en stam- eller en
     // matrixgruppe fandt. Tælles her, EFTER matrixen er slået op, så
@@ -481,6 +545,10 @@ export function loadSessionForPreview(sessionId) {
     // kastede en payload uden grupper en fejl i onMounted, og vinduet stod
     // tomt uden en forklaring.
     if (!isReadableSession(session)) return null;
+    // Samme rensning og samme "ingen grupper"-grænse som restoreSession(),
+    // så forhåndsvisningen ikke lover noget andet end "Gendan" gør.
+    const standardSet = usableSavedGroups(session.groups);
+    if (standardSet.groups.length === 0) return null;
 
     const currentStudents = state.currentClass.data;
 
@@ -505,8 +573,7 @@ export function loadSessionForPreview(sessionId) {
     });
 
     // Ét opslag pr. gruppesæt — se makeSessionResolver().
-    const previewSet = (groups) => {
-        const set = readableGroups(groups);
+    const previewSet = (set) => {
         const resolve = makeSessionResolver(set, currentStudents);
         return set.map(g => ({
             name: g.name,
@@ -515,11 +582,12 @@ export function loadSessionForPreview(sessionId) {
         }));
     };
 
-    const standard = previewSet(session.groups);
+    const standard = previewSet(standardSet.groups);
 
     let matrix = null;
-    if (session.type === "WITH_MATRIX" && Array.isArray(session.matrixGroups)) {
-        matrix = previewSet(session.matrixGroups);
+    if (session.type === "WITH_MATRIX") {
+        const matrixSet = usableSavedGroups(session.matrixGroups);
+        if (matrixSet.groups.length > 0) matrix = previewSet(matrixSet.groups);
     }
 
     return { name: session.name, standard, matrix };

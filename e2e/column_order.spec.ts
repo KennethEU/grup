@@ -284,3 +284,26 @@ test('Balancér på en tal-kolonne, hvor alle med et tal er fraværende, siger t
     await openRecipe(page);
     await expect(gap(page)).toHaveCount(0);
 });
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Elevlisten sorterer en rangeret kolonne efter rækkefølgen (forslag 97,
+// Kenneth sagde ja 14/11 2026). Før: alfabetisk (Høj, Lav, Middel), mens
+// grupperne blev dannet på Lav < Middel < Høj. Værdier uden for rækkefølgen
+// og tomme celler står til sidst — også når sorteringen vendes.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+test('elevlisten sorterer en rangeret kolonne efter rækkefølgen', async ({ page }) => {
+    const csv = 'Navn\tNiveau\nAnna\tHøj\nBo\tLav\nCarl\t\nDorte\tMiddel\nEmil\tukendt\nFrida\tLav';
+    await createClass(page, 'Sortering E2E', csv);
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.columnOrders = { Niveau: ['Lav', 'Middel', 'Høj'] };
+    });
+    const header = page.locator('thead th').filter({ hasText: 'Niveau' });
+    // Niveau er den anden datakolonne (efter Navn), læst fra den viste tabel.
+    const niveauer = () => page.locator('tbody tr').evaluateAll(rows =>
+        rows.map(tr => (tr.querySelectorAll('td.cell-data')[1]?.textContent || '').trim()));
+
+    await header.click();
+    await expect.poll(niveauer).toEqual(['Lav', 'Lav', 'Middel', 'Høj', 'ukendt', '']);
+    await header.click();
+    await expect.poll(niveauer).toEqual(['Høj', 'Middel', 'Lav', 'Lav', 'ukendt', '']);
+});

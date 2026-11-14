@@ -3,17 +3,17 @@ import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref } from '
 import { reactiveState } from '../../js/modules/reactiveState.js';
 import { pushUndo, undo, redo, undoShortcut, clearUndoHistory, pruneSelection } from '../../js/modules/state.js';
 import { renameColumn } from '../../js/modules/columnActions.js';
-import { teacherColumns, debounce, compareCellValues, nfc } from '../../js/modules/utils.js';
-import { autoSave } from '../../js/modules/classActions.js';
+import { teacherColumns, debounce, sortRowsByColumn, nfc } from '../../js/modules/utils.js';
+import { autoSave, registerPendingWrite } from '../../js/modules/classActions.js';
 import { ClipboardList } from 'lucide-vue-next';
 import ConfirmModal from '../ConfirmModal.vue';
 import PromptModal from '../PromptModal.vue';
 
-// Modal state for rename column
+// Vinduet til at omdøbe en kolonne
 const showRenameCol = ref(false);
 const renameColTarget = ref('');
 
-// Modal state for delete row
+// Vinduet til at slette en elev
 const showDeleteRow = ref(false);
 const deleteRowTarget = ref(null);
 const deleteRowName = ref('');
@@ -22,9 +22,15 @@ const props = defineProps({
     idColumn: { type: String, required: true }
 });
 
-// Selection changes are handled via reactiveState.selectedForAction (reactive Set)
+// Markeringen af elever ligger i reactiveState.selectedForAction (et reaktivt Set)
 
 const debouncedAutoSave = debounce(autoSave, 1000);
+// En rettet celle står i klassen i hukommelsen, men gemmes først 1 sek. efter.
+// autoSave() gemmer den klasse, der er åben, NÅR den kører. Skiftede læreren
+// klasse i menuen inden da, gemte den den nye klasse, og den rettede celle i
+// den gamle var væk uden en lyd (118. gennemsyn). Meld gemmet til, så
+// flushPendingEdits() i selectClass() tager det med, før klassen skiftes.
+const unregisterPending = registerPendingWrite(debouncedAutoSave.flush);
 
 // Mange kolonner: tabellen ruller vandret, men tre kolonner står fast til
 // venstre — Aftale, Mødt og Vis-kolonnen (navnet) — og slet-krydset står fast
@@ -115,6 +121,9 @@ onUpdated(() => {
     updateStickyOffsets();
 });
 onBeforeUnmount(() => {
+    // Elevlisten forlades (fx til Grupper): gem den rettede celle nu.
+    debouncedAutoSave.flush();
+    unregisterPending();
     tableContainer.value?.removeEventListener('scroll', updateScrollEdges);
     tableContainer.value?.removeEventListener('focusin', revealFocused);
     resizeObserver?.disconnect();
@@ -140,13 +149,11 @@ const displayData = computed(() => {
     const { col, dir } = reactiveState.sortState;
     if (!col) return cls.data;
 
-    const sorted = cls.data.slice();
-    const sign = dir === 'asc' ? 1 : -1;
-    // compareCellValues() bor i utils.js sammen med cellNumber(), fordi det er
-    // DEN læsning af en celle hele appen deler. Se kommentaren dér for hvad
-    // tabellen sorterede efter før.
-    sorted.sort((a, b) => sign * compareCellValues(a[col], b[col]));
-    return sorted;
+    // sortRowsByColumn() bor i utils.js sammen med cellNumber() og
+    // rankSteps(), fordi det er DEN læsning af en celle hele appen deler. En
+    // kolonne med en rækkefølge (Lav, Middel, Høj) sorteres efter den
+    // (forslag 97); se kommentaren dér og ved compareCellValues().
+    return sortRowsByColumn(cls.data, col, dir, (cls.columnOrders || {})[col]);
 });
 
 // "Indsæt fra Excel / Google Sheets" i den tomme liste: land direkte på

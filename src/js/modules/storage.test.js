@@ -143,6 +143,23 @@ describe('storage', () => {
             expect(storage.loadGroupsFromStorage()).toBeNull();
         });
 
+        // En gruppe, der er null, eller en elevliste, der er tekst, væltede
+        // selve åbningen af klassen ("Fejl ved indlæsning af klasse"). Den
+        // forkerte form behandles nu som en ulæselig nøgle (121. gennemsyn).
+        it('loadGroupsFromStorage svarer null på grupper uden den rigtige form', () => {
+            vi.spyOn(console, 'error').mockImplementation(() => {});
+            const key = `grupdk_groups_${state.currentClass.filename}`;
+            for (const bad of [{ standard: 'abc' }, { standard: [null] },
+                { standard: [{ name: 'G', members: 'x' }] }, { matrix: [{ name: 'M', members: [null] }] }]) {
+                localStorage.setItem(key, JSON.stringify(bad));
+                expect(storage.loadGroupsFromStorage()).toBeNull();
+            }
+            // Et medlem fra en gammel session ({ id, name }) er stadig i orden.
+            const ok = { standard: [{ name: 'Group 1', members: ['r1', { id: 'r2', name: 'Bo' }] }], matrix: null };
+            localStorage.setItem(key, JSON.stringify(ok));
+            expect(storage.loadGroupsFromStorage()).toEqual(ok);
+        });
+
         it('saveGroupsToStorage gør intet uden currentClass', () => {
             state.currentClass = null;
             storage.saveGroupsToStorage(); // should not throw

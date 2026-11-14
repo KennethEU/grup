@@ -5,6 +5,7 @@ import { getHistory } from '../../js/modules/storage.js';
 import { deleteSession, restoreSession, renameSession } from '../../js/modules/history.js';
 import { modalActions } from '../../js/modules/modalState.js';
 import { UI_NAMES } from '../../js/modules/beta.js';
+import { topicText } from '../../js/modules/classShape.js';
 
 import { FolderOpen, Eye, Pencil, RefreshCw, Trash2 } from 'lucide-vue-next';
 import ConfirmModal from '../ConfirmModal.vue';
@@ -69,6 +70,22 @@ function formatTime(dateStr) {
     return d ? TIME_FORMAT.format(d) : '—';
 }
 
+// Sessionens navn, som det kan vises. Navnet er lærerens tekst, men en
+// håndrettet backup kan bære et tal, et objekt eller ingenting ind. Før stod
+// der "[object Object]" i listen, i skærmlæserens "Omdøb …" og i omdøb-feltet
+// (122. gennemsyn, småting (a); rettet i 123.). Kun visningen renses — det
+// gemte rører vi ikke, før læreren selv omdøber.
+function sessionLabel(session) {
+    return topicText(session?.name).trim() || 'Uden navn';
+}
+
+// Antal grupper i sessionens oversigt. Et tal (eller tal som tekst) vises;
+// alt andet bliver 0, som når feltet mangler.
+function groupCount(session) {
+    const n = Number(session?.stats?.groupCount);
+    return Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;
+}
+
 function typeLabel(type) {
     // Lærerens eget ord: stamgrupper og matrixgrupper (ikke "Stam"/"Runde 1")
     return type === 'WITH_MATRIX' ? 'Stamgrupper + matrixgrupper' : 'Stamgrupper';
@@ -92,8 +109,11 @@ function confirmRestore() {
     showRestoreConfirm.value = false;
     restoreTarget.value = null;
     if (!id) return;
+    // restoreSession skifter selv til gruppe-fanen, når det lykkes — ligesom
+    // i PreviewSessionModal. Før skiftede fanen her UANSET, så en session,
+    // der ikke kunne hentes frem, sendte læreren væk fra Historik til de
+    // uændrede grupper lige efter fejlbeskeden (122. gennemsyn).
     restoreSession(id);
-    reactiveState.classViewTab = 'groups';
 }
 
 function onRename(session) {
@@ -105,7 +125,7 @@ function confirmRename(newName) {
     const session = renameTargetSession.value;
     showRenamePrompt.value = false;
     renameTargetSession.value = null;
-    if (!session || !newName || newName === session.name) return;
+    if (!session || !newName || newName === topicText(session.name)) return;
     // En afvist skrivning (fuld lagerplads) må ikke se ud som en succes: uden
     // beskeden stod det nye navn i tabellen, indtil siden blev genindlæst.
     if (renameSession(session.id, newName) === false) {
@@ -171,18 +191,18 @@ function confirmDelete() {
                              role="row">
                             <div class="col-date cell-date" role="cell">{{ formatDate(s.date) }}</div>
                             <div class="col-time cell-time" role="cell">{{ formatTime(s.date) }}</div>
-                            <div class="col-name cell-name" role="cell">{{ s.name }}</div>
+                            <div class="col-name cell-name" role="cell">{{ sessionLabel(s) }}</div>
                             <div class="col-type cell-type" role="cell" :class="{ 'is-matrix': isMatrix(s.type) }">{{ typeLabel(s.type) }}</div>
-                            <div class="col-count cell-count" role="cell">{{ s.stats?.groupCount || 0 }}</div>
+                            <div class="col-count cell-count" role="cell">{{ groupCount(s) }}</div>
                             <div class="col-actions cell-actions" role="cell">
                                 <!-- Sessionens navn hører med i aria-label: uden det hører
                                      en skærmlæser bare "Omdøb session" tolv gange i træk
                                      uden at vide hvilken. Titlen bliver kort, fordi den
                                      vises som tooltip ved siden af navnet i rækken. -->
-                                <button class="btn-icon" title="Forhåndsvisning" :aria-label="`Forhåndsvis ${s.name}`" @click="onPreview(s.id)"><Eye :size="14" /></button>
-                                <button class="btn-icon" title="Omdøb" :aria-label="`Omdøb ${s.name}`" @click="onRename(s)"><Pencil :size="14" /></button>
-                                <button class="btn-icon" title="Gendan" :aria-label="`Gendan ${s.name}`" @click="onRestore(s.id)"><RefreshCw :size="14" /></button>
-                                <button class="btn-icon danger" title="Slet" :aria-label="`Slet ${s.name}`" @click="onDelete(s.id)"><Trash2 :size="14" /></button>
+                                <button class="btn-icon" title="Forhåndsvisning" :aria-label="`Forhåndsvis ${sessionLabel(s)}`" @click="onPreview(s.id)"><Eye :size="14" /></button>
+                                <button class="btn-icon" title="Omdøb" :aria-label="`Omdøb ${sessionLabel(s)}`" @click="onRename(s)"><Pencil :size="14" /></button>
+                                <button class="btn-icon" title="Gendan" :aria-label="`Gendan ${sessionLabel(s)}`" @click="onRestore(s.id)"><RefreshCw :size="14" /></button>
+                                <button class="btn-icon danger" title="Slet" :aria-label="`Slet ${sessionLabel(s)}`" @click="onDelete(s.id)"><Trash2 :size="14" /></button>
                             </div>
                         </div>
                     </TransitionGroup>
@@ -215,7 +235,7 @@ function confirmDelete() {
       v-if="showRenamePrompt"
       title="Omdøb session"
       placeholder="Nyt navn"
-      :initial-value="renameTargetSession?.name || ''"
+      :initial-value="topicText(renameTargetSession?.name)"
       confirm-text="Omdøb"
       @confirm="confirmRename"
       @cancel="showRenamePrompt = false"

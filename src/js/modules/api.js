@@ -2,6 +2,7 @@
 
 import { cleanupClassStorage, readClassExtras, writeClassExtras } from './storage.js';
 import { MAX_ROWS_PER_CLASS } from './py_bridge.js';
+import { keepShaped, isRuleShape, isSeparationShape } from './classShape.js';
 
 /**
  * Adressen til én klasse. Filnavnet kodes ALTID — også ved gem, omdøbning og
@@ -275,6 +276,10 @@ export async function inspectBackup(data) {
  * @param {string} [opts.renameLabel]  Teksten i parentes efter navnet på en
  *        omdøbt klasse. Default 'gendannet'; flytningen fra www bruger
  *        'fra www.dida.dk' (se adoptWww.js).
+ * @param {string[]} [opts.shownCollisions]  De filnavne, læreren SÅ i
+ *        "Disse klasser findes allerede". Med 'overwrite' og 'skip' gælder
+ *        valget kun dem; et sammenstød, der ikke stod på listen, gendannes som
+ *        kopi i stedet. Uden feltet gælder valget alle sammenstød (som før).
  */
 export async function restoreBackup(entries, opts = {}) {
     // Bagudkompatibelt: får vi rå backup-data, tjekkes det først.
@@ -285,6 +290,17 @@ export async function restoreBackup(entries, opts = {}) {
     }
 
     const collisionMode = opts.collisionMode || 'overwrite';
+    // Listen, læreren sagde ja til. Vinduet "Disse klasser findes allerede"
+    // står åbent, til læreren vælger, og imens kan en ANDEN fane oprette en
+    // klasse med samme filnavn som en anden klasse i backuppen. Lageret læses
+    // først her, så "Overskriv mine" ramte også den — uden at den stod på
+    // listen, og uden at kunne fortrydes (tematik 109, 120. gennemsyn).
+    // Det samme med "Spring over": en klasse, læreren ikke så, blev sprunget
+    // over i tavshed, og kvitteringen sagde "1 sprunget over", som om hun
+    // havde valgt det.
+    const shown = Array.isArray(opts.shownCollisions) ? new Set(opts.shownCollisions) : null;
+    // Klasser, der blev gendannet som kopi, fordi de ikke stod på listen.
+    const keptBoth = [];
     const existingNames = await existingFilenames();
 
     const reservedNames = new Set([...existingNames, ...entries.map(entry => entry.filename)]);
@@ -303,21 +319,30 @@ export async function restoreBackup(entries, opts = {}) {
     let written = 0;
     let skipped = 0;
     let prunedSessions = 0;
+    // Klasser, hvor en backup uden grupper og sessioner er skrevet oven i en
+    // klasse, der havde nogle. Se `emptied` nedenfor.
+    const emptied = [];
 
     try {
         for (const cls of entries) {
             let target = cls.filename;
             let overwriting = false;
+            let keptCopy = false;
             // Navnet i menuen. Backuppen bærer det med, og uden det her ville
             // klassen komme tilbage under sit filnavn — se saveClassData().
             let displayName = typeof cls.name === 'string' && cls.name.trim()
                 ? cls.name.trim() : null;
             if (existingNames.has(target)) {
-                if (collisionMode === 'skip') {
+                // Et sammenstød, læreren ikke har set, hverken overskrives
+                // eller springes over: begge udgaver beholdes, ligesom ved
+                // "Importér som kopi".
+                const unseen = collisionMode !== 'rename' && shown && !shown.has(target);
+                if (unseen) keptCopy = true;
+                if (collisionMode === 'skip' && !unseen) {
                     skipped++;
                     continue;
                 }
-                if (collisionMode === 'rename') {
+                if (collisionMode === 'rename' || unseen) {
                     const base = target.replace(/\.csv$/, '');
                     const restoredBase = `${base}_restored_${Date.now()}`;
                     target = `${restoredBase}.csv`;
@@ -337,15 +362,26 @@ export async function restoreBackup(entries, opts = {}) {
                 }
             }
 
+            // Regler og "Undgå hinanden"-aftaler uden den form, appen kan regne
+            // på (fx `null` i listen), lades ude. Før kom de med og gav en
+            // klasse, hvor "Dan grupper" ikke virkede (classShape.js). Hvor
+            // mange, der manglede, kommer med i kvitteringen.
+            const rules = keepShaped(cls.rules, isRuleShape);
+            const matrixRules = keepShaped(cls.matrixRules, isRuleShape);
+            const separations = keepShaped(cls.separations, isSeparationShape);
+            const droppedParts = [];
+            if (rules.dropped + matrixRules.dropped > 0) droppedParts.push('nogle regler');
+            if (separations.dropped > 0) droppedParts.push('nogle "Undgå hinanden"-aftaler');
+
             const res = await saveClassData(
                 target,
                 cls.data || [],
-                Array.isArray(cls.rules) ? cls.rules : [],
+                rules.kept,
                 cls.id_column || null,
-                Array.isArray(cls.separations) ? cls.separations : [],
+                separations.kept,
                 (cls.settings && typeof cls.settings === 'object') ? cls.settings : {},
                 (cls.matrixSettings && typeof cls.matrixSettings === 'object') ? cls.matrixSettings : {},
-                Array.isArray(cls.matrixRules) ? cls.matrixRules : [],
+                matrixRules.kept,
                 Array.isArray(cls.topics) ? cls.topics : [],
                 (cls.columnOrders && typeof cls.columnOrders === 'object'
                     && !Array.isArray(cls.columnOrders)) ? cls.columnOrders : {},
@@ -379,7 +415,25 @@ export async function restoreBackup(entries, opts = {}) {
             // FORRIGE klasses elever, som har andre _rowId'er, så uden
             // oprydningen ville gruppekortene efter en gendannelse vise
             // forkerte navne uden at nogen kunne se det.
+            // Havde klassen, der skrives oven i, selv grupper? Læses ÉN gang,
+            // før oprydningen, og bruges af begge beskeder herunder (`emptied`
+            // og `replacedGroups`) — så kvitteringen aldrig siger "dine grupper
+            // er fjernet" om en klasse, der ingen havde.
+            let hadGroups = false;
             if (overwriting) {
+                // En meget gammel backup (fra før grupper og sessioner kom med i
+                // filen) har slet ikke felterne. Så fjerner oprydningen klassens
+                // grupper og gemte sessioner uden at sætte noget i stedet. Det er
+                // "Overskriv", men kvitteringen skal sige det (106, 118. gennemsyn).
+                const oldFormat = cls.groups === undefined && cls.history === undefined
+                    && cls.sessions === undefined;
+                try {
+                    const before = readClassExtras(target);
+                    hadGroups = !!before.groups && ['standard', 'matrix']
+                        .some(key => Array.isArray(before.groups[key]) && before.groups[key].length > 0);
+                    const hadSessions = before.history.length > 0;
+                    if (oldFormat && (hadGroups || hadSessions)) emptied.push({ filename: target, hadGroups, hadSessions });
+                } catch (e) { console.error(e); }
                 try { cleanupClassStorage(target); } catch (e) { console.error(e); }
             }
 
@@ -394,14 +448,18 @@ export async function restoreBackup(entries, opts = {}) {
                     history: cls.history,
                     sessions: cls.sessions
                 });
-                if (extrasRes.failed.length > 0) {
+                const parts = [...droppedParts, ...extrasRes.failed];
+                if (parts.length > 0) {
                     // Tallene følger med pr. klasse, så kvitteringen kan
                     // sige "3 af 12 gemte sessioner" om netop den klasse.
                     partial.push({
                         filename: target,
-                        parts: extrasRes.failed,
+                        parts,
                         sessionsRestored: extrasRes.sessionsRestored || 0,
                         sessionsMissing: extrasRes.sessionsMissing || 0,
+                        // Skrevet oven i en klasse, der HAVDE grupper; de er nu
+                        // ryddet, og backuppens kunne ikke bruges i stedet.
+                        ...(hadGroups && extrasRes.failed.includes('grupper') ? { replacedGroups: true } : {}),
                     });
                 }
                 // De to lofter (50 sessioner, 90 dage) kan have luget i det
@@ -410,15 +468,16 @@ export async function restoreBackup(entries, opts = {}) {
                 if (extrasRes.prunedSessions > 0) prunedSessions += extrasRes.prunedSessions;
             } catch (e) {
                 console.error(e);
-                partial.push({ filename: target, parts: ['grupper, emner eller historik'] });
+                partial.push({ filename: target, parts: [...droppedParts, 'grupper, emner eller historik'] });
             }
 
             existingNames.add(target);
             reservedNames.add(target);
             writtenFilenames.push(target);
+            if (keptCopy) keptBoth.push(cls.filename);
             written++;
         }
-        return { success: failed.length === 0, written, writtenFilenames, skipped, failed, partial, prunedSessions, details: results };
+        return { success: failed.length === 0, written, writtenFilenames, skipped, failed, partial, prunedSessions, emptied, keptBoth, details: results };
     } catch (e) {
         return { error: e.message };
     }

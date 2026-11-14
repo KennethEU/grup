@@ -25,6 +25,38 @@ export function registerPendingWrite(flushFn) {
 }
 
 /**
+ * Kør de udskudte skrivninger NU — men gem ikke klassen bagefter.
+ *
+ * Kaldes, før klassen på skærmen skiftes (selectClass i AppTopbar.vue). En
+ * udskudt skrivning slår klassen op, når den kører, ikke da læreren lavede
+ * ændringen. Kørte den efter skiftet, ramte den den NYE klasse (som intet nyt
+ * havde) eller blev droppet, og en regel lagt ind i 2.a lige før et skift til
+ * 3.b var væk uden en lyd (117. gennemsyn, e2e/klasseskift_gemmer.spec.ts).
+ *
+ * Hvorfor ikke flushPendingWrites(): den slutter med et autoSave(), uanset om
+ * noget ventede. selectClass() nås også lige efter en gendannelse fra backup,
+ * og har den skrevet oven i den åbne klasse, er det, fanen har i hukommelsen,
+ * den GAMLE udgave. Et autoSave dér ville skrive den gamle oven i den
+ * gendannede. Her gemmes kun det, der faktisk ventede.
+ *
+ * Gentages, til intet venter: opskriftens flush sender indstillingerne til
+ * Grupper-fanen, som så selv sætter et udskudt gem i gang.
+ */
+export function flushPendingEdits() {
+    for (let round = 0; round < 5; round++) {
+        let ran = false;
+        for (const flush of [...pendingWrites]) {
+            try {
+                if (flush()) ran = true;
+            } catch (e) {
+                console.error('[classActions] Udskudt skrivning fejlede:', e);
+            }
+        }
+        if (!ran) return;
+    }
+}
+
+/**
  * Sidste chance for at få alt ned i localStorage, før fanen lukkes eller
  * genindlæses. Kaldes fra main.js på `pagehide` og `beforeunload`.
  *
