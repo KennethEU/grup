@@ -235,6 +235,45 @@ describe('Lectios lektionsside og "Lærere og elever"', () => {
         expect(out).toEqual(['"Hansen, Bo"', ...EXPECTED, 'Ny Elev']);
     });
 
+    // (182), 159. gennemsyn: to sider efter hinanden (fx to hold, der skal i
+    // grupper sammen). Før blev to lektionssider slet ikke genkendt (90
+    // "elever" med "Tidspunkt:" øverst), og to tabeller gav den anden sides
+    // menu som elever. Det andet hold er 2a, så testen ikke bygger på dubletter.
+    const LESSON_2A = LESSON.replace(/2bx/g, '2a');
+    const TABLE_2A = TABLE.replace(/2bx/g, '2a');
+
+    it('to lektionssider efter hinanden giver begge holds elever og intet af siden', () => {
+        const read = readLectio(LESSON + '\n' + LESSON_2A);
+        expect(read.names).toEqual([...EXPECTED, ...EXPECTED]);
+        expect(read.skipped).toBe(32);
+    });
+
+    it('to "Lærere og elever" efter hinanden: den andens menu er ikke elever', () => {
+        const read = readLectio(TABLE + '\n' + TABLE_2A);
+        expect(read.names).toEqual([...EXPECTED, ...EXPECTED]);
+        expect(read.skipped).toBe(13);   // 6 + menu (3), overskriften, læreren, optællingen
+    });
+
+    it('et navn skrevet til i hånden mellem to elever er stadig en elev', () => {
+        const lines = LESSON.split('\n');
+        const at = lines.findIndex(l => l.startsWith('Clara'));
+        lines.splice(at, 0, 'Ny Elev');
+        expect(readLectio(lines.join('\n')).names).toContain('Ny Elev');
+        // Også to linjer, når de ikke ligner sidens tekst.
+        lines.splice(at, 0, 'Anden Elev');
+        expect(readLectio(lines.join('\n')).names).toEqual(expect.arrayContaining(['Ny Elev', 'Anden Elev']));
+        // Én linje med punktum til sidst (ligner sidens tekst) er også en elev.
+        const dot = LESSON.split('\n');
+        dot.splice(at, 0, 'Bo Lund Jr.');
+        expect(readLectio(dot.join('\n')).names).toContain('Bo Lund Jr.');
+    });
+
+    it('to enlige Lectio-agtige linjer med klokkeslæt imellem er ikke Lectio', () => {
+        const text = ['Anna Holm, 2a 04 (2a)', 'Møde kl. 10:09', 'Frokost: 12:00', 'Slut: 15:00',
+            'Bo Lund, 2a 05 (2a)'].join('\n');
+        expect(isLectioFormat(text)).toBe(false);
+    });
+
     // Lærerens eget regneark med Fornavn og Efternavn, men uden Lectios
     // Type-kolonne, er IKKE fra Lectio og skal læses som før (med kolonner).
     it('et regneark med Fornavn/Efternavn uden Type er ikke Lectio', () => {

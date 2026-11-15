@@ -205,4 +205,113 @@ describe('notificationState', () => {
         expect(typeof window.notifyInfo).toBe('function');
         expect(typeof window.notify).toBe('function');
     });
+    // ─── Læreren læser: hold() og release() (157. gennemsyn) ────────────────
+    describe('hold og release', () => {
+        const ids = () => notificationState.notifications.map(n => n.id);
+
+        it('en holdt besked forsvinder ikke, selv langt efter sit udløb', () => {
+            notificationActions.add('Lang', 'info', 8000);
+            const id = ids()[0];
+            vi.advanceTimersByTime(7000);
+            notificationActions.hold(id);
+            vi.advanceTimersByTime(60_000);
+            expect(ids()).toEqual([id]);
+        });
+
+        it('release giver resten tilbage', () => {
+            notificationActions.add('Lang', 'info', 20_000);
+            const id = ids()[0];
+            vi.advanceTimersByTime(5000);
+            notificationActions.hold(id);
+            vi.advanceTimersByTime(30_000);
+            notificationActions.release(id);
+            vi.advanceTimersByTime(14_999);
+            expect(ids()).toEqual([id]);
+            vi.advanceTimersByTime(1);
+            expect(ids()).toEqual([]);
+        });
+
+        it('release giver mindst 3 sek., selv når resten var mindre', () => {
+            notificationActions.add('Kort', 'info', 8000);
+            const id = ids()[0];
+            vi.advanceTimersByTime(7900);
+            notificationActions.hold(id);
+            notificationActions.release(id);
+            vi.advanceTimersByTime(2999);
+            expect(ids()).toEqual([id]);
+            vi.advanceTimersByTime(1);
+            expect(ids()).toEqual([]);
+        });
+
+        it('en ny besked starter ikke uret på en holdt besked (extendTo)', () => {
+            notificationActions.add('Første', 'info', 8000);
+            const first = ids()[0];
+            notificationActions.hold(first);
+            notificationActions.add('Anden', 'info', 10_000);   // skubber de ældre frem
+            vi.advanceTimersByTime(60_000);
+            // Den anden er udløbet; den holdte står stadig.
+            expect(ids()).toEqual([first]);
+            // Resten blev skubbet frem til den nye beskeds udløb.
+            notificationActions.release(first);
+            vi.advanceTimersByTime(9_999);
+            expect(ids()).toEqual([first]);
+            vi.advanceTimersByTime(1);
+            expect(ids()).toEqual([]);
+        });
+
+        it('en dublet starter ikke uret på en holdt besked', () => {
+            notificationActions.add('Samme', 'info', 8000);
+            const id = ids()[0];
+            notificationActions.hold(id);
+            // Lidt senere, så dubletten ville skubbe udløbet frem (i samme
+            // millisekund er der intet at skubbe, og testen beviste intet).
+            vi.advanceTimersByTime(5000);
+            notificationActions.add('Samme', 'info', 8000);
+            expect(ids()).toEqual([id]);
+            vi.advanceTimersByTime(60_000);
+            expect(ids()).toEqual([id]);
+        });
+
+        it('remove glemmer, at beskeden var holdt', () => {
+            notificationActions.add('Væk', 'info', 8000);
+            const id = ids()[0];
+            notificationActions.hold(id);
+            notificationActions.remove(id);
+            notificationActions.release(id);   // intet at slippe
+            vi.advanceTimersByTime(60_000);
+            expect(ids()).toEqual([]);
+        });
+
+        it('fejl røres ikke: de står, til læreren lukker dem', () => {
+            notificationActions.notifyError('Fejl');
+            const id = ids()[0];
+            notificationActions.hold(id);
+            notificationActions.release(id);
+            vi.advanceTimersByTime(60_000);
+            expect(ids()).toEqual([id]);
+        });
+
+        it('hold to gange holder stadig den første rest', () => {
+            notificationActions.add('To', 'info', 10_000);
+            const id = ids()[0];
+            vi.advanceTimersByTime(2000);
+            notificationActions.hold(id);
+            vi.advanceTimersByTime(5000);
+            notificationActions.hold(id);
+            notificationActions.release(id);
+            vi.advanceTimersByTime(7999);
+            expect(ids()).toEqual([id]);
+            vi.advanceTimersByTime(1);
+            expect(ids()).toEqual([]);
+        });
+    });
+
+    it('en lang kvittering står 60 ms pr. tegn', () => {
+        const msg = 'x'.repeat(110);   // 110 × 60 = 6600 ms
+        notificationActions.notifySuccess(msg);
+        vi.advanceTimersByTime(6599);
+        expect(notificationState.notifications.length).toBe(1);
+        vi.advanceTimersByTime(1);
+        expect(notificationState.notifications.length).toBe(0);
+    });
 });

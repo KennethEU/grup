@@ -79,12 +79,22 @@ function nameOnLine(line) {
  * som før). Uden for dem springes sidens tekst over (isPageText), men et navn
  * skrevet til i hånden før eller efter listen kommer stadig med. Mindst 80 %
  * af de linjer, der kommer med, skal have holdet til sidst, og mindst to.
+ *
+ * To lektionssider efter hinanden (fx to hold, der skal i grupper sammen)
+ * har sidens tekst midt i: "Antal elever: 29", "Tidspunkt: …", "Ingen
+ * forløb." … Før kom de linjer med som elever, og så faldt 80 %-reglen, så
+ * HELE teksten blev læst som en almindelig liste: 90 "elever" med
+ * "Tidspunkt:" øverst og holdet i en kolonne for sig (159. gennemsyn, (182)).
+ * Nu springes sådan et stykke over (pageGaps) — men kun et stykke på mindst
+ * to linjer, der ALLE er sidens tekst, med mindst to elever på hver side.
+ * Én linje skrevet til i hånden mellem eleverne er stadig en elev.
  */
 function readLectioLines(all) {
     const matched = all.map(l => isLectioLine(l.trim()));
     const first = matched.indexOf(true);
     const last = matched.lastIndexOf(true);
     if (first < 0 || first === last) return null;
+    const gap = pageGaps(all, matched, first, last);
 
     const names = [];
     let hits = 0;
@@ -92,15 +102,53 @@ function readLectioLines(all) {
     all.forEach((raw, i) => {
         const line = raw.trim();
         if (matched[i]) { hits++; names.push(nameOnLine(line)); return; }
-        if ((i < first || i > last) && isPageText(line)) { skipped++; return; }
+        if ((i < first || i > last || gap[i]) && isPageText(line)) { skipped++; return; }
         names.push(line);
     });
     if (hits < Math.ceil(names.length * 0.8)) return null;
     return { names, skipped };
 }
 
+/**
+ * Hvilke linjer mellem den første og den sidste elev er sidens tekst fra en
+ * lektionsside nummer to? Et stykke uden hold på mindst to linjer, hvor hver
+ * linje er sidens tekst (isPageText), og med mindst to elever lige før og
+ * lige efter. Ét gennemløb: genkendelsen kører ved hvert tastetryk.
+ *
+ * Kravet om to elever på hver side er værnet mod, at en tekst med to
+ * tilfældige Lectio-agtige linjer og nogle klokkeslæt ("10:09") imellem
+ * bliver til Lectio — så ville resten forsvinde i stilhed.
+ *
+ * @returns {boolean[]} true for linjer i sådan et stykke
+ */
+function pageGaps(all, matched, first, last) {
+    const gap = new Array(all.length).fill(false);
+    let i = first;
+    let runBefore = 0;      // elever lige før det stykke, vi står i
+    while (i <= last) {
+        if (matched[i]) { runBefore++; i++; continue; }
+        let end = i;        // stykket uden hold: i .. end-1
+        while (end <= last && !matched[end]) end++;
+        let runAfter = 0;
+        while (end + runAfter <= last && matched[end + runAfter]) runAfter++;
+        const pageText = end - i >= 2 && all.slice(i, end).every(l => isPageText(l.trim()));
+        if (pageText && runBefore >= 2 && runAfter >= 2) {
+            for (let k = i; k < end; k++) gap[k] = true;
+        }
+        runBefore = 0;
+        i = end;
+    }
+    return gap;
+}
+
 // Overskriften i "Lærere og elever": de fire første celler.
 const TABLE_HEADER = ['type', 'id', 'fornavn', 'efternavn'];
+
+/** Er linjen tabellens overskrift? Billig prøve først (kører ved hvert tastetryk). */
+function isTableHeader(line) {
+    return /^\s*type\t/i.test(line)
+        && TABLE_HEADER.every((h, i) => (line.split('\t')[i] || '').trim().toLowerCase() === h);
+}
 
 /**
  * Side 2: tabellen. Kun rækker med typen "Elev" kommer med, som "Fornavn
@@ -113,23 +161,33 @@ const TABLE_HEADER = ['type', 'id', 'fornavn', 'efternavn'];
 function readLectioTable(all) {
     // Billig prøve først: genkendelsen kører ved hvert tastetryk, også på en
     // stor Excel-liste.
-    const header = all.findIndex(l => /^\s*type\t/i.test(l)
-        && TABLE_HEADER.every((h, i) => (l.split('\t')[i] || '').trim().toLowerCase() === h));
+    const header = all.findIndex(isTableHeader);
     if (header < 0) return null;
 
     const names = [];
     let students = 0;
     let skipped = header;   // alt over overskriften er sidens menu
+    // Linjer skrevet til i hånden siden sidste elev. Kommer der en
+    // overskrift igen (siden kopieret to gange, fx to hold), var de i stedet
+    // den næste sides menu ("Lærere og elever", "menu" …) og springes over,
+    // ligesom menuen over den første overskrift (159. gennemsyn, (182)).
+    let loose = [];
     for (const raw of all.slice(header + 1)) {
         const cells = raw.split('\t').map(c => c.trim());
+        if (isTableHeader(raw)) {
+            skipped += loose.length + 1;
+            loose = [];
+            continue;
+        }
         if (cells.length >= 4 && cells[0].toLowerCase() === 'elev') {
             const name = (cells[2] + ' ' + cells[3]).replace(/\s+/g, ' ').trim();
-            if (name) { names.push(name); students++; continue; }
+            if (name) { names.push(...loose, name); loose = []; students++; continue; }
         }
         const line = raw.trim();
-        if (cells.length === 1 && !isPageText(line)) { names.push(line); continue; }
+        if (cells.length === 1 && !isPageText(line)) { loose.push(line); continue; }
         skipped++;
     }
+    names.push(...loose);
     if (students < 2) return null;
     return { names, skipped };
 }

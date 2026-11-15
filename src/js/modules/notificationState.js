@@ -7,6 +7,14 @@ const state = reactive({
 let nextId = 0;
 const timers = new Map();   // id → timeoutId
 const expiries = new Map(); // id → udløbstidspunkt (eller Infinity)
+// id → resterende ms for en besked, læreren er i gang med at læse (holdt
+// fast med musen eller tastaturet, se hold() nedenfor). Den har intet ur.
+const held = new Map();
+
+// Når læreren slipper en holdt besked, står den mindst så længe endnu. Ellers
+// kunne den forsvinde i samme øjeblik, musen forlod den — fx da læreren
+// flyttede musen hen til knappen, beskeden fortalte om.
+const RELEASE_MIN = 3000;
 
 const MAX_VISIBLE = 5;
 
@@ -91,10 +99,45 @@ function add(message, type = 'info', duration = 4000, action = null) {
  */
 function extendTo(id, expiresAt) {
     const existing = expiries.get(id);
-    if (existing === undefined || existing === Infinity || existing >= expiresAt) return;
+    if (existing === undefined || existing === Infinity) return;
+    // En holdt besked har intet ur at stille: kun dens rest vokser. Uden
+    // dette startede en ny besked (eller en dublet) uret igen bag om ryggen
+    // på læreren, der var i gang med at læse den.
+    if (held.has(id)) {
+        held.set(id, Math.max(held.get(id), expiresAt - Date.now()));
+        return;
+    }
+    if (existing >= expiresAt) return;
     clearTimeout(timers.get(id));
     expiries.set(id, expiresAt);
     timers.set(id, setTimeout(() => remove(id), expiresAt - Date.now()));
+}
+
+/**
+ * Læreren læser beskeden: stop dens ur (småting (æ) fra 156., rettet i 157. gennemsyn).
+ *
+ * En lang besked ruller efter ca. seks linjer, og importens fulde besked
+ * (ca. 600 tegn) står i ca. 36 sek. Mens læreren rullede ned for at læse
+ * resten, talte uret videre, og beskeden kunne forsvinde midt i en sætning.
+ * NotificationManager kalder hold(), når musen bevæges eller hjulet drejes i
+ * beskeden, eller den får fokus, og release(), når musen og fokus er ude af den
+ * igen. Fejl (Infinity) har intet ur og røres ikke.
+ */
+function hold(id) {
+    const existing = expiries.get(id);
+    if (existing === undefined || existing === Infinity || held.has(id)) return;
+    clearTimeout(timers.get(id));
+    timers.delete(id);
+    held.set(id, Math.max(0, existing - Date.now()));
+}
+
+/** Læreren er færdig med beskeden: uret går igen, med mindst RELEASE_MIN tilbage. */
+function release(id) {
+    if (!held.has(id)) return;
+    const remaining = Math.max(held.get(id), RELEASE_MIN);
+    held.delete(id);
+    expiries.set(id, Date.now() + remaining);
+    timers.set(id, setTimeout(() => remove(id), remaining));
 }
 
 function remove(id) {
@@ -103,13 +146,20 @@ function remove(id) {
     clearTimeout(timers.get(id));
     timers.delete(id);
     expiries.delete(id);
+    held.delete(id);
 }
 
 export const notificationState = readonly(state);
 export const notificationActions = {
     add,
     remove,
-    notifySuccess: (msg) => add(msg, 'success', 5000),
+    hold,
+    release,
+    // En kvittering står 5 sek., en lang som en info (60 ms pr. tegn): "4
+    // klasser er hentet fra www.dida.dk, hvor du havde gemt dem. dida.dk
+    // bruger nu kun adressen uden www." er ca. 110 tegn og nåede ikke at
+    // blive læst på 5 sek. (157. gennemsyn).
+    notifySuccess: (msg) => add(msg, 'success', Math.max(5000, msg.length * 60)),
     notifyError:   (msg, action = null) => add(msg, 'error', 0, action),
     notifyInfo:    (msg) => add(msg, 'info', Math.max(8000, msg.length * 60)),
 };

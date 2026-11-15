@@ -2,7 +2,7 @@
 import { ref, computed, watch, nextTick, onBeforeUnmount } from 'vue';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import * as api from '../../js/modules/api.js';
-import { compactImportSheet, sheetDataCells, planPaste, readClassText } from '../../js/modules/importData.js';
+import { planPaste, readClassText, sheetToImport, sheetsToOffer, hiddenSheetNote, mergedCellsNote, XLSX_READ_OPTIONS } from '../../js/modules/importData.js';
 import { plural } from '../../js/modules/plural.js';
 import { describePartialRestore } from '../../js/modules/restoreReceipt.js';
 import { MAX_ROWS_PER_CLASS } from '../../js/modules/py_bridge.js';
@@ -381,10 +381,6 @@ async function readTextFile(file) {
     }
 }
 
-// Formaterede tomme celler gør ikke et tomt ark til en valgmulighed.
-function sheetsWithData(wb) {
-    return wb.SheetNames.filter(name => sheetDataCells(wb.Sheets[name]).length > 0);
-}
 
 /** @returns {Promise<string[]>} filnavnene på de klasser, der blev oprettet */
 async function importExcelOrCsv(excelFiles, options) {
@@ -418,15 +414,27 @@ async function importExcelOrCsv(excelFiles, options) {
 
             // Beskeder om HVORDAN filen blev læst — de skal frem uanset om
             // createClass() selv har noget at sige om indholdet.
+            //
+            // Rækkefølgen er med vilje: det, læreren skal gøre noget ved
+            // (skjulte rækker og kolonner, gættede kolonnenavne), står først,
+            // så de flettede celler, og til sidst hvilket ark der blev
+            // importeret — det har hun selv valgt sekunder før. En lang besked
+            // ruller efter et par linjer (BetaStyles.vue), og uden en synlig
+            // rullebjælke (macOS) ses det nederste ikke. Før stod arket først,
+            // og "Kolonne C var skjult" (fx CPR) lå under kanten (156. gennemsyn).
             const fileNotes = [];
+            let mergedNote = '';
+            let sheetNote = '';
 
             let csvContent;
             if (isExcel) {
                 const buffer = await file.arrayBuffer();
                 if (disposed) break;
-                const wb = XLSX.read(buffer, { type: 'array' });
+                // XLSX_READ_OPTIONS: bl.a. danske datoer (importData.js).
+                const wb = XLSX.read(buffer, XLSX_READ_OPTIONS);
 
-                const names = sheetsWithData(wb);
+                // Kun ark med data, og ikke skjulte ark (sheetsToOffer i importData.js).
+                const names = sheetsToOffer(wb);
                 if (names.length === 0) {
                     errors.push(`${file.name}: regnearket indeholder ingen data.`);
                     failCount++;
@@ -442,16 +450,25 @@ async function importExcelOrCsv(excelFiles, options) {
                         // tælle som en fejl, det var jo et bevidst valg.
                         continue;
                     }
-                    fileNotes.push(`Arket "${sheetName}" blev importeret. De øvrige ` +
-                        `${names.length - 1} ark i filen blev ikke rørt.`);
+                    const others = names.length - 1;
+                    sheetNote = `Arket "${sheetName}" blev importeret. ` + (others === 1
+                        ? 'Det andet ark i filen blev ikke rørt.'
+                        : `De ${others} andre ark i filen blev ikke rørt.`);
                 }
                 const sheet = wb.Sheets[sheetName];
 
                 // Tæl rækker med indhold, ikke højeste rækkenummer. CSV'en må
                 // kun gennemløbe faktiske rækker/kolonner, aldrig det gamle !ref.
-                const compact = compactImportSheet(sheet, XLSX.utils,
-                    MAX_ROWS_PER_CLASS + (options.hasHeaders ? 1 : 0));
-                csvContent = XLSX.utils.sheet_to_csv(compact, { blankrows: false });
+                // sheetToImport giver plads til en titel og kolonnenavne
+                // over eleverne (importData.js).
+                // Flettede celler udfyldes nedad (fillMergedCells i importData.js).
+                const imported = sheetToImport(sheet, XLSX.utils, MAX_ROWS_PER_CLASS);
+                csvContent = imported.csv;
+                // Skjulte eller filtrerede rækker og skjulte kolonner kommer
+                // med — en fil har intet udsnit, så det skal siges her.
+                const hiddenNote = hiddenSheetNote(sheet, XLSX.utils);
+                if (hiddenNote) fileNotes.push(hiddenNote);
+                mergedNote = mergedCellsNote(imported.mergedFilled);
             } else {
                 const read = await readTextFile(file);
                 csvContent = read.text;
@@ -468,6 +485,8 @@ async function importExcelOrCsv(excelFiles, options) {
                 successCount++;
                 if (res.filename) created.push(res.filename);
                 if (res.warning) fileNotes.push(res.warning);
+                if (mergedNote) fileNotes.push(mergedNote);
+                if (sheetNote) fileNotes.push(sheetNote);
                 if (fileNotes.length) warnings.push(`${file.name}: ${fileNotes.join('\n\n')}`);
             }
         } catch (err) {

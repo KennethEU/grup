@@ -19,11 +19,74 @@ export function normalizeImportHeaders(headers) {
     });
 }
 
+// Har cellen indhold? Samme regel overalt i importen: en formateret tom
+// celle (t:'z'), en celle med kun mellemrum og en manglende celle er tomme.
+function hasContent(cell) {
+    return Boolean(cell) && cell.t !== 'z' && (String(cell.v ?? '').trim() !== '' || Boolean(cell.f));
+}
+
 export function sheetDataCells(sheet) {
     if (!sheet) return [];
     return Object.entries(sheet).filter(([key, cell]) =>
-        /^[A-Z]+[1-9]\d*$/.test(key) && cell && cell.t !== 'z' &&
-        (String(cell.v ?? '').trim() !== '' || Boolean(cell.f)));
+        /^[A-Z]+[1-9]\d*$/.test(key) && hasContent(cell));
+}
+
+/**
+ * Flettede celler (155. gennemsyn, (177)). "2a" flettet ned over ti elever
+ * i Klasse-kolonnen står i Excel ud for alle ti, men filen gemmer kun
+ * værdien i den øverste celle. Før fik de ni andre en tom celle uden et ord,
+ * og en regel på kolonnen så dem som "tom". Nu skrives værdien ned i hver
+ * række, fletningen dækker — det, læreren ser i Excel.
+ *
+ * Reglerne (hver har sin test i importData.test.js):
+ *   - kun NEDAD i fletningens første kolonne. En titel flettet hen over
+ *     A1:D1 skal blive ÉN celle, ellers ligner den ikke en titel længere;
+ *   - kun i rækker, der har andet indhold. En tom skillelinje inde i en
+ *     fletning må ikke blive til en elev uden navn;
+ *   - aldrig oven i en celle med indhold;
+ *   - ikke en fletning, der starter i arkets øverste linje med indhold, og
+ *     ikke et kendt kolonnenavn (HEADER_WORDS). Dér står titlen eller
+ *     kolonnenavnene, og "Navn" flettet ned over to linjer med kolonnenavne
+ *     ville ellers blive en elev, der hedder "Navn" — også under en titel.
+ *
+ * Arbejder på en KOPI med Excels egne adresser (før compactImportSheet
+ * flytter dem); arket selv røres ikke, så hiddenSheetParts tæller som før.
+ * @returns {{ sheet: object, filled: number }} filled: antal udfyldte celler
+ */
+export function fillMergedCells(sheet, utils) {
+    const merges = Array.isArray(sheet?.['!merges']) ? sheet['!merges'] : [];
+    if (!merges.length) return { sheet, filled: 0 };
+    const rowsWithData = new Set(sheetDataCells(sheet).map(([key]) => utils.decode_cell(key).r));
+    const topRow = Math.min(...rowsWithData);
+    const copy = { ...sheet };
+    let filled = 0;
+    for (const merge of merges) {
+        const { s, e } = merge || {};
+        if (!s || !e || e.r <= s.r || s.r <= topRow) continue;
+        const source = sheet[utils.encode_cell(s)];
+        if (!hasContent(source)) continue;
+        // Et kendt kolonnenavn ("Navn" flettet over to linjer med
+        // kolonnenavne under en titel) skrives aldrig ned: det er ingen
+        // elevværdi, og linjen under ville blive en elev, der hedder "Navn".
+        if (HEADER_WORDS.has(String(source.v ?? '').trim().toLowerCase())) continue;
+        for (let r = s.r + 1; r <= e.r; r++) {
+            const key = utils.encode_cell({ r, c: s.c });
+            if (!rowsWithData.has(r) || hasContent(copy[key])) continue;
+            // Kopien af cellen beholder type og talformat (en dato forbliver
+            // en dansk dato), men ikke formlen — kun resultatet.
+            const { f, F, ...value } = source;
+            copy[key] = value;
+            filled++;
+        }
+    }
+    return { sheet: copy, filled };
+}
+
+/** Beskeden til læreren om udfyldte flettede celler, eller null. */
+export function mergedCellsNote(filled) {
+    if (!(filled > 0)) return null;
+    return `${filled} ${filled === 1 ? 'celle var' : 'celler var'} flettet sammen med cellen ovenover i Excel. ` +
+        'Værdien fra den flettede celle er sat ind hos hver elev, den dækker — sådan som det ser ud i Excel.';
 }
 
 // !ref er kun Excels brugte område. Byg et kompakt ark af de faktiske celler,
@@ -34,7 +97,13 @@ export function compactImportSheet(sheet, utils, maxRows) {
     const rows = [...new Set(cells.map(entry => entry.r))].sort((a, b) => a - b);
     const columns = [...new Set(cells.map(entry => entry.c))].sort((a, b) => a - b);
     if (rows.length > maxRows) {
-        throw new Error(`Arket har ${rows.length} rækker med indhold. Maks ${maxRows} inklusive eventuelle overskrifter — del filen op i én fil pr. klasse.`);
+        // Intet loft-tal i beskeden: maxRows har plads til en titel og
+        // kolonnenavne, så "Maks 502" ville se ud som 502 elever.
+        // Et ark med hele årgangen, filtreret til én klasse, ser kort ud i
+        // Excel — så siges det, hvor mange af rækkerne læreren ikke kan se.
+        const hidden = hiddenSheetParts(sheet, utils).rows;
+        const hiddenPart = hidden > 0 ? ` (heraf ${hidden} skjult eller filtreret fra i Excel — de tæller med)` : '';
+        throw new Error(`Arket har ${rows.length} rækker med indhold${hiddenPart} — flere, end en klasse kan have. Del filen op i én fil pr. klasse.`);
     }
     if (!rows.length) throw new Error('Arket indeholder ingen data.');
     const rowIndex = new Map(rows.map((value, index) => [value, index]));
@@ -45,6 +114,105 @@ export function compactImportSheet(sheet, utils, maxRows) {
     }
     compact['!ref'] = utils.encode_range({ s: { r: 0, c: 0 }, e: { r: rows.length - 1, c: columns.length - 1 } });
     return compact;
+}
+
+// Sådan læses en Excel-fil (XLSX.read). dateNF: Excels indbyggede datoformat
+// (nr. 14) følger computerens sprog, så en dansk lærer ser 15-01-2008 i
+// Excel. Uden dateNF skrev SheetJS den amerikanske "1/15/08" ind i klassen
+// (153. gennemsyn). Ét sted, så importen og testene læser ens.
+//
+// cellStyles: uden den læser SheetJS ikke, hvilke rækker og kolonner der er
+// skjult i en .xlsx (!rows/!cols) — og et filter i Excel skjuler netop rækker.
+// Den slår også "stubs" til (formaterede tomme celler som t:'z'), men dem
+// springer sheetDataCells over. Målt 15/11 2026: 40.000 formaterede tomme
+// celler koster ca. 7 MB og ingen mærkbar tid (154. gennemsyn).
+export const XLSX_READ_OPTIONS = Object.freeze({ type: 'array', dateNF: 'dd-mm-yyyy', cellStyles: true });
+
+/**
+ * Hvor mange rækker og kolonner MED INDHOLD er skjult i Excel? Et filter
+ * (fx hele årgangen filtreret til én klasse), en sammenklappet gruppe og en
+ * skjult række gemmes alle som en skjult række. Importen tager dem med —
+ * at springe dem over kunne æde elever, læreren har skjult af andre grunde —
+ * men siger det (hiddenSheetNote). Tælles på det ORIGINALE ark, før
+ * compactImportSheet flytter adresserne. En tom skjult række tæller ikke.
+ * @returns {{ rows: number, columns: string[] }} columns: Excels bogstaver
+ */
+export function hiddenSheetParts(sheet, utils) {
+    const hiddenRows = new Set();
+    const hiddenColumns = new Set();
+    const rowInfo = Array.isArray(sheet?.['!rows']) ? sheet['!rows'] : [];
+    const colInfo = Array.isArray(sheet?.['!cols']) ? sheet['!cols'] : [];
+    for (const [key] of sheetDataCells(sheet)) {
+        const { r, c } = utils.decode_cell(key);
+        if (rowInfo[r]?.hidden) hiddenRows.add(r);
+        if (colInfo[c]?.hidden) hiddenColumns.add(c);
+    }
+    return {
+        rows: hiddenRows.size,
+        columns: [...hiddenColumns].sort((a, b) => a - b).map(c => utils.encode_col(c)),
+    };
+}
+
+/** Beskeden til læreren om skjulte rækker og kolonner, eller null. */
+export function hiddenSheetNote(sheet, utils) {
+    const { rows, columns } = hiddenSheetParts(sheet, utils);
+    const parts = [];
+    if (rows > 0) {
+        parts.push(`${rows} ${rows === 1 ? 'række' : 'rækker'} var skjult eller filtreret fra i Excel ` +
+            `og kom alligevel med i klassen. Skulle ${rows === 1 ? 'den' : 'de'} ikke med, så slet ` +
+            `${rows === 1 ? 'den' : 'dem'} i Excel og importér filen igen, eller slet ${rows === 1 ? 'eleven' : 'eleverne'} i elevlisten.`);
+    }
+    if (columns.length > 0) {
+        const list = columns.length === 1 ? `Kolonne ${columns[0]}` : `Kolonnerne ${columns.slice(0, -1).join(', ')} og ${columns.at(-1)}`;
+        parts.push(`${list} var skjult i Excel og kom alligevel med. Skulle ` +
+            `${columns.length === 1 ? 'den' : 'de'} ikke med, så slet ${columns.length === 1 ? 'den' : 'dem'} ` +
+            'i elevlisten (eller skjul indholdet med højreklik på kolonnenavnet).');
+    }
+    return parts.length ? parts.join(' ') : null;
+}
+
+/**
+ * De ark, importen tilbyder: ark med data, som læreren kan se i Excel.
+ * Et skjult ark (fx en opslagsliste) stod før i valget af ark, selvom
+ * læreren aldrig har set det. Er der KUN skjulte ark med data, tilbydes de
+ * alligevel — hellere det end "ingen data".
+ */
+export function sheetsToOffer(wb) {
+    const names = wb?.SheetNames || [];
+    // Workbook.Sheets står i samme rækkefølge som SheetNames. Slå op på
+    // pladsen, ikke på navnet: ikke alle filtyper giver arkets navn med.
+    const meta = wb?.Workbook?.Sheets || [];
+    const hidden = new Set(names.filter((name, index) => Boolean(meta[index]?.Hidden)));
+    const withData = names.filter(name => sheetDataCells(wb.Sheets[name]).length > 0);
+    const visible = withData.filter(name => !hidden.has(name));
+    return visible.length ? visible : withData;
+}
+
+// Plads over eleverne i et ark: en titel OG kolonnenavne ('auto' springer en
+// titel over). Det præcise loft på antal elever står i readClassText; loftet
+// i compactImportSheet er kun et værn mod kæmpe ark.
+export const SHEET_ROWS_ABOVE_STUDENTS = 2;
+
+/**
+ * Et Excel-ark som den tekst, readClassText læser: kun de faktiske celler
+ * (compactImportSheet), uden tomme rækker. Importen (ImportSection.vue) og
+ * testene bruger begge denne, så testene prøver præcis importens vej.
+ */
+export function sheetToImportCsv(sheet, utils, maxStudents) {
+    return sheetToImport(sheet, utils, maxStudents).csv;
+}
+
+/**
+ * Som sheetToImportCsv, men siger også, hvor mange flettede celler der er
+ * udfyldt (fillMergedCells) — importen skal sige det til læreren, for en fil
+ * har intet udsnit. Fletningerne udfyldes FØR compactImportSheet, for
+ * !merges har Excels egne adresser.
+ * @returns {{ csv: string, mergedFilled: number }}
+ */
+export function sheetToImport(sheet, utils, maxStudents) {
+    const merged = fillMergedCells(sheet, utils);
+    const compact = compactImportSheet(merged.sheet, utils, maxStudents + SHEET_ROWS_ABOVE_STUDENTS);
+    return { csv: utils.sheet_to_csv(compact, { blankrows: false }), mergedFilled: merged.filled };
 }
 
 /**
@@ -111,9 +279,15 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
 
     let headers;
     let dataRows;
+    // Kopier af kolonnenavnene (og af titlen) længere nede, der er sprunget
+    // over — se repeatedHeaderRow (158. gennemsyn, (176)).
+    let repeatedRows = 0;
     if (hasHeaders) {
         headers = rows[0].slice();
         dataRows = rows.slice(1);
+        const before = dataRows.length;
+        dataRows = dataRows.filter((r, i) => !repeatedHeaderRow(rows[0], titleLine, r, dataRows[i + 1]));
+        repeatedRows = before - dataRows.length;
     } else {
         headers = ['Navn'];
         for (let i = 1; i < maxCols; i++) headers.push(`Info ${i}`);
@@ -166,6 +340,11 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
         const shown = cells.slice(0, 3).map(c => `"${c}"`).join(', ') + (cells.length > 3 ? ' …' : '');
         warnings.push(`Første linje (${shown}) er læst som kolonnenavne, ikke som en elev. ` +
             `Er den en elev, så skriv en ny første linje med "Navn" i første kolonne.`);
+    }
+    if (repeatedRows > 0) {
+        warnings.push(`${repeatedRows === 1 ? '1 linje' : `${repeatedRows} linjer`} længere nede ` +
+            `${repeatedRows === 1 ? 'var en kopi' : 'var kopier'} af kolonnenavnene${titleLine !== null ? ' eller titlen' : ''} ` +
+            `(fx fordi listen er sat sammen af flere sider) og er sprunget over. De er ikke elever.`);
     }
     if (emptyColumnsRemoved > 0) {
         warnings.push(`${emptyColumnsRemoved} helt ${emptyColumnsRemoved === 1 ? 'tom kolonne' : 'tomme kolonner'} blev sprunget over ved importen. ` +
@@ -250,8 +429,85 @@ const HEADER_WORDS = new Set([
 ]);
 
 /**
+ * Har rækken et kendt kolonnenavn (HEADER_WORDS), som ikke er en af
+ * kolonnens egne værdier? (153. gennemsyn, (173))
+ *
+ * "Anna Holm  Student" over Kursist/Student/Kursist … er en elev: "Student"
+ * står igen i kolonnen nedenunder, så det er en værdi, ikke kolonnens navn.
+ * Før blev hun til kolonnenavnene uden en advarsel, og ved en Excel-fil
+ * (intet udsnit) forsvandt hun i stilhed.
+ *
+ * En nøjagtig kopi af rækken længere nede tæller IKKE som modbevis: to
+ * lister sat efter hinanden, eller en liste kopieret fra flere sider, har
+ * kolonnenavnene igen midt i. Uden undtagelsen mistede sådan en liste sine
+ * kolonnenavne. Udvejen "Navn" øverst rammes ikke: "Navn" står ikke blandt
+ * navnene.
+ *
+ * @param {string[]} row   rækken, der måske er kolonnenavne
+ * @param {string[][]} below rækkerne under den
+ */
+function hasKnownHeader(row, below) {
+    const norm = c => String(c ?? '').trim().toLowerCase();
+    const key = r => {
+        const cells = (r || []).map(norm);
+        while (cells.length && cells[cells.length - 1] === '') cells.pop();
+        return cells.join('\u0000');
+    };
+    const rowKey = key(row);
+    const others = below.filter(r => key(r) !== rowKey);
+    return row.some((cell, col) => {
+        const word = norm(cell);
+        return HEADER_WORDS.has(word) && !others.some(r => norm(r[col]) === word);
+    });
+}
+
+/**
+ * Er rækken en kopi af kolonnenavnene (eller af titlen) midt i listen?
+ * (158. gennemsyn, (176))
+ *
+ * En liste kopieret fra flere sider, eller to lister sat efter hinanden, har
+ * kolonnenavnene igen midt i ("Navn  Køn" efter Ce). Før blev den linje en
+ * elev, der hed "Navn" med køn "Køn" — uden en advarsel, og en regel på Køn
+ * fik en tredje værdi. Ved en Excel-fil er der intet udsnit, så læreren så
+ * det først på gruppekortene.
+ *
+ * Kun en NØJAGTIG kopi (alle celler ens, store/små bogstaver og mellemrum
+ * ligegyldige), og kun når kolonnenavnene har et kendt kolonnenavn
+ * (HEADER_WORDS) — så er de ikke gættet, og ingen elev hedder "Navn" med
+ * køn "Køn". En titel springes kun over, når den står lige over en kopi af
+ * kolonnenavnene, ligesom øverst, og er den samme som titlen øverst bortset
+ * fra tallene (sidetal, dato).
+ *
+ * @param {string[]} header     kolonnenavnene (første række)
+ * @param {string|null} title   titlen, der blev sprunget over øverst, eller null
+ * @param {string[]} row        rækken, der måske er en kopi
+ * @param {string[]|undefined} next rækken under den
+ */
+function repeatedHeaderRow(header, title, row, next) {
+    const norm = c => String(c ?? '').trim().toLowerCase();
+    const key = r => {
+        const cells = (r || []).map(norm);
+        while (cells.length && cells[cells.length - 1] === '') cells.pop();
+        return cells.join('\u0000');
+    };
+    if (!header.some(c => HEADER_WORDS.has(norm(c)))) return false;
+    const headerKey = key(header);
+    if (key(row) === headerKey) return true;
+    if (title === null || next === undefined || key(next) !== headerKey) return false;
+    // Titlen på næste side må have et andet sidetal eller en anden dato
+    // ("2bx side 1" øverst, "2bx side 2" længere nede). Før blev den titel
+    // en elev, og ved en Excel-fil uden udsnit så læreren det først på
+    // gruppekortene (159. gennemsyn, (182)). Derfor sammenlignes uden
+    // cifre — men stadig med HELE titlen, så en elev, der står alene med
+    // sit navn lige over kolonnenavnene, aldrig forsvinder.
+    const filled = (row || []).map(norm).filter(Boolean);
+    const withoutDigits = t => t.replace(/\d+/g, '#');
+    return filled.length === 1 && withoutDigits(filled[0]) === withoutDigits(norm(title));
+}
+
+/**
  * Er første række en titel over listen? Én udfyldt celle, og rækken under
- * har mindst to udfyldte celler, hvoraf én er et kolonnenavn (HEADER_WORDS).
+ * har mindst to udfyldte celler, hvoraf én er et kolonnenavn (hasKnownHeader).
  * Kun da springes den over — en fil, hvor kun første kolonne har et
  * kolonnenavn ("Navn" alene øverst), har "Navn" i FØRSTE række og rammes ikke.
  */
@@ -260,8 +516,11 @@ function isTitleLine(rows) {
     const filled = (r) => r.map(c => String(c ?? '').trim()).filter(Boolean);
     const top = filled(rows[0]);
     const next = filled(rows[1]);
+    // Linjen under skal have et RIGTIGT kolonnenavn (hasKnownHeader): er
+    // "Student" en værdi, der går igen i kolonnen, er linjen under en elev,
+    // og så er den øverste ikke en titel, men også en elev (153. gennemsyn).
     return top.length === 1 && !HEADER_WORDS.has(top[0].toLowerCase())
-        && next.length >= 2 && next.some(c => HEADER_WORDS.has(c.toLowerCase()));
+        && next.length >= 2 && hasKnownHeader(rows[1], rows.slice(2));
 }
 
 /**
@@ -270,8 +529,9 @@ function isTitleLine(rows) {
  * valgt, og hvordan det rettes. Første række er kolonnenavne, når:
  *
  *   1. en celle er et ord, der kun står øverst i en kolonne ("Navn", "Køn",
- *      "Klasse" …) — og det er også udvejen, når reglen tager fejl: skriv
- *      "Navn" øverst, så er linjen kolonnenavne;
+ *      "Klasse" …) og ikke går igen i kolonnen nedenunder — og det er også
+ *      udvejen, når reglen tager fejl: skriv "Navn" øverst, så er linjen
+ *      kolonnenavne;
  *   2. en kolonne har tal i resten, men ikke øverst ("Karakter" over 7, 10, 4);
  *   3. en kolonne har få værdier, der går igen, og den øverste er ikke én af
  *      dem ("Køn" over Pige, Dreng, Pige …).
@@ -302,7 +562,8 @@ export function looksLikeHeaderRow(rows) {
  * en af kolonnens egne værdier. Nu tæller sådan en kolonne som et modbevis:
  *   - øverst et tal i en kolonne, der ellers er tal, eller
  *   - øverst en af de værdier, der går igen i kolonnen.
- * Et kendt kolonnenavn (regel 1) vinder stadig over alt — det er udvejen.
+ * Et kendt kolonnenavn (regel 1) vinder stadig over alt — det er udvejen —
+ * men kun når ordet ikke selv står i kolonnen nedenunder (hasKnownHeader).
  *
  * Et modbevis kan ikke findes, når første elev er den eneste med en
  * afvigende værdi, og ingen anden kolonne siger noget ("Anna  Fritaget" over
@@ -311,9 +572,9 @@ export function looksLikeHeaderRow(rows) {
 function headerRowReason(rows) {
     if (!Array.isArray(rows) || rows.length < 2) return null;
     const first = rows[0].map(c => String(c ?? '').trim());
-    if (first.some(c => HEADER_WORDS.has(c.toLowerCase()))) return 'known';
-
     const body = rows.slice(1);
+    if (hasKnownHeader(rows[0], body)) return 'known';
+
     const columns = [];
     for (let col = 0; col < first.length; col++) {
         const head = first[col];

@@ -188,12 +188,36 @@ function chooseModalRoom(el) {
     }
 }
 
+// ─── En lang besked: kan læses til ende ─────────────────────────────────────
+// En besked ruller efter ca. seks linjer (`.toast-message` i BetaStyles.vue).
+// Målt 15/11 2026 ved 1280×720 og 1440×900 (157. gennemsyn): importens fulde
+// besked er 9 linjer (3 under kanten), og motorens stop-fejl med tre problemer
+// er 8 (det tredje problem stod helt under kanten). Rullebjælken ses ikke på
+// macOS, og i Safari kan tastaturet ikke rulle et felt, der ikke kan få fokus.
+// Derfor måles, hvilke beskeder der ruller: de får tabindex (tastaturet kan
+// rulle dem), og stilen giver dem en skygge nederst, så længe der er mere.
+const overflowing = ref(new Set());
+function measureMessages() {
+    const el = containerEl.value;
+    if (!el) return;
+    const next = new Set();
+    el.querySelectorAll('.toast[data-note-id]').forEach(t => {
+        const msg = t.querySelector('.toast-message');
+        if (msg && msg.scrollHeight > msg.clientHeight + 1) next.add(Number(t.dataset.noteId));
+    });
+    // Kun en ny Set, når noget har ændret sig — ellers tegnede Vue beskederne
+    // om tre gange i sekundet.
+    const same = next.size === overflowing.value.size && [...next].every(id => overflowing.value.has(id));
+    if (!same) overflowing.value = next;
+}
+
 let followTimer = null;
 function follow() {
     updateHost();
     measureRibbon();
     measureModalRoom();
     measureScroll();
+    measureMessages();
 }
 function stopFollowing() {
     clearInterval(followTimer);
@@ -207,7 +231,7 @@ watch(() => notifications.value.length, (n, old) => {
     if (n > (old || 0)) follow();
     // Den nye besked står først i siden efter Vues næste tegning; mål
     // rulningen dér, ikke først ved næste interval.
-    if (n !== old) nextTick(measureScroll);
+    if (n !== old) nextTick(() => { measureScroll(); measureMessages(); });
     if (n > 0 && !followTimer) followTimer = setInterval(follow, 300);
     else if (n === 0) {
         stopFollowing();
@@ -258,16 +282,78 @@ onBeforeUnmount(() => {
 // fulgte læreren med til de andre faner og lå hen over vinduer og gruppekort.
 // Skifter fanen, ryddes alt undtagen fejl (de bliver, til de klikkes væk).
 // `flush: 'sync'`, så kun de beskeder, der ALLEREDE står, ryddes — en besked,
-// der gives i samme øjeblik som fanen skifter ("Klasse oprettet!"), overlever.
-watch(() => appState.classViewTab, () => {
-    notificationState.notifications
-        .filter(n => n.type !== 'error')
-        .forEach(n => notificationActions.remove(n.id));
+// der gives i samme øjeblik som fanen skifter, overlever.
+//
+// Kun et skifte MELLEM klassens faner rydder. En import åbner den nye klasse
+// på Elevliste: navView går fra 'import' til 'class', og classViewTab sættes
+// i samme åndedrag. Stod læreren på Grupper eller Historik, før hun gik til
+// Import & backup, var det et fanskifte — og importens beskeder ("1 klasse
+// oprettet!", at en skjult kolonne som CPR kom med, at skjulte rækker kom
+// med, at flettede celler blev fyldt ud) forsvandt i samme øjeblik, de kom.
+// De blev givet FØR skiftet: loadClasses() venter på klasselisten, før den
+// åbner klassen. Ved en fil er beskeden det eneste, læreren får at vide
+// (målt 15/11 2026, 156. gennemsyn). Beskederne hører til importen, og
+// importen ender i den nye klasse.
+//
+// Derfor afgøres det først, når alt i samme øjeblik er sat (queueMicrotask):
+// er navView den samme som før, var det et fanskifte i klassen. Det gør ikke
+// noget, i hvilken rækkefølge navView og classViewTab sættes (selectClass,
+// switchTab og tilbage-knappen gør det forskelligt). Hvilke beskeder der
+// ryddes, låses ved det FØRSTE skifte.
+let pendingTabChange = null;
+watch(() => [appState.navView, appState.classViewTab], (_, [oldNav, oldTab]) => {
+    if (pendingTabChange) return;   // samme øjeblik — allerede noteret
+    pendingTabChange = {
+        nav: oldNav,
+        tab: oldTab,
+        ids: notificationState.notifications.filter(n => n.type !== 'error').map(n => n.id),
+    };
+    queueMicrotask(() => {
+        const before = pendingTabChange;
+        pendingTabChange = null;
+        if (before.nav !== appState.navView) return;      // en anden visning, fx importen → klassen
+        if (before.tab === appState.classViewTab) return; // fanen er den samme
+        before.ids.forEach(id => notificationActions.remove(id));
+    });
 }, { flush: 'sync' });
 
 const removeNotification = (id) => {
     notificationActions.remove(id);
 };
+
+// ─── Læreren læser: beskeden bliver stående ─────────────────────────────────
+// Mens musen bevæges eller hjulet drejes i en besked, eller den har fokus,
+// står dens ur stille (notificationState.js → hold/release). Først når både
+// musen og fokus er ude af den, går uret igen.
+//
+// Ikke på pointerenter: en besked, der dukker op under en mus, der bare
+// ligger stille (nederst til højre, hvor beskederne står), skal stadig gå
+// væk af sig selv. Først en bevægelse i den viser, at læreren er der.
+const pointerIn = new Set();   // beskeder, musen er bevæget i og ikke har forladt
+function holdByPointer(note) {
+    pointerIn.add(note.id);
+    notificationActions.hold(note.id);
+}
+function holdByFocus(note) {
+    notificationActions.hold(note.id);
+}
+function releaseByPointer(note, event) {
+    pointerIn.delete(note.id);
+    // Fokus stadig inde (fx på krydset eller den rullende tekst): bliv holdt.
+    if (event.currentTarget.contains(document.activeElement)) return;
+    notificationActions.release(note.id);
+}
+function releaseByFocus(note, event) {
+    // Fokus flytter rundt inde i beskeden, eller musen er der stadig.
+    if (event.currentTarget.contains(event.relatedTarget) || pointerIn.has(note.id)) return;
+    notificationActions.release(note.id);
+}
+// En besked, der lukkes eller ryddes, mens musen er i den, får aldrig sin
+// pointerleave — glem den, når den forsvinder.
+watch(() => notifications.value.map(n => n.id), ids => {
+    const alive = new Set(ids);
+    [...pointerIn].forEach(id => { if (!alive.has(id)) pointerIn.delete(id); });
+});
 
 // Beskedens egen knap: kør handlingen, og luk beskeden — den er besvaret.
 function runAction(note) {
@@ -292,6 +378,12 @@ function runAction(note) {
                 :key="note.id"
                 :class="['toast', note.type]"
                 :role="note.type === 'error' ? 'alert' : 'status'"
+                :data-note-id="note.id"
+                @pointermove="holdByPointer(note)"
+                @wheel.passive="holdByPointer(note)"
+                @focusin="holdByFocus(note)"
+                @pointerleave="releaseByPointer(note, $event)"
+                @focusout="releaseByFocus(note, $event)"
             >
                 <div class="toast-icon">
                     <CheckCircle v-if="note.type === 'success'" :size="16" />
@@ -299,7 +391,9 @@ function runAction(note) {
                     <Info v-else :size="16" />
                 </div>
                 <div class="toast-body">
-                    <span class="toast-message">{{ note.message }}</span>
+                    <!-- tabindex kun, når beskeden ruller (measureMessages): så kan
+                         tastaturet rulle den, også i Safari. -->
+                    <span class="toast-message" :tabindex="overflowing.has(note.id) ? 0 : undefined">{{ note.message }}</span>
                     <button v-if="note.action" type="button" class="toast-action" @click="runAction(note)">
                         {{ note.action.label }}
                     </button>

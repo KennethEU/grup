@@ -24,8 +24,10 @@ import './screens/info-sider.css';
    eneste beta-komponent, der altid er med. Komponentens egen styling (fra
    den gamle skærm, fjernet 2/11 2026) er et stort kort med en 4 px farvet kant og fuld tekst; efter en kørsel stod der
    tre afsnit om Fordel og Balancér hen over fjerde spalte. Her er de smallere
-   og stillere, og en lang besked viser sine første linjer, til musen eller
-   tastaturet er på den. */
+   og stillere, og en lang besked ruller efter ca. seks linjer (9em, se
+   `.toast-message` nedenfor). Rullebjælken ses ikke altid (macOS), så det
+   vigtigste skal stå først i en lang besked — se importens fileNotes i
+   ImportSection.vue. */
 html.beta .notification-container { max-inline-size: min(92vw, 400px); }
 /* Nederst til højre, lige over bundlinjen (52 px): foroven dækkede beskeden
    gruppekortenes titler (øverste højre kort) og knapperne i bjælken. Nederst
@@ -64,6 +66,27 @@ html.beta .toast .toast-message {
     display: block;
     max-block-size: 9em;
     overflow-y: auto;
+    /* Rullebjælken ses ikke på macOS, så en besked, der ruller, viste ikke,
+       at der var mere: importens fulde besked havde 3 af 9 linjer under
+       kanten, og motorens stop-fejl hele sit tredje problem (målt 15/11 2026,
+       157. gennemsyn). Derfor en skygge i kanten, så længe der er mere at
+       rulle — nederst før rulningen, øverst efter, begge midt i. Kun CSS:
+       de to dækflader (`local`) ruller med teksten og dækker skyggerne
+       (`scroll`), når kanten er nået; uden rulning dækker de altid, og en kort
+       besked ser ud, som den altid har gjort. Baggrunden er beskedens egen. */
+    background:
+        linear-gradient(var(--paper) 30%, color-mix(in oklch, var(--paper) 0%, transparent)) center top / 100% 28px no-repeat local,
+        linear-gradient(color-mix(in oklch, var(--paper) 0%, transparent), var(--paper) 70%) center bottom / 100% 28px no-repeat local,
+        radial-gradient(farthest-side at 50% 0, color-mix(in oklch, var(--ink) 22%, transparent), transparent) center top / 100% 10px no-repeat scroll,
+        radial-gradient(farthest-side at 50% 100%, color-mix(in oklch, var(--ink) 22%, transparent), transparent) center bottom / 100% 10px no-repeat scroll;
+    background-color: var(--paper);
+}
+/* Kun en besked, der ruller, kan få fokus (tabindex i NotificationManager):
+   så kan tastaturet rulle den, også i Safari. */
+html.beta .toast .toast-message:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 /* Aldrig oven på "Vis for klassen" (ClassShow.vue) */
 html.class-showing .notification-container { display: none; }

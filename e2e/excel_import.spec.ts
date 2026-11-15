@@ -168,3 +168,56 @@ test('CSV hvor første linje kun kan gættes: beskeden siger, at den er læst so
     await importFile(page, 'gaet.csv', Buffer.from(text, 'utf8'), 'text/csv');
     await expect(page.getByText('Første linje ("Anna Holm", "Fritaget") er læst som kolonnenavne')).toBeVisible({ timeout: 30000 });
 });
+
+// 154. gennemsyn, (174): et ark med hele årgangen, filtreret til én klasse,
+// og en skjult CPR-kolonne. Alt kommer stadig med (at springe over kunne æde
+// elever), men en fil har intet udsnit, så beskeden siger det. Et skjult
+// opslagsark ved siden af giver ikke længere et spørgsmål om ark.
+test('Excel med skjulte rækker, en skjult kolonne og et skjult ark: alt kommer med, og beskeden siger det', async ({ page }) => {
+    const ws = XLSX.utils.aoa_to_sheet([
+        ['Navn', 'CPR', 'Klasse'],
+        ['Anna Holm', '010101-0000', '2a'],
+        ['Bo Ek', '020202-0000', '2b'],
+        ['Ce Lund', '030303-0000', '2a'],
+        ['Dan Bo', '040404-0000', '2c'],
+    ]);
+    ws['!rows'] = [];
+    ws['!rows'][2] = { hidden: true };
+    ws['!rows'][4] = { hidden: true };
+    ws['!cols'] = [{}, { hidden: true }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Elever');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['Klasser'], ['2a'], ['2b']]), 'Lister');
+    wb.Workbook = { Sheets: [{}, { Hidden: 1 }] } as any;
+    await importFile(page, 'aargang.xlsx', XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' }),
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+    await expect(page.getByText('2 rækker var skjult eller filtreret fra i Excel')).toBeVisible({ timeout: 30000 });
+    await expect(page.getByText('Kolonne B var skjult i Excel')).toBeVisible();
+    await expect(page.getByText('Hvilket ark indeholder klassen?')).toHaveCount(0);
+    await expect(page.locator('tbody tr')).toHaveCount(4);
+});
+
+// 155. gennemsyn, (177): "2a" flettet ned over tre elever står kun i den
+// øverste celle i filen. Før fik de to andre en tom Klasse-celle uden et ord;
+// nu skrives værdien ned, og beskeden siger det.
+test('Excel med en flettet celle: værdien står hos hver elev, fletningen dækker', async ({ page }) => {
+    const ws = XLSX.utils.aoa_to_sheet([
+        ['Navn', 'Klasse', 'Køn'],
+        ['Anna Holm', '2a', 'Pige'],
+        ['Bo Ek', null, 'Dreng'],
+        ['Ce Lund', null, 'Pige'],
+        ['Dan Bo', '2b', 'Dreng'],
+    ]);
+    ws['!merges'] = [XLSX.utils.decode_range('B2:B4')];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Elever');
+    await importFile(page, 'flettet.xlsx', XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' }),
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+    await expect(page.getByText('2 celler var flettet sammen med cellen ovenover i Excel')).toBeVisible({ timeout: 30000 });
+    const rows = page.locator('tbody tr');
+    await expect(rows).toHaveCount(4);
+    for (const index of [0, 1, 2]) await expect(rows.nth(index)).toContainText('2a');
+    await expect(rows.nth(3)).toContainText('2b');
+});

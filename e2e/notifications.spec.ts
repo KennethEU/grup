@@ -10,8 +10,10 @@ test('Beskeder — direkte kald af funktionerne', async ({ page }) => {
     await expect(infoToast).toBeVisible();
     await expect(infoToast).toContainText('Test Info Message');
 
-    // Luk den (ekstra tid til at forsvinde, især i Firefox)
-    await infoToast.click({ force: true });
+    // Luk den med krydset. Før klikkede testen midt på beskeden og ventede
+    // på, at den udløb; nu holder en mus i beskeden den fast, mens læreren
+    // læser (157. gennemsyn). Ekstra tid til at forsvinde, især i Firefox.
+    await infoToast.locator('.toast-close').click();
     await expect(infoToast).toBeHidden({ timeout: 10000 });
 
     // 2. Succesbesked
@@ -21,7 +23,7 @@ test('Beskeder — direkte kald af funktionerne', async ({ page }) => {
     await expect(successToast).toContainText('Test Success Message');
 
     // Luk den
-    await successToast.click({ force: true });
+    await successToast.locator('.toast-close').click();
     await expect(successToast).toBeHidden({ timeout: 10000 });
 
     // 3. Fejlbesked
