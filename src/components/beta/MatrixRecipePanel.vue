@@ -31,10 +31,16 @@ const homeGroups = computed(() => state.storedStandardGroups || []);
 const hasHomeGroups = computed(() => homeGroups.value.length > 0);
 
 // ─── Indstillingerne ────────────────────────────────────────────────────────
-const groupMode = computed({
-    get: () => state.groupMode || 'size',
-    set: (v) => { state.groupMode = v; },
-});
+// Matrixens egen kopi, IKKE state.groupMode. Det felt er stamgruppernes
+// tilstand ("Elever pr. gruppe" / "Antal grupper"): AppTopbar og RecipePanel
+// læser det fra `settings`, motoren bruger det kun til stamgrupperne, og
+// kørselshistorikken gemmer det med stamgruppernes indstillinger. Til
+// 15/11 2026 skrev matrix-runden sin værdi ind i det, bare ved at blive vist
+// (loadSettings). Så stod en kørsel med "3 grupper" i Kørsler-menuen som
+// "3 pr. gruppe", og et klik på den spurgte, om indstillingerne skulle med,
+// selv om intet var ændret (141. gennemsyn, e2e/run_history.spec.ts).
+// I matrix følger tilstanden blot måden at blande på (setStrategy).
+const groupMode = ref('size');
 const groupTarget = ref(4);
 const groupMod = ref('+');
 const strategy = ref('full_strict');

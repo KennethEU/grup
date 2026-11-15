@@ -144,7 +144,6 @@ test('sletning af den SIDSTE klasse efterlader intet om dens elever', async ({ p
     expect(await state(page, '_runHistory.length')).toBe(0);
     expect(await state(page, 'storedStandardGroups')).toBeNull();
     expect(await state(page, 'storedMatrixGroups')).toBeNull();
-    expect(await state(page, 'lastGeneratedGroups')).toBeNull();
     expect(await state(page, 'lastRecording.standard')).toBeNull();
 });
 

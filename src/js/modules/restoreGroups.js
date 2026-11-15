@@ -806,7 +806,6 @@ export function applyPlan(plan) {
     }));
 
     state.storedStandardGroups = groups;
-    state.lastGeneratedGroups = groups;
 
     // 3. Emnerne. KUN de emner læreren selv har skrevet som emner ("Gruppe 1 - Klima").
     // En kolonne med rene kategorier ("Høj"/"Middel"/"Lav") giver gruppen sin

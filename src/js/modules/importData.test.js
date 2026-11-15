@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { utils } from '../../vendor/xlsx.mjs';
-import { compactImportSheet, normalizeImportHeaders, sheetDataCells } from './importData.js';
+import { compactImportSheet, normalizeImportHeaders, sheetDataCells, readClassText, looksLikeHeaderRow, planPaste } from './importData.js';
 
 describe('grænserne for indlæsning af regneark', () => {
     it('ignorerer et fuldt Excel-område med kun tre udfyldte celler', () => {
@@ -51,5 +51,93 @@ describe('grænserne for indlæsning af regneark', () => {
         expect(output).not.toContain('__proto__');
         expect(output).toContain('constructor');
         expect(output[2]).toBe('A_2');
+    });
+});
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Importen afgør selv, om første linje er kolonnenavne (Kenneth 15/11 2026:
+// et flueben, programmet selv kan regne ud, kan kun ødelægge noget).
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+describe('looksLikeHeaderRow og readClassText med "auto"', () => {
+    const auto = (text) => readClassText(text, 'auto', 500);
+
+    it('en liste med bare navne: første linje er en elev', () => {
+        const r = auto('Anna Holm\nBo Lund\nCarla Dam');
+        expect(r.usedHeaders).toBe(false);
+        expect(r.headers).toEqual(['Navn']);
+        expect(r.data.map(d => d.Navn)).toEqual(['Anna Holm', 'Bo Lund', 'Carla Dam']);
+    });
+
+    it('"Navn" øverst er kolonnenavne — også alene i én kolonne', () => {
+        expect(auto('Navn\nAnna\nBo').headers).toEqual(['Navn']);
+        expect(auto('Navn\nAnna\nBo').data).toHaveLength(2);
+        expect(auto('Elevnavn\tKøn\nAnna\tPige\nBo\tDreng').usedHeaders).toBe(true);
+    });
+
+    it('engelske kolonnenavne genkendes også ("Name" over én elev)', () => {
+        const r = auto('Name\nCSV Student');
+        expect(r.usedHeaders).toBe(true);
+        expect(r.data.map(d => d.Name)).toEqual(['CSV Student']);
+    });
+
+    it('tekst over tal er kolonnenavne', () => {
+        const r = auto('Deltager\tPoint\nAnna\t7\nBo\t10\nCarla\t4');
+        expect(r.usedHeaders).toBe(true);
+        expect(r.headers).toEqual(['Deltager', 'Point']);
+    });
+
+    it('et ord over værdier, der går igen, er kolonnenavne', () => {
+        const r = auto('Deltager\tSpor\nAnna\tA\nBo\tB\nCarla\tA\nDan\tB\nEva\tA\nFie\tB');
+        expect(r.usedHeaders).toBe(true);
+        expect(r.data).toHaveLength(6);
+    });
+
+    it('uden kolonnenavne: "Anna  Pige" øverst er en elev, fordi "Pige" går igen nedenunder', () => {
+        const r = auto('Anna\tPige\nBo\tDreng\nCarla\tPige\nDan\tDreng');
+        expect(r.usedHeaders).toBe(false);
+        expect(r.data.map(d => d.Navn)).toEqual(['Anna', 'Bo', 'Carla', 'Dan']);
+    });
+
+    it('og et tal øverst i en tal-kolonne er en elev', () => {
+        expect(auto('Anna\t7\nBo\t10\nCarla\t4').usedHeaders).toBe(false);
+    });
+
+    it('én linje alene er en elev', () => {
+        expect(auto('Navn').usedHeaders).toBe(false);
+        expect(looksLikeHeaderRow([['Navn']])).toBe(false);
+    });
+
+    // En titel over listen fra Excel: før kom den med som kolonnenavn, og
+    // fordi skilletegnet blev gættet ud fra den, endte hver række i én celle.
+    it('en titel over listen springes over, og kolonnerne læses rigtigt', () => {
+        const r = auto('Klasse 2bx elevliste\nNavn\tKøn\tNiveau\nAnna Holm\tPige\tHøj\nBo Lund\tDreng\tLav');
+        expect(r.headers).toEqual(['Navn', 'Køn', 'Niveau']);
+        expect(r.data.map(d => d.Navn)).toEqual(['Anna Holm', 'Bo Lund']);
+        expect(r.warnings.join(' ')).toContain('"Klasse 2bx elevliste") er sprunget over');
+    });
+
+    it('en elev øverst over rækker uden kolonnenavne springes IKKE over', () => {
+        const r = auto('Anna Holm\nBo Lund\tDreng\nCarla Dam\tPige');
+        expect(r.data.map(d => d.Navn)).toContain('Anna Holm');
+    });
+
+    it('true og false virker som før (bruges af createClass og testene)', () => {
+        expect(readClassText('Anna\nBo', true, 500).headers).toEqual(['Anna']);
+        expect(readClassText('Navn\nBo', false, 500).data).toHaveLength(2);
+    });
+});
+
+describe('planPaste — Lectio uden kolonnenavne, alt andet "auto"', () => {
+    it('Lectio: kun navnene og ingen kolonnenavne', () => {
+        const plan = planPaste('Anna Holm, 2a 04 (2a)\nBo Lund, 2a 05 (2a)');
+        expect(plan.lectio).not.toBeNull();
+        expect(plan.content).toBe('Anna Holm\nBo Lund');
+        expect(plan.hasHeaders).toBe(false);
+    });
+
+    it('alt andet: teksten som den er, og importen afgør kolonnenavnene', () => {
+        const plan = planPaste('Navn\tKøn\nAnna\tPige');
+        expect(plan.lectio).toBeNull();
+        expect(plan.hasHeaders).toBe('auto');
     });
 });

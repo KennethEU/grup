@@ -6,6 +6,7 @@ import { computed, ref, watch, nextTick, onUnmounted } from 'vue';
 import { X } from 'lucide-vue-next';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import { namesText } from '../../js/modules/recipe.js';
+import { eqTopic } from '../../js/modules/utils.js';
 import { ensureTopicsArray, addClassTopic, removeClassTopic, clearClassTopics } from '../../js/modules/topicActions.js';
 import RecipeToken from './RecipeToken.vue';
 
@@ -23,8 +24,22 @@ const tokenText = computed(() => {
 
 const input = ref(null);
 const newTopic = ref('');
+// Emnet, der allerede står på listen, når læreren prøver at tilføje det igen
+// ("eu", når "EU" står der). Før blev feltet tømt uden et ord, og det så ud,
+// som om emnet var tilføjet (142. gennemsyn, småting (o)).
+const duplicate = ref('');
+watch(newTopic, () => { duplicate.value = ''; });
 function add() {
-    addClassTopic(newTopic.value);
+    const text = newTopic.value.trim();
+    if (!addClassTopic(text)) {
+        // Samme sammenligning som addClassTopic (eqTopic: store/små bogstaver og NFC).
+        const same = topics.value.find(t => eqTopic(t, text));
+        if (same !== undefined) {
+            duplicate.value = String(same);
+            input.value?.focus();
+            return;
+        }
+    }
     newTopic.value = '';
     input.value?.focus();
 }
@@ -68,6 +83,7 @@ onUnmounted(() => clearTimeout(timer));
                    placeholder="Skriv et emne" aria-label="Nyt emne" maxlength="60">
             <button type="submit" class="recipe-topics__addbtn" :disabled="!newTopic.trim()">Tilføj</button>
         </form>
+        <span v-if="duplicate" class="recipe-pop-note" role="status">"{{ duplicate }}" står der allerede.</span>
         <span v-for="(t, i) in topics" :key="t" class="recipe-topics__row">
             <span class="recipe-topics__name">{{ t }}</span>
             <button type="button" class="recipe-topics__x" :aria-label="`Fjern ${t}`" :title="`Fjern ${t}`" @click="remove(i)"><X :size="14" /></button>

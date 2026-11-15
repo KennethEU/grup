@@ -99,6 +99,7 @@ for (const [label, text, skipped] of [
         await expect(page.locator('.lectio-badge')).toContainText('Lectio-liste genkendt: 29 elever');
         await expect(page.locator('.lectio-badge')).toContainText(skipped);
         await page.getByRole('button', { name: /Opret klasse/i }).click();
+        await expect(page.locator('.paste-preview')).toHaveCount(0, { timeout: 30000 });
         await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
 
         const columns = await page.evaluate(() => [...(window as any).appDebug.state.currentClass.columns]);
@@ -326,4 +327,40 @@ test('udgangene: udskrift, Excel og Kopiér → Gendan med emner, matrix og frav
     expect(roundtrip.bound).toBe(25);
     expect(roundtrip.absent).toBe(3);
     expect(presentNames).toHaveLength(24);
+});
+
+// Udsnittet "Sådan bliver klassen" og kolonnenavne uden flueben (Kenneth
+// 14.–15/11 2026). Klassen står under feltet, som den bliver; importen afgør
+// selv, om der er kolonnenavne, og en titel over listen springes over.
+test('importen viser klassen, før den oprettes, og afgør selv kolonnenavnene', async ({ page }) => {
+    await gotoAppReady(page);
+    await page.getByRole('button', { name: 'Indsæt klasseliste fra Excel / Sheets' }).click();
+    await page.getByRole('button', { name: 'Indsæt tekst / Excel' }).click();
+    await page.getByPlaceholder('F.eks. 1.g Dansk').fill('Udsnit E2E');
+    const box = page.locator('.paste-preview');
+
+    // Ingen flueben for overskrifter længere.
+    await expect(page.locator('.import-container .checkbox-label')).toHaveCount(0);
+
+    // Bare navne: første linje er en elev.
+    await page.locator('textarea:visible').first().fill('Anna Holm\nBo Lund\nCarla Dam');
+    await expect(box).toContainText('3 elever · kolonnen Navn');
+    await expect(box).toContainText('ingen kolonnenavne i teksten');
+
+    // En titel over en liste med kolonnenavne: titlen springes over.
+    await page.locator('textarea:visible').first().fill(
+        'Klasse 2bx elevliste\nNavn\tKøn\tNiveau\nAnna Holm\tPige\tHøj\nBo Lund\tDreng\tLav\nCarla Dam\tPige\tMiddel');
+    await expect(box).toContainText('3 elever · kolonnerne Navn, Køn, Niveau');
+    await expect(box).toContainText('Kolonnenavnene er taget fra teksten');
+    await expect(box).toContainText('"Klasse 2bx elevliste") er sprunget over');
+    await expect(box.locator('tbody tr')).toHaveCount(3);
+
+    // Og klassen bliver præcis det, udsnittet viste.
+    await page.getByRole('button', { name: /Opret klasse/i }).click();
+    await expect(page.locator('.paste-preview')).toHaveCount(0, { timeout: 30000 });
+    await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+    const columns = await page.evaluate(() => [...(window as any).appDebug.state.currentClass.columns]);
+    expect(columns).toEqual(['Navn', 'Køn', 'Niveau']);
+    const names = (await classData(page)).map((r: any) => r.Navn);
+    expect(names).toEqual(['Anna Holm', 'Bo Lund', 'Carla Dam']);
 });

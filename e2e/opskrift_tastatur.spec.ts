@@ -38,6 +38,29 @@ test('et fjernet emne giver fokus videre til næste emnes kryds', async ({ page 
     await expect(pop.getByRole('textbox', { name: 'Nyt emne' })).toBeFocused();
 });
 
+test('et emne, der står der i forvejen, siges højt — og teksten bliver stående', async ({ page }) => {
+    // 142. gennemsyn, småting (o): "eu", når "EU" står der, tømte feltet uden
+    // et ord, så det så ud, som om emnet var tilføjet.
+    await createClassAndGoToGroups(page);
+    await addTopics(page, ['EU']);
+    const dialog = await openRecipe(page);
+    await dialog.locator('.rtok__btn[aria-label^="Emner:"]').click();
+    const pop = dialog.locator('.rtok__pop');
+    const input = pop.getByRole('textbox', { name: 'Nyt emne' });
+    await input.fill('eu');
+    await input.press('Enter');
+    await expect(pop.getByRole('status')).toHaveText('"EU" står der allerede.');
+    await expect(input).toHaveValue('eu');
+    await expect(input).toBeFocused();
+    await expect(pop.locator('.recipe-topics__name')).toHaveCount(1);
+    // Beskeden går, så snart læreren retter i feltet; et nyt emne tilføjes som før.
+    await input.fill('Nato');
+    await expect(pop.getByRole('status')).toHaveCount(0);
+    await input.press('Enter');
+    await expect(input).toHaveValue('');
+    await expect(pop.locator('.recipe-topics__name')).toHaveCount(2);
+});
+
 test('"Flyt ned" to gange flytter reglen to pladser', async ({ page }) => {
     await createClass(page, 'Fire kolonner', CSV_FOUR);
     await goToGroups(page);

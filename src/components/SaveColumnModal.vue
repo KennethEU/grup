@@ -27,10 +27,8 @@ const willOverwrite = computed(() => {
         && state.currentClass.columns.includes(n);
 });
 
-// Grupperne tages fra den fane der er FREMME, ikke fra lastGeneratedGroups.
-// Den sidste kan være forældet, hvis læreren har skiftet fane uden at danne
-// grupper igen — og så ville kolonnen gemme en anden fordeling end den, hun
-// står og kigger på.
+// Grupperne tages fra den fane der er FREMME — det er den fordeling, læreren
+// står og kigger på (samme regel som handleSaveAsColumn i groupActions.js).
 const isMatrix = computed(() => state.activeView === 'matrix');
 const topicPrefix = computed(() => isMatrix.value ? 'M_' : 'S_');
 const sourceGroups = computed(() => {

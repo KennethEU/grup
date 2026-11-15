@@ -372,7 +372,6 @@ export function restoreSession(sessionId) {
 
     // 3. Opdater State
     state.storedStandardGroups = restoredStandardGroups;
-    state.lastGeneratedGroups = restoredStandardGroups;
 
     // Sync klasse-niveau emneliste med de restorede gruppe-topics for at undgå
     // visuel inkonsistens (badges siger X, dropdown siger Y). Brugerens nuværende

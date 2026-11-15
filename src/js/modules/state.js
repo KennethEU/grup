@@ -32,7 +32,6 @@ const _rawState = {
     currentClass: null,
     storedStandardGroups: null,
     storedMatrixGroups: null,
-    lastGeneratedGroups: null,
 
     // UI State
     lastClassIndex: 0,

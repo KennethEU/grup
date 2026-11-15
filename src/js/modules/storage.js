@@ -262,7 +262,6 @@ export function adoptForeignGroups(filename) {
     if (saved.matrix) hydrateGroupTopics(saved.matrix, 'M_');
     state.storedStandardGroups = saved.standard || null;
     state.storedMatrixGroups = saved.matrix || null;
-    state.lastGeneratedGroups = saved.standard || null;
     state.matrixGroupsStale = !!(saved.matrixStale
         && Array.isArray(saved.matrix) && saved.matrix.length > 0);
     state.matrixSourceFingerprint = null;

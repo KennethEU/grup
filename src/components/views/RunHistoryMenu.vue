@@ -62,6 +62,9 @@ function countLabel(run) {
         return groupCountText(run.groupCount);
     }
     if (!run.hasMatrix) return 'Ingen matrix i denne kørsel';
+    // En forældet matrix hører til andre stamgrupper og kommer tilbage som
+    // "skal dannes forfra" — kortene viser den, men den må ikke ligne en gyldig.
+    if (run.matrixStale) return `${run.matrixGroupCount} matrixgrupper (forældet)`;
     return `${run.matrixGroupCount} matrixgrupper`;
 }
 
@@ -87,15 +90,38 @@ function onlyHiddenSetChanges(run) {
     return !touches(run.changes[activeSet.value]) && touches(run.changes[hiddenSet.value]);
 }
 
+/**
+ * Bytter et klik en GYLDIG matrix ud med en, der skal dannes igen?
+ *
+ * En kørsel, hvis matrix var forældet, da den blev lagt til side, bringer den
+ * forældet tilbage (restoreRun, 142. gennemsyn). Står læreren i dag med en
+ * brugbar matrix, mister hun den altså ved et klik — også når matrixgrupperne
+ * er de samme, for det er flaget, ikke fordelingen, der skifter (155).
+ */
+function matrixTurnsStale(run) {
+    return !!(run && run.hasMatrix && run.matrixStale && !reactiveState.matrixGroupsStale);
+}
+
+const STALE_TAIL = 'Matrixen kommer tilbage forældet og skal dannes igen.';
+
 /** Én sætning om hvad et klik gør ved begge sæt. */
 function changeLabel(run) {
     if (!run || !run.changes) return '';
     const inActive = touches(run.changes[activeSet.value]);
     const inHidden = touches(run.changes[hiddenSet.value]);
-    if (!inActive && !inHidden) return 'Ingen forskel — magen til det du står med nu.';
-    if (inActive && inHidden) return `Henter du den, ændres både ${SET_LABELS.standard} og ${SET_LABELS.matrix}.`;
-    if (inActive) return `Henter du den, ændres ${SET_LABELS[activeSet.value]}.`;
-    return `Ser ens ud her — forskellen ligger i ${SET_LABELS[hiddenSet.value]}.`;
+    // Kun i stamvisningen: i matrixvisningen siger linjen over kortene det
+    // allerede (previewShowsStaleMatrix i GroupResultsPanel.vue), og to
+    // beskeder om samme sag er støj.
+    const staleTail = activeSet.value === 'standard' && matrixTurnsStale(run);
+    if (!inActive && !inHidden) {
+        return staleTail ? `Grupperne er magen til dem, du står med nu. ${STALE_TAIL}`
+            : 'Ingen forskel — magen til det du står med nu.';
+    }
+    let text;
+    if (inActive && inHidden) text = `Henter du den, ændres både ${SET_LABELS.standard} og ${SET_LABELS.matrix}.`;
+    else if (inActive) text = `Henter du den, ændres ${SET_LABELS[activeSet.value]}.`;
+    else text = `Ser ens ud her — forskellen ligger i ${SET_LABELS[hiddenSet.value]}.`;
+    return staleTail ? `${text} ${STALE_TAIL}` : text;
 }
 
 // ─── Forhåndsvisning ────────────────────────────────────────────────────────

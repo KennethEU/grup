@@ -623,6 +623,9 @@ test('et åbent vindue lukkes, når klassen slettes i den anden fane', async ({ 
     await tabA.bringToFront();
     await tabA.locator('#rank-btn').click();
     await expect(tabA.locator('.modal-overlay')).toHaveCount(1);
+    // Vinduet gør siden bagved inert — tjekkes, så "levende igen" længere
+    // nede beviser noget (145. gennemsyn).
+    await expect(tabA.locator('[inert]:not([data-modal-keep])')).not.toHaveCount(0);
 
     await tabB.bringToFront();
     await deleteClass(tabB, '2a To Faner');

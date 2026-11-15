@@ -5,6 +5,7 @@ import { autoSave } from './classActions.js';
 import { modalActions } from './modalState.js';
 import { handleGenerate as _handleGenerate } from './generation.js';
 import { cancelPickUp } from '../../composables/useDragDrop.js';
+import { UI_NAMES } from './beta.js';
 
 export function handleGenerate() {
     _handleGenerate();
@@ -21,7 +22,6 @@ export function handleGlobalLock() {
 
     groups.forEach(g => g.locked = newState);
 
-    state.lastGeneratedGroups = groups;
     storage.saveGroupsToStorage();
 }
 
@@ -145,8 +145,15 @@ export function toggleTags() {
 }
 
 export function handleSaveAsColumn() {
-    if (!state.currentClass || !state.lastGeneratedGroups) {
-        if (window.notifyInfo) window.notifyInfo("Du skal generere grupper først!");
+    // Grupperne i den fane, der er FREMME — det er dem, vinduet gemmer
+    // (SaveColumnModal.vue). Før spurgte vi en fælles "sidst dannede" værdi,
+    // som både stam- og matrixrunden skrev i, og som ingen andre læste (154.).
+    const isMatrix = state.activeView === 'matrix';
+    const groups = isMatrix ? state.storedMatrixGroups : state.storedStandardGroups;
+    if (!state.currentClass || !Array.isArray(groups) || groups.length === 0) {
+        if (window.notifyInfo) window.notifyInfo(isMatrix
+            ? `Tryk ${UI_NAMES.generateMatrix} først, så der er matrixgrupper at gemme.`
+            : `Tryk ${UI_NAMES.generate} først, så der er stamgrupper at gemme.`);
         return;
     }
     if (staleMatrixBlocked()) return;

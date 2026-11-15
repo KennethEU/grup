@@ -1,4 +1,4 @@
-import { normalizeImportHeaders } from './importData.js';
+import { readClassText } from './importData.js';
 
 // py_bridge.js — klasserne i localStorage: oprette, læse, gemme, omdøbe,
 // slette, og importen af en elevliste.
@@ -8,7 +8,7 @@ import { normalizeImportHeaders } from './importData.js';
 // dannes nu af motoren i motor/engine (se nextEngine.js). `pyBridge` og
 // `isReady` er beholdt, fordi resten af appen og testene bruger dem.
 
-import { parseCSV, stripEmptyColumns, ensureRowIds, isInternalField, columnsOfRows, nfc } from './utils.js';
+import { ensureRowIds, isInternalField, columnsOfRows } from './utils.js';
 import { CLASSES_KEY, UNREADABLE_CLASSES_KEY } from './storageKeys.js';
 import { removeLegacyClassData, isQuotaError } from './migrateStorage.js';
 
@@ -579,57 +579,12 @@ class ClassStore {
 
     createClass(name, csvContent, hasHeaders = true) {
         try {
-            // RFC 4180-parser: klarer citerede felter over flere linjer,
-            // skilletegn inde i felter og dobbelte anførselstegn.
-            // NFC før alt andet: "å" skrevet som a + ring (typisk kopieret ud af
-            // en PDF) gemmes som det ene tegn, et dansk tastatur skriver. Ellers
-            // bliver "Århus" og "Århus" to værdier i hver regel og hver liste.
-            const parsed = parseCSV(nfc(csvContent));
-            if (parsed.length === 0) return { error: 'Tom fil' };
-
-            // Excel-filer har næsten altid et "brugt område" der er bredere end
-            // dataene, så importen slæbte en stribe navnløse tomme kolonner med.
-            // Fjern dem FØR overskrifterne udledes — ellers bliver en tom
-            // kolonne længst til venstre valgt som ID-kolonne, og så mangler
-            // ALLE elever et ID ved gruppedannelse.
-            const { rows, removed: emptyColumnsRemoved } = stripEmptyColumns(parsed);
-            if (rows.length === 0 || rows[0].length === 0) return { error: 'Tom fil' };
-
-            // Find den bredeste række, så kolonner ikke tabes tavst, når en
-            // senere række har flere celler end den første.
-            let maxCols = 0;
-            for (const r of rows) if (r.length > maxCols) maxCols = r.length;
-
-            let headers;
-            let dataRows;
-            if (hasHeaders) {
-                headers = rows[0].slice();
-                dataRows = rows.slice(1);
-            } else {
-                headers = ['Navn'];
-                for (let i = 1; i < maxCols; i++) headers.push(`Info ${i}`);
-                dataRows = rows;
-            }
-
-            // Fyld overskrifterne op til den bredeste række, så ekstra celler overlever.
-            while (headers.length < maxCols) headers.push(`Info ${headers.length}`);
-
-            // Excel/CSV-overskrifter er brugerdata, aldrig interne programfelter.
-            const originalHeaders = headers;
-            headers = normalizeImportHeaders(headers);
-            const renamedHeaders = headers.filter((header, index) => header !== String(originalHeaders[index] ?? '').trim());
-
-            if (dataRows.length > MAX_ROWS_PER_CLASS) {
-                return { error: `For mange rækker (${dataRows.length}). Maks ${MAX_ROWS_PER_CLASS} elever pr. klasse.` };
-            }
-
-            const data = dataRows.map(cols => {
-                const row = {};
-                headers.forEach((h, idx) => {
-                    row[h] = cols[idx] !== undefined ? cols[idx] : '';
-                });
-                return row;
-            });
+            // Læsningen af teksten (CSV, overskrifter, advarsler) bor i
+            // readClassText() i importData.js, så importens udsnit ("Sådan
+            // bliver klassen") viser præcis det, der bliver oprettet.
+            const read = readClassText(csvContent, hasHeaders, MAX_ROWS_PER_CLASS);
+            if (read.error) return { error: read.error };
+            const { headers, data, warnings } = read;
 
             // Hver elev får sin egen interne identitet med det samme. Derfor er
             // hverken et tomt eller et gentaget navn længere et problem: to
@@ -664,76 +619,6 @@ class ClassStore {
             }
             this._seenModified.set(finalName, createStamp);
             this._invalidateClassesCache();
-
-            // Advarsler der ikke stopper importen, men vises, så læreren kan
-            // rette data lige efter.
-            const warnings = [];
-            if (parsed.unclosedQuote) {
-                warnings.push('Filen har et anførselstegn (") i starten af en celle, der aldrig bliver lukket. ' +
-                    'Alt efter det blev læst som én lang celle, så der mangler sandsynligvis elever. Ret tegnet i filen og importér igen.');
-            }
-            if (renamedHeaders.length) {
-                warnings.push(`Kolonnenavne blev omdøbt for at bevare alle data og undgå interne feltnavne: ${renamedHeaders.join(', ')}.`);
-            }
-
-            // 0) Tomme kolonner fra Excels oppustede "brugte område" er fjernet.
-            // Sig det højt — ellers tror læreren at der mangler noget.
-            if (emptyColumnsRemoved > 0) {
-                warnings.push(`${emptyColumnsRemoved} helt ${emptyColumnsRemoved === 1 ? 'tom kolonne' : 'tomme kolonner'} blev sprunget over ved importen. ` +
-                    `Det er normalt for Excel-filer og betyder ikke at der mangler data.`);
-            }
-
-            // 0b) Overskriftsrækken har ÉN udfyldt celle, mens resten af arket
-            // har flere. Det er mønstret for en titel-linje ("Klasse 1a —
-            // elevliste") øverst i et Excel-ark: så bliver titlen læst som
-            // kolonnenavne, den rigtige overskriftsrække bliver til en "elev",
-            // og alle kolonner hedder "Info 1", "Info 2" …
-            //
-            // Der advares kun — der rettes ikke automatisk. En fil hvor kun
-            // første kolonne HAR en overskrift ser strukturelt fuldstændig
-            // ens ud, og at springe linjen over dér ville æde en rigtig elev.
-            if (hasHeaders && maxCols >= 2 && rows.length > 2) {
-                const filled = (r) => r.filter(c => String(c ?? '').trim() !== '').length;
-                const bodyWithSeveral = rows.slice(1).filter(r => filled(r) >= 2).length;
-                if (filled(rows[0]) === 1 && bodyWithSeveral >= 2) {
-                    const title = String(rows[0].find(c => String(c ?? '').trim() !== '') ?? '').trim();
-                    warnings.push(`Bemærk: første linje ("${title}") har kun én udfyldt celle, mens ` +
-                        `resten af arket har flere kolonner. Er det en overskrift over regnearket — ` +
-                        `og ikke kolonnenavne — så er kolonnerne læst forkert. Slet linjen i filen ` +
-                        `og importér igen.`);
-                }
-            }
-
-            // 1) Tomme celler i visningskolonnen. Ikke længere en fejl — hver
-            // elev har sit eget _rowId, så gruppedannelsen kører uanset. Men
-            // eleven ville stå uden navn på gruppekortet, så det er værd at
-            // nævne. Dubletter nævnes IKKE: to elever må gerne hedde det samme.
-            const displayCol = headers[0];
-            let blankNames = 0;
-            for (const row of data) {
-                if (String(row[displayCol] ?? '').trim() === '') blankNames++;
-            }
-            if (blankNames > 0) {
-                warnings.push(blankNames === 1
-                    ? `Bemærk: 1 række har ingen værdi i "${displayCol}" og vil stå uden navn i grupperne.`
-                    : `Bemærk: ${blankNames} rækker har ingen værdi i "${displayCol}" og vil stå uden navn i grupperne.`);
-            }
-
-            // 2) Uens rækker: nogle rækker har FLERE celler end overskriften.
-            // Næsten altid et komma brugt både som skilletegn OG som decimal
-            // (fx "7,5"), som tavst deler karakterer ud i ekstra kolonner.
-            // Måles på `parsed` (FØR tomme kolonner blev fjernet) — stripEmptyColumns
-            // gør alle rækker lige lange, så en måling på `rows` ville aldrig give udslag.
-            if (hasHeaders) {
-                const headerCount = parsed[0].length;
-                const ragged = parsed.slice(1).filter(r => r.length > headerCount).length;
-                if (ragged > 0) {
-                    warnings.push(`Bemærk: ${ragged} ${ragged === 1 ? 'række har' : 'rækker har'} flere ` +
-                        `kolonner end overskrifterne. Det sker ofte når komma bruges både som ` +
-                        `skilletegn OG i decimaltal (fx "7,5"). Prøv at gemme filen med semikolon (;) ` +
-                        `som skilletegn — så bevares decimaltallene.`);
-                }
-            }
 
             const result = { success: true, filename: newClass.filename, rowCount: data.length };
             if (warnings.length) result.warning = warnings.join('\n\n');

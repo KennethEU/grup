@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClass, goToGroups, generateGroups, stepGroupSize, closeRecipe, openRecipe } from './helpers';
+import { createClass, goToGroups, generateGroups, stepGroupSize, closeRecipe, openRecipe, setGroupSize, goToMatrix, goToStandard } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // KØRSELSHISTORIK — de seneste gruppedannelser i fanen.
@@ -13,9 +13,13 @@ import { createClass, goToGroups, generateGroups, stepGroupSize, closeRecipe, op
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 /** Navnene i første gruppekort, som de står på skærmen lige nu. */
+// Uden kort og rækker på vej ud: Vues TransitionGroup lader dem stå i DOM'en
+// et øjeblik efter en ny fordeling. Læst midt i overgangen havde gruppe 1
+// otte navne i stedet for seks (set under 145. gennemsyns sonde, hvor
+// "Den fordeling man forlader …" fejlede af den grund).
 async function group1(page: Page): Promise<string[]> {
-    return await page.locator('.group-card').first()
-        .locator('.member-name-text').allTextContents();
+    return await page.locator('.group-card:not(.group-list-leave-active)').first()
+        .locator('.group-members-list > li:not(.list-leave-active) .member-name-text').allTextContents();
 }
 
 /**
@@ -80,6 +84,9 @@ test('En markering vises ikke i en forhåndsvisning — og kommer tilbage bageft
     await expect(picked).toHaveClass(/picked/);
     const buttonsBefore = await page.locator('.receive-picked-btn').count();
     expect(buttonsBefore).toBeGreaterThan(0);
+    // Knapperne i den markerede række ("Meld fraværende" osv.) — så "ingen"
+    // under forhåndsvisningen beviser noget (145. gennemsyn).
+    await expect(page.locator('.group-card .pick-actions')).toHaveCount(1);
 
     await openRunMenu(page);
     await page.locator('.run-menu .chip').nth(1).hover();
@@ -128,6 +135,7 @@ test('En ny gruppedannelse rydder markeringen', async ({ page }) => {
     const picked = page.locator('.group-card .group-members-list li').first();
     await picked.click();
     await expect(page.locator('.receive-picked-btn').first()).toBeVisible();
+    await expect(page.locator('.group-card .pick-actions')).toHaveCount(1);
 
     await stepGroupSize(page, 1);
     await generateGroups(page);
@@ -582,4 +590,250 @@ test('En hentet kørsel får sine egne noter og mærker tilbage — frem og tilb
     await page.locator('.k-alt').click();
     await expect(page.locator('.run-menu')).toBeHidden();
     expect(await readRecipe()).toEqual(run2);
+});
+
+test('Matrix-runden ændrer ikke, hvad stamgruppernes kørsler siges at være dannet med', async ({ page }) => {
+    // FUNDET 15/11 (141. gennemsyn): stam- og matrixopskriften delte ét felt
+    // (state.groupMode). Bare det at åbne matrix-runden satte det til
+    // matrixens værdi ("size", når matrixen blander "Én fra hver"), og
+    // kørselshistorikken gemte det som stamgruppernes tilstand. Så stod en
+    // kørsel med "3 grupper" i menuen som "3 pr. gruppe", og et klik på den
+    // spurgte, om indstillingerne skulle med, selv om intet var ændret.
+    test.setTimeout(180000);
+    await createClass(page, 'Matrix Kørselstekst');
+    await goToGroups(page);
+    await setGroupSize(page, 3, 'number');
+    await generateGroups(page);
+    await closeRecipe(page);
+
+    await goToMatrix(page);
+    await page.locator('dialog.recipe-dialog[open]').getByRole('button', { name: /^Dan matrixgrupper/ }).click();
+    await expect(page.locator('.group-card').first()).toBeVisible({ timeout: 90000 });
+    await expect(page.locator('dialog[open]')).toHaveCount(0);
+
+    await goToStandard(page);
+    await generateGroups(page);
+    await closeRecipe(page);
+
+    await openRunMenu(page);
+    const chips = page.locator('.run-menu .chip');
+    // Begge tidligere kørsler er dannet med 3 grupper (den første chip er
+    // fordelingen på skærmen og har sin egen tekst).
+    const labels = (await chips.evaluateAll(els => els.map(e => e.getAttribute('aria-label') || '')))
+        .filter(l => l.startsWith('Kørsel'));
+    expect(labels).toHaveLength(2);
+    for (const label of labels) {
+        expect(label).toContain('3 grupper');
+        expect(label).not.toContain('pr. gruppe');
+    }
+    // Intet er ændret siden: den forrige kørsel hentes uden spørgsmål.
+    await chips.nth(1).click();
+    await expect(page.locator('.confirm-box')).toHaveCount(0);
+    await expect(page.locator('.run-menu')).toBeHidden();
+});
+
+test('En kørsel med en forældet matrix kommer tilbage som forældet', async ({ page }) => {
+    // FUNDET 15/11 (142. gennemsyn): kørselshistorikken huskede ikke, at
+    // matrixen var forældet. Stamgrupper A + matrix M, så nye stamgrupper B
+    // (M er nu forældet) og C. Hentede læreren B, kom M tilbage som GYLDIG —
+    // uden "Dan matrixen igen", og med i udskrift og eksport — selvom den var
+    // dannet ud fra A.
+    test.setTimeout(240000);
+    // Læst i tilstanden, ikke i kortene: et kort på vej ud tælles ellers med.
+    const stale = () => page.evaluate(() => (window as any).appDebug.state.matrixGroupsStale);
+    const standard = () => page.evaluate(() => JSON.stringify(
+        ((window as any).appDebug.state.storedStandardGroups || []).map((g: any) => g.members)));
+    const runCount = () => page.evaluate(() => (window as any).appDebug.state._runHistory.length);
+    const settle = () => expect.poll(
+        () => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 90000 }).toBe(false);
+
+    await createClass(page, 'Matrix forældet kørsel');
+    await goToGroups(page);
+    await generateGroups(page);                       // A
+    await settle();
+    await closeRecipe(page);
+
+    await goToMatrix(page);
+    await page.locator('dialog.recipe-dialog[open]').getByRole('button', { name: /^Dan matrixgrupper/ }).click();
+    await expect.poll(stale, { timeout: 90000 }).toBe(false);
+    await settle();
+    await expect(page.locator('dialog[open]')).toHaveCount(0);
+
+    await goToStandard(page);
+    await stepGroupSize(page, 1);
+    let before = await runCount();
+    await generateGroups(page);                       // B — M er nu forældet
+    await expect.poll(runCount, { timeout: 90000 }).toBe(before + 1);
+    await settle();
+    expect(await stale()).toBe(true);
+    const b = await standard();
+
+    await stepGroupSize(page, 1);
+    before = await runCount();
+    await generateGroups(page);                       // C
+    await expect.poll(runCount, { timeout: 90000 }).toBe(before + 1);
+    await settle();
+    expect(await standard()).not.toBe(b);
+    await closeRecipe(page);
+
+    await openRunMenu(page);
+    await loadRun(page, 1);                           // B (chip 0 er "Nu")
+    expect(await standard()).toBe(b);
+    expect(await stale()).toBe(true);
+    await expect(page.locator('.gh-hint', { hasText: 'dannet ud fra de forrige stamgrupper' })).toHaveCount(0); // kun i matrixvisningen
+    await goToMatrix(page);
+    await closeRecipe(page);
+    await expect(page.locator('.gh-hint', { hasText: 'dannet ud fra de forrige stamgrupper' })).toBeVisible();
+
+    // FUNDET 15/11 (143. gennemsyn, (153)): forhåndsvisningen i
+    // matrixvisningen tegnede en kørsels forældede matrix i kortene uden et
+    // ord — kun menuens info-linje sagde "(forældet)". Nu står en linje over
+    // kortene. Hver chip holdes op mod kørslens eget flag i stakken. Først
+    // dannes matrixen igen: står den nuværende selv forældet, siger
+    // opskriftens besked det i forvejen, og linjen holder sig væk.
+    before = await runCount();
+    await page.locator('.gh-hint', { hasText: 'dannet ud fra de forrige stamgrupper' })
+        .getByRole('button', { name: 'Dan matrixen igen' }).click();
+    await expect.poll(stale, { timeout: 90000 }).toBe(false);
+    await expect.poll(runCount, { timeout: 90000 }).toBe(before + 1);
+    await settle();
+    await closeRecipe(page);
+    const flags: boolean[] = await page.evaluate(() => {
+        const s = (window as any).appDebug.state;
+        const fn = s.currentClass?.filename || null;
+        return s._runHistory.filter((r: any) => r.classFile === fn)
+            .map((r: any) => r.matrixStale === true && Array.isArray(r.matrix) && r.matrix.length > 0);
+    });
+    expect(flags).toContain(true);
+    expect(flags).toContain(false);
+    const note = page.locator('.preview-stale-note');
+    await openRunMenu(page);
+    for (let i = 0; i < flags.length; i++) {
+        await page.locator('.run-menu .chip').nth(i + 1).hover();   // chip 0 er "Nu"
+        if (flags[i]) await expect(note).toBeVisible();
+        else await expect(note).toHaveCount(0);
+    }
+    // "Nu" er ingen forhåndsvisning — matrixens egen besked står i opskriften.
+    await page.locator('.run-menu .chip-now').hover();
+    await expect(note).toHaveCount(0);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.run-menu')).toBeHidden();
+
+    // FUNDET 15/11 (144. gennemsyn, (155)): i STAMVISNINGEN sagde linjen under
+    // chippene ikke, at en kørsel med en forældet matrix bytter den gyldige
+    // matrix ud med en, der skal dannes igen. Nu siger den det — kun når den
+    // nuværende matrix er gyldig (her: lige dannet igen).
+    const tail = 'Matrixen kommer tilbage forældet';
+    const delta = page.locator('.run-menu .run-delta');
+    await goToStandard(page);
+    await closeRecipe(page);
+    expect(await stale()).toBe(false);
+    await openRunMenu(page);
+    // Chippens aria-label bærer samme sætning og afhænger ikke af hover —
+    // et "ikke"-tjek på linjen kunne bestå, før linjen nåede at skifte.
+    for (let i = 0; i < flags.length; i++) {
+        const chip = page.locator('.run-menu .chip').nth(i + 1);
+        await chip.hover();
+        if (flags[i]) {
+            await expect(delta).toContainText(tail);
+            await expect(chip).toHaveAttribute('aria-label', new RegExp(tail));
+        } else {
+            await expect(chip).not.toHaveAttribute('aria-label', new RegExp(tail));
+        }
+    }
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.run-menu')).toBeHidden();
+    // I matrixvisningen siger linjen over kortene det — ikke også linjen her.
+    await goToMatrix(page);
+    await closeRecipe(page);
+    await openRunMenu(page);
+    const matrixChip = page.locator('.run-menu .chip').nth(1 + flags.indexOf(true));
+    await matrixChip.hover();
+    await expect(note).toBeVisible();
+    await expect(matrixChip).not.toHaveAttribute('aria-label', new RegExp(tail));
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.run-menu')).toBeHidden();
+
+    // Er den NUVÆRENDE matrix forældet, og står beskeden om det over kortene,
+    // holder linjen sig væk. Lukker læreren beskeden med krydset, er linjen
+    // det eneste, der siger det — så skal den stå der.
+    await goToStandard(page);
+    await stepGroupSize(page, 1);
+    await generateGroups(page);                       // nye stamgrupper: matrixen er forældet
+    await expect.poll(stale, { timeout: 90000 }).toBe(true);   // stakken er fuld: tæl ikke kørsler
+    await settle();
+    await closeRecipe(page);
+    // Den nuværende matrix er selv forældet: et klik taber ingen gyldig
+    // matrix, så stamvisningens linje siger intet om det (155).
+    await openRunMenu(page);
+    const chipCount = await page.locator('.run-menu .chip').count();
+    for (let i = 1; i < chipCount; i++) {
+        await expect(page.locator('.run-menu .chip').nth(i)).not.toHaveAttribute('aria-label', new RegExp(tail));
+    }
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.run-menu')).toBeHidden();
+    await goToMatrix(page);
+    await closeRecipe(page);
+    expect(await stale()).toBe(true);
+    const staleHint = page.locator('.gh-hint', { hasText: 'dannet ud fra de forrige stamgrupper' });
+    await expect(staleHint).toBeVisible();
+    const flagsNow: boolean[] = await page.evaluate(() => {
+        const s = (window as any).appDebug.state;
+        const fn = s.currentClass?.filename || null;
+        return s._runHistory.filter((r: any) => r.classFile === fn)
+            .map((r: any) => r.matrixStale === true && Array.isArray(r.matrix) && r.matrix.length > 0);
+    });
+    expect(flagsNow).toContain(true);
+    const staleChip = 1 + flagsNow.indexOf(true);
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(staleChip).hover();
+    await expect(note).toHaveCount(0);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.run-menu')).toBeHidden();
+    await staleHint.getByRole('button', { name: 'Luk advarsel' }).click();
+    await expect(staleHint).toHaveCount(0);
+    await openRunMenu(page);
+    await page.locator('.run-menu .chip').nth(staleChip).hover();
+    await expect(note).toBeVisible();
+});
+
+test('En matrixrunde ændrer ikke, hvilken størrelse stamgruppernes kørsel siges at være dannet med', async ({ page }) => {
+    // FUNDET 15/11 (142. gennemsyn): markClean() tog HELE inputtet ved hver
+    // dannelse. Rettede læreren stamgruppernes størrelse og dannede kun
+    // matrixen, påstod kørslen bagefter at være dannet med den nye størrelse.
+    test.setTimeout(240000);
+    const runCount = () => page.evaluate(() => (window as any).appDebug.state._runHistory.length);
+    const settle = () => expect.poll(
+        () => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 90000 }).toBe(false);
+    const target = () => page.evaluate(() => String((window as any).appDebug.state.currentClass.settings.groupTarget));
+
+    await createClass(page, 'Matrix stamstørrelse');
+    await goToGroups(page);
+    await generateGroups(page);                       // A
+    await settle();
+    const used = await target();
+    await stepGroupSize(page, 1);                     // rettet, men ikke dannet
+    await expect.poll(target).not.toBe(used);
+    const changed = await target();
+    await closeRecipe(page);
+
+    await goToMatrix(page);
+    let before = await runCount();
+    await page.locator('dialog.recipe-dialog[open]').getByRole('button', { name: /^Dan matrixgrupper/ }).click();
+    await expect.poll(runCount, { timeout: 90000 }).toBe(before + 1);
+    await settle();
+    await expect(page.locator('dialog[open]')).toHaveCount(0);
+
+    await goToStandard(page);
+    before = await runCount();
+    await generateGroups(page);                       // B med den nye størrelse
+    await expect.poll(runCount, { timeout: 90000 }).toBe(before + 1);
+    await settle();
+    await closeRecipe(page);
+
+    await openRunMenu(page);
+    // Kørsel 1 er A + M: dannet med den GAMLE størrelse.
+    const label = await page.locator('.run-menu .chip').nth(1).getAttribute('aria-label');
+    expect(label).toContain(`${used} pr. gruppe`);
+    expect(label).not.toContain(`${changed} pr. gruppe`);
 });

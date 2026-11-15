@@ -57,6 +57,10 @@ export async function createClass(page: Page, name = 'Test Klasse E2E', csv: str
 
     await page.locator('textarea:visible').first().fill(csv);
     await page.getByRole('button', { name: /Opret klasse/i }).click();
+    // Udsnittet "Sådan bliver klassen" har selv en "Navn"-overskrift; det
+    // forsvinder, når klassen er oprettet (feltet ryddes). Vent på det først,
+    // så tjekket herunder ser elevlisten og ikke udsnittet.
+    await expect(page.locator('.paste-preview')).toHaveCount(0, { timeout: 30000 });
 
     // Klassens tabel viser, at klassen er indlæst. 30 sek.: med 3 browsere ×
     // 16 tests side om side kan tegningen tage langt over de sædvanlige 10.

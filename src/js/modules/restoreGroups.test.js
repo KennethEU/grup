@@ -606,7 +606,6 @@ describe('applyPlan', () => {
             { name: 'Group 1', members: ['r1', 'r2'], locked: false, topic: null },
             { name: 'Group 6', members: ['r3'], locked: false, topic: null },
         ]);
-        expect(state.lastGeneratedGroups).toBe(state.storedStandardGroups);
     });
 
     it('markerer de øvrige elever fraværende — og kun dem', () => {

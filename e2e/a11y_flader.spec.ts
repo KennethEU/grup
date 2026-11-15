@@ -274,6 +274,9 @@ test('Tastaturet kan forlade en kørende afspilning — og så stopper den', asy
 
     await page.locator('.replay-anchor .action-pill').click();
     await page.locator('.replay-menu .start').click();
+    // Først: afspilningen står i tilstanden. Ellers ville "false" nedenfor
+    // også bestå, hvis feltet var omdøbt (144. gennemsyn, (156)).
+    await expect.poll(() => page.evaluate(() => !!(window as any).appDebug?.state?.replay)).toBe(true);
 
     // Målt før rettelsen: menuen blev stående, afspilningen kørte videre, og
     // skærmen viste NUL gruppekort — mens "Kopiér" lagde alle tre grupper med

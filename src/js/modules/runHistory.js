@@ -191,6 +191,16 @@ function snapshotData() {
         // ── Inputtet: vises altid, gendannes kun på lærerens ord ──
         ...input,
 
+        // ── Var matrixen forældet, da kørslen blev lagt til side? ──
+        // Efter en ny stamrunde står den gamle matrix tilbage som "skal dannes
+        // forfra" — den hører til de FORRIGE stamgrupper. Uden flaget kunne
+        // restoreRun() ikke se forskel, og en forældet matrix kom tilbage som
+        // gyldig: ingen "Dan matrixen igen", og udskrift og eksport tog den
+        // med (142. gennemsyn). pushRun() kaldes, før en ny dannelse ændrer
+        // flaget, så det er de forladte gruppers.
+        matrixStale: !!state.matrixGroupsStale,
+        matrixSourceFingerprint: state.matrixSourceFingerprint || null,
+
         // ── Kun til visning ──
         presentCount: countPresent(),
 
@@ -365,6 +375,9 @@ export function listRuns() {
             groupCount: (r.standard || []).length,
             matrixGroupCount: (r.matrix || []).length,
             hasMatrix: !!(r.matrix && r.matrix.length),
+            // Matrixen hørte til andre stamgrupper, da kørslen blev lagt til
+            // side, og kommer tilbage som "skal dannes forfra".
+            matrixStale: r.matrixStale === true,
             presentCount: r.presentCount,
             rulesLabel: describeRules(r),
             // Hvad kørslen ændrer i HVERT sæt — se runChanges().
@@ -421,11 +434,45 @@ export function hasManualChanges() {
  * Aftrykket bruges til at opdage manuelle flytninger. Inputtet gemmes her —
  * og ikke i pushRun() — fordi det er NU, det passer til grupperne på skærmen.
  */
-export function markClean() {
+export function markClean(view = null) {
     state._lastGeneratedFingerprint =
         fingerprint(state.storedStandardGroups, state.storedMatrixGroups);
-    state._lastRunInputs = snapshotInputs();
+    const now = snapshotInputs();
+    const before = state._lastRunInputs;
+    // Uden `view` (gendannet kørsel, session eller backup) er HELE skærmen
+    // skiftet ud, og det nuværende input gælder begge sæt. Det samme, når
+    // intet er husket (efter en genindlæsning): så er det nuværende det
+    // bedste, vi ved.
+    if (!view || !before) {
+        state._lastRunInputs = now;
+        return;
+    }
+    // En dannelse laver kun ÉT sæt om. Det andet sæt står uændret og er
+    // stadig dannet med sit gamle input — og det er dét, kørselsmenuen skal
+    // vise ("Fordel Køn · 4 pr. gruppe") og "tag alt med" hente frem. Før
+    // skrev en matrixrunde stamreglerne om til dem, der stod i båndet: rettede
+    // læreren en stamregel og dannede kun matrixen, påstod kørslen at være
+    // dannet med den nye regel, og spørgsmålet ved "tag alt med" sagde ikke,
+    // at rettelsen gik tabt (142. gennemsyn).
+    //
+    // Aftalerne (`separations`) gælder i BEGGE runder og tages altid fra den
+    // nyeste dannelse: en "Undgå hinanden" er et forhold mellem to elever,
+    // ikke en indstilling til én runde, og den nyeste runde har brugt den.
+    const keep = view === 'matrix' ? OWN_FIELDS.standard : OWN_FIELDS.matrix;
+    const next = { ...now };
+    for (const k of keep) next[k] = before[k];
+    state._lastRunInputs = next;
 }
+
+/**
+ * De felter i inputtet, kun den ene runde bruger. `togetherGroups` og
+ * emnelisten sendes ikke til motoren i matrixrunden (se setupSignature i
+ * utils.js), så de hører til stamrunden.
+ */
+const OWN_FIELDS = Object.freeze({
+    standard: ['rules', 'settings', 'groupMode', 'togetherGroups', 'classTopics'],
+    matrix: ['matrixRules', 'matrixSettings'],
+});
 
 /**
  * Som markClean(), men hvor kaldstedet KENDER en del af det input, grupperne
@@ -607,7 +654,6 @@ export function restoreRun(index, alsoSettings = false) {
         ? withFrozenNames(fresh, cloneOrNull(fresh.standard)) : null;
     state.storedMatrixGroups = fresh.matrix
         ? withFrozenNames(fresh, cloneOrNull(fresh.matrix)) : null;
-    state.lastGeneratedGroups = state.storedStandardGroups;
 
     // ── Emnerne ──
     // Klasse-emnelisten FLETTES, den erstattes ikke — læreren kan have
@@ -642,15 +688,21 @@ export function restoreRun(index, alsoSettings = false) {
         state.groupMode = fresh.groupMode || state.groupMode;
     }
 
-    // Matrixen i snapshottet hører til netop disse stamgrupper, så den er
-    // ikke forældet. Havde kørslen ingen matrix, ER den forældet i forhold
-    // til de gendannede stamgrupper. Samme regel som restoreSession().
-    state.matrixGroupsStale = !(fresh.matrix && fresh.matrix.length);
-    // Kørslens matrix hører til kørslens EGNE stamgrupper — begge dele kom fra
-    // samme snapshot. Havde kørslen ingen matrix, er der intet at holde øje med.
-    state.matrixSourceFingerprint = (fresh.matrix && fresh.matrix.length)
-        ? matrixOrigins(state.storedStandardGroups, state.storedMatrixGroups)
-        : null;
+    // Havde kørslen ingen matrix, ER den forældet i forhold til de gendannede
+    // stamgrupper (samme regel som restoreSession()). Ellers gælder det, kørslen
+    // selv huskede: en matrix, der var forældet, da kørslen blev lagt til side,
+    // hører til ANDRE stamgrupper og må ikke komme tilbage som gyldig (142.
+    // gennemsyn). Et snapshot uden feltet (lagt i en fane fra før rettelsen)
+    // behandles som før: matrixen hører til stamgrupperne.
+    const hasMatrix = !!(fresh.matrix && fresh.matrix.length);
+    state.matrixGroupsStale = !hasMatrix || fresh.matrixStale === true;
+    // Kørslens gyldige matrix hører til kørslens EGNE stamgrupper — begge dele
+    // kom fra samme snapshot. En forældet eller manglende matrix har intet at
+    // holde øje med: dén sag ejer matrixGroupsStale (samme som efter en ny
+    // stamrunde i nextEngine.js).
+    state.matrixSourceFingerprint = state.matrixGroupsStale ? null
+        : (fresh.matrixSourceFingerprint
+            || matrixOrigins(state.storedStandardGroups, state.storedMatrixGroups));
 
     // ── Noterne og mærkerne fra kørslens egen dannelse (forslag 88) ──
     // Kørslen får det tilbage, den selv sagde. Om det vises, afgør
@@ -731,4 +783,19 @@ export function previewRunGroups(index, matrix = false) {
     if (!run) return null;
     const groups = matrix ? run.matrix : run.standard;
     return withFrozenNames(run, deepClone(groups || []));
+}
+
+/**
+ * Var matrixen i kørsel nr. `index` forældet, da kørslen blev gemt?
+ *
+ * Forhåndsvisningen i matrixvisningen tegner kørslens matrix i de rigtige
+ * kort. Var den forældet (dannet ud fra tidligere stamgrupper), kommer den
+ * tilbage som "skal dannes igen" (restoreRun) — og så må billedet heller ikke
+ * ligne en gyldig matrix (153. i TODO). Snapshots fra før feltet fandtes
+ * svarer false, som restoreRun også behandler dem.
+ */
+export function previewRunMatrixStale(index) {
+    const fn = state.currentClass?.filename || null;
+    const run = state._runHistory.filter(r => r.classFile === fn)[index];
+    return !!(run && run.matrixStale === true && Array.isArray(run.matrix) && run.matrix.length > 0);
 }

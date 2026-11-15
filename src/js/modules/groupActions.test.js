@@ -226,7 +226,6 @@ describe('staleMatrixBlocked — Kopiér og Gem som kolonne springer en forælde
         window.notifyInfo = info;
         state.storedStandardGroups = [{ name: 'Group 1', members: [{ id: 'r1' }, { id: 'r2' }] }];
         state.storedMatrixGroups = [{ name: 'Group 1', members: [{ id: 'r1' }, { id: 'r3' }] }];
-        state.lastGeneratedGroups = state.storedStandardGroups;
         state.activeView = 'matrix';
         state.matrixGroupsStale = true;
         modalState.showCopyOptions = false;
@@ -267,5 +266,23 @@ describe('staleMatrixBlocked — Kopiér og Gem som kolonne springer en forælde
         state.activeView = 'standard';
         handleSaveAsColumn();
         expect(modalState.showSaveColumn).toBe(true);
+    });
+
+    // 154.: spærringen spørger den fane, der er fremme — ikke en fælles
+    // "sidst dannede" værdi, som stamgrupperne holdt sand i matrixvisningen.
+    it('Gem som kolonne i matrixvisningen uden matrix åbner ikke vinduet', () => {
+        state.storedMatrixGroups = null;
+        state.matrixGroupsStale = false;
+        handleSaveAsColumn();
+        expect(modalState.showSaveColumn).toBe(false);
+        expect(info).toHaveBeenCalledWith(expect.stringContaining('matrixgrupper at gemme'));
+    });
+
+    it('Gem som kolonne i stamvisningen uden stamgrupper åbner ikke vinduet', () => {
+        state.activeView = 'standard';
+        state.storedStandardGroups = [];
+        handleSaveAsColumn();
+        expect(modalState.showSaveColumn).toBe(false);
+        expect(info).toHaveBeenCalledWith(expect.stringContaining('stamgrupper at gemme'));
     });
 });

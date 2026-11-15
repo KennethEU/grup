@@ -595,7 +595,9 @@ test('Skal sammen med to ordstyrere, når 7 kan stå i hver sin af 7 grupper: st
     await expect(dialog.locator('.gh-hint--conflict').filter({ hasText: 'Asta Brink, Bertram Hvid' })).toHaveCount(1);
     await clickGo(page);
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 30000 }).toBe(false);
-    expect(await page.evaluate(() => (window as any).appDebug.nextStats?.status ?? null)).not.toBe('ok');
+    // Motorens eget svar, ikke bare "ikke ok": før blev et umuligt svar
+    // aldrig skrevet i nextStats, så linjen bestod også uden noget svar (144., (156)).
+    expect(await page.evaluate(() => (window as any).appDebug.nextStats?.status ?? null)).toBe('impossible');
     await expect(page.locator('.group-card')).toHaveCount(0);
     await expect(page.locator('.gh-hint--conflict').filter({ hasText: 'flere par i samme gruppe' }).first()).toBeVisible();
 });
@@ -605,9 +607,14 @@ test('hvad blev opfyldt: et mærke pr. regel og aftalerne — væk, når opskrif
     await restoreHardClass(page);
 
     await goToGroups(page);
-    // Før kørslen: ingen mærker.
+    // Før kørslen: ingen mærker fra en kørsel — kun prøvekørslens dæmpede
+    // (trialRun.js, 12/11), én pr. regel og én ved aftalerne. Vent på dem
+    // først: før 145. gennemsyn stod her `.rule-mark` toHaveCount(0), som kun
+    // bestod, fordi tjekket nåede frem før prøvekørslen (500 ms stille + motoren).
     let dialog = await openRecipe(page);
-    await expect(dialog.locator('.rule-mark')).toHaveCount(0);
+    const resultMarks = dialog.locator('.rule-mark:not(.rule-mark--trial)');
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(6, { timeout: 15000 });
+    await expect(resultMarks).toHaveCount(0);
     await clickGo(page);
     await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.isGenerating), { timeout: 30000 }).toBe(false);
     expect(await page.evaluate(() => (window as any).appDebug.nextStats.status)).toBe('ok');
@@ -631,8 +638,11 @@ test('hvad blev opfyldt: et mærke pr. regel og aftalerne — væk, når opskrif
     const goals = lines.filter({ has: page.locator('.recipe__grip') });
     await goals.first().hover();
     await goals.first().getByRole('button', { name: 'Flyt ned' }).click();
-    await expect(dialog.locator('.rule-mark')).toHaveCount(0);
-    await expect(dialog.locator('.recipe__agreed')).toHaveCount(0);
+    await expect(resultMarks).toHaveCount(0);
+    // Prøvekørslen kommer igen for den nye rækkefølge (også ved aftalerne,
+    // hvor "alle holdt" så er prøvekørslens) — og kørslens mærker gør ikke.
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(6, { timeout: 15000 });
+    await expect(resultMarks).toHaveCount(0);
 });
 
 // Kenneth 4/11: "Fordel på … kan ikke gå helt lige op" stod øverst i

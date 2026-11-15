@@ -28,7 +28,7 @@ vi.mock('./storage.js', () => ({
 import {
     pushRun, restoreRun, listRuns, clearRuns, hasRuns,
     hasManualChanges, markClean, describeRules,
-    hasSettingsChanges, settingsChanges, unsavedRecipeChanges, markCleanWithInputs, previewRunGroups, runChanges, MAX_RUNS,
+    hasSettingsChanges, settingsChanges, unsavedRecipeChanges, markCleanWithInputs, previewRunGroups, previewRunMatrixStale, runChanges, MAX_RUNS,
 } from './runHistory.js';
 import { renameColumn, deleteColumn } from './columnActions.js';
 import { setupNotices, beginRun, announce, commitRun, clearSetupNotices } from './setupNotices.js';
@@ -491,6 +491,23 @@ describe('previewRunGroups — kørslen på gruppekortene', () => {
 
         previewRunGroups(0, false)[0].members.push('r3');
         expect(previewRunGroups(0, false)[0].members).toEqual(['r1']);
+    });
+
+    // 153.: kortene i matrixvisningen skal kunne sige, at den forhåndsviste
+    // matrix er forældet — ellers ligner den en gyldig.
+    it('previewRunMatrixStale siger, om kørslens matrix var forældet', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r2', 'r3'] }];
+        state.matrixGroupsStale = true;
+        pushRun();
+        expect(previewRunMatrixStale(0)).toBe(true);
+
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1', 'r3'] }];
+        state.matrixGroupsStale = false;
+        pushRun();
+        expect(previewRunMatrixStale(0)).toBe(false);
+        expect(previewRunMatrixStale(1)).toBe(true);
+        expect(previewRunMatrixStale(5)).toBe(false);
     });
 });
 
@@ -966,5 +983,118 @@ describe('"Sidste dannelse" efter en hentet kørsel (106. gennemsyn)', () => {
         markClean();
         state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }, { name: 'Group 2', members: ['r2'] }];
         expect(setupNotices.last.standard).toHaveLength(2);
+    });
+});
+
+describe('stam- og matrixrunden deler ikke én værdi (142. gennemsyn)', () => {
+    // Stamgrupper A + matrix M. Så dannes stamgrupperne om (B): M er nu
+    // forældet. Henter læreren B igen fra kørselsmenuen, må M ikke komme
+    // tilbage som gyldig — den hører til A, ikke til B.
+    it('en kørsel med en forældet matrix kommer tilbage som forældet', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }, { name: 'Group 2', members: ['r3'] }];
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1', 'r3'] }, { name: 'Group 2', members: ['r2'] }];
+        state.matrixGroupsStale = false;
+        markClean();
+        // Ny stamrunde (B): matrixen bliver stående, men er forældet.
+        pushRun();
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r3'] }, { name: 'Group 2', members: ['r2'] }];
+        state.matrixGroupsStale = true;
+        state.matrixSourceFingerprint = null;
+        markClean('standard');
+        // Endnu en stamrunde (C).
+        pushRun();
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r2', 'r3'] }, { name: 'Group 2', members: ['r1'] }];
+        markClean('standard');
+
+        restoreRun(0);                       // tilbage til B
+        expect(state.storedStandardGroups[0].members).toEqual(['r1', 'r3']);
+        expect(state.matrixGroupsStale).toBe(true);
+        expect(state.matrixSourceFingerprint).toBe(null);
+
+        // restoreRun(0) lagde C øverst: listen er nu [C, B, A].
+        restoreRun(2);                       // og helt tilbage til A: gyldig
+        expect(state.storedStandardGroups[0].members).toEqual(['r1', 'r2']);
+        expect(state.matrixGroupsStale).toBe(false);
+    });
+
+    // Læreren retter en stamregel uden at danne igen, og danner så matrixen.
+    // Stamgrupperne på skærmen er stadig dannet med den GAMLE regel — og det
+    // er dén, kørselsmenuen skal vise og "tag alt med" hente frem.
+    it('en matrixrunde skriver ikke stamgruppernes input om', () => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn', value: '' }];
+        state.currentClass.settings = { groupTarget: '4' };
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+        markClean('standard');
+
+        state.currentClass.rules = [{ type: 'separate', column: 'Klasse', value: '' }];
+        state.currentClass.settings = { groupTarget: '6' };
+        state.currentClass.matrixSettings = { matrixStrategy: 'size', groupTarget: '3' };
+        pushRun();
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+        markClean('matrix');
+
+        expect(state._lastRunInputs.rules[0].column).toBe('Køn');
+        expect(state._lastRunInputs.settings.groupTarget).toBe('4');
+        expect(state._lastRunInputs.matrixSettings.groupTarget).toBe('3');
+
+        // Og omvendt: en stamrunde rører ikke matrixens input.
+        state.currentClass.matrixSettings = { matrixStrategy: 'size', groupTarget: '5' };
+        pushRun();
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r2', 'r1'] }];
+        markClean('standard');
+        expect(state._lastRunInputs.matrixSettings.groupTarget).toBe('3');
+        expect(state._lastRunInputs.settings.groupTarget).toBe('6');
+        expect(describeRules(state._runHistory[0])).toContain('Fordel Køn');
+    });
+
+    // Det læreren mister: stamreglen er rettet, men kun matrixen er dannet
+    // siden. "Ja, tag alt med" skriver rettelsen væk — så skal spørgsmålet
+    // sige det. Før sagde det intet (listen var tom).
+    it('en rettet stamregel er stadig "ikke dannet" efter en matrixrunde', () => {
+        state.currentClass.rules = [{ type: 'distribute', column: 'Køn', value: '' }];
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+        markClean('standard');
+        state.currentClass.rules = [{ type: 'separate', column: 'Klasse', value: '' }];
+        pushRun();
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+        markClean('matrix');
+        expect(unsavedRecipeChanges()).toEqual(['rules']);
+    });
+
+    // Undgå hinanden gælder i BEGGE runder, så den nyeste runde, der brugte
+    // aftalerne, bestemmer: en aftale lavet før en matrixrunde er brugt.
+    it('aftalerne følger den nyeste runde, også en matrixrunde', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
+        markClean('standard');
+        state.currentClass.separations = [{ ids: ['r1', 'r2'] }];
+        pushRun();
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+        markClean('matrix');
+        expect(state._lastRunInputs.separations).toEqual([{ ids: ['r1', 'r2'] }]);
+        expect(unsavedRecipeChanges()).toEqual([]);
+    });
+
+    // Efter en genindlæsning er der intet gemt input (storage.js nulstiller
+    // det). Så er det nuværende det bedste, vi ved — også for den anden runde.
+    it('uden tidligere input tages det nuværende for begge runder', () => {
+        state._lastRunInputs = null;
+        state.currentClass.settings = { groupTarget: '4' };
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+        markClean('matrix');
+        expect(state._lastRunInputs.settings.groupTarget).toBe('4');
+    });
+});
+
+describe('listRuns siger, at en kørsels matrix var forældet (142. gennemsyn)', () => {
+    it('matrixStale følger med i listen', () => {
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }];
+        state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1'] }];
+        state.matrixGroupsStale = true;
+        pushRun();
+        expect(listRuns()[0].matrixStale).toBe(true);
+        state.matrixGroupsStale = false;
+        state.storedStandardGroups = [{ name: 'Group 1', members: ['r2'] }];
+        pushRun();
+        expect(listRuns()[0].matrixStale).toBe(false);
     });
 });

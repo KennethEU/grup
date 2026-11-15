@@ -108,6 +108,21 @@ describe('flyt-til-grup.html (dida.dk/grupper → grup.dk)', () => {
         });
     }
 
+    // Serveren afviser, når dens lager er fuldt (503) eller grænsen er nået
+    // (429) — se routes/grupper-transfer.js. Klasserne må så IKKE markeres som
+    // flyttet: ellers sendes læreren forbi flytningen ved hvert senere besøg.
+    for (const status of [503, 429]) {
+        it(`et afslag (${status}) markerer intet som flyttet og sender ingen videre`, async () => {
+            const storage = fakeStorage(NEW);
+            const fetchImpl = async () => ({ ok: false, status, json: async () => ({ error: 'travlt' }) });
+            const page = run('flyt-til-grup.html', { storage, fetchImpl });
+            await new Promise(r => setTimeout(r, 0));
+            await new Promise(r => setTimeout(r, 0));
+            expect(page.window.redirectedTo).toBeUndefined();
+            expect(storage.getItem('dida_grupper_migrated_to_grup')).toBeNull();
+        });
+    }
+
     it('uden klasser sendes intet — man sendes bare videre', () => {
         const page = run('flyt-til-grup.html', { storage: fakeStorage({ grupdk_classes: '[]' }), fetchImpl: () => { throw new Error('må ikke kaldes'); } });
         expect(page.window.redirectedTo).toBe('https://grup.dk/');

@@ -252,7 +252,8 @@ test('Loftet holder hele vejen: 20 ønskede grupper til 8 elever giver 8 kort �
     await expect(page.locator('.group-card')).toHaveCount(8);
     // Ingen af kortene må være tomme — det var præcis dét, der skete før.
     const emptyCards = await page.locator('.group-card').evaluateAll(
-        (cards) => cards.filter(c => c.querySelectorAll('.student-row, .member-row, li').length === 0).length,
+        // Eleverne er <li> i .group-members-list (.student-row/.member-row fandtes ikke).
+        (cards) => cards.filter(c => c.querySelectorAll('.group-members-list > li').length === 0).length,
     );
     expect(emptyCards).toBe(0);
 });

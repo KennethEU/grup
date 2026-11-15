@@ -260,9 +260,17 @@ export function detectDelimiter(line) {
 export function parseCSV(text) {
     if (!text || !text.trim()) return [];
 
-    // Gæt skilletegnet ud fra første linje. Vi kan ikke dele på '\n' på
-    // forhånd (det er netop det, vi vil undgå), så find første linjeskift
-    // uden for citering.
+    // Gæt skilletegnet ud fra de første linjer. Vi kan ikke dele på '\n' på
+    // forhånd (det er netop det, vi vil undgå), så find linjeskiftene uden
+    // for citering.
+    //
+    // Før så gættet kun på FØRSTE linje. En titel over en liste fra Excel
+    // ("Klasse 2bx elevliste" over rækker med tabulator) har intet
+    // skilletegn, så gættet blev komma, og hver række endte i én celle
+    // (set 15/11 2026, da udsnittet i importen viste det). Nu tælles der i
+    // op til SAMPLE_LINES linjer; rækkerne under titlen bestemmer.
+    const SAMPLE_LINES = 20;
+    let linesSeen = 0;
     let firstLineEnd = -1;
     let inQ = false;
     let atCellStart = true; // kun et " i starten af en celle åbner citering
@@ -275,13 +283,17 @@ export function parseCSV(text) {
         } else if (!inQ) {
             if (ch === '\n') {
                 firstLineEnd = i;
-                break;
+                if (++linesSeen >= SAMPLE_LINES) break;
+                atCellStart = true;
+                continue;
             }
             if (ch === ',' || ch === ';' || ch === '\t') atCellStart = true;
             else if (ch !== ' ' && ch !== '\r') atCellStart = false;
         }
     }
-    const sample = firstLineEnd === -1 ? text : text.slice(0, firstLineEnd);
+    // Færre linjer end SAMPLE_LINES: hele teksten (også sidste linje uden
+    // linjeskift). Ellers de første SAMPLE_LINES linjer.
+    const sample = linesSeen < SAMPLE_LINES ? text : text.slice(0, firstLineEnd);
     const delimiter = detectDelimiter(sample);
 
     // Gennemløb så hele teksten.

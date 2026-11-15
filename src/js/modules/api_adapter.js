@@ -147,7 +147,9 @@ export function initApiAdapter() {
                 // 5. POST /api/classes/paste
                 if (url === '/api/classes/paste' && options.method === 'POST') {
                     const body = JSON.parse(options.body);
-                    const hasHeaders = body.has_headers !== false; // standard: ja
+                    // 'auto': importen afgør selv, om første linje er kolonnenavne
+                    // (looksLikeHeaderRow i importData.js). Ellers standard: ja.
+                    const hasHeaders = body.has_headers === 'auto' ? 'auto' : body.has_headers !== false;
                     const result = pyBridge.createClass(body.name, body.content, hasHeaders);
                     return jsonResponse(result);
                 }

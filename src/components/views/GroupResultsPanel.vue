@@ -11,7 +11,8 @@ import SaveMenu from '../beta/SaveMenu.vue';
 import { Tag, Clipboard, ClipboardPaste, Save, Users, Shuffle, UserPlus, Lock, Trash2, Grid2x2Plus, History, Share2, ChevronDown, Clapperboard } from 'lucide-vue-next';
 import { isDragging, dropOnTrash, pickedMemberId, pickedMemberName, cancelPickUp } from '../../composables/useDragDrop.js';
 import { isModalOpen } from '../../composables/useModalFocus.js';
-import { hasRuns, previewRunGroups } from '../../js/modules/runHistory.js';
+import { hasRuns, previewRunGroups, previewRunMatrixStale } from '../../js/modules/runHistory.js';
+import { hints } from '../../js/modules/hints.js';
 import RunHistoryMenu from './RunHistoryMenu.vue';
 import ReplayMenu from './ReplayMenu.vue';
 import * as replay from '../../js/modules/replay.js';
@@ -230,6 +231,21 @@ const shownGroups = computed(() => {
     }
     return groups.value;
 });
+
+// Viser forhåndsvisningen en FORÆLDET matrix? Kortene ser ud som en gyldig
+// matrix, men kørslen kommer tilbage som "skal dannes igen" og må ikke bruges
+// som den er. Kun menuens info-linje sagde det før (153. i TODO) — og den
+// sidder ved bundbjælken, mens læreren kigger op på kortene.
+// Står opskriftens besked om en forældet matrix lige over kortene
+// (matrixStaleHint i hints.js), siger den det allerede — to advarsler om samme
+// sag er én for meget. Men KUN mens beskeden står der: har læreren lukket den
+// med krydset, er linjen her det eneste, der siger det.
+const staleHintShown = computed(() => hints.value.some(h => h.id === 'hint:matrix-stale'));
+const previewShowsStaleMatrix = computed(() =>
+    props.isMatrix && isPreviewing.value && !replayGroups.value
+    && !staleHintShown.value
+    && shownGroups.value.length > 0
+    && previewRunMatrixStale(reactiveState.previewRunIndex));
 
 // ─── Afspilning af kørslen ──────────────────────────────────────────────────
 const rp = computed(() => reactiveState.replay);
@@ -491,6 +507,11 @@ function onTrashDrop(e) {
                     og "Fortryd" i elevens egen række. Esc fortryder.
                 </template>
             </div>
+            <!-- Forhåndsvisning af en kørsel, hvis matrix var forældet. -->
+            <p v-if="previewShowsStaleMatrix" class="preview-stale-note" role="status">
+                Forældet matrix: den blev dannet ud fra tidligere stamgrupper.
+                Henter du kørslen, skal matrixen dannes igen.
+            </p>
             <!-- Ét gitter for begge visninger. :key skifter med visningen, så
                  gitteret bygges forfra ved et skift (som før, da der stod to).
                  id'erne bruges af stilarket og e2e-testene. -->
@@ -731,6 +752,20 @@ function onTrashDrop(e) {
 .group-grid.isPreviewing {
     pointer-events: none;
     opacity: 0.85;
+}
+
+/* Linjen over kortene, når forhåndsvisningen er en forældet matrix. Samme
+   advarselsfarve som beskederne i opskriften. */
+.preview-stale-note {
+    margin-block: 0 12px;
+    padding-block: 8px;
+    padding-inline: 12px;
+    border-inline-start: 3px solid var(--color-warning);
+    background: var(--color-warning-bg);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: var(--font-sm);
+    text-wrap: pretty;
 }
 
 /* Bjælkens placering, størrelse og udseende står i BetaGroupsTab.vue

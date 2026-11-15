@@ -181,7 +181,6 @@ const closeOpenClass = () => {
     // og lageret under den slettede klasse er tomt nu.
     state.storedStandardGroups = null;
     state.storedMatrixGroups = null;
-    state.lastGeneratedGroups = null;
     state.currentClass = null;
     // Uden en åben klasse er der ingen emner at foreslå — den slettede
     // klasses emner må ikke blive stående i siden.
@@ -327,7 +326,6 @@ const selectClass = async (filename, index, goToStudents = false) => {
             if (saved.matrix) storage.hydrateGroupTopics(saved.matrix, 'M_');
             state.storedStandardGroups = saved.standard;
             state.storedMatrixGroups = saved.matrix;
-            state.lastGeneratedGroups = saved.standard;
             // Flaget blev nulstillet i clearClassMemory() ovenfor — det må
             // aldrig følge med fra den FORRIGE klasse. Her sættes det fra
             // DENNE klasses egne gemte grupper (se saveGroupsToStorage()).
@@ -337,7 +335,6 @@ const selectClass = async (filename, index, goToStudents = false) => {
         } else {
             state.storedStandardGroups = null;
             state.storedMatrixGroups = null;
-            state.lastGeneratedGroups = null;
         }
         // Migration: klassens emneliste uden dubletter ("Århus" tastet og
         // "Århus" med å som a + ring, "EU" og "eu"), og stamgruppernes emner

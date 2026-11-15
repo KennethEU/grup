@@ -9,7 +9,7 @@
 // er det kun skærmens kant, der tæller: menuen åbner nedad, hvis den kan være
 // der, ellers opad, og ellers dér hvor der er mest plads (og ruller selv).
 // Ruller siden bagved, lukker menuen, så den ikke svæver væk fra ordet.
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue';
 
 const props = defineProps({
     text: { type: String, required: true },
@@ -70,12 +70,34 @@ async function toggle(viaHover = false) {
         popStyle.value = { visibility: 'hidden' };
         await nextTick();
         place();
+        follow();
         // place() fjerner `visibility: hidden`. Menuen er først synlig, når
         // Vue har skrevet stilen ind i DOM'en — og en skjult knap kan ikke få
         // fokus (kaldet gjorde før ingenting, når man åbnede med tastaturet).
         await nextTick();
         if (!viaHover) focusFirst();
     }
+}
+// Menuen følger ordet, mens den står åben. Ordet kan flytte sig, uden at
+// noget ruller: en advarsel øverst i opskriften kommer eller går, mens
+// læreren taster i størrelsesfeltet (fx "Adskil på Køn: … kun 2 grupper",
+// som tjekket først svarer på lidt efter). Målt 15/11: ordet rykkede 25 px
+// ned under menuen og 48 px op væk fra den (148, 141. gennemsyn). Én gang pr.
+// billede ses der efter, om ordet står et nyt sted — kun mens en menu er åben.
+let followFrame = 0;
+let lastAt = '';
+function follow() {
+    cancelAnimationFrame(followFrame);
+    lastAt = '';
+    const step = () => {
+        if (!open.value) return;
+        const b = btn.value?.getBoundingClientRect();
+        const at = b ? `${b.left},${b.top},${b.bottom}` : '';
+        if (lastAt && at !== lastAt) place();
+        lastAt = at;
+        followFrame = requestAnimationFrame(step);
+    };
+    followFrame = requestAnimationFrame(step);
 }
 // Pil op/ned går mellem valgene i menuen (Home/End til første og sidste).
 // Kun på knapper: i et tekstfelt eller en liste har pilene deres egen
@@ -170,6 +192,19 @@ function onFocusOut(e) {
     if (root.value.contains(to) || to.contains(root.value)) return;
     open.value = false;
 }
+// Lukker menuen, mens fokus står i et felt i den (scroll, resize, en anden
+// menu åbner), forsvinder feltet med fokus. Chrome sender så blur, men
+// Safari og Firefox gør ikke — og blur er dér, panelerne retter et tomt
+// størrelsesfelt til 1 (onTargetBlur). Uden den stod feltet tomt næste gang,
+// mens sætningen sagde "1 elev" (149, 141. gennemsyn). Watcheren kører FØR
+// Vue fjerner menuen, så feltet kan nå at slippe fokus selv. Ved Escape er
+// fokus allerede flyttet til ordet, og så sker der intet her.
+watch(open, (isOpen) => {
+    if (isOpen) return;
+    cancelAnimationFrame(followFrame);
+    const a = document.activeElement;
+    if (a && a !== document.body && pop.value?.contains(a)) a.blur();
+});
 onMounted(() => {
     document.addEventListener('click', onDocClick);
     document.addEventListener('recipe:token-open', onOtherOpen);
@@ -184,6 +219,7 @@ onUnmounted(() => {
     document.removeEventListener('scroll', onScroll, true);
     window.removeEventListener('resize', onResize);
     clearTimeout(hoverTimer);
+    cancelAnimationFrame(followFrame);
 });
 </script>
 

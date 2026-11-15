@@ -19,6 +19,18 @@
 // kort og konkret: "Hvad er nyt?" + "Hvornår er det nyttigt?"
 export const NEWS = [
     {
+        date: '2026-11-15',
+        title: 'Se klassen, før du opretter den',
+        type: 'feature',
+        body: 'Når du indsætter en klasseliste under Import & backup, står klassen nu under feltet, som den bliver: antallet af elever, kolonnerne og de første elever. Retter du i teksten (fx sletter en linje), ændres den med det samme. Advarsler, der før først kom efter "Opret klasse", står der også.\nDu skal ikke længere vælge, om første linje er overskrifter. Grupper ser det selv (fx "Navn" eller "Køn" øverst), og udsnittet siger, hvad der er valgt. Er første linje kolonnenavne, men bliver læst som en elev, så skriv "Navn" øverst i første kolonne. Det samme gælder, når du importerer en Excel- eller CSV-fil.\nStår der en titel over listen (fx "Klasse 2bx elevliste" over Navn, Køn, Niveau), springes den over, og kolonnerne læses rigtigt. Før endte hver række i én celle.',
+    },
+    {
+        date: '2026-11-15',
+        title: '7 rettelser: Kørsler-menuen og matrixen, og de små menuer i gruppeopskriften',
+        type: 'fix',
+        body: 'Havde du dannet stamgrupperne med "Antal grupper" og bagefter været i matrix-runden, kunne en kørsel i Kørsler-menuen stå som "3 pr. gruppe" i stedet for "3 grupper". Og et klik på den spurgte, om indstillingerne skulle med, selvom du ikke havde ændret noget. Nu står der det, kørslen blev dannet med.\nHenter du en kørsel i Kørsler-menuen, hvor matrixen var dannet ud fra nogle tidligere stamgrupper, står matrixen nu som forældet med "Dan matrixen igen", ligesom den gjorde dengang. Før kom den tilbage, som om den passede til stamgrupperne, og kom med i udskriften. Kørsler-menuen siger også, hvad en kørsel blev dannet med, når du kun har dannet matrixen siden.\nSletter du tallet i gruppestørrelsen og lukker den lille menu ved at rulle eller ændre vinduets størrelse, står der nu 1 i feltet næste gang, ligesom i sætningen. Før stod feltet tomt (i Safari og Firefox).\nKommer eller går en advarsel øverst i gruppeopskriften, mens du skriver i gruppestørrelsen, følger den lille menu nu med sit ord. Før blev den stående og kunne dække ordet.\nSkriver du et emne, der står der i forvejen ("eu", når "EU" står der), siger menuen det nu, og teksten bliver stående. Før blev feltet bare tømt.\nPeger du i matrixvisningen på en kørsel i Kørsler-menuen, hvis matrix var dannet ud fra tidligere stamgrupper, står det nu også over kortene, så den ikke ligner en matrix, du kan bruge.\nPeger du i stamvisningen på sådan en kørsel, mens din matrix passer til stamgrupperne, siger Kørsler-menuen nu, at matrixen kommer tilbage forældet og skal dannes igen. Før stod der kun, at matrixen ændres.',
+    },
+    {
         date: '2026-11-14',
         title: '"Gem som kolonne" skriver ikke oven i sidste uges grupper',
         type: 'feature',

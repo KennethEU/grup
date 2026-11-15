@@ -1083,7 +1083,13 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     // Intet at sende: sig hvorfor.
     if (!input) return stopWithoutGroups(nothingToSendText(isMatrix, overrideSettings, viewGroups));
     // Til e2e og udviklerkonsollen: præcis det, motoren fik (fx reglernes rækkefølge).
-    if (typeof window !== 'undefined' && window.appDebug) window.appDebug.nextInput = input;
+    // nextStats nulstilles samtidig, så snart motoren får et input: et tal fra
+    // FORRIGE kørsel må ikke stå der, når denne ender uden svar. En kørsel, der
+    // stopper før (intet at sende), rører ikke nextStats (144. gennemsyn, (156)).
+    if (typeof window !== 'undefined' && window.appDebug) {
+        window.appDebug.nextInput = input;
+        window.appDebug.nextStats = null;
+    }
 
     const myId = `next-${++runCounter}`;
     state.isGenerating = true;
@@ -1164,6 +1170,10 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     let reason = null;
     let setup = false;
     const answer = result.kind === 'answer' ? (result.answer || {}) : null;
+    // Til e2e: ALLE svar, også "impossible" og "unsupported", der aldrig når
+    // landAnswer. Før blev kun et svar med grupper skrevet, så en test, der
+    // krævede "ikke ok", bestod også, når motoren slet ikke var spurgt.
+    if (result.kind === 'answer' && result.answer) recordStats(result.answer);
     if (result.kind === 'failed') {
         // Er der lagt en ny udgave op, mens fanen stod åben, er den gamle
         // motor-fil væk fra serveren (rsync --delete), og hvert tryk ville
@@ -1402,13 +1412,13 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
     if (isMatrix) state.storedMatrixGroups = finalGroups;
     else state.storedStandardGroups = finalGroups;
     setRunStatus(viewKey, marks, input, finalGroups, skipTogether);
-    state.lastGeneratedGroups = finalGroups;
     // Nye stamgrupper gør matrixgrupperne forældede; nye matrixgrupper husker,
     // hvilke stamgrupper de blev dannet ud fra.
     state.matrixGroupsStale = !isMatrix;
     state.matrixSourceFingerprint = isMatrix ? matrixOrigins(state.storedStandardGroups, finalGroups) : null;
     storage.saveGroupsToStorage();
-    markClean();
+    // Kun DENNE runde er dannet om — det andet sæt beholder sit input.
+    markClean(viewKey);
 
     logAnswer(answer, input);
 }
@@ -1498,10 +1508,13 @@ export function currentRecipeHintIds() {
     try { return recipeHintIds(); } catch { return []; }
 }
 
+/** Til fejlsøgning og e2e: sidste svars status, og hvor mange forsøg og kerner det brugte. */
+function recordStats(answer) {
+    if (typeof window !== 'undefined' && window.appDebug) window.appDebug.nextStats = { status: answer.status, ...(answer.stats || {}) };
+}
+
 /** Oversigten i udviklerkonsollen (kun under udvikling). */
 function logAnswer(answer, input) {
-    // Til fejlsøgning og e2e: hvor mange forsøg og kerner sidste svar brugte.
-    if (typeof window !== 'undefined' && window.appDebug) window.appDebug.nextStats = { status: answer.status, ...(answer.stats || {}) };
     if (!import.meta.env.DEV) return;
     const label = (r) => `${r.type} på ${r.column}`;
     console.log(`[Gruppemotor] ${answer.status}: ${answer.groups.length} grupper, `

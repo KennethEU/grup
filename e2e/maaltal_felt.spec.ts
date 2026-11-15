@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClassAndGoToGroups, openRecipe } from './helpers';
+import { createClassAndGoToGroups, openRecipe, addTopics, addRecipeRule } from './helpers';
 
 /** Talfeltet i opskriftens størrelses-ord. */
 async function sizeField(page: Page) {
@@ -73,4 +73,53 @@ test('Måltallet klemmes til 1-999, når feltet forlades', async ({ page }) => {
 
     await typeAndLeave('1000');
     await expect(field).toHaveValue('999');
+});
+
+test('Et tomt felt rettes også, når menuen lukkes uden at feltet forlades', async ({ page }) => {
+    // (149), 141. gennemsyn: skifter vinduet størrelse (eller ruller
+    // opskriften), lukker ordets menu, og feltet fjernes. Chrome sender ikke
+    // blur for et felt, der fjernes, så klemningen kom aldrig: sætningen og
+    // det gemte sagde 1, men feltet stod tomt næste gang menuen blev åbnet.
+    await createClassAndGoToGroups(page, 'Maaltal Resize E2E');
+    let field = await sizeField(page);
+    await field.click();
+    await page.keyboard.press('ControlOrMeta+a');
+    await page.keyboard.press('Backspace');
+    await expect(field).toHaveValue('');
+
+    const size = page.viewportSize()!;
+    await page.setViewportSize({ width: size.width - 40, height: size.height });
+    await expect(page.locator('.rtok__pop')).toHaveCount(0);
+
+    field = await sizeField(page);
+    await expect(field).toHaveValue('1');
+});
+
+test('Menuen følger ordet, når en advarsel over det kommer og går', async ({ page }) => {
+    // (148), 141. gennemsyn: menuen blev placeret én gang, da den åbnede.
+    // Advarslerne øverst i opskriften skifter, mens læreren taster (her
+    // Adskil og emnerne mod antallet af grupper), og så rykkede ordet 25 px
+    // ned under menuen — eller 48 px op, væk fra den.
+    await createClassAndGoToGroups(page, 'Maaltal Foelg E2E');
+    await addTopics(page, ['Alfa', 'Beta', 'Gamma']);
+    await addRecipeRule(page, { type: 'Adskil', column: 'Køn', value: 'K' });
+    const field = await sizeField(page);
+    const gap = () => page.evaluate(() => {
+        const b = document.querySelector('.rtok__btn.is-open')!.getBoundingClientRect();
+        const p = document.querySelector('.rtok__pop')!.getBoundingClientRect();
+        return Math.round(p.top - b.bottom);
+    });
+    await expect.poll(gap).toBe(8);
+
+    await field.click();
+    await page.keyboard.press('ControlOrMeta+a');
+    await page.keyboard.type('5');
+    await expect(page.locator('dialog.recipe-dialog[open]')).toContainText('kun 2 grupper');
+    await expect.poll(gap).toBe(8);
+
+    await page.keyboard.press('ControlOrMeta+a');
+    await page.keyboard.type('1');
+    await expect(page.locator('dialog.recipe-dialog[open]')).not.toContainText('kun 2 grupper');
+    await expect.poll(gap).toBe(8);
+    await expect(field).toBeFocused();
 });

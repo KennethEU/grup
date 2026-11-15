@@ -2,11 +2,10 @@
 import { ref, computed, watch, nextTick, onBeforeUnmount } from 'vue';
 import { reactiveState as state } from '../../js/modules/reactiveState.js';
 import * as api from '../../js/modules/api.js';
-import { compactImportSheet, sheetDataCells } from '../../js/modules/importData.js';
+import { compactImportSheet, sheetDataCells, planPaste, readClassText } from '../../js/modules/importData.js';
 import { plural } from '../../js/modules/plural.js';
 import { describePartialRestore } from '../../js/modules/restoreReceipt.js';
 import { MAX_ROWS_PER_CLASS } from '../../js/modules/py_bridge.js';
-import { readLectio, extractLectioNames } from '../../js/modules/lectio.js';
 import { EXCEL_UNAVAILABLE_MESSAGE, NEW_BUILD_MESSAGE, reportPartUnavailable } from '../../js/modules/newBuild.js';
 import { FolderUp, ClipboardPaste, FileText, FileUp } from 'lucide-vue-next';
 
@@ -34,9 +33,10 @@ const errorMessage = ref('');
 const isLoading = ref(false);
 const createFileInput = ref(null);
 const rawData = ref('');
-const hasHeaders = ref(true);
-// Filer har deres eget valg af overskrifter, så første elev bevares i filer uden overskrift.
-const fileHasHeaders = ref(true);
+// "Første linje er overskrifter" er ikke længere et valg: importen afgør det
+// selv (looksLikeHeaderRow i importData.js), og udsnittet under feltet viser,
+// hvad den har valgt. Kenneth 15/11 2026: et flueben, programmet selv kan
+// regne ud, kan kun ødelægge noget.
 const isDragging = ref(false);
 let disposed = false;
 // Lukning må ikke efterlade en ventende dialog eller starte næste fil i baggrunden.
@@ -166,7 +166,7 @@ async function handleImport() {
     // Et fast snapshot: skift i formularen under fil-læsning må ikke ændre importen.
     const files = [...uploadFiles.value];
     const options = {
-        hasHeaders: fileHasHeaders.value,
+        hasHeaders: 'auto',
         className: files.length === 1 ? uploadClassName.value.trim() : '',
     };
     // Filnavnene på de klasser, der faktisk blev skrevet — i den rækkefølge.
@@ -494,9 +494,14 @@ async function importExcelOrCsv(excelFiles, options) {
 // Fra lektionens side og fra "Lærere og elever" springes sidens øvrige tekst
 // og læreren over (61). Selve genkendelsen bor i lectio.js, hvor den er testet.
 
-const lectioRead = computed(() =>
-    activeImportMode.value === 'paste' ? readLectio(rawData.value) : null
+// Hvad bliver der gjort med det indsatte? planPaste() (importData.js) afgør,
+// om det er Lectio, og "Opret klasse" spørger det samme sted.
+const pastePlan = computed(() =>
+    activeImportMode.value === 'paste' && rawData.value.trim()
+        ? planPaste(rawData.value)
+        : null
 );
+const lectioRead = computed(() => pastePlan.value?.lectio || null);
 
 // Mærket under feltet: hvor mange elever, før læreren trykker "Opret klasse".
 const lectioBadgeText = computed(() => {
@@ -509,6 +514,37 @@ const lectioBadgeText = computed(() => {
             + ' (fx overskrifter, lærere og optællingen) springes over';
     }
     return text + '.';
+});
+
+// ── Udsnittet: "Sådan bliver klassen" ──
+// Kenneth 14/11 2026: "Første linje er overskrifter" så ud til ikke at
+// betyde noget, da han indsatte en Lectio-liste (det gør det heller ikke dér),
+// og man kunne ikke se, hvad der kom ud af det, før klassen var oprettet.
+// 15/11: fluebenet er væk; udsnittet siger, om første linje er brugt som
+// kolonnenavne, og hvordan man ændrer det.
+// Nu står klassen, som den bliver, under feltet, mens man indsætter og
+// retter: kolonnenavnene, de første elever og de samme advarsler, som ellers
+// først kom bagefter. Udsnittet laves af readClassText() — den samme
+// funktion, som opretter klassen (py_bridge.createClass) — så det kan ikke
+// vise noget andet end det, der bliver oprettet.
+const PREVIEW_ROWS = 6;
+const PREVIEW_COLS = 6;
+const preview = computed(() => {
+    const plan = pastePlan.value;
+    if (!plan) return null;
+    const read = readClassText(plan.content, plan.hasHeaders, MAX_ROWS_PER_CLASS);
+    if (read.error) return { error: read.error };
+    const columns = read.headers.slice(0, PREVIEW_COLS);
+    return {
+        count: read.data.length,
+        usedHeaders: read.usedHeaders,
+        allColumns: read.headers,
+        columns,
+        hiddenColumns: read.headers.length - columns.length,
+        rows: read.data.slice(0, PREVIEW_ROWS).map(row => columns.map(c => String(row[c] ?? ''))),
+        moreRows: Math.max(0, read.data.length - PREVIEW_ROWS),
+        warnings: read.warnings,
+    };
 });
 
 // ── Indsat tekst ──
@@ -528,16 +564,9 @@ const handlePasteSubmit = async () => {
     errorMessage.value = '';
 
     try {
-        let contentToImport = rawData.value;
-        let headersForImport = hasHeaders.value;
-
-        // Ved Lectio-format importeres kun navnene, uden klassekoder.
-        if (readLectio(rawData.value)) {
-            contentToImport = extractLectioNames(rawData.value);
-            headersForImport = false;
-        }
-
-        const res = await api.createClassFromPaste(uploadClassName.value, contentToImport, headersForImport);
+        // Samme plan som udsnittet: ved Lectio kun navnene, uden overskrifter.
+        const plan = planPaste(rawData.value);
+        const res = await api.createClassFromPaste(uploadClassName.value, plan.content, plan.hasHeaders);
         if (res.error) {
             errorMessage.value = res.error;
         } else {
@@ -649,13 +678,6 @@ async function downloadTemplate() {
                <input id="import-class-name-file" v-model="uploadClassName" :disabled="isLoading" type="text" class="input-full" placeholder="F.eks. 1.g Dansk">
             </div>
 
-            <!-- Header-toggle gælder kun for Excel/CSV-filer (JSON-backup ignorerer den) -->
-            <div class="form-group" v-if="uploadFiles.some(f => /\.(xlsx|xls|csv)$/i.test(f.name))">
-                <label class="checkbox-label">
-                    <input type="checkbox" v-model="fileHasHeaders" :disabled="isLoading">
-                    <span>Første linje er overskrifter (kolonnenavne)</span>
-                </label>
-            </div>
          </div>
 
          <div class="bottom-actions">
@@ -736,12 +758,47 @@ Elev 2	K	..." class="input-full textarea-data"></textarea>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="hasHeaders">
-              <span>Første linje er overskrifter (kolonnenavne)</span>
-            </label>
-          </div>
+          <!-- Udsnittet: klassen, som den bliver (readClassText — samme læsning
+               som "Opret klasse"). Opdateres, mens læreren retter i feltet. -->
+          <section v-if="preview" class="paste-preview" aria-labelledby="paste-preview-title" aria-live="polite">
+            <h4 id="paste-preview-title" class="paste-preview__title">Sådan bliver klassen</h4>
+            <p v-if="preview.error" class="paste-preview__error">{{ preview.error }}</p>
+            <template v-else>
+              <p class="paste-preview__summary">
+                {{ preview.count }} {{ preview.count === 1 ? 'elev' : 'elever' }} ·
+                {{ preview.allColumns.length === 1 ? 'kolonnen' : 'kolonnerne' }}
+                {{ preview.allColumns.join(', ') }}
+              </p>
+              <p v-if="!lectioRead" class="paste-preview__headers">
+                {{ preview.usedHeaders
+                    ? 'Kolonnenavnene er taget fra teksten.'
+                    : 'Der er ingen kolonnenavne i teksten — første linje er en elev.' }}
+              </p>
+              <div class="paste-preview__scroll">
+                <table class="paste-preview__table">
+                  <thead>
+                    <tr><th v-for="(c, i) in preview.columns" :key="i" scope="col">{{ c }}</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(row, r) in preview.rows" :key="r">
+                      <td v-for="(cell, i) in row" :key="i">{{ cell }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p v-if="preview.moreRows || preview.hiddenColumns" class="paste-preview__more">
+                <template v-if="preview.moreRows">… og {{ preview.moreRows }} {{ preview.moreRows === 1 ? 'elev' : 'elever' }} mere</template>
+                <template v-if="preview.moreRows && preview.hiddenColumns"> · </template>
+                <template v-if="preview.hiddenColumns">{{ preview.hiddenColumns }} {{ preview.hiddenColumns === 1 ? 'kolonne' : 'kolonner' }} mere</template>
+              </p>
+              <ul v-if="preview.warnings.length" class="paste-preview__warnings">
+                <li v-for="(w, i) in preview.warnings" :key="i">{{ w }}</li>
+              </ul>
+              <p class="paste-preview__hint">
+                Ser det forkert ud? Ret teksten i feltet ovenfor, så ændres udsnittet med det samme — fx slet en linje, der ikke er en elev<template v-if="!lectioRead">, eller skriv "Navn" øverst i første kolonne, hvis første linje er kolonnenavne</template>. Navnene kan også rettes i elevlisten bagefter.
+              </p>
+            </template>
+          </section>
 
           <div class="bottom-actions">
             <button class="btn primary large" @click="handlePasteSubmit" :disabled="isLoading">
@@ -756,6 +813,89 @@ Elev 2	K	..." class="input-full textarea-data"></textarea>
 </template>
 
 <style scoped>
+/* Udsnittet "Sådan bliver klassen": en stille ramme med en tabel i mono-
+   etiketter som resten af importen. Rammen ruller vandret, hvis klassen har
+   mange kolonner; siden selv gør ikke. */
+.paste-preview {
+    margin-block: 4px 18px;
+    padding: 12px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper-2);
+}
+.paste-preview__title {
+    margin: 0 0 4px;
+    font: 500 11px var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.paste-preview__summary {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+}
+.paste-preview__headers {
+    margin: -4px 0 8px;
+    font-size: 12px;
+    color: var(--ink-2);
+}
+.paste-preview__scroll {
+    overflow-x: auto;
+}
+.paste-preview__table {
+    border-collapse: collapse;
+    font-size: 12px;
+    /* Kun så bred som indholdet — en generel tabelregel gjorde den fuld bredde,
+       så kolonnerne stod langt fra hinanden. */
+    inline-size: auto;
+}
+.paste-preview__table th,
+.paste-preview__table td {
+    padding: 4px 12px 4px 0;
+    text-align: start;
+    white-space: nowrap;
+    max-inline-size: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-block-end: 1px solid var(--rule);
+}
+.paste-preview__table th {
+    font: 500 10px var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.paste-preview__table td { color: var(--ink-2); }
+.paste-preview__more {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: var(--ink-3);
+}
+.paste-preview__warnings {
+    margin: 10px 0 0;
+    padding-inline-start: 10px;
+    border-inline-start: 2px solid var(--color-warning);
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-2);
+}
+.paste-preview__warnings li + li { margin-block-start: 6px; }
+.paste-preview__error {
+    margin: 0;
+    font-size: 13px;
+    color: var(--color-error, var(--ink));
+}
+.paste-preview__hint {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: var(--ink-3);
+    text-wrap: pretty;
+}
+
 /* Formularens farver, kanter og flader står i Import & backups ark
    (beta/screens/historik-filer.css), som vinder over de scoped regler. Her
    står kun det, arket ikke sætter. Vinduerne nederst (sammenstød, ark-valg)

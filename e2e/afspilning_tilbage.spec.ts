@@ -25,6 +25,10 @@ test('Tilbage midt i en afspilning stopper den', async ({ page }) => {
     await page.locator('.replay-menu .play-toggle').click();
     await expect.poll(() => page.evaluate(() =>
         (window as any).appDebug.state.replay?.playing)).toBe(true);
+    // Under afspilningen er kortene låst (inert på gitteret). Tjekkes her, så
+    // "ikke låst" længere nede beviser noget — ellers bestod det også, hvis
+    // låsen flyttede til et andet element (145. gennemsyn).
+    await expect(page.locator('.group-grid[inert]')).toHaveCount(1);
 
     // Tilbage: afspilningen stopper, idet fanen forsvinder — ikke først når
     // man kommer tilbage.
@@ -50,6 +54,9 @@ test('Skift til matrix (tvunget i state) stopper afspilningen', async ({ page })
     await page.locator('.replay-anchor .action-pill').click();
     await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
+    // Afspilningen står i tilstanden — ellers ville "false" nedenfor også
+    // bestå, hvis feltet var omdøbt (144. gennemsyn, (156)).
+    expect(await replayState(page)).toBe(true);
 
     await page.evaluate(() => {
         const s = (window as any).appDebug.state;
