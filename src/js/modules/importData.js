@@ -87,12 +87,18 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
     // springes over først — kun når linjen under den tydeligt er
     // kolonnenavne (isTitleLine), så en elev aldrig forsvinder.
     let titleLine = null;
+    // Første linje er kolonnenavne ud fra et gæt (tal under tekst, værdier
+    // der går igen) og ikke et kendt kolonnenavn: så kan det være en elev,
+    // der er blevet til kolonnenavne. Det siges i en advarsel nedenfor.
+    let guessedHeaders = false;
     if (hasHeaders === 'auto') {
         if (isTitleLine(rows)) {
             titleLine = String(rows[0].find(c => String(c ?? '').trim() !== '') ?? '').trim();
             rows = rows.slice(1);
         }
-        hasHeaders = looksLikeHeaderRow(rows);
+        const reason = headerRowReason(rows);
+        guessedHeaders = reason === 'guessed';
+        hasHeaders = reason !== null;
     }
     // parsed følger rows (tomme kolonner fjernet, ikke rækker); de målinger,
     // der bruger parsed nedenfor, skal starte samme sted.
@@ -151,6 +157,16 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
         warnings.push(`Første linje ("${titleLine}") er sprunget over: den ligner en titel over ` +
             `listen, og linjen under den har kolonnenavnene.`);
     }
+    if (guessedHeaders) {
+        // Især for en fil, som intet udsnit har: uden linjen her forsvandt
+        // eleven i stilhed, og hendes værdier stod som kolonnenavne
+        // (152. gennemsyn). Udvejen er den samme som i udsnittet: "Navn"
+        // øverst gør første linje til kolonnenavne, så linjen under er en elev.
+        const cells = rows[0].map(c => String(c ?? '').trim()).filter(Boolean);
+        const shown = cells.slice(0, 3).map(c => `"${c}"`).join(', ') + (cells.length > 3 ? ' …' : '');
+        warnings.push(`Første linje (${shown}) er læst som kolonnenavne, ikke som en elev. ` +
+            `Er den en elev, så skriv en ny første linje med "Navn" i første kolonne.`);
+    }
     if (emptyColumnsRemoved > 0) {
         warnings.push(`${emptyColumnsRemoved} helt ${emptyColumnsRemoved === 1 ? 'tom kolonne' : 'tomme kolonner'} blev sprunget over ved importen. ` +
             `Det er normalt for Excel-filer og betyder ikke at der mangler data.`);
@@ -168,8 +184,11 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
     if (hasHeaders && maxCols >= 2 && rows.length > 2) {
         const filled = (r) => r.filter(c => String(c ?? '').trim() !== '').length;
         const bodyWithSeveral = rows.slice(1).filter(r => filled(r) >= 2).length;
-        if (filled(rows[0]) === 1 && bodyWithSeveral >= 2) {
-            const title = String(rows[0].find(c => String(c ?? '').trim() !== '') ?? '').trim();
+        const title = String(rows[0].find(c => String(c ?? '').trim() !== '') ?? '').trim();
+        // "Navn" alene øverst er udvejen, udsnittet og advarslen ovenfor
+        // anbefaler — ikke en titel. Uden undtagelsen bad denne advarsel
+        // læreren slette den linje, hun lige var blevet bedt om at skrive.
+        if (filled(rows[0]) === 1 && bodyWithSeveral >= 2 && !HEADER_WORDS.has(title.toLowerCase())) {
             warnings.push(`Bemærk: første linje ("${title}") har kun én udfyldt celle, mens ` +
                 `resten af arket har flere kolonner. Er det en overskrift over regnearket — ` +
                 `og ikke kolonnenavne — så er kolonnerne læst forkert. Slet linjen i filen ` +
@@ -197,7 +216,14 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
     // (fx "7,5"), som tavst deler karakterer ud i ekstra kolonner.
     // Måles på `parsed` (FØR tomme kolonner blev fjernet) — stripEmptyColumns
     // gør alle rækker lige lange, så en måling på `rows` ville aldrig give udslag.
-    if (hasHeaders) {
+    // Undtagelse: "Navn" alene øverst er udvejen (se ovenfor) over en liste
+    // med flere kolonner. Så er de ekstra celler netop "Info 1", "Info 2" …
+    // og ikke et komma i et decimaltal (152. gennemsyn).
+    const loneHeaderWord = (r) => {
+        const cells = (r || []).map(c => String(c ?? '').trim()).filter(Boolean);
+        return cells.length === 1 && HEADER_WORDS.has(cells[0].toLowerCase());
+    };
+    if (hasHeaders && !loneHeaderWord(parsed[skip])) {
         const headerCount = parsed[skip].length;
         const ragged = parsed.slice(skip + 1).filter(r => r.length > headerCount).length;
         if (ragged > 0) {
@@ -250,6 +276,9 @@ function isTitleLine(rows) {
  *   3. en kolonne har få værdier, der går igen, og den øverste er ikke én af
  *      dem ("Køn" over Pige, Dreng, Pige …).
  *
+ * 2 og 3 gælder kun, når ingen anden kolonne viser, at første linje er en
+ * elev (modbeviset i headerRowReason nedenfor).
+ *
  * En liste med bare navne har ingen af delene: navnene går ikke igen og er
  * ikke tal, så første linje er en elev. Én linje alene er altid en elev.
  *
@@ -257,11 +286,35 @@ function isTitleLine(rows) {
  * @returns {boolean}
  */
 export function looksLikeHeaderRow(rows) {
-    if (!Array.isArray(rows) || rows.length < 2) return false;
+    return headerRowReason(rows) !== null;
+}
+
+/**
+ * Hvorfor er første række kolonnenavne? 'known' (et kendt kolonnenavn),
+ * 'guessed' (regel 2 eller 3) eller null (første række er en elev).
+ *
+ * MODBEVISET VINDER OVER GÆTTET (152. gennemsyn). Før var én kolonne med
+ * "tekst over tal" eller "et ord over værdier, der går igen" nok — også når en
+ * anden kolonne viste, at første linje var en elev. En liste uden
+ * kolonnenavne, hvor første elev havde en værdi, ingen andre har ("Anna Holm
+ * Pige Spansk" over Tysk/Fransk), mistede eleven: hun blev til kolonnenavnene.
+ * Men "Pige" går igen i Køn-kolonnen nedenunder, og et kolonnenavn er aldrig
+ * en af kolonnens egne værdier. Nu tæller sådan en kolonne som et modbevis:
+ *   - øverst et tal i en kolonne, der ellers er tal, eller
+ *   - øverst en af de værdier, der går igen i kolonnen.
+ * Et kendt kolonnenavn (regel 1) vinder stadig over alt — det er udvejen.
+ *
+ * Et modbevis kan ikke findes, når første elev er den eneste med en
+ * afvigende værdi, og ingen anden kolonne siger noget ("Anna  Fritaget" over
+ * karakterer). Derfor 'guessed': readClassText advarer så og siger udvejen.
+ */
+function headerRowReason(rows) {
+    if (!Array.isArray(rows) || rows.length < 2) return null;
     const first = rows[0].map(c => String(c ?? '').trim());
-    if (first.some(c => HEADER_WORDS.has(c.toLowerCase()))) return true;
+    if (first.some(c => HEADER_WORDS.has(c.toLowerCase()))) return 'known';
 
     const body = rows.slice(1);
+    const columns = [];
     for (let col = 0; col < first.length; col++) {
         const head = first[col];
         if (!head) continue;
@@ -271,14 +324,20 @@ export function looksLikeHeaderRow(rows) {
             if (v) values.push(v);
         }
         if (values.length < 3) continue;
-        // 2. Tal under en tekst.
-        if (cellNumber(head) === null
-            && values.filter(v => cellNumber(v) !== null).length >= values.length * 0.8) return true;
-        // 3. Få værdier, der går igen, og den øverste er ikke én af dem.
+        const mostlyNumbers = values.filter(v => cellNumber(v) !== null).length >= values.length * 0.8;
         const distinct = new Set(values.map(v => v.toLowerCase()));
-        if (distinct.size <= values.length / 2 && !distinct.has(head.toLowerCase())) return true;
+        columns.push({
+            headIsNumber: cellNumber(head) !== null,
+            mostlyNumbers,
+            repeating: distinct.size <= values.length / 2,
+            headRepeats: distinct.has(head.toLowerCase()),
+        });
     }
-    return false;
+    // Modbeviset: første linje ligner resten af kolonnen.
+    if (columns.some(c => (c.headIsNumber && c.mostlyNumbers) || (c.repeating && c.headRepeats))) return null;
+    // 2. Tal under en tekst. 3. Få værdier, der går igen, og den øverste er ikke én af dem.
+    if (columns.some(c => (!c.headIsNumber && c.mostlyNumbers) || (c.repeating && !c.headRepeats))) return 'guessed';
+    return null;
 }
 
 /**

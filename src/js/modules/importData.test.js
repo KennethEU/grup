@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { utils } from '../../vendor/xlsx.mjs';
 import { compactImportSheet, normalizeImportHeaders, sheetDataCells, readClassText, looksLikeHeaderRow, planPaste } from './importData.js';
+import klasse from '../../../testdata/realistisk_klasse.json';
 
 describe('grænserne for indlæsning af regneark', () => {
     it('ignorerer et fuldt Excel-område med kun tre udfyldte celler', () => {
@@ -119,6 +120,57 @@ describe('looksLikeHeaderRow og readClassText med "auto"', () => {
     it('en elev øverst over rækker uden kolonnenavne springes IKKE over', () => {
         const r = auto('Anna Holm\nBo Lund\tDreng\nCarla Dam\tPige');
         expect(r.data.map(d => d.Navn)).toContain('Anna Holm');
+    });
+
+    // 152. gennemsyn: én kolonne, der viser, at første linje er en elev,
+    // vinder over et gæt i en anden. Før blev Anna til kolonnenavnene.
+    it('uden kolonnenavne: en elev med en værdi, ingen andre har, er stadig en elev', () => {
+        const r = auto('Anna Holm\tPige\tSpansk\nBo Ek\tDreng\tTysk\nCe Lund\tPige\tFransk\n'
+            + 'Dan Bo\tDreng\tTysk\nEva Ny\tPige\tFransk\nFie Ma\tPige\tTysk\nGo Ra\tDreng\tFransk');
+        expect(r.usedHeaders).toBe(false);
+        expect(r.data.map(d => d.Navn)).toContain('Anna Holm');
+        expect(r.data).toHaveLength(7);
+    });
+
+    it('og et tal øverst i en tal-kolonne vinder over et ord, der går igen, i en anden', () => {
+        const r = auto('Anna\t7\tSyg\nBo\t10\tA\nCe\t4\tA\nDan\t12\tB\nEva\t2\tB\nFie\t7\tA');
+        expect(r.usedHeaders).toBe(false);
+        expect(r.data).toHaveLength(6);
+    });
+
+    it('den realistiske klasse: med kolonnenavne er de kolonnenavne, uden er første linje en elev', () => {
+        // Bemærkning har en celle med linjeskift: den skal i anførselstegn.
+        const cell = (v) => /[\t\n"]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v ?? '');
+        const toText = (rows) => rows.map(row => klasse.columns.map(c => cell(row[c] ?? '')).join('\t')).join('\n');
+        const header = klasse.columns.join('\t');
+        const withHeaders = auto(header + '\n' + toText(klasse.rows));
+        expect(withHeaders.usedHeaders).toBe(true);
+        expect(withHeaders.data).toHaveLength(klasse.rows.length);
+        const without = auto(toText(klasse.rows));
+        expect(without.usedHeaders).toBe(false);
+        expect(without.data).toHaveLength(klasse.rows.length);
+    });
+
+    // Kan intet modbevise gættet ("Fritaget" over karakterer), bliver linjen
+    // kolonnenavne — men så siges det, også ved en fil, som intet udsnit har.
+    it('et gæt uden kendt kolonnenavn giver en advarsel med udvejen', () => {
+        const r = auto('Anna Holm\tFritaget\nBo Ek\t7\nCe Lund\t10\nDan Bo\t4');
+        expect(r.usedHeaders).toBe(true);
+        expect(r.warnings.join(' ')).toContain('Første linje ("Anna Holm", "Fritaget") er læst som kolonnenavne');
+        // Et kendt kolonnenavn er ikke et gæt: ingen advarsel.
+        expect(auto('Navn\tKarakter\nBo Ek\t7\nCe Lund\t10\nDan Bo\t4').warnings.join(' ')).not.toContain('læst som kolonnenavne');
+    });
+
+    it('udvejen virker: "Navn" alene øverst gør Anna til en elev, uden en advarsel om at slette linjen', () => {
+        const r = auto('Navn\nAnna Holm\tFritaget\nBo Ek\t7\nCe Lund\t10\nDan Bo\t4');
+        expect(r.usedHeaders).toBe(true);
+        expect(r.data.map(d => d.Navn)).toEqual(['Anna Holm', 'Bo Ek', 'Ce Lund', 'Dan Bo']);
+        expect(r.data[0]['Info 1']).toBe('Fritaget');
+        expect(r.warnings.join(' ')).not.toContain('Slet linjen');
+        expect(r.warnings.join(' ')).not.toContain('læst som kolonnenavne');
+        expect(r.warnings.join(' ')).not.toContain('flere kolonner end overskrifterne');
+        // En rigtig titel (ikke et kolonnenavn) giver stadig advarslen.
+        expect(readClassText('Klasse 1a\nAnna\tPige\nBo\tDreng\nCe\tPige', true, 500).warnings.join(' ')).toContain('Slet linjen');
     });
 
     it('true og false virker som før (bruges af createClass og testene)', () => {

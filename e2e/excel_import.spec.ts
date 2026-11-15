@@ -146,3 +146,25 @@ test('CSV gemt i ANSI fra Excel: æ, ø og å overlever importen', async ({ page
     // Ingen erstatningstegn nogen steder i tabellen.
     await expect(page.locator('tbody')).not.toContainText('\uFFFD');
 });
+
+// 152. gennemsyn: en fil uden kolonnenavne, hvor første elev har den eneste
+// "Spansk". Før blev hun til kolonnenavnene og forsvandt — og en fil har
+// intet udsnit, så det skete i stilhed. "Pige" går igen nedenunder, så linjen
+// er en elev. Og kan intet afgøre det ("Fritaget" over karakterer), siger en
+// besked, hvilken linje der er læst som kolonnenavne.
+test('CSV uden kolonnenavne: første elev kommer med, også med en værdi ingen andre har', async ({ page }) => {
+    const text = 'Anna Holm;Pige;Spansk\nBo Ek;Dreng;Tysk\nCe Lund;Pige;Fransk\nDan Bo;Dreng;Tysk\n'
+        + 'Eva Ny;Pige;Fransk\nFie Ma;Pige;Tysk\nGo Ra;Dreng;Fransk\n';
+    await importFile(page, 'uden_kolonnenavne.csv', Buffer.from(text, 'utf8'), 'text/csv');
+    const table = page.locator('tbody');
+    await expect(table.getByText('Anna Holm')).toBeVisible({ timeout: 30000 });
+    await expect(page.locator('tbody tr')).toHaveCount(7);
+    const columns = await page.evaluate(() => [...(window as any).appDebug.state.currentClass.columns]);
+    expect(columns).toEqual(['Navn', 'Info 1', 'Info 2']);
+});
+
+test('CSV hvor første linje kun kan gættes: beskeden siger, at den er læst som kolonnenavne', async ({ page }) => {
+    const text = 'Anna Holm;Fritaget\nBo Ek;7\nCe Lund;10\nDan Bo;4\n';
+    await importFile(page, 'gaet.csv', Buffer.from(text, 'utf8'), 'text/csv');
+    await expect(page.getByText('Første linje ("Anna Holm", "Fritaget") er læst som kolonnenavne')).toBeVisible({ timeout: 30000 });
+});

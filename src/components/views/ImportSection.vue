@@ -795,7 +795,7 @@ Elev 2	K	..." class="input-full textarea-data"></textarea>
                 <li v-for="(w, i) in preview.warnings" :key="i">{{ w }}</li>
               </ul>
               <p class="paste-preview__hint">
-                Ser det forkert ud? Ret teksten i feltet ovenfor, så ændres udsnittet med det samme — fx slet en linje, der ikke er en elev<template v-if="!lectioRead">, eller skriv "Navn" øverst i første kolonne, hvis første linje er kolonnenavne</template>. Navnene kan også rettes i elevlisten bagefter.
+                Ser det forkert ud? Ret teksten i feltet ovenfor, så ændres udsnittet med det samme — fx slet en linje, der ikke er en elev<template v-if="!lectioRead">. Er første linje kolonnenavne, så skriv "Navn" øverst i første kolonne; er den en elev, så skriv en ny første linje med "Navn"</template>. Navnene kan også rettes i elevlisten bagefter.
               </p>
             </template>
           </section>
