@@ -49,8 +49,11 @@ test('Et træk i afspilningens billede flytter ingen elev', async ({ page }) => 
 
     // Midt i uddelingen: billedet er en anden fordeling end den rigtige.
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
+    // Filmklappen starter afspilningen med det samme (15/11 2026); her
+    // skal billedet stå stille, så den sættes på pause.
+    await page.locator('.replay-menu .play-toggle').click();
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.replay?.playing)).toBe(false);
     const frame = await page.evaluate(() =>
         Math.floor((window as any).appDebug.state.replay.dealCount / 2) + 1);
     await page.locator('.replay-menu input[type="range"]').evaluate((el: HTMLInputElement, v) => {

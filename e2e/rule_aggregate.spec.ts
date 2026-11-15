@@ -122,8 +122,9 @@ for (const [label, firstRule] of [['Ensartede', 'minimizediff'], ['Fordel', 'dis
             ];
         }, firstRule);
         await generateGroups(page);
-        await page.getByTitle('Optag og afspil kørslen', { exact: true }).click();
-        await page.getByRole('button', { name: 'Se kørslen', exact: true }).click();
+        await page.getByTitle('Afspil kørslen', { exact: true }).click();
+        // Den kører med det samme; pause, så spolingen nedenfor står stille.
+        await page.getByRole('button', { name: 'Pause', exact: true }).click();
         // Første elev kontrollerer også det omdøbte groupIndex i statuslinjen.
         await page.locator('.replay-menu input[type="range"]').fill('1');
         await expect(page.locator('.replay-menu')).toContainText(/Deler ud · elev 1 af 12 → gruppe \d+/);

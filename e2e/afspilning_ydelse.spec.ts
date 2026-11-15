@@ -49,8 +49,11 @@ test('et skridt i afspilningen tegner kun de berørte kort om', async ({ page })
     await expect(page.locator('.group-card')).toHaveCount(12);
 
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
+    // Filmklappen starter afspilningen med det samme (15/11 2026); her
+    // skal billedet stå stille, så den sættes på pause.
+    await page.locator('.replay-menu .play-toggle').click();
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.replay?.playing)).toBe(false);
     await page.waitForTimeout(800);   // de rigtige kort er gledet ud
 
     // Midt i uddelingen, når alle kort står der: så flytter gitteret ikke

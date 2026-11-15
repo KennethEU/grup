@@ -255,17 +255,33 @@ test('Afspilningsmenuen tager imod fokus — også når afspilleren dukker op', 
     await createClassAndGoToGroups(page, 'Afspilning fokus');
     await generateGroups(page);
 
-    await page.locator('.replay-anchor .action-pill').click();
+    // Med tastaturet: Enter på filmklappen. Siden 15/11 2026 starter den
+    // afspilningen med det samme, så afspilleren er der fra første øjeblik.
+    await page.locator('.replay-anchor .action-pill').focus();
+    await page.keyboard.press('Enter');
     const menu = page.locator('.replay-menu');
     await expect(menu).toBeVisible();
+    await expect.poll(() => page.evaluate(() => (window as any).appDebug.state.replay?.playing)).toBe(true);
     // Uden det åbnede menuen sig usynligt for en skærmlæser: markøren blev
-    // stående på knappen i bjælken.
-    await expect(menu.locator('.start')).toBeFocused();
-
-    // "Se kørslen" forsvinder under fingeren, når afspilleren tager over.
-    // Målt før: document.activeElement blev <body>.
-    await page.keyboard.press('Enter');
+    // stående på knappen i bjælken. Og fokus står på Pause — ikke på "Start
+    // forfra", som står først, men er den knap, man mindst skal bruge.
     await expect(menu.locator('.play-toggle')).toBeFocused();
+    await expect(menu.locator('.play-toggle')).toHaveAttribute('aria-label', 'Pause');
+});
+
+test('Filmklappen uden en kørsel at vise: menuen forklarer hvorfor, og intet starter', async ({ page }) => {
+    await createClassAndGoToGroups(page, 'Afspilning ingen');
+    await generateGroups(page);
+    // En elev flyttet til en anden gruppe: optagelsen passer ikke længere.
+    await page.evaluate(() => {
+        const g = (window as any).appDebug.state.storedStandardGroups;
+        g[1].members.push(g[0].members.shift());
+    });
+    await page.locator('.replay-anchor .action-pill').click();
+    const menu = page.locator('.replay-menu');
+    await expect(menu).toContainText('Grupperne er ændret');
+    await expect(menu.locator('.start')).toBeDisabled();
+    expect(await page.evaluate(() => !!(window as any).appDebug.state.replay)).toBe(false);
 });
 
 test('Tastaturet kan forlade en kørende afspilning — og så stopper den', async ({ page }) => {
@@ -273,7 +289,6 @@ test('Tastaturet kan forlade en kørende afspilning — og så stopper den', asy
     await generateGroups(page);
 
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     // Først: afspilningen står i tilstanden. Ellers ville "false" nedenfor
     // også bestå, hvis feltet var omdøbt (144. gennemsyn, (156)).
     await expect.poll(() => page.evaluate(() => !!(window as any).appDebug?.state?.replay)).toBe(true);
@@ -333,7 +348,6 @@ test('Værktøjstippet dukker kun op, når fokus kom fra tastaturet', async ({ p
     // Pause. Målt før: den sorte "Afspil"-etiket parkerede sig oven på
     // menuens eget ms-felt og blev stående, også når musen gik væk.
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeFocused();
     await expect(page.locator('#global-tooltip')).not.toHaveClass(/visible/);
 

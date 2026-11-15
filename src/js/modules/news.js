@@ -20,6 +20,12 @@
 export const NEWS = [
     {
         date: '2026-11-15',
+        title: 'Filmklappen afspiller kørslen med det samme',
+        type: 'feature',
+        body: 'Trykker du på filmklappen på bundbjælken under grupperne, kører afspilningen af den seneste dannelse nu med det samme. Før åbnede knappen en lille menu, hvor du først skulle trykke "Se kørslen" og derefter Afspil. Pause, spoling og hastighed sidder samme sted som før, og et nyt tryk på filmklappen stopper afspilningen igen. Er der ingen kørsel at vise, fx fordi du har flyttet elever siden, står der stadig hvorfor.',
+    },
+    {
+        date: '2026-11-15',
         title: 'Se klassen, før du opretter den',
         type: 'feature',
         body: 'Når du indsætter en klasseliste under Import & backup, står klassen nu under feltet, som den bliver: antallet af elever, kolonnerne og de første elever. Retter du i teksten (fx sletter en linje), ændres den med det samme. Advarsler, der før først kom efter "Opret klasse", står der også.\nDu skal ikke længere vælge, om første linje er overskrifter. Grupper ser det selv (fx "Navn" eller "Køn" øverst), og udsnittet siger, hvad der er valgt. Er første linje kolonnenavne, men bliver læst som en elev, så skriv "Navn" øverst i første kolonne. Er det omvendt, så skriv en ny første linje med "Navn" i første kolonne. Det samme gælder, når du importerer en Excel- eller CSV-fil.\nStår der en titel over listen (fx "Klasse 2bx elevliste" over Navn, Køn, Niveau), springes den over, og kolonnerne læses rigtigt. Før endte hver række i én celle.',

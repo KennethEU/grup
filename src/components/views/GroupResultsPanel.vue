@@ -429,6 +429,9 @@ function startReplay() {
     if (!rec || !recordingMatches.value) return;
     const data = replay.withCardOrder(rec.data, rec.groupNames, groups.value, memberIdStr);
     replay.start(data, rec.groupNames, rec.lockedGroups, viewKey.value);
+    // Og den kører med det samme. Før stod den på pause ved første billede,
+    // så læreren skulle trykke Afspil oven i "Se kørslen" (15/11 2026).
+    replay.play();
 }
 
 const replayMenuOpen = ref(false);
@@ -439,6 +442,12 @@ function toggleReplayMenu() {
     // var nået til — uden knapper til at komme videre eller tilbage.
     if (replayMenuOpen.value) return closeReplayMenu();
     replayMenuOpen.value = true;
+    // Filmklappen starter afspilningen med det samme (Kenneth 15/11 2026:
+    // "skal bare gå i gang med det samme, så der ikke er det mellemtrin").
+    // Før åbnede den en menu, hvor man SÅ skulle trykke "Se kørslen". Kan
+    // kørslen ikke afspilles (ingen optagelse, eller grupperne er ændret
+    // siden), åbner menuen stadig og siger hvorfor.
+    if (canReplay.value && recordingMatches.value) startReplay();
 }
 
 // Lukkes menuen, stopper afspilningen med. Ellers ville den køre videre uden
@@ -641,7 +650,7 @@ function onTrashDrop(e) {
                                 aria-haspopup="true"
                                 :aria-expanded="replayMenuOpen ? 'true' : 'false'"
                                 @click.stop="toggleReplayMenu"
-                                title="Optag og afspil kørslen">
+                                title="Afspil kørslen">
                             <Clapperboard :size="14" />
                         </button>
                         <ReplayMenu v-if="replayMenuOpen"

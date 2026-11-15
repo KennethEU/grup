@@ -53,7 +53,7 @@ test('motoren danner grupperne', async ({ page }) => {
 
     // Afspilningen siger, hvilket forsøg grupperne kom fra (kontrakt v3-kladden).
     expect(Number.isInteger(stats.winner)).toBe(true);
-    await page.getByTitle('Optag og afspil kørslen').click();
+    await page.getByTitle('Afspil kørslen').click();
     const attempts = page.locator('.replay-menu .attempts');
     await expect(attempts).toHaveText(new RegExp(`^Forsøg ${stats.winner} af ${stats.attempts} – det bedste\\.`));
 });

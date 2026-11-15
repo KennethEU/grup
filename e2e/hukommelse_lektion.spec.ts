@@ -56,7 +56,6 @@ async function lessonRound(page: Page) {
     await openRecipe(page);
     await closeRecipe(page);
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await page.locator('.replay-menu').getByRole('button', { name: 'Hop til slut' }).click();
     await page.keyboard.press('Escape');
     await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();

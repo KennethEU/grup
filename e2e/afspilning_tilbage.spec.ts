@@ -19,10 +19,8 @@ test('Tilbage midt i en afspilning stopper den', async ({ page }) => {
     await generateGroups(page);
     const cards = await page.locator('.group-card').count();
 
-    // Afspilningen kører (Afspil), så uret bliver ved med at skrive billeder.
+    // Afspilningen kører fra første tryk, så uret bliver ved med at skrive billeder.
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
-    await page.locator('.replay-menu .play-toggle').click();
     await expect.poll(() => page.evaluate(() =>
         (window as any).appDebug.state.replay?.playing)).toBe(true);
     // Under afspilningen er kortene låst (inert på gitteret). Tjekkes her, så
@@ -52,7 +50,6 @@ test('Skift til matrix (tvunget i state) stopper afspilningen', async ({ page })
     await createClassAndGoToGroups(page, 'Afspilning matrix');
     await generateGroups(page);
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
     // Afspilningen står i tilstanden — ellers ville "false" nedenfor også
     // bestå, hvis feltet var omdøbt (144. gennemsyn, (156)).

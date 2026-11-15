@@ -1,8 +1,11 @@
 <script setup>
 // Optagelse og afspilning af en kørsel — hele funktionen bor her.
 //
-// Menuen har to tilstande: "Se kørslen", når der ligger en optagelse, og
-// selve afspilleren, mens den kører. Der er ikke længere et flueben —
+// Menuen har to tilstande: selve afspilleren, mens den kører, og "Se
+// kørslen" med en forklaring, når den ikke kan køre. Siden 15/11 2026 starter
+// filmklappen på bundbjælken afspilningen med det samme (GroupResultsPanel,
+// toggleReplayMenu), så "Se kørslen" ses næsten kun slået fra: ingen
+// optagelse endnu, eller grupperne er ændret siden. Der er ikke længere et flueben —
 // optagelsen er altid slået til, fordi den koster 1,5 % ekstra tid, og fordi
 // et flueben man skulle huske FØR kørslen var den sikreste måde at opdage
 // funktionen for sent.
@@ -187,9 +190,10 @@ watch(() => !!rp.value, (running) => {
         <RotateCcw :size="14" />
       </button>
 
-      <!-- .play-toggle: fokus lander her, når afspilningen starter og
-           "Se kørslen" forsvinder under fingeren. -->
-      <button class="btn play-toggle" @click="replay.toggle()"
+      <!-- .play-toggle: fokus lander her, når menuen åbner med afspilningen
+           i gang (data-first-focus, useBarMenuDismiss.js), og når "Se
+           kørslen" forsvinder under fingeren. -->
+      <button class="btn play-toggle" data-first-focus @click="replay.toggle()"
               :title="rp.playing ? 'Pause' : 'Afspil'"
               :aria-label="rp.playing ? 'Pause' : 'Afspil'">
         <Pause v-if="rp.playing" :size="14" />

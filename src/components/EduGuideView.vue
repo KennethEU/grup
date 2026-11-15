@@ -480,8 +480,8 @@ import RuleMark from './beta/RuleMark.vue';
                     dannelse — ændrer du opskriften, forsvinder de, for så passer de ikke længere.
                 </p>
                 <p class="muted-text muted-text--tight">
-                    Under <strong>"Se kørslen"</strong> (filmklappen ved siden af
-                    "{{ UI_NAMES.runHistory }}") står fx "Forsøg 7 af 12 – det bedste.": systemet
+                    Trykker du på filmklappen ved siden af "{{ UI_NAMES.runHistory }}",
+                    afspilles kørslen med det samme, og der står fx "Forsøg 7 af 12 – det bedste.": systemet
                     prøvede 12 fordelinger, og den syvende blev den bedste. Står der
                     også, at andre forsøg endte lige så godt, var der flere lige gode fordelinger at vælge
                     imellem.

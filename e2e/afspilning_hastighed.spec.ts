@@ -17,7 +17,6 @@ async function openReplay(page: Page, name: string) {
     await createClassAndGoToGroups(page, name);
     await generateGroups(page);
     await page.locator('.replay-anchor .action-pill').click();
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
     return page.getByLabel('Hastighed i millisekunder pr. bytte');
 }

@@ -32,7 +32,6 @@ test('Se kørslen virker efter en ny rækkefølge i et kort og ender som kortene
 
     await page.locator('.replay-anchor .action-pill').click();
     await expect(page.locator('.replay-menu')).not.toContainText('Grupperne er ændret');
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
 
     // Spol til enden: det sidste billede er kortenes rækkefølge.
@@ -76,7 +75,6 @@ test('Se kørslen virker efter et nyt emne på et kort', async ({ page }) => {
     await page.locator('.replay-anchor .action-pill').click();
     await expect(page.locator('.replay-menu')).toBeVisible();
     await expect(page.locator('.replay-menu')).not.toContainText('Grupperne er ændret');
-    await page.locator('.replay-menu .start').click();
     await expect(page.locator('.replay-menu .play-toggle')).toBeVisible();
     // Kortet viser det nye emne under afspilningen.
     await expect(select).toHaveValue(other);

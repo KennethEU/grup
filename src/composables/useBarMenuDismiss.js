@@ -95,7 +95,11 @@ export function useBarMenuDismiss(rootRef, { anchorClass, onClose, onOpenerFocus
     function focusFirstControl() {
         const root = rootRef.value;
         if (!root) return;
-        const control = root.querySelector('button:not([disabled]), input:not([disabled])');
+        // En menu kan pege på sin vigtigste knap med data-first-focus
+        // (afspilleren: Pause, fordi filmklappen starter afspilningen med det
+        // samme, og "Start forfra" står først, men er den mindst brugte).
+        const control = root.querySelector('[data-first-focus]:not([disabled])')
+            || root.querySelector('button:not([disabled]), input:not([disabled])');
         (control || root).focus();
     }
 
