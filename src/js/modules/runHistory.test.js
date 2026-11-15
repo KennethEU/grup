@@ -949,13 +949,13 @@ describe('unsavedRecipeChanges — hvad et ja faktisk koster', () => {
 
 describe('"Sidste dannelse" efter en hentet kørsel (106. gennemsyn)', () => {
     // Tre dannelser med samme opskrift, og kørsel 1 hentes frem: der kommer
-    // intet spørgsmål, aftrykket passer stadig — og før stod kørsel 3's
+    // intet spørgsmål, opskriften passer stadig — og før stod kørsel 3's
     // "2 par ender i samme gruppe (Gruppe 3)" om grupper, der nu var andre.
-    const landNotes = (view, signature) => {
+    const landNotes = (view) => {
         beginRun(view);
         announce('Fordel på "Køn" kan ikke gå helt lige op.', 'info');
         announce('Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 1).', 'info', ['k'], true);
-        commitRun(signature);
+        commitRun();
     };
     beforeEach(() => clearSetupNotices());
 
@@ -965,21 +965,20 @@ describe('"Sidste dannelse" efter en hentet kørsel (106. gennemsyn)', () => {
             pushRun();                                      // kørsel 1
             state.storedStandardGroups = [{ name: 'Group 1', members: ['r2', 'r3'] }];
             state.storedMatrixGroups = [{ name: 'Group 1', members: ['r1', 'r3'] }];
-            landNotes('standard', 'stam');
-            landNotes('matrix', 'matrix');
+            landNotes('standard');
+            landNotes('matrix');
 
             restoreRun(0, alsoSettings);
 
             for (const view of ['standard', 'matrix']) {
                 expect(setupNotices.last[view].map(n => n.text)).toEqual(['Fordel på "Køn" kan ikke gå helt lige op.']);
             }
-            expect(setupNotices.lastSignature).toEqual({ standard: 'stam', matrix: 'matrix' });
         });
     }
 
     it('en flytning i hånden rører ikke noterne (bevidst; forslag (78))', () => {
         state.storedStandardGroups = [{ name: 'Group 1', members: ['r1', 'r2'] }];
-        landNotes('standard', 'stam');
+        landNotes('standard');
         markClean();
         state.storedStandardGroups = [{ name: 'Group 1', members: ['r1'] }, { name: 'Group 2', members: ['r2'] }];
         expect(setupNotices.last.standard).toHaveLength(2);

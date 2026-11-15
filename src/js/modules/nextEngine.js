@@ -28,7 +28,7 @@ import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
     ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
-    groupDisplayName, groupSetFingerprint, matrixOrigins, setupSignature, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
+    groupDisplayName, groupSetFingerprint, matrixOrigins, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
     matrixSourceById, lockedMatrixDuplicates,
 } from './utils.js';
 
@@ -713,7 +713,7 @@ export function inputFingerprint(input) {
  * cellerne i reglernes kolonner, fravær, låste grupper), og samme grupper
  * (en elev flyttet i hånden gør resultatet til et andet). Ellers null: et
  * flueben ved en regel, kørslen ikke havde, er værre end intet. Strengere
- * end "Sidste dannelse" (setupSignature), som ikke ser celler og flytninger.
+ * end "Sidste dannelse" (lastRunApplies), som ikke ser flytninger i hånden.
  */
 export function runStatusFor(isMatrix) {
     const status = lastRunStatus[isMatrix ? 'matrix' : 'standard'];
@@ -735,9 +735,9 @@ export function runStatusFor(isMatrix) {
  * hånden bagefter (det ændrer ikke, hvad tjekket før kørslen siger).
  *
  * Bruges, når et resultat fra sidste kørsel skal SKJULE en advarsel fra
- * tjekket (engineCheckHints i hints.js). Noterne under "Sidste dannelse"
- * bliver stående efter det løsere aftryk (setupSignature), som ikke ser
- * celler og låse. Låser læreren to grupper efter kørslen, er der færre
+ * tjekket (engineCheckHints i hints.js), og det er også dette svar, der
+ * afgør noterne under "Sidste dannelse" (lastRunApplies nedenfor regner det
+ * én gang pr. ændring). Låser læreren to grupper efter kørslen, er der færre
  * grupper til de samme elever: tjekkets nye advarsel ("8 elever skal
  * adskilles, men der er kun 2 grupper") må ikke skjules af det gamle
  * resultat om samme regel. Reglernes numre i input kan også være rykket (en
@@ -752,8 +752,8 @@ export function lastRunInputIsCurrent(isMatrix) {
 
 // ─── Gælder sidste kørsel stadig? ÉT svar for hele appen (forslag 78) ───────
 // Fire steder spurgte før hver på sin måde: noterne fra sidste dannelse
-// (setupSignature, der hverken ser celler, fravær ud over antallet eller
-// låste grupper), prøvekørslen (runStatusFor eller setupSignature),
+// (et løsere aftryk af opsætningen, der hverken så celler, fravær ud over
+// antallet eller låste grupper), prøvekørslen (runStatusFor eller aftrykket),
 // skjulningen af tjekkets advarsler (lastRunInputIsCurrent) og bjælkens
 // tælling. Så kunne de være uenige: efter en låsning stod det gamle resultat
 // i opskriften, og prøvekørslen holdt pause, selv om næste Dan grupper regnede
@@ -848,6 +848,22 @@ export const nextRun = ref({ active: false, progress: null, stopping: false });
  * "Dan grupper uden aftalen" fjerner ALLE blokkene på én gang.
  */
 export const engineTogetherStop = ref(null);
+
+/**
+ * Gælder motorens Skal sammen-stop stadig for det, der står nu?
+ *
+ * Stoppet er et øjebliksbillede fra kørslen. Fjerner læreren bagefter det,
+ * der stod i vejen (Adskil-reglen, undgåelsen, låsen), eller aftalen selv,
+ * stod den røde advarsel der alligevel med "Dan grupper uden aftalen" — og et
+ * klik tilsidesatte en aftale, der nu godt kunne holdes (151. gennemsyn).
+ * Samme prøve som lastRunInputIsCurrent: kun mens input er det samme som ved
+ * stoppet (med de samme aftaler sprunget over). Er det stadig umuligt, siger
+ * tjekket det i opskriften, og næste Dan grupper stopper igen.
+ */
+export function togetherStopApplies(stop) {
+    if (!stop || !stop.input) return false;
+    return inputFingerprint(currentEngineInput(false, stop.skipTogether || [])) === stop.input;
+}
 
 let current = null;   // { worker, finish, stop } for kørslen i gang
 
@@ -1223,7 +1239,7 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     state.activeJobId = null;
 
     if (answer.status === 'impossible') {
-        showImpossible(answer, input, isMatrix);
+        showImpossible(answer, input, isMatrix, options.skipTogether || []);
         return 'done';
     }
 
@@ -1257,7 +1273,7 @@ function namers(groupNames) {
  * sammen-beskederne samles i én advarsel over grupperne med knappen "Dan
  * grupper uden aftalen", der fjerner ALLE de umulige blokke på én gang.
  */
-function showImpossible(answer, input, isMatrix) {
+function showImpossible(answer, input, isMatrix, skipTogether = []) {
     const fill = namers([]);
     const messages = answer.messages || [];
     const together = messages.filter(isTogetherStop);
@@ -1269,6 +1285,9 @@ function showImpossible(answer, input, isMatrix) {
             filename: state.currentClass?.filename || null,
             ids,
             text: together.map(m => fillMessageText(m, fill)).join(' '),
+            // Opsætningen, stoppet gælder for (se togetherStopApplies).
+            input: inputFingerprint(input),
+            skipTogether: [...skipTogether],
         };
         window.notifyInfo?.('Grupperne blev ikke dannet — se den røde advarsel over grupperne.');
     }
@@ -1332,7 +1351,7 @@ function landAnswer(answer, input, { isMatrix, lockedGroups, skipTogether = [] }
 
     pushRun();
     for (const [text, type, keys, result] of notes) announce(text, type, keys, result);
-    commitRun(setupSignature(state.currentClass, isMatrix, state.groupMode));
+    commitRun();
 
     const finalGroups = [...lockedGroups, ...newGroups];
 
@@ -1480,7 +1499,6 @@ function captureLastRun() {
     return {
         notes: { standard: copy(setupNotices.last.standard), matrix: copy(setupNotices.last.matrix) },
         runNo: { ...setupNotices.lastRunNo },
-        signature: { ...setupNotices.lastSignature },
         // Mærkerne er markRaw og skiftes altid ud hele (setRunStatus), så
         // de kan deles uden kopi.
         status: { standard: lastRunStatus.standard, matrix: lastRunStatus.matrix },
@@ -1492,7 +1510,6 @@ function restoreLastRun(saved) {
     if (!saved || !saved.notes) return false;
     for (const view of ['standard', 'matrix']) {
         setupNotices.last[view] = JSON.parse(JSON.stringify(saved.notes[view] || []));
-        setupNotices.lastSignature[view] = saved.signature?.[view] ?? null;
         setupNotices.lastRunNo[view] = saved.runNo?.[view] ?? 0;
         lastRunStatus[view] = saved.status?.[view] || null;
     }

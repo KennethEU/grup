@@ -382,8 +382,8 @@ const RECIPE_HINT_PREFIXES = [
 ];
 
 // "Sidste dannelse"-noterne afgøres af lastRunApplies/shownLastNotes i
-// nextEngine.js (forslag 78, 13/11 2026) — ikke af aftrykket (setupSignature)
-// her, som hverken så celler, låste grupper eller hvem der er væk.
+// nextEngine.js (forslag 78, 13/11 2026) — ikke af et løsere aftryk af
+// opsætningen, som hverken så celler, låste grupper eller hvem der er væk.
 
 /** Hører advarslen til opsætningen (gruppeopskriften) frem for resultatet? */
 export function isRecipeHint(hint) {

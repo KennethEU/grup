@@ -27,7 +27,7 @@ import { trialNotes } from './trialRun.js';
 import { studentById } from './lookups.js';
 import { generateMatrixGroups, generateWithoutTogether } from './generation.js';
 import { autoSave } from './classActions.js';
-import { engineRowSplit, engineTogetherStop, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, shownLastNotes } from './nextEngine.js';
+import { engineRowSplit, engineTogetherStop, togetherStopApplies, provideRecipeHintIds, engineCheck, coveredByRecipeHint, issueKey, severityOf, fillMessageText, replacedByResult, isTogetherStop, ruleSources, shownLastNotes } from './nextEngine.js';
 
 
 // Hvilke beskeder læreren selv har klikket væk i denne session.
@@ -803,6 +803,10 @@ const engineTogetherHint = computed(() => {
     const stop = engineTogetherStop.value;
     if (!stop || isMatrix.value) return null;
     if (stop.filename !== (state.currentClass?.filename || null)) return null;
+    // Har læreren ændret opsætningen siden stoppet, er advarslen et gammelt
+    // billede, og knappen ville tilsidesætte en aftale, der måske nu kan
+    // holdes. Opskriftens udgave (engineCheckHints) regnes på det, der står nu.
+    if (!togetherStopApplies(stop)) return null;
     return {
         id: `hint:engine-together:${stop.ids.join(',')}`,
         kind: 'conflict',

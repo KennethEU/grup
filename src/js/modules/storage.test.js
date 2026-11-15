@@ -310,4 +310,18 @@ describe('storage', () => {
             expect(dropped.map(e => e.id)).toEqual(['d49']);
         });
     });
+
+    describe('adoptForeignGroups', () => {
+        it('siger til, når beskeden handler om en klasse, der ikke er åben', () => {
+            const info = vi.fn();
+            window.notifyInfo = info;
+            try {
+                expect(storage.adoptForeignGroups('en-anden-klasse')).toBe(false);
+                expect(info).toHaveBeenCalledTimes(1);
+                expect(info.mock.calls[0][0]).toMatch(/ikke er åben/);
+            } finally {
+                delete window.notifyInfo;
+            }
+        });
+    });
 });

@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import { ruleSentence, ruleIsIncomplete, sizeSentence, namesText, recipeSummary, ruleTypeLabel, findTwinRule, ruleValueExists, expectedNewGroups, typingOutsideRecipe, perGroupEstimate } from './recipe.js';
-import { setupSignature } from './utils.js';
 import { RULE_TYPES, RULE_OPTIONS } from './utils.js';
 
 const plain = (parts) => parts.map(p => p.text).join('');

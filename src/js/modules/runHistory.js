@@ -466,8 +466,8 @@ export function markClean(view = null) {
 
 /**
  * De felter i inputtet, kun den ene runde bruger. `togetherGroups` og
- * emnelisten sendes ikke til motoren i matrixrunden (se setupSignature i
- * utils.js), så de hører til stamrunden.
+ * emnelisten sendes ikke til motoren i matrixrunden (se buildEngineInput i
+ * nextEngine.js), så de hører til stamrunden.
  */
 const OWN_FIELDS = Object.freeze({
     standard: ['rules', 'settings', 'groupMode', 'togetherGroups', 'classTopics'],

@@ -593,8 +593,8 @@ describe('applyPlan', () => {
     // RESULTATET handler om grupper, der ikke står der længere (106. gennemsyn).
     it('fjerner stamgruppernes resultat-noter, ikke matrixens', () => {
         clearSetupNotices();
-        beginRun('standard'); announce('Opsætning'); announce('Resultat stam', 'info', null, true); commitRun('s');
-        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun('m');
+        beginRun('standard'); announce('Opsætning'); announce('Resultat stam', 'info', null, true); commitRun();
+        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun();
         restore('Gruppe 1\nAnna Quist Fassov');
         expect(setupNotices.last.standard.map(n => n.text)).toEqual(['Opsætning']);
         expect(setupNotices.last.matrix.map(n => n.text)).toEqual(['Resultat matrix']);

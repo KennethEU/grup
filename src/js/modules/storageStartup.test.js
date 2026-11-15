@@ -36,6 +36,43 @@ describe('receiveTransfer (?migrate=<token> fra dida.dk/grupper)', () => {
         expect(window.location.hash).toBe('#top');
     });
 
+    // Klasser fra www.dida.dk, der lå i en pakke på dida.dk (15/11 2026, 148.).
+    // Pakken lægges i lageret, og adoptFromWww() (AppTopbar) henter den ind
+    // med omdøbning ved sammenfald — som på dida.dk.
+    it('lægger en medsendt www-pakke, hvor adoptFromWww() finder den', async () => {
+        window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
+        const stash = JSON.stringify({ at: 'x', entries: { groupeng_classes: '[{"filename":"3a.csv"}]' } });
+        window.XMLHttpRequest = fakeXhr(200, JSON.stringify({ entries: { dida_grupper_from_www: stash } }));
+        await import('./storageStartup.js');
+        expect(localStorage.getItem('dida_grupper_from_www')).toBe(stash);
+        // Pakkens indhold lægges IKKE løst i lageret.
+        expect(localStorage.getItem('grupdk_classes')).toBeNull();
+    });
+
+    it('overskriver ikke en www-pakke, der allerede ligger på grup.dk', async () => {
+        window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
+        localStorage.setItem('dida_grupper_from_www', 'den gamle');
+        window.XMLHttpRequest = fakeXhr(200, JSON.stringify({ entries: { dida_grupper_from_www: 'den nye' } }));
+        await import('./storageStartup.js');
+        expect(localStorage.getItem('dida_grupper_from_www')).toBe('den gamle');
+    });
+
+    it('et fuldt lager taber ikke www-pakken i stilhed: læreren får at vide, hvor klasserne er', async () => {
+        window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
+        window.XMLHttpRequest = fakeXhr(200, JSON.stringify({ entries: { dida_grupper_from_www: '{"at":"x"}' } }));
+        const realSet = localStorage.setItem.bind(localStorage);
+        vi.spyOn(localStorage, 'setItem').mockImplementation((k, v) => {
+            if (k === 'dida_grupper_from_www') throw Object.assign(new Error('fuldt'), { name: 'QuotaExceededError' });
+            return realSet(k, v);
+        });
+        const mod = await import('./storageStartup.js');
+        window.notifyError = vi.fn();
+        mod.reportStorageMigration();
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringContaining('www.dida.dk/grupper/?bliv=1'));
+        expect(localStorage.getItem('dida_grupper_from_www')).toBeNull();
+        delete window.notifyError;
+    });
+
     it('fjerner tokenet, også når svaret ikke er JSON (fx en fejlside)', async () => {
         window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
         window.XMLHttpRequest = fakeXhr(200, '<!doctype html><title>Fejl</title>');

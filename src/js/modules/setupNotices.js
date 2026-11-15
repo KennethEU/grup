@@ -36,13 +36,10 @@ export const setupNotices = reactive({
      * igen ved næste dannelse — også når teksten er den samme.
      */
     lastRunNo: { standard: 0, matrix: 0 },
-    /**
-     * Aftrykket (utils.setupSignature) af den opsætning, `last` er lavet med.
-     * Bruges ikke længere til at afgøre, om noterne vises (det gør det
-     * strengere lastRunApplies i nextEngine.js, forslag 78), men står her,
-     * så en hentet kørsel får hele sin tilstand tilbage (forslag 88).
-     */
-    lastSignature: { standard: null, matrix: null },
+    // Om noterne gælder endnu, afgør lastRunApplies i nextEngine.js
+    // (forslag 78) ud fra motorens input. Her stod før også et løsere
+    // "aftryk" af opsætningen, men intet læste det efter forslag 78; det er
+    // fjernet (149. gennemsyn).
 });
 
 let pendingView = 'standard';
@@ -63,13 +60,9 @@ export function beginRun(view = 'standard') {
     pendingView = view === 'matrix' ? 'matrix' : 'standard';
 }
 
-/**
- * Resultatet er landet: kladden bliver "sidste dannelse". `signature` er
- * aftrykket af den opsætning, kørslen blev lavet med (utils.setupSignature).
- */
-export function commitRun(signature = null) {
+/** Resultatet er landet: kladden bliver "sidste dannelse". */
+export function commitRun() {
     setupNotices.last[pendingView] = pending || [];
-    setupNotices.lastSignature[pendingView] = signature;
     setupNotices.lastRunNo[pendingView] = ++runCounter;
     pending = null;
 }
@@ -109,14 +102,13 @@ export function announce(text, type = 'info', keys = null, result = false) {
  * falder tilbage hertil.) Noterne om RESULTATET handler så
  * om grupper, der ikke står på skærmen længere, og fjernes. Noterne om
  * opsætningen ("Fordel på "Køn" kan ikke gå helt lige op …") gælder stadig og
- * bliver stående, og det samme gør aftrykket (lastSignature): prøvekørslen i
- * baggrunden skal opføre sig som før (forslag (78) i TODO.md handler om den).
+ * bliver stående.
  *
  * HVORFOR: dannede læreren grupper tre gange og hentede kørsel 1 frem, stod
  * kørsel 3's "Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 3, Gruppe
  * 5)" under "Sidste dannelse" — men Gruppe 3 og 5 var nu nogle helt andre
- * elever (13/11 2026). Med samme opskrift kom intet spørgsmål, og aftrykket
- * passede, så intet skjulte noten.
+ * elever (13/11 2026). Med samme opskrift kom intet spørgsmål, og opskriften
+ * passede stadig, så intet skjulte noten.
  *
  * En flytning i hånden rører ikke noterne (bevidst; se forslag (78)).
  *
@@ -149,7 +141,6 @@ export function clearSetupNotices() {
     seen.clear();
     pending = null;
     setupNotices.last = { standard: [], matrix: [] };
-    setupNotices.lastSignature = { standard: null, matrix: null };
     // lastRunNo nulstilles IKKE: et id fra den forrige klasse må ikke kunne
     // genbruges af den nye klasses første kørsel (lukket med krydset).
 }

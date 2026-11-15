@@ -126,6 +126,34 @@ describe('notificationState', () => {
         expect(notificationState.notifications.some(n => n.message === 'Info 5')).toBe(true);
     });
 
+    it('en fejl med knap overlever en byge af fejl uden knap', () => {
+        notificationActions.notifyError('Ændret i en anden fane', { label: 'Hent', run: () => {} });
+        for (let i = 0; i < 8; i++) notificationActions.notifyError(`Fejl ${i}`);
+        const list = notificationState.notifications;
+        expect(list.length).toBe(5);
+        expect(list.some(n => n.message === 'Ændret i en anden fane')).toBe(true);
+        // Den nyeste kommer stadig på skærmen.
+        expect(list[list.length - 1].message).toBe('Fejl 7');
+    });
+
+    it('en dublet får den nye knap', () => {
+        const first = vi.fn();
+        const second = vi.fn();
+        notificationActions.notifyError('Samme tekst', { label: 'Hent', run: first });
+        notificationActions.notifyError('Samme tekst', { label: 'Hent', run: second });
+        const list = notificationState.notifications;
+        expect(list.length).toBe(1);
+        list[0].action.run();
+        expect(second).toHaveBeenCalledTimes(1);
+        expect(first).not.toHaveBeenCalled();
+    });
+
+    it('er alle ældre fejl med knap, ryger den ældste', () => {
+        for (let i = 0; i < 6; i++) notificationActions.notifyError(`K${i}`, { label: 'Gør', run: () => {} });
+        const list = notificationState.notifications;
+        expect(list.map(n => n.message)).toEqual(['K1', 'K2', 'K3', 'K4', 'K5']);
+    });
+
     it('en gentaget besked starter sit ur forfra i stedet for at stå to gange', () => {
         notificationActions.add('Vælg mindst én elev', 'info', 8000);
         vi.advanceTimersByTime(7000);

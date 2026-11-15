@@ -33,7 +33,7 @@ import {
     shownLastNotes, lastRunApplies,
 } from './nextEngine.js';
 import { state } from './state.js';
-import { brokenSeparations, groupDisplayName, setupSignature, valueKey } from './utils.js';
+import { brokenSeparations, groupDisplayName, valueKey } from './utils.js';
 import { beginRun, announce, commitRun, clearSetupNotices, setupNotices, forgetRunResults } from './setupNotices.js';
 import { allHints, hints as shownHints, dismiss } from './hints.js';
 import { check, run } from '../../../motor/engine/engine.js';
@@ -132,7 +132,7 @@ function land(setup, input, answer, { isMatrix = false, locked = setup.locked } 
         texts.push({ m, text });
         announce(text, severityOf(m, answer.status), noteKeys(m), isResultNote(m));
     }
-    commitRun(setupSignature(setup.cls, isMatrix, setup.groupMode));
+    commitRun();
     const finalGroups = [...locked, ...newGroups];
     if (isMatrix) state.storedMatrixGroups = finalGroups;
     else state.storedStandardGroups = finalGroups;

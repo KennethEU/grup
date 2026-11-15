@@ -139,6 +139,8 @@ describe('adoptFromWww — klasser flyttet med fra www.dida.dk', () => {
 
         expect(res.written).toBe(1);
         const [cls] = pyBridge.getClasses();
+        // Forsidens kort åbner den hentede klasse ud fra dette felt.
+        expect(res.writtenFilenames).toEqual([cls.filename]);
         expect(cls.name).toBe('1bms SA');
         expect(names(cls)).toEqual(['Anna', 'Bo']);
         const extras = readClassExtras(cls.filename);
@@ -149,6 +151,8 @@ describe('adoptFromWww — klasser flyttet med fra www.dida.dk', () => {
         // Pakken er brugt og fjernet — ellers kom klassen igen ved næste start.
         expect(localStorage.getItem(WWW_STASH_KEY)).toBeNull();
         expect(window.notifySuccess).toHaveBeenCalledWith(expect.stringContaining('1 klasse er hentet fra www.dida.dk'));
+        // Sætningen om dida.dk's adresse står kun på dida.dk (her: localhost, som grup.dk).
+        expect(window.notifySuccess.mock.calls[0][0]).not.toContain('uden www');
     });
 
     it('beholder begge, når en ANDEN klasse hedder det samme på dida.dk', async () => {

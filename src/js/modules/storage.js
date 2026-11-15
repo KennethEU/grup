@@ -231,10 +231,21 @@ function _sameGroupsAsShown(newValue) {
  * @returns {boolean} true, hvis grupperne blev hentet
  */
 export function adoptForeignGroups(filename) {
-    if (!state.currentClass || state.currentClass.filename !== filename) return false;
     const notify = (kind, msg) => {
         if (typeof window !== 'undefined' && window[kind]) window[kind](msg);
     };
+    // Beskeden bliver stående, når læreren åbner en anden klasse (fejl ryddes
+    // kun med krydset). Et klik dér lukkede beskeden og gjorde så ingenting —
+    // uden en lyd. Der er intet at hente ind i den åbne klasse, men intet er
+    // heller tabt: åbnes klassen igen, læses grupperne fra lageret
+    // (selectClass i AppTopbar.vue) — altså de sidst gemte, som er den anden
+    // fanes, medmindre læreren flyttede en elev her bagefter. Det skal
+    // læreren have at vide (150. gennemsyn).
+    if (!state.currentClass || state.currentClass.filename !== filename) {
+        notify('notifyInfo', 'Beskeden handlede om en klasse, der ikke er åben længere. '
+            + 'Åbn klassen igen: den viser de grupper, der sidst blev gemt.');
+        return false;
+    }
     _foreignGroupsWarned.delete(filename);
     // Har læreren flyttet en elev HER efter beskeden, står denne fanes grupper
     // i lageret igen (beskeden advarede om netop det). Så er der intet nyt at

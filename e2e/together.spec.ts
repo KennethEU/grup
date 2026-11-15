@@ -180,6 +180,48 @@ test('Adskil på en kolonne: aftalen stoppes før motoren — med navnene', asyn
     await expect(page.locator('.toast').filter({ hasText: 'Grupperne blev ikke dannet' }).first()).toBeVisible();
 });
 
+// 151. gennemsyn: stoppet er et billede af opsætningen ved kørslen. Fjerner
+// læreren bagefter Adskil-reglen, må den røde advarsel over grupperne ikke
+// blive stående med "Dan grupper uden aftalen" — et klik ville tilsidesætte
+// en aftale, der nu godt kan holdes.
+test('Motorens Skal sammen-stop forsvinder, når læreren fjerner det, der stod i vejen', async ({ page }) => {
+    await createClass(page, 'Stop bliver ikke hængende');
+    await page.evaluate(() => {
+        const cls = (window as any).appDebug.state.currentClass;
+        const col = cls.columns.find(c => c !== 'Navn' && !c.startsWith('_'));
+        const idOf = (n: string) => cls.data.find(s => s.Navn === n)._rowId;
+        cls.togetherGroups = [{ ids: [idOf('Anna'), idOf('Bob')], timestamp: 1 }];
+        cls.data.forEach(s => { s[col] = ['Anna', 'Bob'].includes(s.Navn) ? 'Formand' : 'Menig'; });
+        cls.rules = [{ type: 'separate', column: col, value: 'Formand' }];
+    });
+    await goToGroups(page);
+    await generateAndWait(page);
+    await expect(page.locator('.toast').filter({ hasText: 'Grupperne blev ikke dannet' })).toBeVisible();
+    // Motorens stop står over grupperne (ikke kun i opskriften), med begge knapper.
+    const stopHint = page.locator('.gh-hint:not(dialog.recipe-dialog .gh-hint)')
+        .filter({ hasText: 'skal være sammen, men Adskil på' });
+    await expect(stopHint).toHaveCount(1);
+    await expect(stopHint.getByRole('button', { name: 'Vis aftalen' })).toBeVisible();
+    await expect(stopHint.getByRole('button', { name: 'Dan grupper uden aftalen' })).toBeVisible();
+    expect(await page.evaluate(() => (window as any).appDebug.state.activeView)).not.toBe('matrix');
+
+    // Læreren fjerner Adskil-reglen: nu kan aftalen holdes, og ingen knap
+    // tilbyder at tilsidesætte den.
+    const saved = await page.evaluate(() => {
+        const cls = (window as any).appDebug.state.currentClass;
+        const rules = cls.rules;
+        cls.rules = [];
+        return rules;
+    });
+    await expect(page.getByRole('button', { name: 'Dan grupper uden aftalen' })).toHaveCount(0);
+    await expect(page.getByText(/skal være sammen, men Adskil på/)).toHaveCount(0);
+
+    // Sættes reglen ind igen (samme opsætning som ved stoppet), kommer advarslen tilbage.
+    await page.evaluate((rules) => { (window as any).appDebug.state.currentClass.rules = rules; }, saved);
+    await expect(stopHint).toHaveCount(1);
+    await expect(stopHint.getByRole('button', { name: 'Dan grupper uden aftalen' })).toBeVisible();
+});
+
 test('Dan grupper uden aftalen: to umulige aftaler tilsidesættes på én gang', async ({ page }) => {
     await createClass(page, 'To umulige aftaler');
     // To aftaler, begge umulige under samme Adskil-regel: Anna+Bob og Clara+David.

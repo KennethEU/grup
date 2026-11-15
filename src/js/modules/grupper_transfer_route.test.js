@@ -64,6 +64,17 @@ describe('lageret', () => {
             grupdk_classes: '[]', GroupEng_Groups_3a: '{}', teacherId: 'abc', grupdk_x: 5,
         })).toEqual({ grupdk_classes: '[]', GroupEng_Groups_3a: '{}' });
     });
+
+    it('www-pakken kommer med — men kun præcis den nøgle, og kun som streng', () => {
+        expect(cleanEntries({
+            dida_grupper_from_www: '{"at":"x","entries":{}}',
+            dida_grupper_migrated_to_grup: 'x',
+            dida_grupper_from_www_x: 'y',
+            DIDA_GRUPPER_FROM_WWW: 'z',
+            teacherId: 'abc',
+        })).toEqual({ dida_grupper_from_www: '{"at":"x","entries":{}}' });
+        expect(cleanEntries({ dida_grupper_from_www: { at: 'x' } })).toEqual({});
+    });
 });
 
 describe('over HTTP', () => {

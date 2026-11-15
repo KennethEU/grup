@@ -19,10 +19,33 @@
 import {
     migrateLegacyStorage, migrateLegacySession, adoptTransferEntries, currentKeyFor,
 } from './migrateStorage.js';
+import { WWW_STASH_KEY } from './storageKeys.js';
 
 /** window.localStorage eller window.sessionStorage — eller null (privat vindue, blokeret). */
 function browserStore(name) {
     try { return typeof window !== 'undefined' ? window[name] : null; } catch { return null; }
+}
+
+/**
+ * Pakken med klasser fra www.dida.dk (lagt på dida.dk af flyt-modtag.html)
+ * kan komme med i flytningen. Den lægges under sit eget navn, og
+ * adoptFromWww() (AppTopbar) henter den ind som på dida.dk: med omdøbning,
+ * hvis en klasse hedder det samme. adoptTransferEntries() kender den ikke —
+ * pakkens klasser må IKKE skrives løst, for to klasser med samme navn på hver
+ * sin adresse har samme filnavn (se adoptWww.js). Ligger der allerede en
+ * pakke, røres den ikke (den hentes ind om et øjeblik).
+ */
+function adoptWwwStash(storage, raw) {
+    if (typeof raw !== 'string' || !raw) return;
+    try {
+        if (storage.getItem(WWW_STASH_KEY) === null) storage.setItem(WWW_STASH_KEY, raw);
+    } catch (e) {
+        // Fuldt lager. dida.dk har allerede mærket pakken som sendt, så den
+        // kommer ikke igen af sig selv — læreren skal have det at vide
+        // (reportStorageMigration). Klasserne ligger stadig på www.dida.dk.
+        console.warn('[migration] Klasserne fra www.dida.dk kunne ikke gemmes:', e);
+        problems.wwwStash = true;
+    }
 }
 
 /** Hent pakken fra dida.dk/grupper, hvis adressen har ?migrate=<token>. */
@@ -38,7 +61,10 @@ function receiveTransfer(storage) {
         xhr.send(null);
         if (xhr.status === 200) {
             const res = JSON.parse(xhr.responseText);
-            if (res && res.entries && typeof res.entries === 'object') adoptTransferEntries(storage, res.entries);
+            if (res && res.entries && typeof res.entries === 'object') {
+                adoptWwwStash(storage, res.entries[WWW_STASH_KEY]);
+                adoptTransferEntries(storage, res.entries);
+            }
         }
     } catch (e) {
         console.warn('[migration] Fejl under modtagelse:', e);
@@ -58,7 +84,7 @@ function receiveTransfer(storage) {
 }
 
 /** Det, der gik galt undervejs — siges af reportStorageMigration(). */
-const problems = { failed: [], lost: [], copies: [] };
+const problems = { failed: [], lost: [], copies: [], wwwStash: false };
 
 /** Værdier, der kun findes i hukommelsen: { key, value } (det gamle navn). */
 const unsaved = [];
@@ -166,6 +192,12 @@ export function reportStorageMigration() {
         const names = problems.copies.map(c => `"${c.name}"`).join(', ');
         window.notifyInfo?.(`${names} kom fra en fane, der stod åben fra før grup.dk blev opdateret. `
             + 'Din klasse er urørt, og begge udgaver er gemt — slet den, du ikke skal bruge.');
+    }
+    if (problems.wwwStash) {
+        // Samme udvej som adoptWww.js' BACKUP_HINT.
+        window.notifyError('Dine klasser fra www.dida.dk kunne ikke gemmes her, fordi browserens lager er fuldt. '
+            + 'De ligger stadig dér: åbn www.dida.dk/grupper/?bliv=1 og tag en backup under "Import & backup".');
+        problems.wwwStash = false;
     }
     if (problems.lost.length) {
         window.notifyError('Noget af det, der var gemt i browseren, kunne ikke gemmes igen, fordi lageret er helt fuldt. '

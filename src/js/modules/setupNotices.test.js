@@ -64,30 +64,19 @@ describe('setupNotices — announceOnce er stadig en besked (et varsel om ventet
     });
 });
 
-describe('setupNotices — aftrykket af opsætningen følger de sidste noter', () => {
-    it('commitRun gemmer aftrykket, og klasseskift rydder det', () => {
-        beginRun('standard'); announce('Note'); commitRun('sig-1');
-        expect(setupNotices.lastSignature.standard).toBe('sig-1');
-        clearSetupNotices();
-        expect(setupNotices.lastSignature.standard).toBeNull();
-    });
-});
-
 describe('forgetRunResults — noterne om resultatet går, når fordelingen skiftes ud', () => {
-    it('fjerner kun resultat-noterne; opsætningens noter og aftrykket bliver', () => {
+    it('fjerner kun resultat-noterne; opsætningens noter bliver', () => {
         beginRun('standard');
         announce('Fordel på "Køn" kan ikke gå helt lige op.', 'info');
         announce('Adskil på "Køn": 2 par ender i samme gruppe (Gruppe 3).', 'info', ['k1'], true);
-        commitRun('aftryk');
+        commitRun();
         forgetRunResults(['standard']);
         expect(setupNotices.last.standard).toEqual([{ text: 'Fordel på "Køn" kan ikke gå helt lige op.', type: 'info' }]);
-        // Aftrykket bliver: prøvekørslen i baggrunden skal opføre sig som før.
-        expect(setupNotices.lastSignature.standard).toBe('aftryk');
     });
 
     it('rører kun de visninger, den får', () => {
-        beginRun('standard'); announce('Stam', 'info', null, true); commitRun('s');
-        beginRun('matrix'); announce('Matrix', 'info', null, true); commitRun('m');
+        beginRun('standard'); announce('Stam', 'info', null, true); commitRun();
+        beginRun('matrix'); announce('Matrix', 'info', null, true); commitRun();
         forgetRunResults(['standard']);
         expect(setupNotices.last.standard).toEqual([]);
         expect(setupNotices.last.matrix.map(n => n.text)).toEqual(['Matrix']);

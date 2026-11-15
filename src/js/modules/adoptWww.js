@@ -6,7 +6,9 @@
 // FØRST flyttes det, browseren har gemt på www (public/flyt-til-dida.html →
 // public/flyt-modtag.html, se app.js → "ÉN ADRESSE"). Grupper-delen lægges
 // samlet i én nøgle, som adoptFromWww() henter ind første gang Grupper åbnes
-// på dida.dk.
+// på dida.dk. Siden Grupper flyttede til grup.dk, tager flytningen dertil
+// (public/flyt-til-grup.html) pakken med, og grup.dk henter den ind her
+// (15/11 2026 — før kom den ikke med, og klasserne blev på dida.dk).
 //
 // Den anden vej ind er forsiden: har Grupper ingen klasser, spørger den selv
 // efter dem på www (wwwCheck.js) og tilbyder at hente dem. Begge veje ender i
@@ -22,11 +24,11 @@ import * as api from './api.js';
 import { plural } from './plural.js';
 import { describePartialRestore } from './restoreReceipt.js';
 import { readClassExtras } from './storage.js';
-import { CLASSES_KEY } from './storageKeys.js';
+import { CLASSES_KEY, WWW_STASH_KEY } from './storageKeys.js';
 import { toCurrentEntries } from './migrateStorage.js';
 
-/** Nøglen modtagersiden (public/flyt-modtag.html) lægger pakken i. */
-export const WWW_STASH_KEY = 'dida_grupper_from_www';
+/** Nøglen modtagersiden (public/flyt-modtag.html) lægger pakken i (står i storageKeys.js). */
+export { WWW_STASH_KEY };
 
 /** Hvor læreren kan hente det, der ikke kom med. */
 const STAY_ON_WWW = 'www.dida.dk/grupper/?bliv=1';
@@ -49,6 +51,11 @@ export function markWwwSettled() {
     try {
         localStorage.setItem(WWW_SETTLED_KEY, new Date().toISOString());
     } catch (e) { /* så spørger forsiden bare igen næste gang */ }
+}
+
+/** Kører appen på dida.dk (dida.dk/grupper/?bliv=1) og ikke på grup.dk? */
+function onDida() {
+    try { return /(^|\.)dida\.dk$/.test(window.location.hostname); } catch (e) { return false; }
 }
 
 function removeStash() {
@@ -98,7 +105,7 @@ async function sameClassAlreadyHere(entry) {
  * historik og sessioner — under de gamle navne, som de ligger på www).
  *
  * @param {Object} entries  nøgle → rå streng, som i localStorage på www
- * @returns {Promise<Object>} { written, alreadyHere, failed, partial, invalid }
+ * @returns {Promise<Object>} { written, writtenFilenames, alreadyHere, failed, partial, invalid }
  *   eller { error } — beskeden til læreren er allerede vist
  */
 export async function adoptWwwEntries(entries) {
@@ -156,8 +163,10 @@ export async function adoptWwwEntries(entries) {
     const partial = Array.isArray(res.partial) ? res.partial : [];
     const skippedInvalid = inspected.invalid.length;
     if (res.written > 0 || failed.length > 0 || skippedInvalid > 0) {
-        let msg = `${plural(res.written, 'klasse er', 'klasser er')} hentet fra www.dida.dk, hvor du havde gemt dem. `
-            + 'dida.dk bruger nu kun adressen uden www.';
+        // På grup.dk (pakken kom med i flytningen fra dida.dk) siger
+        // sætningen om dida.dk's adresse ingenting, så den står kun på dida.dk.
+        let msg = `${plural(res.written, 'klasse er', 'klasser er')} hentet fra www.dida.dk, hvor du havde gemt dem.`;
+        if (onDida()) msg += ' dida.dk bruger nu kun adressen uden www.';
         if (partial.length > 0) {
             // Samme ordlyd som backup-gendannelsen, med tal pr. klasse.
             msg += ` Bemærk: ${describePartialRestore(partial).join('; ')}.`;
@@ -172,7 +181,10 @@ export async function adoptWwwEntries(entries) {
         }
     }
 
-    return { written: res.written || 0, alreadyHere, failed, partial, invalid: inspected.invalid };
+    // writtenFilenames: forsidens kort (DashboardView) åbner den sidst hentede
+    // klasse. Før blev den ikke givet videre, og kortet åbnede en anden klasse.
+    const writtenFilenames = Array.isArray(res.writtenFilenames) ? res.writtenFilenames : [];
+    return { written: res.written || 0, writtenFilenames, alreadyHere, failed, partial, invalid: inspected.invalid };
 }
 
 /**

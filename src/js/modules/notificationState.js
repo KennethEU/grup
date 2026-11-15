@@ -24,6 +24,12 @@ function add(message, type = 'info', duration = 4000, action = null) {
     const twin = state.notifications.find(n => n.message === message && n.type === type);
     if (twin) {
         if (duration > 0) extendTo(twin.id, Date.now() + duration);
+        // Den NYE knap gælder. Samme tekst er ikke altid samme sag: "Grupperne
+        // i "2.g" er lige blevet ændret …" kan handle om en anden klasse med
+        // samme navn, og den gamle knap ("Hent de nye grupper") peger på den
+        // gamle klasse — et klik gjorde så ingenting, og den nye advarsel var
+        // væk (150. gennemsyn).
+        if (action) twin.action = markRaw({ ...action });
         return;
     }
 
@@ -46,10 +52,18 @@ function add(message, type = 'info', duration = 4000, action = null) {
     // klikkes væk, så fem af dem er ikke et sært tilfælde; det er en almindelig
     // eftermiddag. Derfor ledes der kun blandt de ÆLDRE — og er de alle sammen
     // fejl, ryger den ældste fejl. Den nyeste besked kommer altid på skærmen.
+    //
+    // Blandt fejlene går en fejl UDEN knap før en fejl MED knap. Knappen er
+    // den eneste vej til at gøre noget ved sagen, og nogle af de beskeder
+    // kommer ikke igen: "Grupperne … er lige blevet ændret i en anden fane"
+    // (storage.js) siges kun én gang pr. fordeling. Før kunne fem andre fejl
+    // (fx en backup-import med flere dårlige filer) skubbe den væk, og lærerens næste træk skrev så den anden
+    // fanes grupper væk uden en lyd (15/11 2026, 150. gennemsyn).
     while (state.notifications.length > MAX_VISIBLE) {
         const older = state.notifications.slice(0, -1);
         const victim = older.find(n => n.type === 'info')
             || older.find(n => n.type === 'success')
+            || older.find(n => !n.action)
             || older[0];
         remove(victim.id);
     }

@@ -116,6 +116,31 @@ async function putBackAsBefore(page: Page, saved: Record<string, string>) {
     return old;
 }
 
+/**
+ * Fang appens beskeder (notifySuccess/-Info/-Error), så en test kan læse dem
+ * bagefter med saidSoFar(). En besked står kun i 5 sek.; under last (hele
+ * sættet parallelt) var den væk, før toBeVisible kiggede — testen fejlede,
+ * selv om klasserne var hentet (målt 15/11 2026).
+ */
+async function captureNotices(page: Page) {
+    await page.addInitScript(() => {
+        const said: string[] = [];
+        (window as any).__said = said;
+        for (const name of ['notifySuccess', 'notifyInfo', 'notifyError']) {
+            let fn: any;
+            Object.defineProperty(window, name, {
+                configurable: true,
+                get: () => fn && ((msg: string, ...rest: any[]) => { said.push(`${name}: ${msg}`); return fn(msg, ...rest); }),
+                set: (v) => { fn = v; },
+            });
+        }
+    });
+}
+
+function saidSoFar(page: Page) {
+    return page.evaluate(() => ((window as any).__said || []).join(' | '));
+}
+
 /** Klassen står på skærmen med sine grupper, emner og sin gemte session. */
 async function expectClassIsBack(page: Page, saved: Record<string, string>) {
     const file = JSON.parse(saved.grupdk_classes)[0].filename;
@@ -222,17 +247,64 @@ test('klasser fra www.dida.dk (med de gamle navne) hentes ind under de nye', asy
         }
         localStorage.setItem('dida_grupper_from_www', JSON.stringify({ at: new Date().toISOString(), entries }));
     }, old);
-    // Beskeden står i 5 sek. og kommer ~0,1 sek. efter indlæsningen. Firefox
-    // kan melde siden indlæst senere end det, så der kigges fra første øjeblik.
+    // Beskeden står kun i 5 sek., så den fanges (captureNotices).
+    await captureNotices(page);
     await page.goto('/', { waitUntil: 'commit' });
 
-    await expect(page.locator('.toast.success').filter({ hasText: 'hentet fra www.dida.dk' })).toBeVisible({ timeout: 15000 });
+    await expect.poll(() => saidSoFar(page), { timeout: 15000 }).toContain('notifySuccess: 1 klasse er hentet fra www.dida.dk');
     expect(await legacyKeys(page)).toEqual([]);
     const after = await grupdkKeys(page);
     const file = JSON.parse(after.grupdk_classes)[0].filename;
     expect(JSON.parse(after[`grupdk_groups_${file}`]).standard).toEqual(
         JSON.parse(saved[`grupdk_groups_${JSON.parse(saved.grupdk_classes)[0].filename}`]).standard);
     expect(JSON.parse(after[`grupdk_history_${file}`])).toHaveLength(1);
+});
+
+// Flytningen dida.dk → grup.dk tager www-pakken med (15/11 2026, 148.
+// gennemsyn): før blev den på dida.dk, og en lærer, der havde sine klasser på
+// www, så en tom Grupper. Her har grup.dk SELV en klasse med samme navn: den
+// skal stå urørt, og www-klassen komme ved siden af (omdøbt).
+test('www-pakken, der kommer med i flytningen fra dida.dk, hentes ind ved siden af grup.dk\'s egen klasse', async ({ page, browserName }) => {
+    // Hentningen er en SYNKRON XHR (storageStartup.js), og Playwrights WebKit
+    // lader ikke page.route fange den: svaret blev Vite's index.html (målt
+    // 15/11 2026). Chromium og Firefox dækker vejen; enhedstesten den i WebKit.
+    test.skip(browserName === 'webkit', 'page.route fanger ikke synkron XHR i WebKit');
+    test.setTimeout(120000);
+    const saved = await classWithEverything(page);
+    const old = await putBackAsBefore(page, saved);
+    // grup.dk har klassen under de nye navne; www-udgaven har de gamle.
+    await page.evaluate((entries) => {
+        for (const k of Object.keys(localStorage)) {
+            if (k.startsWith('GroupEng_') || k === 'groupeng_classes') localStorage.removeItem(k);
+        }
+        for (const [k, v] of Object.entries(entries as Record<string, string>)) {
+            if (k.startsWith('grupdk_')) localStorage.setItem(k, v);
+        }
+    }, saved);
+    // www-udgaven er en ANDEN klasse med samme navn (én celle er anderledes) —
+    // en præcis kopi ville med rette blive sprunget over (sameClassAlreadyHere).
+    const wwwList = JSON.parse(old.groupeng_classes);
+    const cols: string[] = wwwList[0].content.columns;
+    wwwList[0].content.data[0][cols[cols.length - 1]] += ' (www)';
+    const token = 'c'.repeat(32);
+    const stash = JSON.stringify({ at: new Date().toISOString(), entries: { ...old, groupeng_classes: JSON.stringify(wwwList) } });
+    await page.route(`**/api/grupper-transfer/${token}`, route => route.fulfill({
+        status: 200, contentType: 'application/json',
+        body: JSON.stringify({ ok: true, entries: { dida_grupper_from_www: stash } }),
+    }));
+    await captureNotices(page);
+    await page.goto(`/?migrate=${token}`, { waitUntil: 'commit' });
+
+    await expect.poll(() => page.evaluate(() => localStorage.getItem('dida_grupper_from_www')), { timeout: 15000 }).toBeNull();
+    await expect.poll(() => saidSoFar(page), { timeout: 15000 })
+        .toMatch(/notifySuccess: 1 klasse er hentet fra www\.dida\.dk, hvor du havde gemt dem\.(?! dida\.dk bruger)/);
+    const classes = JSON.parse((await grupdkKeys(page)).grupdk_classes);
+    expect(classes).toHaveLength(2);
+    expect(classes.map((c: any) => c.name).filter((n: string) => /fra www\.dida\.dk/.test(n))).toHaveLength(1);
+    // grup.dk's egen klasse er urørt.
+    const ownFile = JSON.parse(saved.grupdk_classes)[0].filename;
+    expect(classes.some((c: any) => c.filename === ownFile)).toBe(true);
+    expect(page.url()).not.toContain('migrate=');
 });
 
 test('en rå skrivning under det gamle navn til den RIGTIGE klasses grupper overskriver intet', async ({ page, context }) => {

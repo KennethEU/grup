@@ -28,40 +28,6 @@ export const RULE_TYPES = Object.freeze({
     STRICT_SEPARATE: 'strict_separate'
 });
 
-/**
- * Aftryk af hele opsætningen en gruppedannelse blev lavet med: størrelse,
- * regler (med rækkefølge og værdier), aftaler, emner og hvor mange der er til
- * stede. "Sidste dannelse" i opskriften hører kun til, mens aftrykket passer —
- * ændrer læreren noget, handler noterne om en anden opskrift og tælles ikke
- * med i advarslerne.
- *
- * Matrix-runden har sit eget: om der blandes på emner eller stamgrupper
- * (noten "Højst én fra hver stamgruppe kan ikke lade sig gøre …" handler om
- * netop det valg), og Undgå hinanden-aftalerne, som også gælder i matrix.
- * Begge manglede til 13/11 2026: skiftede læreren til "ét fra hvert emne",
- * eller fjernede hun en aftale, stod det gamle resultat der stadig — og
- * prøvekørslen holdt pause, fordi den troede, resultatet passede. Skal
- * sammen og emnelisten sendes ikke til motoren i matrix og er ikke med.
- */
-export function setupSignature(cls, isMatrix = false, groupMode = 'size') {
-    if (!cls) return '';
-    const settings = (isMatrix ? cls.matrixSettings : cls.settings) || {};
-    const rules = (isMatrix ? cls.matrixRules : cls.rules) || [];
-    const ruleParts = rules.map(r => `${r.type ?? r.name ?? ''}|${r.column ?? r.attribute ?? ''}|${r.value ?? ''}`);
-    const ids = (list) => (list || []).map(a => [...(a.ids || [])].map(String).sort().join(',')).sort();
-    const present = (cls.data || []).filter(r => !r._excluded).length;
-    return JSON.stringify({
-        s: isMatrix
-            ? [settings.matrixStrategy, settings.groupTarget, settings.groupMod, settings.matrixRepresentationType || 'topic']
-            : [groupMode, settings.groupTarget, settings.groupMod],
-        r: ruleParts,
-        t: isMatrix ? [] : ids(cls.togetherGroups),
-        a: ids(cls.separations),
-        e: isMatrix ? [] : (cls.topics || []).map(x => String(x ?? '').trim()).filter(Boolean),
-        p: present,
-    });
-}
-
 // Reglernes navne i opskriften (værdi → dansk navn). Korte, ét ord, så de
 // passer ind i sætningen; forklaringen står under navnet i regelmenuen.
 export const RULE_OPTIONS = Object.freeze([

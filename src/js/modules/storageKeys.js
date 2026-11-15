@@ -37,3 +37,9 @@ export const NEWS_FILTER_KEY = 'grupdk_news_filter';
 export const NAV_VIEW_KEY = 'grupdk_nav_view';
 export const CLASS_TAB_KEY = 'grupdk_class_tab';
 export const STORAGE_WARNED_KEY = 'grupdk_storage_warned';
+
+// Klasser fra www.dida.dk, samlet i én pakke (public/flyt-modtag.html lægger
+// den på dida.dk; flytningen til grup.dk tager den med). adoptFromWww()
+// henter den ind og fjerner den. Hedder bevidst IKKE grupdk_…: det er en
+// pakke med GAMLE nøglenavne indeni, ikke Grupper's egne data.
+export const WWW_STASH_KEY = 'dida_grupper_from_www';

@@ -256,8 +256,8 @@ describe('restoreSession', () => {
     it('fjerner noterne om sidste kørsels resultat i begge visninger', () => {
         const meta = saveCurrentSession('Gemt', false);
         clearSetupNotices();
-        beginRun('standard'); announce('Opsætning'); announce('Resultat', 'info', null, true); commitRun('s');
-        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun('m');
+        beginRun('standard'); announce('Opsætning'); announce('Resultat', 'info', null, true); commitRun();
+        beginRun('matrix'); announce('Resultat matrix', 'info', null, true); commitRun();
         restoreSession(meta.id);
         expect(setupNotices.last.standard.map(n => n.text)).toEqual(['Opsætning']);
         expect(setupNotices.last.matrix).toEqual([]);

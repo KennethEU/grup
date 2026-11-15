@@ -191,7 +191,7 @@ function wantedKey() {
     // Et rigtigt resultat for præcis det, der skal dannes, vinder over en
     // prøve. Samme svar som noterne i stakken (lastRunApplies i
     // nextEngine.js, forslag 78): før holdt prøvekørslen pause efter det
-    // løsere aftryk (setupSignature), så en låsning eller en rettet celle
+    // løsere aftryk af opsætningen, så en låsning eller en rettet celle
     // efter Dan grupper hverken gav en prøve eller fjernede det gamle resultat.
     if (lastRunApplies(isMatrix)) return '';
     return keyFor(input, isMatrix);

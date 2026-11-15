@@ -123,6 +123,80 @@ describe('flyt-til-grup.html (dida.dk/grupper → grup.dk)', () => {
         });
     }
 
+    // Klasser fra www.dida.dk ligger på dida.dk i én pakke (flyt-modtag.html),
+    // ikke løst under grupdk_*. Før blev pakken aldrig sendt med: en lærer, der
+    // havde sine klasser på www, kom til grup.dk uden dem (15/11 2026, 148.).
+    const STASH = JSON.stringify({ at: '2026-11-15T10:00:00.000Z', entries: OLD });
+
+    async function sendFrom(store) {
+        const storage = fakeStorage(store);
+        let body = null;
+        const fetchImpl = async (url, opts) => {
+            body = JSON.parse(opts.body);
+            return { ok: true, json: async () => ({ token: 'b'.repeat(32) }) };
+        };
+        const page = run('flyt-til-grup.html', { storage, fetchImpl });
+        await new Promise(r => setTimeout(r, 0));
+        await new Promise(r => setTimeout(r, 0));
+        return { storage, body, page };
+    }
+
+    it('kun en www-pakke på dida.dk: pakken sendes med til grup.dk', async () => {
+        const { storage, body, page } = await sendFrom({ dida_grupper_from_www: STASH });
+        expect(body.entries).toEqual({ dida_grupper_from_www: STASH });
+        expect(page.window.redirectedTo).toBe(`https://grup.dk/?migrate=${'b'.repeat(32)}`);
+        expect(storage.getItem('dida_grupper_www_sent_to_grup')).toBe('2026-11-15T10:00:00.000Z');
+        // Ingen dida.dk-klasser er sendt, så de er heller ikke "flyttet".
+        expect(storage.getItem('dida_grupper_migrated_to_grup')).toBeNull();
+    });
+
+    it('klasser OG en www-pakke: begge sendes', async () => {
+        const { body } = await sendFrom({ ...NEW, dida_grupper_from_www: STASH });
+        expect(Object.keys(body.entries).sort()).toEqual(['dida_grupper_from_www', 'grupdk_classes', 'grupdk_groups_3a.csv']);
+    });
+
+    it('allerede flyttet: kun en ny www-pakke sendes — aldrig klasserne igen', async () => {
+        const { storage, body } = await sendFrom({
+            ...NEW, dida_grupper_migrated_to_grup: '2026-11-04', dida_grupper_from_www: STASH,
+        });
+        // Sendtes grupdk_* igen, kom en klasse, læreren har slettet på grup.dk, tilbage.
+        expect(body.entries).toEqual({ dida_grupper_from_www: STASH });
+        expect(storage.getItem('dida_grupper_www_sent_to_grup')).toBe('2026-11-15T10:00:00.000Z');
+    });
+
+    it('en www-pakke med en tom ny liste og en fyldt gammel sendes (som flyt-modtag.html afgør det)', async () => {
+        const mixed = JSON.stringify({ at: 'y', entries: { ...OLD, grupdk_classes: '[]' } });
+        const { body } = await sendFrom({ dida_grupper_from_www: mixed });
+        expect(body.entries).toEqual({ dida_grupper_from_www: mixed });
+    });
+
+    it('en www-pakke, der allerede er sendt, sendes ikke igen', () => {
+        const page = run('flyt-til-grup.html', {
+            storage: fakeStorage({ dida_grupper_from_www: STASH, dida_grupper_www_sent_to_grup: '2026-11-15T10:00:00.000Z' }),
+            fetchImpl: () => { throw new Error('må ikke kaldes'); },
+        });
+        expect(page.window.redirectedTo).toBe('https://grup.dk/');
+    });
+
+    it('en tom eller ulæselig www-pakke sendes ikke', () => {
+        for (const raw of ['{"at":"x","entries":{"groupeng_classes":"[]"}}', 'ikke json']) {
+            const page = run('flyt-til-grup.html', {
+                storage: fakeStorage({ dida_grupper_from_www: raw }),
+                fetchImpl: () => { throw new Error('må ikke kaldes'); },
+            });
+            expect(page.window.redirectedTo).toBe('https://grup.dk/');
+        }
+    });
+
+    it('et afslag markerer heller ikke www-pakken som sendt', async () => {
+        const storage = fakeStorage({ dida_grupper_from_www: STASH });
+        const fetchImpl = async () => ({ ok: false, status: 503, json: async () => ({}) });
+        run('flyt-til-grup.html', { storage, fetchImpl });
+        await new Promise(r => setTimeout(r, 0));
+        await new Promise(r => setTimeout(r, 0));
+        expect(storage.getItem('dida_grupper_www_sent_to_grup')).toBeNull();
+    });
+
     it('uden klasser sendes intet — man sendes bare videre', () => {
         const page = run('flyt-til-grup.html', { storage: fakeStorage({ grupdk_classes: '[]' }), fetchImpl: () => { throw new Error('må ikke kaldes'); } });
         expect(page.window.redirectedTo).toBe('https://grup.dk/');

@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { state, pushUndo, undo, redo, clearUndoHistory } from './state.js';
 import { togetherComponents } from './together.js';
 import { RULE_WEIGHT_NOTES, newUuid } from './utils.js';
-import { setupSignature, orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, groupSetFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
+import { orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, groupSetFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 1. escapeHtml
@@ -1676,68 +1676,6 @@ describe('memberIdStr', () => {
         expect(memberIdStr({ id: 'Bob' })).toBe('Bob');
         expect(memberIdStr({ name: 'Carl' })).toBe('Carl'); // ghost without id
         expect(memberIdStr({ id: ' Dina ', name: 'X' })).toBe('Dina');
-    });
-});
-
-describe('setupSignature', () => {
-    const cls = () => ({
-        settings: { groupTarget: 4, groupMod: '+' },
-        rules: [{ type: 'distribute', column: 'Køn', value: '' }],
-        togetherGroups: [{ ids: ['r2', 'r1'] }], separations: [], topics: ['A'],
-        data: [{ _rowId: 'r1' }, { _rowId: 'r2', _excluded: true }],
-    });
-
-    it('er ens for samme opsætning og skifter, når noget ændres', () => {
-        const base = setupSignature(cls(), false, 'size');
-        expect(setupSignature(cls(), false, 'size')).toBe(base);
-        const changed = [
-            (c) => { c.settings.groupTarget = 5; },
-            (c) => { c.rules[0].column = 'Niveau'; },
-            (c) => { c.rules.push({ type: 'cluster', column: 'X' }); },
-            (c) => { c.togetherGroups = []; },
-            (c) => { c.topics = []; },
-            (c) => { c.data[1]._excluded = false; },
-        ];
-        for (const edit of changed) {
-            const c = cls(); edit(c);
-            expect(setupSignature(c, false, 'size')).not.toBe(base);
-        }
-        expect(setupSignature(cls(), false, 'number')).not.toBe(base);
-    });
-
-    // Matrix-runden: valget emne/stamgruppe og Undgå hinanden hører med
-    // (begge sendes til motoren i matrix); Skal sammen og emnelisten gør ikke.
-    it('matrix: skifter med kilden og med Undgå hinanden, ikke med Skal sammen og emnelisten', () => {
-        const matrix = () => ({
-            ...cls(),
-            matrixRules: [{ type: 'distribute', column: 'Køn' }],
-            matrixSettings: { groupTarget: 4, groupMod: '+', matrixStrategy: 'full_strict', matrixRepresentationType: 'group' },
-        });
-        const base = setupSignature(matrix(), true, 'size');
-        expect(setupSignature(matrix(), true, 'size')).toBe(base);
-        const changed = [
-            (c) => { c.matrixSettings.matrixRepresentationType = 'topic'; },
-            (c) => { c.matrixSettings.matrixStrategy = 'count'; },
-            (c) => { c.separations = [{ ids: ['r1', 'r2'] }]; },
-            (c) => { c.matrixRules = []; },
-        ];
-        for (const edit of changed) {
-            const c = matrix(); edit(c);
-            expect(setupSignature(c, true, 'size')).not.toBe(base);
-        }
-        const same = [
-            (c) => { c.togetherGroups = []; },
-            (c) => { c.topics = ['B', 'C']; },
-            (c) => { c.rules = []; },
-        ];
-        for (const edit of same) {
-            const c = matrix(); edit(c);
-            expect(setupSignature(c, true, 'size')).toBe(base);
-        }
-        // Uden et gemt valg er kilden "emne" (som i motorens input).
-        const unset = matrix(); delete unset.matrixSettings.matrixRepresentationType;
-        const topic = matrix(); topic.matrixSettings.matrixRepresentationType = 'topic';
-        expect(setupSignature(unset, true, 'size')).toBe(setupSignature(topic, true, 'size'));
     });
 });
 
