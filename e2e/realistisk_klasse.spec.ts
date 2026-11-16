@@ -112,6 +112,28 @@ for (const [label, text, skipped] of [
     });
 }
 
+// (185), 161. gennemsyn: lærerens egen liste fra Excel (navn + tabulator +
+// køn) over "Lærere og elever". Før forsvandt de to elever i stilhed (de
+// regnedes for sidens menu); nu kommer navnet med, og mærket siger, at køn
+// ikke gør.
+test('en egen liste med køn over "Lærere og elever": navnene med, og mærket siger det', async ({ page }) => {
+    await gotoAppReady(page);
+    await page.getByRole('button', { name: 'Indsæt klasseliste fra Excel / Sheets' }).click();
+    await page.getByRole('button', { name: 'Indsæt tekst / Excel' }).click();
+    await page.getByPlaceholder('F.eks. 1.g Dansk').fill('Lectio egen liste');
+    await page.locator('textarea:visible').first().fill('Ida Lund\tPige\nOle Dam\tDreng\n' + LECTIO_TABLE);
+    const badge = page.locator('.lectio-badge');
+    await expect(badge).toContainText('Lectio-liste genkendt: 31 elever');
+    await expect(badge).toContainText('2 linjer havde flere kolonner, og kun den første (navnet) kommer med');
+    await page.getByRole('button', { name: /Opret klasse/i }).click();
+    await expect(page.locator('.paste-preview')).toHaveCount(0, { timeout: 30000 });
+    await expect(page.locator('th').filter({ hasText: 'Navn' })).toBeVisible({ timeout: 30000 });
+    const names = (await classData(page)).map((r: any) => r.Navn);
+    expect(names).toHaveLength(31);
+    expect(names.slice(0, 2)).toEqual(['Ida Lund', 'Ole Dam']);
+    expect(names.some((n: string) => /\t|Pige|Dreng/.test(n))).toBe(false);
+});
+
 // En linje skrevet til i hånden med komma ("Hansen, Bo") gav før HELE
 // klassen to kolonner: "Hansen" i Navn, "Bo" i en ny "Info 1" og en tom
 // "Info 1" hos alle de andre. Se extractLectioNames i lectio.js.

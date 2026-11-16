@@ -122,3 +122,40 @@ test('gendanner grupper fra en gemt kolonne', async ({ page }) => {
     }).sort();
     expect(memberNames(afterRestore)).toEqual(memberNames(beforeRestore));
 });
+
+// Kan "Kopiér" ikke nå udklipsholderen, beder appen læreren kopiere fra
+// udskriften. Den tekst har knappen "Udskriv" nederst, og før blev den en ny
+// elev i den sidste gruppe (162. gennemsyn). Teksten tages her fra den
+// rigtige udskrift, ikke skrevet i hånden.
+test('gendanner grupper fra teksten på udskriften', async ({ page }) => {
+    await createClassAndGoToGroups(page, 'Gendan Udskrift');
+    await generateGroups(page);
+    const beforeRestore = await page.locator('.group-card').allInnerTexts();
+
+    const popupPromise = page.waitForEvent('popup');
+    await page.getByRole('button', { name: 'Del', exact: true }).click();
+    await page.getByRole('group', { name: 'Del grupperne' }).getByRole('button', { name: /Udskriv/ }).click();
+    const popup = await popupPromise;
+    await popup.waitForLoadState();
+    const printed = await popup.evaluate(() => document.body.innerText);
+    await popup.close();
+    expect(printed).toContain('Udskriv');
+
+    await openRestoreDialog(page);
+    await page.locator('#rg-text').fill(printed);
+    await page.getByRole('button', { name: 'Læs listen' }).click();
+
+    await expect(page.locator('.preview-head')).toContainText('med 12 elever');
+    // Ingen ukendte navne: hverken "Udskriv" eller sidens overskrift.
+    await expect(page.getByText('Se efter her')).toHaveCount(0);
+    await page.locator('.modal-content .btn.primary').click();
+
+    const afterRestore = await page.locator('.group-card').allInnerTexts();
+    const memberNames = (cards: string[]) => cards.map(k => {
+        const lines = k.split('\n').map(l => l.trim()).filter(Boolean);
+        return lines[0] + ': ' + lines.slice(1).sort().join(',');
+    }).sort();
+    expect(memberNames(afterRestore)).toEqual(memberNames(beforeRestore));
+    await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
+    await expect(page.locator('tbody tr').filter({ hasText: 'Udskriv' })).toHaveCount(0);
+});

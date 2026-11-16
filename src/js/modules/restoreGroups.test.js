@@ -118,6 +118,21 @@ describe('parseGroupValue — de fire formater', () => {
     it('giver tom værdi hverken nummer eller emne', () => {
         expect(parseGroupValue('   ')).toEqual({ number: null, topic: null });
     });
+
+    // Del-menuens Excel-fil skriver "Gruppe 1 (Klima)" i kolonnen Stamgruppe
+    // (groupLookup i ExportSection.vue). Før blev det et emne uden tal (162.).
+    it('læser Excel-eksportens "Gruppe 1 (Klima)" som gruppe 1 med emnet Klima', () => {
+        expect(parseGroupValue('Gruppe 1 (Klima)')).toEqual({ number: 1, topic: 'Klima' });
+        expect(parseGroupValue('Gruppe 3 (EU - og Danmark)'))
+            .toEqual({ number: 3, topic: 'EU - og Danmark' });
+        expect(parseGroupValue('Gruppe 2 (EU (og DK))')).toEqual({ number: 2, topic: 'EU (og DK)' });
+    });
+
+    it('lader en parentes i et emne være', () => {
+        expect(parseGroupValue('Gruppe 1 - Klima (2. del)'))
+            .toEqual({ number: 1, topic: 'Klima (2. del)' });
+        expect(parseGroupValue('Klima (x)')).toEqual({ number: null, topic: 'Klima (x)' });
+    });
 });
 
 describe('parseGroupsText', () => {
@@ -856,5 +871,105 @@ describe('restoreGroups — lofter på den indsatte tekst', () => {
         groups[0].items.forEach(it => { if (it.status === 'unmatched') it.action = 'add'; });
         const plan = buildPlan({ groups, data, displayColumn: 'Navn' });
         expect(plan.blocking).toEqual([]);
+    });
+});
+
+// ────────────────────────────────────────────────────────────────────────
+// 162. gennemsyn: appens egne udgange læst tilbage
+// ────────────────────────────────────────────────────────────────────────
+
+describe('Gendan fra Del-menuens Excel-kolonne "Stamgruppe"', () => {
+    const exported = [
+        student('r1', 'Anna Quist Fassov', { Stamgruppe: 'Gruppe 1 (Klima)', Køn: 'Pige' }),
+        student('r2', 'Gustav Føgh', { Stamgruppe: 'Gruppe 1 (Klima)', Køn: 'Dreng' }),
+        student('r3', 'Melad Sayed', { Stamgruppe: 'Gruppe 2', Køn: 'Dreng' }),
+        student('r4', 'Sadaq Liban Abdi Hagi-Ali', { Stamgruppe: 'Gruppe 2', Køn: 'Pige' }),
+        student('r5', 'Pernille Løvendorf Rørstrøm', { Stamgruppe: 'Gruppe 3 (EU - og Danmark)', Køn: 'Pige' }),
+    ];
+
+    it('beholder gruppernes numre og emner', () => {
+        const { groups } = parseGroupsColumn('Stamgruppe', exported);
+        expect(groups.map(g => [g.number, g.topic, g.explicitTopic, g.items.map(i => i.rowId)])).toEqual([
+            [1, 'Klima', true, ['r1', 'r2']],
+            [2, null, false, ['r3', 'r4']],
+            [3, 'EU - og Danmark', true, ['r5']],
+        ]);
+    });
+
+    it('regner kolonnen for nummereret og vælger den frem for Køn', () => {
+        const cands = candidateColumns(exported, ['Navn', 'Køn', 'Stamgruppe'], 'Navn');
+        expect(cands.find(c => c.column === 'Stamgruppe').numbered).toBe(true);
+        expect(bestCandidateColumn(cands)).toBe('Stamgruppe');
+    });
+});
+
+describe('Gendan fra teksten på udskriften', () => {
+    // Præcis som Chromium gav document.body.innerText på udskriften (Del →
+    // Udskriv) 16/11 2026, med testklassens navne og et emne, en fraværende
+    // elev og en matrix nedenunder. Tomme linjer og versaler er bevaret.
+    const PRINTED = 'GRUPPEOVERSIGT\nProbe\n16. november 2026\n5 elever · 2 stamgrupper\nSTAMGRUPPER\n'
+        + 'Gruppe 1\n\nKlima\n\nAnna Quist Fassov fraværende\nGustav Føgh\n'
+        + 'Gruppe 2\nMelad Sayed\nSadaq Liban Abdi Hagi-Ali\nPernille Løvendorf Rørstrøm\n'
+        + 'RUNDE 2 · MATRIXGRUPPER\nGruppe 1\nAnna Quist Fassov\nfra\nKlima\nGustav Føgh\nfra\nGrp 2\n'
+        + 'Gruppe 2\nIngen elever\nUdskriv';
+
+    const read = (text, topics = ['Klima']) => {
+        const data = setClass(CLASS_CSV, { topics });
+        const parsed = parseGroupsText(text);
+        const r = resolveTextGroups(parsed.groups, data, 'Navn', topics);
+        const plan = buildPlan({ groups: r.groups, data, displayColumn: 'Navn', classTopics: topics });
+        return { parsed, r, plan, data };
+    };
+
+    it('giver stamgrupperne tilbage uden nye elever og uden at blande matrixen ind', () => {
+        const { parsed, plan } = read(PRINTED);
+        expect(parsed.skippedMatrix).toBe(true);
+        expect(plan.newStudents).toEqual([]);
+        expect(plan.mergedNumbers).toEqual([]);
+        expect(plan.blocking).toEqual([]);
+        expect(plan.groups.map(g => [g.number, g.topic, g.members.map(m => m.rowId)])).toEqual([
+            [1, 'Klima', ['r1', 'r2']],
+            [2, null, ['r3', 'r4', 'r5']],
+        ]);
+    });
+
+    it('holder en elev med "fraværende" bag navnet fraværende', () => {
+        const { plan } = read(PRINTED);
+        expect(plan.willStayAbsent).toEqual(['r1']);
+        expect(plan.willBePresent).toEqual([]);
+    });
+
+    it('springer "Ingen elever" og "Udskriv" over', () => {
+        const { plan } = read('Gruppe 1\nAnna Quist Fassov\nGruppe 2\nIngen elever\nUdskriv');
+        expect(plan.newStudents).toEqual([]);
+        expect(plan.emptyGroups).toEqual([2]);
+    });
+
+    it('gør kun linjen til et emne, når den er et af klassens emner', () => {
+        // "Vand" er ikke et emne i klassen: den gættes ikke væk, men står som
+        // et ukendt navn, læreren selv tager stilling til.
+        const { r } = read('Gruppe 1\nVand\nAnna Quist Fassov', ['Klima']);
+        expect(r.groups[0].topic).toBe(null);
+        expect(r.groups[0].items.map(i => [i.raw, i.status])).toEqual([
+            ['Vand', 'unmatched'], ['Anna Quist Fassov', 'bound'],
+        ]);
+    });
+
+    it('lader en elev, der hedder det samme som et emne, være en elev', () => {
+        const { r } = read('Gruppe 1\nGustav Føgh\nAnna Quist Fassov', ['Gustav Føgh']);
+        expect(r.groups[0].topic).toBe(null);
+        expect(r.groups[0].items.map(i => i.rowId)).toEqual(['r2', 'r1']);
+    });
+
+    it('rører ikke en overskrift, der allerede har et emne', () => {
+        const { r } = read('Gruppe 1 - Klima\nKlima\nAnna Quist Fassov');
+        expect(r.groups[0].topic).toBe('Klima');
+        expect(r.groups[0].items[0]).toMatchObject({ raw: 'Klima', status: 'unmatched' });
+    });
+
+    it('stopper ikke ved en matrix-overskrift før den første gruppe', () => {
+        const { parsed } = read('MATRIXGRUPPER\nGruppe 1\nAnna Quist Fassov');
+        expect(parsed.skippedMatrix).toBe(false);
+        expect(parsed.groups).toHaveLength(1);
     });
 });

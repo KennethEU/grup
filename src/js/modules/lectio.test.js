@@ -254,6 +254,44 @@ describe('Lectios lektionsside og "Lærere og elever"', () => {
         expect(read.skipped).toBe(13);   // 6 + menu (3), overskriften, læreren, optællingen
     });
 
+    // (184), 160. gennemsyn: en tabel og en lektionsside i samme indsæt (to
+    // hold, kopieret fra hver sin side). Før gav tabel + lektion 57 navne,
+    // 28 med holdet bagefter og den første væk; lektion + tabel mistede alle
+    // lektionens 29 elever i stilhed (alt over overskriften var "menu").
+    it.each([
+        ['tabel + lektionsside', TABLE + '\n' + LESSON_2A],
+        ['lektionsside + tabel', LESSON_2A + '\n' + TABLE],
+        ['lektionsside + tabel med Windows-linjeskift', (LESSON_2A + '\n' + TABLE).replace(/\n/g, '\r\n')],
+    ])('%s giver begge holds elever uden holdet og intet af siderne', (_label, text) => {
+        const read = readLectio(text);
+        expect(read.names).toEqual([...EXPECTED, ...EXPECTED]);
+        expect(read.skipped).toBe(22);   // lektionssiden 16 + tabellen 6
+        expect(read.names.join('\n')).not.toMatch(/[(,:]|2a|2bx|menu|Lærer/);
+    });
+
+    it('lektion + tabel + lektion: tre hold, alle med', () => {
+        const LESSON_3C = LESSON.replace(/2bx/g, '3c');
+        const read = readLectio(LESSON_2A + '\n' + TABLE + '\n' + LESSON_3C);
+        expect(read.names).toEqual([...EXPECTED, ...EXPECTED, ...EXPECTED]);
+        expect(read.skipped).toBe(38);
+    });
+
+    it('en elev skrevet til i hånden i lektionssiden før tabellen kommer med', () => {
+        const lines = LESSON_2A.split('\n');
+        const at = lines.findIndex(l => l.startsWith('Clara'));
+        lines.splice(at, 0, 'Ny Elev');
+        expect(readLectio(lines.join('\n') + '\n' + TABLE).names).toContain('Ny Elev');
+    });
+
+    // Over overskriften står kun en lektionsside, hvis linjerne ligner én
+    // (80 %-reglen): to Lectio-agtige linjer i en menu gør ikke menuen til elever.
+    it('to Lectio-agtige linjer i menuen over tabellen gør den ikke til elever', () => {
+        const menu = ['Anna Holm, 2a 04 (2a)', 'menu', 'Vis kun aktuelle elever', 'Noget andet',
+            'Mere menu', 'Bo Lund, 2a 05 (2a)', 'Lærere og elever'];
+        const read = readLectio(menu.join('\n') + '\n' + TABLE);
+        expect(read.names).toEqual(EXPECTED);
+    });
+
     it('et navn skrevet til i hånden mellem to elever er stadig en elev', () => {
         const lines = LESSON.split('\n');
         const at = lines.findIndex(l => l.startsWith('Clara'));
@@ -266,6 +304,62 @@ describe('Lectios lektionsside og "Lærere og elever"', () => {
         const dot = LESSON.split('\n');
         dot.splice(at, 0, 'Bo Lund Jr.');
         expect(readLectio(dot.join('\n')).names).toContain('Bo Lund Jr.');
+    });
+
+    // (185), 161. gennemsyn: lærerens egen liste fra Excel (navn + tabulator
+    // + køn) i samme felt som en Lectio-liste. Før blev linjen én elev med
+    // tabulatoren i navnet, og ved "Lærere og elever" forsvandt den i stilhed.
+    const OWN = 'Ida Lund\tPige\nOle Dam\tDreng';
+    it.each([
+        ['egen liste over lektionssiden', OWN + '\n' + LESSON, 'before'],
+        ['egen liste under lektionssiden', LESSON + '\n' + OWN, 'after'],
+        ['egen liste over tabellen', OWN + '\n' + TABLE, 'before'],
+        ['egen liste under tabellen', TABLE + '\n' + OWN, 'after'],
+        ['egen liste over tabellen med tomme kolonner', OWN + '\n' + TABLE_EMPTY_COLS, 'before'],
+    ])('%s: navnet kommer med, og antallet med flere kolonner tælles', (_label, text, where) => {
+        const read = readLectio(text);
+        const own = ['Ida Lund', 'Ole Dam'];
+        expect(read.names).toEqual(where === 'before' ? [...own, ...EXPECTED] : [...EXPECTED, ...own]);
+        expect(read.trimmed).toBe(2);
+        expect(read.names.join('\n')).not.toMatch(/\t|Pige|Dreng/);
+    });
+
+    it('egen liste over tabellen tæller ikke med i "linjer fra Lectios side"', () => {
+        expect(readLectio(OWN + '\n' + TABLE).skipped).toBe(readLectio(TABLE).skipped);
+    });
+
+    it('egen liste ved Lectios elevliste (kun linjer): navnet uden kolonnerne', () => {
+        const read = readLectio(OWN + '\n' + LIST);
+        expect(read.names).toEqual(['Ida Lund', 'Ole Dam', ...readLectio(LIST).names]);
+        expect(read.trimmed).toBe(2);
+    });
+
+    it('en linje med kun kolonnenavne ("Navn" + "Køn") er ikke en elev', () => {
+        for (const text of ['Navn\tKøn\n' + OWN + '\n' + LESSON, 'Navn\tKøn\n' + OWN + '\n' + TABLE]) {
+            const read = readLectio(text);
+            expect(read.names).not.toContain('Navn');
+            expect(read.names.slice(0, 2)).toEqual(['Ida Lund', 'Ole Dam']);
+        }
+    });
+
+    it('en linje med kun ét navn og tomme celler tælles ikke som flere kolonner', () => {
+        // Over og under tabellen: før forsvandt den under tabellen (tre celler).
+        const above = readLectio('Ida Lund\t\t\n' + TABLE);
+        expect(above.names[0]).toBe('Ida Lund');
+        expect(above.trimmed).toBe(0);
+        const below = readLectio(TABLE + '\nIda Lund\t\t');
+        expect(below.names.at(-1)).toBe('Ida Lund');
+        expect(below.trimmed).toBe(0);
+    });
+
+    it('"Hansen, Bo" er stadig ét navn (kommaet er ikke en kolonne)', () => {
+        const read = readLectio('Hansen, Bo\n' + LESSON);
+        expect(read.names[0]).toBe('Hansen, Bo');
+        expect(read.trimmed).toBe(0);
+    });
+
+    it('Lectios egne sider alene har intet med flere kolonner', () => {
+        for (const text of [LESSON, TABLE, TABLE_EMPTY_COLS]) expect(readLectio(text).trimmed).toBe(0);
     });
 
     it('to enlige Lectio-agtige linjer med klokkeslæt imellem er ikke Lectio', () => {
@@ -307,4 +401,24 @@ describe('Lectios sider hele vejen ind i klassen', () => {
             expect(content.data[0].Navn).toBe('Adam Karim Haddad');
             expect(content.data[28].Navn).toBe('Ylva Josefine Rønne Østergaard');
         });
+
+    it('egen liste (Navn + Køn) over tabellen giver én kolonne Navn med 31 elever (185)', () => {
+        const text = 'Ida Lund\tPige\nOle Dam\tDreng\n' + TABLE;
+        const res = pyBridge.createClass('2bx', extractLectioNames(text), false);
+        expect(res.error).toBeUndefined();
+        const content = pyBridge.getClass(res.filename).content;
+        expect(content.columns).toEqual(['Navn']);
+        expect(content.data).toHaveLength(31);
+        expect(content.data.slice(0, 2).map(r => r.Navn)).toEqual(['Ida Lund', 'Ole Dam']);
+    });
+
+    it('lektionsside (2a) + tabel (2bx) giver én kolonne Navn med 58 elever (184)', () => {
+        const text = LESSON.replace(/2bx/g, '2a') + '\n' + TABLE;
+        const res = pyBridge.createClass('2a+2bx', extractLectioNames(text), false);
+        expect(res.error).toBeUndefined();
+        const content = pyBridge.getClass(res.filename).content;
+        expect(content.columns).toEqual(['Navn']);
+        expect(content.data).toHaveLength(58);
+        expect(content.data.some(r => /\(|,/.test(r.Navn))).toBe(false);
+    });
 });

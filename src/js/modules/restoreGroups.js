@@ -66,6 +66,7 @@ function groupNumberOf(raw) {
  *   "Gruppe 6"          → { number: 6, topic: null }
  *   "6"                 → { number: 6, topic: null }
  *   "Gruppe 1 - Klima"  → { number: 1, topic: "Klima" }
+ *   "Gruppe 1 (Klima)"  → { number: 1, topic: "Klima" }   (Del-menuens Excel)
  *   "Klima"             → { number: null, topic: "Klima" }
  *
  * Bindestregen deler kun, når det der står FØR den er et gruppenavn. Ellers
@@ -79,6 +80,18 @@ export function parseGroupValue(raw) {
     if (dash) {
         const n = groupNumberOf(dash[1]);
         if (n !== null) return { number: n, topic: dash[2].trim() || null };
+    }
+
+    // "Gruppe 1 (Klima)" — Del-menuens Excel-fil skriver stamgruppen sådan i
+    // kolonnen "Stamgruppe" (groupLookup i ExportSection.vue). Lægges filen ind
+    // igen og gendannes fra kolonnen, blev hele værdien før læst som et EMNE
+    // uden tal: "Gruppe 1 (Klima)" fik det næste ledige nummer (fx Gruppe 3)
+    // og mærkatet "Gruppe 1 (Klima)" (162. gennemsyn). Kun når det, der står
+    // før parentesen, er et gruppenavn — "Klima (2. del)" er stadig et emne.
+    const paren = s.match(/^(.*?)\s*\((.+)\)$/);
+    if (paren) {
+        const n = groupNumberOf(paren[1]);
+        if (n !== null) return { number: n, topic: paren[2].trim() || null };
     }
 
     const n = groupNumberOf(s);
@@ -100,6 +113,35 @@ const ABSENT_RE = /\s*\((?:fraværende|fravaerende|absent)\)\s*$/i;
 // Bagerst på en linje: " (Grp 3 - Klima)" — matrix-kopiens kilde-parentes.
 const SOURCE_RE = /\s*\((?:grp|gruppe|group)\s*\d+[^)]*\)\s*$/i;
 
+// ── Teksten fra udskriften ("Del" → "Udskriv") ──
+// Kan "Kopiér" ikke nå udklipsholderen, beder appen læreren om at kopiere
+// fra udskriften i stedet (writeGroupsToClipboard). Den tekst ser anderledes
+// ud end kopien — målt i Chromium på den rigtige side (162. gennemsyn):
+//
+//   GRUPPEOVERSIGT · klassen · datoen · "12 elever · 3 stamgrupper" · STAMGRUPPER
+//   Gruppe 1
+//   Klima                  ← emnet på sin egen linje
+//   Clara fraværende       ← fravær uden parentes
+//   …
+//   RUNDE 2 · MATRIXGRUPPER   ← matrixen nedenunder, med de SAMME gruppenumre
+//   Gruppe 2
+//   Ingen elever           ← et tomt kort
+//   Udskriv                ← knappen nederst på siden
+//
+// Før blev emnet og "Ingen elever" og "Udskriv" til nye elever, Clara blev
+// sat til stede, og matrixens "Gruppe 1" blev lagt sammen med stamgruppen.
+// Reglerne her er smalle med vilje: de kender kun udskriftens egne ord.
+
+// "Clara fraværende" — udskriftens markering (absent-note i overview.js).
+const PRINT_ABSENT_RE = /\s+(?:fraværende|fravaerende)\s*$/i;
+
+// Udskriftens egne linjer, der aldrig er en elev.
+const PRINT_NOISE = new Set(['ingen elever', 'udskriv']);
+
+// Overskriften over matrixen. Herfra er resten matrixgrupper, som Gendan
+// ikke henter (kun stamgrupperne skiftes ud).
+const MATRIX_SECTION_RE = /^(?:runde\s*\d+\s*·\s*)?matrixgrupper$/i;
+
 /**
  * Skræl appens egne haler af en navnelinje.
  *
@@ -111,9 +153,9 @@ function cleanMemberLine(line) {
     let s = String(line).trim();
     let absent = false;
 
-    while (ABSENT_RE.test(s)) {
+    while (ABSENT_RE.test(s) || PRINT_ABSENT_RE.test(s)) {
         absent = true;
-        s = s.replace(ABSENT_RE, '');
+        s = s.replace(ABSENT_RE, '').replace(PRINT_ABSENT_RE, '');
     }
     s = s.replace(SOURCE_RE, '').trim();
 
@@ -147,15 +189,17 @@ export const MAX_PASTE_LINE_CHARS = 200;
 /**
  * Læs en indsat gruppeliste.
  *
- * @returns {{ groups: Array, orphans: string[], error: string|null }}
+ * @returns {{ groups: Array, orphans: string[], skippedMatrix: boolean, error: string|null }}
  *   groups: [{ number, topic, names: [{ raw, absent }] }]
  *   orphans: navnelinjer FØR den første overskrift (de hører ingen steder)
+ *   skippedMatrix: teksten fortsatte med udskriftens matrixgrupper, som ikke er læst
  */
 export function parseGroupsText(text) {
     const lines = String(text ?? '').split(/\r?\n/);
     const groups = [];
     const orphans = [];
     let current = null;
+    let skippedMatrix = false;
 
     // Lofterne tjekkes FØR opslaget, ikke undervejs: det er selve
     // navneopslaget der er dyrt, og en afvisning skal komme med det samme.
@@ -181,6 +225,14 @@ export function parseGroupsText(text) {
     for (const line of lines) {
         const t = line.trim();
         if (!t) continue;
+
+        // Matrixen under stamgrupperne i udskriften. Først EFTER mindst én
+        // stamgruppe: står overskriften øverst, er der intet at stoppe før.
+        if (groups.length > 0 && MATRIX_SECTION_RE.test(t)) {
+            skippedMatrix = true;
+            break;
+        }
+        if (PRINT_NOISE.has(normalizeName(t))) continue;
 
         const h = t.match(HEADER_RE);
         if (h) {
@@ -220,7 +272,7 @@ export function parseGroupsText(text) {
         };
     }
 
-    return { groups, orphans, error: null };
+    return { groups, orphans, skippedMatrix, error: null };
 }
 
 // ────────────────────────────────────────────────────────────────────────
@@ -340,11 +392,14 @@ export function nearestStudent(rawName, index, takenIds = new Set()) {
  * medlemmer bæres som `_rowId` og ikke som navne. De havner i stedet som
  * `ambiguous`, og læreren vælger.
  *
+ * @param {string[]} [classTopics]  klassens emner — se emnelinjen herunder
  * @returns {{ groups: Array }} hver gruppe med `items`, som brugerfladen
  *   redigerer direkte (`rowId` og `action`).
  */
-export function resolveTextGroups(parsed, data, displayColumn) {
+export function resolveTextGroups(parsed, data, displayColumn, classTopics = []) {
     const index = buildNameIndex(data, displayColumn);
+    const knownTopics = new Set(
+        (Array.isArray(classTopics) ? classTopics : []).map(t => topicKey(t)).filter(Boolean));
 
     // Et navn der allerede er brugt entydigt, kan ikke være forslaget til et
     // andet — ellers peger to linjer på den samme elev.
@@ -355,6 +410,21 @@ export function resolveTextGroups(parsed, data, displayColumn) {
         explicitTopic: !!g.explicitTopic,
         items: g.names.map(n => ({ raw: n.raw, absent: n.absent }))
     }));
+
+    // Emnet på sin egen linje lige under overskriften (udskriften). KUN når
+    // overskriften ingen emne havde, linjen ikke er en elev i klassen, og den
+    // er et af klassens emner. Et ukendt ord gættes ikke om til et emne: så
+    // forsvandt en rigtig elev uden et spor. Det står i stedet i "Se efter her".
+    for (const g of groups) {
+        if (g.topic || g.items.length === 0) continue;
+        const first = g.items[0];
+        if (first.absent) continue;
+        if (index.byName.has(normalizeName(first.raw))) continue;
+        if (!knownTopics.has(topicKey(first.raw))) continue;
+        g.topic = first.raw;
+        g.explicitTopic = true;
+        g.items.shift();
+    }
 
     // Runde 1: entydige og tvetydige match
     for (const g of groups) {

@@ -1,5 +1,6 @@
 import { parseCSV, stripEmptyColumns, nfc, cellNumber } from './utils.js';
 import { readLectio, extractLectioNames } from './lectio.js';
+import { HEADER_WORDS } from './headerWords.js';
 
 // Importdata må hverken overskrive nabokolonner eller styre appens interne felter.
 export function normalizeImportHeaders(headers) {
@@ -416,17 +417,9 @@ export function readClassText(csvContent, hasHeaders, maxRows) {
     return { headers, data, warnings, usedHeaders: !!hasHeaders };
 }
 
-// Ord, der kun står øverst i en kolonne, aldrig som en elev. Små bogstaver.
-// Danske og de almindelige engelske (testene og nogle eksporter bruger "Name").
-const HEADER_WORDS = new Set([
-    'navn', 'navne', 'fornavn', 'fornavne', 'efternavn', 'fulde navn', 'elev', 'elever',
-    'elevnavn', 'køn', 'klasse', 'hold', 'niveau', 'id', 'nr', 'nr.', 'nummer', 'e-mail',
-    'email', 'mail', 'karakter', 'karakterer', 'gruppe', 'emne', 'info', 'bemærkning',
-    'bemærkninger', 'studieretning', 'alder', 'fødselsdag', 'type',
-    // Engelske kolonnenavne (fx en eksport fra et engelsksproget system).
-    'name', 'names', 'first name', 'last name', 'surname', 'full name', 'student',
-    'students', 'gender', 'sex', 'class', 'group', 'level', 'grade', 'age',
-]);
+// HEADER_WORDS (ord, der kun står øverst i en kolonne) bor i headerWords.js,
+// så lectio.js også kan bruge dem uden at importere denne fil.
+
 
 /**
  * Har rækken et kendt kolonnenavn (HEADER_WORDS), som ikke er en af

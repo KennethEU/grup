@@ -532,6 +532,12 @@ const lectioBadgeText = computed(() => {
         text += `; ${read.skipped} ${read.skipped === 1 ? 'linje' : 'linjer'} fra Lectios side`
             + ' (fx overskrifter, lærere og optællingen) springes over';
     }
+    // Lærerens egen liste i samme felt (fx Navn + Køn fra Excel): kun navnet
+    // kommer med, og det skal læreren vide (161. gennemsyn, (185)).
+    if (read.trimmed > 0) {
+        text += `; ${read.trimmed} ${read.trimmed === 1 ? 'linje havde' : 'linjer havde'} flere kolonner,`
+            + ' og kun den første (navnet) kommer med';
+    }
     return text + '.';
 });
 

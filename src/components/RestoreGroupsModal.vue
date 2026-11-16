@@ -20,6 +20,8 @@ const tab = ref('text');
 const rawText = ref('');
 const textError = ref('');
 const orphans = ref([]);
+// Udskriftens matrixgrupper stod under stamgrupperne og er ikke læst.
+const skippedMatrix = ref(false);
 const column = ref('');
 const markAbsent = ref(true);
 
@@ -75,6 +77,7 @@ const canRestore = computed(() => !!plan.value && plan.value.blocking.length ===
 
 function readText() {
     orphans.value = [];
+    skippedMatrix.value = false;
     const res = rg.parseGroupsText(rawText.value);
     if (res.error) {
         textError.value = res.error;
@@ -83,7 +86,11 @@ function readText() {
     }
     textError.value = '';
     orphans.value = res.orphans;
-    resolution.value = rg.resolveTextGroups(res.groups, data.value, displayColumn.value);
+    skippedMatrix.value = !!res.skippedMatrix;
+    // Klassens emner: et emne på sin egen linje under overskriften (som i
+    // udskriften) bliver gruppens emne og ikke en ny elev.
+    resolution.value = rg.resolveTextGroups(res.groups, data.value, displayColumn.value,
+        state.currentClass?.topics || []);
 }
 
 function readColumn() {
@@ -101,6 +108,7 @@ watch(tab, (t) => {
     resolution.value = null;
     textError.value = '';
     orphans.value = [];
+    skippedMatrix.value = false;
     if (t === 'column') readColumn();
 });
 
@@ -215,6 +223,11 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
             {{ orphans.length }} {{ orphans.length === 1 ? 'linje stod' : 'linjer stod' }}
             før den første gruppeoverskrift og kom ikke med:
             {{ orphans.slice(0, 3).join(', ') }}<span v-if="orphans.length > 3"> …</span>
+          </p>
+
+          <p v-if="skippedMatrix" class="note">
+            Matrixgrupperne nederst i teksten er ikke læst. Gendan henter kun
+            stamgrupperne.
           </p>
 
           <!-- Hvem er hvem? Programmet gætter aldrig her. -->
