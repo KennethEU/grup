@@ -307,6 +307,45 @@ test('www-pakken, der kommer med i flytningen fra dida.dk, hentes ind ved siden 
     expect(page.url()).not.toContain('migrate=');
 });
 
+// Lærerens EGNE klasser fra dida.dk/grupper (163. gennemsyn, 16/11 2026): har
+// grup.dk allerede en klasse med samme navn, men endnu ingen grupper, fik den
+// før dida.dk-klassens grupper, emner og historik (hver nøgle blev lagt ind
+// for sig), og læreren hørte intet om, at dida.dk-klassen ikke kom med. Nu
+// lægges intet fra pakken ind, og beskeden siger, hvor klasserne er.
+test('lærerens klasser fra dida.dk/grupper lægges ikke løst ind hos en lærer, der har klasser på grup.dk', async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'page.route fanger ikke synkron XHR i WebKit');
+    test.setTimeout(120000);
+    const saved = await classWithEverything(page);
+    const old = await putBackAsBefore(page, saved);
+    const file = JSON.parse(saved.grupdk_classes)[0].filename;
+    // grup.dk har klassen, men endnu ingen grupper, emner eller historik.
+    const mine: Record<string, string> = { grupdk_classes: saved.grupdk_classes };
+    await page.evaluate((entries) => {
+        localStorage.clear();
+        for (const [k, v] of Object.entries(entries as Record<string, string>)) localStorage.setItem(k, v);
+    }, mine);
+    // dida.dk-udgaven er en ANDEN klasse med samme navn (én celle er anderledes).
+    const theirs = JSON.parse(old.groupeng_classes);
+    const cols: string[] = theirs[0].content.columns;
+    theirs[0].content.data[0][cols[cols.length - 1]] += ' (dida.dk)';
+    const token = 'd'.repeat(32);
+    await page.route(`**/api/grupper-transfer/${token}`, route => route.fulfill({
+        status: 200, contentType: 'application/json',
+        body: JSON.stringify({ ok: true, entries: { ...old, groupeng_classes: JSON.stringify(theirs) } }),
+    }));
+    await captureNotices(page);
+    await page.goto(`/?migrate=${token}`, { waitUntil: 'commit' });
+
+    await expect.poll(() => saidSoFar(page), { timeout: 15000 })
+        .toMatch(/notifyError: 1 klasse fra dida\.dk\/grupper er ikke hentet hertil.*dida\.dk\/grupper\/\?bliv=1/);
+    const after = await grupdkKeys(page);
+    expect(after.grupdk_classes).toBe(saved.grupdk_classes);
+    expect(after[`grupdk_groups_${file}`]).toBeUndefined();
+    expect(after[`grupdk_history_${file}`]).toBeUndefined();
+    expect(Object.keys(after).filter(k => k.startsWith('grupdk_session_'))).toEqual([]);
+    expect(page.url()).not.toContain('migrate=');
+});
+
 test('en rå skrivning under det gamle navn til den RIGTIGE klasses grupper overskriver intet', async ({ page, context }) => {
     test.setTimeout(120000);
     const saved = await classWithEverything(page);

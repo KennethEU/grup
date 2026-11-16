@@ -292,3 +292,98 @@ describe('adoptFromWww — klasser flyttet med fra www.dida.dk', () => {
         expect(window.notifyError).toHaveBeenCalledWith(expect.stringContaining('?bliv=1'));
     });
 });
+
+// Pakken fjernes, før klasserne skrives (se adoptFromWww). Det, der ikke kom
+// med, findes derfor kun på www, og beskeden er lærerens eneste spor
+// (164. gennemsyn). Lageret får et loft, der giver plads til den ene klasse.
+describe('adoptWwwEntries — fuld lagerplads halvvejs', () => {
+    const big = 'Navn\n' + Array.from({ length: 200 }, (_, i) => `Elev nummer ${i}`).join('\n') + '\n';
+
+    /** Pakken med to store klasser, og hvor meget de fylder, når de er hentet. */
+    async function twoClasses() {
+        const stash = stashFromWww(() => {
+            classWithEverything('1bms SA', big);
+            classWithEverything('2bms SA', big);
+        });
+        const entries = JSON.parse(stash).entries;
+        await adoptWwwEntries(entries);
+        const full = usedChars();
+        localStorage.clear();
+        pyBridge._invalidateClassesCache();
+        window.notifyError = vi.fn();
+        window.notifyInfo = vi.fn();
+        window.notifySuccess = vi.fn();
+        return { entries, full };
+    }
+
+    it('nævner klassen, der ikke kom med, ved navn — og ikke "0 klasser er hentet"', async () => {
+        const { entries, full } = await twoClasses();
+        // Plads til ingen af dem.
+        const res = await withStorageBudget(Math.floor(full * 0.3), () => adoptWwwEntries(entries));
+
+        expect(res.written).toBe(0);
+        expect(res.failed.map(f => f.name)).toEqual(['1bms SA', '2bms SA']);
+        const msg = window.notifyError.mock.calls.at(-1)[0];
+        expect(msg).toContain('2 klasser fra www.dida.dk kunne IKKE hentes: 1bms SA, 2bms SA.');
+        expect(msg).not.toContain('0 klasser er hentet');
+        expect(msg).toContain('frigør plads');
+        expect(msg).toContain('?bliv=1');
+    });
+
+    it('siger, hvilken klasse der mangler, når kun den første kom ind', async () => {
+        const { entries, full } = await twoClasses();
+        const res = await withStorageBudget(Math.floor(full * 0.7), () => adoptWwwEntries(entries));
+
+        expect(res.written).toBe(1);
+        const msg = window.notifyError.mock.calls.at(-1)[0];
+        expect(msg).toContain('1 klasse er hentet fra www.dida.dk');
+        expect(msg).toContain('kunne IKKE hentes: 2bms SA.');
+        expect(window.notifySuccess).not.toHaveBeenCalled();
+    });
+
+    it('siger, at gemte sessioner mangler, med klassens navn og vejen til www — og lader beskeden stå', async () => {
+        const { entries, full } = await twoClasses();
+        // Plads til begge klasser, men ikke til den sidstes grupper og session.
+        const res = await withStorageBudget(Math.floor(full * 0.98), () => adoptWwwEntries(entries));
+
+        expect(res.written).toBe(2);
+        expect(res.partial.length).toBeGreaterThan(0);
+        expect(window.notifyInfo).not.toHaveBeenCalled();
+        const msg = window.notifyError.mock.calls.at(-1)[0];
+        expect(msg).toContain('2 klasser er hentet fra www.dida.dk');
+        expect(msg).toContain('for 2bms SA kom den gemte session ikke med');
+        expect(msg).not.toContain('2bms_sa.csv');
+        expect(msg).toContain('?bliv=1');
+    });
+
+    it('bruger navnet, klassen fik, når den er omdøbt ved et sammenfald', async () => {
+        const { entries, full } = await twoClasses();
+        const res = await withStorageBudget(Math.floor(full * 1.2), () => {
+            // En anden "2bms SA" findes allerede her, så www's bliver omdøbt.
+            pyBridge.createClass('2bms SA', 'Navn\nCecilie\n', true);
+            // Fyld op, så der kun mangler lidt til den omdøbte klasses session.
+            const room = Math.floor(full * 1.2) - usedChars() - Math.floor(full * 0.99);
+            if (room > 0) localStorage.setItem('fyld', 'x'.repeat(room));
+            return adoptWwwEntries(entries);
+        });
+
+        const renamed = res.partial.find(p => p.name === '2bms SA (fra www.dida.dk)');
+        expect(renamed).toBeTruthy();
+        const msg = window.notifyError.mock.calls.at(-1)[0];
+        expect(msg).toContain('for 2bms SA (fra www.dida.dk)');
+        expect(msg).not.toMatch(/_restored_\d+/);
+    });
+
+    it('siger fra, når pakken får hentningen til at fejle undervejs', async () => {
+        const entries = {};
+        Object.defineProperty(entries, 'groupeng_classes', {
+            enumerable: true,
+            get() { throw new Error('kan ikke læses'); },
+        });
+
+        const res = await adoptWwwEntries(entries);
+
+        expect(res.error).toBeTruthy();
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringContaining('?bliv=1'));
+    });
+});

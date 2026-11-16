@@ -38,11 +38,51 @@ function hintActions(h) {
 // browserens øverste lag (showModal), og et vindue, knappen åbner ("Ranger
 // værdierne…", "Vis aftalen"), er et almindeligt lag og åbnede usynligt BAG
 // det. Samme greb som Ranger i kolonnevalget og Aftaler i opskriften.
+//
+// Fokus (169. gennemsyn, tematik (198)): havde knappen fokus (tastatur eller
+// skærmlæser), sættes fokus på bjælkens "Rediger", som åbner opskriften igen,
+// FØR vinduet, knappen åbner, når at huske, hvor fokus var. Før huskede det
+// knappen i det lukkede vindue, og fokus endte på <body>, når det lukkede
+// (målt i Safari; Chromium og Firefox endte på fanen, der åbnede opskriften).
 function runAction(a, event) {
-    if (event.currentTarget.closest('dialog.recipe-dialog')) {
+    const dialog = event.currentTarget.closest('dialog.recipe-dialog');
+    if (dialog) {
+        const hadFocus = dialog.contains(document.activeElement);
         window.dispatchEvent(new CustomEvent('recipe-dialog:request', { detail: { open: false } }));
+        if (hadFocus) document.querySelector('.recipe-bar__open')?.focus();
     }
     a.run();
+}
+
+// ─── Fokus efter krydset (169. gennemsyn, tematik (198)) ────────────────────
+// Krydset forsvinder med advarslen, og ved den sidste forsvinder hele stakken
+// (v-if). Havde krydset fokus, stod fokus bagefter på <body> (målt i alle tre
+// browsere), og læreren begyndte forfra øverst på siden — eller, i
+// opskriftens vindue, uden for vinduet. Nu: krydset på advarslen, der rykker
+// op (eller den ovenover), og efter den sidste det, Tab ville have ramt
+// efter stakken (opskriftens første linje, det første gruppekort).
+// Fokus flyttes FØR advarslen fjernes: kun Chromium sender blur, når et
+// element med fokus fjernes.
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+function focusAfterStack(stack) {
+    const scope = stack.closest('dialog') || stack.closest('.tab-content') || document.body;
+    const after = [...scope.querySelectorAll(FOCUSABLE)].filter(el =>
+        !stack.contains(el) && !el.closest('[inert]') && el.getClientRects().length > 0);
+    return after.find(el => stack.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
+        || after[after.length - 1] || null;
+}
+function onDismiss(h, event) {
+    const stack = event.currentTarget.closest('.hints-stack');
+    let target = null;
+    if (stack?.contains(document.activeElement)) {
+        const ids = shownHints.value.map(x => x.id);
+        const i = ids.indexOf(h.id);
+        const neighbour = ids[i + 1] ?? ids[i - 1];
+        target = neighbour === undefined ? focusAfterStack(stack)
+            : [...stack.querySelectorAll('.gh-hint')].find(el => el.dataset.hintId === neighbour)?.querySelector('.gh-hint-dismiss');
+    }
+    target?.focus();
+    dismiss(h.id);
 }
 </script>
 
@@ -51,6 +91,7 @@ function runAction(a, event) {
         <div
             v-for="h in shownHints"
             :key="h.id"
+            :data-hint-id="h.id"
             class="gh-hint"
             :class="{
                 'gh-hint--conflict': h.kind === 'conflict',
@@ -74,7 +115,7 @@ function runAction(a, event) {
                             @click="runAction(a, $event)">{{ a.label }}</button>
                 </span>
             </div>
-            <button class="gh-hint-dismiss" @click="dismiss(h.id)" :aria-label="'Luk advarsel'">
+            <button class="gh-hint-dismiss" @click="onDismiss(h, $event)" :aria-label="'Luk advarsel'">
                 <X :size="13" />
             </button>
         </div>

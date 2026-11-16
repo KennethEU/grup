@@ -63,7 +63,14 @@ function receiveTransfer(storage) {
             const res = JSON.parse(xhr.responseText);
             if (res && res.entries && typeof res.entries === 'object') {
                 adoptWwwStash(storage, res.entries[WWW_STASH_KEY]);
-                adoptTransferEntries(storage, res.entries);
+                // Har grup.dk allerede klasser (eller er lageret fuldt), kommer
+                // pakkens klasser ikke med. dida.dk har mærket dem som sendt,
+                // så læreren skal have det at vide (reportStorageMigration).
+                const adopted = adoptTransferEntries(storage, res.entries);
+                if (adopted.skipped) {
+                    problems.transferSkipped = true;
+                    problems.transferSkippedCount += adopted.skippedClasses;
+                }
             }
         }
     } catch (e) {
@@ -84,7 +91,7 @@ function receiveTransfer(storage) {
 }
 
 /** Det, der gik galt undervejs — siges af reportStorageMigration(). */
-const problems = { failed: [], lost: [], copies: [], wwwStash: false };
+const problems = { failed: [], lost: [], copies: [], wwwStash: false, transferSkipped: false, transferSkippedCount: 0 };
 
 /** Værdier, der kun findes i hukommelsen: { key, value } (det gamle navn). */
 const unsaved = [];
@@ -198,6 +205,20 @@ export function reportStorageMigration() {
         window.notifyError('Dine klasser fra www.dida.dk kunne ikke gemmes her, fordi browserens lager er fuldt. '
             + 'De ligger stadig dér: åbn www.dida.dk/grupper/?bliv=1 og tag en backup under "Import & backup".');
         problems.wwwStash = false;
+    }
+    if (problems.transferSkipped) {
+        // Pakken fra dida.dk/grupper blev ikke lagt ind, fordi der allerede
+        // var klasser her (adoptTransferEntries: hele klasser eller intet).
+        // Backuppen kan gendannes her. Vinduet ved sammenfald har "Overskriv
+        // mine" som den fremhævede knap — derfor nævnes "Importér som kopi".
+        const n = problems.transferSkippedCount;
+        const which = n === 1 ? '1 klasse' : n > 1 ? `${n} klasser` : 'Klasserne';
+        window.notifyError(`${which} fra dida.dk/grupper er ikke hentet hertil, `
+            + 'fordi du allerede har klasser på grup.dk (eller lageret er fuldt). Intet er slettet: '
+            + 'åbn dida.dk/grupper/?bliv=1, tag en backup under "Import & backup", og gendan den her. '
+            + 'Spørger Grupper, om klasser skal overskrives, så vælg "Importér som kopi".');
+        problems.transferSkipped = false;
+        problems.transferSkippedCount = 0;
     }
     if (problems.lost.length) {
         window.notifyError('Noget af det, der var gemt i browseren, kunne ikke gemmes igen, fordi lageret er helt fuldt. '

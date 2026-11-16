@@ -234,8 +234,9 @@ export function deleteSession(sessionId) {
     history = history.filter(s => s.id !== sessionId);
     if (storage.saveHistory(history) === false) return false;
 
-    // 2. Slet datafilen
-    storage.deleteSessionPayload(sessionId);
+    // 2. Slet datafilen — men ikke, hvis en anden klasse (en kopi fra
+    // flytningen af de gamle nøglenavne) har den samme session i sin liste.
+    if (!storage.sessionUsedElsewhere(sessionId)) storage.deleteSessionPayload(sessionId);
     return true;
 }
 
@@ -259,8 +260,10 @@ export function renameSession(sessionId, newName) {
     entry.name = trimmed;
     if (storage.saveHistory(history) === false) return false;
 
-    // 2. Opdater payload (så preview også viser nyt navn)
-    const payload = storage.loadSessionPayload(sessionId);
+    // 2. Opdater payload. Deler en anden klasse sessionen (se
+    // storage.sessionUsedElsewhere), røres den ikke — ellers fik sessionen
+    // også det nye navn dér. Forhåndsvisningen tager navnet fra listen.
+    const payload = storage.sessionUsedElsewhere(sessionId) ? null : storage.loadSessionPayload(sessionId);
     if (payload) {
         payload.name = trimmed;
         if (storage.saveSessionPayload(payload) === false) return false;
@@ -589,5 +592,8 @@ export function loadSessionForPreview(sessionId) {
         if (matrixSet.groups.length > 0) matrix = previewSet(matrixSet.groups);
     }
 
-    return { name: session.name, standard, matrix };
+    // Navnet fra klassens liste, som Historik-fanen viser — payloadens navn
+    // kan være et andet, når to klasser deler sessionen (renameSession).
+    const meta = storage.getHistory().find(e => e.id === sessionId);
+    return { name: meta && meta.name != null ? meta.name : session.name, standard, matrix };
 }

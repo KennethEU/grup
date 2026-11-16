@@ -256,6 +256,93 @@ describe('historik — udrensning efterlader ikke tunge payloads', () => {
     });
 });
 
+describe('historik — en session, som en anden klasse også har', () => {
+    // Flytningen fra de gamle nøglenavne kan give en kopi ("3a (kopi)") de
+    // samme session-id'er som originalen. Payloaden er én nøgle for begge.
+    const now = () => new Date().toISOString();
+    beforeEach(() => {
+        localStorage.clear();
+        state.currentClass = { filename: '3a_kopi.csv', name: '3a (kopi)', data: [], columns: ['Navn'] };
+        window.notifyError = () => {};
+        localStorage.setItem('grupdk_history_3a.csv', JSON.stringify([{ id: 'delt', date: now(), name: 'Mandag' }]));
+        localStorage.setItem('grupdk_history_3a_kopi.csv', JSON.stringify([
+            { id: 'delt', date: now(), name: 'Mandag' },
+            { id: 'egen', date: now(), name: 'Tirsdag' },
+        ]));
+        localStorage.setItem('grupdk_session_delt',
+            JSON.stringify({ id: 'delt', name: 'Mandag', type: 'STANDARD_ONLY', groups: [{ name: 'Gruppe 1', members: [] }] }));
+        localStorage.setItem('grupdk_session_egen',
+            JSON.stringify({ id: 'egen', name: 'Tirsdag', type: 'STANDARD_ONLY', groups: [{ name: 'Gruppe 1', members: [] }] }));
+    });
+
+    it('slettes den i kopien, kan originalen stadig hente den', async () => {
+        const history = await import('./history.js');
+        expect(history.deleteSession('delt')).toBe(true);
+
+        expect(storage.getHistory().map(e => e.id)).toEqual(['egen']);
+        expect(localStorage.getItem('grupdk_session_delt')).toBeTruthy();
+        // En session, kun kopien havde, ryddes som før.
+        expect(history.deleteSession('egen')).toBe(true);
+        expect(localStorage.getItem('grupdk_session_egen')).toBeNull();
+    });
+
+    it('kan en anden klasses liste ikke læses, bliver payloaden liggende', async () => {
+        localStorage.setItem('grupdk_history_3a.csv', '{ødelagt');
+        const history = await import('./history.js');
+        expect(history.deleteSession('egen')).toBe(true);
+        expect(localStorage.getItem('grupdk_session_egen')).toBeTruthy();
+    });
+
+    it('lugen ud i kopien (over 50) tager ikke originalens session med', () => {
+        const old = new Date(Date.now() - 86400000).toISOString();
+        const list = [{ id: 'delt', date: old, name: 'Mandag' }];
+        for (let i = 0; i < 50; i++) list.push({ id: `n${i}`, date: now(), name: `Ny ${i}` });
+
+        expect(storage.saveHistory(list)).toBe(true);
+        expect(storage.getHistory().some(e => e.id === 'delt')).toBe(false);
+        expect(localStorage.getItem('grupdk_session_delt')).toBeTruthy();
+    });
+
+    it('omdøbes den i kopien, beholder originalen sit navn', async () => {
+        const history = await import('./history.js');
+        expect(history.renameSession('delt', 'Kopiens navn')).toBe(true);
+        expect(storage.getHistory().find(e => e.id === 'delt').name).toBe('Kopiens navn');
+        expect(JSON.parse(localStorage.getItem('grupdk_session_delt')).name).toBe('Mandag');
+        // Forhåndsvisningen i kopien viser kopiens navn (listens).
+        expect(history.loadSessionForPreview('delt').name).toBe('Kopiens navn');
+    });
+});
+
+describe('historik — afvist liste ved udrensning', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        state.currentClass = { filename: '3a.csv', name: '3a', data: [], columns: ['Navn'] };
+        window.notifyError = () => {};
+    });
+    afterEach(() => vi.restoreAllMocks());
+
+    it('afvises listen, bliver de sessioner, der skulle luges ud, i lageret', () => {
+        const list = [];
+        for (let i = 0; i < 50; i++) {
+            list.push({ id: `s${i}`, date: new Date(Date.now() - (i + 1) * 60000).toISOString(), name: `S ${i}` });
+            localStorage.setItem(`grupdk_session_s${i}`, JSON.stringify({ id: `s${i}`, groups: [] }));
+        }
+        localStorage.setItem('grupdk_history_3a.csv', JSON.stringify(list));
+
+        const original = localStorage.setItem.bind(localStorage);
+        vi.spyOn(localStorage, 'setItem').mockImplementation((key, value) => {
+            if (key === 'grupdk_history_3a.csv') { const err = new Error('fuld'); err.name = 'QuotaExceededError'; throw err; }
+            return original(key, value);
+        });
+        expect(storage.saveHistory([...list, { id: 'ny', date: new Date().toISOString(), name: 'Ny' }])).toBe(false);
+        vi.restoreAllMocks();
+
+        // Den gamle liste står — og den ældste session i den kan stadig hentes.
+        expect(storage.getHistory()).toHaveLength(50);
+        expect(localStorage.getItem('grupdk_session_s49')).toBeTruthy();
+    });
+});
+
 describe('advarsel om fyldt lagerplads', () => {
     beforeEach(() => localStorage.clear());
 

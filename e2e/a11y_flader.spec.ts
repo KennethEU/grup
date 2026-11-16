@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { createClass, createClassAndGoToGroups, generateGroups, goToGroups, goToMatrix, openSaveSession, openRecipe } from './helpers';
+import { createClass, createClassAndGoToGroups, generateGroups, goToGroups, goToMatrix, goToStandard, openSaveSession, openRecipe } from './helpers';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Betjening uden mus, anden runde.
@@ -72,10 +72,47 @@ test('Radioknapper hører til samme gruppe', async ({ page }) => {
         await expect(radios.nth(i)).toHaveAttribute('name', 'sessionstype');
     }
 
-    // Og med name virker piletasterne: fra "Stamgrupper" ned til "Matrix".
-    await radios.first().focus();
+    // Vinduet er åbnet fra Matrix, så "Matrixgrupper" er valgt fra start
+    // (165. gennemsyn): før gemte et tryk på "Gem session" kun stamgrupperne,
+    // mens læreren kiggede på matrixen.
+    await expect(radios.nth(1)).toBeChecked();
+
+    // Og med name virker piletasterne: fra "Matrix" op til "Stamgrupper" og ned igen.
+    await radios.nth(1).focus();
+    await page.keyboard.press('ArrowUp');
+    await expect(radios.first()).toBeChecked();
     await page.keyboard.press('ArrowDown');
     await expect(radios.nth(1)).toBeChecked();
+});
+
+// Står læreren i Stamgrupper, er det dem, vinduet foreslår — også når der
+// findes en matrix. Og findes navnet i forvejen, siger kvitteringen det navn,
+// sessionen faktisk fik ("… (2)"), ikke det, der stod i feltet.
+test('"Gem session" foreslår den runde, der står fremme, og kvitterer med det gemte navn', async ({ page }) => {
+    await createClassAndGoToGroups(page, 'Sessionsvalg');
+    await generateGroups(page);
+    await goToMatrix(page);
+    await generateGroups(page);
+    await expect.poll(
+        () => page.evaluate(() => !!(window as any).appDebug.state.matrixSourceFingerprint),
+        { timeout: 90000 }
+    ).toBe(true);
+    await goToStandard(page);
+
+    await openSaveSession(page);
+    const dialog = page.locator('.modal-overlay');
+    await expect(dialog.locator('input[type=radio][value=standard]')).toBeChecked();
+    await dialog.locator('#gs-navn').fill('Uge 47');
+    await dialog.getByRole('button', { name: 'Gem session', exact: true }).click();
+    await expect(page.locator('.toast.success').filter({ hasText: 'Session "Uge 47" gemt' })).toBeVisible();
+
+    await page.locator('.toast.success').evaluateAll(els => els.forEach(e => e.remove()));
+    // Gem-knappen sidder på Grupper-fanen; gemningen skiftede til Historik.
+    await goToGroups(page);
+    await openSaveSession(page);
+    await page.locator('.modal-overlay #gs-navn').fill('Uge 47');
+    await page.locator('.modal-overlay').getByRole('button', { name: 'Gem session', exact: true }).click();
+    await expect(page.locator('.toast.success').filter({ hasText: 'Session "Uge 47 (2)" gemt' })).toBeVisible();
 });
 
 // Uden matrix kastede gemningen en fejl, når "Matrixgrupper" var valgt, og

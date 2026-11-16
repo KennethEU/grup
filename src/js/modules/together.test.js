@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { togetherComponents, togetherConflict, togetherRuleConflict, togetherRuleConflictText, brokenTogether, deadTogetherIndexes, togetherPath } from './together.js';
+import { togetherComponents, togetherConflict, brokenTogether, deadTogetherIndexes, togetherPath } from './together.js';
 
 const rows = [1, 2, 3, 4].map(i => ({ _rowId: `r${i}`, Navn: `Elev ${i}` }));
 const agreements = [{ ids: ['r1', 'r2'] }, { ids: ['r2', 'r3'] }];
@@ -44,37 +44,6 @@ describe('Skal sammen', () => {
     it('en fraværende elev står stadig i klassen — aftalen er ikke død', () => {
         const students = rows.map(s => ({ ...s, _excluded: s._rowId === 'r2' }));
         expect([...deadTogetherIndexes([{ ids: ['r1', 'r2'] }], students)]).toEqual([]);
-    });
-});
-
-describe('Skal sammen mod en Adskil-regel', () => {
-    const students = [
-        { _rowId: 'r1', Navn: 'Anna', Rolle: 'Formand' },
-        { _rowId: 'r2', Navn: 'Bob', Rolle: ' formand ' },
-        { _rowId: 'r3', Navn: 'Clara', Rolle: 'Menig' },
-        { _rowId: 'r4', Navn: 'Dan', Rolle: '' },
-    ];
-    const separateRule = (value, type = 'separate') => ({ type, column: 'Rolle', value });
-
-    it('finder to i samme aftale med den adskilte værdi — også med anden stavemåde', () => {
-        const conflict = togetherRuleConflict([['r1', 'r2', 'r3']], [separateRule('Formand')], students);
-        expect(conflict).toEqual({ ids: ['r1', 'r2'], column: 'Rolle', value: 'Formand' });
-        const text = togetherRuleConflictText(conflict, 'Anna, Bob');
-        expect(text).toContain('Anna, Bob');
-        expect(text).toContain('"Rolle"');
-        expect(text).toContain('"Formand"');
-    });
-
-    it('læser også motorens form (name/attribute/values) og streng adskillelse', () => {
-        const rule = { name: 'strict_separate', attribute: 'Rolle', values: ['formand'] };
-        expect(togetherRuleConflict([['r1', 'r2']], [rule], students)?.ids).toEqual(['r1', 'r2']);
-    });
-
-    it('én med værdien, en regel uden værdi, tomme celler og andre regler er ingen konflikt', () => {
-        expect(togetherRuleConflict([['r1', 'r3']], [separateRule('Formand')], students)).toBeNull();
-        expect(togetherRuleConflict([['r1', 'r2']], [separateRule('')], students)).toBeNull();
-        expect(togetherRuleConflict([['r1', 'r2']], [{ type: 'distribute', column: 'Rolle' }], students)).toBeNull();
-        expect(togetherRuleConflict([['r4', 'r3']], [separateRule('Menig')], students)).toBeNull();
     });
 });
 

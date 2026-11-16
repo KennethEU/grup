@@ -87,6 +87,53 @@ const onEscapeClassMenu = (e) => {
     classSelectorRef.value?.querySelector('.class-trigger')?.focus();
 };
 
+/**
+ * Lukker menuen, mens fokus står i den (eller i et vindue, menuen åbnede),
+ * flyttes fokus til klassepillen.
+ *
+ * Knapperne i menuen forsvinder med menuen. Før endte fokus så på <body>, og
+ * med tastatur eller skærmlæser startede læreren forfra øverst på siden
+ * (168. gennemsyn, tematik 197). Det skete ved Slet klasse (både Slet og
+ * Annuller), Omdøb og Ny klasse, når vinduets knap blev trykket: vinduet
+ * giver fokus tilbage til knappen i menuen, og klikket lukker menuen
+ * (closeMenu). Det samme, når en klasse vælges med Enter.
+ *
+ * To trin. Ved lukningen (flush 'sync') noteres, om fokus var i menuen eller
+ * i et åbent vindue. Selve rettelsen venter til næste opgave (setTimeout):
+ * Chromium fjerner vinduet FØR closeMenu, Firefox og Safari først bagefter,
+ * og vinduets onUnmounted (der giver fokus tilbage) kører efter alle Vues
+ * vagter. En vagt, der så efter med det samme, kom for tidligt i to af tre
+ * browsere (målt). Et klik et andet sted på siden, mens fokus ikke er i
+ * menuen, røres ikke.
+ */
+watch(isClassMenuOpen, (open) => {
+    if (open) return;
+    const root = classSelectorRef.value;
+    const active = document.activeElement;
+    if (!root || !((active && root.contains(active)) || isModalOpen())) return;
+    setTimeout(() => focusTriggerIfLost(), 0);
+}, { flush: 'sync' });
+
+/**
+ * Giv klassepillen fokus, hvis fokus er tabt: på <body>, på en knap, der ikke
+ * findes mere, eller inde i en lukket menu. Står fokus et rigtigt sted (fx en
+ * celle, læreren har klikket i), røres det ikke.
+ *
+ * `evenIfOpen`: efter Slet klasse. Safari lukker ikke menuen ved klikket i
+ * vinduet, men først når klassen er væk (og den slettede klasses knap med
+ * den) — så stod fokus på <body>, før menuen lukkede (målt i WebKit).
+ */
+function focusTriggerIfLost({ evenIfOpen = false } = {}) {
+    const root = classSelectorRef.value;
+    const trigger = root?.querySelector('.class-trigger');
+    const now = document.activeElement;
+    if (!trigger || now === trigger) return;
+    if (isClassMenuOpen.value && !evenIfOpen) return;
+    const lost = !now || now === document.body || !now.isConnected
+        || (!isClassMenuOpen.value && root.contains(now));
+    if (lost) trigger.focus();
+}
+
 const loadClasses = async (goToStudents = false, createdFilename = null) => {
     try {
         const classList = await api.fetchClasses();
@@ -430,6 +477,16 @@ const confirmDeleteClass = async () => {
     deleteTarget.value = null;
     if (!c) return;
     try {
+        await deleteClassNow(c);
+    } finally {
+        // Knappen, fokus kom tilbage til, er væk med klassen (se
+        // focusTriggerIfLost). Næste opgave: efter vinduets og menuens oprydning.
+        setTimeout(() => focusTriggerIfLost({ evenIfOpen: true }), 0);
+    }
+};
+
+const deleteClassNow = async (c) => {
+    try {
         // Findes klassen stadig? Er den slettet i en anden fane, er der intet
         // at slette — og oprydningen nedenfor må ikke køre på et filnavn, der
         // ikke længere er dens. Læreren får besked i stedet for ingenting.
@@ -453,12 +510,13 @@ const confirmDeleteClass = async () => {
             // kørselshistorik og optagelse — og lad loadClasses() finde den
             // næste klasse frem (eller blive på Oversigt, er der ingen tilbage).
             closeOpenClass();
-            loadClasses();
+            // await: fokus rettes først, når menuen er tegnet om (confirmDeleteClass)
+            await loadClasses();
         } else {
             // Det var en ANDEN klasse. Læreren bliver stående i sin egen, og så
             // skal kun menuen opdateres: loadClasses() ville vælge klassen om
             // og dermed rydde en hukommelse, der stadig er i brug.
-            refreshClassList();
+            await refreshClassList();
         }
     } catch (e) {
         console.error("Fejl ved sletning:", e);

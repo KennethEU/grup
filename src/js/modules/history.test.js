@@ -44,6 +44,8 @@ vi.mock('./storage.js', () => {
         deleteSessionPayload: vi.fn((id) => {
             localStorage.removeItem(`grupdk_session_${id}`);
         }),
+        // Den rigtige udgave læser de andre klassers lister — her deler ingen.
+        sessionUsedElsewhere: vi.fn(() => false),
         saveGroupsToStorage: vi.fn(),
         // Kørselshistorikken tager et snapshot af emne-kortet, når en gemt
         // session er ved at overskrive grupperne.

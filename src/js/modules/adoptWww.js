@@ -109,6 +109,19 @@ async function sameClassAlreadyHere(entry) {
  *   eller { error } — beskeden til læreren er allerede vist
  */
 export async function adoptWwwEntries(entries) {
+    // Når den kaldes fra adoptFromWww, er pakken allerede fjernet. En
+    // uventet fejl herinde endte før kun i konsollen (AppTopbar fanger den),
+    // og læreren hørte intet om klasserne (164. gennemsyn).
+    try {
+        return await adoptWwwEntriesUnguarded(entries);
+    } catch (e) {
+        console.error('[adoptWww]', e);
+        window.notifyError?.(`Klasserne fra www.dida.dk kunne ikke hentes. ${BACKUP_HINT}`);
+        return { error: e && e.message ? e.message : String(e) };
+    }
+}
+
+async function adoptWwwEntriesUnguarded(entries) {
     // Læs pakkens nøgler på nøjagtig samme måde som lagerets egne.
     const current = entries && typeof entries === 'object' ? toCurrentEntries(entries) : null;
     const classes = classesIn(current);
@@ -162,22 +175,55 @@ export async function adoptWwwEntries(entries) {
     const failed = Array.isArray(res.failed) ? res.failed : [];
     const partial = Array.isArray(res.partial) ? res.partial : [];
     const skippedInvalid = inspected.invalid.length;
+    const prunedSessions = Number(res.prunedSessions) || 0;
     if (res.written > 0 || failed.length > 0 || skippedInvalid > 0) {
-        // På grup.dk (pakken kom med i flytningen fra dida.dk) siger
-        // sætningen om dida.dk's adresse ingenting, så den står kun på dida.dk.
-        let msg = `${plural(res.written, 'klasse er', 'klasser er')} hentet fra www.dida.dk, hvor du havde gemt dem.`;
-        if (onDida()) msg += ' dida.dk bruger nu kun adressen uden www.';
-        if (partial.length > 0) {
-            // Samme ordlyd som backup-gendannelsen, med tal pr. klasse.
-            msg += ` Bemærk: ${describePartialRestore(partial).join('; ')}.`;
+        // Pakken er fjernet, før noget blev skrevet (se adoptFromWww), så det,
+        // der ikke kom med, findes KUN på www. Beskeden skal derfor sige
+        // hvad, og hvor det ligger — også når klassen kom ind, men dens
+        // gemte sessioner ikke gjorde. Før stod der "Bemærk: for
+        // 2bms_sa.csv kom den gemte session ikke med" i en besked, der
+        // forsvandt af sig selv, uden et ord om www, og ved fuld lagerplads
+        // "0 klasser er hentet" foran "1 klasse kunne IKKE hentes" uden at
+        // nævne hvilken (164. gennemsyn).
+        const parts = [];
+        if (res.written > 0) {
+            let line = `${plural(res.written, 'klasse er', 'klasser er')} hentet fra www.dida.dk, hvor du havde gemt dem.`;
+            // På grup.dk (pakken kom med i flytningen fra dida.dk) siger
+            // sætningen om dida.dk's adresse ingenting, så den står kun på dida.dk.
+            if (onDida()) line += ' dida.dk bruger nu kun adressen uden www.';
+            parts.push(line);
         }
-        if (failed.length > 0 || skippedInvalid > 0) {
-            msg += ` ${plural(failed.length + skippedInvalid, 'klasse', 'klasser')} kunne IKKE hentes. ${BACKUP_HINT}`;
-            window.notifyError?.(msg);
-        } else if (partial.length > 0 || res.prunedSessions > 0) {
-            window.notifyInfo?.(msg);
+        if (failed.length > 0) {
+            const names = failed.map(f => f.name || f.filename).join(', ');
+            parts.push(`${plural(failed.length, 'klasse', 'klasser')} fra www.dida.dk kunne IKKE hentes: ${names}.`);
+        }
+        if (skippedInvalid > 0) {
+            parts.push(`${plural(skippedInvalid, 'klasse', 'klasser')} fra www.dida.dk kunne ikke læses og er ikke hentet.`);
+        }
+        if (partial.length > 0) {
+            // Samme ordlyd som backup-gendannelsen, med tal pr. klasse; navnet
+            // er det, klassen fik her (fx "1bms SA (fra www.dida.dk)").
+            parts.push(`Bemærk: ${describePartialRestore(partial).join('; ')}.`);
+        }
+        if (prunedSessions > 0) {
+            // Lofterne (50 sessioner, 90 dage) gælder også her. Det er ikke
+            // et tab, men læreren skal ikke tælle efter og tro det.
+            parts.push(`${plural(prunedSessions, 'gammel session', 'gamle sessioner')} kom ikke med `
+                + '(over 90 dage eller ud over de 50 nyeste).');
+        }
+        if (failed.length > 0 || skippedInvalid > 0 || partial.length > 0) {
+            // Typisk fuld lagerplads. Uden pladsen her hjælper backuppen ikke.
+            if (failed.length > 0 || partial.length > 0) {
+                parts.push('Er lagerpladsen her fuld, så frigør plads først (slet en gammel klasse eller ryd historikken).');
+            }
+            parts.push(BACKUP_HINT);
+            // notifyError bliver stående, til læreren klikker den væk: den
+            // kræver en handling, og intet her husker den bagefter.
+            window.notifyError?.(parts.join(' '));
+        } else if (prunedSessions > 0) {
+            window.notifyInfo?.(parts.join(' '));
         } else {
-            window.notifySuccess?.(msg);
+            window.notifySuccess?.(parts.join(' '));
         }
     }
 

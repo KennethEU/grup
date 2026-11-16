@@ -41,7 +41,7 @@
 // kalder den, ligger i storageStartup.js.
 
 import {
-    CLASSES_KEY, GROUPS_PREFIX, TOPICS_PREFIX, HISTORY_PREFIX, SESSION_PREFIX,
+    CLASSES_KEY, UNREADABLE_CLASSES_KEY, GROUPS_PREFIX, TOPICS_PREFIX, HISTORY_PREFIX, SESSION_PREFIX,
     LAST_CLASS_KEY, LAST_CLASS_INDEX_KEY, NEWS_FILTER_KEY,
     NAV_VIEW_KEY, CLASS_TAB_KEY, STORAGE_WARNED_KEY,
 } from './storageKeys.js';
@@ -596,28 +596,93 @@ export function toCurrentEntries(entries) {
     return out;
 }
 
+/** Antal klasser (med filnavn) i en rå klasseliste — eller null, hvis den ikke kan læses. */
+function countClasses(raw) {
+    const parsed = parseList(raw);
+    if (!parsed.ok) return null;
+    return (parsed.list || []).filter(hasFilename).length;
+}
+
+/**
+ * Har grup.dk ingen klasser? Kun når ALT, der kunne være en klasseliste, er
+ * tomt: den nye liste og den gamle (en flytning, der ikke er færdig) er
+ * væk eller "[]" (sådan står den, når læreren har slettet sin sidste
+ * klasse), og der ligger ingen ulæselig liste til side. Kan noget ikke
+ * læses, svares nej: så kan der være klasser, vi ikke kan se.
+ */
+function hasNoClassesHere(storage) {
+    try {
+        if (storage.getItem(UNREADABLE_CLASSES_KEY) !== null) return false;
+        return countClasses(storage.getItem(CLASSES_KEY)) === 0
+            && countClasses(storage.getItem(LEGACY_CLASSES_KEY)) === 0;
+    } catch {
+        return false;
+    }
+}
+
 /**
  * Flytningen fra dida.dk/grupper (?migrate=<token>): skriv pakken under de
  * nye navne — men kun hvor intet ligger i forvejen, under hverken det nye
- * eller det gamle navn. Sådan var det også før navneskiftet: det, der
- * allerede står på grup.dk, overskrives aldrig.
+ * eller det gamle navn. Det, der allerede står på grup.dk, overskrives aldrig.
  *
- * @returns {number} antal nøgler skrevet
+ * HELE KLASSER ELLER INTET (163. gennemsyn, 16/11 2026): har pakken klasser,
+ * og har grup.dk allerede klasser, lægges INTET fra pakken ind. Før blev
+ * hver nøgle lagt ind for sig: klasselisten blev sprunget over (den stod
+ * der jo), men pakkens grupper, emner og historik kom med — og hed en
+ * klasse det samme her, fik grup.dk's klasse dida.dk-klassens grupper og
+ * gemte sessioner. Resten blev forældreløst og ryddet ved næste opstart, og
+ * læreren hørte intet. Nu svarer funktionen, hvor mange klasser der ikke kom
+ * med, og opstarten siger det (storageStartup.js). Klasserne ligger stadig
+ * på dida.dk/grupper/?bliv=1.
+ *
+ * @returns {{ written: number, skipped: boolean, skippedClasses: number }}
+ *   written: antal nøgler skrevet; skipped: pakkens klasser er IKKE lagt
+ *   ind (grup.dk har klasser i forvejen, eller lageret er fuldt);
+ *   skippedClasses: hvor mange (0, hvis pakkens liste ikke kan læses)
  */
 export function adoptTransferEntries(storage, entries) {
-    let written = 0;
-    if (!storage || !entries || typeof entries !== 'object') return written;
+    const result = { written: 0, skipped: false, skippedClasses: 0 };
+    if (!storage || !entries || typeof entries !== 'object') return result;
     const current = toCurrentEntries(entries);
+    const rawList = current[CLASSES_KEY] ?? null;
+    const counted = rawList === null ? 0 : countClasses(rawList);
+    // En ulæselig liste i pakken tæller som klasser: vi kan ikke se, hvilke
+    // klasser grupperne hører til, og dida.dk har mærket den som sendt.
+    const hasClasses = counted === null || counted > 0;
+    const skip = () => {
+        result.skipped = true;
+        result.skippedClasses = counted || 0;
+        return result;
+    };
+    if (hasClasses && !hasNoClassesHere(storage)) return skip();
+
+    // Klasselisten FØRST. En tom liste her ("[]") er ingen klasser, så
+    // pakkens må stå i stedet. Kan den ikke skrives (fuldt lager), lægges
+    // intet andet ind.
+    if (hasClasses) {
+        try {
+            storage.setItem(CLASSES_KEY, rawList);
+            if (storage.getItem(CLASSES_KEY) !== rawList) throw new Error('ikke gemt');
+            result.written++;
+        } catch {
+            return skip();
+        }
+    }
+    // Resten kun, hvor intet står (klasselisten ovenfor står der nu). Grupper, emner, historik og sessioner KUN,
+    // når pakkens klasseliste er skrevet lige her: ellers kan de lande på en
+    // klasse her med samme filnavn. Uden liste kommer kun indstillingerne
+    // (sidste klasse, nyhedsfilteret) med.
     for (const key of Object.keys(current)) {
+        if (!hasClasses && !CURRENT_EXACT.has(key)) continue;
         try {
             if (storage.getItem(key) !== null) continue;
             const old = legacyNameFor(key);
             if (old && storage.getItem(old) !== null) continue;
             storage.setItem(key, current[key]);
-            written++;
+            result.written++;
         } catch { /* fuldt eller låst lager: resten prøves stadig */ }
     }
-    return written;
+    return result;
 }
 
 // ─── Når en klasse slettes ──────────────────────────────────────────────────

@@ -508,11 +508,13 @@ function deleteRow(row) {
     showDeleteRow.value = true;
 }
 
-function confirmDeleteRow() {
+async function confirmDeleteRow() {
     const row = deleteRowTarget.value;
     showDeleteRow.value = false;
     deleteRowTarget.value = null;
     if (!row) return;
+    // Rækkens plads i listen, som læreren SER den (sorteret), før den slettes.
+    const shownIndex = displayData.value.indexOf(row);
     pushUndo();
     const idx = reactiveState.currentClass.data.indexOf(row);
     if (idx !== -1) {
@@ -522,11 +524,27 @@ function confirmDeleteRow() {
     // state.js for hvad et dødt id fik "Lav aftale" til at gøre.
     pruneSelection();
     autoSave();
+    // Fokus. Vinduet giver fokus tilbage til slet-krydset, men det forsvinder
+    // med rækken, og så stod fokus på <body>: med tastatur eller skærmlæser
+    // startede læreren forfra øverst på siden (168. gennemsyn, tematik 197;
+    // samme fejl som Historik i 167.). Nu får rækken, der rykker op (eller den
+    // nye nederste), fokus på sit slet-kryds; er klassen tom, får listen selv
+    // fokus. Opslaget sker i DOM'en efter tegningen: rækkerne efter den
+    // slettede får nye nøgler (rowKey) og er nye elementer.
+    await nextTick();
+    const buttons = tableContainer.value?.querySelectorAll('.delete-row-btn') || [];
+    const target = buttons.length
+        ? buttons[Math.min(Math.max(shownIndex, 0), buttons.length - 1)]
+        : tableContainer.value;
+    target?.focus();
 }
 </script>
 
 <template>
+    <!-- tabindex -1 kun i den tomme liste: den får fokus, når den sidste elev
+         er slettet (confirmDeleteRow). Den er ikke et Tab-stop. -->
     <div id="table-container" ref="tableContainer" class="table-container"
+         :tabindex="reactiveState.currentClass?.data?.length ? null : -1"
          :class="{ 'cut-left': cutLeft, 'cut-right': cutRight }" :style="stickyOffsets">
         <div v-if="!reactiveState.currentClass || !reactiveState.currentClass.data || reactiveState.currentClass.data.length === 0"
              class="empty-state-box">

@@ -407,7 +407,12 @@ export async function restoreBackup(entries, opts = {}) {
                 // skrivning med som gendannet, får hen en grøn kvittering på
                 // at data er tilbage — og opdager først at det ikke passer,
                 // når klassen skal bruges.
-                failed.push({ filename: target, error: res.error });
+                // name: klassens navn, som læreren kender det (den blev jo
+                // ikke skrevet, så heller ikke omdøbt). Uden det nævnte
+                // beskeden filnavnet ("2bms_sa.csv"), og ved en omdøbning et
+                // filnavn med tidsstempel (164. gennemsyn).
+                const knownName = typeof cls.name === 'string' && cls.name.trim() ? cls.name.trim() : cls.filename;
+                failed.push({ filename: target, name: knownName, error: res.error });
                 continue;
             }
             // Klassen er skrevet. Nu — og kun nu — ryddes de gamle grupper,
@@ -454,6 +459,9 @@ export async function restoreBackup(entries, opts = {}) {
                     // sige "3 af 12 gemte sessioner" om netop den klasse.
                     partial.push({
                         filename: target,
+                        // Navnet, klassen fik her (fx "3.a (gendannet)") —
+                        // kvitteringen nævner den ved det (restoreReceipt.js).
+                        ...(displayName ? { name: displayName } : {}),
                         parts,
                         sessionsRestored: extrasRes.sessionsRestored || 0,
                         sessionsMissing: extrasRes.sessionsMissing || 0,
@@ -468,7 +476,7 @@ export async function restoreBackup(entries, opts = {}) {
                 if (extrasRes.prunedSessions > 0) prunedSessions += extrasRes.prunedSessions;
             } catch (e) {
                 console.error(e);
-                partial.push({ filename: target, parts: [...droppedParts, 'grupper, emner eller historik'] });
+                partial.push({ filename: target, ...(displayName ? { name: displayName } : {}), parts: [...droppedParts, 'grupper, emner eller historik'] });
             }
 
             existingNames.add(target);

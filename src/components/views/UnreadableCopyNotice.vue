@@ -14,6 +14,10 @@ import { UNREADABLE_CLASSES_KEY } from '../../js/modules/storageKeys.js';
 import { todayStamp } from '../../js/modules/utils.js';
 import ConfirmModal from '../ConfirmModal.vue';
 
+// 'deleted': boksen forsvinder med sin egen "Slet den"-knap, så fokus skal
+// et andet sted hen (ImportExportTab giver det til den valgte fane).
+const emit = defineEmits(['deleted']);
+
 const hasCopy = ref(false);
 const showConfirm = ref(false);
 
@@ -58,6 +62,7 @@ function confirmDelete() {
     showConfirm.value = false;
     if (deleteUnreadableCopy()) {
         window.notifySuccess?.('Den gemte kopi er slettet.');
+        emit('deleted');
     } else {
         window.notifyError?.('Kopien kunne ikke slettes. Prøv igen, eller ryd browserdata for grup.dk.');
     }

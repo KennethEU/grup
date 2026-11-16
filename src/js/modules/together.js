@@ -1,6 +1,6 @@
 // Aftaler om bestemte elever. Overlap samles FØR fravær filtreres fra:
 // Anna+Bo og Bo+Sara betyder også Anna+Sara den dag Bo er fraværende.
-import { ROW_ID, memberIdStr, valueKey } from './utils.js';
+import { ROW_ID, memberIdStr } from './utils.js';
 
 export function mergeTogether(agreements = []) {
     const components = [];
@@ -86,51 +86,12 @@ export function togetherConflict(components, separations = [], lockedGroups = []
     return null;
 }
 
-/**
- * En Skal sammen-aftale, som en Adskil-regel på en kolonne gør umulig.
- *
- * Adskil holder højst én elev med den valgte værdi i hver gruppe. Står to af
- * en aftales elever med den værdi, kan de ikke både være sammen og adskilt.
- * Motoren opdager det også (solvers.solve_together), men dér kender den kun
- * elev-id'er — beskeden kunne ikke sige, HVILKE elever eller hvilken regel.
- * Tjekkes her, før kørslen, så læreren får navnene.
- *
- * Samme sammenligning som motoren: tomme celler er ingen værdi, og
- * stavemåde/store bogstaver/tegnform læses ens (valueKey — motoren får
- * ensrettede værdier fra py_bridge, så resultatet er det samme).
- *
- * @param {string[][]} components  aftalerne, som togetherComponents giver dem
- * @param {Array<Object>} rules    regel-rækkerne (rå fra klassen eller bygget
- *                                 til motoren — begge former læses)
- * @param {Array<Object>} students elevrækkerne
- * @returns {{ids: string[], column: string, value: string} | null}
- */
-export function togetherRuleConflict(components = [], rules = [], students = []) {
-    const byId = new Map(students.map(s => [String(s?.[ROW_ID] ?? '').trim(), s]));
-    for (const rule of rules) {
-        const type = String(rule?.type || rule?.name || '').toLowerCase();
-        if (type !== 'separate' && type !== 'strict_separate') continue;
-        const column = rule.column || rule.attribute;
-        if (!column) continue;
-        const raw = Array.isArray(rule.values) ? rule.values : (rule.value ? [rule.value] : []);
-        const keys = new Set(raw.map(valueKey).filter(Boolean));
-        if (!keys.size) continue;
-        for (const ids of components) {
-            const hits = ids.filter(id => keys.has(valueKey(byId.get(id)?.[column] ?? '')));
-            if (hits.length > 1) {
-                const value = String(byId.get(hits[0])[column]).trim();
-                return { ids: hits, column, value };
-            }
-        }
-    }
-    return null;
-}
-
-/** Lærerens besked for et fund fra togetherRuleConflict. */
-export function togetherRuleConflictText(conflict, names) {
-    return `${names} skal sammen, men Adskil på "${conflict.column}" holder elever med "${conflict.value}" `
-        + 'i hver sin gruppe. Ret aftalen under Elevliste → Aftaler, eller ret reglen under Regler.';
-}
+// HER lå `togetherRuleConflict()` og `togetherRuleConflictText()`: Skal
+// sammen mod en Adskil-regel, tjekket i appen for at give navnene, som den
+// gamle motor (Python) ikke kunne. Ingen kaldte dem efter 3/11 2026 — motoren
+// i JavaScript finder selv konflikten (`together-vs-separate` i
+// motor/engine/feasibility.js) og siger navnene (messages.js). Fjernet i
+// 165. gennemsyn, så ingen tror, at tjekket stadig kører her.
 
 export function brokenTogether(groups, agreements, students) {
     if (!groups?.length) return [];

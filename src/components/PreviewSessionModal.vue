@@ -99,7 +99,7 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 
         <!-- Matrixgrupper -->
         <div v-if="matrixGroups.length > 0" class="section">
-          <h3>Matrix-grupper</h3>
+          <h3>Matrixgrupper</h3>
           <div class="group-grid">
             <div v-for="g in matrixGroups" :key="g.name" class="group-card">
               <div class="card-header">
@@ -120,7 +120,10 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
 
       <div class="actions">
         <button class="btn secondary" @click="$emit('close')">Luk</button>
-        <button class="btn primary" @click="doRestore">Gendan denne session</button>
+        <!-- Kunne sessionen ikke læses, kan den heller ikke gendannes. Før stod
+             knappen der alligevel, og et tryk lukkede vinduet med en fejlbesked
+             mere (167. gennemsyn). -->
+        <button v-if="!loadError" class="btn primary" @click="doRestore">Gendan denne session</button>
       </div>
     </div>
   </div>

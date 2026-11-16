@@ -578,9 +578,103 @@ describe('pakker udefra (dida.dk/grupper og www.dida.dk) — samme regler som la
         }
         const here = fakeStorage({ grupdk_classes: 'her i forvejen', 'GroupEng_Topics_3a.csv': 'gammelt her' });
         adoptTransferEntries(here, { groupeng_classes: oldList, 'GroupEng_Groups_3a.csv': 'grupper', 'GroupEng_Topics_3a.csv': 'emner' });
-        expect(here.dump()).toEqual({
-            grupdk_classes: 'her i forvejen', 'GroupEng_Topics_3a.csv': 'gammelt her', 'grupdk_groups_3a.csv': 'grupper',
-        });
+        expect(here.dump()).toEqual({ grupdk_classes: 'her i forvejen', 'GroupEng_Topics_3a.csv': 'gammelt her' });
+    });
+});
+
+// ─── 163. gennemsyn (16/11): pakken fra dida.dk/grupper, når grup.dk har klasser ─
+//
+// Før blev hver nøgle lagt ind for sig, hvor der intet stod. Havde læreren
+// allerede klasser på grup.dk, blev pakkens klasseliste sprunget over — men
+// dens grupper, emner og historik kom med, og hed en klasse det samme her,
+// fik grup.dk's klasse dida.dk-klassens grupper og gemte sessioner. Og
+// læreren fik intet at vide (dida.dk har allerede mærket pakken som sendt).
+describe('pakken fra dida.dk/grupper: hele klasser eller intet', () => {
+    const there = (names) => ({
+        groupeng_classes: J([cls('3b.csv', '2026-10-01', names), cls('2c.csv', '2026-10-01', ['Dan'])]),
+        'GroupEng_Groups_3b.csv': 'grupper fra dida.dk',
+        'GroupEng_Topics_3b.csv': 'emner fra dida.dk',
+        'GroupEng_History_3b.csv': J([{ id: 'd1', name: 'Modul på dida.dk' }]),
+        'GroupEng_Session_d1': 'session fra dida.dk',
+        'GroupEng_Groups_2c.csv': 'grupper til 2c',
+        GroupEng_Last_Class: '3b.csv',
+    });
+
+    it('har grup.dk klasser, lægges intet fra pakken ind — heller ikke grupper til en klasse med samme navn', () => {
+        const mine = { grupdk_classes: J([cls('3b.csv', '2026-11-10', ['Her'])]) };
+        const here = fakeStorage(mine);
+        const result = adoptTransferEntries(here, there(['Der']));
+        expect(here.dump()).toEqual(mine);
+        expect(result).toEqual({ written: 0, skipped: true, skippedClasses: 2 });
+    });
+
+    it('en tom liste her ("[]", efter at læreren har slettet sine klasser) tager pakken ind', () => {
+        const here = fakeStorage({ grupdk_classes: '[]' });
+        const result = adoptTransferEntries(here, there(['Der']));
+        expect(JSON.parse(here.getItem('grupdk_classes')).map(c => c.filename)).toEqual(['3b.csv', '2c.csv']);
+        expect(here.getItem('grupdk_groups_3b.csv')).toBe('grupper fra dida.dk');
+        expect(here.getItem('grupdk_session_d1')).toBe('session fra dida.dk');
+        expect(result.skippedClasses).toBe(0);
+        expect(result.written).toBeGreaterThan(5);
+    });
+
+    it('en tom liste skriver stadig ikke oven i rester, der står her', () => {
+        const here = fakeStorage({ grupdk_classes: '[]', 'grupdk_groups_3b.csv': 'stod her' });
+        adoptTransferEntries(here, there(['Der']));
+        expect(here.getItem('grupdk_groups_3b.csv')).toBe('stod her');
+    });
+
+    it('en ulæselig liste her, en lagt til side eller en gammel liste, der ikke er flyttet: intet lægges ind', () => {
+        for (const mine of [
+            { grupdk_classes: '{ødelagt' },
+            { grupdk_classes: '{"ikke":"en liste"}' },
+            { grupdk_unreadable_classes: '{ødelagt' },
+            { groupeng_classes: J([cls('9z.csv', '2026-10-01')]) },
+        ]) {
+            const here = fakeStorage(mine);
+            const result = adoptTransferEntries(here, there(['Der']));
+            expect(here.dump()).toEqual(mine);
+            expect(result.skippedClasses).toBe(2);
+        }
+    });
+
+    it('fuldt lager: kan klasselisten ikke skrives, lægges intet andet ind, og klasserne meldes som ikke hentet', () => {
+        const here = fakeStorage({}, { fullFor: /^grupdk_classes$/ });
+        const result = adoptTransferEntries(here, there(['Der']));
+        expect(here.dump()).toEqual({});
+        expect(result).toEqual({ written: 0, skipped: true, skippedClasses: 2 });
+    });
+
+    it('en ulæselig liste i pakken tæller som klasser: intet lægges på en klasse her med samme filnavn', () => {
+        const mine = { grupdk_classes: J([cls('3b.csv', '2026-11-10', ['Her'])]) };
+        const here = fakeStorage(mine);
+        const pkg = { ...there(['Der']), groupeng_classes: '{ødelagt' };
+        const result = adoptTransferEntries(here, pkg);
+        expect(here.dump()).toEqual(mine);
+        expect(result).toEqual({ written: 0, skipped: true, skippedClasses: 0 });
+    });
+
+    it('en tom liste i pakken ("[]") med rester: kun indstillingerne kommer med, aldrig grupper eller sessioner', () => {
+        const mine = { grupdk_classes: J([cls('3b.csv', '2026-11-10', ['Her'])]) };
+        const here = fakeStorage(mine);
+        const result = adoptTransferEntries(here, { ...there(['Der']), groupeng_classes: '[]', GroupEng_News_Filter: 'features' });
+        expect(here.dump()).toEqual({ ...mine, grupdk_last_class: '3b.csv', grupdk_news_filter: 'features' });
+        expect(result.skipped).toBe(false);
+    });
+
+    it('en pakke helt uden klasseliste, men med grupper: grupperne kommer ikke med', () => {
+        const here = fakeStorage({});
+        const pkg = there(['Der']);
+        delete pkg.groupeng_classes;
+        adoptTransferEntries(here, pkg);
+        expect(here.dump()).toEqual({ grupdk_last_class: '3b.csv' });
+    });
+
+    it('en pakke uden klasser (kun indstillinger) lægges ind, hvor intet står, som før', () => {
+        const here = fakeStorage({ grupdk_classes: J([cls('3b.csv', '2026-11-10')]) });
+        const result = adoptTransferEntries(here, { groupeng_classes: '[]', GroupEng_News_Filter: 'features' });
+        expect(here.getItem('grupdk_news_filter')).toBe('features');
+        expect(result.skippedClasses).toBe(0);
     });
 });
 

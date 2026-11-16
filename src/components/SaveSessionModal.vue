@@ -29,6 +29,14 @@ onMounted(() => {
     const date = new Date().toLocaleDateString('da-DK', { day: 'numeric', month: 'long' });
     const className = state.currentClass ? state.currentClass.name : 'Session';
     sessionName.value = `${className} - ${date}`;
+    // Står læreren i Matrix, er det matrixen, hun kigger på og vil gemme.
+    // Før stod valget altid på "Stamgrupper", og så kom sessionen i historikken
+    // uden den matrix, der stod på skærmen; det opdagede hun først, når hun
+    // gendannede den. "Matrixgrupper" gemmer stamgrupperne med, så intet går
+    // tabt ved at vælge den. Kun når matrixen kan gemmes (matrixAvailable).
+    if (state.activeView === 'matrix' && matrixAvailable.value) {
+        sessionType.value = 'matrix';
+    }
 });
 
 const save = () => {
@@ -49,8 +57,11 @@ const save = () => {
     // i samme øjeblik.
     state.classViewTab = 'history';
 
+    // `saved.name`, ikke det skrevne navn: findes navnet i forvejen, får
+    // sessionen et tal bag ("Uge 34 (2)"), og kvitteringen skal nævne det
+    // navn, læreren skal lede efter i Historik.
     if (window.notifySuccess) {
-        window.notifySuccess(`Session "${name}" gemt i historikken!`);
+        window.notifySuccess(`Session "${saved.name}" gemt i historikken!`);
     }
 
     emit('close');

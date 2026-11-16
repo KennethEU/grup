@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue';
+import { computed, nextTick, ref, watch, onMounted } from 'vue';
 import { useModalFocus } from '../composables/useModalFocus.js';
 import { reactiveState as state } from '../js/modules/reactiveState.js';
 import { autoSave } from '../js/modules/classActions.js';
@@ -64,7 +64,7 @@ const addMapping = () => {
     mappings.value.push({ id: Date.now() + Math.random(), values: [], label: '' });
 };
 
-const removeMapping = (index) => {
+const removeMapping = async (index) => {
     if (mappings.value.length > 1) {
         mappings.value.splice(index, 1);
     } else {
@@ -72,6 +72,12 @@ const removeMapping = (index) => {
         mappings.value[0].values = [];
         mappings.value[0].label = '';
     }
+    // Krydset forsvinder med rækken, og så stod fokus på <body> midt i
+    // vinduet (168. gennemsyn). Fokus til krydset i rækken, der rykker op,
+    // eller i den nye sidste række.
+    await nextTick();
+    const crosses = overlayRef.value?.querySelectorAll('.btn-icon.delete') || [];
+    crosses[Math.min(index, crosses.length - 1)]?.focus();
 };
 
 // Kildekolonnens værdier, som de FAKTISK står i klassen.
@@ -277,6 +283,7 @@ const { onBackdropClick } = useModalFocus(overlayRef, { onEscape: () => emit('cl
                     class="btn-icon delete"
                     @click="removeMapping(index)"
                     :title="`Fjern regel ${index + 1}`"
+                    :aria-label="`Fjern regel ${index + 1}`"
                   >&times;</button>
               </div>
           </div>

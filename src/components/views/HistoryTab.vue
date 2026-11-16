@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import { reactiveState } from '../../js/modules/reactiveState.js';
 import { getHistory } from '../../js/modules/storage.js';
 import { deleteSession, restoreSession, renameSession } from '../../js/modules/history.js';
@@ -16,6 +16,12 @@ const showRestoreConfirm = ref(false);
 const restoreTarget = ref(null);
 const showDeleteConfirm = ref(false);
 const deleteTarget = ref(null);
+// Rækkernes slet-knapper efter sessionens id, så fokus kan sættes på den
+// række, der rykker op, når en session er slettet (se confirmDelete).
+const deleteButtons = new Map();
+// Selve listen (tabellen eller "Ingen gemte sessioner"). Fokus lander dér,
+// når den sidste session er slettet.
+const listRef = ref(null);
 const showRenamePrompt = ref(false);
 const renameTargetSession = ref(null);
 
@@ -137,16 +143,25 @@ function confirmRename(newName) {
     updateHistory();
 }
 
-function onDelete(sessionId) {
-    deleteTarget.value = sessionId;
+function onDelete(session) {
+    deleteTarget.value = session;
     showDeleteConfirm.value = true;
 }
 
-function confirmDelete() {
-    const id = deleteTarget.value;
+// Bekræftelsen nævner sessionen ved navn. Før stod der kun "denne session",
+// og vinduet dækker listen, så læreren kunne ikke se, hvilken række hun
+// havde trykket på (195. tematik, 167. gennemsyn).
+const deleteMessage = computed(() => deleteTarget.value
+    ? `Vil du slette sessionen "${sessionLabel(deleteTarget.value)}" permanent? Den kan ikke hentes tilbage.`
+    : '');
+
+async function confirmDelete() {
+    const id = deleteTarget.value?.id;
     showDeleteConfirm.value = false;
     deleteTarget.value = null;
     if (!id) return;
+    // Rækkens plads i listen, FØR den slettes: fokus skal derhen bagefter.
+    const index = sortedHistoryReactive.value.findIndex(s => s.id === id);
     if (deleteSession(id) === false) {
         window.notifyError?.(
             'Kunne ikke slette sessionen — browserens lagerplads er fuld. ' +
@@ -154,6 +169,17 @@ function confirmDelete() {
         );
     }
     updateHistory();
+    // Fokus. Vinduet giver fokus tilbage til slet-knappen, men den forsvinder
+    // med rækken, og så stod fokus på <body>: med tastatur eller skærmlæser
+    // startede læreren forfra øverst på siden. Nu får den række, der rykker
+    // op på pladsen (eller den sidste, hvis det var den nederste), fokus på
+    // sin slet-knap; er listen tom, får listen selv fokus. Kunne sessionen
+    // ikke slettes, står rækken der stadig, og den får fokus igen.
+    await nextTick();
+    const rows = sortedHistoryReactive.value;
+    const next = rows.length ? rows[Math.min(Math.max(index, 0), rows.length - 1)] : null;
+    const target = (next && deleteButtons.get(next.id)) || listRef.value;
+    target?.focus();
 }
 </script>
 
@@ -166,6 +192,8 @@ function confirmDelete() {
                  delene hører sammen. Rollen sættes kun når der ER rækker: en
                  tom tabel med en forklarende tekst indeni er ikke en tabel. -->
             <div id="history-list-view"
+                 ref="listRef"
+                 tabindex="-1"
                  class="table-container"
                  :role="sortedHistoryReactive.length ? 'table' : null"
                  :aria-label="sortedHistoryReactive.length ? 'Gemte sessioner' : null">
@@ -202,7 +230,9 @@ function confirmDelete() {
                                 <button class="btn-icon" title="Forhåndsvisning" :aria-label="`Forhåndsvis ${sessionLabel(s)}`" @click="onPreview(s.id)"><Eye :size="14" /></button>
                                 <button class="btn-icon" title="Omdøb" :aria-label="`Omdøb ${sessionLabel(s)}`" @click="onRename(s)"><Pencil :size="14" /></button>
                                 <button class="btn-icon" title="Gendan" :aria-label="`Gendan ${sessionLabel(s)}`" @click="onRestore(s.id)"><RefreshCw :size="14" /></button>
-                                <button class="btn-icon danger" title="Slet" :aria-label="`Slet ${sessionLabel(s)}`" @click="onDelete(s.id)"><Trash2 :size="14" /></button>
+                                <button class="btn-icon danger" title="Slet" :aria-label="`Slet ${sessionLabel(s)}`"
+                                        :ref="el => { if (el) deleteButtons.set(s.id, el); else deleteButtons.delete(s.id); }"
+                                        @click="onDelete(s)"><Trash2 :size="14" /></button>
                             </div>
                         </div>
                     </TransitionGroup>
@@ -224,7 +254,7 @@ function confirmDelete() {
     <ConfirmModal
       v-if="showDeleteConfirm"
       title="Slet session"
-      message="Er du sikker på, at du vil slette denne session permanent?"
+      :message="deleteMessage"
       confirm-text="Slet"
       variant="danger"
       @confirm="confirmDelete"

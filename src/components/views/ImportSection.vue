@@ -310,7 +310,7 @@ async function writeBackupEntries(entries, collisionMode, sourceName, invalid = 
     // hen ikke har dataene andre steder.
     const failed = Array.isArray(res.failed) ? res.failed : [];
     if (failed.length > 0) {
-        const names = failed.map(f => nameOf(f.filename)).join(', ');
+        const names = failed.map(f => f.name || nameOf(f.filename)).join(', ');
         msg += ` ${plural(failed.length, 'klasse', 'klasser')} kunne IKKE gendannes: ${names}.` +
             ' Frigør plads (slet en gammel klasse eller ryd historikken) og prøv igen.';
         if (window.notifyError) window.notifyError(msg);

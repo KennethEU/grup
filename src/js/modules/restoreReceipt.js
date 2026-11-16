@@ -17,7 +17,7 @@
  * manglende kan skyldes fuld lagerplads ELLER en session, filen ikke selv
  * havde indholdet til; derfor siger kvitteringen begge dele bagefter.
  *
- * @param {Array<{filename: string, parts: string[], sessionsRestored?: number,
+ * @param {Array<{filename: string, name?: string, parts: string[], sessionsRestored?: number,
  *   sessionsMissing?: number}>} partial
  * @param {(filename: string) => string} nameOf klassens navn til læreren
  * @returns {string[]} sætningsdele uden stort begyndelsesbogstav og punktum
@@ -25,7 +25,9 @@
 export function describePartialRestore(partial, nameOf = (f) => f) {
     const notes = [];
     (Array.isArray(partial) ? partial : []).forEach(p => {
-        const name = nameOf(p.filename);
+        // Navnet, klassen FIK (fx "3.a (gendannet)"), står i p.name. Uden
+        // det faldt en omdøbt klasse tilbage på sit filnavn med tidsstempel.
+        const name = (typeof p.name === 'string' && p.name) ? p.name : nameOf(p.filename);
         const restored = Number(p.sessionsRestored) || 0;
         const missing = Number(p.sessionsMissing) || 0;
         let parts = Array.isArray(p.parts) ? p.parts : [];

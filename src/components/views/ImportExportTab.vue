@@ -27,6 +27,17 @@ function updateIndicator() {
     indicator.style.opacity = '1';
 }
 watch(activeSubTab, () => nextTick(() => requestAnimationFrame(updateIndicator)));
+
+// Den gemte kopi er slettet, og boksen er væk med sin "Slet den"-knap. Vinduet
+// giver fokus tilbage til knappen, men den findes ikke mere, så fokus stod på
+// <body>: med tastatur eller skærmlæser startede læreren forfra øverst på
+// siden (168. gennemsyn, tematik 197). Fokus til den valgte fane lige over.
+async function focusAfterCopyDeleted() {
+    await nextTick();
+    const a = document.activeElement;
+    if (a && a !== document.body && a.isConnected) return;
+    pillGroupRef.value?.querySelector('.pill-btn.active')?.focus();
+}
 onMounted(() => nextTick(() => requestAnimationFrame(updateIndicator)));
 </script>
 
@@ -65,7 +76,7 @@ onMounted(() => nextTick(() => requestAnimationFrame(updateIndicator)));
         <div class="tab-content-wrapper">
             <!-- Kun når en ulæselig klasseliste ligger gemt til side: står over
                  begge faner, så læreren ser den, uanset hvor hun lander. -->
-            <UnreadableCopyNotice />
+            <UnreadableCopyNotice @deleted="focusAfterCopyDeleted" />
             <div v-if="activeSubTab === 'import'" key="import" class="tab-content">
                 <ImportSection />
             </div>

@@ -555,16 +555,43 @@ export function saveHistory(historyMetaArray) {
 
     const { kept, dropped } = pruneHistoryMeta(historyMetaArray);
 
+    // Listen FØRST. Før blev de udlugede payloads slettet inden, og blev
+    // skrivningen så afvist (fuldt lager), stod den gamle liste tilbage med
+    // sessioner, hvis indhold var væk: "Kunne ikke hente session data!".
+    if (safeSave(`${HISTORY_PREFIX}${state.currentClass.filename}`, JSON.stringify(kept)) === false) {
+        return false;
+    }
+
     // Slet payloaden for de sessioner udrensningen lige har luget ud —
     // både dem alderen tog og dem antallet tog. Kun antals-udrensningen
     // gjorde det før, så en session der faldt for 90-dages-grænsen
     // efterlod sin tunge payload i lageret: usynlig i listen, men den fyldte
     // stadig. Det er præcis den plads læreren mangler, når kvoten løber fuld.
+    // Men kun hvis ingen anden klasse også har sessionen (se sessionUsedElsewhere).
     dropped.forEach(entry => {
-        if (entry.id) deleteSessionPayload(entry.id);
+        if (entry.id && !sessionUsedElsewhere(entry.id)) deleteSessionPayload(entry.id);
     });
+    return true;
+}
 
-    return safeSave(`${HISTORY_PREFIX}${state.currentClass.filename}`, JSON.stringify(kept)) !== false;
+/**
+ * Nævner en ANDEN klasses historik denne session?
+ *
+ * Nøglen `grupdk_session_<id>` er fælles for alle klasser, og flytningen fra
+ * de gamle nøglenavne kan give en kopi ("3.b (kopi)") en historik med de
+ * samme id'er som originalen. Slettede læreren så en session i kopien (eller
+ * blev den luget ud dér), forsvandt den også fra originalen, hvor den stadig
+ * stod i listen: "Kunne ikke hente session data!". Samme værn som i
+ * cleanupClassStorage().
+ *
+ * @returns {boolean} true også, hvis en anden liste ikke kan læses — så ved
+ *   vi ikke, hvad den nævner, og intet må slettes.
+ */
+export function sessionUsedElsewhere(sessionId) {
+    const skip = state.currentClass && state.currentClass.filename
+        ? `${HISTORY_PREFIX}${state.currentClass.filename}` : null;
+    const { ids } = sessionIdsInHistories(skip);
+    return !ids || ids.has(sessionId);
 }
 
 export function getHistory() {

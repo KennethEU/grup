@@ -317,7 +317,51 @@ watch(() => [appState.navView, appState.classViewTab], (_, [oldNav, oldTab]) => 
     });
 }, { flush: 'sync' });
 
+// ─── Fokus efter luk (169. gennemsyn, tematik (198)) ───────────────────────
+// Krydset og beskedens egen knap forsvinder med beskeden. Havde de fokus
+// (tastatur eller skærmlæser), stod fokus bagefter på <body>, og læreren
+// begyndte forfra øverst på siden. Nu går fokus til krydset på den besked,
+// der rykker op (eller den ovenover, hvis den nederste lukkes), og når den
+// sidste er lukket, tilbage dertil, hvor læreren kom fra.
+//
+// Fokus flyttes i klikket, FØR beskeden fjernes. Ikke på blur/focusout:
+// Chromium sender blur, når et element med fokus fjernes, Safari og Firefox
+// gør ikke. Naboen findes i listen, ikke i DOM'en: transition-group lader en
+// lukket besked stå i siden, mens den glider ud.
+let cameFrom = null;   // det element, fokus kom fra, da det trådte ind i stakken
+function onStackFocusin(event) {
+    const from = event.relatedTarget;
+    if (from && !containerEl.value?.contains(from)) cameFrom = from;
+}
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+function focusTargetAfter(id) {
+    const ids = notifications.value.map(n => n.id);
+    const i = ids.indexOf(id);
+    const neighbour = i === -1 ? undefined : (ids[i + 1] ?? ids[i - 1]);
+    if (neighbour !== undefined) {
+        const btn = containerEl.value?.querySelector(`.toast[data-note-id="${neighbour}"] .toast-close`);
+        if (btn) return btn;
+    }
+    // Er der åbnet et vindue, siden læreren gik ind i beskederne (stakken er
+    // data-modal-keep og kan nås, mens siden bagved er inert), duer det gamle
+    // sted ikke: fokus på et inert element ender på <body>.
+    if (cameFrom?.isConnected && !cameFrom.closest('[inert]')) return cameFrom;
+    // Står et vindue åbent, bliver fokus i det. Ellers intet: kom fokus fra
+    // <body> (fx et klik med musen), er der intet sted at vende tilbage til,
+    // og et tilfældigt felt på siden ville få en fokusring, læreren ikke
+    // bad om (målt: elevlistens Vis-vælger i Chromium).
+    const root = topModalPanel() || host.value;
+    return root?.querySelector(FOCUSABLE) || null;
+}
+function keepFocus(id) {
+    // Kun når fokus faktisk er i stakken. Et klik med musen giver ikke altid
+    // knappen fokus (Safari), og så skal intet flyttes.
+    if (!containerEl.value?.contains(document.activeElement)) return;
+    focusTargetAfter(id)?.focus();
+}
+
 const removeNotification = (id) => {
+    keepFocus(id);
     notificationActions.remove(id);
 };
 
@@ -356,7 +400,11 @@ watch(() => notifications.value.map(n => n.id), ids => {
 });
 
 // Beskedens egen knap: kør handlingen, og luk beskeden — den er besvaret.
+// Fokus flyttes FØR handlingen: åbner den et vindue, husker vinduet den knap,
+// der havde fokus, og giver fokus tilbage dertil, når det lukker. Var det
+// beskedens knap, var den væk, og fokus endte på <body> ét skridt senere.
 function runAction(note) {
+    keepFocus(note.id);
     notificationActions.remove(note.id);
     note.action.run();
 }
@@ -371,7 +419,7 @@ function runAction(note) {
          og klikkes væk. Inde i #app blev de inerte sammen med resten, så snart
          et bekræft- eller navngiv-vindue (som ligger i <body>) var åbent. -->
     <Teleport :to="host || 'body'">
-    <div ref="containerEl" class="notification-container" :class="{ 'in-dialog': host, 'can-scroll': canScroll }" data-modal-keep :style="containerTop ? { '--toast-top': containerTop } : null">
+    <div ref="containerEl" class="notification-container" :class="{ 'in-dialog': host, 'can-scroll': canScroll }" data-modal-keep :style="containerTop ? { '--toast-top': containerTop } : null" @focusin="onStackFocusin">
         <transition-group name="toast">
             <div
                 v-for="note in notifications"

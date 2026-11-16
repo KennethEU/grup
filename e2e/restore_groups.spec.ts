@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { createClassAndGoToGroups, generateGroups, openSaveColumn } from './helpers';
+import { createClassAndGoToGroups, generateGroups, openSaveColumn, addTopics } from './helpers';
 
 // Gendan grupper — de to indgange hele vejen gennem den rigtige app.
 //
@@ -159,3 +159,47 @@ test('gendanner grupper fra teksten på udskriften', async ({ page }) => {
     await page.locator('.nav-tab').filter({ hasText: 'Elevliste' }).click();
     await expect(page.locator('tbody tr').filter({ hasText: 'Udskriv' })).toHaveCount(0);
 });
+
+// Samme vej med emner på grupperne og matrixen under stamgrupperne. Emnet står
+// på udskriften på sin egen linje under overskriften; det skal blive gruppens
+// emne, ikke en ny elev. Matrixens overskrift sættes under den rigtige tekst
+// (udskriften har kun en matrix, når den er dannet), og vinduet skal sige, at
+// den del ikke er læst. Dækker vinduets halvdel af rettelsen: klassens emner
+// gives videre til resolveTextGroups, og skippedMatrix vises (162. gennemsyn).
+test('gendanner grupper med emner fra udskriften og springer matrixen over', async ({ page }) => {
+    await createClassAndGoToGroups(page, 'Gendan Udskrift Emner');
+    await addTopics(page, ['Klima', 'Vand', 'Energi']);
+    await generateGroups(page);
+    await expect(page.locator('.group-card')).toHaveCount(3);
+    const beforeRestore = await page.locator('.group-card').allInnerTexts();
+
+    const popupPromise = page.waitForEvent('popup');
+    await page.getByRole('button', { name: 'Del', exact: true }).click();
+    await page.getByRole('group', { name: 'Del grupperne' }).getByRole('button', { name: /Udskriv/ }).click();
+    const popup = await popupPromise;
+    await popup.waitForLoadState();
+    const printed = await popup.evaluate(() => document.body.innerText);
+    await popup.close();
+    expect(printed).toContain('Klima');
+
+    await openRestoreDialog(page);
+    await page.locator('#rg-text').fill(printed + '\nRUNDE 2 · MATRIXGRUPPER\nGruppe 1\nAnna\nfra\nKlima\n');
+    await page.getByRole('button', { name: 'Læs listen' }).click();
+
+    await expect(page.locator('.preview-head')).toContainText('3 grupper med 12 elever');
+    await expect(page.getByText('Se efter her')).toHaveCount(0);
+    await expect(page.getByText('Matrixgrupperne nederst i teksten er ikke læst')).toBeVisible();
+    // Emnerne er klassens egne — der lægges ingen nye til.
+    await expect(page.getByText('tilføjes til klassens emneliste')).toHaveCount(0);
+    await page.getByText('Matrixgrupperne nederst i teksten er ikke læst').scrollIntoViewIfNeeded();
+    await page.locator('.modal-content').screenshot({ path: test.info().outputPath('gendan-udskrift.png') });
+    await page.locator('.modal-content .btn.primary').click();
+
+    const afterRestore = await page.locator('.group-card').allInnerTexts();
+    const memberNames = (cards: string[]) => cards.map(k => {
+        const lines = k.split('\n').map(l => l.trim()).filter(Boolean);
+        return lines.slice().sort().join(',');
+    }).sort();
+    expect(memberNames(afterRestore)).toEqual(memberNames(beforeRestore));
+});
+

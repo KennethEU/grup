@@ -896,7 +896,7 @@ describe('Gendan fra Del-menuens Excel-kolonne "Stamgruppe"', () => {
         ]);
     });
 
-    it('regner kolonnen for nummereret og vælger den frem for Køn', () => {
+    it('regner kolonnen for nummereret, så den står forvalgt', () => {
         const cands = candidateColumns(exported, ['Navn', 'Køn', 'Stamgruppe'], 'Navn');
         expect(cands.find(c => c.column === 'Stamgruppe').numbered).toBe(true);
         expect(bestCandidateColumn(cands)).toBe('Stamgruppe');

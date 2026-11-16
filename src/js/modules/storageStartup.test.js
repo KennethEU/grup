@@ -73,6 +73,30 @@ describe('receiveTransfer (?migrate=<token> fra dida.dk/grupper)', () => {
         delete window.notifyError;
     });
 
+    // 163. gennemsyn (16/11): har grup.dk allerede klasser, kommer pakkens
+    // ikke med — og før fik læreren intet at vide, mens dida.dk havde mærket
+    // dem som sendt.
+    it('har grup.dk klasser, lægges pakken ikke ind, og læreren får at vide, hvor klasserne er', async () => {
+        window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
+        const mine = JSON.stringify([{ filename: '3b.csv', name: '3.b her' }]);
+        localStorage.setItem('grupdk_classes', mine);
+        const theirs = JSON.stringify([{ filename: '3b.csv', name: '3.b der' }, { filename: '2c.csv', name: '2.c' }]);
+        window.XMLHttpRequest = fakeXhr(200, JSON.stringify({ entries: {
+            groupeng_classes: theirs, 'GroupEng_Groups_3b.csv': 'grupper fra dida.dk',
+        } }));
+        const mod = await import('./storageStartup.js');
+        expect(localStorage.getItem('grupdk_classes')).toBe(mine);
+        expect(localStorage.getItem('grupdk_groups_3b.csv')).toBeNull();
+        window.notifyError = vi.fn();
+        mod.reportStorageMigration();
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/^2 klasser fra dida\.dk\/grupper .*dida\.dk\/grupper\/\?bliv=1.*"Importér som kopi"/));
+        // Siges én gang.
+        window.notifyError.mockClear();
+        mod.reportStorageMigration();
+        expect(window.notifyError).not.toHaveBeenCalled();
+        delete window.notifyError;
+    });
+
     it('fjerner tokenet, også når svaret ikke er JSON (fx en fejlside)', async () => {
         window.history.replaceState(null, '', `/?migrate=${TOKEN}`);
         window.XMLHttpRequest = fakeXhr(200, '<!doctype html><title>Fejl</title>');
