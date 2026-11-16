@@ -67,15 +67,45 @@ const columns = computed(() => {
 // for mange navne til højden (en lav bærbar, en stor klasse), skrues --fit ned
 // i små trin, til alt er synligt. Den går ikke under 0,55: hellere rulle end
 // navne, der ikke kan læses bagerst i lokalet.
-async function fitToScreen() {
+//
+// Hver måling (scrollHeight) får browseren til at lægge hele arket ud igen.
+// Før prøvede vi trinene ét for ét fra 1 og nedad: op til 9 målinger, og med
+// 300 elever (75 grupper) kunne arket aldrig passe, så alle 9 blev brugt
+// hver gang. Det skete ved HVER resize-hændelse, og et træk i vinduet sender
+// mange: målt 16/11 (179. gennemsyn, 1920×1080, 4× neddrosling) 19 lange
+// opgaver på 64–124 ms i træk, så arket hakkede. Nu:
+//   - halveres der mellem trinene (højst 4 målinger + den første), og
+//   - flere hændelser i samme billede samles til én tilpasning.
+// Svaret er det samme: det største trin, hvor alt kan ses, ellers 0,55.
+const FIT_STEPS = [];
+for (let f = 100; f >= 55; f -= 5) FIT_STEPS.push(f / 100);   // 1, 0.95 … 0.55
+
+function fitToScreen() {
     const el = sheet.value;
     if (!el) return;
-    el.style.setProperty('--fit', '1');
-    await nextTick();
-    for (let fit = 1; fit > 0.55 && el.scrollHeight > el.clientHeight + 1; ) {
-        fit = Math.round((fit - 0.05) * 100) / 100;
+    const fits = (fit) => {
         el.style.setProperty('--fit', String(fit));
+        return el.scrollHeight <= el.clientHeight + 1;
+    };
+    if (fits(FIT_STEPS[0])) return;
+    // Mindre skrift giver aldrig et højere ark, så det første trin, der
+    // passer, kan findes ved halvering. lo passer ikke; hi er det mindste.
+    let lo = 0, hi = FIT_STEPS.length - 1;
+    while (hi - lo > 1) {
+        const mid = (lo + hi) >> 1;
+        if (fits(FIT_STEPS[mid])) hi = mid; else lo = mid;
     }
+    el.style.setProperty('--fit', String(FIT_STEPS[hi]));
+}
+
+// Én tilpasning pr. billede, uanset hvor mange resize-hændelser der kommer.
+let fitFrame = 0;
+function scheduleFit() {
+    if (fitFrame) return;
+    fitFrame = requestAnimationFrame(() => {
+        fitFrame = 0;
+        fitToScreen();
+    });
 }
 watch(groups, () => fitToScreen(), { flush: 'post' });
 
@@ -106,7 +136,7 @@ onMounted(async () => {
     // rullede browseren før arket ned til knappen, og overskriften var skåret
     // af foroven, før nogen havde rørt noget.
     closeBtn.value?.focus({ preventScroll: true });
-    window.addEventListener('resize', fitToScreen);
+    window.addEventListener('resize', scheduleFit);
     history.pushState({ ...(history.state || {}), classShow: true }, '');
     ownHistoryEntry = true;
     window.addEventListener('popstate', onPopState);
@@ -114,10 +144,12 @@ onMounted(async () => {
     await nextTick();
     // Skrifterne skal være hentet, før der måles — ellers måles med reserveskriften
     await document.fonts?.ready;
-    await fitToScreen();
+    fitToScreen();
 });
 onUnmounted(() => {
-    window.removeEventListener('resize', fitToScreen);
+    window.removeEventListener('resize', scheduleFit);
+    if (fitFrame) cancelAnimationFrame(fitFrame);
+    fitFrame = 0;
     window.removeEventListener('popstate', onPopState);
     // Lukket med "Luk" eller Escape: skridtet ligger der stadig — fjern det
     if (ownHistoryEntry && history.state?.classShow) history.back();

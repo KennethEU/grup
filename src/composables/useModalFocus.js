@@ -173,6 +173,35 @@ function syncInert() {
     }
 }
 
+// ---- Reserve, når knappen er væk -------------------------------------
+// Vinduet giver fokus tilbage til knappen, der åbnede det. Men knappen kan
+// forsvinde, MENS vinduet står: en advarsel over grupperne ("Tilføj
+// efternøler", "Vis aftalen") åbner et vindue, læreren løser sagen dér, og
+// advarslen — med knappen — er væk, når vinduet lukker. Så stod fokus på
+// <body> (målt i 170. gennemsyn, tematik (199)), og med tastatur eller
+// skærmlæser begyndte læreren forfra øverst på siden.
+//
+// Den, der ved, hvor fokus bør gå hen (HintsStack), melder en reserve LIGE
+// før handlingen. Det næste vindue, der åbner (eller laget "Danner grupper
+// …" i App.vue), tager den med sig og bruger den kun, hvis knappen er væk.
+// Åbner intet (knappen gjorde noget andet), glemmes reserven i næste
+// omgang af løkken (setTimeout), så et senere vindue ikke arver den.
+let pendingFallback = null;
+
+/** Meld en reserve (en funktion, der sætter fokus) til det næste vindue eller lag. */
+export function setFocusFallback(fn) {
+    pendingFallback = typeof fn === 'function' ? fn : null;
+    const mine = pendingFallback;
+    setTimeout(() => { if (pendingFallback === mine) pendingFallback = null; });
+}
+
+/** Tag den meldte reserve (kun én tager den). */
+export function takeFocusFallback() {
+    const fn = pendingFallback;
+    pendingFallback = null;
+    return fn;
+}
+
 function focusableIn(root) {
     if (!root) return [];
     return [...root.querySelectorAll(FOCUSABLE)]
@@ -191,6 +220,7 @@ function focusableIn(root) {
 export function useModalFocus(containerRef, options = {}) {
     const { onEscape } = options;
     let previouslyFocused = null;
+    let focusFallback = null;
 
     // Klik på det slørede overlay lukker vinduet. Men et klik, der STARTER i et
     // felt og slippes uden for vinduet (man trækker for at markere tekst og
@@ -250,6 +280,7 @@ export function useModalFocus(containerRef, options = {}) {
     // ALLE komponentens onMounted-kroge, uanset rækkefølgen de er skrevet i.
     onBeforeMount(() => {
         previouslyFocused = document.activeElement;
+        focusFallback = takeFocusFallback();
     });
 
     onMounted(async () => {
@@ -289,6 +320,9 @@ export function useModalFocus(containerRef, options = {}) {
         // kan være forsvundet med det den lukkede (fx en slettet klasse).
         if (previouslyFocused && previouslyFocused.isConnected) {
             previouslyFocused.focus();
+        } else if (focusFallback && openModals.length === 0) {
+            // Kun når intet andet vindue står: ellers hører fokus til dét.
+            focusFallback();
         }
     });
 

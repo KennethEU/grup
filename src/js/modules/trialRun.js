@@ -54,6 +54,7 @@ import {
 } from './nextEngine.js';
 import { ruleMarks } from './ruleMarks.js';
 import { memberDisplayName } from './utils.js';
+import { checkForNewBuild } from './newBuild.js';
 
 /** Tre forsøg, fast frø: hurtig og altid den samme for samme opskrift. */
 export const TRIAL_BUDGET = Object.freeze({ maxSeconds: 0.6, maxAttempts: 3, minAttempts: 3 });
@@ -63,12 +64,20 @@ export const TRIAL_QUIET_MS = 500;
 /** Svarer tråden ikke inden da, lukkes den (den skulle bruge under et sekund). */
 export const TRIAL_GIVE_UP_MS = 8000;
 /**
- * Så mange gange i træk må tråden fejle, før prøvekørslen holder helt op i
- * denne fane. En gammel fane efter en deploy kan ikke hente trådens fil (den
- * gamle er slettet på serveren); uden grænsen spurgte den serveren forgæves
- * ved HVER ændring af opskriften. Et svar nulstiller tælleren.
+ * Så mange gange i træk må forbindelsen svigte, før prøvekørslen holder pause
+ * til næste nye forsøg (TRIAL_RETRY_MS). En gammel fane efter en deploy kan
+ * ikke hente trådens fil (den gamle er slettet på serveren); uden grænsen
+ * spurgte den serveren forgæves ved HVER ændring af opskriften. Et svar
+ * nulstiller tælleren. Er der lagt en ny udgave op, holder den helt op.
  */
 export const TRIAL_MAX_FAILURES = 3;
+/**
+ * Nyt forsøg af sig selv efter en fejl i forbindelsen (174. gennemsyn, 16/11
+ * 2026): først efter 15 sekunder, så 30, 60 og derefter hvert andet minut.
+ * Kun når der IKKE er lagt en ny udgave op (så er trådens fil væk for altid).
+ */
+export const TRIAL_RETRY_MS = 15000;
+export const TRIAL_RETRY_MAX_MS = 120000;
 
 /**
  * Sidste prøvekørsel pr. visning: { key, rules, agreements, notes } — eller
@@ -211,8 +220,11 @@ let busy = null;        // { id, key, timer } for prøvekørslen i gang
 let quietTimer = null;
 let seq = 0;
 let failedKey = '';     // en opskrift, tråden gik ned på, prøves ikke igen og igen
-let failures = 0;       // fejl i træk uden et svar imellem (TRIAL_MAX_FAILURES)
+let failures = 0;       // fejl i forbindelsen i træk uden et svar imellem (TRIAL_MAX_FAILURES)
 let lastChangeAt = 0;   // sidste gang det, der skal prøves, ændrede sig (Date.now())
+let retryTimer = null;  // et nyt forsøg af sig selv efter en fejl i forbindelsen
+let retries = 0;        // nye forsøg i træk uden et svar imellem
+let gone = false;       // en ny udgave er lagt op: trådens fil findes ikke længere
 
 /**
  * Hvor længe der stadig skal ventes, før opskriften har stået stille i
@@ -242,8 +254,8 @@ function finishBusy() {
 function start() {
     const isMatrix = state.activeView === 'matrix';
     const key = wanted.value;
-    if (!key || key === failedKey || typeof Worker === 'undefined') return;
-    if (failures >= TRIAL_MAX_FAILURES) return;      // tråden kan ikke bruges i denne fane
+    if (!key || key === failedKey || gone || typeof Worker === 'undefined') return;
+    if (failures >= TRIAL_MAX_FAILURES) return;      // vent på det nye forsøg (retryTimer)
     if (busy) return;                                // svaret sætter den næste i gang
     if (trial[viewOf(isMatrix)]?.key === key) return; // har den allerede
 
@@ -267,37 +279,96 @@ function start() {
                 if (e && typeof e.preventDefault === 'function') e.preventDefault();
                 giveUp();
             };
+            // Et svar, der ikke kunne pakkes ud: som en fejl (173. gennemsyn).
+            worker.onmessageerror = () => giveUp();
         }
         const id = ++seq;
-        busy = { id, key, context, timer: setTimeout(giveUp, TRIAL_GIVE_UP_MS) };
+        busy = { id, key, context, timer: setTimeout(() => giveUp(), TRIAL_GIVE_UP_MS) };
         // JSON-kopi: input kan ligge i Vues tilstand, og tråden skal have rene data.
         // cores: 1 — ingen hjælpetråde til tre korte forsøg (se øverst).
         worker.postMessage({ type: 'run', id, cores: 1, input: { ...JSON.parse(JSON.stringify(input)), budget: { ...TRIAL_BUDGET }, seed: TRIAL_SEED } });
     } catch (e) {
+        // Kunne tråden slet ikke startes, er der endnu ingen `busy`: læg en
+        // ind, så fejlen tælles som de andre (og ikke prøves ved hver ændring).
+        if (!busy) busy = { id: ++seq, key, context, timer: null };
         giveUp();
     }
 }
 
-/** Tråden fejlede eller svarede ikke: ingen prøvekørsel for denne opskrift. Stille. */
-function giveUp() {
-    if (busy) failedKey = busy.key;
-    failures++;
+/**
+ * Tråden fejlede eller svarede ikke: ingen prøvekørsel for denne opskrift
+ * lige nu. Stille — prøvekørslen siger aldrig selv noget til læreren.
+ *
+ * `deterministic`: motoren selv kastede ('crash'). Med fast frø ville den gøre
+ * det igen på samme opskrift, så den opskrift prøves ikke igen — men tråden
+ * virker, så det tæller ikke mod TRIAL_MAX_FAILURES.
+ *
+ * Alt andet (tråden kunne ikke hentes, en besked kunne ikke pakkes ud, intet
+ * svar i tide) er forbindelsen. HVORFOR det skal prøves igen (174. gennemsyn,
+ * 16/11 2026): før blev opskriften, tråden gik ned på, aldrig prøvet igen
+ * (failedKey), og efter tre fejl holdt prøvekørslen helt op i fanen. Et kort
+ * netudfald, mens læreren rettede i opskriften, betød altså ingen prøvekørsel,
+ * før siden blev genindlæst — også når nettet var tilbage. Nu spørges der, om
+ * en ny udgave er lagt op (så er trådens fil væk, og vi holder op for altid);
+ * ellers prøves der igen af sig selv (TRIAL_RETRY_MS) med opskriften, som den
+ * står da.
+ */
+function giveUp({ deterministic = false } = {}) {
+    // 174. gennemsyn (209): en fejl fra en ledig tråd (ingen prøvekørsel i gang)
+    // tæller ikke. Tråden lægges bare til side; den næste prøvekørsel får en ny.
+    if (!busy) { dropWorker(); return; }
+    failedKey = busy.key;
     finishBusy();
     dropWorker();
+    if (!deterministic) {
+        failures++;
+        planRetry();
+    }
     // Er opskriften ændret imens, prøves den nye (indtil grænsen er nået),
     // når den har stået stille.
     if (failures < TRIAL_MAX_FAILURES) schedule(quietLeft());
+}
+
+/** Efter en fejl i forbindelsen: ny udgave (hold op) eller et nyt forsøg senere. */
+function planRetry() {
+    if (gone || retryTimer) return;
+    const later = () => {
+        if (gone || retryTimer) return;
+        const delay = Math.min(TRIAL_RETRY_MS * 2 ** retries, TRIAL_RETRY_MAX_MS);
+        retries++;
+        retryTimer = setTimeout(() => {
+            retryTimer = null;
+            failures = 0;
+            failedKey = '';
+            schedule(0);   // start() tager opskriften, som den står nu
+        }, delay);
+    };
+    const check = checkForNewBuild();
+    // Ingen bygget udgave at sammenligne med (udvikling, tests): prøv igen senere.
+    if (!check) { later(); return; }
+    check.then((isNew) => {
+        if (isNew) {
+            // Den gamle fane efter en deploy. Tjek-tråden og Dan grupper siger
+            // allerede "genindlæs siden"; prøvekørslen tier og spørger ikke mere.
+            gone = true;
+            clearTimeout(retryTimer);
+            retryTimer = null;
+            return;
+        }
+        later();
+    });
 }
 
 function onMessage(e) {
     const m = e.data || {};
     if (!busy || m.id !== busy.id) return;
     if (m.type === 'progress') return;
-    if (m.type === 'crash') { giveUp(); return; }
+    if (m.type === 'crash') { giveUp({ deterministic: true }); return; }
     if (m.type !== 'answer') return;
     const { key, context } = busy;
     finishBusy();
     failures = 0;   // tråden virker
+    retries = 0;
     let result = null;
     try {
         result = readTrialAnswer(context.input, m.answer, {

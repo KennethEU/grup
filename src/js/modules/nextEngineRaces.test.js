@@ -287,3 +287,92 @@ describe('Stop, og så svarer motoren', () => {
         expect(engineTogetherStop.value).toBe(null);
     });
 });
+
+// ─── Skal sammen-stoppet, når en kørsel ender uden grupper (172. gennemsyn) ──
+// Motoren havde sagt, at en Skal sammen ikke kan holdes (advarslen over
+// grupperne med "Dan grupper uden aftalen"). Læreren trykker på knappen (eller
+// Dan grupper), og kørslen ender UDEN grupper: tråden dør, motoren kaster,
+// svaret bryder kontrakten, eller læreren stopper. Grupperne står urørte —
+// så skal advarslen også. Før forsvandt den til næste Dan grupper.
+describe('Skal sammen-stoppet står tilbage, når ingen grupper lander', () => {
+    const OLD = () => [
+        { name: 'Group 1', members: ['r1', 'r3'] },
+        { name: 'Group 2', members: ['r2', 'r4'] },
+    ];
+    const STOP = { filename: 'stop.csv', ids: ['r1', 'r2'], text: 'Ida og Bo kan ikke være sammen.', input: 'x', skipTogether: [] };
+
+    async function runAndEnd(end, { skipTogether = [] } = {}) {
+        stubWorkers();
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+        window.notifyInfo = vi.fn();
+        window.notifyError = vi.fn();
+        state.currentClass = makeClass('stop.csv');
+        state.groupMode = 'size';
+        state.storedStandardGroups = OLD();
+        engineTogetherStop.value = { ...STOP };
+        const run = tryNextEngine(false, null, { skipTogether });
+        // Under kørslen er knappen væk (kan ikke trykkes to gange).
+        expect(engineTogetherStop.value).toBe(null);
+        const w = runWorkers()[0];
+        await end(w);
+        expect(await run).toBe('done');
+        expect(state.isGenerating).toBe(false);
+        expect(state.storedStandardGroups).toStrictEqual(OLD());
+    }
+    afterEach(() => { engineTogetherStop.value = null; });
+
+    it('tråden dør midt i kørslen (onerror): fejlbeskeden, og stoppet står tilbage', async () => {
+        await runAndEnd(async (w) => {
+            w.onmessage({ data: { type: 'progress', progress: { attempt: 1 } } });
+            w.onerror({ message: 'død', preventDefault() {} });
+        }, { skipTogether: ['r1', 'r2'] });
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/kunne ikke dannes: Den stødte på en fejl\. Dine nuværende grupper er urørte/));
+        expect(engineTogetherStop.value).toStrictEqual(STOP);
+    });
+
+    it('et svar, der bryder kontrakten: stoppet står tilbage', async () => {
+        await runAndEnd(async (w) => {
+            w.onmessage({ data: { type: 'answer', answer: { status: 'ok', groups: [{ members: ['r1', 'x9'] }], messages: [] } } });
+        });
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/ukendt elev/));
+        expect(engineTogetherStop.value).toStrictEqual(STOP);
+    });
+
+    // 175. gennemsyn (210): netudfald, mens tråd-filen hentes. Ingen ny udgave
+    // (ingen hovedfil på siden i testen), så beskeden nævner forbindelsen.
+    it('tråd-filen kan ikke hentes (Event uden tekst): beskeden nævner forbindelsen, og stoppet står tilbage', async () => {
+        await runAndEnd(async (w) => {
+            w.onerror({ type: 'error', preventDefault() {} });
+        });
+        expect(window.notifyError).toHaveBeenCalledWith(expect.stringMatching(/motoren kunne ikke hentes\. Dine nuværende grupper er urørte\. Tjek forbindelsen, og prøv igen/));
+        expect(window.notifyError).not.toHaveBeenCalledWith(expect.stringMatching(/stødte på en fejl/));
+        expect(engineTogetherStop.value).toStrictEqual(STOP);
+    });
+
+    it('læreren stopper, og motoren har ingen deling: stoppet står tilbage', async () => {
+        await runAndEnd(async (w) => {
+            cancelGeneration();
+            w.onmessage({ data: { type: 'answer', answer: { status: 'stopped', groups: null, messages: [] } } });
+        });
+        expect(window.notifyInfo).toHaveBeenCalledWith(expect.stringMatching(/urørte/));
+        expect(engineTogetherStop.value).toStrictEqual(STOP);
+    });
+
+    it('grupper lander: stoppet er væk (aftalen kunne holdes, eller den blev sprunget over)', async () => {
+        stubWorkers();
+        window.notifyInfo = vi.fn();
+        window.notifyError = vi.fn();
+        state.currentClass = makeClass('stop.csv');
+        state.groupMode = 'size';
+        state.storedStandardGroups = OLD();
+        engineTogetherStop.value = { ...STOP };
+        const run = tryNextEngine(false);
+        runWorkers()[0].onmessage({ data: { type: 'answer', answer: {
+            contractVersion: 3, status: 'ok', groups: [{ members: ['r1', 'r2'] }, { members: ['r3', 'r4'] }],
+            messages: [], rules: [{ rule: 0, met: true }], playback: null,
+        } } });
+        await run;
+        expect(state.storedStandardGroups.map(g => g.members)).toEqual([['r1', 'r2'], ['r3', 'r4']]);
+        expect(engineTogetherStop.value).toBe(null);
+    });
+});

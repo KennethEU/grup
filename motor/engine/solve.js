@@ -34,6 +34,21 @@ export const EVALUATIONS_PER_SECOND = 1000000;
 const LOOK_UP_MS = 150;
 const PROGRESS_MS = 900;
 
+// En optaget hjælpetråd, der ikke har sendt noget i så lang tid, regnes for
+// død: alle trådene stoppes, og resten køres på én kerne (som ved en fejl).
+// En rask tråd melder sig mindst hvert 0,7 sek. (worker.js). Målt 16/11 2026
+// på sæt 1 og 2 (op til 286 elever, i Node på en Mac): højst 0,1 sek. fra
+// forsøget starter, til det første gang melder sig, og højst 0,06 sek.
+// mellem to meldinger. Fristen er rundhåndet, fordi den også skal dække
+// hentningen af tråd-filen over et langsomt net og en svag bærbar. En for
+// kort frist er ufarlig: den koster kun kernerne, og med frø bliver svaret
+// det samme.
+const WORKER_SILENCE_MS = 20000;
+// Gik der så lang tid mellem to omgange af løkken, har hele siden sovet
+// (låget lukket, fanen frosset): så er alle trådene tavse på én gang, uden
+// at nogen er død. Uret for de optagne tråde begynder forfra.
+const ASLEEP_MS = 5000;
+
 // Uden frø: så mange forsøg skal være endt med samme resultat som det
 // bedste, før motoren regner det for "fundet". Valgt ud fra sæt 1 og 2
 // (resultater/motor-konvergens.md). Bruges også i beskederne.
@@ -252,6 +267,8 @@ export async function solve(task, layout, blocks, options) {
   // Deler forsøgene ud, til de er brugt, tiden er gået, eller læreren stopper.
   async function runPool(workers) {
     const busy = new Map(); // worker → forsøgets nummer
+    const heard = new Map(); // worker → hvornår den sidst sendte noget (eller fik et forsøg)
+    const silenceMs = options.workerSilenceMs ?? WORKER_SILENCE_MS;
     let failed = false;
     let wake = null;
     const signal = () => {
@@ -265,12 +282,14 @@ export async function solve(task, layout, blocks, options) {
       if (!mayStartAnother()) return false;
       const i = started_++;
       busy.set(worker, i);
+      heard.set(worker, now());
       worker.postMessage({ type: 'attempt', index: i });
       return true;
     };
     for (const worker of workers) {
       worker.onmessage = (event) => {
         const msg = event.data || {};
+        heard.set(worker, now());
         if (msg.type === 'progress') {
           if (!top) snapshot = { groups: msg.groups, evaluation: evaluateGroups(msg.groups) };
         } else if (msg.type === 'done') {
@@ -288,8 +307,18 @@ export async function solve(task, layout, blocks, options) {
       };
       give(worker);
     }
+    let lastRound = now();
     while (busy.size && !failed) {
       await Promise.race([new Promise((resolve) => (wake = resolve)), pause(LOOK_UP_MS)]);
+      const t = now();
+      if (t - lastRound > ASLEEP_MS) {
+        for (const worker of busy.keys()) heard.set(worker, t);
+      }
+      lastRound = t;
+      for (const worker of busy.keys()) {
+        if (t - heard.get(worker) > silenceMs) failed = true;
+      }
+      if (failed) break;
       progress(false);
       if (cancelled()) {
         stopped = true;

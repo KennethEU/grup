@@ -20,6 +20,7 @@
 import { computed } from 'vue';
 import { bannerHints, dismiss } from '../js/modules/hints.js';
 import { TriangleAlert, Info, X } from 'lucide-vue-next';
+import { setFocusFallback } from '../composables/useModalFocus.js';
 
 // Udsnittet: advarslerne om opsætningen står i gruppeopskriften og resten over
 // grupperne (isRecipeHint / isResultHint i recipe.js). Alle tre steder giver et filter.
@@ -44,14 +45,45 @@ function hintActions(h) {
 // FØR vinduet, knappen åbner, når at huske, hvor fokus var. Før huskede det
 // knappen i det lukkede vindue, og fokus endte på <body>, når det lukkede
 // (målt i Safari; Chromium og Firefox endte på fanen, der åbnede opskriften).
+//
+// Over grupperne (170. gennemsyn, tematik (199)): knappen åbner et vindue
+// ("Tilføj efternøler", "Vis aftalen") eller danner grupperne igen ("Dan
+// matrixen igen"), og når sagen er løst, er advarslen og knappen væk. Vinduet
+// (eller laget "Danner grupper …") kunne så ikke give fokus tilbage, og det
+// stod på <body>. Nu meldes en reserve: det sted, advarslen stod.
 function runAction(a, event) {
-    const dialog = event.currentTarget.closest('dialog.recipe-dialog');
+    const button = event.currentTarget;
+    const dialog = button.closest('dialog.recipe-dialog');
     if (dialog) {
         const hadFocus = dialog.contains(document.activeElement);
         window.dispatchEvent(new CustomEvent('recipe-dialog:request', { detail: { open: false } }));
         if (hadFocus) document.querySelector('.recipe-bar__open')?.focus();
+    } else if (button === document.activeElement) {
+        const stack = button.closest('.hints-stack');
+        if (stack) setFocusFallback(focusWhereStackWas(stack));
     }
     a.run();
+}
+
+// Hvor skal fokus hen, når advarslen er væk? Står der stadig advarsler,
+// den første af dem; ellers det første i siden efter stakken (det første
+// gruppekort). Regnes først, når det skal bruges: kortene kan være tegnet om
+// imellem. Stakken og dens næste nabo huskes, fordi stakken selv forsvinder
+// (v-if), når den sidste advarsel går.
+function focusWhereStackWas(stack) {
+    const parent = stack.parentElement;
+    const next = stack.nextElementSibling;
+    return () => {
+        const live = parent?.querySelector(':scope > .hints-stack');
+        const inStack = live && firstFocusable(live);
+        const target = inStack || (next?.isConnected && firstFocusable(next))
+            || document.querySelector('.recipe-bar__open');
+        target?.focus();
+    };
+}
+function firstFocusable(root) {
+    return [...root.querySelectorAll(FOCUSABLE)].find(el =>
+        !el.closest('[inert]') && el.getClientRects().length > 0) || null;
 }
 
 // ─── Fokus efter krydset (169. gennemsyn, tematik (198)) ────────────────────

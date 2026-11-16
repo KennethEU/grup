@@ -14,7 +14,8 @@ import { DEFAULT_CSV, skipGuides } from './helpers';
 // grupper, ingen fejl, bare langsommere. Derfor tjekker testen, at kørslen
 // faktisk brugte flere kerner, og hvad serveren sendte.
 // (`cores > 1` er ikke tidsafhængigt: kun en fejl fra en tråd — onerror eller
-// en fejlbesked i solve.js' runPool — giver én kerne; en langsom tråd ventes på.)
+// en fejlbesked i solve.js' runPool — giver én kerne; en langsom tråd ventes på,
+// så længe den melder sig mindst hver 20. sek. (WORKER_SILENCE_MS).)
 //
 // Chromium og Firefox beder om brotli også over http og får .br-filen;
 // WebKit (Safari) beder kun om brotli over https og får reservevejen (gzip,

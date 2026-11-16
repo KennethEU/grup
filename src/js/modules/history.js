@@ -1,7 +1,7 @@
 import { state } from './state.js';
 import * as storage from './storage.js';
 import { saveTopicsOrSettle } from './topicSettle.js';
-import { ROW_ID, newUuid, memberIdStr, memberDisplayName, matrixOrigins, mergeClassTopics, classTopicSpelling } from './utils.js';
+import { ROW_ID, newUuid, memberIdStr, memberDisplayName, matrixOrigins, mergeClassTopics, classTopicSpelling, buildStudentIndex } from './utils.js';
 import { pushRun, markClean, markCleanWithInputs } from './runHistory.js';
 import { forgetRunResults } from './setupNotices.js';
 import { isRuleShape, giveUsableGroupNames, topicText } from './classShape.js';
@@ -144,9 +144,13 @@ export function saveCurrentSession(baseName, includeMatrix) {
     // VIGTIGT: Vi gemmer {id, name} snapshot. Navnet slås op NU via lærerens
     // visningskolonne og fryses — id'et (_rowId) siger intet om hvem eleven er,
     // så uden navnet ville en session om en slettet elev blive ulæselig.
+    // Opslagskortet bygges én gang (se openOverview i overview.js): uden det
+    // gennemløb hvert navn hele den reaktive elevliste.
+    const classData = state.currentClass?.data;
+    const byId = buildStudentIndex(classData);
     const mapMembers = (members) => members.map(m => ({
         id: memberIdStr(m),
-        name: memberDisplayName(m, state.currentClass?.data, state.displayColumn),
+        name: memberDisplayName(m, classData, state.displayColumn, byId),
     }));
     // Ét gruppesæt som det gemmes; `prefix` er emnernes ('S_' stam, 'M_' matrix).
     const snapshotGroups = (groups, prefix) => groups.map(g => ({
@@ -553,6 +557,7 @@ export function loadSessionForPreview(sessionId) {
     if (standardSet.groups.length === 0) return null;
 
     const currentStudents = state.currentClass.data;
+    const byId = buildStudentIndex(currentStudents);
 
     // De gemte medlemmer bliver til { name, isGhost } til forhåndsvisningen.
     // Spøgelse = en elev, der ikke længere står i klassen. Flaget er det samme
@@ -566,7 +571,7 @@ export function loadSessionForPreview(sessionId) {
         if (studentObj) {
             // Aktiv elev: vis lærerens valgte visningskolonne. Før gættede vi
             // på en kolonne der hed "navn"/"name"/"elev" — nu er det et valg.
-            const name = memberDisplayName(studentObj[ROW_ID], state.currentClass.data, state.displayColumn);
+            const name = memberDisplayName(studentObj[ROW_ID], currentStudents, state.displayColumn, byId);
             return { name, isGhost: false };
         } else {
             // Spøgelse: eleven står ikke længere i klassen

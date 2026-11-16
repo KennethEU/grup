@@ -8,7 +8,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { useModalFocus } from '../composables/useModalFocus.js';
 import { reactiveState as state } from '../js/modules/reactiveState.js';
-import { memberDisplayName } from '../js/modules/utils.js';
+import { memberDisplayName, buildStudentIndex } from '../js/modules/utils.js';
 import * as rg from '../js/modules/restoreGroups.js';
 
 const props = defineProps({
@@ -52,7 +52,10 @@ const plan = computed(() => {
     });
 });
 
-const nameOf = (rowId) => memberDisplayName(rowId, data.value, displayColumn.value);
+// Ét opslagskort pr. elevliste: nameOf kaldes for hver elev i de tre lister
+// herunder, og uden kortet gennemløb hvert kald hele klassen.
+const studentIndex = computed(() => buildStudentIndex(data.value));
+const nameOf = (rowId) => memberDisplayName(rowId, data.value, displayColumn.value, studentIndex.value);
 
 const ambiguousItems = computed(() => flatten(it => it.status === 'ambiguous'));
 const unmatchedItems = computed(() => flatten(it => it.status === 'unmatched'));

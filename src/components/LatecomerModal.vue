@@ -11,7 +11,7 @@ import { autoSave } from '../js/modules/classActions.js';
 // placement.js, hvor den er dækket af unit-tests — se placement.test.js.
 import { separationConflictIds, partnersOutside, partnersInGroup, findBestGroup, placementRules, brokenSeparateRules, brokenSplitRule } from '../js/modules/placement.js';
 import { mergeTogether } from '../js/modules/together.js';
-import { ROW_ID, memberIdStr, memberDisplayName, groupDisplayName, matrixSourceById } from '../js/modules/utils.js';
+import { ROW_ID, memberIdStr, memberDisplayName, groupDisplayName, matrixSourceById, buildStudentIndex } from '../js/modules/utils.js';
 
 const emit = defineEmits(['close']);
 
@@ -82,10 +82,14 @@ const chosenIds = computed(() => {
     return selectedStudentIds.value.filter(id => listed.has(String(id)));
 });
 
+// Opslagskortet bygges én gang pr. ændring af elevlisten: getLabel kaldes
+// for hver elev i listen, og uden kortet gennemløb hvert kald hele klassen.
+const studentIndex = computed(() => buildStudentIndex(state.currentClass?.data));
+
 function getLabel(s) {
     // Lærerens visningskolonne — før gættede vi på "navn"/"name"/"elev" og
     // faldt ellers tilbage på ID-værdien (som nu ville være et _rowId).
-    return memberDisplayName(s[ROW_ID], state.currentClass?.data, state.displayColumn);
+    return memberDisplayName(s[ROW_ID], state.currentClass?.data, state.displayColumn, studentIndex.value);
 }
 
 function getId(s) { return s[idCol.value]; }

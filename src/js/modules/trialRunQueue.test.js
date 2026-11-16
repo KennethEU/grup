@@ -184,4 +184,145 @@ describe('Prøvekørslens kø', () => {
         // Opskriftens egen advarsel siger det allerede: ingen note to gange.
         expect(got.notes.map(n => n.text)).not.toContain('Cellerne i "Niveau" er ikke tal.');
     });
+
+    // 173. gennemsyn: tjek-tråden dør, før den har svaret. Prøvekørslen
+    // venter på tjekket; uden et nyt forsøg af sig selv kom der ingen
+    // prøvekørsel, før læreren ændrede opskriften.
+    it('tjek-tråden dør før svaret: tjekket prøves igen, og prøvekørslen kommer af sig selv', async () => {
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+        state.currentClass = makeClass('3a');
+        await flush();
+        const dead = workers.find(w => w.posted.some(m => m.type === 'check'));
+        // Den døde tråd svarer aldrig (answerChecks må ikke svare for den).
+        dead.posted.forEach(m => dead.answered.add(m));
+        dead.onerror({ message: 'net::ERR_NETWORK_CHANGED' });
+        await flush();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS * 3);
+        expect(trialRuns().length).toBe(0);
+        // Opskriften står stille. Efter CHECK_RETRY_MS: et nyt tjek i en ny tråd.
+        vi.advanceTimersByTime(NE.CHECK_RETRY_MS);
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        expect(trialRuns().length).toBe(1);
+        await answerTrial(0);
+        expect(T.trialFor(false)).not.toBe(null);
+    });
+});
+
+// 174. gennemsyn (16/11 2026), (208) og (209): prøvekørslens tråd svigter.
+// Før blev opskriften, tråden gik ned på, aldrig prøvet igen, og efter tre
+// fejl holdt prøvekørslen helt op i fanen — også når nettet var tilbage.
+describe('Prøvekørslens tråd svigter', () => {
+    /** Prøvekørsel nr. i's tråd fejler, som når dens fil ikke kan hentes. */
+    async function failTrial(i) {
+        const { w } = trialRuns()[i];
+        w.onerror({ message: 'net::ERR_INTERNET_DISCONNECTED' });
+        await flush();
+    }
+
+    it('én fejl i forbindelsen, læreren rører intet: prøvekørslen kommer af sig selv', async () => {
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        expect(trialRuns().length).toBe(1);
+        await failTrial(0);
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS * 3);
+        expect(trialRuns().length).toBe(1);          // ikke med det samme igen
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MS);
+        expect(trialRuns().length).toBe(2);
+        await answerTrial(1);
+        expect(T.trialFor(false)).not.toBe(null);
+    });
+
+    it('tre fejl, mens opskriften ændres: efter pausen kommer prøvekørslen igen', async () => {
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        for (const [i, size] of [[0, 3], [1, 5], [2, 6]]) {
+            vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+            expect(trialRuns().length).toBe(i + 1);
+            await failTrial(i);
+            state.currentClass.settings.groupTarget = size;
+            await answerChecks();
+        }
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS * 3);
+        expect(trialRuns().length).toBe(3);           // grænsen: ingen flere for nu
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MS);
+        expect(trialRuns().length).toBe(4);
+        await answerTrial(3);
+        expect(T.trialFor(false)).not.toBe(null);
+    });
+
+    it('forsøgene bliver sjældnere, så længe forbindelsen er væk', async () => {
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        await failTrial(0);
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MS - 1);
+        expect(trialRuns().length).toBe(1);
+        vi.advanceTimersByTime(2);
+        expect(trialRuns().length).toBe(2);
+        await failTrial(1);
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MS);
+        expect(trialRuns().length).toBe(2);           // nu 30 s
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MS + 2);
+        expect(trialRuns().length).toBe(3);
+    });
+
+    it('motoren kaster på en opskrift: den opskrift prøves ikke igen', async () => {
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        const { w, m } = trialRuns()[0];
+        w.onmessage({ data: { type: 'crash', id: m.id, message: 'test' } });
+        await flush();
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MAX_MS * 2);
+        expect(trialRuns().length).toBe(1);
+        // En anden opskrift prøves som altid.
+        state.currentClass.settings.groupTarget = 3;
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        expect(trialRuns().length).toBe(2);
+    });
+
+    it('fejl fra en ledig tråd tæller ikke (209)', async () => {
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        await answerTrial(0);
+        // Tråden er ledig; tre fejl fra den (fx en besked, der ikke kan pakkes ud).
+        for (let i = 0; i < T.TRIAL_MAX_FAILURES; i++) {
+            const w = trialRuns()[0].w;
+            w.onmessageerror?.({});
+            await flush();
+        }
+        // Læreren ændrer opskriften: prøvekørslen kommer som altid.
+        state.currentClass.settings.groupTarget = 3;
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        expect(trialRuns().length).toBe(2);
+    });
+
+    it('en ny udgave er lagt op: prøvekørslen holder op og spørger ikke mere', async () => {
+        vi.resetModules();
+        vi.doMock('./newBuild.js', async (orig) => ({ ...(await orig()), checkForNewBuild: () => Promise.resolve(true) }));
+        ({ state } = await import('./state.js'));
+        NE = await import('./nextEngine.js');
+        T = await import('./trialRun.js');
+        state.navView = 'class';
+        state.classViewTab = 'groups';
+        state.activeView = 'standard';
+        state.groupMode = 'size';
+        state.isGenerating = false;
+        state.storedStandardGroups = [];
+        state.currentClass = makeClass('3a');
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS);
+        await failTrial(0);
+        vi.advanceTimersByTime(T.TRIAL_RETRY_MAX_MS * 3);
+        state.currentClass.settings.groupTarget = 3;
+        await answerChecks();
+        vi.advanceTimersByTime(T.TRIAL_QUIET_MS * 3);
+        expect(trialRuns().length).toBe(1);
+        vi.doUnmock('./newBuild.js');
+    });
 });

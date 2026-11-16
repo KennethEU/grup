@@ -580,13 +580,39 @@ let checkSeq = 0;
 // bag alle motorens advarsler, så det må ikke give op af sig selv.
 let checkWorkerGone = false;
 
-/** Tjek-tråden fejlede: er det, fordi en ny udgave er lagt op? */
+// Et nyt forsøg af sig selv (173. gennemsyn, 16/11 2026). Før blev tjekket
+// kun sendt igen, når opskriften ændrede sig. Fejlede tråden af en anden
+// grund end en ny udgave (fx et kort netværksudfald, mens tråd-filen blev
+// hentet), stod opskriften uden motorens advarsler og uden prøvekørsel, til
+// læreren rørte noget — og en lærer, der bare kigger, rører intet. Nu prøves
+// der igen efter 2, 4 og 8 sekunder. Derefter som før: ved næste ændring.
+export const CHECK_RETRY_MS = 2000;
+export const CHECK_MAX_RETRIES = 3;
+let checkRetries = 0;      // nye forsøg i træk uden et svar imellem
+let checkRetryTimer = null;
+
+function scheduleCheckRetry() {
+    if (checkWorkerGone || checkRetryTimer || checkRetries >= CHECK_MAX_RETRIES) return;
+    const delay = CHECK_RETRY_MS * 2 ** checkRetries;
+    checkRetries++;
+    checkRetryTimer = setTimeout(() => {
+        checkRetryTimer = null;
+        if (checkWorkerGone) return;
+        sendCheck(checkKey.value);
+    }, delay);
+}
+
+/** Tjek-tråden fejlede: er det, fordi en ny udgave er lagt op? Ellers et nyt forsøg. */
 function onCheckWorkerFailed() {
     const check = checkForNewBuild();
-    if (!check) return;
+    // Ingen bygget udgave at sammenligne med (udvikling): bare prøv igen.
+    if (!check) { scheduleCheckRetry(); return; }
     check.then((isNew) => {
-        if (!isNew || checkWorkerGone) return;
+        if (checkWorkerGone) return;
+        if (!isNew) { scheduleCheckRetry(); return; }
         checkWorkerGone = true;
+        clearTimeout(checkRetryTimer);
+        checkRetryTimer = null;
         window.notifyError?.(NEW_BUILD_MESSAGE);
     });
 }
@@ -597,14 +623,24 @@ function ensureCheckWorker() {
         checkWorker = defaultWorker();
         checkWorker.onmessage = (e) => {
             const m = e.data || {};
-            if (m.type === 'checked' && m.id === checkSeq) checkAnswer.value = { ...pendingCheck, answer: m.answer };
+            if (m.type !== 'checked') return;
+            checkRetries = 0;   // tråden virker
+            if (m.id === checkSeq) checkAnswer.value = { ...pendingCheck, answer: m.answer };
         };
         checkWorker.onerror = (e) => {
             console.error('[Gruppemotor] check()-tråden fejlede:', e && e.message ? e.message : e);
+            if (e && typeof e.preventDefault === 'function') e.preventDefault();
             try { checkWorker.terminate(); } catch { /* væk i forvejen */ }
             checkWorker = null;
             checkAnswer.value = null;
             onCheckWorkerFailed();
+        };
+        // Et svar, der ikke kunne pakkes ud (173. gennemsyn). Tråden lever
+        // videre; ingen advarsler hellere end gamle, og et nyt forsøg.
+        checkWorker.onmessageerror = () => {
+            console.error('[Gruppemotor] check()-trådens svar kunne ikke læses.');
+            checkAnswer.value = null;
+            scheduleCheckRetry();
         };
     } catch (e) {
         console.error('[Gruppemotor] check() kunne ikke startes:', e);
@@ -622,17 +658,25 @@ export const checkInput = computed(() => currentEngineInput(state.activeView ===
 // skete der intet ved skiftet fra 3a til kopien, og engineCheck gav null i
 // kopien (svaret hørte til 3a) — opskriften stod uden motorens advarsler,
 // til læreren ændrede noget.
-watch(() => (checkInput.value
+const checkKey = computed(() => (checkInput.value
     ? JSON.stringify([state.currentClass?.filename ?? null, checkInput.value])
-    : ''), (key) => {
+    : ''));
+
+/** Send opskriften, som den står NU, til tjek-tråden. Fra watch'en og fra et nyt forsøg. */
+function sendCheck(key) {
     if (!key) { checkAnswer.value = null; return; }
     const worker = ensureCheckWorker();
     if (!worker) return;
     // Klassen og visningen kommer med, så et svar om én klasse aldrig vises
     // i en anden (læreren skifter klasse, før svaret er der).
     pendingCheck = { id: ++checkSeq, input: checkInput.value, filename: state.currentClass?.filename ?? null, isMatrix: state.activeView === 'matrix' };
-    worker.postMessage({ type: 'check', id: checkSeq, input: JSON.parse(key)[1] });
-}, { immediate: true });
+    try {
+        worker.postMessage({ type: 'check', id: checkSeq, input: JSON.parse(key)[1] });
+    } catch (e) {
+        console.error('[Gruppemotor] check() kunne ikke sendes:', e);
+    }
+}
+watch(checkKey, sendCheck, { immediate: true });
 
 /**
  * Motorens beskeder om opsætningen lige nu — eller null (intet at tjekke,
@@ -948,6 +992,7 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
             if (worker && reusable) {
                 worker.onmessage = null;
                 worker.onerror = null;
+                worker.onmessageerror = null;
                 dropIdleEngineWorker();
                 idle = { key: factoryKey(makeWorker), worker };
             } else {
@@ -973,6 +1018,16 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
             timer = setTimeout(() => finish({ kind: 'cancelled' }), stopWaitMs);
         };
 
+        // Kunne tråd-filen hentes? (175. gennemsyn, 16/11 2026.) En ny tråd,
+        // der ikke kan hentes (netudfald, 404, en import, der fejler), giver
+        // onerror et almindeligt Event UDEN tekst — målt i Chromium, Firefox
+        // og WebKit. Kode, der kaster, giver et ErrorEvent MED tekst. Før fik
+        // læreren "Den stødte på en fejl" ved et netudfald, som om motoren
+        // var i stykker. Kun en NY tråd, der endnu intet har sagt, tæller:
+        // en genbrugt tråd eller en, der har sendt fremgang, er hentet.
+        const reused = !!idle && idle.key === factoryKey(makeWorker);
+        let heard = false;
+
         try {
             worker = takeWorker(makeWorker);
         } catch (e) {
@@ -982,6 +1037,7 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
         current = { worker, finish, stop };
 
         worker.onmessage = (e) => {
+            heard = true;
             const m = e.data || {};
             // En besked fra en tidligere kørsel i samme tråd hører ikke til
             // her. (Tråden sender altid nummeret med; testenes falske tråde
@@ -1000,11 +1056,29 @@ export function runNextEngine(input, { onProgress, makeWorker = defaultWorker, s
         worker.onerror = (e) => {
             console.error('[Gruppemotor] Tråden fejlede:', e && e.message ? e.message : e);
             if (e && typeof e.preventDefault === 'function') e.preventDefault();
+            const notFetched = !reused && !heard && !(e && typeof e.message === 'string' && e.message);
+            if (stopping) finish({ kind: 'cancelled' });
+            else if (notFetched) finish({ kind: 'failed', reason: 'den kunne ikke hentes', unreachable: true });
+            else finish({ kind: 'failed', reason: 'den stødte på en fejl' });
+        };
+        // Et svar, der ikke kunne pakkes ud (173. gennemsyn): før ventede
+        // appen 20 sekunder (SILENCE_LIMIT_MS) og sagde "den svarede ikke".
+        // Kunne det være svaret, er det tabt; tråden lukkes som ved en fejl.
+        worker.onmessageerror = () => {
+            console.error('[Gruppemotor] Trådens besked kunne ikke læses.');
             finish(stopping ? { kind: 'cancelled' } : { kind: 'failed', reason: 'den stødte på en fejl' });
         };
 
         keepAlive();
-        worker.postMessage({ type: 'run', id: runId, input });
+        // Kan input ikke sendes (fx noget, der ikke kan kopieres til en tråd),
+        // kaster postMessage. Før afviste det løftet, som ellers ALTID svarer,
+        // og vagten og `current` blev hængende (173. gennemsyn).
+        try {
+            worker.postMessage({ type: 'run', id: runId, input });
+        } catch (e) {
+            console.error('[Gruppemotor] Input kunne ikke sendes til tråden:', e);
+            finish({ kind: 'failed', reason: 'den kunne ikke startes' });
+        }
     });
 }
 
@@ -1039,7 +1113,10 @@ export function abortNextEngine() {
 /** Beskeden når læreren har stoppet, og grupperne på skærmen bliver stående. */
 export const STOPPED_TEXT = 'Gruppedannelsen blev stoppet. Dine nuværende grupper er urørte.';
 /** Matrix uden stamgrupper: der er intet at fordele på tværs af. */
-export const NEED_HOME_GROUPS = 'Du skal danne stamgrupper først. Matrixgrupper dannes på tværs af stamgrupperne.';
+/** Motorens tråd-fil kunne ikke hentes, og der er ingen ny udgave (et netudfald). */
+export const UNREACHABLE_TEXT = 'Grupperne kunne ikke dannes: motoren kunne ikke hentes. '
+    + 'Dine nuværende grupper er urørte. Tjek forbindelsen, og prøv igen.';
+export const NEED_HOME_GROUPS ='Du skal danne stamgrupper først. Matrixgrupper dannes på tværs af stamgrupperne.';
 
 let runCounter = 0;
 
@@ -1114,6 +1191,13 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     // og bemærkningerne samles i en kladde, til resultatet lander.
     replay.stop();
     beginRun(isMatrix ? 'matrix' : 'standard');
+    // Skal sammen-stoppet fra sidste kørsel skjules, mens denne kører (så
+    // "Dan grupper uden aftalen" ikke kan trykkes to gange). Lander der INGEN
+    // grupper (motoren fejlede, svarede ikke, eller læreren stoppede), lægges
+    // det tilbage nedenfor: grupperne står urørte, og så gør advarslen og
+    // dens knap også. Før forsvandt den, til læreren trykkede Dan grupper
+    // igen (172. gennemsyn). togetherStopApplies afgør stadig, om den vises.
+    const stopBefore = isMatrix ? null : engineTogetherStop.value;
     if (!isMatrix) engineTogetherStop.value = null;
     nextRun.value = { active: true, progress: null, stopping: false };
 
@@ -1171,12 +1255,19 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
         return 'done';
     }
 
+    // Herfra: står grupperne urørte, står Skal sammen-stoppet også (se
+    // stopBefore ovenfor). Kun i samme klasse og kun for denne kørsel.
+    const nothingLanded = (text, opts) => {
+        if (stopBefore && !engineTogetherStop.value) engineTogetherStop.value = stopBefore;
+        return stopWithoutGroups(text, opts);
+    };
+
     // Stop uden en hel deling: grupperne på skærmen bliver stående. Også et
     // tomt svar efter Stop (derfor ?.) — ellers kastede linjen.
     // Et "impossible"-svar efter Stop ender også her: læreren bad om at
     // stoppe, og advarslen kommer igen ved næste Dan grupper.
     if (result.kind === 'cancelled' || (stoppedByTeacher && result.answer?.groups == null)) {
-        return stopWithoutGroups(STOPPED_TEXT);
+        return nothingLanded(STOPPED_TEXT);
     }
 
     // Hvad gik galt? `setup`: motoren siger, at opsætningen ikke kan bruges
@@ -1206,7 +1297,13 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
             if (isNewBuild) window.notifyError?.(NEW_BUILD_MESSAGE);
             return 'done';
         }
-        if (isNewBuild) return stopWithoutGroups(NEW_BUILD_MESSAGE, { error: true });
+        if (isNewBuild) return nothingLanded(NEW_BUILD_MESSAGE, { error: true });
+        // Tråd-filen kunne ikke hentes, og der er ingen ny udgave: det er
+        // forbindelsen. Næste tryk henter filen igen (målt i alle tre
+        // browsere, e2e dan_efter_udfald), så "prøv igen" er rigtigt her.
+        if (result.unreachable) {
+            return nothingLanded(UNREACHABLE_TEXT, { error: true });
+        }
         reason = result.reason;
     } else {
         const problem = contractProblem(input, answer);
@@ -1223,15 +1320,15 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
     // Læreren trykkede Stop, og motorens svar kan ikke lægges på skærmen (en
     // fejl, eller det bryder kontrakten): så er det et Stop uden en deling.
     if (reason && stoppedByTeacher) {
-        return stopWithoutGroups(STOPPED_TEXT);
+        return nothingLanded(STOPPED_TEXT);
     }
 
     // Ingen grupper at lægge: grupperne på skærmen står, som de stod, og
     // historikken får intet skridt (pushRun kaldes kun i landAnswer).
     if (reason) {
         const sentence = reason.charAt(0).toUpperCase() + reason.slice(1).replace(/\.$/, '');
-        if (setup) return stopWithoutGroups(`Grupperne blev ikke dannet. ${sentence}. Dine nuværende grupper er urørte.`);
-        return stopWithoutGroups(`Grupperne kunne ikke dannes: ${sentence}. Dine nuværende grupper er urørte. `
+        if (setup) return nothingLanded(`Grupperne blev ikke dannet. ${sentence}. Dine nuværende grupper er urørte.`);
+        return nothingLanded(`Grupperne kunne ikke dannes: ${sentence}. Dine nuværende grupper er urørte. `
             + 'Prøv igen — og genindlæs siden, hvis det sker igen.', { error: true });
     }
 

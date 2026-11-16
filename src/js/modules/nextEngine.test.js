@@ -404,6 +404,56 @@ describe('runNextEngine — tråden, tidsgrænsen og Stop', () => {
         spy.mockRestore();
     });
 
+    // 175. gennemsyn: en tråd-fil, der ikke kan hentes, giver onerror et Event
+    // uden tekst (målt i Chromium, Firefox og WebKit); kode, der kaster, et
+    // ErrorEvent med tekst. Kun en NY tråd, der intet har sagt, er "ikke hentet".
+    describe('kunne tråd-filen hentes?', () => {
+        const spyErr = () => vi.spyOn(console, 'error').mockImplementation(() => {});
+        afterEach(() => { vi.restoreAllMocks(); dropIdleEngineWorker(); });
+
+        it('en ny tråd, et Event uden tekst før første besked: den kunne ikke hentes', async () => {
+            spyErr();
+            let w;
+            const p = runNextEngine({}, { makeWorker: () => (w = fakeWorker(() => {})) });
+            w.onerror({ type: 'error', preventDefault() {} });
+            expect(await p).toEqual({ kind: 'failed', reason: 'den kunne ikke hentes', unreachable: true });
+            expect(w.terminated).toBe(true);
+        });
+
+        it('kode, der kaster (et ErrorEvent med tekst): den stødte på en fejl', async () => {
+            spyErr();
+            let w;
+            const p = runNextEngine({}, { makeWorker: () => (w = fakeWorker(() => {})) });
+            w.onerror({ type: 'error', message: 'Uncaught Error: x', preventDefault() {} });
+            expect(await p).toEqual({ kind: 'failed', reason: 'den stødte på en fejl' });
+        });
+
+        it('et Event uden tekst EFTER fremgang: tråden var hentet, så en fejl', async () => {
+            spyErr();
+            let w;
+            const p = runNextEngine({}, { makeWorker: () => (w = fakeWorker(() => {})) });
+            w.onmessage({ data: { type: 'progress', progress: { attempt: 1 } } });
+            w.onerror({ type: 'error', preventDefault() {} });
+            expect(await p).toEqual({ kind: 'failed', reason: 'den stødte på en fejl' });
+        });
+
+        it('en genbrugt tråd med et Event uden tekst: en fejl, ikke forbindelsen', async () => {
+            spyErr();
+            let w;
+            const make = () => (w = fakeWorker((self, m) => {
+                if (m.type === 'run' && m.id === 'first') return;
+            }));
+            const first = runNextEngine({}, { makeWorker: make });
+            w.onmessage({ data: { type: 'answer', answer: { status: 'ok' } } });
+            await first;
+            const reusedWorker = w;
+            const p = runNextEngine({}, { makeWorker: make });
+            expect(w).toBe(reusedWorker);   // samme tråd, ingen ny hentning
+            w.onerror({ type: 'error', preventDefault() {} });
+            expect(await p).toEqual({ kind: 'failed', reason: 'den stødte på en fejl' });
+        });
+    });
+
     it('kan tråden ikke startes, falder den tilbage', async () => {
         const result = await runNextEngine({}, { makeWorker: () => { throw new Error('ingen Worker'); } });
         expect(result.kind).toBe('failed');

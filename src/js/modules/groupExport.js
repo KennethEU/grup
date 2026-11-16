@@ -17,7 +17,7 @@ import * as storage from './storage.js';
 import { EXCEL_UNAVAILABLE_MESSAGE, reportPartUnavailable } from './newBuild.js';
 import {
     memberDisplayName, memberIdStr, isMemberAbsent, groupDisplayName, groupShortName,
-    todayStamp, safeFileName,
+    todayStamp, safeFileName, buildStudentIndex,
 } from './utils.js';
 
 /** Navnene på de to gruppesæt, som de står på fanerne i Excel-filen. */
@@ -39,8 +39,12 @@ export function buildGroupTable(isMatrix, includeSource = false) {
     if (!groups || groups.length === 0) return null;
 
     const topicPrefix = isMatrix ? 'M_' : 'S_';
-    const nameOf = (m) => memberDisplayName(
-        m, state.currentClass?.data, state.displayColumn);
+    // Ét opslagskort, bygget én gang: uden det gennemløb hvert navn og hvert
+    // fraværs-tjek hele den reaktive elevliste (180. gennemsyn: 427 ms ved
+    // 1200 elever i Kopiér/Excel, 4× neddrosling). Se openOverview().
+    const data = state.currentClass?.data;
+    const byId = buildStudentIndex(data);
+    const nameOf = (m) => memberDisplayName(m, data, state.displayColumn, byId);
 
     // Opslaget "hvilken stamgruppe kom eleven fra" sker på IDENTITET (_rowId),
     // ikke på navnet — to elever må gerne hedde det samme.
@@ -74,7 +78,7 @@ export function buildGroupTable(isMatrix, includeSource = false) {
             // Fraværende elever står stadig i gruppen — kun papirkurven tager
             // dem ud. Uden markeringen lægger læreren en liste på Lectio med
             // elever, der ikke er der. Samme regel som kortet og udskriften.
-            if (isMemberAbsent(m, state.currentClass?.data)) line += ' (fraværende)';
+            if (isMemberAbsent(m, data, byId)) line += ' (fraværende)';
             return line;
         });
 

@@ -23,7 +23,7 @@ import { state } from './state.js';
 import * as storage from './storage.js';
 import {
     memberDisplayName, memberIdStr, ROW_ID, matrixOrigins, groupCountText,
-    mergeClassTopics, classTopicSpelling, newUuid,
+    mergeClassTopics, classTopicSpelling, newUuid, buildStudentIndex,
 } from './utils.js';
 import { cancelPickUp } from '../../composables/useDragDrop.js';
 import * as replay from './replay.js';
@@ -74,13 +74,17 @@ function captureNames(groupSets) {
     // — så navnet blev aldrig gemt, og withFrozenNames() nedenfor læste
     // funktionen tilbage og satte den som elevens navn på gruppekortet.
     const names = Object.create(null);
+    // Ét opslagskort, bygget én gang. captureNames kører ved HVER dannelse, og
+    // uden kortet gennemløb hvert navn hele den reaktive elevliste: pushRun()
+    // tog 216 ms ved 1200 elever (4× neddrosling, 180. gennemsyn).
+    const data = state.currentClass?.data;
+    const byId = buildStudentIndex(data);
     groupSets.forEach(groups => {
         (groups || []).forEach(g => {
             (g.members || []).forEach(m => {
                 const id = memberIdStr(m);
                 if (!id || names[id]) return;
-                const name = memberDisplayName(
-                    m, state.currentClass?.data, state.displayColumn);
+                const name = memberDisplayName(m, data, state.displayColumn, byId);
                 if (name) names[id] = name;
             });
         });

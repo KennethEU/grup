@@ -1097,3 +1097,29 @@ describe('listRuns siger, at en kørsels matrix var forældet (142. gennemsyn)',
         expect(listRuns()[0].matrixStale).toBe(false);
     });
 });
+
+// pushRun() fryser navnene ved HVER dannelse (captureNames). Hvert navn
+// gennemløb hele den reaktive elevliste: 216 ms ved 1200 elever (4×
+// neddrosling, 180. gennemsyn). Nu ét opslagskort.
+describe('pushRun — elevlisten læses kun én gang', () => {
+    it('læser hver elevrække et fast antal gange, ikke én gang pr. elev', () => {
+        const N = 200;
+        const rows = Array.from({ length: N }, (_, i) => ({ _rowId: `r${i + 1}`, Navn: `Elev ${i}` }));
+        let reads = 0;
+        state.currentClass.data = new Proxy(rows, {
+            get(target, key, receiver) {
+                if (typeof key === 'string' && /^\d+$/.test(key)) reads++;
+                return Reflect.get(target, key, receiver);
+            },
+        });
+        state.storedStandardGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.slice(g * 4, g * 4 + 4).map(r => r._rowId) }));
+        state.storedMatrixGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.filter((_, i) => i % (N / 4) === g).map(r => r._rowId) }));
+
+        pushRun();
+
+        expect(listRuns()).toHaveLength(1);
+        expect(reads).toBeLessThanOrEqual(3 * N);
+    });
+});

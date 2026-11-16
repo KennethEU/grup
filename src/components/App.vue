@@ -23,7 +23,7 @@ const showSmallScreenNotice = (() => {
 import { TriangleAlert, X } from 'lucide-vue-next';
 import { cancelGeneration } from '../js/modules/generation.js';
 import { nextRun } from '../js/modules/nextEngine.js';
-import { setBlockingOverlay } from '../composables/useModalFocus.js';
+import { setBlockingOverlay, takeFocusFallback, isModalOpen } from '../composables/useModalFocus.js';
 
 // Motoren fortæller undervejs, hvor langt den er. Linjen står kun, mens den kører.
 const nextProgressText = computed(() => {
@@ -82,6 +82,10 @@ function onCancelGeneration() {
 const generationDone = ref('');
 const stopBtn = ref(null);
 let focusBeforeGeneration = null;
+// Reserven, hvis knappen, der startede kørslen, er væk bagefter (fx "Dan
+// matrixen igen" i en advarsel, der forsvinder med kørslen) — se
+// setFocusFallback i useModalFocus.js.
+let focusFallbackAfterGeneration = null;
 
 // Hvilke grupper stod der, da kørslen gik i gang? Se "Nye grupper?" nedenfor.
 let groupsBeforeGeneration = null;
@@ -97,6 +101,7 @@ watch(() => state.isGenerating, async (running) => {
     if (running) {
         generationDone.value = '';
         focusBeforeGeneration = document.activeElement;
+        focusFallbackAfterGeneration = takeFocusFallback();
         groupsBeforeGeneration = shownGroups();
         classBeforeGeneration = state.currentClass?.filename || null;
         await nextTick();
@@ -119,6 +124,8 @@ watch(() => state.isGenerating, async (running) => {
     const takeFocusBack = !!stopBtn.value && document.activeElement === stopBtn.value;
     const back = focusBeforeGeneration;
     focusBeforeGeneration = null;
+    const fallback = focusFallbackAfterGeneration;
+    focusFallbackAfterGeneration = null;
 
     // NYE GRUPPER? Kun en kørsel, der lykkedes, lægger et NYT gruppesæt i
     // tilstanden (generation.js erstatter hele listen). Før talte vi bare de
@@ -140,7 +147,9 @@ watch(() => state.isGenerating, async (running) => {
         : '';
 
     await nextTick();
-    if (takeFocusBack && back && back.isConnected && !back.disabled) back.focus();
+    if (!takeFocusBack) return;
+    if (back && back.isConnected && !back.disabled) back.focus();
+    else if (fallback && !isModalOpen()) fallback();
 });
 
 const currentViewComponent = computed(() => {

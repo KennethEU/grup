@@ -85,6 +85,28 @@ test('Arket kan ses i ét billede på en lav skærm', async ({ page }) => {
     expect(scroll).toBeLessThanOrEqual(client + 1);
 });
 
+// Gøres vinduet mindre, mens arket står (fx en projektor med lavere
+// opløsning), tilpasses arket igen, og gøres det større, vokser skriften
+// tilbage. Tilpasningen sker højst én gang pr. billede (scheduleFit i
+// ClassShow.vue, 179. gennemsyn), så den skal stadig nå at ske.
+test('Arket tilpasses igen, når vinduet ændrer størrelse', async ({ page }) => {
+    await page.setViewportSize({ width: 1366, height: 900 });
+    await groupsAndShow(page, 'Skift stoerrelse');
+    const sheet = page.locator('.show');
+    const fit = () => sheet.evaluate(el => Number((el as HTMLElement).style.getPropertyValue('--fit') || 1));
+    const fitsOnScreen = () => sheet.evaluate(el => el.scrollHeight <= el.clientHeight + 1);
+    await expect.poll(fit).toBe(1);
+
+    // Flere størrelser lige efter hinanden: kun den sidste tæller
+    for (const h of [600, 400, 300]) await page.setViewportSize({ width: 1366, height: h });
+    await expect.poll(fit).toBeLessThan(1);
+    expect(await fitsOnScreen()).toBe(true);
+
+    await page.setViewportSize({ width: 1366, height: 900 });
+    await expect.poll(fit).toBe(1);
+    expect(await fitsOnScreen()).toBe(true);
+});
+
 // Arket er et vindue som de andre: siden bagved må ikke kunne nås med
 // tastaturet. Før kunne Ctrl+Enter danne nye grupper BAG arket (og klassen så
 // dem skifte), og Tab gik videre ned i de skjulte knapper.

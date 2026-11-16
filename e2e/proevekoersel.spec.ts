@@ -182,3 +182,72 @@ test('Et nyt emne på et kort fjerner ikke mærkerne fra sidste dannelse', async
     await expect(dialog.locator('.rule-mark').first()).toBeVisible();
     await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
 });
+
+// 173. gennemsyn (16/11 2026): tjek-tråden kan ikke hentes et øjeblik (fx et
+// kort netværksudfald), men der er IKKE lagt en ny udgave op. Før blev tjekket
+// først sendt igen, når læreren ændrede opskriften — så opskriften stod uden
+// motorens advarsler og uden prøvekørsel, så længe læreren bare kiggede. Nu
+// prøves der igen af sig selv (CHECK_RETRY_MS i nextEngine.js).
+test('Kan tjek-tråden ikke hentes et øjeblik, kommer tjekket og prøvekørslen igen af sig selv', async ({ page }) => {
+    await page.addInitScript(() => {
+        const Original = window.Worker;
+        (window as any).offline = true;
+        (window as any).brokenWorkers = 0;
+        (window as any).Worker = class extends Original {
+            constructor(url: string | URL, options?: WorkerOptions) {
+                const broken = (window as any).offline && /engine-worker/.test(String(url));
+                if (broken) (window as any).brokenWorkers++;
+                super(broken ? '/findes-ikke/engine-worker-udfald.js' : url, options);
+            }
+        };
+    });
+    await createClass(page, 'Tjek efter udfald');
+    await goToGroups(page);
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'distribute', column: 'Køn', value: '' }];
+    });
+    const dialog = await openRecipe(page);
+    await page.waitForTimeout(300);
+    expect(await page.evaluate(() => (window as any).brokenWorkers)).toBeGreaterThanOrEqual(1);
+    // Nettet er tilbage. Læreren rører intet.
+    await page.evaluate(() => { (window as any).offline = false; });
+    await expect(dialog.locator('.rule-mark')).toHaveAttribute('aria-label', 'Prøvekørsel: Opfyldt', { timeout: 15000 });
+    await expect(page.locator('.toast')).toHaveCount(0);
+});
+
+// 174. gennemsyn (16/11 2026), (208): prøvekørslens EGEN tråd kan ikke hentes
+// et øjeblik (tjek-tråden kører allerede), men der er ikke lagt en ny udgave
+// op. Før blev den opskrift aldrig prøvet igen, før læreren ændrede noget —
+// og efter tre fejl holdt prøvekørslen helt op, til siden blev genindlæst.
+// Nu prøves der igen af sig selv (TRIAL_RETRY_MS i trialRun.js, 15 s).
+test('Kan prøvekørslens tråd ikke hentes et øjeblik, kommer prøvekørslen igen af sig selv', async ({ page }) => {
+    test.setTimeout(60000);
+    await page.addInitScript(() => {
+        const Original = window.Worker;
+        (window as any).offline = false;
+        (window as any).brokenWorkers = 0;
+        (window as any).Worker = class extends Original {
+            constructor(url: string | URL, options?: WorkerOptions) {
+                const broken = (window as any).offline && /engine-worker/.test(String(url));
+                if (broken) (window as any).brokenWorkers++;
+                super(broken ? '/findes-ikke/engine-worker-udfald.js' : url, options);
+            }
+        };
+    });
+    await createClass(page, 'Prøvekørsel efter udfald');
+    await goToGroups(page);
+    // Tjek-tråden har sin tråd; herfra kan nye tråde ikke hentes.
+    await page.waitForTimeout(300);
+    await page.evaluate(() => { (window as any).offline = true; });
+    await page.evaluate(() => {
+        (window as any).appDebug.state.currentClass.rules = [{ type: 'distribute', column: 'Køn', value: '' }];
+    });
+    const dialog = await openRecipe(page);
+    await expect.poll(() => page.evaluate(() => (window as any).brokenWorkers), { timeout: 5000 }).toBeGreaterThanOrEqual(1);
+    await page.waitForTimeout(500);
+    await expect(dialog.locator('.rule-mark--trial')).toHaveCount(0);
+    // Nettet er tilbage. Læreren rører intet.
+    await page.evaluate(() => { (window as any).offline = false; });
+    await expect(dialog.locator('.rule-mark')).toHaveAttribute('aria-label', 'Prøvekørsel: Opfyldt', { timeout: 25000 });
+    await expect(page.locator('.toast')).toHaveCount(0);
+});

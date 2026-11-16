@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { createApp, defineComponent, h, ref, nextTick } from 'vue';
-import { useModalFocus, topModalPanel } from './useModalFocus.js';
+import { useModalFocus, topModalPanel, setFocusFallback, takeFocusFallback } from './useModalFocus.js';
 
 // Siden bagved et vindue skal være inert (useModalFocus' syncInert): ellers
 // kan en skærmlæsers læsemarkør vandre uden om fokusfælden og ned i siden.
@@ -127,5 +127,54 @@ describe('topModalPanel', () => {
         expect(topModalPanel()).toBe(document.querySelector('#modal-slot .modal-overlay > button'));
         first.unmount(); apps.pop();
         expect(topModalPanel()).toBeNull();
+    });
+});
+
+// Reserven, når knappen, der åbnede vinduet, er væk (170. gennemsyn).
+describe('reserven til fokus', () => {
+    it('bruges, når knappen er væk, når vinduet lukker', async () => {
+        const opener = document.createElement('button');
+        const place = document.createElement('button');
+        document.body.append(opener, place);
+        opener.focus();
+        setFocusFallback(() => place.focus());
+        const host = document.createElement('div');
+        document.body.append(host);
+        const app = createApp(Modal);
+        app.mount(host);
+        await nextTick();
+        opener.remove();          // advarslen forsvinder, mens vinduet står
+        app.unmount();
+        expect(document.activeElement).toBe(place);
+        place.remove(); host.remove();
+    });
+
+    it('bruges IKKE, når knappen stadig står', async () => {
+        const opener = document.createElement('button');
+        const place = document.createElement('button');
+        document.body.append(opener, place);
+        opener.focus();
+        setFocusFallback(() => place.focus());
+        const host = document.createElement('div');
+        document.body.append(host);
+        const app = createApp(Modal);
+        app.mount(host);
+        await nextTick();
+        app.unmount();
+        expect(document.activeElement).toBe(opener);
+        opener.remove(); place.remove(); host.remove();
+    });
+
+    it('glemmes, når intet vindue åbner (et senere vindue arver den ikke)', async () => {
+        setFocusFallback(() => {});
+        await new Promise(r => setTimeout(r, 0));
+        expect(takeFocusFallback()).toBe(null);
+    });
+
+    it('kun én tager den', () => {
+        const fn = () => {};
+        setFocusFallback(fn);
+        expect(takeFocusFallback()).toBe(fn);
+        expect(takeFocusFallback()).toBe(null);
     });
 });

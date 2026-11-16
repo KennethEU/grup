@@ -142,3 +142,29 @@ describe('Del-menuens Excel-fil', () => {
         expect(toColumnsSheet(table)[0]).toEqual(table.map(g => g.heading));
     });
 });
+
+// Samme kvadrat som udskriften (overview.test.js): hvert navn og hvert
+// fraværs-tjek gennemløb hele den reaktive elevliste. Kopiér og Excel tog
+// 427 ms ved 1200 elever (4× neddrosling, 180. gennemsyn).
+describe('buildGroupTable — elevlisten læses kun én gang', () => {
+    it('læser hver elevrække et fast antal gange, ikke én gang pr. elev', () => {
+        const N = 200;
+        const rows = Array.from({ length: N }, (_, i) => ({ _rowId: `r${i + 1}`, Navn: `Elev ${i}` }));
+        let reads = 0;
+        state.currentClass.data = new Proxy(rows, {
+            get(target, key, receiver) {
+                if (typeof key === 'string' && /^\d+$/.test(key)) reads++;
+                return Reflect.get(target, key, receiver);
+            },
+        });
+        state.storedStandardGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.slice(g * 4, g * 4 + 4).map(r => r._rowId) }));
+        state.storedMatrixGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.filter((_, i) => i % (N / 4) === g).map(r => r._rowId) }));
+
+        const table = buildGroupTable(true, true);
+
+        expect(table.flatMap(g => g.members)).toContain('Elev 199 (Grp 50)');
+        expect(reads).toBeLessThanOrEqual(3 * N);
+    });
+});

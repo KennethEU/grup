@@ -296,3 +296,32 @@ describe('openOverview — skærmlæser og tastatur', () => {
         expect(written).toMatch(/<div class="meta"><div>[^<]+<\/div><div>/);
     });
 });
+
+// Elevlisten er reaktiv (Vue), så hvert skridt i et `.find()` går gennem en
+// proxy. Udskriften slog hvert navn og hvert fraværs-tjek op ved at gennemløbe
+// HELE listen: målt i chromium med 4× neddrosling tog det 102 ms at bygge
+// siden ved 300 elever og 1092 ms ved 1200 (180. gennemsyn). Nu bygges ét
+// opslagskort. Testen tæller, hvor mange gange en elevrække læses: lineært
+// er højst et par gange pr. elev, kvadratisk er titusinder.
+describe('openOverview — elevlisten læses kun én gang', () => {
+    it('læser hver elevrække et fast antal gange, ikke én gang pr. elev', () => {
+        const N = 200;
+        const rows = Array.from({ length: N }, (_, i) => ({ _rowId: `r${i + 1}`, Navn: `Elev ${i}` }));
+        let reads = 0;
+        state.currentClass.data = new Proxy(rows, {
+            get(target, key, receiver) {
+                if (typeof key === 'string' && /^\d+$/.test(key)) reads++;
+                return Reflect.get(target, key, receiver);
+            },
+        });
+        state.storedStandardGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.slice(g * 4, g * 4 + 4).map(r => r._rowId) }));
+        state.storedMatrixGroups = Array.from({ length: N / 4 }, (_, g) =>
+            ({ name: `Group ${g + 1}`, members: rows.filter((_, i) => i % (N / 4) === g).map(r => r._rowId) }));
+
+        openOverview();
+
+        expect(written).toContain('Elev 199');
+        expect(reads).toBeLessThanOrEqual(3 * N);
+    });
+});

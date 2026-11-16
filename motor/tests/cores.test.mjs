@@ -36,11 +36,11 @@ class FakeWorker {
 
 const load = (file) => JSON.parse(readFileSync(`testdata/saet-1/${file}`, 'utf8'));
 
-async function solveWith(input, cores) {
+async function solveWith(input, cores, extra = {}) {
   const task = buildTask(input);
   const layout = computeLayout(task);
   const { blocks } = checkFeasibility(task, layout);
-  return { task, result: await solve(task, layout, blocks, { budget: input.budget, seed: input.seed, input, cores }) };
+  return { task, result: await solve(task, layout, blocks, { budget: input.budget, seed: input.seed, input, cores, ...extra }) };
 }
 
 test('flere kerner: samme grupper som på én kerne', async () => {
@@ -133,5 +133,38 @@ test('en tråd, der ikke kan hentes eller dør: samme grupper på én kerne, ude
     } finally {
       delete globalThis.Worker;
     }
+  }
+});
+
+// En af trådene tager imod et forsøg, men svarer aldrig og melder ingen fejl
+// (215). Før ventede motoren på den, til læreren trykkede Stop: fremgangen
+// blev ved at komme, så appens vagt slog aldrig til. Nu regnes en tavs tråd
+// for død efter fristen, og resten køres på én kerne.
+class HangingWorker extends FakeWorker {
+  static made = 0;
+  constructor(url) {
+    super(url);
+    if (++HangingWorker.made === 2) {
+      this.postMessage = (m) => {
+        if (m.type !== 'attempt') FakeWorker.prototype.postMessage.call(this, m);
+      };
+    }
+  }
+}
+
+test('en tråd, der hverken svarer eller melder fejl: samme grupper på én kerne efter fristen', { timeout: 20000 }, async () => {
+  const input = { ...load('010-rigtig-realistisk-seks-regler.json'), seed: 3, budget: { maxSeconds: 1, maxAttempts: 6, minAttempts: 1 } };
+  const one = await solveWith(input, 1);
+  globalThis.Worker = HangingWorker;
+  try {
+    const t0 = Date.now();
+    const many = await solveWith(input, 3, { workerSilenceMs: 1500 });
+    assert.equal(many.result.cores, 1);
+    assert.equal(many.result.stopped, false);
+    assert.deepEqual(many.result.best.groups, one.result.best.groups);
+    assert.equal(many.result.winner, one.result.winner);
+    assert.ok(Date.now() - t0 < 10000, `tog ${Date.now() - t0} ms`);
+  } finally {
+    delete globalThis.Worker;
   }
 });
