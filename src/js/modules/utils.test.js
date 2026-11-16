@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { state, pushUndo, undo, redo, clearUndoHistory } from './state.js';
 import { togetherComponents } from './together.js';
 import { RULE_WEIGHT_NOTES, newUuid } from './utils.js';
-import { orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, groupSetFingerprint, buildStudentIndex, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
+import { orderIdsByRow, cellIsNumber, cellNumber, compareCellValues, sortRowsByColumn, columnNumericStats, columnIsNumeric, splitByLockedGroups, escapeHtml, detectDelimiter, parseCSV, stripEmptyColumns, ROW_ID, ROW_ID_PATTERN, ensureRowIds, memberDisplayName, migrateRefsToRowIds, getColorForString, clearColorRegistry, debounce, RULE_TYPES, RULE_OPTIONS, RULE_DESCRIPTIONS, RULES_WITHOUT_VALUES, MATRIX_EXCLUDED_RULES, isInternalField, teacherColumns, isMemberAbsent, memberIdStr, groupSetFingerprint, buildStudentIndex, nameLookup, brokenSeparations, groupDisplayName, groupShortName, nfc, valueKey, canonicalSpellings, normalizeCellText } from './utils.js';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 1. escapeHtml
@@ -1794,5 +1794,37 @@ describe('newUuid', () => {
         } finally {
             Object.defineProperty(crypto, 'randomUUID', { value: original, configurable: true });
         }
+    });
+});
+
+// nameLookup: samme navne som memberDisplayName uden kort, men kortet bygges
+// først ved første kald og kun én gang (181. gennemsyn, (219)).
+describe('nameLookup', () => {
+    const rows = [
+        { _rowId: 'r1', Navn: 'Ida' },
+        { _rowId: ' r2 ', Navn: 'Bo' },
+        { _rowId: 'r3', Navn: '' },
+        { _rowId: 'r1', Navn: 'Dublet' },
+        null,
+    ];
+    const members = ['r1', 'r2', 'r3', 'r9', { id: 'r8', name: 'Gammel Elev' }, 'Ren Tekst', '', { id: 'r7', name: 'r7' }];
+
+    it('giver præcis de samme navne som memberDisplayName uden kort', () => {
+        const nameOf = nameLookup(rows, 'Navn');
+        for (const m of members) expect(nameOf(m)).toBe(memberDisplayName(m, rows, 'Navn'));
+    });
+
+    it('rører ikke listen, før et navn spørges, og læser den derefter kun én gang', () => {
+        let reads = 0;
+        const counted = new Proxy(rows, {
+            get(target, key, receiver) {
+                if (typeof key === 'string' && /^\d+$/.test(key)) reads++;
+                return Reflect.get(target, key, receiver);
+            },
+        });
+        const nameOf = nameLookup(counted, 'Navn');
+        expect(reads).toBe(0);
+        for (let i = 0; i < 50; i++) nameOf('r9');
+        expect(reads).toBe(rows.length);
     });
 });

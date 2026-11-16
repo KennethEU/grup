@@ -643,7 +643,11 @@ const currentTabs = computed(() => {
     // If we have a class, show class-specific tabs + Import & backup
     if (state.currentClass) {
         return [
-            { id: 'students', label: 'Elevliste', view: 'class' },
+            // count: hele listen, også dem der er væk i dag, så læreren kan
+            // tjekke den mod klassens antal ("29 i 2.a") uden at holde musen
+            // over noget (Kenneth 16/11 2026). Grupper-fanen viser de mødte
+            // ("28 elever · 1 er væk i dag"), og de to tal passer sammen.
+            { id: 'students', label: 'Elevliste', view: 'class', count: state.currentClass.data?.length || 0 },
             { id: 'groups', label: 'Grupper', view: 'class' },
             { id: 'history', label: 'Historik', view: 'class' },
             { id: 'import', label: 'Import & backup', view: 'import' }
@@ -795,6 +799,12 @@ onUnmounted(() => {
                     :aria-current="activeTabId === tab.id ? 'page' : null"
                     @click="switchTab(tab)">
                 {{ tab.label }}
+                <!-- Antallet står på fanen og ikke i elevlistens overskrift:
+                     dér gjorde tekst Vis-kolonnen for bred (Kenneth 4/11), og
+                     her koster det ingen ekstra linje. " elever" er kun til
+                     skærmlæseren, så den siger "Elevliste 29 elever". Mellemrummet
+                     står inde i {{ }}: Vue fjerner et mellemrum først i et element. -->
+                <span v-if="tab.count != null" class="nav-tab__count">{{ tab.count }}<span class="nav-tab__sr">{{ tab.count === 1 ? ' elev' : ' elever' }}</span></span>
             </button>
         </div>
 
@@ -1004,6 +1014,26 @@ onUnmounted(() => {
     transition-duration: 0.2s;
     display: flex;
     align-items: center;
+    white-space: nowrap;
+}
+
+/* Antallet på Elevliste-fanen: samme farve som fanen (så kontrasten er
+   den samme), men tyndere og i tal med fast bredde, så det ses som et tal
+   og ikke som en del af navnet. */
+.nav-tab__count {
+    margin-inline-start: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Læses op, ses ikke (ikke display:none, så ville skærmlæseren tie). */
+.nav-tab__sr {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
     white-space: nowrap;
 }
 
@@ -1313,8 +1343,11 @@ onUnmounted(() => {
         padding-inline-start: 16px;
     }
 
+    /* 8 px, ikke 10: antallet på Elevliste-fanen (16/11) tog 12 px fra
+       klassenavnet ved 911 px, så "2.a (testdata)" blev klippet. De fire
+       faners 2 × 2 px giver dem tilbage (målt: 92 px med og uden tallet). */
     .nav-tab {
-        padding-inline: 10px;
+        padding-inline: 8px;
     }
 
     /* "Vis guide" som pære alene. Siden 9/11 skrumper fanerne ikke (så

@@ -29,11 +29,19 @@ function measure(page) {
                 const b = el.getBoundingClientRect();
                 return { name: (el.textContent || '').trim(), left: b.left, right: b.right, top: Math.round(b.top) };
             });
-        // Linjer i hver fane: én tekstlinje = ét rektangel
+        // Linjer i hver fane: hvor langt under det øverste tekststykke står
+        // hvert stykke? Ikke antallet af rektangler: hvert tekststykke giver
+        // sit eget, så "Elevliste 29" (tallet i sin egen <span>, 16/11) gav
+        // fire på én linje. Og ikke Math.round(top): tallets mindre skrift
+        // sidder en halv pixel lavere (24 og 24,5), som blev til to "linjer".
+        // En rigtig ny linje står ca. 16 px lavere.
         const tabLines = [...document.querySelectorAll('.nav-tab')].map(el => {
             const r = document.createRange();
             r.selectNodeContents(el);
-            return { name: (el.textContent || '').trim(), lines: r.getClientRects().length };
+            const tops = [...r.getClientRects()].map(x => x.top);
+            const first = Math.min(...tops);
+            const lines = new Set(tops.map(t => Math.floor((t - first) / 10))).size;
+            return { name: (el.textContent || '').trim(), lines };
         });
         return { vw: window.innerWidth, items, tabLines };
     });

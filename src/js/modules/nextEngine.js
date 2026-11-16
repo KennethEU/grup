@@ -27,7 +27,7 @@ import { ruleDisplayOrder } from './recipe.js';
 import { ruleMarks } from './ruleMarks.js';
 import { checkForNewBuild, NEW_BUILD_MESSAGE } from './newBuild.js';
 import {
-    ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName,
+    ROW_ID, RULE_TYPES, memberIdStr, nfc, migrateRefsToRowIds, memberDisplayName, nameLookup,
     groupDisplayName, groupSetFingerprint, matrixOrigins, groupCountText, ownCell, topicKey, findTopicIndex, valueKey, rankingAffectsColumn, rankSteps,
     matrixSourceById, lockedMatrixDuplicates,
 } from './utils.js';
@@ -383,8 +383,14 @@ export function freeNumbers(count, lockedNumbers) {
  * navnet på gruppe N i svaret ("Gruppe 3"). Motoren kender ingen navne.
  */
 export function fillMessageText(msg, { studentName, groupName }) {
-    const names = (msg.students || []).map(studentName).filter(Boolean).join(', ');
-    return String(msg.text || '')
+    const text = String(msg.text || '');
+    // Navnene slås kun op, når teksten har en plads til dem. "1 elev har en
+    // værdi i …, der ikke er et tal" og lignende bærer alle eleverne med i
+    // `students` (til mærkerne og nøglen), men nævner dem ikke.
+    const names = text.includes('{elever}')
+        ? (msg.students || []).map(studentName).filter(Boolean).join(', ')
+        : '';
+    return text
         .split('{elever}').join(names || 'eleverne')
         .replace(/\{gruppe:(\d+)\}/g, (_, n) => groupName(parseInt(n, 10)) || `gruppe ${parseInt(n, 10) + 1}`);
 }
@@ -1360,7 +1366,9 @@ export async function tryNextEngine(isMatrix, overrideSettings = null, options =
 function namers(groupNames) {
     const data = state.currentClass?.data || [];
     return {
-        studentName: (id) => memberDisplayName(id, data, state.displayColumn),
+        // Ét opslagskort pr. besked-runde (nameLookup), ikke ét gennemløb af
+        // elevlisten pr. navn: en besked kan nævne hele holdet.
+        studentName: nameLookup(data, state.displayColumn),
         groupName: (i) => (groupNames[i] ? groupDisplayName(groupNames[i]) : null),
     };
 }

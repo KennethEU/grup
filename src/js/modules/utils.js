@@ -902,6 +902,26 @@ export function buildStudentIndex(data) {
 }
 
 /**
+ * En navne-funktion til mange opslag i træk: (id) → navnet, som
+ * `memberDisplayName()` giver det. Opslagskortet bygges FØRST ved første
+ * kald, og kun én gang. Bruges, hvor en besked kan nævne hele holdet (fx
+ * "Opdel: 150 elever har ikke udfyldt …"): uden kortet gennemløb hvert navn
+ * hele den reaktive elevliste, så beskeden kostede kvadratet på holdets
+ * størrelse (219. tematik, 181. gennemsyn). Nævner beskeden ingen, bygges
+ * intet kort.
+ *
+ * @param {Array}  data           klassens elevrækker
+ * @param {string} displayColumn  lærerens valgte kolonne
+ */
+export function nameLookup(data, displayColumn) {
+    let byId = null;
+    return (id) => {
+        if (!byId) byId = buildStudentIndex(data);
+        return memberDisplayName(id, data, displayColumn, byId);
+    };
+}
+
+/**
  * Navnet der skal STÅ på et gruppemedlem.
  *
  * Medlemmer bæres rundt som _rowId, så navnet slås op i klassen via lærerens

@@ -539,9 +539,11 @@ const unplacedHint = computed(() => {
         .filter(id => id && !seated.has(id));
     if (!missing.length) return null;
 
-    const names = missing.map(id => memberDisplayName(id, cls.data, state.displayColumn));
-    const shown = names.length > 3
-        ? `${names.slice(0, 3).join(', ')} og ${names.length - 3} mere`
+    // Kun de tre, der vises, får et navn: id'et bygges af id'erne, og resten
+    // tælles bare. Navnene slås op i det fælles kort (studentById).
+    const names = missing.slice(0, 3).map(id => memberDisplayName(id, cls.data, state.displayColumn, studentById.value));
+    const shown = missing.length > 3
+        ? `${names.join(', ')} og ${missing.length - 3} mere`
         : namesText(names);
     const one = missing.length === 1;
     const where = isMatrix.value ? 'matrixgruppe' : 'gruppe';
@@ -765,7 +767,7 @@ const brokenTogetherHint = computed(() => {
     const broken = brokenTogether(groups, cls.togetherGroups, cls.data || []);
     if (!broken.length) return null;
 
-    const nameOf = (id) => memberDisplayName(id, cls.data, state.displayColumn);
+    const nameOf = (id) => memberDisplayName(id, cls.data, state.displayColumn, studentById.value);
     const listNames = (list) => list.length <= 1
         ? (list[0] || '')
         : `${list.slice(0, -1).join(', ')} og ${list[list.length - 1]}`;
@@ -843,7 +845,9 @@ const engineCheckHints = computed(() => {
     const cls = state.currentClass;
     const data = cls?.data || [];
     const fill = {
-        studentName: (id) => memberDisplayName(id, data, state.displayColumn),
+        // Det fælles opslagskort: motorens besked kan nævne hele holdet, og
+        // tjekket regnes om ved hver ændring af opskriften.
+        studentName: (id) => memberDisplayName(id, data, state.displayColumn, studentById.value),
         groupName: () => null,
     };
     // Kun mens sidste kørsel fik præcis det input, der står nu: et resultat
@@ -1013,7 +1017,7 @@ const togetherRuleCostHint = computed(() => {
             const distinct = new Set(values);
             const sharesValue = values.some((value, index) => values.indexOf(value) !== index);
             if (spreading ? !sharesValue : distinct.size < 2) continue;
-            const names = ids.map(id => memberDisplayName(id, cls.data, state.displayColumn)).join(', ');
+            const names = ids.map(id => memberDisplayName(id, cls.data, state.displayColumn, studentById.value)).join(', ');
             notes.push(`${ruleTypeLabel(type)} på "${attr}": ${names} skal sammen, og `
                 + (spreading ? 'mindst to deler samme værdi' : 'de har forskellige værdier')
                 + ' i kolonnen.');

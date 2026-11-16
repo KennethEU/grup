@@ -231,6 +231,13 @@ describe('svaret → appens form', () => {
             .toBe('To (Ida, Bo) står i Gruppe 3.');
     });
 
+    it('en tekst uden {elever} slår ingen navne op (181. gennemsyn)', () => {
+        const studentName = vi.fn(() => 'Ida');
+        const msg = { text: '200 elever har en værdi i "Niveau", der ikke er et tal.', students: ['a', 'b'] };
+        expect(fillMessageText(msg, { studentName, groupName: () => null })).toBe(msg.text);
+        expect(studentName).not.toHaveBeenCalled();
+    });
+
     it('en besked, opskriften allerede har sagt med "… gør ingenting", står ikke to gange', () => {
         const input = { rules: [{ type: 'balance', column: 'Karakter' }] };
         const ids = ['hint:non-numeric:stam:balance:Karakter'];

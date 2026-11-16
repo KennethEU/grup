@@ -499,3 +499,52 @@ describe('en tal-kolonne, hvor alle med et tal er væk', () => {
         expect(shown).toBeGreaterThan(20);
     });
 });
+
+// En besked fra motoren kan nævne hele holdet ("Opdel på "Hold": 100 elever
+// har ikke udfyldt …"). Navnene slås op i det fælles opslagskort
+// (studentById), ikke ved et gennemløb af elevlisten pr. navn — og skal
+// stadig følge med, når læreren retter et navn (181. gennemsyn, (219)).
+describe('motorens besked med mange navne', () => {
+    function bigSplitClass(n) {
+        const data = Array.from({ length: n }, (_, k) => ({
+            _rowId: 'r' + (k + 1), Navn: 'Elev ' + (k + 1), Hold: k % 2 ? '' : 'a',
+        }));
+        return {
+            cls: {
+                filename: 'stor', columns: ['Navn', 'Hold'], data,
+                rules: [{ type: 'aggregate', column: 'Hold' }],
+                togetherGroups: [], separations: [], topics: [], columnOrders: {},
+                settings: { groupTarget: '4', groupMod: '+', groupMode: 'size' },
+            },
+            groupMode: 'size', locked: [],
+        };
+    }
+    const splitHint = (hints) => hints.find(h => /ikke udfyldt/.test(h.text || ''));
+
+    it('navnene står i advarslen og følger med, når et navn rettes', () => {
+        const { hints } = hintsWithCheck(bigSplitClass(40));
+        const before = splitHint(hints);
+        expect(before?.text).toContain('Elev 2, Elev 4');
+        state.currentClass.data[1].Navn = 'Ida Holm';
+        const after = splitHint(allHints.value);
+        expect(after?.text).toContain('Ida Holm, Elev 4');
+        expect(after?.text).not.toContain('Elev 2,');
+    });
+
+    it('elevlisten læses et fast antal gange pr. elev, ikke én gang pr. navn', () => {
+        const N = 400;
+        const setup = bigSplitClass(N);
+        const rows = setup.cls.data;
+        let reads = 0;
+        setup.cls.data = new Proxy(rows, {
+            get(target, key, receiver) {
+                if (typeof key === 'string' && /^\d+$/.test(key)) reads++;
+                return Reflect.get(target, key, receiver);
+            },
+        });
+        const { hints } = hintsWithCheck(setup);
+        expect(splitHint(hints)?.text).toContain('Elev 400');
+        // Før: hvert af de 200 navne gennemløb listen (over 40000 læsninger).
+        expect(reads).toBeLessThanOrEqual(20 * N);
+    });
+});

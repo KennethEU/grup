@@ -53,7 +53,7 @@ import {
     fillMessageText, severityOf, issueKey, resultSlot, noteKeys,
 } from './nextEngine.js';
 import { ruleMarks } from './ruleMarks.js';
-import { memberDisplayName } from './utils.js';
+import { nameLookup } from './utils.js';
 import { checkForNewBuild } from './newBuild.js';
 
 /** Tre forsøg, fast frø: hurtig og altid den samme for samme opskrift. */
@@ -179,7 +179,8 @@ export function trialNotes(isMatrix) {
     const got = trialFor(isMatrix);
     if (!got || !got.notes.length) return [];
     const data = state.currentClass?.data || [];
-    const studentName = (id) => memberDisplayName(id, data, state.displayColumn);
+    // Ét opslagskort for alle noterne (nameLookup): en note kan nævne hele holdet.
+    const studentName = nameLookup(data, state.displayColumn);
     return got.notes.map(n => ({ key: n.key, type: n.type, text: trialNoteText(n, studentName) }));
 }
 
